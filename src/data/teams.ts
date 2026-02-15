@@ -12,6 +12,20 @@ export type Team = {
   hca: number;
   logo?: string;
   espnTeamId?: string;
+
+  // ✅ Torvik enrichments
+  wins?: number;
+  losses?: number;
+  record?: string;
+
+  barthag?: number;
+  adjO?: number;
+  adjD?: number;
+  tempo?: number;
+
+  torvikRank?: number;
+  torvikOeRank?: number;
+  torvikDeRank?: number;
 };
 
 type Parsed = { header: string[]; rows: string[][] };
@@ -307,6 +321,17 @@ export function loadTeams(): Map<string, Team> {
   const iPR = header.indexOf("powerRating");
   const iHca = header.indexOf("hca");
 
+  // ✅ Torvik enrichments (optional columns)
+  const iW = header.indexOf("wins");
+  const iL = header.indexOf("losses");
+  const iBarthag = header.indexOf("barthag");
+  const iAdjO = header.indexOf("adjO");
+  const iAdjD = header.indexOf("adjD");
+  const iTempo = header.indexOf("tempo");
+  const iTRank = header.indexOf("torvikRank");
+  const iOERank = header.indexOf("torvikOeRank");
+  const iDERank = header.indexOf("torvikDeRank");
+
   const missing: string[] = [];
   if (iTeamId < 0) missing.push("teamId");
   if (iName < 0) missing.push("name|teamName");
@@ -314,6 +339,11 @@ export function loadTeams(): Map<string, Team> {
   if (missing.length) {
     throw new Error(`teams.csv missing required columns: ${missing.join(",")}`);
   }
+
+  const toNum = (v: any): number | undefined => {
+    const n = Number(String(v ?? "").trim());
+    return Number.isFinite(n) ? n : undefined;
+  };
 
   // Pass 1: load teams keyed by CSV teamId
   const map = new Map<string, Team>();
@@ -327,6 +357,19 @@ export function loadTeams(): Map<string, Team> {
     const powerRating = Number((r[iPR] ?? "").trim());
     const hca = iHca >= 0 ? Number((r[iHca] ?? "").trim()) : NaN;
 
+    // ✅ Torvik values (if present)
+    const wins = iW >= 0 ? toNum(r[iW]) : undefined;
+    const losses = iL >= 0 ? toNum(r[iL]) : undefined;
+
+    const barthag = iBarthag >= 0 ? toNum(r[iBarthag]) : undefined;
+    const adjO = iAdjO >= 0 ? toNum(r[iAdjO]) : undefined;
+    const adjD = iAdjD >= 0 ? toNum(r[iAdjD]) : undefined;
+    const tempo = iTempo >= 0 ? toNum(r[iTempo]) : undefined;
+
+    const torvikRank = iTRank >= 0 ? toNum(r[iTRank]) : undefined;
+    const torvikOeRank = iOERank >= 0 ? toNum(r[iOERank]) : undefined;
+    const torvikDeRank = iDERank >= 0 ? toNum(r[iDERank]) : undefined;
+
     map.set(teamId, {
       teamId,
       name,
@@ -335,7 +378,24 @@ export function loadTeams(): Map<string, Team> {
       hca: Number.isFinite(hca) ? hca : 2,
       logo: undefined,
       espnTeamId: undefined,
-    });
+
+      // ✅ add fields onto the Team object (Team type should include these)
+      wins,
+      losses,
+      record:
+        wins != null && losses != null
+          ? `${Math.round(wins)}-${Math.round(losses)}`
+          : undefined,
+
+      barthag,
+      adjO,
+      adjD,
+      tempo,
+
+      torvikRank,
+      torvikOeRank,
+      torvikDeRank,
+    } as any);
   }
 
   // Pass 2: attach ESPN logo/id

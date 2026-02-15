@@ -1,366 +1,366 @@
-teamId,teamName,conference,powerRating,hca,hca_note
-team-michigan,Michigan,B10,27.600401962892725,2.1403508771929824,from True HF Edge chart (2022-25)
-team-arizona,Arizona,B12,24.740257592781003,3.333333333333334,from True HF Edge chart (2022-25)
-team-houston,Houston,B12,22.15470392087671,3.614035087719299,from True HF Edge chart (2022-25)
-team-florida,Florida,SEC,22.94505536717275,2.736842105263158,from True HF Edge chart (2022-25)
-team-illinois,Illinois,B10,22.751510693262528,2.210526315789474,from True HF Edge chart (2022-25)
-team-duke,Duke,ACC,21.284397040848976,2.0701754385964914,from True HF Edge chart (2022-25)
-team-iowa-st,Iowa St.,B12,21.445881473083343,3.543859649122808,from True HF Edge chart (2022-25)
-team-connecticut,Connecticut,BE,19.92220420284664,2.385964912280702,from True HF Edge chart (2022-25)
-team-purdue,Purdue,B10,20.07032714747044,2.736842105263158,from True HF Edge chart (2022-25)
-team-nebraska,Nebraska,B10,18.990748477105296,2.736842105263158,from True HF Edge chart (2022-25)
-team-kansas,Kansas,B12,18.765213612843223,1.649122807017544,from True HF Edge chart (2022-25)
-team-vanderbilt,Vanderbilt,SEC,19.656188896511495,1.859649122807018,from True HF Edge chart (2022-25)
-team-louisville,Louisville,ACC,19.670402031501062,1.4035087719298247,from True HF Edge chart (2022-25)
-team-michigan-st,Michigan St.,B10,17.389789686599784,2.315789473684211,from True HF Edge chart (2022-25)
-team-virginia,Virginia,ACC,17.315622484818114,1.7543859649122808,from True HF Edge chart (2022-25)
-team-texas-tech,Texas Tech,B12,18.200099914173236,2.315789473684211,from True HF Edge chart (2022-25)
-team-tennessee,Tennessee,SEC,17.19855594657582,3.1578947368421058,from True HF Edge chart (2022-25)
-team-gonzaga,Gonzaga,WCC,17.791121989032415,2.3508771929824563,from True HF Edge chart (2022-25)
-team-alabama,Alabama,SEC,19.725417168412054,4.0,from True HF Edge chart (2022-25)
-team-iowa,Iowa,B10,16.04097420996658,2.4912280701754392,from True HF Edge chart (2022-25)
-team-st-johns,St. John's,BE,16.99658462601457,2.105263157894737,from True HF Edge chart (2022-25)
-team-clemson,Clemson,ACC,14.904174508480796,2.6666666666666674,from True HF Edge chart (2022-25)
-team-saint-louis,Saint Louis,A10,17.486845614509452,1.5438596491228074,from True HF Edge chart (2022-25)
-team-indiana,Indiana,B10,15.897075201811518,1.6842105263157898,from True HF Edge chart (2022-25)
-team-arkansas,Arkansas,SEC,17.081098563540937,1.929824561403509,from True HF Edge chart (2022-25)
-team-north-carolina,North Carolina,ACC,15.62294148782315,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-texas-aandm,Texas A&M,SEC,15.85961247361983,2.596491228070176,from True HF Edge chart (2022-25)
-team-n-c-state,N.C. State,ACC,15.382302011368877,2.0000000000000004,from True HF Edge chart (2022-25)
-team-utah-st,Utah St.,MWC,14.936506070179773,2.4912280701754392,from True HF Edge chart (2022-25)
-team-auburn,Auburn,SEC,15.16931012286147,2.736842105263158,from True HF Edge chart (2022-25)
-team-byu,BYU,B12,15.48235547014495,3.192982456140352,from True HF Edge chart (2022-25)
-team-villanova,Villanova,BE,13.654980270082431,2.105263157894737,from True HF Edge chart (2022-25)
-team-saint-marys,Saint Mary's,WCC,13.443790511181817,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-smu,SMU,ACC,14.597220011298152,1.929824561403509,from True HF Edge chart (2022-25)
-team-santa-clara,Santa Clara,WCC,14.372864433709577,1.9649122807017545,from True HF Edge chart (2022-25)
-team-wisconsin,Wisconsin,B10,13.964335432484296,2.0701754385964914,from True HF Edge chart (2022-25)
-team-san-diego-st,San Diego St.,MWC,12.692205906872449,1.7543859649122808,from True HF Edge chart (2022-25)
-team-ucla,UCLA,B10,12.616644256347124,2.1403508771929824,from True HF Edge chart (2022-25)
-team-ohio-st,Ohio St.,B10,12.850724823326058,2.1754385964912286,from True HF Edge chart (2022-25)
-team-kentucky,Kentucky,SEC,12.63830542138958,1.9649122807017545,from True HF Edge chart (2022-25)
-team-georgia,Georgia,SEC,13.889329140832947,2.0701754385964914,from True HF Edge chart (2022-25)
-team-texas,Texas,SEC,12.95164439861777,2.631578947368421,from True HF Edge chart (2022-25)
-team-washington,Washington,B10,11.503201072050334,1.4035087719298247,from True HF Edge chart (2022-25)
-team-new-mexico,New Mexico,MWC,11.644230638247237,2.210526315789474,from True HF Edge chart (2022-25)
-team-miami-fl,Miami FL,ACC,11.593254985353695,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-cincinnati,Cincinnati,B12,10.1774388190135,2.596491228070176,from True HF Edge chart (2022-25)
-team-usc,USC,B10,10.41675435115895,1.6842105263157898,from True HF Edge chart (2022-25)
-team-baylor,Baylor,B12,10.666970430044344,3.0526315789473686,from True HF Edge chart (2022-25)
-team-missouri,Missouri,SEC,9.707517281948045,1.5789473684210529,from True HF Edge chart (2022-25)
-team-grand-canyon,Grand Canyon,MWC,9.21097861645126,1.9649122807017545,from True HF Edge chart (2022-25)
-team-ucf,UCF,B12,10.054547591239062,2.8070175438596494,from True HF Edge chart (2022-25)
-team-boise-st,Boise St.,MWC,9.361761677691852,3.403508771929825,from True HF Edge chart (2022-25)
-team-nevada,Nevada,MWC,9.234189224212042,2.596491228070176,from True HF Edge chart (2022-25)
-team-minnesota,Minnesota,B10,8.646939651889209,1.7894736842105263,from True HF Edge chart (2022-25)
-team-tulsa,Tulsa,Amer,9.630897894113332,1.7543859649122808,from True HF Edge chart (2022-25)
-team-west-virginia,West Virginia,B12,7.8059024022013075,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-lsu,LSU,SEC,8.93579450344563,1.0877192982456143,from True HF Edge chart (2022-25)
-team-vcu,VCU,A10,9.27353500154502,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-seton-hall,Seton Hall,BE,7.911135655298074,2.105263157894737,from True HF Edge chart (2022-25)
-team-tcu,TCU,B12,8.495509177564726,2.1754385964912286,from True HF Edge chart (2022-25)
-team-oklahoma,Oklahoma,SEC,8.957417437786617,1.6140350877192984,from True HF Edge chart (2022-25)
-team-virginia-tech,Virginia Tech,ACC,8.501213026778585,2.3508771929824563,from True HF Edge chart (2022-25)
-team-syracuse,Syracuse,ACC,8.525404913755958,1.5789473684210529,from True HF Edge chart (2022-25)
-team-providence,Providence,BE,9.387540470433748,2.210526315789474,from True HF Edge chart (2022-25)
-team-akron,Akron,MAC,8.510796993764451,2.736842105263158,from True HF Edge chart (2022-25)
-team-california,California,ACC,7.723572416776784,1.508771929824562,from True HF Edge chart (2022-25)
-team-stanford,Stanford,ACC,7.792917602045108,2.631578947368421,from True HF Edge chart (2022-25)
-team-south-florida,South Florida,Amer,8.427614011643048,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-arizona-st,Arizona St.,B12,7.960928005891188,2.105263157894737,from True HF Edge chart (2022-25)
-team-northwestern,Northwestern,B10,7.507152077723278,2.315789473684211,from True HF Edge chart (2022-25)
-team-oklahoma-st,Oklahoma St.,B12,8.164775541541298,1.508771929824562,from True HF Edge chart (2022-25)
-team-wake-forest,Wake Forest,ACC,7.6974796692685405,2.5614035087719302,from True HF Edge chart (2022-25)
-team-belmont,Belmont,MVC,7.937730251568373,2.3508771929824563,from True HF Edge chart (2022-25)
-team-stephen-f-austin,Stephen F. Austin,Slnd,7.108379430462554,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-butler,Butler,BE,7.497279345796585,1.6140350877192984,from True HF Edge chart (2022-25)
-team-creighton,Creighton,BE,7.13227220807193,2.8070175438596494,from True HF Edge chart (2022-25)
-team-mississippi,Mississippi,SEC,6.550663637941237,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-georgetown,Georgetown,BE,6.7008293079550905,0.8421052631578949,from True HF Edge chart (2022-25)
-team-miami-oh,Miami OH,MAC,7.206959654743459,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-utah-valley,Utah Valley,WAC,6.741481333148192,3.543859649122808,from True HF Edge chart (2022-25)
-team-northern-iowa,Northern Iowa,MVC,5.501005393751513,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-george-washington,George Washington,A10,6.835789617949319,2.1403508771929824,from True HF Edge chart (2022-25)
-team-oregon,Oregon,B10,6.108968090083499,2.035087719298246,from True HF Edge chart (2022-25)
-team-memphis,Memphis,Amer,5.985902853232786,1.0526315789473686,from True HF Edge chart (2022-25)
-team-florida-st,Florida St.,ACC,6.595383954843634,1.7543859649122808,from True HF Edge chart (2022-25)
-team-mississippi-st,Mississippi St.,SEC,6.054753335211172,1.649122807017544,from True HF Edge chart (2022-25)
-team-hawaii,Hawaii,BW,5.859080677803247,1.508771929824562,from True HF Edge chart (2022-25)
-team-colorado,Colorado,B12,6.328192761097129,2.3508771929824563,from True HF Edge chart (2022-25)
-team-liberty,Liberty,CUSA,5.861343711485604,2.210526315789474,from True HF Edge chart (2022-25)
-team-mcneese-st,McNeese St.,Slnd,5.8069802013053655,1.1929824561403513,from True HF Edge chart (2022-25)
-team-wichita-st,Wichita St.,Amer,5.612420157489694,1.1228070175438598,from True HF Edge chart (2022-25)
-team-notre-dame,Notre Dame,ACC,5.589184527411642,1.4035087719298247,from True HF Edge chart (2022-25)
-team-illinois-st,Illinois St.,MVC,5.418397038959249,1.5789473684210529,from True HF Edge chart (2022-25)
-team-davidson,Davidson,A10,5.238325048242647,1.298245614035088,from True HF Edge chart (2022-25)
-team-yale,Yale,Ivy,5.753982080280752,3.0526315789473686,from True HF Edge chart (2022-25)
-team-xavier,Xavier,BE,5.800456986771369,2.0701754385964914,from True HF Edge chart (2022-25)
-team-kansas-st,Kansas St.,B12,5.869744371957288,2.421052631578948,from True HF Edge chart (2022-25)
-team-marquette,Marquette,BE,5.507673432709723,2.210526315789474,from True HF Edge chart (2022-25)
-team-wyoming,Wyoming,MWC,4.902764847415257,2.385964912280702,from True HF Edge chart (2022-25)
-team-florida-atlantic,Florida Atlantic,Amer,5.080628828439237,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-pacific,Pacific,WCC,4.661020492676619,0.2105263157894737,from True HF Edge chart (2022-25)
-team-high-point,High Point,BSth,5.006881693345608,2.3508771929824563,from True HF Edge chart (2022-25)
-team-depaul,DePaul,BE,4.452522447634041,1.1929824561403513,from True HF Edge chart (2022-25)
-team-south-carolina,South Carolina,SEC,4.610458727284013,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-colorado-st,Colorado St.,MWC,4.329854128307716,1.8947368421052635,from True HF Edge chart (2022-25)
-team-dayton,Dayton,A10,4.387943845396007,1.7543859649122808,from True HF Edge chart (2022-25)
-team-george-mason,George Mason,A10,4.073080287622093,2.456140350877193,from True HF Edge chart (2022-25)
-team-utah,Utah,B12,4.418090436819162,3.192982456140352,from True HF Edge chart (2022-25)
-team-hofstra,Hofstra,CAA,4.177019878870351,2.24561403508772,from True HF Edge chart (2022-25)
-team-san-francisco,San Francisco,WCC,4.067113626339736,1.859649122807018,from True HF Edge chart (2022-25)
-team-pittsburgh,Pittsburgh,ACC,3.864653941576674,3.017543859649124,from True HF Edge chart (2022-25)
-team-uc-irvine,UC Irvine,BW,3.729614202790188,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-wright-st,Wright St.,Horz,3.7717485036648815,1.017543859649123,from True HF Edge chart (2022-25)
-team-duquesne,Duquesne,A10,3.8803010517669834,1.8947368421052635,from True HF Edge chart (2022-25)
-team-sam-houston-st,Sam Houston St.,CUSA,3.897371284433458,1.9649122807017545,from True HF Edge chart (2022-25)
-team-uc-santa-barbara,UC Santa Barbara,BW,3.6149956201061553,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-washington-st,Washington St.,WCC,3.703112633187264,3.1578947368421058,from True HF Edge chart (2022-25)
-team-saint-josephs,Saint Joseph's,A10,3.41792610383472,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-murray-st,Murray St.,MVC,3.9636351387120863,0.5964912280701756,from True HF Edge chart (2022-25)
-team-seattle,Seattle,WCC,3.2107777875198136,2.105263157894737,from True HF Edge chart (2022-25)
-team-cal-baptist,Cal Baptist,WAC,3.093820285707787,1.4385964912280702,from True HF Edge chart (2022-25)
-team-unlv,UNLV,MWC,3.4833216760647576,1.1578947368421055,from True HF Edge chart (2022-25)
-team-st-thomas,St. Thomas,Sum,3.3436380130677907,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-troy,Troy,SB,2.890152484994994,2.736842105263158,from True HF Edge chart (2022-25)
-team-north-dakota-st,North Dakota St.,Sum,2.795173592919804,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-ut-rio-grande-valley,UT Rio Grande Valley,Slnd,2.680825196787852,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-illinois-chicago,Illinois Chicago,MVC,2.4738051743893004,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-penn-st,Penn St.,B10,2.567590288824714,2.6666666666666674,from True HF Edge chart (2022-25)
-team-maryland,Maryland,B10,2.266921379905245,2.596491228070176,from True HF Edge chart (2022-25)
-team-boston-college,Boston College,ACC,1.7304599191623942,0.736842105263158,from True HF Edge chart (2022-25)
-team-fresno-st,Fresno St.,MWC,1.8228152867214704,1.6140350877192984,from True HF Edge chart (2022-25)
-team-uc-san-diego,UC San Diego,BW,1.79228115330812,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-rhode-island,Rhode Island,A10,1.6196789587334364,1.3684210526315792,from True HF Edge chart (2022-25)
-team-georgia-tech,Georgia Tech,ACC,1.7042255933920738,1.4385964912280702,from True HF Edge chart (2022-25)
-team-unc-wilmington,UNC Wilmington,CAA,1.5912198931774255,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-temple,Temple,Amer,1.5895269703293466,1.0526315789473686,from True HF Edge chart (2022-25)
-team-montana-st,Montana St.,BSky,1.516150566235101,2.315789473684211,from True HF Edge chart (2022-25)
-team-portland-st,Portland St.,BSky,1.45740080298347,2.0000000000000004,from True HF Edge chart (2022-25)
-team-southern-illinois,Southern Illinois,MVC,1.4695635297083574,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-uab,UAB,Amer,1.4309092318140313,1.649122807017544,from True HF Edge chart (2022-25)
-team-austin-peay,Austin Peay,ASun,1.3379488764777936,1.7543859649122808,from True HF Edge chart (2022-25)
-team-arkansas-st,Arkansas St.,SB,1.3832027500823476,2.315789473684211,from True HF Edge chart (2022-25)
-team-oakland,Oakland,Horz,1.39221894170004,1.0877192982456143,from True HF Edge chart (2022-25)
-team-william-and-mary,William & Mary,CAA,1.387420845874919,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-bradley,Bradley,MVC,1.2713550804687768,3.754385964912281,from True HF Edge chart (2022-25)
-team-montana,Montana,BSky,1.2590244878081371,2.0701754385964914,from True HF Edge chart (2022-25)
-team-loyola-marymount,Loyola Marymount,WCC,1.1523278390578302,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-kent-st,Kent St.,MAC,0.9623471418036352,1.0877192982456143,from True HF Edge chart (2022-25)
-team-middle-tennessee,Middle Tennessee,CUSA,0.8262574446068112,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-bowling-green,Bowling Green,MAC,0.7524551676847349,1.508771929824562,from True HF Edge chart (2022-25)
-team-rutgers,Rutgers,B10,0.7444429224507243,1.9649122807017545,from True HF Edge chart (2022-25)
-team-northern-colorado,Northern Colorado,BSky,0.7127779544084646,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-valparaiso,Valparaiso,MVC,0.5925472731433692,1.473684210526316,from True HF Edge chart (2022-25)
-team-east-tennessee-st,East Tennessee St.,SC,0.6188254950164943,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-missouri-st,Missouri St.,CUSA,0.4717229464751226,1.1228070175438598,from True HF Edge chart (2022-25)
-team-marist,Marist,MAAC,0.3853017497416509,1.2280701754385963,from True HF Edge chart (2022-25)
-team-north-texas,North Texas,Amer,0.2800079709877099,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-winthrop,Winthrop,BSth,0.1675628737991423,1.3333333333333337,from True HF Edge chart (2022-25)
-team-central-arkansas,Central Arkansas,ASun,0.0707685135216919,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-uc-davis,UC Davis,BW,0.0614599141870004,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-idaho,Idaho,BSky,0.0591625833147483,1.508771929824562,from True HF Edge chart (2022-25)
-team-toledo,Toledo,MAC,0.0395175978466444,1.2280701754385963,from True HF Edge chart (2022-25)
-team-cal-st-northridge,Cal St. Northridge,BW,0.0251312545215852,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-merrimack,Merrimack,MAAC,-0.0225562576727853,2.1754385964912286,from True HF Edge chart (2022-25)
-team-harvard,Harvard,Ivy,-0.0724032974210118,0.8421052631578949,from True HF Edge chart (2022-25)
-team-portland,Portland,WCC,-0.0923920519588039,1.0877192982456143,from True HF Edge chart (2022-25)
-team-fiu,FIU,CUSA,-0.1130668550783986,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-cornell,Cornell,Ivy,-0.1713101687732448,1.3333333333333337,from True HF Edge chart (2022-25)
-team-appalachian-st,Appalachian St.,SB,-0.1618094609268291,2.2807017543859653,from True HF Edge chart (2022-25)
-team-charlotte,Charlotte,Amer,-0.1762560887481561,2.105263157894737,from True HF Edge chart (2022-25)
-team-ut-arlington,UT Arlington,WAC,-0.1712776408612975,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-richmond,Richmond,A10,-0.2063689234181496,2.0000000000000004,from True HF Edge chart (2022-25)
-team-penn,Penn,Ivy,-0.2246663696455271,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-st-bonaventure,St. Bonaventure,A10,-0.2705033189697599,2.210526315789474,from True HF Edge chart (2022-25)
-team-massachusetts,Massachusetts,MAC,-0.2958033556004362,2.210526315789474,from True HF Edge chart (2022-25)
-team-jacksonville-st,Jacksonville St.,CUSA,-0.2813287414664755,1.508771929824562,from True HF Edge chart (2022-25)
-team-mercer,Mercer,SC,-0.5217495189668355,1.929824561403509,from True HF Edge chart (2022-25)
-team-kennesaw-st,Kennesaw St.,CUSA,-0.6095736681808829,2.5263157894736845,from True HF Edge chart (2022-25)
-team-marshall,Marshall,SB,-0.6585345202112183,2.456140350877193,from True HF Edge chart (2022-25)
-team-new-mexico-st,New Mexico St.,CUSA,-0.7732863140558921,1.649122807017544,from True HF Edge chart (2022-25)
-team-navy,Navy,Pat,-0.8636365140807493,1.4035087719298247,from True HF Edge chart (2022-25)
-team-youngstown-st,Youngstown St.,Horz,-0.9242737970872767,2.24561403508772,from True HF Edge chart (2022-25)
-team-texas-aandm-corpus-chris,Texas A&M Corpus Chris,Slnd,-1.0558349913143878,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-fordham,Fordham,A10,-1.066510496857447,1.473684210526316,from True HF Edge chart (2022-25)
-team-utah-tech,Utah Tech,WAC,-1.2412129338916438,2.4912280701754392,from True HF Edge chart (2022-25)
-team-oregon-st,Oregon St.,WCC,-1.2138308501901318,3.0526315789473686,from True HF Edge chart (2022-25)
-team-tarleton-st,Tarleton St.,WAC,-1.2872575486757207,2.421052631578948,from True HF Edge chart (2022-25)
-team-drexel,Drexel,CAA,-1.2727086025638332,2.631578947368421,from True HF Edge chart (2022-25)
-team-western-kentucky,Western Kentucky,CUSA,-1.4541283533914116,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-furman,Furman,SC,-1.4819335973939225,1.719298245614035,from True HF Edge chart (2022-25)
-team-cal-st-fullerton,Cal St. Fullerton,BW,-1.6659481072374889,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-siena,Siena,MAAC,-1.51817179041391,1.1228070175438598,from True HF Edge chart (2022-25)
-team-charleston,Charleston,CAA,-1.598175643111391,2.035087719298246,from True HF Edge chart (2022-25)
-team-northern-kentucky,Northern Kentucky,Horz,-1.798333651786755,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-tulane,Tulane,Amer,-1.7293108435506088,2.385964912280702,from True HF Edge chart (2022-25)
-team-green-bay,Green Bay,Horz,-1.7549896574230508,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-campbell,Campbell,CAA,-1.959669891818768,1.5789473684210529,from True HF Edge chart (2022-25)
-team-robert-morris,Robert Morris,Horz,-1.8665924074451112,1.5789473684210529,from True HF Edge chart (2022-25)
-team-indiana-st,Indiana St.,MVC,-1.968643964052814,2.8070175438596494,from True HF Edge chart (2022-25)
-team-south-alabama,South Alabama,SB,-1.827511853660256,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-new-orleans,New Orleans,Slnd,-2.175825821429084,0.6315789473684212,from True HF Edge chart (2022-25)
-team-stony-brook,Stony Brook,CAA,-1.93272677829062,2.105263157894737,from True HF Edge chart (2022-25)
-team-south-dakota-st,South Dakota St.,Sum,-2.0721665781558585,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-columbia,Columbia,Ivy,-2.100572900133897,1.298245614035088,from True HF Edge chart (2022-25)
-team-quinnipiac,Quinnipiac,MAAC,-2.1421018663472,1.6140350877192984,from True HF Edge chart (2022-25)
-team-san-diego,San Diego,WCC,-2.2970039355228296,1.0526315789473686,from True HF Edge chart (2022-25)
-team-eastern-washington,Eastern Washington,BSky,-2.3033700121239558,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-queens,Queens,ASun,-2.515694122895165,2.1403508771929824,from True HF Edge chart (2022-25)
-team-lamar,Lamar,Slnd,-2.2643528248322875,1.8947368421052635,from True HF Edge chart (2022-25)
-team-colgate,Colgate,Pat,-2.35748977422637,2.035087719298246,from True HF Edge chart (2022-25)
-team-weber-st,Weber St.,BSky,-2.620193331078664,1.929824561403509,from True HF Edge chart (2022-25)
-team-lipscomb,Lipscomb,ASun,-2.6267021873401557,2.1403508771929824,from True HF Edge chart (2022-25)
-team-buffalo,Buffalo,MAC,-2.6545511187457613,0.7719298245614037,from True HF Edge chart (2022-25)
-team-la-salle,La Salle,A10,-2.4202249049910782,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-drake,Drake,MVC,-2.6522222429899065,2.631578947368421,from True HF Edge chart (2022-25)
-team-elon,Elon,CAA,-2.7452033502566797,1.508771929824562,from True HF Edge chart (2022-25)
-team-liu,LIU,NEC,-2.5908785190702743,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-eastern-michigan,Eastern Michigan,MAC,-2.5776714080020606,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-towson,Towson,CAA,-2.4600063570748816,2.105263157894737,from True HF Edge chart (2022-25)
-team-wofford,Wofford,SC,-2.858747456056552,2.315789473684211,from True HF Edge chart (2022-25)
-team-bethune-cookman,Bethune Cookman,SWAC,-2.818177150649644,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-rice,Rice,Amer,-2.87634919834549,0.7017543859649124,from True HF Edge chart (2022-25)
-team-ohio,Ohio,MAC,-3.0549165825404594,2.736842105263158,from True HF Edge chart (2022-25)
-team-monmouth,Monmouth,CAA,-2.849515655752981,1.8947368421052635,from True HF Edge chart (2022-25)
-team-princeton,Princeton,Ivy,-3.1450744678855203,1.2631578947368425,from True HF Edge chart (2022-25)
-team-denver,Denver,Sum,-3.8556922414556727,1.473684210526316,from True HF Edge chart (2022-25)
-team-dartmouth,Dartmouth,Ivy,-3.6248069957181737,1.7894736842105263,from True HF Edge chart (2022-25)
-team-detroit-mercy,Detroit Mercy,Horz,-3.701996628042787,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-saint-peters,Saint Peter's,MAAC,-3.398705957132928,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-san-jose-st,San Jose St.,MWC,-3.5875960463832746,2.105263157894737,from True HF Edge chart (2022-25)
-team-american,American,Pat,-3.6732263505979135,0.8771929824561404,from True HF Edge chart (2022-25)
-team-james-madison,James Madison,SB,-3.708802319115424,2.315789473684211,from True HF Edge chart (2022-25)
-team-long-beach-st,Long Beach St.,BW,-3.856368866153315,0.4561403508771931,from True HF Edge chart (2022-25)
-team-coastal-carolina,Coastal Carolina,SB,-3.8039984359054895,1.3333333333333337,from True HF Edge chart (2022-25)
-team-tennessee-martin,Tennessee Martin,OVC,-3.5895072534811736,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-southern-miss,Southern Miss,SB,-4.019480609103579,2.771929824561404,from True HF Edge chart (2022-25)
-team-florida-gulf-coast,Florida Gulf Coast,ASun,-4.26767029749121,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-howard,Howard,MEAC,-4.068205830074339,2.7017543859649127,from True HF Edge chart (2022-25)
-team-nebraska-omaha,Nebraska Omaha,Sum,-4.25517821281963,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-texas-st,Texas St.,SB,-4.125633910244136,1.1228070175438598,from True HF Edge chart (2022-25)
-team-sacramento-st,Sacramento St.,BSky,-4.689978304890262,0.8070175438596493,from True HF Edge chart (2022-25)
-team-unc-asheville,UNC Asheville,BSth,-4.1778164539941045,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-idaho-st,Idaho St.,BSky,-4.429643537754815,2.4912280701754392,from True HF Edge chart (2022-25)
-team-iona,Iona,MAAC,-4.514724701852577,1.8245614035087725,from True HF Edge chart (2022-25)
-team-nicholls-st,Nicholls St.,Slnd,-4.671789447657041,1.1929824561403513,from True HF Edge chart (2022-25)
-team-vermont,Vermont,AE,-4.530214700183974,1.7543859649122808,from True HF Edge chart (2022-25)
-team-radford,Radford,BSth,-4.997338836782146,1.0877192982456143,from True HF Edge chart (2022-25)
-team-purdue-fort-wayne,Purdue Fort Wayne,Horz,-4.804437339196484,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-fairfield,Fairfield,MAAC,-4.885169371311751,1.5789473684210529,from True HF Edge chart (2022-25)
-team-lindenwood,Lindenwood,OVC,-5.127651594788215,1.4035087719298247,from True HF Edge chart (2022-25)
-team-cal-poly,Cal Poly,BW,-5.553841926486888,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-southern,Southern,SWAC,-5.30663310828932,2.771929824561404,from True HF Edge chart (2022-25)
-team-siu-edwardsville,SIU Edwardsville,OVC,-4.642324424424802,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-southeast-missouri-st,Southeast Missouri St.,OVC,-5.314748027997706,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-abilene-christian,Abilene Christian,WAC,-4.956713374640848,1.5789473684210529,from True HF Edge chart (2022-25)
-team-old-dominion,Old Dominion,SB,-5.318932488626389,1.4035087719298247,from True HF Edge chart (2022-25)
-team-arkansas-pine-bluff,Arkansas Pine Bluff,SWAC,-5.65016660395344,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-charleston-southern,Charleston Southern,BSth,-5.7757605828815946,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-louisiana-tech,Louisiana Tech,CUSA,-4.985069876646179,1.508771929824562,from True HF Edge chart (2022-25)
-team-samford,Samford,SC,-5.633142068190447,2.6666666666666674,from True HF Edge chart (2022-25)
-team-georgia-southern,Georgia Southern,SB,-6.075752613409957,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-umbc,UMBC,AE,-5.485709846164799,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-grambling-st,Grambling St.,SWAC,-5.574228862570327,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-incarnate-word,Incarnate Word,Slnd,-6.1364677800438905,1.1929824561403513,from True HF Edge chart (2022-25)
-team-northeastern,Northeastern,CAA,-6.599866786139371,1.1578947368421055,from True HF Edge chart (2022-25)
-team-southeastern-louisiana,Southeastern Louisiana,Slnd,-5.604878529321631,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-milwaukee,Milwaukee,Horz,-6.248291112194387,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-southern-utah,Southern Utah,WAC,-6.390883817434188,1.7894736842105263,from True HF Edge chart (2022-25)
-team-utep,UTEP,CUSA,-5.840248912224277,1.649122807017544,from True HF Edge chart (2022-25)
-team-north-dakota,North Dakota,Sum,-6.525235319286706,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-south-dakota,South Dakota,Sum,-6.750418380564018,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-longwood,Longwood,BSth,-6.2940692866705925,1.649122807017544,from True HF Edge chart (2022-25)
-team-georgia-st,Georgia St.,SB,-6.268617562496516,1.719298245614035,from True HF Edge chart (2022-25)
-team-tennessee-st,Tennessee St.,OVC,-6.843180098140376,2.0701754385964914,from True HF Edge chart (2022-25)
-team-eastern-kentucky,Eastern Kentucky,ASun,-6.764855204754212,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-pepperdine,Pepperdine,WCC,-6.262574591752827,2.2807017543859653,from True HF Edge chart (2022-25)
-team-east-texas-aandm,East Texas A&M,Slnd,-6.360911649370392,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-western-carolina,Western Carolina,SC,-6.906811045971438,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-delaware,Delaware,CUSA,-6.080780013793959,1.1929824561403513,from True HF Edge chart (2022-25)
-team-cleveland-st,Cleveland St.,Horz,-7.218321028582567,1.719298245614035,from True HF Edge chart (2022-25)
-team-central-michigan,Central Michigan,MAC,-6.809894093316264,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-presbyterian,Presbyterian,BSth,-6.336127705674674,1.649122807017544,from True HF Edge chart (2022-25)
-team-iu-indy,IU Indy,Horz,-7.674281943904401,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-brown,Brown,Ivy,-6.249922047114213,1.859649122807018,from True HF Edge chart (2022-25)
-team-uc-riverside,UC Riverside,BW,-6.925300131419655,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-evansville,Evansville,MVC,-6.762108626952168,2.210526315789474,from True HF Edge chart (2022-25)
-team-hampton,Hampton,CAA,-6.524689373524642,1.649122807017544,from True HF Edge chart (2022-25)
-team-louisiana,Louisiana,SB,-6.48419576828854,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-mercyhurst,Mercyhurst,NEC,-6.539589270100927,3.2280701754385968,from True HF Edge chart (2022-25)
-team-east-carolina,East Carolina,Amer,-7.180645798740003,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-western-michigan,Western Michigan,MAC,-7.665843605734802,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-le-moyne,Le Moyne,NEC,-7.465743032193755,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-boston-university,Boston University,Pat,-7.457322065579504,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-north-carolina-aandt,North Carolina A&T,CAA,-7.844051393994837,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-loyola-chicago,Loyola Chicago,A10,-7.632614757346787,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-bellarmine,Bellarmine,ASun,-8.166006959552575,0.3859649122807018,from True HF Edge chart (2022-25)
-team-northwestern-st,Northwestern St.,Slnd,-7.698299307678234,2.1403508771929824,from True HF Edge chart (2022-25)
-team-alabama-aandm,Alabama A&M,SWAC,-7.754638758643671,2.4912280701754392,from True HF Edge chart (2022-25)
-team-mount-st-marys,Mount St. Mary's,MAAC,-7.886600121301297,1.1228070175438598,from True HF Edge chart (2022-25)
-team-usc-upstate,USC Upstate,BSth,-7.985882202620548,2.1754385964912286,from True HF Edge chart (2022-25)
-team-northern-arizona,Northern Arizona,BSky,-8.070386717027635,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-northern-illinois,Northern Illinois,MAC,-8.02383443675719,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-central-connecticut,Central Connecticut,NEC,-8.240235814522608,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-sacred-heart,Sacred Heart,MAAC,-8.824357734457648,1.508771929824562,from True HF Edge chart (2022-25)
-team-morehead-st,Morehead St.,OVC,-8.38032723240103,2.0000000000000004,from True HF Edge chart (2022-25)
-team-jacksonville,Jacksonville,ASun,-7.912841709747823,2.0000000000000004,from True HF Edge chart (2022-25)
-team-ball-st,Ball St.,MAC,-7.830808466219816,1.473684210526316,from True HF Edge chart (2022-25)
-team-texas-southern,Texas Southern,SWAC,-8.704708153012358,1.0526315789473686,from True HF Edge chart (2022-25)
-team-njit,NJIT,AE,-8.492614918875026,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-lehigh,Lehigh,Pat,-8.51373874698485,1.4035087719298247,from True HF Edge chart (2022-25)
-team-chattanooga,Chattanooga,SC,-8.63761269018517,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-unc-greensboro,UNC Greensboro,SC,-9.107080952365358,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-florida-aandm,Florida A&M,SWAC,-8.59559130643082,2.1754385964912286,from True HF Edge chart (2022-25)
-team-houston-christian,Houston Christian,Slnd,-8.577493094913303,1.719298245614035,from True HF Edge chart (2022-25)
-team-alabama-st,Alabama St.,SWAC,-8.951566380087327,0.7719298245614037,from True HF Edge chart (2022-25)
-team-new-hampshire,New Hampshire,AE,-8.787094930275567,2.035087719298246,from True HF Edge chart (2022-25)
-team-west-georgia,West Georgia,ASun,-9.521972961908531,1.4035087719298247,from True HF Edge chart (2022-25)
-team-lafayette,Lafayette,Pat,-9.115274110222016,0.7017543859649124,from True HF Edge chart (2022-25)
-team-cal-st-bakersfield,Cal St. Bakersfield,BW,-9.912862289664805,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-albany,Albany,AE,-9.6446040752151,1.9649122807017545,from True HF Edge chart (2022-25)
-team-eastern-illinois,Eastern Illinois,OVC,-9.012827366372909,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-fairleigh-dickinson,Fairleigh Dickinson,NEC,-9.897651931550431,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-north-florida,North Florida,ASun,-11.656521275150688,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-stetson,Stetson,ASun,-10.395411278557305,1.7543859649122808,from True HF Edge chart (2022-25)
-team-prairie-view-aandm,Prairie View A&M,SWAC,-11.433627900340973,1.2631578947368425,from True HF Edge chart (2022-25)
-team-umass-lowell,UMass Lowell,AE,-10.872922370574145,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-oral-roberts,Oral Roberts,Sum,-10.67016483543755,1.929824561403509,from True HF Edge chart (2022-25)
-team-bucknell,Bucknell,Pat,-10.45751527788698,1.2280701754385963,from True HF Edge chart (2022-25)
-team-holy-cross,Holy Cross,Pat,-10.526787545438264,1.017543859649123,from True HF Edge chart (2022-25)
-team-wagner,Wagner,NEC,-10.972618869812786,0.3859649122807018,from True HF Edge chart (2022-25)
-team-little-rock,Little Rock,OVC,-10.742994163741391,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-loyola-md,Loyola MD,Pat,-11.694176197649114,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-manhattan,Manhattan,MAAC,-12.1633580112953,0.3508771929824563,from True HF Edge chart (2022-25)
-team-army,Army,Pat,-11.650080191033055,0.4561403508771931,from True HF Edge chart (2022-25)
-team-norfolk-st,Norfolk St.,MEAC,-11.715290109036728,2.736842105263158,from True HF Edge chart (2022-25)
-team-tennessee-tech,Tennessee Tech,OVC,-12.00108242302222,2.6666666666666674,from True HF Edge chart (2022-25)
-team-stonehill,Stonehill,NEC,-10.650101802007203,1.2280701754385963,from True HF Edge chart (2022-25)
-team-niagara,Niagara,MAAC,-10.992321628660534,0.736842105263158,from True HF Edge chart (2022-25)
-team-air-force,Air Force,MWC,-11.417619149093223,1.2280701754385963,from True HF Edge chart (2022-25)
-team-north-alabama,North Alabama,ASun,-12.328506812777263,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-alcorn-st,Alcorn St.,SWAC,-12.881708794926183,1.7894736842105263,from True HF Edge chart (2022-25)
-team-the-citadel,The Citadel,SC,-12.147538917924695,1.2280701754385963,from True HF Edge chart (2022-25)
-team-new-haven,New Haven,NEC,-11.389715471433604,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-jackson-st,Jackson St.,SWAC,-13.49380193983685,0.3157894736842106,from True HF Edge chart (2022-25)
-team-southern-indiana,Southern Indiana,OVC,-12.339896953268962,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-canisius,Canisius,MAAC,-12.130118332826903,1.5789473684210529,from True HF Edge chart (2022-25)
-team-north-carolina-central,North Carolina Central,MEAC,-13.48086808545266,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-utsa,UTSA,Amer,-13.85261918037024,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-saint-francis,Saint Francis,NEC,-14.51816891069365,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-louisiana-monroe,Louisiana Monroe,SB,-14.545731625206743,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-maine,Maine,AE,-12.658939400474829,2.8771929824561404,from True HF Edge chart (2022-25)
-team-umkc,UMKC,Sum,-13.868666017306888,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-chicago-st,Chicago St.,NEC,-13.863852971215818,1.8947368421052635,from True HF Edge chart (2022-25)
-team-maryland-eastern-shore,Maryland Eastern Shore,MEAC,-12.782250496709592,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-bryant,Bryant,AE,-13.840549747357333,2.210526315789474,from True HF Edge chart (2022-25)
-team-morgan-st,Morgan St.,MEAC,-16.206600487251965,2.210526315789474,from True HF Edge chart (2022-25)
-team-rider,Rider,MAAC,-14.954113248074131,1.508771929824562,from True HF Edge chart (2022-25)
-team-south-carolina-st,South Carolina St.,MEAC,-15.616520504392032,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-vmi,VMI,SC,-15.99443946008396,0.9473684210526316,from True HF Edge chart (2022-25)
-team-delaware-st,Delaware St.,MEAC,-15.796410366575511,2.2807017543859653,from True HF Edge chart (2022-25)
-team-binghamton,Binghamton,AE,-17.571872095322686,1.5438596491228074,from True HF Edge chart (2022-25)
-team-gardner-webb,Gardner Webb,BSth,-20.25170756885899,0.6666666666666669,from True HF Edge chart (2022-25)
-team-western-illinois,Western Illinois,OVC,-19.153440787529817,2.0,default HCA=2.0 (no True HF Edge in chart)
-team-coppin-st,Coppin St.,MEAC,-21.66112131348458,1.508771929824562,from True HF Edge chart (2022-25)
-team-mississippi-valley-st,Mississippi Valley St.,SWAC,-21.82960036760256,2.0,default HCA=2.0 (no True HF Edge in chart)
+teamId,teamName,conference,powerRating,hca,hca_note,adjO,adjD,tempo,barthag,torvikRank,torvikOeRank,torvikDeRank,wins,losses
+team-michigan,Michigan,B10,27.268,2.1403508771929824,from True HF Edge chart (2022-25),128.0158240738604,90.29226708288701,72.2828640685493,0.982271142453689,1,4,1,24,1
+team-arizona,Arizona,B12,24.188,3.333333333333334,from True HF Edge chart (2022-25),125.05668837053034,90.96571862448977,70.95110192852215,0.9749196620671189,3,16,2,23,2
+team-houston,Houston,B12,22.097,3.614035087719299,from True HF Edge chart (2022-25),126.71801070898417,91.77478407597255,63.23546216472978,0.9761121262945397,2,6,3,23,2
+team-florida,Florida,SEC,23.46,2.736842105263158,from True HF Edge chart (2022-25),125.37054536432825,91.85134069609693,69.98862351310412,0.972818912430273,4,14,4,19,6
+team-illinois,Illinois,B10,22.233,2.210526315789474,from True HF Edge chart (2022-25),132.22269204532205,98.36610620572651,65.66919929376104,0.9677544882489424,6,1,27,20,5
+team-duke,Duke,ACC,21.478,2.0701754385964914,from True HF Edge chart (2022-25),124.4537419768064,92.02608318173702,66.23222403224256,0.969863361444236,5,20,5,23,2
+team-iowa-st,Iowa St.,B12,21.066,3.543859649122808,from True HF Edge chart (2022-25),124.62892497052016,93.44465821863827,67.55417916441745,0.9648270161716498,8,18,9,22,3
+team-connecticut,Connecticut,BE,19.328,2.385964912280702,from True HF Edge chart (2022-25),123.84791513173647,94.01651787683925,64.79064963079469,0.9596591698964223,9,21,11,24,2
+team-purdue,Purdue,B10,21.378,2.736842105263158,from True HF Edge chart (2022-25),129.6755427589551,96.86677018588048,65.15898231592725,0.966253131341619,7,2,20,21,4
+team-nebraska,Nebraska,B10,18.125,2.736842105263158,from True HF Edge chart (2022-25),120.14159257167871,93.09148822800846,67.0036510355658,0.9494785365483966,12,45,6,22,3
+team-kansas,Kansas,B12,18.028,1.649122807017544,from True HF Edge chart (2022-25),120.75173372753258,93.87808567855684,67.08452269003998,0.9475990234533115,13,40,10,19,6
+team-vanderbilt,Vanderbilt,SEC,20.074,1.859649122807018,from True HF Edge chart (2022-25),125.5158174714316,96.73859198847661,69.75593318354083,0.9523396892592455,10,12,19,21,4
+team-louisville,Louisville,ACC,19.542,1.4035087719298247,from True HF Edge chart (2022-25),125.62135083706514,97.78741777633633,70.20836818577028,0.946872894859604,14,11,24,19,6
+team-michigan-st,Michigan St.,B10,16.389,2.315789473684211,from True HF Edge chart (2022-25),119.3929132408469,94.42764487889241,65.64718506780646,0.9368930735246792,17,47,13,20,5
+team-virginia,Virginia,ACC,16.386,1.7543859649122808,from True HF Edge chart (2022-25),120.83488535023429,95.70170434674523,65.19569009076234,0.9359364851667655,18,39,15,22,3
+team-texas-tech,Texas Tech,B12,19.183,2.315789473684211,from True HF Edge chart (2022-25),125.62582962268502,97.09310375219872,67.23315764666756,0.9508664545976692,11,10,22,19,6
+team-tennessee,Tennessee,SEC,17.012,3.1578947368421058,from True HF Edge chart (2022-25),121.82575144354185,95.93976377504941,65.71841447551435,0.9397447768991816,16,32,16,18,7
+team-gonzaga,Gonzaga,WCC,18.395,2.3508771929824563,from True HF Edge chart (2022-25),121.38868377148194,94.99475792808374,69.693243079339,0.943721760101243,15,34,14,25,2
+team-alabama,Alabama,SEC,19.535,4.0,from True HF Edge chart (2022-25),128.8757628882658,102.32915793594529,73.58797079690345,0.9341663466013712,19,3,59,18,7
+team-iowa,Iowa,B10,14.079,2.4912280701754392,from True HF Edge chart (2022-25),122.76612722045894,100.49312295069933,63.213273073262044,0.909059591157304,27,29,38,18,7
+team-st-johns,St. John's,BE,17.059,2.105263157894737,from True HF Edge chart (2022-25),120.9613225460369,96.57677948083978,69.9594680030322,0.9301518262084845,21,37,18,20,5
+team-clemson,Clemson,ACC,13.499,2.6666666666666674,from True HF Edge chart (2022-25),115.42678809130061,94.39984431021415,64.19810612040517,0.9099165075440925,26,78,12,20,6
+team-saint-louis,Saint Louis,A10,17.363,1.5438596491228074,from True HF Edge chart (2022-25),122.88228757033443,98.61905244019941,71.5598753168989,0.9261888088272804,22,27,29,24,1
+team-indiana,Indiana,B10,15.76,1.6842105263157898,from True HF Edge chart (2022-25),124.61928242669477,101.00455584559535,66.7380461857332,0.918048592849868,23,19,43,17,8
+team-arkansas,Arkansas,SEC,18.29,1.929824561403509,from True HF Edge chart (2022-25),127.23633090847517,101.42510693373723,70.85898310003685,0.9313327354005916,20,5,53,19,6
+team-north-carolina,North Carolina,ACC,15.375,2.0,default HCA=2.0 (no True HF Edge in chart),123.15073858074896,100.5496082394788,68.02923509860959,0.9114698925920619,25,24,40,20,5
+team-texas-aandm,Texas A&M,SEC,14.994,2.596491228070176,from True HF Edge chart (2022-25),122.09834043802181,101.04993017237177,71.23669664965576,0.898067867564213,32,30,44,17,8
+team-n-c-state,N.C. State,ACC,14.94,2.0000000000000004,from True HF Edge chart (2022-25),122.85399419946098,101.27244566158066,69.22489275691085,0.9021721283906912,30,28,47,18,8
+team-utah-st,Utah St.,MWC,15.337,2.4912280701754392,from True HF Edge chart (2022-25),124.67222097104042,102.10536877903549,67.96057420641829,0.9085744345807671,28,17,57,22,3
+team-auburn,Auburn,SEC,14.348,2.736842105263158,from True HF Edge chart (2022-25),126.00245216014525,104.63848794265198,67.16039298673265,0.8944084503501578,34,7,87,14,11
+team-byu,BYU,B12,15.302,3.192982456140352,from True HF Edge chart (2022-25),125.40235729866592,103.54902146685296,70.02022210851074,0.9004331202563919,31,13,71,19,6
+team-villanova,Villanova,BE,13.723,2.105263157894737,from True HF Edge chart (2022-25),121.04355462318644,99.58397574893436,63.948687075794126,0.9041504036620602,29,35,32,20,5
+team-saint-marys,Saint Mary's,WCC,13.396,2.0,default HCA=2.0 (no True HF Edge in chart),119.05103105143311,98.54997233984562,65.34525944397899,0.8978322821608701,33,48,28,23,4
+team-smu,SMU,ACC,14.345,1.929824561403509,from True HF Edge chart (2022-25),125.7369994000396,104.89672370851052,68.83509933236986,0.8893368896246626,37,8,94,17,8
+team-santa-clara,Santa Clara,WCC,14.463,1.9649122807017545,from True HF Edge chart (2022-25),123.20408643276477,102.45877927945037,69.71817282559604,0.8928691480081207,35,23,62,22,6
+team-wisconsin,Wisconsin,B10,16.07,2.0701754385964914,from True HF Edge chart (2022-25),125.21606578450897,101.94082818093571,69.04329253825301,0.9141155962431521,24,15,54,18,7
+team-san-diego-st,San Diego St.,MWC,12.885,1.7543859649122808,from True HF Edge chart (2022-25),112.1819387129346,93.36588581443596,68.48006302189643,0.8920018126870551,36,118,8,18,6
+team-ucla,UCLA,B10,12.416,2.1403508771929824,from True HF Edge chart (2022-25),120.23578146952383,101.11368475888924,64.93007744957512,0.8799445979124414,38,44,46,17,8
+team-ohio-st,Ohio St.,B10,13.057,2.1754385964912286,from True HF Edge chart (2022-25),123.2984128318673,103.719183855463,66.68848187285501,0.8795933703163001,39,22,74,16,9
+team-kentucky,Kentucky,SEC,12.932,1.9649122807017545,from True HF Edge chart (2022-25),120.11331815981305,101.06809810555364,67.90071400941898,0.8792527094488007,40,46,45,17,8
+team-georgia,Georgia,SEC,12.423,2.0701754385964914,from True HF Edge chart (2022-25),120.60933931401303,103.59786137965378,73.02670960228129,0.8517585087047109,46,42,73,17,8
+team-texas,Texas,SEC,13.256,2.631578947368421,from True HF Edge chart (2022-25),125.68195693849202,105.91041758804836,67.04562628054931,0.8774338696777517,41,9,116,16,9
+team-washington,Washington,B10,11.128,1.4035087719298247,from True HF Edge chart (2022-25),117.37390454275763,100.70277010973464,66.75148910301029,0.8534224342706462,45,60,41,13,13
+team-new-mexico,New Mexico,MWC,12.008,2.210526315789474,from True HF Edge chart (2022-25),116.80075998582129,99.59160341692882,69.7789453622755,0.8621192914514154,44,67,33,19,6
+team-miami-fl,Miami FL,ACC,12.106,2.0,default HCA=2.0 (no True HF Edge in chart),118.94984953124009,101.34689405522495,68.7753688642735,0.8631563212497954,43,49,50,20,5
+team-cincinnati,Cincinnati,B12,11.47,2.596491228070176,from True HF Edge chart (2022-25),109.9999131490846,93.15218790800898,68.0810547331026,0.8712231858398665,42,151,7,13,12
+team-usc,USC,B10,10.614,1.6842105263157898,from True HF Edge chart (2022-25),114.03169234482694,98.96608377052121,70.45399229518023,0.8361067382754274,47,93,31,18,7
+team-baylor,Baylor,B12,10.751,3.0526315789473686,from True HF Edge chart (2022-25),121.61094399255296,105.7897396884467,67.95243556700083,0.832408583586703,48,33,113,13,12
+team-missouri,Missouri,SEC,9.55,1.5789473684210529,from True HF Edge chart (2022-25),118.50622725127889,104.11417457542615,66.35332859197689,0.8159266099093139,49,53,82,17,8
+team-grand-canyon,Grand Canyon,MWC,8.608,1.9649122807017545,from True HF Edge chart (2022-25),110.5430987244994,97.83302389459988,67.72653491814724,0.8029203957457912,56,135,26,16,9
+team-ucf,UCF,B12,9.863,2.8070175438596494,from True HF Edge chart (2022-25),121.00587913032646,106.68589656591782,68.87784232803278,0.8097562069807113,50,36,128,17,7
+team-boise-st,Boise St.,MWC,8.96,3.403508771929825,from True HF Edge chart (2022-25),118.02223979624404,104.44011596877341,65.97160428390659,0.8031312823012785,55,58,86,15,10
+team-nevada,Nevada,MWC,8.688,2.596491228070176,from True HF Edge chart (2022-25),118.2152911726782,104.84259335450325,64.96905982206289,0.7990784374341027,58,54,92,17,8
+team-minnesota,Minnesota,B10,8.254,1.7894736842105263,from True HF Edge chart (2022-25),114.50156809032288,101.40049346081463,63.003201460238955,0.8017664451578498,57,90,51,11,14
+team-tulsa,Tulsa,Amer,8.673,1.7543859649122808,from True HF Edge chart (2022-25),121.91889343707393,109.12566546840634,67.79367676077078,0.7815706434249853,63,31,181,20,6
+team-west-virginia,West Virginia,B12,8.133,2.0,default HCA=2.0 (no True HF Edge in chart),110.8019656507008,97.81235129196166,62.61095894254443,0.8075202259925949,53,134,25,16,9
+team-lsu,LSU,SEC,8.035,1.0877192982456143,from True HF Edge chart (2022-25),118.64205977210398,106.50935685946747,66.22395179857496,0.7756683540722115,68,51,123,14,11
+team-vcu,VCU,A10,9.504,2.0,default HCA=2.0 (no True HF Edge in chart),118.88577818464182,105.18402531182834,69.36647344643555,0.8034811056619146,54,50,100,20,6
+team-seton-hall,Seton Hall,BE,7.87,2.105263157894737,from True HF Edge chart (2022-25),108.42751261606904,96.41710619550034,65.52322218440128,0.794142643591269,59,174,17,17,8
+team-tcu,TCU,B12,9.066,2.1754385964912286,from True HF Edge chart (2022-25),113.66794361285217,100.24101630021741,67.51986765965546,0.8093196815447423,52,95,36,16,9
+team-oklahoma,Oklahoma,SEC,9.666,1.6140350877192984,from True HF Edge chart (2022-25),122.91797710888096,108.38430663012542,66.5042597103617,0.8095502869188641,51,26,162,13,12
+team-virginia-tech,Virginia Tech,ACC,8.627,2.3508771929824563,from True HF Edge chart (2022-25),115.85077167704068,103.06060339892126,67.45123082528225,0.7933660280973471,60,73,68,17,9
+team-syracuse,Syracuse,ACC,8.471,1.5789473684210529,from True HF Edge chart (2022-25),115.75825502851629,103.26360314109245,67.79457252979016,0.7881014007122175,61,74,70,15,11
+team-providence,Providence,BE,9.156,2.210526315789474,from True HF Edge chart (2022-25),122.92619016803135,110.16867033905889,71.77266439516205,0.7790386186302246,65,25,204,11,15
+team-akron,Akron,MAC,8.343,2.736842105263158,from True HF Edge chart (2022-25),118.59834628358648,106.77850442671738,70.58595886298792,0.7698275855185895,71,52,130,20,5
+team-california,California,ACC,8.295,1.508771929824562,from True HF Edge chart (2022-25),115.92634123535274,103.5874398225203,67.22538135383242,0.7848568156430409,62,71,72,18,8
+team-stanford,Stanford,ACC,7.807,2.631578947368421,from True HF Edge chart (2022-25),114.5573134782164,102.9710046623319,67.37949596732503,0.7731562721319561,69,88,66,16,10
+team-south-florida,South Florida,Amer,8.587,2.0,default HCA=2.0 (no True HF Edge in chart),117.17254791972385,105.18021306834714,71.60623940081052,0.775856805406989,67,63,99,17,8
+team-arizona-st,Arizona St.,B12,8.148,2.105263157894737,from True HF Edge chart (2022-25),117.28199459776363,105.51082784017999,69.21587437226762,0.7714167239887125,70,61,105,13,12
+team-northwestern,Northwestern,B10,7.927,2.315789473684211,from True HF Edge chart (2022-25),115.90098817957367,103.87252808634642,65.901943765157,0.7790391795363855,64,72,77,10,16
+team-oklahoma-st,Oklahoma St.,B12,7.593,1.508771929824562,from True HF Edge chart (2022-25),115.93081295389831,105.41647841866407,72.21835522818695,0.7490135247399173,78,70,103,16,9
+team-wake-forest,Wake Forest,ACC,8.166,2.5614035087719302,from True HF Edge chart (2022-25),115.74797931055511,103.83434778395409,68.54099389700028,0.7771460687686318,66,75,75,13,12
+team-belmont,Belmont,MVC,8.031,2.3508771929824563,from True HF Edge chart (2022-25),120.48867200034684,108.82804319583249,68.87206953841444,0.7632438605837262,74,43,173,23,4
+team-stephen-f-austin,Stephen F. Austin,Slnd,7.317,2.0,default HCA=2.0 (no True HF Edge in chart),112.42828344689619,101.32035613648756,65.87211285846422,0.7678702470986181,72,112,48,23,3
+team-butler,Butler,BE,7.769,1.6140350877192984,from True HF Edge chart (2022-25),117.24936618339379,105.9042570934084,68.47927728377061,0.7632040871411442,75,62,115,13,12
+team-creighton,Creighton,BE,6.69,2.8070175438596494,from True HF Edge chart (2022-25),116.75712838883734,106.70762665497432,66.57461746038894,0.737891481652002,81,68,129,13,13
+team-mississippi,Mississippi,SEC,5.668,2.0,default HCA=2.0 (no True HF Edge in chart),113.010560672379,104.32619555557602,65.26375576256771,0.7149455213901127,87,103,84,11,14
+team-georgetown,Georgetown,BE,7.239,0.8421052631578949,from True HF Edge chart (2022-25),115.02758819316655,104.11935739872223,66.36299161089511,0.7587414728089521,76,80,83,13,12
+team-miami-oh,Miami OH,MAC,7.379,2.0,default HCA=2.0 (no True HF Edge in chart),118.09999508926,107.57590197733856,70.11129367398652,0.7452339856047299,79,57,148,25,0
+team-utah-valley,Utah Valley,WAC,5.916,3.543859649122808,from True HF Edge chart (2022-25),112.99755606024074,104.43835205616246,69.11813028485155,0.712149394235513,89,104,85,18,7
+team-northern-iowa,Northern Iowa,MVC,5.436,2.0,default HCA=2.0 (no True HF Edge in chart),105.88887645850336,97.10881170832344,61.91430548847146,0.7301567540682231,83,231,23,16,10
+team-george-washington,George Washington,A10,7.653,2.1403508771929824,from True HF Edge chart (2022-25),118.138568271856,107.11358301175324,69.41900472901982,0.7552177635508049,77,56,138,15,11
+team-oregon,Oregon,B10,6.046,2.035087719298246,from True HF Edge chart (2022-25),114.52917420673114,105.32581456136997,65.69321862108713,0.7237954325244592,84,89,101,9,16
+team-memphis,Memphis,Amer,5.352,1.0526315789473686,from True HF Edge chart (2022-25),107.55922527112604,99.8736729046529,69.64256337081369,0.701103547638061,96,194,34,12,13
+team-florida-st,Florida St.,ACC,7.955,1.7543859649122808,from True HF Edge chart (2022-25),114.98592535443785,103.83858070505929,71.3623511500116,0.7636290426157417,73,81,76,12,13
+team-mississippi-st,Mississippi St.,SEC,6.553,1.649122807017544,from True HF Edge chart (2022-25),111.95152149840106,102.45278177642584,68.99058365781121,0.7349014822163005,82,120,61,12,13
+team-hawaii,Hawaii,BW,4.789,1.508771929824562,from True HF Edge chart (2022-25),106.82236224698423,99.9318984723568,69.50160905007232,0.6828284858631788,98,215,35,18,6
+team-colorado,Colorado,B12,5.919,2.3508771929824563,from True HF Edge chart (2022-25),116.56164626018715,107.88561000536583,68.22506366734855,0.7087892586061478,91,69,154,14,12
+team-liberty,Liberty,CUSA,5.719,2.210526315789474,from True HF Edge chart (2022-25),118.18633934832076,109.23386790953322,63.88633983009781,0.7121544371515537,88,55,185,22,3
+team-mcneese-st,McNeese St.,Slnd,6.596,1.1929824561403513,from True HF Edge chart (2022-25),115.03908517237963,105.06758647588299,66.15222430508693,0.7393674294190158,80,79,97,21,5
+team-wichita-st,Wichita St.,Amer,5.423,1.1228070175438598,from True HF Edge chart (2022-25),111.01279372550351,102.79164923184021,65.96820563330722,0.7078211583184215,92,129,65,16,10
+team-notre-dame,Notre Dame,ACC,5.955,1.4035087719298247,from True HF Edge chart (2022-25),114.73266671741561,105.62897820211114,65.4142008886457,0.7212616456128994,85,85,107,12,14
+team-illinois-st,Illinois St.,MVC,5.513,1.5789473684210529,from True HF Edge chart (2022-25),110.36059574039966,102.12347736829155,66.92713627387832,0.7093152651625774,90,140,58,17,9
+team-davidson,Davidson,A10,5.291,1.298245614035088,from True HF Edge chart (2022-25),113.04795409438117,104.74034809444723,63.69175908083997,0.7063595701517595,93,102,90,15,9
+team-yale,Yale,Ivy,5.77,3.0526315789473686,from True HF Edge chart (2022-25),120.85968578869745,112.00174835084309,65.13791180103817,0.7058538290960991,94,38,245,20,4
+team-xavier,Xavier,BE,6.327,2.0701754385964914,from True HF Edge chart (2022-25),114.71425382828065,105.72479888376259,70.3839250886789,0.7187875229837439,86,86,112,13,12
+team-kansas-st,Kansas St.,B12,4.857,2.421052631578948,from True HF Edge chart (2022-25),112.87276121093504,106.11631645052805,71.88825650531359,0.6703661666139702,103,107,118,10,15
+team-marquette,Marquette,BE,5.683,2.210526315789474,from True HF Edge chart (2022-25),112.24692847199816,104.05442035252192,69.368955877802,0.7050685286023193,95,116,81,9,17
+team-wyoming,Wyoming,MWC,4.507,2.385964912280702,from True HF Edge chart (2022-25),113.93898414162359,107.14563965694632,66.34295702959734,0.6697272223351272,104,94,139,13,12
+team-florida-atlantic,Florida Atlantic,Amer,4.199,2.0,default HCA=2.0 (no True HF Edge in chart),111.540263190958,105.57506922557818,70.3843235279219,0.6529606745937159,107,124,106,14,11
+team-pacific,Pacific,WCC,4.618,0.2105263157894737,from True HF Edge chart (2022-25),111.09718591870647,103.95932996777387,64.69599852841007,0.6821487914410175,99,128,79,17,11
+team-high-point,High Point,BSth,5.283,2.3508771929824563,from True HF Edge chart (2022-25),117.04571101669211,109.4530120425323,69.5831863057392,0.6838011533977929,97,65,190,24,4
+team-depaul,DePaul,BE,4.478,1.1929824561403513,from True HF Edge chart (2022-25),108.08538936014526,101.3362830516304,66.35532805143309,0.6773206981648351,100,180,49,13,12
+team-south-carolina,South Carolina,SEC,4.591,2.0,default HCA=2.0 (no True HF Edge in chart),111.9488609220677,105.03110450312377,66.36322742055508,0.6755804643653405,102,121,96,11,14
+team-colorado-st,Colorado St.,MWC,4.519,1.8947368421052635,from True HF Edge chart (2022-25),116.96454675269155,109.69166788444501,62.141438609792566,0.6766176072446519,101,66,196,15,10
+team-dayton,Dayton,A10,4.368,1.7543859649122808,from True HF Edge chart (2022-25),108.47056304657272,102.07762843880212,68.33148202215133,0.6678707064984597,105,172,55,15,9
+team-george-mason,George Mason,A10,2.642,2.456140350877193,from True HF Edge chart (2022-25),109.95423458743575,105.8364687549786,64.1538318499357,0.6080074640714941,126,152,114,21,5
+team-utah,Utah,B12,4.131,3.192982456140352,from True HF Edge chart (2022-25),114.88052158823555,108.76028599032637,67.49382813300376,0.652395029014495,108,83,171,9,15
+team-hofstra,Hofstra,CAA,4.098,2.24561403508772,from True HF Edge chart (2022-25),113.64723481361537,107.36038588920957,65.18688634505301,0.6580106329804372,106,96,143,17,10
+team-san-francisco,San Francisco,WCC,2.506,1.859649122807018,from True HF Edge chart (2022-25),112.92061733035345,109.08164478784622,65.27933160829198,0.5981510369748205,127,106,179,14,13
+team-pittsburgh,Pittsburgh,ACC,3.453,3.017543859649124,from True HF Edge chart (2022-25),111.6195508965497,106.21221889169212,63.849520367973824,0.6390068608375916,114,123,119,9,17
+team-uc-irvine,UC Irvine,BW,3.667,2.0,default HCA=2.0 (no True HF Edge in chart),104.20476538867598,98.85507058344338,68.53726816605871,0.6470471525791287,110,256,30,17,9
+team-wright-st,Wright St.,Horz,3.258,1.017543859649123,from True HF Edge chart (2022-25),113.22551193014992,108.30432236757551,66.2090286679576,0.6250453530833765,117,99,160,16,10
+team-duquesne,Duquesne,A10,4.143,1.8947368421052635,from True HF Edge chart (2022-25),112.56527623824155,106.65563047048053,70.10264687596806,0.6502577948735507,109,108,127,15,10
+team-sam-houston-st,Sam Houston St.,CUSA,3.995,1.9649122807017545,from True HF Edge chart (2022-25),113.29250872523154,107.60018022792121,70.18289369263454,0.6440149784040569,111,98,149,17,8
+team-uc-santa-barbara,UC Santa Barbara,BW,2.931,2.0,default HCA=2.0 (no True HF Edge in chart),117.1161891481529,112.52634967506324,63.84882292564747,0.6129571517590738,125,64,254,17,9
+team-washington-st,Washington St.,WCC,3.188,3.1578947368421058,from True HF Edge chart (2022-25),114.80614638396688,110.08142848160801,67.48138012824356,0.6185229776314404,121,84,201,11,16
+team-saint-josephs,Saint Joseph's,A10,3.028,2.0,default HCA=2.0 (no True HF Edge in chart),107.06932360152143,102.59792787278491,67.72667208646848,0.6202420862912248,119,209,64,15,10
+team-murray-st,Murray St.,MVC,4.225,0.5964912280701756,from True HF Edge chart (2022-25),117.43310291183474,111.5434514069351,71.73612185894459,0.6437615628275888,112,59,233,19,8
+team-seattle,Seattle,WCC,3.366,2.105263157894737,from True HF Edge chart (2022-25),102.03141306977102,97.08123737991153,68.00175844996863,0.6392072445755099,113,294,21,15,11
+team-cal-baptist,Cal Baptist,WAC,3.342,1.4385964912280702,from True HF Edge chart (2022-25),107.48325412263162,102.37980094579893,65.48819988155138,0.6363194084890598,115,199,60,19,7
+team-unlv,UNLV,MWC,3.541,1.1578947368421055,from True HF Edge chart (2022-25),114.15405218435079,109.10433678064075,70.13014678049157,0.6272199311177701,116,92,180,13,12
+team-st-thomas,St. Thomas,Sum,3.411,2.0,default HCA=2.0 (no True HF Edge in chart),114.89666938734055,109.94905145678813,68.93927708420813,0.6239117797927182,118,82,199,21,7
+team-troy,Troy,SB,1.848,2.736842105263158,from True HF Edge chart (2022-25),112.30187045213859,109.48427703229626,65.59268695205823,0.5725370969691288,136,114,191,17,10
+team-north-dakota-st,North Dakota St.,Sum,3.094,2.0,default HCA=2.0 (no True HF Edge in chart),113.3619154406162,108.6642685089252,65.87254308913649,0.619330707156294,120,97,169,21,6
+team-ut-rio-grande-valley,UT Rio Grande Valley,Slnd,2.343,2.0,default HCA=2.0 (no True HF Edge in chart),109.01384502758299,105.50912085278048,66.86607764836423,0.5928575761515921,129,165,104,14,12
+team-illinois-chicago,Illinois Chicago,MVC,2.872,2.0,default HCA=2.0 (no True HF Edge in chart),108.23638068288884,103.88596001227899,66.01552208085701,0.6158034439859523,124,177,78,14,12
+team-penn-st,Penn St.,B10,3.181,2.6666666666666674,from True HF Edge chart (2022-25),115.69510912431018,110.96446347916248,67.25115869576425,0.6177729379882606,123,76,219,11,15
+team-maryland,Maryland,B10,3.086,2.596491228070176,from True HF Edge chart (2022-25),112.44477663364819,107.83106706710865,66.88856707697651,0.6181749073683187,122,110,153,10,14
+team-boston-college,Boston College,ACC,1.075,0.736842105263158,from True HF Edge chart (2022-25),103.05570538163653,101.42198267619176,65.77207317272885,0.5458131029190186,143,275,52,9,16
+team-fresno-st,Fresno St.,MWC,2.392,1.6140350877192984,from True HF Edge chart (2022-25),105.58962588840669,102.10114387398505,68.56845923609336,0.59540524079216,128,237,56,12,13
+team-uc-san-diego,UC San Diego,BW,2.232,2.0,default HCA=2.0 (no True HF Edge in chart),106.31553625515004,103.02299628062529,67.7903885359288,0.5894714506756651,130,226,67,18,9
+team-rhode-island,Rhode Island,A10,1.369,1.3684210526315792,from True HF Edge chart (2022-25),106.89094305857606,104.8026084675897,65.53722059176683,0.556482863895135,139,213,91,14,11
+team-georgia-tech,Georgia Tech,ACC,0.579,1.4385964912280702,from True HF Edge chart (2022-25),108.15980612767932,107.34001146024485,70.59875936132084,0.5218600515612645,156,178,141,11,15
+team-unc-wilmington,UNC Wilmington,CAA,2.175,2.0,default HCA=2.0 (no True HF Edge in chart),110.84103106118212,107.45486597854304,64.2349846938746,0.5882656599420054,132,132,145,22,4
+team-temple,Temple,Amer,0.866,1.0526315789473686,from True HF Edge chart (2022-25),111.68021115544025,110.3494906547783,65.06232997326624,0.5344081912767612,146,122,207,15,9
+team-montana-st,Montana St.,BSky,2.131,2.315789473684211,from True HF Edge chart (2022-25),110.28292473558207,107.03483975397285,65.61694247783062,0.5851106901437615,133,142,135,15,11
+team-portland-st,Portland St.,BSky,0.784,2.0000000000000004,from True HF Edge chart (2022-25),103.71918043669118,102.55182426770081,67.14916447387878,0.5324956396910345,148,265,63,17,7
+team-southern-illinois,Southern Illinois,MVC,2.201,2.0,default HCA=2.0 (no True HF Edge in chart),103.72046452262305,100.54865921814151,69.39227012221824,0.5883535184952778,131,264,39,12,14
+team-uab,UAB,Amer,2.028,1.649122807017544,from True HF Edge chart (2022-25),108.9732407437667,106.05706801470637,69.53489398181853,0.5773581897402035,134,166,117,16,9
+team-austin-peay,Austin Peay,ASun,1.929,1.7543859649122808,from True HF Edge chart (2022-25),109.30994084984638,106.50089063149247,68.67473175544107,0.5742936162049735,135,162,121,19,6
+team-arkansas-st,Arkansas St.,SB,1.301,2.315789473684211,from True HF Edge chart (2022-25),110.83263905113759,109.01537701109817,71.6178557652559,0.5473878831203917,141,133,178,16,11
+team-oakland,Oakland,Horz,0.826,1.0877192982456143,from True HF Edge chart (2022-25),114.66126645292286,113.4902253245111,70.55718132968484,0.5294792558643341,150,87,271,14,12
+team-william-and-mary,William & Mary,CAA,1.874,2.0,default HCA=2.0 (no True HF Edge in chart),111.14510604484165,108.5690963533047,72.7296222905783,0.5670125690817664,137,127,168,16,10
+team-bradley,Bradley,MVC,1.053,3.754385964912281,from True HF Edge chart (2022-25),110.03849220394346,108.48165713351437,67.66085818831141,0.5408748368752434,144,149,164,17,9
+team-montana,Montana,BSky,0.962,2.0701754385964914,from True HF Edge chart (2022-25),107.75456024688384,106.36380229794378,69.14530198408585,0.5372790562679665,145,191,120,14,12
+team-loyola-marymount,Loyola Marymount,WCC,0.827,2.0,default HCA=2.0 (no True HF Edge in chart),106.39623871495726,105.17339189361167,67.61104668237863,0.5331858139798876,147,221,98,13,15
+team-kent-st,Kent St.,MAC,0.725,1.0877192982456143,from True HF Edge chart (2022-25),110.19707136250946,109.17470017093041,70.94499084073783,0.5267721527213947,154,145,182,19,7
+team-middle-tennessee,Middle Tennessee,CUSA,0.663,2.0,default HCA=2.0 (no True HF Edge in chart),110.01426277689217,108.99269862826424,64.88172006490808,0.5267955351263759,152,150,177,12,13
+team-bowling-green,Bowling Green,MAC,1.648,1.508771929824562,from True HF Edge chart (2022-25),106.45904654069341,104.03062278325378,67.85289038755728,0.5659542397120693,138,220,80,16,10
+team-rutgers,Rutgers,B10,0.675,1.9649122807017545,from True HF Edge chart (2022-25),110.45734840105008,109.42841730256762,65.6390097641653,0.5268807420630718,151,138,188,9,15
+team-northern-colorado,Northern Colorado,BSky,1.476,2.0,default HCA=2.0 (no True HF Edge in chart),112.44185794767624,110.27975219411597,68.24762196571422,0.5555900372347273,140,111,206,17,10
+team-valparaiso,Valparaiso,MVC,0.461,1.473684210526316,from True HF Edge chart (2022-25),106.35123114129254,105.6435936280813,65.20232433228647,0.519184116310833,158,224,108,13,13
+team-east-tennessee-st,East Tennessee St.,SC,-0.005,2.0,default HCA=2.0 (no True HF Edge in chart),108.45775537510877,108.46603330228666,66.10547068360091,0.49978057695501915,165,173,163,19,8
+team-missouri-st,Missouri St.,CUSA,-0.727,1.1228070175438598,from True HF Edge chart (2022-25),108.15920600605656,109.26942282617406,65.49902861286147,0.4706732507396063,181,179,187,13,12
+team-marist,Marist,MAAC,-0.216,1.2280701754385963,from True HF Edge chart (2022-25),100.53393176924098,100.86025497875387,66.08583195253296,0.49068422485058816,171,317,42,16,9
+team-north-texas,North Texas,Amer,0.714,2.0,default HCA=2.0 (no True HF Edge in chart),101.48195696194827,100.38180631101118,64.85681918253894,0.5312966459562666,149,300,37,14,11
+team-winthrop,Winthrop,BSth,0.318,1.3333333333333337,from True HF Edge chart (2022-25),112.25513816317506,111.79368089290833,68.97238052118938,0.511840664826831,159,115,238,19,8
+team-central-arkansas,Central Arkansas,ASun,-0.17,2.0,default HCA=2.0 (no True HF Edge in chart),108.03403659116272,108.28340679046283,68.08181118503892,0.4933717999717754,169,184,159,17,10
+team-uc-davis,UC Davis,BW,0.037,2.0,default HCA=2.0 (no True HF Edge in chart),107.1513727954844,107.0969378888228,68.76930958472646,0.5014609208741264,162,206,136,16,10
+team-idaho,Idaho,BSky,0.102,1.508771929824562,from True HF Edge chart (2022-25),108.64251950596278,108.4916454412519,67.61920029745771,0.5039952604796663,161,170,165,14,12
+team-toledo,Toledo,MAC,-0.111,1.2280701754385963,from True HF Edge chart (2022-25),112.40788069274606,112.57122468665857,68.18724445951565,0.4958253620780371,167,113,257,13,13
+team-cal-st-northridge,Cal St. Northridge,BW,1.323,2.0,default HCA=2.0 (no True HF Edge in chart),110.37171935215196,108.56711940339619,73.31750416790993,0.5472539130967562,142,139,167,16,10
+team-merrimack,Merrimack,MAAC,0.637,2.1754385964912286,from True HF Edge chart (2022-25),107.50134756636439,106.5033399969692,63.85660377827395,0.5267895516197625,153,196,122,17,9
+team-harvard,Harvard,Ivy,0.021,0.8421052631578949,from True HF Edge chart (2022-25),108.07829326155911,108.0455683254865,62.89841032587201,0.500870649785222,164,181,156,14,10
+team-portland,Portland,WCC,-0.501,1.0877192982456143,from True HF Edge chart (2022-25),106.37293087800197,107.1041704347399,68.4708478989352,0.4803141864081534,175,222,137,12,15
+team-fiu,FIU,CUSA,-0.702,2.0,default HCA=2.0 (no True HF Edge in chart),107.88477440844676,108.85997537164886,72.01414154128494,0.4741518790293994,180,188,175,12,13
+team-cornell,Cornell,Ivy,0.714,1.3333333333333337,from True HF Edge chart (2022-25),120.69874531923871,119.70821453050374,72.11939375953729,0.5236737141104155,155,41,344,12,11
+team-appalachian-st,Appalachian St.,SB,-0.153,2.2807017543859653,from True HF Edge chart (2022-25),104.60889712040648,104.85370886795715,62.550960246137834,0.4932800252250435,170,249,93,18,10
+team-charlotte,Charlotte,Amer,-0.257,2.105263157894737,from True HF Edge chart (2022-25),112.48806275803096,112.89383679262923,63.36960393613373,0.489649258049408,172,109,262,13,11
+team-ut-arlington,UT Arlington,WAC,-1.041,2.0,default HCA=2.0 (no True HF Edge in chart),103.38500866409828,104.98240269479223,65.18917759382786,0.4560321304270774,186,270,95,14,11
+team-richmond,Richmond,A10,0.538,2.0000000000000004,from True HF Edge chart (2022-25),110.87000533622628,110.07279639570652,67.49997307284364,0.5207354219007811,157,131,200,14,12
+team-penn,Penn,Ivy,-0.307,2.0,default HCA=2.0 (no True HF Edge in chart),107.32437913089566,107.77115266665774,68.81548993427405,0.488058966050678,173,203,152,13,10
+team-st-bonaventure,St. Bonaventure,A10,-0.617,2.210526315789474,from True HF Edge chart (2022-25),112.9229049606419,113.84974185908645,66.560236269147,0.4765164761456544,177,105,277,14,11
+team-massachusetts,Massachusetts,MAC,0.029,2.210526315789474,from True HF Edge chart (2022-25),110.19989354005949,110.15855498272506,70.63750142950886,0.5010786803968317,163,144,203,15,11
+team-jacksonville-st,Jacksonville St.,CUSA,-1.328,1.508771929824562,from True HF Edge chart (2022-25),105.91161741026171,107.97173628579772,64.44887505887183,0.4448398624465063,190,230,155,13,12
+team-mercer,Mercer,SC,-0.903,1.929824561403509,from True HF Edge chart (2022-25),110.15864833005507,111.46061846741053,69.34541249204244,0.4662707817859749,183,146,229,17,10
+team-kennesaw-st,Kennesaw St.,CUSA,-0.878,2.5263157894736845,from True HF Edge chart (2022-25),109.82123278937172,111.04972974622837,71.48756113371768,0.4680613868935112,182,158,220,14,11
+team-marshall,Marshall,SB,-1.719,2.456140350877193,from True HF Edge chart (2022-25),110.07015528548902,112.5548220688503,69.18374597730224,0.436173019812211,196,148,256,16,10
+team-new-mexico-st,New Mexico St.,CUSA,-0.029,1.649122807017544,from True HF Edge chart (2022-25),111.4893282813104,111.53271910674295,66.3894299079719,0.49888129072450277,166,125,232,12,13
+team-navy,Navy,Pat,-0.358,1.4035087719298247,from True HF Edge chart (2022-25),104.79637106208037,105.3433998188965,65.36482754141393,0.48503623019472086,174,247,102,21,6
+team-youngstown-st,Youngstown St.,Horz,-0.65,2.24561403508772,from True HF Edge chart (2022-25),108.68952295499383,109.66291559536992,66.8239488980464,0.4743893563701029,179,168,194,13,13
+team-texas-aandm-corpus-chris,Texas A&M Corpus Chris,Slnd,-0.499,2.0,default HCA=2.0 (no True HF Edge in chart),102.48901910644985,103.24106732165924,66.34547020372479,0.4789931019898547,176,283,69,14,12
+team-fordham,Fordham,A10,-0.573,1.473684210526316,from True HF Edge chart (2022-25),103.79665484550927,104.69881327808051,63.533442687625154,0.47514015028718687,178,262,89,14,12
+team-utah-tech,Utah Tech,WAC,-0.147,2.4912280701754392,from True HF Edge chart (2022-25),110.29195552369931,110.51311913727073,66.32916921277926,0.49424091604046816,168,141,210,16,11
+team-oregon-st,Oregon St.,WCC,0.144,3.0526315789473686,from True HF Edge chart (2022-25),109.91084341487596,109.68833962899151,64.93424434374697,0.5058257926558694,160,154,195,14,13
+team-tarleton-st,Tarleton St.,WAC,-1.606,2.421052631578948,from True HF Edge chart (2022-25),103.41002993533397,105.69614903069449,70.24712263203732,0.43746300563410145,195,269,110,12,13
+team-drexel,Drexel,CAA,-2.233,2.631578947368421,from True HF Edge chart (2022-25),103.09983262567826,106.58547235289724,64.05896153556564,0.40555572048586064,210,273,125,13,13
+team-western-kentucky,Western Kentucky,CUSA,-1.57,2.0,default HCA=2.0 (no True HF Edge in chart),104.56077607000846,106.82435986377997,69.35501074119296,0.43873410273737995,194,251,131,14,11
+team-furman,Furman,SC,-1.118,1.719298245614035,from True HF Edge chart (2022-25),105.98881662845052,107.67944782025683,66.12600706526177,0.45462784391040023,189,229,151,17,10
+team-cal-st-fullerton,Cal St. Fullerton,BW,-1.942,2.0,default HCA=2.0 (no True HF Edge in chart),106.11441975475142,108.76433745162535,73.28054218253031,0.4295582029358415,199,228,172,13,14
+team-siena,Siena,MAAC,-2.123,1.1228070175438598,from True HF Edge chart (2022-25),107.55063573924366,110.83826283742546,64.56596556772301,0.4142876585439375,206,195,218,17,9
+team-charleston,Charleston,CAA,-1.808,2.035087719298246,from True HF Edge chart (2022-25),105.85069401053391,108.49834976345528,68.28152393907504,0.4294459036697891,200,232,166,16,10
+team-northern-kentucky,Northern Kentucky,Horz,-1.967,2.0,default HCA=2.0 (no True HF Edge in chart),107.68562498773619,110.52553107996647,69.25752254926948,0.4257163678186343,203,192,211,16,11
+team-tulane,Tulane,Amer,-1.146,2.385964912280702,from True HF Edge chart (2022-25),107.49532411599166,109.20825787179145,66.91454660537136,0.4546729548531608,188,197,183,14,10
+team-green-bay,Green Bay,Horz,-1.056,2.0,default HCA=2.0 (no True HF Edge in chart),113.10441671712466,114.78106426488888,62.99629286821241,0.45779478302378257,185,101,292,15,12
+team-campbell,Campbell,CAA,-1.689,1.5789473684210529,from True HF Edge chart (2022-25),110.98225093313081,113.37917439612505,70.46677449766307,0.4388758622708128,193,130,266,12,13
+team-robert-morris,Robert Morris,Horz,-1.399,1.5789473684210529,from True HF Edge chart (2022-25),109.64263062283777,111.79821644166768,64.87976505251356,0.4442583056280766,191,160,239,17,10
+team-indiana-st,Indiana St.,MVC,-2.222,2.8070175438596494,from True HF Edge chart (2022-25),106.32812496032592,109.57878103130133,68.34994822995097,0.41427750021219106,207,225,193,10,16
+team-south-alabama,South Alabama,SB,-1.094,2.0,default HCA=2.0 (no True HF Edge in chart),105.80213851572361,107.48526948684992,64.98084702458561,0.4547478153806851,187,233,146,19,7
+team-new-orleans,New Orleans,Slnd,-2.353,0.6315789473684212,from True HF Edge chart (2022-25),109.94794207878945,113.32085553657677,69.77151458731973,0.4139920502160167,208,153,264,11,15
+team-stony-brook,Stony Brook,CAA,-2.467,2.105263157894737,from True HF Edge chart (2022-25),104.93434125511544,108.71263574767664,65.29581676207803,0.3996816405963397,212,244,170,15,11
+team-south-dakota-st,South Dakota St.,Sum,-2.703,2.0,default HCA=2.0 (no True HF Edge in chart),107.32867365703811,111.34901660969288,67.24353958499017,0.39582354700892086,215,202,227,12,15
+team-columbia,Columbia,Ivy,-1.71,1.298245614035088,from True HF Edge chart (2022-25),109.27206332224821,111.83763874234398,66.63634538967528,0.433671959786138,197,163,240,15,9
+team-quinnipiac,Quinnipiac,MAAC,-1.532,1.6140350877192984,from True HF Edge chart (2022-25),104.37728233927433,106.56264365046634,70.08445920843083,0.4407075233259102,192,254,124,18,9
+team-san-diego,San Diego,WCC,-1.927,1.0526315789473686,from True HF Edge chart (2022-25),107.93115827250986,110.72705453180747,68.92857970479861,0.4269984714510071,202,187,215,11,16
+team-eastern-washington,Eastern Washington,BSky,-0.99,2.0,default HCA=2.0 (no True HF Edge in chart),111.3325788054612,112.79061535975578,67.92439027566421,0.46266240344383075,184,126,260,9,17
+team-queens,Queens,ASun,-2.313,2.1403508771929824,from True HF Edge chart (2022-25),114.19811083201444,117.5390375957272,69.24552085809214,0.4178486387106708,204,91,325,15,12
+team-lamar,Lamar,Slnd,-2.883,1.8947368421052635,from True HF Edge chart (2022-25),106.30413864450065,110.73375759796653,65.09225816990532,0.3847388547056196,219,227,216,12,14
+team-colgate,Colgate,Pat,-2.776,2.035087719298246,from True HF Edge chart (2022-25),107.87127670457741,112.02447379392268,66.83458095060648,0.3930629290239811,216,189,247,16,11
+team-weber-st,Weber St.,BSky,-2.455,1.929824561403509,from True HF Edge chart (2022-25),110.09600069537464,113.6790458058252,68.51962015144694,0.4089510749227968,209,147,275,13,14
+team-lipscomb,Lipscomb,ASun,-2.703,2.1403508771929824,from True HF Edge chart (2022-25),106.92632437744996,110.78652353227164,70.01763290061925,0.3994280918637024,213,212,217,16,11
+team-buffalo,Buffalo,MAC,-2.244,0.7719298245614037,from True HF Edge chart (2022-25),112.18548919039709,115.56801078343767,66.33689255665837,0.41541754165554234,205,117,303,15,10
+team-la-salle,La Salle,A10,-2.427,2.0,default HCA=2.0 (no True HF Edge in chart),104.58845183238805,108.34274183022364,64.65838347643862,0.39997582357472905,211,250,161,7,18
+team-drake,Drake,MVC,-2.933,2.631578947368421,from True HF Edge chart (2022-25),109.77177025911672,114.15030939001471,66.97674383202661,0.3894092887110918,218,159,283,12,15
+team-elon,Elon,CAA,-2.945,1.508771929824562,from True HF Edge chart (2022-25),112.0403657060092,116.44375587101686,66.86942209318491,0.39095127493109527,217,119,312,14,13
+team-liu,LIU,NEC,-3.404,2.0,default HCA=2.0 (no True HF Edge in chart),102.45072698757679,107.45380998922016,68.03748120262794,0.36625664518437173,227,286,144,17,9
+team-eastern-michigan,Eastern Michigan,MAC,-2.877,2.0,default HCA=2.0 (no True HF Edge in chart),103.75115019112627,108.12122877976154,65.82934341745417,0.3835599431573482,221,263,158,9,17
+team-towson,Towson,CAA,-1.675,2.105263157894737,from True HF Edge chart (2022-25),102.02333323765137,104.65569616382264,63.64587993946499,0.4272806283832111,201,295,88,14,12
+team-wofford,Wofford,SC,-4.413,2.315789473684211,from True HF Edge chart (2022-25),110.21920071333389,116.71353225793598,67.94418857893494,0.34110118958026153,239,143,315,17,10
+team-bethune-cookman,Bethune Cookman,SWAC,-2.969,2.0,default HCA=2.0 (no True HF Edge in chart),102.65635966003221,107.00683894723744,68.25317806984995,0.38288635092481094,222,280,134,13,12
+team-rice,Rice,Amer,-3.007,0.7017543859649124,from True HF Edge chart (2022-25),109.86256093720905,114.47002906298965,65.2643196020743,0.3840357460712862,220,155,288,11,15
+team-ohio,Ohio,MAC,-3.271,2.736842105263158,from True HF Edge chart (2022-25),107.15473918677249,111.88622301319958,69.13126062686631,0.37826988115670757,223,205,243,13,13
+team-monmouth,Monmouth,CAA,-1.659,1.8947368421052635,from True HF Edge chart (2022-25),104.35528547548341,106.84455472514745,66.62709136792472,0.43263756932804465,198,255,132,13,12
+team-princeton,Princeton,Ivy,-4.541,1.2631578947368425,from True HF Edge chart (2022-25),104.95205163175075,112.11103798874197,63.42821366419781,0.3188978952303157,252,243,251,8,17
+team-denver,Denver,Sum,-2.928,1.473684210526316,from True HF Edge chart (2022-25),115.51623839272314,119.80799287047685,68.22911761654532,0.39663357050457176,214,77,346,13,14
+team-dartmouth,Dartmouth,Ivy,-4.414,1.7894736842105263,from True HF Edge chart (2022-25),105.71235525285374,112.05716191078693,69.57235446755071,0.3384286830796207,242,234,248,10,13
+team-detroit-mercy,Detroit Mercy,Horz,-3.319,2.0,default HCA=2.0 (no True HF Edge in chart),108.60052134101858,113.4081473639167,69.03087648101135,0.3779765093080383,225,171,269,11,13
+team-saint-peters,Saint Peter's,MAAC,-3.802,2.0,default HCA=2.0 (no True HF Edge in chart),103.95185597477524,109.7561809181417,65.50986092783945,0.3486825499114629,234,261,197,14,9
+team-san-jose-st,San Jose St.,MWC,-3.632,2.105263157894737,from True HF Edge chart (2022-25),109.85382037945146,115.52021117704035,64.09947345893438,0.3593027569278844,231,156,302,6,19
+team-american,American,Pat,-4.366,0.8771929824561404,from True HF Edge chart (2022-25),105.46509518104546,111.96848556470962,67.12888749498755,0.3344491554510187,245,238,244,14,13
+team-james-madison,James Madison,SB,-3.151,2.315789473684211,from True HF Edge chart (2022-25),109.17139706943719,113.9925839204989,65.35956548834483,0.37825431109004043,224,164,278,14,13
+team-long-beach-st,Long Beach St.,BW,-4.304,0.4561403508771931,from True HF Edge chart (2022-25),105.00223051250809,111.35470163831351,67.75532096105832,0.3372666687785662,243,242,228,8,18
+team-coastal-carolina,Coastal Carolina,SB,-3.516,1.3333333333333337,from True HF Edge chart (2022-25),102.40314526150055,107.64206191951564,67.10635834295338,0.36036469476887617,230,288,150,16,11
+team-tennessee-martin,Tennessee Martin,OVC,-3.242,2.0,default HCA=2.0 (no True HF Edge in chart),101.94806893409398,106.96646997333333,64.60579497413488,0.36526222317503537,229,297,133,20,7
+team-southern-miss,Southern Miss,SB,-4.265,2.771929824561404,from True HF Edge chart (2022-25),102.58718423998286,108.85221804609245,68.07551018360343,0.33588227140108035,244,281,174,14,14
+team-florida-gulf-coast,Florida Gulf Coast,ASun,-4.703,2.0,default HCA=2.0 (no True HF Edge in chart),106.47507164182532,113.38713955106113,68.04356177951902,0.3266630819626215,249,219,267,12,15
+team-howard,Howard,MEAC,-3.41,2.7017543859649127,from True HF Edge chart (2022-25),100.75945306067487,105.71724504384306,68.77812537495574,0.3653151707221539,228,314,111,16,10
+team-nebraska-omaha,Nebraska Omaha,Sum,-3.881,2.0,default HCA=2.0 (no True HF Edge in chart),107.64589816654451,113.38915640105051,67.5707259167637,0.35485761687191664,232,193,268,13,14
+team-texas-st,Texas St.,SB,-3.336,1.1228070175438598,from True HF Edge chart (2022-25),104.39656054030232,109.43616914626452,66.20198386901122,0.3676842614291637,226,253,189,17,11
+team-sacramento-st,Sacramento St.,BSky,-5.565,0.8070175438596493,from True HF Edge chart (2022-25),106.78770685490807,114.5063946025086,72.09239698200064,0.3094781080757808,257,216,289,9,16
+team-unc-asheville,UNC Asheville,BSth,-3.998,2.0,default HCA=2.0 (no True HF Edge in chart),103.9655588169864,110.10504984067936,65.11187135570962,0.34078113904445806,240,260,202,12,14
+team-idaho-st,Idaho St.,BSky,-5.911,2.4912280701754392,from True HF Edge chart (2022-25),109.84747530002791,119.06058870368462,64.15450158998242,0.28369496385506215,266,157,339,10,17
+team-iona,Iona,MAAC,-4.505,1.8245614035087725,from True HF Edge chart (2022-25),103.30916684310353,109.80053579828669,69.39668921745692,0.33163445777067013,247,271,198,15,11
+team-nicholls-st,Nicholls St.,Slnd,-4.364,1.1929824561403513,from True HF Edge chart (2022-25),107.45553767909823,113.84014180883916,68.35724949007772,0.3398960549308945,241,201,276,11,15
+team-vermont,Vermont,AE,-4.593,1.7543859649122808,from True HF Edge chart (2022-25),106.98592087210669,114.06450349916469,64.87985653079824,0.32371109374398954,251,210,282,17,10
+team-radford,Radford,BSth,-4.361,1.0877192982456143,from True HF Edge chart (2022-25),107.49125731221642,113.62481114883636,71.09591364645874,0.3456620731010175,236,198,274,14,13
+team-purdue-fort-wayne,Purdue Fort Wayne,Horz,-5.664,2.0,default HCA=2.0 (no True HF Edge in chart),105.09251109584488,113.47695126537579,67.55330895723851,0.2926133442363275,264,241,270,14,12
+team-fairfield,Fairfield,MAAC,-4.736,1.5789473684210529,from True HF Edge chart (2022-25),108.29226002070267,115.3752006652985,66.86187053828198,0.32550397506944007,250,176,299,16,10
+team-lindenwood,Lindenwood,OVC,-5.622,1.4035087719298247,from True HF Edge chart (2022-25),101.44829559477193,109.21288625039011,72.40833655440834,0.29982682042222436,261,303,184,16,11
+team-cal-poly,Cal Poly,BW,-4.43,2.0,default HCA=2.0 (no True HF Edge in chart),107.99269117098736,114.01969143414257,73.49871894041793,0.3487501564845252,233,186,281,11,16
+team-southern,Southern,SWAC,-5.309,2.771929824561404,from True HF Edge chart (2022-25),104.92037615391558,112.53619443584151,69.71044869246754,0.3087773929307692,258,245,255,12,13
+team-siu-edwardsville,SIU Edwardsville,OVC,-4.421,2.0,default HCA=2.0 (no True HF Edge in chart),99.75851525168963,106.63038644517331,64.33092532865538,0.3173265644217713,253,326,126,17,10
+team-southeast-missouri-st,Southeast Missouri St.,OVC,-5.136,2.0,default HCA=2.0 (no True HF Edge in chart),102.79138425533472,110.21327467712514,69.2064621730824,0.3096551873909181,256,278,205,16,11
+team-abilene-christian,Abilene Christian,WAC,-4.175,1.5789473684210529,from True HF Edge chart (2022-25),101.02384743878149,107.32543466851519,66.25196073455407,0.33273204248390226,246,308,140,12,13
+team-old-dominion,Old Dominion,SB,-4.121,1.4035087719298247,from True HF Edge chart (2022-25),104.68452391228045,110.71579405101451,68.32473068389682,0.34430340336750387,238,248,214,9,18
+team-arkansas-pine-bluff,Arkansas Pine Bluff,SWAC,-6.43,2.0,default HCA=2.0 (no True HF Edge in chart),105.18777568107781,114.38914300560864,69.88160027128473,0.276002224340412,269,240,287,11,14
+team-charleston-southern,Charleston Southern,BSth,-5.741,2.0,default HCA=2.0 (no True HF Edge in chart),104.046561445105,112.10836487721903,71.2092317447073,0.29771229647200415,263,258,250,12,15
+team-louisiana-tech,Louisiana Tech,CUSA,-4.699,1.508771929824562,from True HF Edge chart (2022-25),99.95589471676197,107.34684552982495,63.57343814058606,0.30568614656733933,259,323,142,14,11
+team-samford,Samford,SC,-4.117,2.6666666666666674,from True HF Edge chart (2022-25),107.8108843099358,114.00012308056972,66.5150016650783,0.3448080341253472,237,190,279,15,12
+team-georgia-southern,Georgia Southern,SB,-5.682,2.0,default HCA=2.0 (no True HF Edge in chart),108.02897172663181,116.06734017175661,70.68093444590693,0.30462546200495544,260,185,308,15,12
+team-umbc,UMBC,AE,-3.896,2.0,default HCA=2.0 (no True HF Edge in chart),105.60709889158368,111.51815555002844,65.91431864755289,0.3483475079191743,235,235,230,16,8
+team-grambling-st,Grambling St.,SWAC,-5.756,2.0,default HCA=2.0 (no True HF Edge in chart),99.47005300463306,108.10003630033657,66.69566923701997,0.27751833914412133,267,329,157,11,13
+team-incarnate-word,Incarnate Word,Slnd,-6.802,1.1929824561403513,from True HF Edge chart (2022-25),107.465084210379,117.7420316744808,66.18944250176794,0.2591683192169322,280,200,326,10,16
+team-northeastern,Northeastern,CAA,-7.26,1.1578947368421055,from True HF Edge chart (2022-25),108.0740689149359,118.49850720677723,69.64650063464308,0.2575080974299982,282,182,331,6,18
+team-southeastern-louisiana,Southeastern Louisiana,Slnd,-5.68,2.0,default HCA=2.0 (no True HF Edge in chart),98.82233864821518,107.55643930911968,65.03716424462336,0.27409218294354404,270,337,147,8,18
+team-milwaukee,Milwaukee,Horz,-6.346,2.0,default HCA=2.0 (no True HF Edge in chart),105.3199270569652,114.67866066513571,67.80747604107653,0.2730882296901165,272,239,291,10,17
+team-southern-utah,Southern Utah,WAC,-5.938,1.7894736842105263,from True HF Edge chart (2022-25),104.13862663589711,112.59587154847982,70.21193258401257,0.2894731812736254,265,257,258,9,17
+team-utep,UTEP,CUSA,-5.109,1.649122807017544,from True HF Edge chart (2022-25),102.67430060790971,110.5782462463666,64.64217263748095,0.2988337481138759,262,279,213,10,16
+team-north-dakota,North Dakota,Sum,-6.487,2.0,default HCA=2.0 (no True HF Edge in chart),107.19745832844497,116.87554818406667,67.02869325502974,0.27011738404412117,274,204,318,15,14
+team-south-dakota,South Dakota,Sum,-6.87,2.0,default HCA=2.0 (no True HF Edge in chart),105.59329876147062,115.38912082621196,70.12968343888713,0.264983691880471,277,236,300,14,13
+team-longwood,Longwood,BSth,-6.272,1.649122807017544,from True HF Edge chart (2022-25),102.01192393117097,111.19210634760563,68.32333347076126,0.27072420266063424,273,296,222,14,14
+team-georgia-st,Georgia St.,SB,-7.081,1.719298245614035,from True HF Edge chart (2022-25),100.78216589231502,111.24637825419993,67.66432337067793,0.24304845072350287,291,313,225,9,18
+team-tennessee-st,Tennessee St.,OVC,-7.515,2.0701754385964914,from True HF Edge chart (2022-25),106.77522894798298,117.4785015581873,70.21666838042798,0.250004556001825,285,218,324,17,9
+team-eastern-kentucky,Eastern Kentucky,ASun,-7.238,2.0,default HCA=2.0 (no True HF Edge in chart),108.68190392003655,119.444264264988,67.25251935179178,0.2523944523823311,284,169,341,9,17
+team-pepperdine,Pepperdine,WCC,-6.13,2.2807017543859653,from True HF Edge chart (2022-25),102.54381387241865,111.60980710176369,67.61289206693745,0.27403105832372515,271,282,234,7,20
+team-east-texas-aandm,East Texas A&M,Slnd,-7.36,2.0,default HCA=2.0 (no True HF Edge in chart),98.59504835188419,109.26523724308637,68.97856611269638,0.23474515501468796,293,339,186,10,17
+team-western-carolina,Western Carolina,SC,-4.739,2.0,default HCA=2.0 (no True HF Edge in chart),109.63438543636136,116.58323782334912,68.20280923530291,0.33032265273107125,248,161,313,10,15
+team-delaware,Delaware,CUSA,-4.623,1.1929824561403513,from True HF Edge chart (2022-25),104.49013235325978,111.84123649022581,62.8907962317096,0.3139194776461577,254,252,241,9,16
+team-cleveland-st,Cleveland St.,Horz,-7.801,1.719298245614035,from True HF Edge chart (2022-25),110.52579579026225,121.87121150977646,68.75611708271204,0.24531952632407997,290,136,357,10,16
+team-central-michigan,Central Michigan,MAC,-5.028,2.0,default HCA=2.0 (no True HF Edge in chart),106.85860701299697,114.38314787517682,66.81943542746788,0.3137720428154442,255,214,286,8,17
+team-presbyterian,Presbyterian,BSth,-6.566,1.649122807017544,from True HF Edge chart (2022-25),102.45419045580468,112.77775170679811,63.5988086449275,0.24898405466963766,287,285,259,13,14
+team-iu-indy,IU Indy,Horz,-7.458,2.0,default HCA=2.0 (no True HF Edge in chart),107.12390429674662,117.22483725410157,73.83487315483725,0.2618765799356462,279,207,322,7,20
+team-brown,Brown,Ivy,-6.214,1.859649122807018,from True HF Edge chart (2022-25),96.29055161758038,105.67244626542255,66.235926110818,0.2555551047061333,283,347,109,8,15
+team-uc-riverside,UC Riverside,BW,-6.327,2.0,default HCA=2.0 (no True HF Edge in chart),102.85828319627194,112.20937835864805,67.65623804160649,0.2688105174736869,275,277,252,8,19
+team-evansville,Evansville,MVC,-7.461,2.210526315789474,from True HF Edge chart (2022-25),100.86059166245931,112.00279499909729,66.9585780452787,0.2305829911782309,299,311,246,6,20
+team-hampton,Hampton,CAA,-6.286,1.649122807017544,from True HF Edge chart (2022-25),100.88259897583083,110.5648295638913,64.9210943817903,0.2584744524953212,281,310,212,12,14
+team-louisiana,Louisiana,SB,-6.493,2.0,default HCA=2.0 (no True HF Edge in chart),101.14068988936927,111.51831995412903,62.57170120696986,0.24540371764558785,289,305,231,9,17
+team-mercyhurst,Mercyhurst,NEC,-6.028,3.2280701754385968,from True HF Edge chart (2022-25),100.89990537270393,110.39263393016597,63.497759739343905,0.26230629183709286,278,309,208,13,14
+team-east-carolina,East Carolina,Amer,-6.079,2.0,default HCA=2.0 (no True HF Edge in chart),102.31114023331929,111.1934725717044,68.44160048371742,0.2773968895936798,268,290,223,9,16
+team-western-michigan,Western Michigan,MAC,-7.308,2.0,default HCA=2.0 (no True HF Edge in chart),108.06469290326618,118.90139959779216,67.43931571408892,0.24992881745454132,286,183,337,9,16
+team-le-moyne,Le Moyne,NEC,-7.129,2.0,default HCA=2.0 (no True HF Edge in chart),101.76420421095297,112.07639013396741,69.12865032522846,0.247869729252445,288,299,249,14,13
+team-boston-university,Boston University,Pat,-6.476,2.0,default HCA=2.0 (no True HF Edge in chart),110.52094098773453,120.72058906429871,63.493708284377874,0.26597372132258806,276,137,350,12,15
+team-north-carolina-aandt,North Carolina A&T,CAA,-7.724,2.0,default HCA=2.0 (no True HF Edge in chart),103.66707150243333,114.89098962110434,68.81697346646916,0.23465844343471678,294,267,294,10,14
+team-loyola-chicago,Loyola Chicago,A10,-7.777,2.0,default HCA=2.0 (no True HF Edge in chart),103.97428212035962,115.73652574530607,66.120248848605,0.22574661171528426,303,259,304,6,20
+team-bellarmine,Bellarmine,ASun,-8.535,0.3859649122807018,from True HF Edge chart (2022-25),113.18334051923839,126.46468536897572,64.26481728729469,0.21823660179567883,305,100,365,11,15
+team-northwestern-st,Northwestern St.,Slnd,-7.81,2.1403508771929824,from True HF Edge chart (2022-25),103.0920032333949,115.08595799875809,65.1197698373822,0.22000090836305716,304,274,295,8,18
+team-alabama-aandm,Alabama A&M,SWAC,-8.422,2.4912280701754392,from True HF Edge chart (2022-25),101.44924014191807,114.29974904309624,65.53615616142498,0.202368456536728,311,302,285,14,11
+team-mount-st-marys,Mount St. Mary's,MAAC,-7.476,1.1228070175438598,from True HF Edge chart (2022-25),99.41722781828065,110.44861785847846,67.77397191276525,0.229685570583474,300,331,209,12,15
+team-usc-upstate,USC Upstate,BSth,-8.354,2.1754385964912286,from True HF Edge chart (2022-25),99.5700354634388,111.84950338787023,68.03131008752851,0.20794301900666784,308,327,242,11,16
+team-northern-arizona,Northern Arizona,BSky,-7.479,2.0,default HCA=2.0 (no True HF Edge in chart),106.78272158960726,118.52468319381082,63.692805317617484,0.2315217016120416,297,217,332,10,17
+team-northern-illinois,Northern Illinois,MAC,-10.313,2.0,default HCA=2.0 (no True HF Edge in chart),95.96779449016731,111.22400063048636,67.60095789677993,0.15490518609241186,328,349,224,8,16
+team-central-connecticut,Central Connecticut,NEC,-7.544,2.0,default HCA=2.0 (no True HF Edge in chart),107.07784802108333,118.74682597216565,64.65373469103942,0.23334259176960653,295,208,334,15,10
+team-sacred-heart,Sacred Heart,MAAC,-8.094,1.508771929824562,from True HF Edge chart (2022-25),106.97183397778207,118.77966120874974,68.54805095324683,0.23074608792968787,298,211,336,11,16
+team-morehead-st,Morehead St.,OVC,-7.763,2.0000000000000004,from True HF Edge chart (2022-25),106.35733618504159,118.23708858493886,65.34391086655091,0.22834073840867083,301,223,329,15,12
+team-jacksonville,Jacksonville,ASun,-8.01,2.0000000000000004,from True HF Edge chart (2022-25),100.490914822138,113.1968865383046,63.03888912292251,0.20274825904933802,309,318,263,10,17
+team-ball-st,Ball St.,MAC,-8.07,1.473684210526316,from True HF Edge chart (2022-25),98.40436580757856,111.07981729242144,63.66970318145454,0.19886803248189439,312,340,221,8,17
+team-texas-southern,Texas Southern,SWAC,-8.382,1.0526315789473686,from True HF Edge chart (2022-25),103.61732638424171,115.80527780847189,68.7708160346704,0.21774362489038632,306,268,305,8,15
+team-njit,NJIT,AE,-7.705,2.0,default HCA=2.0 (no True HF Edge in chart),100.05059993186697,111.33302409426797,68.29411242035009,0.2263961643878361,302,322,226,15,12
+team-lehigh,Lehigh,Pat,-7.53,1.4035087719298247,from True HF Edge chart (2022-25),102.34200826309288,113.5805453617937,67.00557833567865,0.23179413752573136,296,289,273,12,15
+team-chattanooga,Chattanooga,SC,-8.962,2.0,default HCA=2.0 (no True HF Edge in chart),101.84679178133462,115.33080158862317,66.46384665656723,0.19312186124131608,313,298,297,10,17
+team-unc-greensboro,UNC Greensboro,SC,-7.865,2.0,default HCA=2.0 (no True HF Edge in chart),108.42681853966403,120.14758086495505,67.10053609818455,0.23497638076233304,292,175,347,12,15
+team-florida-aandm,Florida A&M,SWAC,-9.641,2.1754385964912286,from True HF Edge chart (2022-25),97.5035505153385,111.71982165374764,67.81477857746869,0.1729000955310656,319,345,236,9,14
+team-houston-christian,Houston Christian,Slnd,-8.31,1.719298245614035,from True HF Edge chart (2022-25),103.69600711554759,116.81790831793856,63.33292375681029,0.20257834528233493,310,266,317,9,17
+team-alabama-st,Alabama St.,SWAC,-8.131,0.7719298245614037,from True HF Edge chart (2022-25),99.84499070117184,111.63947330689837,68.94106803506587,0.21686302124607476,307,325,235,8,17
+team-new-hampshire,New Hampshire,AE,-10.634,2.035087719298246,from True HF Edge chart (2022-25),98.22759486738815,114.0135714752345,67.3626665202154,0.15266521022552768,329,343,280,8,16
+team-west-georgia,West Georgia,ASun,-9.592,1.4035087719298247,from True HF Edge chart (2022-25),102.42462154120355,116.39875114229272,68.63798591223212,0.18682275069968454,314,287,310,12,14
+team-lafayette,Lafayette,Pat,-9.915,0.7017543859649124,from True HF Edge chart (2022-25),99.28082112794729,114.16544679977738,66.61432947160924,0.16707411730696842,320,333,284,8,19
+team-cal-st-bakersfield,Cal St. Bakersfield,BW,-10.045,2.0,default HCA=2.0 (no True HF Edge in chart),101.37898890174542,115.83627294222615,69.47956279782655,0.17754250122262258,316,304,306,8,18
+team-albany,Albany,AE,-9.769,1.9649122807017545,from True HF Edge chart (2022-25),102.27586764840561,117.14026397999518,65.72059832834387,0.17357053262980424,318,291,320,9,17
+team-eastern-illinois,Eastern Illinois,OVC,-9.735,2.0,default HCA=2.0 (no True HF Edge in chart),94.70465349464445,109.52672096930819,65.6811452536655,0.15813611494555377,326,357,192,11,16
+team-fairleigh-dickinson,Fairleigh Dickinson,NEC,-9.959,2.0,default HCA=2.0 (no True HF Edge in chart),100.53728727161678,116.00693819116199,64.3746406316294,0.161664491978622,323,316,307,10,17
+team-north-florida,North Florida,ASun,-11.794,2.0,default HCA=2.0 (no True HF Edge in chart),108.88142703419228,125.7063486824821,70.10104608488781,0.16078143320463908,325,167,364,6,21
+team-stetson,Stetson,ASun,-9.636,1.7543859649122808,from True HF Edge chart (2022-25),103.04051082873997,117.4212980826191,67.0027073121594,0.1820633797409382,315,276,323,9,18
+team-prairie-view-aandm,Prairie View A&M,SWAC,-11.481,1.2631578947368425,from True HF Edge chart (2022-25),101.47922279394928,117.14619634781728,73.28081755972183,0.16096855730778709,324,301,321,9,16
+team-umass-lowell,UMass Lowell,AE,-10.298,2.0,default HCA=2.0 (no True HF Edge in chart),102.16281533589124,116.9864189322719,69.47046040071228,0.1739142912729534,317,293,319,11,15
+team-oral-roberts,Oral Roberts,Sum,-10.806,1.929824561403509,from True HF Edge chart (2022-25),99.4579136999578,115.51533217775633,67.29719641858665,0.15171795528238496,330,330,301,6,21
+team-bucknell,Bucknell,Pat,-10.788,1.2280701754385963,from True HF Edge chart (2022-25),98.3808370003353,114.52941698089307,66.80684570573617,0.14832045337548524,334,341,290,8,19
+team-holy-cross,Holy Cross,Pat,-10.571,1.017543859649123,from True HF Edge chart (2022-25),100.44538322951351,116.71602190697479,64.96849296636485,0.15103691118374749,331,319,316,9,17
+team-wagner,Wagner,NEC,-10.175,0.3859649122807018,from True HF Edge chart (2022-25),103.23800798110508,118.76795646857641,65.51850039706241,0.16637387598973852,321,272,335,9,15
+team-little-rock,Little Rock,OVC,-10.457,2.0,default HCA=2.0 (no True HF Edge in chart),100.83987978953022,116.6299492220199,66.2261737123025,0.15803390752362922,327,312,314,10,17
+team-loyola-md,Loyola MD,Pat,-10.536,2.0,default HCA=2.0 (no True HF Edge in chart),102.46460021174121,117.93101182074454,68.12301881361407,0.16566076311548605,322,284,328,10,16
+team-manhattan,Manhattan,MAAC,-11.694,0.3508771929824563,from True HF Edge chart (2022-25),104.88394655544349,122.06835762160401,68.05235852238695,0.14869700812832456,333,246,359,11,16
+team-army,Army,Pat,-12.222,0.4561403508771931,from True HF Edge chart (2022-25),101.09389479651946,119.48772383770225,66.44830042950402,0.1275958601676456,338,306,342,10,17
+team-norfolk-st,Norfolk St.,MEAC,-10.967,2.736842105263158,from True HF Edge chart (2022-25),99.21156351245628,115.34307419010918,67.98584939137797,0.15026192608037023,332,334,298,12,14
+team-tennessee-tech,Tennessee Tech,OVC,-12.085,2.6666666666666674,from True HF Edge chart (2022-25),102.17117349453164,120.24008710257208,66.88070654829095,0.13323305418590756,337,292,348,11,16
+team-stonehill,Stonehill,NEC,-11.892,1.2280701754385963,from True HF Edge chart (2022-25),90.75409483337185,108.88641239442222,65.58423900791789,0.1096087222907259,346,363,176,9,18
+team-niagara,Niagara,MAAC,-11.235,0.736842105263158,from True HF Edge chart (2022-25),98.28461133255968,116.42749321336561,61.92715898270634,0.12475912896338909,340,342,311,6,19
+team-air-force,Air Force,MWC,-11.771,1.2280701754385963,from True HF Edge chart (2022-25),95.69207345161277,113.56341054981905,65.8643433649642,0.12248582433745593,341,353,272,3,22
+team-north-alabama,North Alabama,ASun,-13.042,2.0,default HCA=2.0 (no True HF Edge in chart),100.69892591602147,120.72273054668177,65.13487061528743,0.11049892287295394,345,315,351,7,17
+team-alcorn-st,Alcorn St.,SWAC,-12.36,1.7894736842105263,from True HF Edge chart (2022-25),99.53356736662968,117.76960377819769,67.77706352377288,0.1262306705320149,339,328,327,6,18
+team-the-citadel,The Citadel,SC,-13.17,1.2280701754385963,from True HF Edge chart (2022-25),98.1971896070515,118.91523346415893,63.565732358890315,0.09961737854590848,349,344,338,9,18
+team-new-haven,New Haven,NEC,-10.556,2.0,default HCA=2.0 (no True HF Edge in chart),94.99275645808947,111.73504597904441,63.05097267306326,0.1339133143702736,336,356,237,11,15
+team-jackson-st,Jackson St.,SWAC,-12.265,0.3157894736842106,from True HF Edge chart (2022-25),101.04588281139392,118.60479953640885,69.85333601366459,0.13674928718600282,335,307,333,8,17
+team-southern-indiana,Southern Indiana,OVC,-12.376,2.0,default HCA=2.0 (no True HF Edge in chart),93.98749444043901,112.24374884723872,67.79107874064314,0.11492652535207555,343,358,253,5,21
+team-canisius,Canisius,MAAC,-12.108,1.5789473684210529,from True HF Edge chart (2022-25),95.81618718617722,114.79479383044284,63.79791459929436,0.11123214297788608,344,352,293,8,18
+team-north-carolina-central,North Carolina Central,MEAC,-13.798,2.0,default HCA=2.0 (no True HF Edge in chart),99.33303006690251,120.29898039796487,65.81004241925594,0.0995465558726958,350,332,349,9,14
+team-utsa,UTSA,Amer,-14.206,2.0,default HCA=2.0 (no True HF Edge in chart),98.73743139200252,119.50870750850952,68.3909988666118,0.10014280718416936,348,338,343,4,20
+team-saint-francis,Saint Francis,NEC,-14.922,2.0,default HCA=2.0 (no True HF Edge in chart),100.30235588427108,121.67015983264159,69.83440903160474,0.09788640171503539,351,321,355,6,20
+team-louisiana-monroe,Louisiana Monroe,SB,-14.843,2.0,default HCA=2.0 (no True HF Edge in chart),100.37185055209652,121.42868039329781,70.48888765391798,0.10064114260566394,347,320,354,4,23
+team-maine,Maine,AE,-13.154,2.8771929824561404,from True HF Edge chart (2022-25),92.51605665050242,112.86543490642153,64.64022698532905,0.09225880323422804,352,362,261,6,21
+team-umkc,UMKC,Sum,-14.596,2.0,default HCA=2.0 (no True HF Edge in chart),95.05803447061749,116.23568899825221,68.92343965790207,0.0900502214827237,353,355,309,4,22
+team-chicago-st,Chicago St.,NEC,-12.793,1.8947368421052635,from True HF Edge chart (2022-25),99.94737566158305,119.29435308911002,66.12372463387713,0.11558428772483455,342,324,340,6,21
+team-maryland-eastern-shore,Maryland Eastern Shore,MEAC,-13.367,2.0,default HCA=2.0 (no True HF Edge in chart),93.9714014638943,115.1441420652786,63.13210334590339,0.08812602121036275,354,359,296,8,18
+team-bryant,Bryant,AE,-15.278,2.210526315789474,from True HF Edge chart (2022-25),96.04764897503408,119.7793594861003,64.37735321837974,0.07314996511807706,358,348,345,8,18
+team-morgan-st,Morgan St.,MEAC,-16.088,2.210526315789474,from True HF Edge chart (2022-25),99.18237467381834,122.11444925019461,70.15295279883557,0.08378619580408943,355,335,360,10,13
+team-rider,Rider,MAAC,-15.026,1.508771929824562,from True HF Edge chart (2022-25),97.50084039034527,120.72575631236822,64.69835199642283,0.07892119748230968,357,346,352,3,21
+team-south-carolina-st,South Carolina St.,MEAC,-15.407,2.0,default HCA=2.0 (no True HF Edge in chart),95.87594287773007,118.30853559343382,68.68165527553451,0.0818276806921833,356,350,330,6,17
+team-vmi,VMI,SC,-16.887,0.9473684210526316,from True HF Edge chart (2022-25),99.17515764468345,124.34512282988331,67.09178605793848,0.06907447491654871,359,336,362,6,21
+team-delaware-st,Delaware St.,MEAC,-16.278,2.2807017543859653,from True HF Edge chart (2022-25),88.72499123919054,113.35138264793207,66.10179965846207,0.05641580680933277,361,365,265,6,18
+team-binghamton,Binghamton,AE,-17.114,1.5438596491228074,from True HF Edge chart (2022-25),95.68868243075379,121.7846556543866,65.57931319218494,0.05878555322570927,360,354,356,5,22
+team-gardner-webb,Gardner Webb,BSth,-20.134,0.6666666666666669,from True HF Edge chart (2022-25),95.83461347191036,124.47964890796223,70.2863179396146,0.04708996524502095,362,351,363,3,24
+team-western-illinois,Western Illinois,OVC,-18.848,2.0,default HCA=2.0 (no True HF Edge in chart),92.81351961250388,121.248848339549,66.28507189553251,0.044217647675090385,363,360,353,5,22
+team-coppin-st,Coppin St.,MEAC,-20.625,1.508771929824562,from True HF Edge chart (2022-25),92.80886230788268,122.81448498071505,68.73719140544873,0.038363591656268466,364,361,361,5,21
+team-mississippi-valley-st,Mississippi Valley St.,SWAC,-21.143,2.0,default HCA=2.0 (no True HF Edge in chart),90.30252209333794,121.90985716063247,66.89262136039349,0.030728928302680755,365,364,358,1,24
