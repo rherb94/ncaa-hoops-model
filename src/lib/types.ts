@@ -48,6 +48,7 @@ export type SlateGame = {
 export type UnmappedAlias = {
   teamName: string;
   suggestedTeamId: string;
+  teamId: string;
 };
 
 export type SlateResponse = {
