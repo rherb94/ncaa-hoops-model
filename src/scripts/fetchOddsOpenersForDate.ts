@@ -275,9 +275,30 @@ async function main() {
       signal: string;
     } | null = null;
 
+    // Warn if team IDs couldn't be resolved at all
+    if (!homeTeamId)
+      console.warn(`⚠️  NO TORVIK ID for home="${g.home_team}" — model will be null`);
+    if (!awayTeamId)
+      console.warn(`⚠️  NO TORVIK ID for away="${g.away_team}" — model will be null`);
+
+    // Warn if team ID resolved but not found in teams.csv
+    if (homeTeamId && !homeTeam)
+      console.warn(`⚠️  TEAM NOT IN teams.csv: homeTeamId="${homeTeamId}" (${g.home_team})`);
+    if (awayTeamId && !awayTeam)
+      console.warn(`⚠️  TEAM NOT IN teams.csv: awayTeamId="${awayTeamId}" (${g.away_team})`);
+
     if (homeTeam && awayTeam) {
       const hca = homeTeam.hca ?? 2;
       const eff = computeEfficiencyModel(homeTeam, awayTeam, hca);
+
+      // Warn if efficiency model couldn't run (missing adjO/adjD/tempo in Torvik data)
+      if (!eff) {
+        console.warn(
+          `⚠️  EFFICIENCY FALLBACK: ${g.away_team} @ ${g.home_team}` +
+          ` — missing adjO/adjD/tempo, using power rating spread instead`
+        );
+      }
+
       const rawModelSpread =
         eff?.modelSpread ??
         computeModelSpread(homeTeam.powerRating, awayTeam.powerRating, hca);

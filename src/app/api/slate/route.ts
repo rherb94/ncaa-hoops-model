@@ -115,8 +115,16 @@ export async function GET(req: Request) {
     const hca = home?.hca ?? 2;
 
     // --- raw model spread ---
+    if (!home) console.warn(`⚠️  SLATE: home team not found in teams.csv — teamId="${g.homeTeamId}" (${g.homeTeam})`);
+    if (!away) console.warn(`⚠️  SLATE: away team not found in teams.csv — teamId="${g.awayTeamId}" (${g.awayTeam})`);
+
     const eff =
       home && away ? computeEfficiencyModel(home, away, hca) : undefined;
+
+    if (home && away && !eff) {
+      console.warn(`⚠️  SLATE EFFICIENCY FALLBACK: ${g.awayTeam} @ ${g.homeTeam} — missing adjO/adjD/tempo, using power rating spread`);
+    }
+
     const rawModelSpread =
       eff?.modelSpread ?? computeModelSpread(homePR, awayPR, hca);
 
