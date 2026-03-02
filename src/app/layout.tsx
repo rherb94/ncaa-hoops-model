@@ -34,6 +34,7 @@ export default function RootLayout({
 
             <nav className="flex items-center gap-2">
               <NavLink href="/slate" label="Daily Slate" />
+              <NavLink href="/results" label="Results" />
               <NavLink href="/teams" label="Teams" />
               <NavLink href="/sheet" label="Betting Sheet" />
             </nav>
