@@ -4,14 +4,26 @@ import path from "node:path";
 
 const YEAR = process.env.YEAR ?? "2026";
 
-// If you want to run from a local file sometimes:
-//   TORVIK_LOCAL=/absolute/path/to/2026_team_results.csv pnpm ts-node ...
+// Existing overall CSV source
 const TORVIK_LOCAL = process.env.TORVIK_LOCAL;
-
 const TORVIK_URL = `https://barttorvik.com/${YEAR}_team_results.csv`;
 
+// NEW: venue splits (set these once you confirm the exact Torvik URLs)
+const TORVIK_HOME_LOCAL = process.env.TORVIK_HOME_LOCAL;
+const TORVIK_AWAY_LOCAL = process.env.TORVIK_AWAY_LOCAL;
+const TORVIK_HOME_URL =
+  process.env.TORVIK_HOME_URL ??
+  `https://barttorvik.com/${YEAR}_team_results.csv?venue=H`;
+
+const TORVIK_AWAY_URL =
+  process.env.TORVIK_AWAY_URL ??
+  `https://barttorvik.com/${YEAR}_team_results.csv?venue=A`;
+
+// Output files
 const TEAMS_CSV = path.join(process.cwd(), "src", "data", "teams.csv");
-const OUT_CSV = TEAMS_CSV;
+const OUT_OVERALL = TEAMS_CSV;
+const OUT_HOME = path.join(process.cwd(), "src", "data", "homeTeams.csv");
+const OUT_AWAY = path.join(process.cwd(), "src", "data", "awayTeams.csv");
 
 function norm(s: string): string {
   return s
@@ -30,21 +42,16 @@ function norm(s: string): string {
 }
 
 // Torvik name quirks we already know we’ll hit.
-// (Add to this as the script prints misses.)
 const TORVIK_SYNONYMS: Record<string, string[]> = {
-  // Penn / Pennsylvania
   pennsylvania: ["penn"],
   penn: ["pennsylvania"],
 
-  // UT Martin
   "tennessee martin": ["ut martin", "tenn martin", "tenn-martin", "ut-martin"],
   "ut martin": ["tennessee martin"],
 
-  // UMKC
   umkc: ["kansas city", "missouri kansas city", "missouri-kansas city"],
   "kansas city": ["umkc"],
 
-  // Common “state / st” variants handled by norm(), but keep a few extras:
   lindenwood: ["lindenwood lions"],
   "southern indiana": ["southern indiana screaming eagles"],
 };
@@ -85,15 +92,12 @@ function nameCandidates(name: string): string[] {
   const base = name.trim();
   const out = new Set<string>([base]);
 
-  // no dots
   out.add(base.replace(/\./g, ""));
 
-  // apply synonyms by normalized key
   const k = norm(base);
   const syn = TORVIK_SYNONYMS[k];
   if (syn) for (const s of syn) out.add(s);
 
-  // also allow reverse synonyms (if a synonym is the base)
   for (const [k2, arr] of Object.entries(TORVIK_SYNONYMS)) {
     if (k2 === k) continue;
     if (arr.some((x) => norm(x) === k)) out.add(k2);
@@ -102,61 +106,65 @@ function nameCandidates(name: string): string[] {
   return [...out];
 }
 
-async function readTorvikCsv(): Promise<string> {
-  if (TORVIK_LOCAL && fs.existsSync(TORVIK_LOCAL)) {
-    return fs.readFileSync(TORVIK_LOCAL, "utf-8");
+async function readTorvikCsv(opts: {
+  localPath?: string;
+  url?: string;
+  label: string;
+}): Promise<string> {
+  const { localPath, url, label } = opts;
+
+  if (localPath && fs.existsSync(localPath)) {
+    return fs.readFileSync(localPath, "utf-8");
   }
-  const res = await fetch(TORVIK_URL, {
+  if (!url) {
+    throw new Error(
+      `[${label}] Missing URL. Set ${label} via env (e.g. TORVIK_HOME_URL) or provide a local file.`
+    );
+  }
+
+  const res = await fetch(url, {
     headers: {
       "user-agent": "ncaam-model/1.0 (personal project)",
       accept: "text/csv",
     },
   });
+
   if (!res.ok) {
     const text = await res.text().catch(() => "");
     throw new Error(
-      `Failed to fetch Torvik CSV (${res.status}) ${TORVIK_URL}\n${text.slice(
-        0,
-        300
-      )}`
+      `[${label}] Failed to fetch Torvik CSV (${
+        res.status
+      }) ${url}\n${text.slice(0, 300)}`
     );
   }
   return res.text();
 }
 
-function writeCsv(header: string[], rows: string[][]) {
+function writeCsvFile(outPath: string, header: string[], rows: string[][]) {
   const out =
     header.join(",") +
     "\n" +
     rows.map((r) => r.map((x) => x ?? "").join(",")).join("\n") +
     "\n";
-  fs.writeFileSync(OUT_CSV, out, "utf-8");
+  fs.writeFileSync(outPath, out, "utf-8");
 }
 
-async function main() {
-  if (!fs.existsSync(TEAMS_CSV)) throw new Error(`Missing ${TEAMS_CSV}`);
+type TorvikTeam = {
+  name: string;
+  conf?: string;
+  w?: number;
+  l?: number;
+  adjO?: number; // adjoe
+  adjD?: number; // adjde
+  adjT?: number; // adjt
+  barthag?: number;
+  rank?: number;
+  oeRank?: number;
+  deRank?: number;
+  powerRating?: number; // AdjEM * AdjT / 100
+};
 
-  const teamsRaw = fs.readFileSync(TEAMS_CSV, "utf-8");
-  const teams = parseCsv(teamsRaw);
-
-  // Existing teams.csv must have teamId + teamName at minimum
-  const iTeamId = idx(teams.header, "teamId");
-  const iTeamName =
-    idx(teams.header, "teamName") >= 0
-      ? idx(teams.header, "teamName")
-      : idx(teams.header, "name");
-  const iConf = idx(teams.header, "conference");
-
-  if (iTeamId < 0 || iTeamName < 0) {
-    throw new Error(
-      "teams.csv must contain teamId and teamName (or name) columns"
-    );
-  }
-
-  // Fetch Torvik
-  const torvikRaw = await readTorvikCsv();
-  const torvik = parseCsv(torvikRaw);
-
+function buildTorvikByName(torvik: Parsed) {
   const tTeam = idx(torvik.header, "team");
   const tConf = idx(torvik.header, "conf");
   const tRec = idx(torvik.header, "record");
@@ -187,28 +195,6 @@ async function main() {
     );
   }
 
-  // Build Torvik lookup by normalized name
-  type TorvikTeam = {
-    name: string;
-    conf?: string;
-    w?: number;
-    l?: number;
-    adjO?: number; // adjoe
-    adjD?: number; // adjde
-    adjT?: number; // adjt
-    barthag?: number;
-    rank?: number;
-    oeRank?: number;
-    deRank?: number;
-
-    // FIXED:
-    // We want "points/game-ish" rating so it matches how your model treats PR.
-    // Torvik adjoe/adjde are per 100 possessions, so:
-    //   AdjEM = adjoe - adjde (per 100 poss)
-    //   PR (pts/game) ≈ AdjEM * AdjT / 100
-    powerRating?: number;
-  };
-
   const torvikByName = new Map<string, TorvikTeam>();
 
   for (const r of torvik.rows) {
@@ -227,7 +213,6 @@ async function main() {
     const adjEm =
       adjO != null && adjD != null ? Number(adjO) - Number(adjD) : undefined;
 
-    // PR FIX:
     const powerRating =
       adjEm != null && adjT != null
         ? Number(((adjEm * Number(adjT)) / 100).toFixed(3))
@@ -251,7 +236,36 @@ async function main() {
     torvikByName.set(norm(name), trow);
   }
 
-  // Ensure output columns exist (append if not)
+  return torvikByName;
+}
+
+function applyTorvikToTeams(args: {
+  baseTeamsCsvPath: string;
+  torvikByName: Map<string, TorvikTeam>;
+  outPath: string;
+  label: string;
+}) {
+  const { baseTeamsCsvPath, torvikByName, outPath, label } = args;
+
+  if (!fs.existsSync(baseTeamsCsvPath))
+    throw new Error(`Missing ${baseTeamsCsvPath}`);
+
+  const teamsRaw = fs.readFileSync(baseTeamsCsvPath, "utf-8");
+  const teams = parseCsv(teamsRaw);
+
+  const iTeamId = idx(teams.header, "teamId");
+  const iTeamName =
+    idx(teams.header, "teamName") >= 0
+      ? idx(teams.header, "teamName")
+      : idx(teams.header, "name");
+  const iConf = idx(teams.header, "conference");
+
+  if (iTeamId < 0 || iTeamName < 0) {
+    throw new Error(
+      "teams.csv must contain teamId and teamName (or name) columns"
+    );
+  }
+
   const ensureCol = (col: string) => {
     let i = idx(teams.header, col);
     if (i >= 0) return i;
@@ -285,7 +299,6 @@ async function main() {
       if (hit) break;
     }
 
-    // If not found, try conference-qualified variant (rarely needed)
     if (!hit && iConf >= 0) {
       const conf = (row[iConf] ?? "").trim();
       if (conf) {
@@ -304,7 +317,6 @@ async function main() {
       continue;
     }
 
-    // Overwrite fields we’re now sourcing from Torvik
     row[oPR] = hit.powerRating != null ? String(hit.powerRating) : "";
     row[oAdjO] = hit.adjO != null ? String(hit.adjO) : "";
     row[oAdjD] = hit.adjD != null ? String(hit.adjD) : "";
@@ -317,20 +329,81 @@ async function main() {
     row[oL] = hit.l != null ? String(hit.l) : "";
   }
 
-  writeCsv(teams.header, teams.rows);
+  writeCsvFile(outPath, teams.header, teams.rows);
 
-  console.log(`✅ Updated teams.csv from Torvik ${YEAR}: ${OUT_CSV}`);
-  console.log(`Torvik URL: ${TORVIK_URL}`);
+  console.log(`✅ [${label}] Wrote: ${outPath}`);
   console.log(`Rows: ${teams.rows.length}`);
 
   if (misses.length) {
-    console.warn(`⚠️ Torvik match misses (${misses.length}):`);
+    console.warn(`⚠️ [${label}] Torvik match misses (${misses.length}):`);
     for (const m of misses.slice(0, 25)) {
       console.warn(`  - ${m.teamId} | ${m.teamName}`);
     }
     if (misses.length > 25) console.warn(`  ...and ${misses.length - 25} more`);
     console.warn(
       `Add synonyms in TORVIK_SYNONYMS in this script for the misses above.`
+    );
+  }
+}
+
+async function main() {
+  // 1) Overall (existing behavior)
+  const overallRaw = await readTorvikCsv({
+    localPath: TORVIK_LOCAL,
+    url: TORVIK_URL,
+    label: "OVERALL",
+  });
+  const overall = parseCsv(overallRaw);
+  const overallByName = buildTorvikByName(overall);
+  applyTorvikToTeams({
+    baseTeamsCsvPath: TEAMS_CSV,
+    torvikByName: overallByName,
+    outPath: OUT_OVERALL,
+    label: "OVERALL",
+  });
+  console.log(`Torvik OVERALL URL: ${TORVIK_URL}`);
+
+  // 2) Home split (optional until you set URLs)
+  if (TORVIK_HOME_LOCAL || TORVIK_HOME_URL) {
+    const homeRaw = await readTorvikCsv({
+      localPath: TORVIK_HOME_LOCAL,
+      url: TORVIK_HOME_URL,
+      label: "HOME",
+    });
+    const home = parseCsv(homeRaw);
+    const homeByName = buildTorvikByName(home);
+    applyTorvikToTeams({
+      baseTeamsCsvPath: TEAMS_CSV,
+      torvikByName: homeByName,
+      outPath: OUT_HOME,
+      label: "HOME",
+    });
+    console.log(`Torvik HOME URL: ${TORVIK_HOME_URL ?? "(local file)"}`);
+  } else {
+    console.log(
+      "ℹ️ Skipping HOME split (set TORVIK_HOME_URL or TORVIK_HOME_LOCAL to enable)."
+    );
+  }
+
+  // 3) Away split (optional until you set URLs)
+  if (TORVIK_AWAY_LOCAL || TORVIK_AWAY_URL) {
+    const awayRaw = await readTorvikCsv({
+      localPath: TORVIK_AWAY_LOCAL,
+      url: TORVIK_AWAY_URL,
+      label: "AWAY",
+    });
+    const away = parseCsv(awayRaw);
+    const awayByName = buildTorvikByName(away);
+    applyTorvikToTeams({
+      baseTeamsCsvPath: TEAMS_CSV,
+      torvikByName: awayByName,
+      outPath: OUT_AWAY,
+      label: "AWAY",
+    });
+    console.log(`Torvik AWAY URL: ${TORVIK_AWAY_URL ?? "(local file)"}`);
+  } else {
+    console.log(
+      "ℹ️ Skipping AWAY split (set TORVIK_AWAY_URL or TORVIK_AWAY_LOCAL to enable)."
     );
   }
 }
