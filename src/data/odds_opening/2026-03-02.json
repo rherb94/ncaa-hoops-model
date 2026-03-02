@@ -1,6 +1,6 @@
 {
   "date": "2026-03-02",
-  "captured_at": "2026-03-02T20:24:04.276Z",
+  "captured_at": "2026-03-02T20:41:47.557Z",
   "games": [
     {
       "oddsEventId": "b8a1fb4112075494ff56f9d590d9767d",
@@ -13,7 +13,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": 3.5,
         "awayPoint": -3.5
       },
@@ -36,7 +36,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -1.5,
         "awayPoint": 1.5
       },
@@ -59,7 +59,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -19.5,
         "awayPoint": 19.5
       },
@@ -82,7 +82,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -2.5,
         "awayPoint": 2.5
       },
@@ -105,7 +105,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -1.5,
         "awayPoint": 1.5
       },
@@ -128,7 +128,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": 9.5,
         "awayPoint": -9.5
       },
@@ -151,7 +151,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": 7.5,
         "awayPoint": -7.5
       },
@@ -174,7 +174,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": 10.5,
         "awayPoint": -10.5
       },
@@ -197,7 +197,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -9.5,
         "awayPoint": 9.5
       },
@@ -220,7 +220,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -7.5,
         "awayPoint": 7.5
       },
@@ -243,7 +243,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -5.5,
         "awayPoint": 5.5
       },
@@ -266,7 +266,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": 6.5,
         "awayPoint": -6.5
       },
@@ -289,7 +289,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -6.5,
         "awayPoint": 6.5
       },
@@ -312,7 +312,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": 1.5,
         "awayPoint": -1.5
       },
@@ -335,7 +335,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -6.5,
         "awayPoint": 6.5
       },
@@ -358,7 +358,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -3.5,
         "awayPoint": 3.5
       },
@@ -381,7 +381,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -1.5,
         "awayPoint": 1.5
       },
@@ -404,7 +404,7 @@
       "away_resolve": "MAP",
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
+        "last_update": "2026-03-02T20:41:00Z",
         "homePoint": -4.5,
         "awayPoint": 4.5
       },
@@ -413,282 +413,6 @@
         "awayTeamId": "team-weber-st",
         "modelSpread": -4,
         "edge": 0.5,
-        "signal": "NONE"
-      }
-    },
-    {
-      "oddsEventId": "ac6197e1688d3b1bfb26d5a45368c8ef",
-      "commence_time": "2026-03-03T23:00:00Z",
-      "home_team": "South Carolina Gamecocks",
-      "away_team": "Tennessee Volunteers",
-      "home_espnTeamId": "2579",
-      "away_espnTeamId": "2633",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-03-02T20:23:18Z",
-        "homePoint": 10.5,
-        "awayPoint": -10.5
-      },
-      "model": {
-        "homeTeamId": "team-south-carolina",
-        "awayTeamId": "team-tennessee",
-        "modelSpread": 9.7,
-        "edge": -0.8,
-        "signal": "NONE"
-      }
-    },
-    {
-      "oddsEventId": "cbd30d858e998e2e5cda426aa6111b7a",
-      "commence_time": "2026-03-03T23:30:00Z",
-      "home_team": "Georgia Bulldogs",
-      "away_team": "Alabama Crimson Tide",
-      "home_espnTeamId": "61",
-      "away_espnTeamId": "333",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-03-02T20:23:18Z",
-        "homePoint": -1.5,
-        "awayPoint": 1.5
-      },
-      "model": {
-        "homeTeamId": "team-georgia",
-        "awayTeamId": "team-alabama",
-        "modelSpread": 2.4,
-        "edge": 3.9,
-        "signal": "LEAN"
-      }
-    },
-    {
-      "oddsEventId": "31b4f4c5030eabc378fd663de77b4f75",
-      "commence_time": "2026-03-03T23:30:00Z",
-      "home_team": "Buffalo Bulls",
-      "away_team": "Eastern Michigan Eagles",
-      "home_espnTeamId": "2084",
-      "away_espnTeamId": "2199",
-      "home_resolve": "ESPN_BY_NAME",
-      "away_resolve": "MAP",
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-03-02T20:23:18Z",
-        "homePoint": -4.5,
-        "awayPoint": 4.5
-      },
-      "model": {
-        "homeTeamId": "team-buffalo",
-        "awayTeamId": "team-eastern-michigan",
-        "modelSpread": -2.3,
-        "edge": 2.2,
-        "signal": "NONE"
-      }
-    },
-    {
-      "oddsEventId": "b44db505e211e578e0b4302c1d6f628b",
-      "commence_time": "2026-03-03T23:30:00Z",
-      "home_team": "Stony Brook Seawolves",
-      "away_team": "Towson Tigers",
-      "home_espnTeamId": "2619",
-      "away_espnTeamId": "119",
-      "home_resolve": "ESPN_BY_NAME",
-      "away_resolve": "ESPN_BY_NAME",
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-03-02T20:23:18Z",
-        "homePoint": 1.5,
-        "awayPoint": -1.5
-      },
-      "model": {
-        "homeTeamId": "team-stony-brook",
-        "awayTeamId": "team-towson",
-        "modelSpread": -2.2,
-        "edge": -3.7,
-        "signal": "LEAN"
-      }
-    },
-    {
-      "oddsEventId": "13d455bce2e6d7a619d16a56ef352e38",
-      "commence_time": "2026-03-04T00:00:00Z",
-      "home_team": "Richmond Spiders",
-      "away_team": "Dayton Flyers",
-      "home_espnTeamId": "257",
-      "away_espnTeamId": "2168",
-      "home_resolve": "MAP",
-      "away_resolve": "ESPN_BY_NAME",
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-03-02T20:23:18Z",
-        "homePoint": 5.5,
-        "awayPoint": -5.5
-      },
-      "model": {
-        "homeTeamId": "team-richmond",
-        "awayTeamId": "team-dayton",
-        "modelSpread": 4,
-        "edge": -1.5,
-        "signal": "NONE"
-      }
-    },
-    {
-      "oddsEventId": "c2740fe4f1b27fd9c2f2b3b94b7b8fbf",
-      "commence_time": "2026-03-04T00:00:00Z",
-      "home_team": "Elon Phoenix",
-      "away_team": "UNC Wilmington Seahawks",
-      "home_espnTeamId": "2210",
-      "away_espnTeamId": "350",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "opening": {
-        "book": "betonlineag",
-        "last_update": "2026-03-02T20:23:51Z",
-        "homePoint": 5,
-        "awayPoint": -5
-      },
-      "model": {
-        "homeTeamId": "team-elon",
-        "awayTeamId": "team-unc-wilmington",
-        "modelSpread": 4.6,
-        "edge": -0.4,
-        "signal": "NONE"
-      }
-    },
-    {
-      "oddsEventId": "a3e392f69f2abd97cdd16e2126595458",
-      "commence_time": "2026-03-04T00:00:00Z",
-      "home_team": "VCU Rams",
-      "away_team": "George Mason Patriots",
-      "home_espnTeamId": "2670",
-      "away_espnTeamId": "2244",
-      "home_resolve": "MAP",
-      "away_resolve": "ESPN_BY_NAME",
-      "opening": {
-        "book": "betonlineag",
-        "last_update": "2026-03-02T20:23:51Z",
-        "homePoint": -11,
-        "awayPoint": 11
-      },
-      "model": {
-        "homeTeamId": "team-vcu",
-        "awayTeamId": "team-george-mason",
-        "modelSpread": -10.9,
-        "edge": 0.1,
-        "signal": "NONE"
-      }
-    },
-    {
-      "oddsEventId": "8b102dc0647e9c0cc3bc1621e410d157",
-      "commence_time": "2026-03-04T00:00:00Z",
-      "home_team": "St. John's Red Storm",
-      "away_team": "Georgetown Hoyas",
-      "home_espnTeamId": "2599",
-      "away_espnTeamId": "46",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "opening": {
-        "book": "betonlineag",
-        "last_update": "2026-03-02T20:23:51Z",
-        "homePoint": -17,
-        "awayPoint": 17
-      },
-      "model": {
-        "homeTeamId": "team-st-johns",
-        "awayTeamId": "team-georgetown",
-        "modelSpread": -13.2,
-        "edge": 3.8,
-        "signal": "LEAN"
-      }
-    },
-    {
-      "oddsEventId": "0259de51519f1ac10bd30e36f9f61544",
-      "commence_time": "2026-03-04T00:00:00Z",
-      "home_team": "Texas A&M Aggies",
-      "away_team": "Kentucky Wildcats",
-      "home_espnTeamId": "245",
-      "away_espnTeamId": "96",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "opening": {
-        "book": "draftkings",
-        "last_update": "2026-03-02T20:23:18Z",
-        "homePoint": -1.5,
-        "awayPoint": 1.5
-      },
-      "model": {
-        "homeTeamId": "team-texas-aandm",
-        "awayTeamId": "team-kentucky",
-        "modelSpread": -3.2,
-        "edge": -1.7,
-        "signal": "NONE"
-      }
-    },
-    {
-      "oddsEventId": "73ac64bc8df5e4f391f2f1b878ef388d",
-      "commence_time": "2026-03-04T00:00:00Z",
-      "home_team": "Texas Tech Red Raiders",
-      "away_team": "TCU Horned Frogs",
-      "home_espnTeamId": "2641",
-      "away_espnTeamId": "2628",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "opening": {
-        "book": "betonlineag",
-        "last_update": "2026-03-02T20:23:51Z",
-        "homePoint": -9,
-        "awayPoint": 9
-      },
-      "model": {
-        "homeTeamId": "team-texas-tech",
-        "awayTeamId": "team-tcu",
-        "modelSpread": -14.4,
-        "edge": -5.4,
-        "signal": "STRONG"
-      }
-    },
-    {
-      "oddsEventId": "41e6c9d332bafe9dc008c0ef627372f8",
-      "commence_time": "2026-03-04T00:00:00Z",
-      "home_team": "Virginia Cavaliers",
-      "away_team": "Wake Forest Demon Deacons",
-      "home_espnTeamId": "258",
-      "away_espnTeamId": "154",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "opening": {
-        "book": "betonlineag",
-        "last_update": "2026-03-02T20:23:51Z",
-        "homePoint": -14.5,
-        "awayPoint": 14.5
-      },
-      "model": {
-        "homeTeamId": "team-virginia",
-        "awayTeamId": "team-wake-forest",
-        "modelSpread": -11.8,
-        "edge": 2.7,
-        "signal": "NONE"
-      }
-    },
-    {
-      "oddsEventId": "efd43a61b31abb81a9cc66e5ee5350e5",
-      "commence_time": "2026-03-04T02:00:00Z",
-      "home_team": "Cincinnati Bearcats",
-      "away_team": "BYU Cougars",
-      "home_espnTeamId": "2132",
-      "away_espnTeamId": "252",
-      "home_resolve": "ESPN_BY_NAME",
-      "away_resolve": "MAP",
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-03-02T20:23:18Z",
-        "homePoint": -1.5,
-        "awayPoint": 1.5
-      },
-      "model": {
-        "homeTeamId": "team-cincinnati",
-        "awayTeamId": "team-byu",
-        "modelSpread": -2.6,
-        "edge": -1.1,
         "signal": "NONE"
       }
     }
