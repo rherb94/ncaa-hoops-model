@@ -209,6 +209,20 @@ async function main() {
   const json = (await res.json()) as LiveOddsResponse;
   const capturedAt = new Date().toISOString();
 
+  // Filter to only games starting on DATE in Eastern Time.
+  // Midnight ET = 05:00 UTC in winter (EST) / 04:00 UTC during DST.
+  // Using 05:00 UTC as the boundary is safe — no NCAAB games tip off between
+  // midnight and 1am ET, so we never miss a real game with this cutoff.
+  const dayStartUTC = new Date(`${DATE}T05:00:00Z`);
+  const dayEndUTC   = new Date(dayStartUTC.getTime() + 24 * 60 * 60 * 1000);
+
+  const filtered = (json ?? []).filter((g) => {
+    const ct = new Date(g.commence_time);
+    return ct >= dayStartUTC && ct < dayEndUTC;
+  });
+
+  console.log(`API returned ${json.length} games; keeping ${filtered.length} on ${DATE} ET`);
+
   // ESPN index (name lookup only)
   const espnIndex = loadEspnTeamsIndex() as any;
   const espnByName: Map<string, any> = (espnIndex?.byName ?? new Map()) as any;
@@ -225,7 +239,7 @@ async function main() {
   const misses: Array<{ side: "HOME" | "AWAY"; name: string; key: string }> =
     [];
 
-  for (const g of json ?? []) {
+  for (const g of filtered) {
     const spread = pickBookSpread(g, preferredBooks);
 
     const homeKey = normOddsTeamName(g.home_team);

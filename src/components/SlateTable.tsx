@@ -387,9 +387,95 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
         </div>
       </div>
 
-      {/* Table — 12 columns, no Total, no Market, merged PR, merged Pick+Line */}
-      <div className="overflow-x-auto">
-        <table className="min-w-[1100px] w-full table-fixed text-sm">
+      {/* ── Mobile card list (hidden on md+) ── */}
+      <div className="md:hidden divide-y divide-white/[0.06]">
+        {filtered.map((g) => {
+          const open = openGameId === g.gameId;
+          const spreadLabel = g.consensus?.spread != null
+            ? (g.consensus.spread > 0 ? `+${fmtNum(g.consensus.spread)}` : fmtNum(g.consensus.spread))
+            : "—";
+          return (
+            <div key={g.gameId} className={`${rowTint(g.model.signal)}`}>
+              {/* Card row */}
+              <button
+                className={`w-full text-left px-4 py-3 ${railClass(g.model.signal)}`}
+                onClick={() => toggleRow(g)}
+              >
+                {/* Top line: time + signal */}
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
+                  <span className={`rounded-full border px-2 py-0.5 text-xs ${signalPillClass(g.model.signal)}`}>
+                    {g.model.signal}
+                  </span>
+                </div>
+
+                {/* Teams */}
+                <div className="space-y-1 mb-2.5">
+                  <div className="flex items-center gap-2">
+                    {g.awayLogo
+                      ? <img src={g.awayLogo} alt="" className="h-5 w-5 shrink-0 object-contain opacity-90" loading="lazy" />
+                      : <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />}
+                    <span className="text-sm font-medium text-zinc-200 truncate">{g.awayTeam}</span>
+                    <span className="ml-auto text-xs tabular-nums text-zinc-400">
+                      {g.consensus?.moneylineAway != null ? fmtInt(g.consensus.moneylineAway) : "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {g.homeLogo
+                      ? <img src={g.homeLogo} alt="" className="h-5 w-5 shrink-0 object-contain opacity-90" loading="lazy" />
+                      : <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />}
+                    <span className="text-sm font-medium text-zinc-100 truncate">{g.homeTeam}</span>
+                    <span className="ml-auto text-xs tabular-nums text-zinc-400">
+                      {g.consensus?.moneylineHome != null ? fmtInt(g.consensus.moneylineHome) : "—"}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Stats row */}
+                <div className="flex items-center gap-4 text-xs">
+                  <div>
+                    <span className="text-zinc-500">Sprd </span>
+                    <span className="tabular-nums text-zinc-200 font-medium">{spreadLabel}</span>
+                  </div>
+                  <div>
+                    <span className="text-zinc-500">Model </span>
+                    <span className={`tabular-nums font-semibold ${modelSpreadClass(g.model?.modelSpread)}`}>
+                      {fmtNum(g.model?.modelSpread, 1)}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-zinc-500">Edge </span>
+                    <EdgeCell edge={g.model?.edge} />
+                  </div>
+                  {g.recommended?.side && g.recommended.side !== "NONE" && (
+                    <div className="ml-auto">
+                      <PickCell
+                        side={g.recommended.side}
+                        line={g.recommended.line ?? null}
+                        book={g.recommended.book ?? null}
+                      />
+                    </div>
+                  )}
+                </div>
+              </button>
+
+              {/* Expanded team stats */}
+              {open && (
+                <div className="px-4 pb-4 bg-zinc-950/20">
+                  <div className="grid gap-3">
+                    <TeamExpandedCard title={g.awayTeam} t={stats[g.awayTeamId]} />
+                    <TeamExpandedCard title={g.homeTeam} t={stats[g.homeTeamId]} />
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ── Desktop table (hidden below md) ── */}
+      <div className="hidden md:block overflow-x-auto">
+        <table className="min-w-[1100px] w-full table-fixed text-sm" aria-label="Daily slate">
           <colgroup>
             <col className="w-[85px]" />   {/* Time */}
             <col className="w-[220px]" />  {/* Away */}
