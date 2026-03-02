@@ -1,0 +1,53 @@
+name: Daily Odds Opener Snapshot
+
+on:
+  schedule:
+    # 11:00 AM ET = 16:00 UTC (accounts for ET = UTC-5 in winter, UTC-4 in summer)
+    # Running at 16:00 UTC works year-round since most NCAAB lines are open by 11am ET
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Date to snapshot (YYYY-MM-DD). Defaults to today in ET.'
+        required: false
+      snapshot_iso:
+        description: 'Exact snapshot timestamp (ISO 8601 UTC). Defaults to DATE at 16:00Z.'
+        required: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Fetch opening odds snapshot
+        env:
+          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+          DATE: ${{ inputs.date || '' }}
+          SNAPSHOT_ISO: ${{ inputs.snapshot_iso || '' }}
+        run: npx tsx src/scripts/fetchOddsOpenersForDate.ts
+
+      - name: Commit snapshot if new
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/odds_opening/
+          if git diff --cached --quiet; then
+            echo "No new snapshot to commit."
+          else
+            DATE_STR=$(date -u +%Y-%m-%d)
+            git commit -m "chore: odds opener snapshot ${DATE_STR} [skip ci]"
+            git push
+          fi

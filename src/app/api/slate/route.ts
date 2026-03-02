@@ -142,9 +142,10 @@ export async function GET(req: Request) {
 
     const marketSpread = consensus.spread;
 
-    // // --- shrinkage ---
-    // const modelSpread = shrinkTowardMarket(rawModelSpread, marketSpread, alpha);
-    const modelSpread = rawModelSpread;
+    // Shrink model spread toward market to correct for systematic biases
+    // (e.g. HCA underestimation causes raw model to over-favor away teams).
+    // alpha=0 → pure market, alpha=1 → pure model. Default 0.35.
+    const modelSpread = shrinkTowardMarket(rawModelSpread, marketSpread, alpha);
 
     // --- totals (unchanged; just keep as "modelTotal" if you later expose it) ---
     const modelTotal = eff?.modelTotal ?? consensus.total;
