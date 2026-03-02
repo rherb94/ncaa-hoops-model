@@ -83,25 +83,6 @@ function pickConsensusFromBooks(books: any): Consensus {
   return { source: "provider" };
 }
 
-// final = market + α*(raw - market)
-function shrinkTowardMarket(raw: number, market?: number, alpha = 0.35) {
-  if (market === undefined) return raw;
-  return round1(market + alpha * (raw - market));
-}
-
-function parseAlpha(reqUrl: URL) {
-  // Priority: query param -> env -> default
-  const qp = reqUrl.searchParams.get("alpha");
-  const env = process.env.MODEL_SHRINK_ALPHA;
-
-  const raw = qp ?? env ?? "0.35";
-  const n = Number(raw);
-
-  // keep it sane
-  if (!Number.isFinite(n)) return 0.35;
-  return clamp(n, 0, 1);
-}
-
 function parseDebug(reqUrl: URL) {
   return reqUrl.searchParams.get("debug") === "1";
 }
@@ -114,7 +95,6 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Missing date" }, { status: 400 });
   }
 
-  const alpha = parseAlpha(url);
   const debug = parseDebug(url);
 
   const provider = new TheOddsApiProvider();
@@ -141,11 +121,7 @@ export async function GET(req: Request) {
       eff?.modelSpread ?? computeModelSpread(homePR, awayPR, hca);
 
     const marketSpread = consensus.spread;
-
-    // Shrink model spread toward market to correct for systematic biases
-    // (e.g. HCA underestimation causes raw model to over-favor away teams).
-    // alpha=0 → pure market, alpha=1 → pure model. Default 0.35.
-    const modelSpread = shrinkTowardMarket(rawModelSpread, marketSpread, alpha);
+    const modelSpread = rawModelSpread;
 
     // --- totals (unchanged; just keep as "modelTotal" if you later expose it) ---
     const modelTotal = eff?.modelTotal ?? consensus.total;
@@ -171,12 +147,9 @@ export async function GET(req: Request) {
       console.log("[GAME]", {
         matchup: `${g.awayTeam} @ ${g.homeTeam}`,
         marketSpread,
-        rawModelSpread,
-        alpha,
         modelSpread,
         edge,
         signal,
-        // useful sanity checks
         usedEfficiency: Boolean(eff),
         hca,
         modelTotal,
@@ -207,7 +180,7 @@ export async function GET(req: Request) {
         awayPR,
         homePR,
         hca,
-        modelSpread, // shrunken spread
+        modelSpread,
         edge: edge ?? 0, // keep response shape if your UI expects number
         signal,
         // If your types allow it later:
@@ -263,7 +236,6 @@ export async function GET(req: Request) {
   console.log("[SLATE SUMMARY]", {
     date,
     games: games.length,
-    alpha,
     avgAbsEdge: Number(mean(abs).toFixed(2)),
     maxAbsEdge: abs.length ? Number(Math.max(...abs).toFixed(2)) : 0,
     signals,

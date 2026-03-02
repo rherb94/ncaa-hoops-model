@@ -11,13 +11,6 @@ import {
   computeSignal,
 } from "@/lib/model";
 
-const MODEL_ALPHA = 0.35; // shrinkage toward market (same as slate route)
-
-function shrinkTowardMarket(raw: number, market?: number, alpha = MODEL_ALPHA) {
-  if (market === undefined) return raw;
-  return Math.round((market + alpha * (raw - market)) * 10) / 10;
-}
-
 function clamp(n: number, lo: number, hi: number) {
   return Math.max(lo, Math.min(hi, n));
 }
@@ -263,7 +256,6 @@ async function main() {
     let modelData: {
       homeTeamId: string | null;
       awayTeamId: string | null;
-      rawModelSpread: number | null;
       modelSpread: number | null;
       edge: number | null;
       signal: string;
@@ -276,7 +268,7 @@ async function main() {
         eff?.modelSpread ??
         computeModelSpread(homeTeam.powerRating, awayTeam.powerRating, hca);
       const marketSpread = spread?.homePoint;
-      const modelSpread = shrinkTowardMarket(rawModelSpread, marketSpread);
+      const modelSpread = rawModelSpread;
       const edgeRaw = computeEdge(modelSpread, marketSpread);
       const edge = edgeRaw === undefined ? null : clamp(edgeRaw, -12, 12);
       const signal = computeSignal(edge ?? undefined);
@@ -284,7 +276,6 @@ async function main() {
       modelData = {
         homeTeamId: homeTeamId ?? null,
         awayTeamId: awayTeamId ?? null,
-        rawModelSpread,
         modelSpread,
         edge,
         signal,
