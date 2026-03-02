@@ -118,8 +118,10 @@ function PickCell({
     ? "text-emerald-300 bg-emerald-500/10 border-emerald-400/30"
     : "text-rose-300 bg-rose-500/10 border-rose-400/30";
 
-  const lineStr = line != null && !Number.isNaN(line)
-    ? (line > 0 ? `+${fmtNum(line)}` : fmtNum(line))
+  // line is always stored in home-spread convention; negate for AWAY picks
+  const displayLine = line != null && side === "AWAY" ? -line : line;
+  const lineStr = displayLine != null && !Number.isNaN(displayLine)
+    ? (displayLine > 0 ? `+${fmtNum(displayLine)}` : fmtNum(displayLine))
     : null;
 
   const logoSrc = bookLogoSrc(book);
