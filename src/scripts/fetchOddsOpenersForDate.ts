@@ -7,13 +7,10 @@ import { loadEspnTeamsIndex, norm as espnNorm } from "@/data/espn";
 const ODDS_API_KEY = process.env.THE_ODDS_API_KEY;
 if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 
-// Date you want to pull (YYYY-MM-DD). Default = yesterday in UTC.
+// Date to label the snapshot (YYYY-MM-DD). Default = today in UTC.
+// Use || so an empty string from workflow_dispatch falls back to default.
 const DATE =
-  process.env.DATE ??
-  new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
-
-// Snapshot time (ISO). Default = DATE at 16:00Z
-const SNAPSHOT_ISO = process.env.SNAPSHOT_ISO ?? `${DATE}T16:00:00Z`;
+  process.env.DATE || new Date().toISOString().slice(0, 10);
 
 const SPORT_KEY = "basketball_ncaab";
 const REGIONS = "us";
@@ -89,12 +86,7 @@ type OddsGame = {
   bookmakers: OddsBookmaker[];
 };
 
-type HistoricalOddsResponse = {
-  timestamp: string;
-  previous_timestamp?: string;
-  next_timestamp?: string;
-  data: OddsGame[];
-};
+type LiveOddsResponse = OddsGame[];
 
 function pickBookSpread(game: OddsGame, preferredBooks: string[]) {
   const books = game.bookmakers ?? [];
@@ -180,13 +172,15 @@ function topEspnSuggestions(oddsName: string, espnByName: Map<string, any>) {
 
 // ---------------- main ----------------
 async function main() {
+  // Use the live endpoint — the GitHub Action runs at 11am ET specifically to
+  // capture opening lines, so we just snapshot whatever is live at that moment.
+  // This works on any API tier (no paid historical access required).
   const url =
-    `https://api.the-odds-api.com/v4/historical/sports/${SPORT_KEY}/odds` +
+    `https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds` +
     `?apiKey=${encodeURIComponent(ODDS_API_KEY!)}` +
     `&regions=${encodeURIComponent(REGIONS)}` +
     `&markets=${encodeURIComponent(MARKETS)}` +
-    `&oddsFormat=american` +
-    `&date=${encodeURIComponent(SNAPSHOT_ISO)}`;
+    `&oddsFormat=american`;
 
   const res = await fetch(url, {
     headers: {
@@ -200,7 +194,8 @@ async function main() {
     throw new Error(`Odds API failed (${res.status}): ${text.slice(0, 500)}`);
   }
 
-  const json = (await res.json()) as HistoricalOddsResponse;
+  const json = (await res.json()) as LiveOddsResponse;
+  const capturedAt = new Date().toISOString();
 
   // ESPN index (name lookup only)
   const espnIndex = loadEspnTeamsIndex() as any;
@@ -215,7 +210,7 @@ async function main() {
   const misses: Array<{ side: "HOME" | "AWAY"; name: string; key: string }> =
     [];
 
-  for (const g of json.data ?? []) {
+  for (const g of json ?? []) {
     const spread = pickBookSpread(g, preferredBooks);
 
     const homeKey = normOddsTeamName(g.home_team);
@@ -262,10 +257,7 @@ async function main() {
   // Write output snapshot
   saveJson(OUT_FILE, {
     date: DATE,
-    requested_snapshot: SNAPSHOT_ISO,
-    snapshot_timestamp: json.timestamp,
-    previous_timestamp: json.previous_timestamp ?? null,
-    next_timestamp: json.next_timestamp ?? null,
+    captured_at: capturedAt,
     games: outGames,
   });
 

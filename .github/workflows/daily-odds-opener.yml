@@ -8,10 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: 'Date to snapshot (YYYY-MM-DD). Defaults to today in ET.'
-        required: false
-      snapshot_iso:
-        description: 'Exact snapshot timestamp (ISO 8601 UTC). Defaults to DATE at 16:00Z.'
+        description: 'Date to label the snapshot (YYYY-MM-DD). Defaults to today UTC.'
         required: false
 
 jobs:
@@ -36,7 +33,6 @@ jobs:
         env:
           THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
           DATE: ${{ inputs.date || '' }}
-          SNAPSHOT_ISO: ${{ inputs.snapshot_iso || '' }}
         run: npx tsx src/scripts/fetchOddsOpenersForDate.ts
 
       - name: Commit snapshot if new
