@@ -2,18 +2,34 @@
 import fs from "node:fs";
 import path from "node:path";
 import { loadEspnTeamsIndex, norm as espnNorm } from "@/data/espn";
+import { loadTeams } from "@/data/teams";
+import { resolveTeamId } from "@/data/teamAliases";
+import {
+  computeEfficiencyModel,
+  computeModelSpread,
+  computeEdge,
+  computeSignal,
+} from "@/lib/model";
+
+const MODEL_ALPHA = 0.35; // shrinkage toward market (same as slate route)
+
+function shrinkTowardMarket(raw: number, market?: number, alpha = MODEL_ALPHA) {
+  if (market === undefined) return raw;
+  return Math.round((market + alpha * (raw - market)) * 10) / 10;
+}
+
+function clamp(n: number, lo: number, hi: number) {
+  return Math.max(lo, Math.min(hi, n));
+}
 
 // ---------------- config ----------------
 const ODDS_API_KEY = process.env.THE_ODDS_API_KEY;
 if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 
-// Date you want to pull (YYYY-MM-DD). Default = yesterday in UTC.
+// Date to label the snapshot (YYYY-MM-DD). Default = today in UTC.
+// Use || so an empty string from workflow_dispatch falls back to default.
 const DATE =
-  process.env.DATE ??
-  new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
-
-// Snapshot time (ISO). Default = DATE at 16:00Z
-const SNAPSHOT_ISO = process.env.SNAPSHOT_ISO ?? `${DATE}T16:00:00Z`;
+  process.env.DATE || new Date().toISOString().slice(0, 10);
 
 const SPORT_KEY = "basketball_ncaab";
 const REGIONS = "us";
@@ -89,12 +105,7 @@ type OddsGame = {
   bookmakers: OddsBookmaker[];
 };
 
-type HistoricalOddsResponse = {
-  timestamp: string;
-  previous_timestamp?: string;
-  next_timestamp?: string;
-  data: OddsGame[];
-};
+type LiveOddsResponse = OddsGame[];
 
 function pickBookSpread(game: OddsGame, preferredBooks: string[]) {
   const books = game.bookmakers ?? [];
@@ -180,13 +191,15 @@ function topEspnSuggestions(oddsName: string, espnByName: Map<string, any>) {
 
 // ---------------- main ----------------
 async function main() {
+  // Use the live endpoint — the GitHub Action runs at 11am ET specifically to
+  // capture opening lines, so we just snapshot whatever is live at that moment.
+  // This works on any API tier (no paid historical access required).
   const url =
-    `https://api.the-odds-api.com/v4/historical/sports/${SPORT_KEY}/odds` +
+    `https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds` +
     `?apiKey=${encodeURIComponent(ODDS_API_KEY!)}` +
     `&regions=${encodeURIComponent(REGIONS)}` +
     `&markets=${encodeURIComponent(MARKETS)}` +
-    `&oddsFormat=american` +
-    `&date=${encodeURIComponent(SNAPSHOT_ISO)}`;
+    `&oddsFormat=american`;
 
   const res = await fetch(url, {
     headers: {
@@ -200,7 +213,8 @@ async function main() {
     throw new Error(`Odds API failed (${res.status}): ${text.slice(0, 500)}`);
   }
 
-  const json = (await res.json()) as HistoricalOddsResponse;
+  const json = (await res.json()) as LiveOddsResponse;
+  const capturedAt = new Date().toISOString();
 
   // ESPN index (name lookup only)
   const espnIndex = loadEspnTeamsIndex() as any;
@@ -209,13 +223,16 @@ async function main() {
   // load mapping file
   const oddsMap = loadJson<Record<string, string>>(MAP_FILE, {});
 
+  // teams for model computation
+  const teamsMap = loadTeams();
+
   const preferredBooks = ["draftkings", "fanduel", "betmgm"];
 
   const outGames: any[] = [];
   const misses: Array<{ side: "HOME" | "AWAY"; name: string; key: string }> =
     [];
 
-  for (const g of json.data ?? []) {
+  for (const g of json ?? []) {
     const spread = pickBookSpread(g, preferredBooks);
 
     const homeKey = normOddsTeamName(g.home_team);
@@ -237,6 +254,43 @@ async function main() {
     if (!awayRes.espnTeamId)
       misses.push({ side: "AWAY", name: g.away_team, key: awayKey });
 
+    // --- model spread ---
+    const homeTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.home_team });
+    const awayTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.away_team });
+    const homeTeam = homeTeamId ? teamsMap.get(homeTeamId) : undefined;
+    const awayTeam = awayTeamId ? teamsMap.get(awayTeamId) : undefined;
+
+    let modelData: {
+      homeTeamId: string | null;
+      awayTeamId: string | null;
+      rawModelSpread: number | null;
+      modelSpread: number | null;
+      edge: number | null;
+      signal: string;
+    } | null = null;
+
+    if (homeTeam && awayTeam) {
+      const hca = homeTeam.hca ?? 2;
+      const eff = computeEfficiencyModel(homeTeam, awayTeam, hca);
+      const rawModelSpread =
+        eff?.modelSpread ??
+        computeModelSpread(homeTeam.powerRating, awayTeam.powerRating, hca);
+      const marketSpread = spread?.homePoint;
+      const modelSpread = shrinkTowardMarket(rawModelSpread, marketSpread);
+      const edgeRaw = computeEdge(modelSpread, marketSpread);
+      const edge = edgeRaw === undefined ? null : clamp(edgeRaw, -12, 12);
+      const signal = computeSignal(edge ?? undefined);
+
+      modelData = {
+        homeTeamId: homeTeamId ?? null,
+        awayTeamId: awayTeamId ?? null,
+        rawModelSpread,
+        modelSpread,
+        edge,
+        signal,
+      };
+    }
+
     outGames.push({
       oddsEventId: g.id,
       commence_time: g.commence_time,
@@ -256,16 +310,15 @@ async function main() {
             awayPoint: spread.awayPoint,
           }
         : null,
+
+      model: modelData,
     });
   }
 
   // Write output snapshot
   saveJson(OUT_FILE, {
     date: DATE,
-    requested_snapshot: SNAPSHOT_ISO,
-    snapshot_timestamp: json.timestamp,
-    previous_timestamp: json.previous_timestamp ?? null,
-    next_timestamp: json.next_timestamp ?? null,
+    captured_at: capturedAt,
     games: outGames,
   });
 
