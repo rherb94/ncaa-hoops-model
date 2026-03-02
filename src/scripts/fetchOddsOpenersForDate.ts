@@ -2,6 +2,25 @@
 import fs from "node:fs";
 import path from "node:path";
 import { loadEspnTeamsIndex, norm as espnNorm } from "@/data/espn";
+import { loadTeams } from "@/data/teams";
+import { resolveTeamId } from "@/data/teamAliases";
+import {
+  computeEfficiencyModel,
+  computeModelSpread,
+  computeEdge,
+  computeSignal,
+} from "@/lib/model";
+
+const MODEL_ALPHA = 0.35; // shrinkage toward market (same as slate route)
+
+function shrinkTowardMarket(raw: number, market?: number, alpha = MODEL_ALPHA) {
+  if (market === undefined) return raw;
+  return Math.round((market + alpha * (raw - market)) * 10) / 10;
+}
+
+function clamp(n: number, lo: number, hi: number) {
+  return Math.max(lo, Math.min(hi, n));
+}
 
 // ---------------- config ----------------
 const ODDS_API_KEY = process.env.THE_ODDS_API_KEY;
@@ -204,6 +223,9 @@ async function main() {
   // load mapping file
   const oddsMap = loadJson<Record<string, string>>(MAP_FILE, {});
 
+  // teams for model computation
+  const teamsMap = loadTeams();
+
   const preferredBooks = ["draftkings", "fanduel", "betmgm"];
 
   const outGames: any[] = [];
@@ -232,6 +254,43 @@ async function main() {
     if (!awayRes.espnTeamId)
       misses.push({ side: "AWAY", name: g.away_team, key: awayKey });
 
+    // --- model spread ---
+    const homeTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.home_team });
+    const awayTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.away_team });
+    const homeTeam = homeTeamId ? teamsMap.get(homeTeamId) : undefined;
+    const awayTeam = awayTeamId ? teamsMap.get(awayTeamId) : undefined;
+
+    let modelData: {
+      homeTeamId: string | null;
+      awayTeamId: string | null;
+      rawModelSpread: number | null;
+      modelSpread: number | null;
+      edge: number | null;
+      signal: string;
+    } | null = null;
+
+    if (homeTeam && awayTeam) {
+      const hca = homeTeam.hca ?? 2;
+      const eff = computeEfficiencyModel(homeTeam, awayTeam, hca);
+      const rawModelSpread =
+        eff?.modelSpread ??
+        computeModelSpread(homeTeam.powerRating, awayTeam.powerRating, hca);
+      const marketSpread = spread?.homePoint;
+      const modelSpread = shrinkTowardMarket(rawModelSpread, marketSpread);
+      const edgeRaw = computeEdge(modelSpread, marketSpread);
+      const edge = edgeRaw === undefined ? null : clamp(edgeRaw, -12, 12);
+      const signal = computeSignal(edge ?? undefined);
+
+      modelData = {
+        homeTeamId: homeTeamId ?? null,
+        awayTeamId: awayTeamId ?? null,
+        rawModelSpread,
+        modelSpread,
+        edge,
+        signal,
+      };
+    }
+
     outGames.push({
       oddsEventId: g.id,
       commence_time: g.commence_time,
@@ -251,6 +310,8 @@ async function main() {
             awayPoint: spread.awayPoint,
           }
         : null,
+
+      model: modelData,
     });
   }
 
