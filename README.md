@@ -1,5 +1,13 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Updating PR
+
+run this script to fetch latest PR's from Torvik:
+
+```bash
+YEAR=2026 npx tsx src/scripts/updateTeamsFromTorvik.ts
+```
+
 ## Getting Started
 
 First, run the development server:

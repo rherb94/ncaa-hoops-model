@@ -50,34 +50,6 @@ function readEspnJson(): any {
 function extractTeams(root: any): EspnTeam[] {
   const byId = new Map<string, EspnTeam>();
 
-  // function getLogo(t: any): string | undefined {
-  //   if (!t || typeof t !== "object") return undefined;
-
-  //   const id = t.id ? String(t.id) : undefined;
-
-  //   // 1) explicit logo field
-  //   if (typeof t.logo === "string" && t.logo.trim()) return t.logo.trim();
-
-  //   // 2) logos[] - prefer rel=default (or primary), else first href
-  //   if (Array.isArray(t.logos)) {
-  //     const best =
-  //       t.logos.find(
-  //         (l: any) =>
-  //           typeof l?.href === "string" &&
-  //           Array.isArray(l?.rel) &&
-  //           (l.rel.includes("default") || l.rel.includes("primary"))
-  //       ) ?? t.logos.find((l: any) => typeof l?.href === "string");
-
-  //     if (best?.href) return best.href;
-  //   }
-
-  //   // 3) hard fallback: ESPN CDN by team id (works even when site api omits logos)
-  //   if (id) return `https://a.espncdn.com/i/teamlogos/ncaa/500/${id}.png`;
-
-  //   return undefined;
-  // }
-  let __logoCalls = 0;
-
   function getLogo(t: any): string | undefined {
     const nm = (
       t?.displayName ??
@@ -104,15 +76,7 @@ function extractTeams(root: any): EspnTeam[] {
       });
     }
     if (!t || typeof t !== "object") return undefined;
-    __logoCalls++;
-    if (__logoCalls <= 5 || __logoCalls % 50 === 0) {
-      console.log("[LOGO DEBUG] getLogo called", {
-        calls: __logoCalls,
-        id: t?.id ? String(t.id) : undefined,
-        name:
-          t?.displayName ?? t?.shortDisplayName ?? t?.location ?? t?.teamName,
-      });
-    }
+
     const id = t.id ? String(t.id) : undefined;
 
     const isDebugTeam = id === "88" || id === "2815";

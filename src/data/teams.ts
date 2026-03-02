@@ -3,6 +3,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { resolveTeamId } from "./teamAliases";
 import { loadEspnTeamsIndex, norm } from "@/data/espn";
+import { ESPN_MASTER_MAP_BY_TEAMID } from "@/data/espnMasterMap";
+
+const DEV = process.env.NODE_ENV !== "production";
 
 export type Team = {
   teamId: string;
@@ -12,10 +15,25 @@ export type Team = {
   hca: number;
   logo?: string;
   espnTeamId?: string;
+
+  // Torvik enrichments
+  wins?: number;
+  losses?: number;
+  record?: string;
+
+  barthag?: number;
+  adjO?: number;
+  adjD?: number;
+  tempo?: number;
+
+  torvikRank?: number;
+  torvikOeRank?: number;
+  torvikDeRank?: number;
 };
 
 type Parsed = { header: string[]; rows: string[][] };
 
+// NOTE: Simple CSV parse (no quotes support). If you want robust CSV, see steps below.
 function parseCsv(filePath: string): Parsed {
   const raw = fs.readFileSync(filePath, "utf-8").trim();
   if (!raw) return { header: [], rows: [] };
@@ -33,12 +51,13 @@ let cachedAliases: Map<string, string> | null = null;
  * Loads aliasId -> canonicalId mapping from team_aliases.csv
  */
 function loadAliases(): Map<string, string> {
-  if (cachedAliases) return cachedAliases;
+  if (!DEV && cachedAliases) return cachedAliases;
 
   const aliasPath = path.join(process.cwd(), "src", "data", "team_aliases.csv");
   if (!fs.existsSync(aliasPath)) {
-    cachedAliases = new Map();
-    return cachedAliases;
+    const m = new Map<string, string>();
+    if (!DEV) cachedAliases = m;
+    return m;
   }
 
   const { header, rows } = parseCsv(aliasPath);
@@ -66,7 +85,7 @@ function loadAliases(): Map<string, string> {
     if (alias && canon) m.set(alias, canon);
   }
 
-  cachedAliases = m;
+  if (!DEV) cachedAliases = m;
   return m;
 }
 
@@ -74,18 +93,15 @@ function loadAliases(): Map<string, string> {
 
 type EspnHit = { id?: string; name?: string; logo?: string };
 
-// Keep this empty unless you need to hard-pin a specific teamId to a known ESPN id.
+// Hard-pins: local teamId -> ESPN id
 const ESPN_PINNED_IDS: Record<string, string> = {
-  // Example:
-  // "team-southern": "2582",
+  "team-texas-aandm-corpus-chris": "357", // Texas A&M–Corpus Christi
 };
 
 /**
  * Synonyms keyed by norm(<team name>).
- * Keep keys normalized (no periods). Values can be any reasonable candidate strings.
  */
 const ESPN_SYNONYMS: Record<string, string[]> = {
-  // Common hard ones / log MISS strings
   "miami fl": ["miami (fl)", "miami-fl", "university of miami", "miami"],
   "mcneese st": ["mcneese", "mcneese state", "mcneese-st", "mcneese st."],
   "sam houston st": [
@@ -116,13 +132,36 @@ const ESPN_SYNONYMS: Record<string, string[]> = {
   ],
   albany: ["ualbany", "u albany", "university at albany"],
   "appalachian st": ["appalachian", "appalachian state", "app state", "app st"],
+
   "texas a&m corpus chris": [
     "texas a&m-corpus christi",
     "texas a&m corpus christi",
+    "texas a&m cc",
+    "texas a&m-cc",
+    "a&m corpus christi",
     "tamu corpus christi",
     "tamcc",
   ],
-  // ESPN usually calls this "UL Monroe"
+  "texas a&m corpus christi": [
+    "texas a&m-corpus christi",
+    "texas a&m corpus christi",
+    "texas a&m-cc",
+    "tamu-cc",
+    "tamu cc",
+    "tamcc",
+    "texas a and m corpus christi",
+    "texas a and m cc",
+    "texas a and m c c",
+    "texas am cc",
+  ],
+
+  "southeastern louisiana": [
+    "se louisiana",
+    "se la",
+    "southeastern la",
+    "selu",
+    "southeastern louisiana lions",
+  ],
   "louisiana monroe": [
     "ulm",
     "ul monroe",
@@ -130,6 +169,7 @@ const ESPN_SYNONYMS: Record<string, string[]> = {
     "louisiana at monroe",
     "la monroe",
   ],
+
   "st francis": [
     "saint francis",
     "saint francis (pa)",
@@ -137,9 +177,6 @@ const ESPN_SYNONYMS: Record<string, string[]> = {
     "st. francis (pa)",
   ],
   "saint francis": ["st francis", "saint francis (pa)", "st francis (pa)"],
-
-  // NOTE: If ESPN index truly doesn't include a school (e.g., Queens, Lindenwood, Southern Indiana),
-  // those will remain MISS until your ESPN source includes them or you pin them.
 };
 
 function isCollisionRiskCandidate(candidate: string): boolean {
@@ -147,18 +184,12 @@ function isCollisionRiskCandidate(candidate: string): boolean {
   return toks.length <= 1;
 }
 
-/**
- * Optional team-specific requirements on the candidate we matched on.
- * Use this to block overly-generic matches.
- */
 const TEAM_MATCH_TOKEN_REQUIREMENTS: Record<string, string[]> = {
   "team-miami-fl": ["miami"],
   "team-fiu": ["international", "panthers", "fiu"],
   "team-nebraska-omaha": ["omaha"],
   "team-st-francis-pa": ["francis"],
   "team-saint-francis": ["francis"],
-  // Add pins/requirements here if something keeps resolving wrong:
-  // "team-southern": ["southern"],
 };
 
 function candidateSatisfiesTeamReq(teamId: string, candidate: string): boolean {
@@ -173,39 +204,32 @@ function nameCandidates(name: string): string[] {
   const base = name.trim();
   const out = new Set<string>([base]);
 
-  // drop periods
   const noDots = base.replace(/\./g, "").trim();
   out.add(noDots);
 
-  // "Miami FL" <-> "Miami (FL)"
   const m = base.match(/^(.+?)\s+([A-Z]{2})$/);
   if (m) out.add(`${m[1]} (${m[2]})`);
 
   const m2 = base.match(/^(.+?)\s+\(([A-Z]{2})\)$/);
   if (m2) out.add(`${m2[1]} ${m2[2]}`);
 
-  // leading "St./St " <-> "Saint "
   out.add(base.replace(/^St\.\s+/i, "Saint "));
   out.add(base.replace(/^St\s+/i, "Saint "));
   out.add(base.replace(/^Saint\s+/i, "St. "));
 
-  // trailing "... St." / "... St" <-> "... State"
   out.add(base.replace(/\s+St\.\s*$/i, " State"));
   out.add(base.replace(/\s+St\s*$/i, " State"));
   out.add(base.replace(/\s+State\s*$/i, " St."));
   out.add(base.replace(/\s+State\s*$/i, " St"));
 
-  // "Cal St. X" -> "Cal State X"
   out.add(base.replace(/^Cal\s+St\.\s+/i, "Cal State "));
   out.add(base.replace(/^Cal\s+St\s+/i, "Cal State "));
 
-  // Fix common truncation: "... Corpus Chris" -> "... Corpus Christi"
   if (/\bCorpus\s+Chris\b/i.test(base)) {
     out.add(base.replace(/\bCorpus\s+Chris\b/i, "Corpus Christi"));
     out.add(noDots.replace(/\bCorpus\s+Chris\b/i, "Corpus Christi"));
   }
 
-  // Apply synonyms keyed by norm()
   const k1 = norm(base);
   const s1 = ESPN_SYNONYMS[k1];
   if (s1) for (const s of s1) out.add(s);
@@ -214,7 +238,6 @@ function nameCandidates(name: string): string[] {
   const s2 = ESPN_SYNONYMS[k2];
   if (s2) for (const s of s2) out.add(s);
 
-  // If the team name is an abbreviation already, keep it
   const upper = base.toUpperCase();
   if (/^[A-Z]{2,8}$/.test(upper)) out.add(upper);
 
@@ -225,20 +248,10 @@ type ResolveResult =
   | { method: "PINNED_TEAMID"; hit: EspnHit }
   | { method: "BY_ID"; hit: EspnHit }
   | { method: "BY_NAME"; hit: EspnHit; matchedCandidate: string }
-  | {
-      method: "BY_ALIAS_NAME";
-      hit: EspnHit;
-      matchedCandidate: string;
-      canonicalId: string;
-      canonicalName: string;
-    }
   | { method: "MISS" };
-import { ESPN_MASTER_MAP_BY_TEAMID } from "@/data/espnMasterMap";
 
 function resolveEspnForTeam(
   team: Team,
-  teamsById: Map<string, Team>,
-  aliases: Map<string, string>,
   espnByName: Map<string, EspnHit>,
   espnById: Map<string, EspnHit>
 ): ResolveResult {
@@ -246,10 +259,25 @@ function resolveEspnForTeam(
   const pinned = ESPN_PINNED_IDS[team.teamId];
   if (pinned) {
     const hit = espnById.get(String(pinned));
-    if (hit) return { method: "PINNED_TEAMID", hit };
+    if (hit) {
+      console.log("[ESPN PIN HIT]", {
+        teamId: team.teamId,
+        teamName: team.name,
+        pinned,
+        hitId: hit.id,
+        hitName: hit.name,
+      });
+      return { method: "PINNED_TEAMID", hit };
+    }
+    console.warn("[ESPN PIN MISS]", {
+      teamId: team.teamId,
+      teamName: team.name,
+      pinned,
+      reason: "espnById has no such id",
+    });
   }
 
-  // 1) existing espnTeamId (next strongest)
+  // 1) existing espnTeamId
   if (team.espnTeamId) {
     const hit = espnById.get(String(team.espnTeamId));
     if (hit) return { method: "BY_ID", hit };
@@ -262,7 +290,7 @@ function resolveEspnForTeam(
     if (hit) return { method: "BY_ID", hit };
   }
 
-  // 3) fallback: by-name (team.name)
+  // 3) by-name fallback
   for (const cand of nameCandidates(team.name)) {
     if (!candidateSatisfiesTeamReq(team.teamId, cand)) continue;
     const hit = espnByName.get(norm(cand));
@@ -282,14 +310,16 @@ function resolveEspnForTeam(
 // ---------------- public API ----------------
 
 export function loadTeams(): Map<string, Team> {
-  if (cachedTeams) return cachedTeams;
+  if (!DEV && cachedTeams) return cachedTeams;
 
   const filePath = path.join(process.cwd(), "src", "data", "teams.csv");
   if (!fs.existsSync(filePath)) {
-    cachedTeams = new Map();
-    return cachedTeams;
+    const m = new Map<string, Team>();
+    if (!DEV) cachedTeams = m;
+    return m;
   }
 
+  // still load aliases for resolveTeamId() convenience mapping
   const aliases = loadAliases();
 
   const espnIndex = loadEspnTeamsIndex() as any;
@@ -307,6 +337,16 @@ export function loadTeams(): Map<string, Team> {
   const iPR = header.indexOf("powerRating");
   const iHca = header.indexOf("hca");
 
+  const iW = header.indexOf("wins");
+  const iL = header.indexOf("losses");
+  const iBarthag = header.indexOf("barthag");
+  const iAdjO = header.indexOf("adjO");
+  const iAdjD = header.indexOf("adjD");
+  const iTempo = header.indexOf("tempo");
+  const iTRank = header.indexOf("torvikRank");
+  const iOERank = header.indexOf("torvikOeRank");
+  const iDERank = header.indexOf("torvikDeRank");
+
   const missing: string[] = [];
   if (iTeamId < 0) missing.push("teamId");
   if (iName < 0) missing.push("name|teamName");
@@ -315,9 +355,14 @@ export function loadTeams(): Map<string, Team> {
     throw new Error(`teams.csv missing required columns: ${missing.join(",")}`);
   }
 
-  // Pass 1: load teams keyed by CSV teamId
+  const toNum = (v: any): number | undefined => {
+    const n = Number(String(v ?? "").trim());
+    return Number.isFinite(n) ? n : undefined;
+  };
+
   const map = new Map<string, Team>();
 
+  // Pass 1: load teams keyed by CSV teamId
   for (const r of rows) {
     const teamId = (r[iTeamId] ?? "").trim();
     if (!teamId) continue;
@@ -327,6 +372,18 @@ export function loadTeams(): Map<string, Team> {
     const powerRating = Number((r[iPR] ?? "").trim());
     const hca = iHca >= 0 ? Number((r[iHca] ?? "").trim()) : NaN;
 
+    const wins = iW >= 0 ? toNum(r[iW]) : undefined;
+    const losses = iL >= 0 ? toNum(r[iL]) : undefined;
+
+    const barthag = iBarthag >= 0 ? toNum(r[iBarthag]) : undefined;
+    const adjO = iAdjO >= 0 ? toNum(r[iAdjO]) : undefined;
+    const adjD = iAdjD >= 0 ? toNum(r[iAdjD]) : undefined;
+    const tempo = iTempo >= 0 ? toNum(r[iTempo]) : undefined;
+
+    const torvikRank = iTRank >= 0 ? toNum(r[iTRank]) : undefined;
+    const torvikOeRank = iOERank >= 0 ? toNum(r[iOERank]) : undefined;
+    const torvikDeRank = iDERank >= 0 ? toNum(r[iDERank]) : undefined;
+
     map.set(teamId, {
       teamId,
       name,
@@ -335,12 +392,39 @@ export function loadTeams(): Map<string, Team> {
       hca: Number.isFinite(hca) ? hca : 2,
       logo: undefined,
       espnTeamId: undefined,
+
+      wins,
+      losses,
+      record:
+        wins != null && losses != null
+          ? `${Math.round(wins)}-${Math.round(losses)}`
+          : undefined,
+
+      barthag,
+      adjO,
+      adjD,
+      tempo,
+
+      torvikRank,
+      torvikOeRank,
+      torvikDeRank,
     });
   }
 
   // Pass 2: attach ESPN logo/id
   for (const [, team] of map.entries()) {
-    const res = resolveEspnForTeam(team, map, aliases, byName, byId);
+    const res = resolveEspnForTeam(team, byName, byId);
+
+    if (team.teamId === "team-texas-aandm-corpus-chris") {
+      console.log("[ESPN RESOLVE DEBUG]", {
+        teamId: team.teamId,
+        teamName: team.name,
+        method: res.method,
+        hitId: (res as any).hit?.id,
+        hitName: (res as any).hit?.name,
+        hitLogo: (res as any).hit?.logo,
+      });
+    }
 
     if (res.method !== "MISS") {
       team.logo = res.hit.logo;
@@ -350,16 +434,14 @@ export function loadTeams(): Map<string, Team> {
     }
   }
 
-  // Convenience:
-  // Only add aliasId -> canonicalTeam when the aliasId is NOT already a real teamId row.
-  // Never overwrite real teams (prevents PR/HCA/logo bleed).
+  // Convenience alias mapping (never overwrite real teams)
   for (const [aliasId, canonicalId] of aliases.entries()) {
-    if (map.has(aliasId)) continue; // <-- critical fix
+    if (map.has(aliasId)) continue;
     const canonicalTeam = map.get(canonicalId);
     if (canonicalTeam) map.set(aliasId, canonicalTeam);
   }
 
-  cachedTeams = map;
+  if (!DEV) cachedTeams = map;
   return map;
 }
 
