@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated Torvik venue split CSVs (outputs from updateTeamsFromTorvik.ts, not read by app)
+src/data/homeTeams.csv
+src/data/awayTeams.csv
