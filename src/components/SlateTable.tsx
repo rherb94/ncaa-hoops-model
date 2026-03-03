@@ -273,21 +273,17 @@ function PickCell({
 
   return (
     <div className="flex items-center gap-1.5">
+      {/* Side + line combined in one pill */}
       <span
-        className={`rounded border px-1.5 py-0.5 text-xs font-semibold ${sideColor}`}
+        className={`rounded border px-2 py-0.5 text-xs font-semibold tabular-nums ${sideColor}`}
       >
-        {side}
+        {side}{lineStr ? ` ${lineStr}` : ""}
       </span>
-      {lineStr && (
-        <span className="tabular-nums text-xs text-zinc-200 font-medium">
-          {lineStr}
-        </span>
-      )}
       {logoSrc && (
         <img
           src={logoSrc}
           alt={book ?? ""}
-          className="h-5 w-5 rounded object-contain opacity-80"
+          className="h-4 w-4 rounded object-contain opacity-70"
           loading="lazy"
           title={book ?? ""}
         />
@@ -614,22 +610,11 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                       <GameCell g={g} />
                     </td>
 
-                    {/* Spread + source book logo */}
+                    {/* Spread */}
                     <td
                       className={`${tdBase} tabular-nums text-zinc-200 align-middle`}
                     >
-                      <div className="flex items-center gap-1.5">
-                        <span>{fmtSpread(g.consensus?.spread)}</span>
-                        {bookLogoSrc(g.consensus?.source) && (
-                          <img
-                            src={bookLogoSrc(g.consensus?.source)!}
-                            alt={g.consensus?.source ?? ""}
-                            className="h-4 w-4 rounded object-contain opacity-50"
-                            loading="lazy"
-                            title={g.consensus?.source ?? ""}
-                          />
-                        )}
-                      </div>
+                      {fmtSpread(g.consensus?.spread)}
                     </td>
 
                     {/* Model spread */}
