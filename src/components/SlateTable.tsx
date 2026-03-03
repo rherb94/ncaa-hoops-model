@@ -260,11 +260,13 @@ function PickCell({
       ? "text-emerald-300 bg-emerald-500/10 border-emerald-400/30"
       : "text-rose-300 bg-rose-500/10 border-rose-400/30";
 
+  // Line stored in HOME convention; flip sign for AWAY picks so display reads from their perspective
+  const displayLine = line != null && side === "AWAY" ? -line : line;
   const lineStr =
-    line != null && !Number.isNaN(line)
-      ? line > 0
-        ? `+${fmtNum(line)}`
-        : fmtNum(line)
+    displayLine != null && !Number.isNaN(displayLine)
+      ? displayLine > 0
+        ? `+${fmtNum(displayLine)}`
+        : fmtNum(displayLine)
       : null;
 
   const logoSrc = bookLogoSrc(book);

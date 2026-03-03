@@ -1,0 +1,68 @@
+name: Daily Closing Lines Snapshot
+
+# Uses TheOddsAPI's historical endpoint (paid plan) to capture closing lines
+# at precise timestamps — no need to poll; we ask for the exact moment we want.
+#
+# Run 1 — 11:50am ET (16:50 UTC): captures closing lines for noon and early afternoon games
+# Run 2 —  6:50pm ET (23:50 UTC): captures closing lines for evening games (7pm+)
+#
+# Games that have already started at the snapshot time are absent from the API
+# response, but are preserved from Run 1 so no data is lost.
+
+on:
+  schedule:
+    - cron: '50 16 * * *'    # 11:50am ET (winter) / 12:50pm ET (summer)
+    - cron: '50 23 * * *'    # 6:50pm ET (winter) / 7:50pm ET (summer)
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Date label (YYYY-MM-DD). Defaults to today ET.'
+        required: false
+      snapshot_time:
+        description: 'Historical snapshot time (ISO 8601 UTC, e.g. 2026-03-02T16:50:00Z). Defaults to now.'
+        required: false
+
+jobs:
+  closing-lines:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Fetch closing line snapshot
+        env:
+          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+          DATE: ${{ inputs.date || '' }}
+          # Pass the actual cron trigger time as SNAPSHOT_TIME so historical queries
+          # are reproducible even if the job starts slightly late.
+          SNAPSHOT_TIME: ${{ inputs.snapshot_time || '' }}
+        run: |
+          # If SNAPSHOT_TIME not set by input, use the current UTC time
+          export SNAPSHOT_TIME="${SNAPSHOT_TIME:-$(date -u +%Y-%m-%dT%H:%M:%SZ)}"
+          echo "Querying historical odds at: $SNAPSHOT_TIME"
+          npx tsx src/scripts/fetchClosingLines.ts
+
+      - name: Commit closing lines
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+          git add src/data/closing_lines/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            STAMP=$(date -u +%Y-%m-%dT%H:%MZ)
+            git commit -m "chore: closing lines snapshot ${STAMP} [skip ci]"
+            git push
+          fi

@@ -13,6 +13,7 @@ import path from "node:path";
 const DATA_DIR = path.join(process.cwd(), "src", "data");
 const SNAP_DIR = path.join(DATA_DIR, "odds_opening");
 const RES_DIR = path.join(DATA_DIR, "results");
+const CLOSE_DIR = path.join(DATA_DIR, "closing_lines");
 
 function loadJson<T>(p: string): T | null {
   try {
@@ -22,15 +23,24 @@ function loadJson<T>(p: string): T | null {
   }
 }
 
-function datesInRange(from: string, to: string): string[] {
+function datesInRange(from: string, to: string, limit = 200): string[] {
   const dates: string[] = [];
   const cur = new Date(from + "T12:00:00Z");
   const end = new Date(to + "T12:00:00Z");
-  while (cur <= end && dates.length < 30) {
+  while (cur <= end && dates.length < limit) {
     dates.push(cur.toISOString().slice(0, 10));
     cur.setUTCDate(cur.getUTCDate() + 1);
   }
   return dates;
+}
+
+function allAvailableDates(): string[] {
+  if (!fs.existsSync(SNAP_DIR)) return [];
+  return fs
+    .readdirSync(SNAP_DIR)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => f.replace(".json", ""))
+    .sort();
 }
 
 type SnapshotGame = {
@@ -40,6 +50,7 @@ type SnapshotGame = {
   away_team: string;
   home_espnTeamId: string | null;
   away_espnTeamId: string | null;
+  neutralSite?: boolean;
   opening: { book: string; homePoint: number; awayPoint: number } | null;
   model: {
     homeTeamId: string | null;
@@ -60,6 +71,12 @@ type ResultGame = {
   awayScore: number | null;
   actualSpread: number | null; // home spread convention
   winner: "HOME" | "AWAY" | "TIE" | null;
+};
+
+type ClosingLineGame = {
+  oddsEventId: string;
+  homePoint: number | null;
+  awayPoint: number | null;
 };
 
 function evaluatePick(
@@ -89,12 +106,31 @@ function evaluatePick(
   return homeCovered ? "LOSS" : "WIN"; // picking AWAY
 }
 
+function computeClv(
+  openingHomePoint: number | null,
+  closingHomePoint: number | null,
+  pickSide: "HOME" | "AWAY" | "NONE"
+): number | null {
+  if (openingHomePoint === null || closingHomePoint === null) return null;
+  if (pickSide === "NONE") return null;
+  // CLV = points gained vs. closing line from our pick's perspective.
+  // HOME pick: positive CLV = opening was better (less negative) than close.
+  //   e.g. open -3, close -5 → we avoided -5 → CLV = open - close = -3 - (-5) = +2
+  // AWAY pick: positive CLV = closing moved in AWAY direction vs opening.
+  //   e.g. open -3, close -1 → away went from +3 to +1 → we got better AWAY price → CLV = close - open = -1 - (-3) = +2
+  const raw = openingHomePoint - closingHomePoint;
+  return pickSide === "HOME" ? raw : -raw;
+}
+
 function analyzeDate(date: string) {
   const snap = loadJson<{ date: string; games: SnapshotGame[] }>(
     path.join(SNAP_DIR, `${date}.json`)
   );
   const res = loadJson<{ date: string; games: ResultGame[] }>(
     path.join(RES_DIR, `${date}.json`)
+  );
+  const closeData = loadJson<{ date: string; games: ClosingLineGame[] }>(
+    path.join(CLOSE_DIR, `${date}.json`)
   );
 
   if (!snap) return null;
@@ -107,11 +143,19 @@ function analyzeDate(date: string) {
     }
   }
 
+  // index closing lines by oddsEventId
+  const closingByEventId = new Map<string, ClosingLineGame>();
+  for (const g of closeData?.games ?? []) {
+    if (g.oddsEventId) closingByEventId.set(g.oddsEventId, g);
+  }
+
   const games = snap.games.map((sg) => {
     const result =
       sg.home_espnTeamId && sg.away_espnTeamId
         ? resultByTeams.get(`${sg.home_espnTeamId}|${sg.away_espnTeamId}`) ?? null
         : null;
+
+    const closing = sg.oddsEventId ? closingByEventId.get(sg.oddsEventId) ?? null : null;
 
     const pickResult = evaluatePick(
       sg.model?.signal ?? "NONE",
@@ -120,19 +164,36 @@ function analyzeDate(date: string) {
       result?.actualSpread ?? null
     );
 
-    const pickSide =
+    const pickSide: "HOME" | "AWAY" | "NONE" =
       sg.model?.signal === "NONE" || !sg.model?.edge
         ? "NONE"
         : sg.model.edge < 0
         ? "HOME"
         : "AWAY";
 
+    // For CLV, use raw edge direction regardless of signal threshold so
+    // all games show whether the model direction beat the closing line.
+    const clvPickSide: "HOME" | "AWAY" | "NONE" =
+      sg.model?.edge == null || sg.model.edge === 0
+        ? "NONE"
+        : sg.model.edge < 0
+        ? "HOME"
+        : "AWAY";
+
+    const closingSpread = closing?.homePoint ?? null;
+    const clv = computeClv(sg.opening?.homePoint ?? null, closingSpread, clvPickSide);
+
     return {
       date,
       home_team: sg.home_team,
       away_team: sg.away_team,
+      home_espnTeamId: sg.home_espnTeamId ?? null,
+      away_espnTeamId: sg.away_espnTeamId ?? null,
+      neutral_site: sg.neutralSite ?? false,
       opening_spread: sg.opening?.homePoint ?? null, // home spread
       opening_book: sg.opening?.book ?? null,
+      closing_spread: closingSpread,
+      clv,
       model_spread: sg.model?.modelSpread ?? null,
       edge: sg.model?.edge ?? null,
       signal: sg.model?.signal ?? "NONE",
@@ -224,23 +285,19 @@ export async function GET(req: Request) {
   const dateSingle = url.searchParams.get("date");
   const dateFrom = url.searchParams.get("from");
   const dateTo = url.searchParams.get("to");
+  const allFlag = url.searchParams.get("all"); // ?all=1 → every available snapshot
 
   let dates: string[];
-  if (dateSingle) {
+  if (allFlag === "1") {
+    dates = allAvailableDates();
+  } else if (dateSingle) {
     dates = [dateSingle];
   } else if (dateFrom) {
-    const to = dateTo ?? dateSingle ?? new Date().toISOString().slice(0, 10);
+    const to = dateTo ?? new Date().toISOString().slice(0, 10);
     dates = datesInRange(dateFrom, to);
   } else {
     // default: last 7 days with available snapshots
-    const available = fs.existsSync(SNAP_DIR)
-      ? fs.readdirSync(SNAP_DIR)
-          .filter((f) => f.endsWith(".json"))
-          .map((f) => f.replace(".json", ""))
-          .sort()
-          .slice(-7)
-      : [];
-    dates = available;
+    dates = allAvailableDates().slice(-7);
   }
 
   if (dates.length === 0) {

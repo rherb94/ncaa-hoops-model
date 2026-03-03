@@ -8,6 +8,8 @@
 // - Keeps slate summary logging
 
 import { NextResponse } from "next/server";
+import fs from "node:fs";
+import path from "node:path";
 import { TheOddsApiProvider } from "@/lib/odds/providers/theOddsApi";
 import { loadTeams } from "@/data/teams";
 import type { SlateGame, SlateResponse } from "@/lib/types";
@@ -87,6 +89,22 @@ function parseDebug(reqUrl: URL) {
   return reqUrl.searchParams.get("debug") === "1";
 }
 
+// Read neutral site flags from today's opener snapshot (written by daily workflow at 11am ET).
+// Falls back to empty map (all false) if snapshot hasn't been written yet.
+function loadNeutralSiteByEventId(date: string): Map<string, boolean> {
+  const p = path.join(process.cwd(), "src", "data", "odds_opening", `${date}.json`);
+  try {
+    const snap = JSON.parse(fs.readFileSync(p, "utf-8"));
+    const m = new Map<string, boolean>();
+    for (const g of snap.games ?? []) {
+      if (g.oddsEventId) m.set(g.oddsEventId, g.neutralSite ?? false);
+    }
+    return m;
+  } catch {
+    return new Map();
+  }
+}
+
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const date = url.searchParams.get("date");
@@ -102,6 +120,7 @@ export async function GET(req: Request) {
 
   const teams = loadTeams();
   const getTeam = (teamId: string) => teams.get(teamId);
+  const neutralSiteMap = loadNeutralSiteByEventId(date);
 
   const games: SlateGame[] = (oddsSlate.games ?? []).map((g: any) => {
     const books = g.books ?? {};
@@ -109,14 +128,23 @@ export async function GET(req: Request) {
 
     const away = getTeam(g.awayTeamId);
     const home = getTeam(g.homeTeamId);
+    const neutralSite = neutralSiteMap.get(g.gameId) ?? false;
 
     const awayPR = away?.powerRating ?? 0;
     const homePR = home?.powerRating ?? 0;
-    const hca = home?.hca ?? 2;
+    const hca = neutralSite ? 0 : (home?.hca ?? 2);
 
     // --- raw model spread ---
+    if (!home) console.warn(`⚠️  SLATE: home team not found in teams.csv — teamId="${g.homeTeamId}" (${g.homeTeam})`);
+    if (!away) console.warn(`⚠️  SLATE: away team not found in teams.csv — teamId="${g.awayTeamId}" (${g.awayTeam})`);
+
     const eff =
       home && away ? computeEfficiencyModel(home, away, hca) : undefined;
+
+    if (home && away && !eff) {
+      console.warn(`⚠️  SLATE EFFICIENCY FALLBACK: ${g.awayTeam} @ ${g.homeTeam} — missing adjO/adjD/tempo, using power rating spread`);
+    }
+
     const rawModelSpread =
       eff?.modelSpread ?? computeModelSpread(homePR, awayPR, hca);
 
@@ -159,6 +187,7 @@ export async function GET(req: Request) {
     return {
       gameId: g.gameId,
       startTimeISO: g.startTimeISO,
+      neutralSite,
       awayTeamId: g.awayTeamId,
       homeTeamId: g.homeTeamId,
       awayTeam: g.awayTeam,

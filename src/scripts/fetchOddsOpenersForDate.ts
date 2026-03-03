@@ -24,6 +24,15 @@ if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 const DATE =
   process.env.DATE || new Date().toISOString().slice(0, 10);
 
+// If SNAPSHOT_TIME is set (ISO 8601 UTC), use the historical odds endpoint
+// so this script can backfill past dates. Requires a paid TheOddsAPI plan.
+// Example: SNAPSHOT_TIME=2026-02-24T16:00:00Z (≈11am ET)
+const SNAPSHOT_TIME = process.env.SNAPSHOT_TIME || "";
+
+// Skip writing if the output file already exists, unless FORCE=1.
+// This prevents burning API credits when re-running a backfill range.
+const SKIP_IF_EXISTS = process.env.FORCE !== "1";
+
 const SPORT_KEY = "basketball_ncaab";
 const REGIONS = "us";
 const MARKETS = "spreads";
@@ -182,17 +191,83 @@ function topEspnSuggestions(oddsName: string, espnByName: Map<string, any>) {
   return out;
 }
 
+// ---- ESPN neutral-site detection ----
+type EspnCompetitor = {
+  id: string;
+  homeAway: "home" | "away";
+};
+type EspnCompetition = {
+  neutralSite: boolean;
+  competitors: EspnCompetitor[];
+};
+type EspnEvent = {
+  id: string;
+  competitions: EspnCompetition[];
+};
+
+async function fetchEspnNeutralSites(dateStr: string): Promise<Map<string, boolean>> {
+  // dateStr in YYYYMMDD format
+  const espnDate = dateStr.replace(/-/g, "");
+  const url =
+    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `/mens-college-basketball/scoreboard?dates=${espnDate}&groups=50&limit=200`;
+
+  const neutralByTeamPair = new Map<string, boolean>();
+  try {
+    const res = await fetch(url, {
+      headers: { "user-agent": "ncaam-model/1.0 (personal project)" },
+    });
+    if (!res.ok) {
+      console.warn(`⚠️  ESPN scoreboard fetch failed (${res.status}) — neutral site detection skipped`);
+      return neutralByTeamPair;
+    }
+    const json = (await res.json()) as { events?: EspnEvent[] };
+    for (const event of json.events ?? []) {
+      const comp = event.competitions?.[0];
+      if (!comp) continue;
+      const neutralSite = comp.neutralSite ?? false;
+      const home = comp.competitors?.find((c) => c.homeAway === "home");
+      const away = comp.competitors?.find((c) => c.homeAway === "away");
+      if (home?.id && away?.id) {
+        neutralByTeamPair.set(`${home.id}|${away.id}`, neutralSite);
+      }
+    }
+    const neutralCount = [...neutralByTeamPair.values()].filter(Boolean).length;
+    console.log(`ESPN scoreboard: ${neutralByTeamPair.size} games, ${neutralCount} neutral-site`);
+  } catch (err) {
+    console.warn(`⚠️  ESPN fetch error — neutral site detection skipped:`, err);
+  }
+  return neutralByTeamPair;
+}
+
 // ---------------- main ----------------
 async function main() {
-  // Use the live endpoint — the GitHub Action runs at 11am ET specifically to
-  // capture opening lines, so we just snapshot whatever is live at that moment.
-  // This works on any API tier (no paid historical access required).
-  const url =
-    `https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds` +
-    `?apiKey=${encodeURIComponent(ODDS_API_KEY!)}` +
-    `&regions=${encodeURIComponent(REGIONS)}` +
-    `&markets=${encodeURIComponent(MARKETS)}` +
-    `&oddsFormat=american`;
+  // Safety: skip if snapshot already exists (avoids burning API credits on re-runs).
+  // Set FORCE=1 to overwrite an existing file.
+  if (SKIP_IF_EXISTS && fileExists(OUT_FILE)) {
+    console.log(`⏭  Snapshot already exists: ${OUT_FILE} (set FORCE=1 to overwrite)`);
+    return;
+  }
+
+  // Live endpoint: used by the daily GitHub Action at 11am ET.
+  // Historical endpoint: used for backfills when SNAPSHOT_TIME is set.
+  // The historical response wraps games in { data: [...] } instead of a direct array.
+  const url = SNAPSHOT_TIME
+    ? `https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds-history` +
+      `?apiKey=${encodeURIComponent(ODDS_API_KEY!)}` +
+      `&date=${encodeURIComponent(SNAPSHOT_TIME)}` +
+      `&regions=${encodeURIComponent(REGIONS)}` +
+      `&markets=${encodeURIComponent(MARKETS)}` +
+      `&oddsFormat=american`
+    : `https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds` +
+      `?apiKey=${encodeURIComponent(ODDS_API_KEY!)}` +
+      `&regions=${encodeURIComponent(REGIONS)}` +
+      `&markets=${encodeURIComponent(MARKETS)}` +
+      `&oddsFormat=american`;
+
+  if (SNAPSHOT_TIME) {
+    console.log(`📅 Historical mode: DATE=${DATE}, SNAPSHOT_TIME=${SNAPSHOT_TIME}`);
+  }
 
   const res = await fetch(url, {
     headers: {
@@ -206,8 +281,29 @@ async function main() {
     throw new Error(`Odds API failed (${res.status}): ${text.slice(0, 500)}`);
   }
 
-  const json = (await res.json()) as LiveOddsResponse;
-  const capturedAt = new Date().toISOString();
+  const raw = await res.json();
+  // Historical endpoint wraps in { data: [...] }; live returns a direct array.
+  const json: LiveOddsResponse = SNAPSHOT_TIME
+    ? ((raw as { data?: OddsGame[] }).data ?? [])
+    : (raw as LiveOddsResponse);
+  const capturedAt = SNAPSHOT_TIME || new Date().toISOString();
+
+  // Filter to only games starting on DATE in Eastern Time.
+  // Midnight ET = 05:00 UTC in winter (EST) / 04:00 UTC during DST.
+  // Using 05:00 UTC as the boundary is safe — no NCAAB games tip off between
+  // midnight and 1am ET, so we never miss a real game with this cutoff.
+  const dayStartUTC = new Date(`${DATE}T05:00:00Z`);
+  const dayEndUTC   = new Date(dayStartUTC.getTime() + 24 * 60 * 60 * 1000);
+
+  const filtered = (json ?? []).filter((g) => {
+    const ct = new Date(g.commence_time);
+    return ct >= dayStartUTC && ct < dayEndUTC;
+  });
+
+  console.log(`API returned ${json.length} games; keeping ${filtered.length} on ${DATE} ET`);
+
+  // Fetch ESPN neutral-site flags for today's games
+  const neutralByTeamPair = await fetchEspnNeutralSites(DATE);
 
   // ESPN index (name lookup only)
   const espnIndex = loadEspnTeamsIndex() as any;
@@ -225,7 +321,7 @@ async function main() {
   const misses: Array<{ side: "HOME" | "AWAY"; name: string; key: string }> =
     [];
 
-  for (const g of json ?? []) {
+  for (const g of filtered) {
     const spread = pickBookSpread(g, preferredBooks);
 
     const homeKey = normOddsTeamName(g.home_team);
@@ -261,9 +357,42 @@ async function main() {
       signal: string;
     } | null = null;
 
+    // Warn if team IDs couldn't be resolved at all
+    if (!homeTeamId)
+      console.warn(`⚠️  NO TORVIK ID for home="${g.home_team}" — model will be null`);
+    if (!awayTeamId)
+      console.warn(`⚠️  NO TORVIK ID for away="${g.away_team}" — model will be null`);
+
+    // Warn if team ID resolved but not found in teams.csv
+    if (homeTeamId && !homeTeam)
+      console.warn(`⚠️  TEAM NOT IN teams.csv: homeTeamId="${homeTeamId}" (${g.home_team})`);
+    if (awayTeamId && !awayTeam)
+      console.warn(`⚠️  TEAM NOT IN teams.csv: awayTeamId="${awayTeamId}" (${g.away_team})`);
+
+    // Check if this game is at a neutral site (tournament, conference tourneys, etc.)
+    // ESPN returns neutralSite:true for games not played at either team's home arena.
+    // When neutral, HCA is 0 — neither team has a home advantage.
+    const neutralSite =
+      homeRes.espnTeamId && awayRes.espnTeamId
+        ? (neutralByTeamPair.get(`${homeRes.espnTeamId}|${awayRes.espnTeamId}`) ?? false)
+        : false;
+
+    if (neutralSite) {
+      console.log(`  🏟  Neutral site: ${g.away_team} @ ${g.home_team} (HCA → 0)`);
+    }
+
     if (homeTeam && awayTeam) {
-      const hca = homeTeam.hca ?? 2;
+      const hca = neutralSite ? 0 : (homeTeam.hca ?? 2);
       const eff = computeEfficiencyModel(homeTeam, awayTeam, hca);
+
+      // Warn if efficiency model couldn't run (missing adjO/adjD/tempo in Torvik data)
+      if (!eff) {
+        console.warn(
+          `⚠️  EFFICIENCY FALLBACK: ${g.away_team} @ ${g.home_team}` +
+          ` — missing adjO/adjD/tempo, using power rating spread instead`
+        );
+      }
+
       const rawModelSpread =
         eff?.modelSpread ??
         computeModelSpread(homeTeam.powerRating, awayTeam.powerRating, hca);
@@ -292,6 +421,7 @@ async function main() {
       away_espnTeamId: awayRes.espnTeamId ?? null,
       home_resolve: homeRes.method,
       away_resolve: awayRes.method,
+      neutralSite,
 
       opening: spread
         ? {
