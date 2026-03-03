@@ -17,9 +17,11 @@ const DATE =
   })();
 
 const ESPN_DATE = DATE.replace(/-/g, ""); // YYYYMMDD
+// groups=50 = NCAA Division I Men's Basketball — without this ESPN only
+// returns a small "featured" subset of games, not the full D1 slate.
 const ESPN_URL =
   `https://site.api.espn.com/apis/site/v2/sports/basketball` +
-  `/mens-college-basketball/scoreboard?dates=${ESPN_DATE}&limit=200`;
+  `/mens-college-basketball/scoreboard?dates=${ESPN_DATE}&groups=50&limit=200`;
 
 const OUT_DIR = path.join(process.cwd(), "src", "data", "results");
 const OUT_FILE = path.join(OUT_DIR, `${DATE}.json`);
