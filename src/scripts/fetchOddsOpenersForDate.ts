@@ -24,6 +24,15 @@ if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 const DATE =
   process.env.DATE || new Date().toISOString().slice(0, 10);
 
+// If SNAPSHOT_TIME is set (ISO 8601 UTC), use the historical odds endpoint
+// so this script can backfill past dates. Requires a paid TheOddsAPI plan.
+// Example: SNAPSHOT_TIME=2026-02-24T16:00:00Z (≈11am ET)
+const SNAPSHOT_TIME = process.env.SNAPSHOT_TIME || "";
+
+// Skip writing if the output file already exists, unless FORCE=1.
+// This prevents burning API credits when re-running a backfill range.
+const SKIP_IF_EXISTS = process.env.FORCE !== "1";
+
 const SPORT_KEY = "basketball_ncaab";
 const REGIONS = "us";
 const MARKETS = "spreads";
@@ -233,15 +242,32 @@ async function fetchEspnNeutralSites(dateStr: string): Promise<Map<string, boole
 
 // ---------------- main ----------------
 async function main() {
-  // Use the live endpoint — the GitHub Action runs at 11am ET specifically to
-  // capture opening lines, so we just snapshot whatever is live at that moment.
-  // This works on any API tier (no paid historical access required).
-  const url =
-    `https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds` +
-    `?apiKey=${encodeURIComponent(ODDS_API_KEY!)}` +
-    `&regions=${encodeURIComponent(REGIONS)}` +
-    `&markets=${encodeURIComponent(MARKETS)}` +
-    `&oddsFormat=american`;
+  // Safety: skip if snapshot already exists (avoids burning API credits on re-runs).
+  // Set FORCE=1 to overwrite an existing file.
+  if (SKIP_IF_EXISTS && fileExists(OUT_FILE)) {
+    console.log(`⏭  Snapshot already exists: ${OUT_FILE} (set FORCE=1 to overwrite)`);
+    return;
+  }
+
+  // Live endpoint: used by the daily GitHub Action at 11am ET.
+  // Historical endpoint: used for backfills when SNAPSHOT_TIME is set.
+  // The historical response wraps games in { data: [...] } instead of a direct array.
+  const url = SNAPSHOT_TIME
+    ? `https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds-history` +
+      `?apiKey=${encodeURIComponent(ODDS_API_KEY!)}` +
+      `&date=${encodeURIComponent(SNAPSHOT_TIME)}` +
+      `&regions=${encodeURIComponent(REGIONS)}` +
+      `&markets=${encodeURIComponent(MARKETS)}` +
+      `&oddsFormat=american`
+    : `https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds` +
+      `?apiKey=${encodeURIComponent(ODDS_API_KEY!)}` +
+      `&regions=${encodeURIComponent(REGIONS)}` +
+      `&markets=${encodeURIComponent(MARKETS)}` +
+      `&oddsFormat=american`;
+
+  if (SNAPSHOT_TIME) {
+    console.log(`📅 Historical mode: DATE=${DATE}, SNAPSHOT_TIME=${SNAPSHOT_TIME}`);
+  }
 
   const res = await fetch(url, {
     headers: {
@@ -255,8 +281,12 @@ async function main() {
     throw new Error(`Odds API failed (${res.status}): ${text.slice(0, 500)}`);
   }
 
-  const json = (await res.json()) as LiveOddsResponse;
-  const capturedAt = new Date().toISOString();
+  const raw = await res.json();
+  // Historical endpoint wraps in { data: [...] }; live returns a direct array.
+  const json: LiveOddsResponse = SNAPSHOT_TIME
+    ? ((raw as { data?: OddsGame[] }).data ?? [])
+    : (raw as LiveOddsResponse);
+  const capturedAt = SNAPSHOT_TIME || new Date().toISOString();
 
   // Filter to only games starting on DATE in Eastern Time.
   // Midnight ET = 05:00 UTC in winter (EST) / 04:00 UTC during DST.
