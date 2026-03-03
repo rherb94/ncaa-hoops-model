@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-02",
+  "fetched_at": "2026-03-03T06:52:43.973Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401820778",
+      "commence_time": "2026-03-03T00:00Z",
+      "home_team": "NC State Wolfpack",
+      "away_team": "Duke Blue Devils",
+      "home_espnTeamId": "152",
+      "away_espnTeamId": "150",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 64,
+      "awayScore": 93,
+      "actualSpread": 29,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401820821",
+      "commence_time": "2026-03-03T02:00Z",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Iowa State Cyclones",
+      "home_espnTeamId": "12",
+      "away_espnTeamId": "66",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 73,
+      "awayScore": 57,
+      "actualSpread": -16,
+      "winner": "HOME"
+    }
+  ]
+}
