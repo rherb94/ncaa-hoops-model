@@ -17,11 +17,30 @@ const DATE =
   })();
 
 const ESPN_DATE = DATE.replace(/-/g, ""); // YYYYMMDD
-// groups=50 = NCAA Division I Men's Basketball — without this ESPN only
-// returns a small "featured" subset of games, not the full D1 slate.
-const ESPN_URL =
-  `https://site.api.espn.com/apis/site/v2/sports/basketball` +
-  `/mens-college-basketball/scoreboard?dates=${ESPN_DATE}&groups=50&limit=200`;
+
+// Games that tip off after ~7pm ET have a UTC commence_time of the NEXT calendar
+// day. ESPN's scoreboard API uses UTC dates, so we must also query the next UTC
+// day to capture those late games (e.g. 7:30pm ET = 00:30 UTC next day).
+const ESPN_DATE_NEXT = (() => {
+  const d = new Date(`${DATE}T12:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().slice(0, 10).replace(/-/g, "");
+})();
+
+// ET date window: midnight ET → midnight ET next day.
+// Midnight ET = 05:00 UTC in winter (EST) / 04:00 UTC during DST.
+// 05:00 UTC is safe — no NCAAB games tip off between midnight and 1am ET.
+const DAY_START_UTC = new Date(`${DATE}T05:00:00Z`);
+const DAY_END_UTC   = new Date(DAY_START_UTC.getTime() + 24 * 60 * 60 * 1000);
+
+function espnUrl(dateStr: string) {
+  // groups=50 = NCAA Division I Men's Basketball — without this ESPN only
+  // returns a small "featured" subset of games, not the full D1 slate.
+  return (
+    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `/mens-college-basketball/scoreboard?dates=${dateStr}&groups=50&limit=200`
+  );
+}
 
 const OUT_DIR = path.join(process.cwd(), "src", "data", "results");
 const OUT_FILE = path.join(OUT_DIR, `${DATE}.json`);
@@ -48,17 +67,47 @@ type EspnEvent = {
   }>;
 };
 
-async function main() {
-  const res = await fetch(ESPN_URL, {
+async function fetchEspn(dateStr: string): Promise<EspnEvent[]> {
+  const url = espnUrl(dateStr);
+  const res = await fetch(url, {
     headers: { "user-agent": "ncaam-model/1.0 (personal project)" },
   });
-
   if (!res.ok) {
-    throw new Error(`ESPN API failed (${res.status}): ${await res.text().catch(() => "")}`);
+    throw new Error(`ESPN API failed for dates=${dateStr} (${res.status}): ${await res.text().catch(() => "")}`);
+  }
+  const json = (await res.json()) as { events?: EspnEvent[] };
+  return json.events ?? [];
+}
+
+async function main() {
+  // Fetch both the ET-date and the next UTC day.
+  // Games tipping off after ~7pm ET have a UTC commence_time of the following
+  // calendar day, so ESPN stores them under the next date.
+  const [eventsToday, eventsNextUtc] = await Promise.all([
+    fetchEspn(ESPN_DATE),
+    fetchEspn(ESPN_DATE_NEXT),
+  ]);
+
+  console.log(`ESPN dates=${ESPN_DATE}: ${eventsToday.length} events`);
+  console.log(`ESPN dates=${ESPN_DATE_NEXT} (next UTC day): ${eventsNextUtc.length} events`);
+
+  // Merge and deduplicate by event id — prefer the record from "today" so
+  // that if the same event appears in both responses we don't double-count.
+  const eventMap = new Map<string, EspnEvent>();
+  for (const e of [...eventsNextUtc, ...eventsToday]) {
+    eventMap.set(e.id, e);
   }
 
-  const json = (await res.json()) as { events?: EspnEvent[] };
-  const events = json.events ?? [];
+  // Filter to only games whose commence_time falls within the ET date window.
+  // This prevents tomorrow's scheduled games (fetched from dates=ESPN_DATE_NEXT)
+  // from bleeding into today's results file.
+  const allEvents = [...eventMap.values()];
+  const events = allEvents.filter((e) => {
+    const ct = new Date(e.date);
+    return ct >= DAY_START_UTC && ct < DAY_END_UTC;
+  });
+
+  console.log(`After ET-window filter (${DATE}): ${events.length} of ${allEvents.length} events kept`);
 
   const games = events.map((e) => {
     const comp = e.competitions?.[0];
