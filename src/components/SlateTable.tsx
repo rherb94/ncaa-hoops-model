@@ -48,7 +48,17 @@ function fmtPct(n: number | undefined | null, digits = 1) {
   return `${(Number(n) * 100).toFixed(digits)}%`;
 }
 
-// Edge with explicit +/- sign and color
+function spreadLabel(n: number | null | undefined) {
+  if (n == null) return "—";
+  return n > 0 ? `+${fmtNum(n)}` : fmtNum(n);
+}
+
+// Which team does the model prefer for any game (not just picks)?
+function modelPrefersSide(edge?: number | null): "HOME" | "AWAY" | null {
+  if (edge == null || edge === 0) return null;
+  return edge < 0 ? "HOME" : "AWAY";
+}
+
 function EdgeCell({ edge }: { edge?: number | null }) {
   if (edge === undefined || edge === null || Number.isNaN(edge))
     return <span className="text-zinc-500">—</span>;
@@ -102,7 +112,6 @@ function bookLogoSrc(book?: string | null) {
   return null;
 }
 
-// Combined pick + best line cell: shows "AWAY  -8.5  [DK logo]"
 function PickCell({
   side,
   line,
@@ -118,7 +127,6 @@ function PickCell({
     ? "text-emerald-300 bg-emerald-500/10 border-emerald-400/30"
     : "text-rose-300 bg-rose-500/10 border-rose-400/30";
 
-  // line is always stored in home-spread convention; negate for AWAY picks
   const displayLine = line != null && side === "AWAY" ? -line : line;
   const lineStr = displayLine != null && !Number.isNaN(displayLine)
     ? (displayLine > 0 ? `+${fmtNum(displayLine)}` : fmtNum(displayLine))
@@ -147,20 +155,55 @@ function PickCell({
   );
 }
 
-function TeamCell({ name, logo }: { name: string; logo?: string | null }) {
+function NeutralBadge() {
   return (
-    <div className="flex items-center gap-2 min-w-0">
-      {logo ? (
-        <img
-          src={logo}
-          alt=""
-          className="h-6 w-6 shrink-0 rounded-sm object-contain opacity-95"
-          loading="lazy"
-        />
-      ) : (
-        <div className="h-6 w-6 shrink-0 rounded-sm bg-zinc-800" />
+    <span className="inline-flex items-center gap-1 rounded-full border border-amber-400/30 bg-amber-400/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-400/90">
+      Neutral
+    </span>
+  );
+}
+
+// Stacked away/home team display with basketball indicator for model-preferred team
+function GameCell({ g }: { g: SlateGame }) {
+  const preferred = modelPrefersSide(g.model.edge);
+
+  return (
+    <div className="flex flex-col gap-1 min-w-0">
+      {/* Away */}
+      <div className="flex items-center gap-2 min-w-0">
+        {g.awayLogo ? (
+          <img src={g.awayLogo} alt="" className="h-5 w-5 shrink-0 object-contain opacity-90" loading="lazy" />
+        ) : (
+          <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />
+        )}
+        <span className={`text-sm truncate ${preferred === "AWAY" ? "font-semibold text-zinc-100" : "text-zinc-400"}`}>
+          {g.awayTeam}
+        </span>
+        {preferred === "AWAY" && (
+          <span className="shrink-0 text-sm" title="Model prefers this team">🏀</span>
+        )}
+      </div>
+
+      {/* Home */}
+      <div className="flex items-center gap-2 min-w-0">
+        {g.homeLogo ? (
+          <img src={g.homeLogo} alt="" className="h-5 w-5 shrink-0 object-contain opacity-90" loading="lazy" />
+        ) : (
+          <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />
+        )}
+        <span className={`text-sm truncate ${preferred === "HOME" ? "font-semibold text-zinc-100" : "text-zinc-400"}`}>
+          {g.homeTeam}
+        </span>
+        {preferred === "HOME" && (
+          <span className="shrink-0 text-sm" title="Model prefers this team">🏀</span>
+        )}
+      </div>
+
+      {g.neutralSite && (
+        <div className="mt-0.5">
+          <NeutralBadge />
+        </div>
       )}
-      <span className="font-medium text-zinc-100 truncate">{name}</span>
     </div>
   );
 }
@@ -393,9 +436,11 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
       <div className="md:hidden divide-y divide-white/[0.06]">
         {filtered.map((g) => {
           const open = openGameId === g.gameId;
-          const spreadLabel = g.consensus?.spread != null
+          const preferred = modelPrefersSide(g.model.edge);
+          const spreadLabel2 = g.consensus?.spread != null
             ? (g.consensus.spread > 0 ? `+${fmtNum(g.consensus.spread)}` : fmtNum(g.consensus.spread))
             : "—";
+
           return (
             <div key={g.gameId} className={`${rowTint(g.model.signal)}`}>
               {/* Card row */}
@@ -405,39 +450,50 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
               >
                 {/* Top line: time + signal */}
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
+                    {g.neutralSite && <NeutralBadge />}
+                  </div>
                   <span className={`rounded-full border px-2 py-0.5 text-xs ${signalPillClass(g.model.signal)}`}>
                     {g.model.signal}
                   </span>
                 </div>
 
                 {/* Teams */}
-                <div className="space-y-1 mb-2.5">
+                <div className="space-y-1.5 mb-2.5">
+                  {/* Away */}
                   <div className="flex items-center gap-2">
                     {g.awayLogo
                       ? <img src={g.awayLogo} alt="" className="h-5 w-5 shrink-0 object-contain opacity-90" loading="lazy" />
                       : <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />}
-                    <span className="text-sm font-medium text-zinc-200 truncate">{g.awayTeam}</span>
-                    <span className="ml-auto text-xs tabular-nums text-zinc-400">
-                      {g.consensus?.moneylineAway != null ? fmtInt(g.consensus.moneylineAway) : "—"}
+                    <span className={`text-sm font-medium truncate flex-1 ${preferred === "AWAY" ? "text-zinc-100" : "text-zinc-400"}`}>
+                      {g.awayTeam}
+                    </span>
+                    {preferred === "AWAY" && <span className="text-sm shrink-0">🏀</span>}
+                    <span className="ml-2 text-xs tabular-nums text-zinc-500 shrink-0">
+                      {g.consensus?.moneylineAway != null ? fmtInt(g.consensus.moneylineAway) : ""}
                     </span>
                   </div>
+                  {/* Home */}
                   <div className="flex items-center gap-2">
                     {g.homeLogo
                       ? <img src={g.homeLogo} alt="" className="h-5 w-5 shrink-0 object-contain opacity-90" loading="lazy" />
                       : <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />}
-                    <span className="text-sm font-medium text-zinc-100 truncate">{g.homeTeam}</span>
-                    <span className="ml-auto text-xs tabular-nums text-zinc-400">
-                      {g.consensus?.moneylineHome != null ? fmtInt(g.consensus.moneylineHome) : "—"}
+                    <span className={`text-sm font-medium truncate flex-1 ${preferred === "HOME" ? "text-zinc-100" : "text-zinc-400"}`}>
+                      {g.homeTeam}
+                    </span>
+                    {preferred === "HOME" && <span className="text-sm shrink-0">🏀</span>}
+                    <span className="ml-2 text-xs tabular-nums text-zinc-500 shrink-0">
+                      {g.consensus?.moneylineHome != null ? fmtInt(g.consensus.moneylineHome) : ""}
                     </span>
                   </div>
                 </div>
 
                 {/* Stats row */}
-                <div className="flex items-center gap-4 text-xs">
+                <div className="flex items-center gap-3 text-xs flex-wrap">
                   <div>
                     <span className="text-zinc-500">Sprd </span>
-                    <span className="tabular-nums text-zinc-200 font-medium">{spreadLabel}</span>
+                    <span className="tabular-nums text-zinc-200 font-medium">{spreadLabel2}</span>
                   </div>
                   <div>
                     <span className="text-zinc-500">Model </span>
@@ -477,32 +533,22 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
 
       {/* ── Desktop table (hidden below md) ── */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="min-w-[1100px] w-full table-fixed text-sm" aria-label="Daily slate">
+        <table className="min-w-[760px] w-full text-sm" aria-label="Daily slate">
           <colgroup>
-            <col className="w-[85px]" />   {/* Time */}
-            <col className="w-[220px]" />  {/* Away */}
-            <col className="w-[220px]" />  {/* Home */}
+            <col className="w-[72px]" />   {/* Time */}
+            <col className="w-[280px]" />  {/* Game (stacked) */}
             <col className="w-[70px]" />   {/* Spread */}
-            <col className="w-[72px]" />   {/* ML Away */}
-            <col className="w-[72px]" />   {/* ML Home */}
-            <col className="w-[100px]" />  {/* PR A / H */}
-            <col className="w-[55px]" />   {/* HCA */}
             <col className="w-[80px]" />   {/* Model */}
-            <col className="w-[70px]" />   {/* Edge */}
-            <col className="w-[80px]" />   {/* Signal */}
+            <col className="w-[72px]" />   {/* Edge */}
+            <col className="w-[82px]" />   {/* Signal */}
             <col className="w-[160px]" />  {/* Pick */}
           </colgroup>
 
           <thead className="sticky top-0 z-10 bg-black/80 text-zinc-400 backdrop-blur border-b border-white/10">
             <tr>
               <th className={thCls}>Time</th>
-              <th className={thCls}>Away</th>
-              <th className={thCls}>Home</th>
+              <th className={thCls}>Game</th>
               <th className={thCls}>Spread</th>
-              <th className={thCls}>ML Away</th>
-              <th className={thCls}>ML Home</th>
-              <th className={thCls}>PR (A/H)</th>
-              <th className={thCls}>HCA</th>
               <th className={thCls}>Model</th>
               <th className={thCls}>Edge</th>
               <th className={thCls}>Signal</th>
@@ -525,62 +571,35 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                       {fmtTime(g.startTimeISO)}
                     </td>
 
-                    {/* Away */}
+                    {/* Game — stacked teams */}
                     <td className={`${tdBase} align-middle`}>
-                      <TeamCell name={g.awayTeam} logo={g.awayLogo} />
+                      <GameCell g={g} />
                     </td>
 
-                    {/* Home */}
-                    <td className={`${tdBase} align-middle`}>
-                      <TeamCell name={g.homeTeam} logo={g.homeLogo} />
-                    </td>
-
-                    {/* Spread */}
-                    <td className={`${tdBase} tabular-nums text-zinc-200`}>
-                      {fmtNum(g.consensus?.spread, 1)}
-                    </td>
-
-                    {/* ML Away */}
-                    <td className={`${tdBase} tabular-nums text-zinc-300`}>
-                      {fmtInt(g.consensus?.moneylineAway)}
-                    </td>
-
-                    {/* ML Home */}
-                    <td className={`${tdBase} tabular-nums text-zinc-300`}>
-                      {fmtInt(g.consensus?.moneylineHome)}
-                    </td>
-
-                    {/* PR (A / H) — merged */}
-                    <td className={`${tdBase} tabular-nums text-zinc-300`}>
-                      <span className="text-zinc-400">{fmtNum(g.model?.awayPR, 1)}</span>
-                      <span className="text-zinc-600 mx-1">/</span>
-                      <span>{fmtNum(g.model?.homePR, 1)}</span>
-                    </td>
-
-                    {/* HCA */}
-                    <td className={`${tdBase} tabular-nums text-zinc-300`}>
-                      {fmtNum(g.model?.hca, 1)}
+                    {/* Market spread */}
+                    <td className={`${tdBase} tabular-nums text-zinc-200 align-middle`}>
+                      {spreadLabel(g.consensus?.spread)}
                     </td>
 
                     {/* Model spread */}
-                    <td className={`${tdBase} font-semibold tabular-nums ${modelSpreadClass(g.model?.modelSpread)}`}>
+                    <td className={`${tdBase} font-semibold tabular-nums align-middle ${modelSpreadClass(g.model?.modelSpread)}`}>
                       {fmtNum(g.model?.modelSpread, 1)}
                     </td>
 
                     {/* Edge */}
-                    <td className={`${tdBase}`}>
+                    <td className={`${tdBase} align-middle`}>
                       <EdgeCell edge={g.model?.edge} />
                     </td>
 
                     {/* Signal */}
-                    <td className={`${tdBase}`}>
+                    <td className={`${tdBase} align-middle`}>
                       <span className={`rounded-full border px-2 py-0.5 text-xs ${signalPillClass(g.model.signal)}`}>
                         {g.model.signal}
                       </span>
                     </td>
 
-                    {/* Pick — merged Rec + Best Line */}
-                    <td className={`${tdBase}`}>
+                    {/* Pick */}
+                    <td className={`${tdBase} align-middle`}>
                       <PickCell
                         side={g.recommended?.side}
                         line={g.recommended?.line ?? null}
@@ -591,7 +610,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
 
                   {open && (
                     <tr className="bg-zinc-950/20">
-                      <td colSpan={12} className="px-3 py-4">
+                      <td colSpan={7} className="px-3 py-4">
                         <div className="grid gap-3 md:grid-cols-2">
                           <TeamExpandedCard title={g.awayTeam} t={stats[g.awayTeamId]} />
                           <TeamExpandedCard title={g.homeTeam} t={stats[g.homeTeamId]} />

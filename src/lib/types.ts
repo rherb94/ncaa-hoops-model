@@ -28,6 +28,7 @@ export type RecommendedBet = {
 export type SlateGame = {
   gameId: string;
   startTimeISO: string;
+  neutralSite?: boolean;
 
   awayTeamId: string;
   homeTeamId: string;
