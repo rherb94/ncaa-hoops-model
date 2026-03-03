@@ -302,21 +302,50 @@ function GameCard({ g }: { g: GameRow }) {
   );
 }
 
+// ---- filter helpers ----
+type Filter = "yesterday" | "7d" | "30d" | "season";
+
+const FILTER_LABELS: Record<Filter, string> = {
+  yesterday: "Yesterday",
+  "7d":      "Last 7 Days",
+  "30d":     "Last 30 Days",
+  season:    "Full Season",
+};
+
+function etDateString(daysAgo = 0): string {
+  const d = new Date();
+  d.setDate(d.getDate() - daysAgo);
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" })
+    .format(d)
+    .slice(0, 10);
+}
+
+function filterToApiUrl(f: Filter): string {
+  switch (f) {
+    case "yesterday": return `/api/analysis?date=${etDateString(1)}`;
+    case "7d":        return `/api/analysis`;                         // default = last 7 available
+    case "30d":       return `/api/analysis?from=${etDateString(30)}&to=${etDateString()}`;
+    case "season":    return `/api/analysis?all=1`;
+  }
+}
+
 // ---- main component ----
 export default function ResultsClient() {
   const [data, setData] = useState<AnalysisResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [expandedDate, setExpandedDate] = useState<string | null>(null);
+  const [filter, setFilter] = useState<Filter>("7d");
 
-  async function load() {
+  async function load(f: Filter) {
     setLoading(true);
     setErr(null);
     try {
-      const res = await fetch("/api/analysis", { cache: "no-store" });
+      const res = await fetch(filterToApiUrl(f), { cache: "no-store" });
       if (!res.ok) throw new Error(`API error ${res.status}`);
       const json = (await res.json()) as AnalysisResponse;
       setData(json);
+      // auto-expand most recent date
       if (json.by_date.length > 0) {
         setExpandedDate(json.by_date[json.by_date.length - 1].date);
       }
@@ -327,7 +356,7 @@ export default function ResultsClient() {
     }
   }
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { load(filter); }, [filter]);
 
   if (loading) return <div className="text-zinc-400 text-sm py-8">Loading results…</div>;
   if (err)     return <div className="text-red-400 text-sm py-8">{err}</div>;
@@ -348,14 +377,35 @@ export default function ResultsClient() {
   return (
     <div className="space-y-6">
       {/* header */}
-      <div className="flex items-center justify-between">
-        <div>
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+        <div className="flex-1">
           <div className="text-xs text-zinc-400">Model Results</div>
           <div className="text-sm text-zinc-500">
-            Last {by_date.length} day{by_date.length !== 1 ? "s" : ""} with snapshot data
+            {by_date.length} day{by_date.length !== 1 ? "s" : ""} · {FILTER_LABELS[filter]}
           </div>
         </div>
-        <button onClick={load} className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:bg-zinc-700">
+
+        {/* filter tabs */}
+        <div className="flex items-center gap-1 bg-zinc-900 border border-white/10 rounded-lg p-1">
+          {(["yesterday", "7d", "30d", "season"] as Filter[]).map((f) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
+                filter === f
+                  ? "bg-zinc-700 text-zinc-100"
+                  : "text-zinc-500 hover:text-zinc-300"
+              }`}
+            >
+              {FILTER_LABELS[f]}
+            </button>
+          ))}
+        </div>
+
+        <button
+          onClick={() => load(filter)}
+          className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:bg-zinc-700 self-start sm:self-auto"
+        >
           Refresh
         </button>
       </div>

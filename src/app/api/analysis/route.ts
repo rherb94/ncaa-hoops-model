@@ -22,15 +22,24 @@ function loadJson<T>(p: string): T | null {
   }
 }
 
-function datesInRange(from: string, to: string): string[] {
+function datesInRange(from: string, to: string, limit = 200): string[] {
   const dates: string[] = [];
   const cur = new Date(from + "T12:00:00Z");
   const end = new Date(to + "T12:00:00Z");
-  while (cur <= end && dates.length < 30) {
+  while (cur <= end && dates.length < limit) {
     dates.push(cur.toISOString().slice(0, 10));
     cur.setUTCDate(cur.getUTCDate() + 1);
   }
   return dates;
+}
+
+function allAvailableDates(): string[] {
+  if (!fs.existsSync(SNAP_DIR)) return [];
+  return fs
+    .readdirSync(SNAP_DIR)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => f.replace(".json", ""))
+    .sort();
 }
 
 type SnapshotGame = {
@@ -226,23 +235,19 @@ export async function GET(req: Request) {
   const dateSingle = url.searchParams.get("date");
   const dateFrom = url.searchParams.get("from");
   const dateTo = url.searchParams.get("to");
+  const allFlag = url.searchParams.get("all"); // ?all=1 → every available snapshot
 
   let dates: string[];
-  if (dateSingle) {
+  if (allFlag === "1") {
+    dates = allAvailableDates();
+  } else if (dateSingle) {
     dates = [dateSingle];
   } else if (dateFrom) {
-    const to = dateTo ?? dateSingle ?? new Date().toISOString().slice(0, 10);
+    const to = dateTo ?? new Date().toISOString().slice(0, 10);
     dates = datesInRange(dateFrom, to);
   } else {
     // default: last 7 days with available snapshots
-    const available = fs.existsSync(SNAP_DIR)
-      ? fs.readdirSync(SNAP_DIR)
-          .filter((f) => f.endsWith(".json"))
-          .map((f) => f.replace(".json", ""))
-          .sort()
-          .slice(-7)
-      : [];
-    dates = available;
+    dates = allAvailableDates().slice(-7);
   }
 
   if (dates.length === 0) {
