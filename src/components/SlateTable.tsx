@@ -435,9 +435,9 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
             <tr>
               <th className={thCls}>Time</th>
               <th className={thCls}>Game</th>
-              <th className={thCls}>Mkt</th>
-              <th className={thCls}>Model</th>
-              <th className={thCls}>Edge</th>
+              <th className={`${thCls} text-center`}>Mkt</th>
+              <th className={`${thCls} text-center`}>Model</th>
+              <th className={`${thCls} text-center`}>Edge</th>
               <th className={thCls}>Play</th>
             </tr>
           </thead>
@@ -470,19 +470,19 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                     </td>
 
                     {/* Spread */}
-                    <td className={`${tdBase} align-middle font-mono text-xs tabular-nums text-zinc-400`}>
+                    <td className={`${tdBase} align-middle text-center font-mono text-xs tabular-nums text-zinc-400`}>
                       {fmtSpread(g.consensus?.spread)}
                     </td>
 
                     {/* Model */}
-                    <td className={`${tdBase} align-middle font-mono text-xs tabular-nums font-semibold ${
+                    <td className={`${tdBase} align-middle text-center font-mono text-xs tabular-nums font-semibold ${
                       (g.model?.modelSpread ?? 0) < 0 ? "text-rose-300/80" : "text-emerald-300/80"
                     }`}>
                       {fmtSpread(g.model?.modelSpread)}
                     </td>
 
                     {/* Edge */}
-                    <td className={`${tdBase} align-middle`}>
+                    <td className={`${tdBase} align-middle text-center`}>
                       <EdgeCell edge={g.model?.edge} />
                     </td>
 
