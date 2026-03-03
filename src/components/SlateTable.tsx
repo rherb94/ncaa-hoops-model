@@ -176,7 +176,7 @@ function GameCell({ g }: { g: SlateGame }) {
         ) : (
           <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />
         )}
-        <span className={`text-sm truncate ${preferred === "AWAY" ? "font-semibold text-zinc-100" : "text-zinc-400"}`}>
+        <span className={`text-sm truncate ${preferred === "AWAY" ? "font-semibold text-zinc-100" : "text-zinc-300"}`}>
           {g.awayTeam}
         </span>
         {preferred === "AWAY" && (
@@ -191,7 +191,7 @@ function GameCell({ g }: { g: SlateGame }) {
         ) : (
           <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />
         )}
-        <span className={`text-sm truncate ${preferred === "HOME" ? "font-semibold text-zinc-100" : "text-zinc-400"}`}>
+        <span className={`text-sm truncate ${preferred === "HOME" ? "font-semibold text-zinc-100" : "text-zinc-300"}`}>
           {g.homeTeam}
         </span>
         {preferred === "HOME" && (
@@ -224,6 +224,33 @@ function StatRow({
         <div className="font-medium text-zinc-100 tabular-nums">{value}</div>
         {right ? <div className="text-xs text-zinc-500 tabular-nums">{right}</div> : null}
       </div>
+    </div>
+  );
+}
+
+// Game-level summary shown at top of expand panel (ML, PR, HCA)
+function GameInfoBar({ g }: { g: SlateGame }) {
+  const mlAway = g.consensus?.moneylineAway;
+  const mlHome = g.consensus?.moneylineHome;
+  const awayPR  = g.model?.awayPR;
+  const homePR  = g.model?.homePR;
+  const hca     = g.model?.hca;
+
+  const items: { label: string; value: string }[] = [
+    { label: "ML Away", value: mlAway != null ? (mlAway > 0 ? `+${mlAway}` : String(mlAway)) : "—" },
+    { label: "ML Home", value: mlHome != null ? (mlHome > 0 ? `+${mlHome}` : String(mlHome)) : "—" },
+    { label: "PR (A/H)",  value: `${fmtNum(awayPR)} / ${fmtNum(homePR)}` },
+    { label: "HCA",       value: hca != null ? fmtNum(hca) : "—" },
+  ];
+
+  return (
+    <div className="mb-3 flex flex-wrap gap-x-6 gap-y-1 rounded-xl border border-white/8 bg-black/20 px-4 py-2.5">
+      {items.map(({ label, value }) => (
+        <div key={label} className="flex items-center gap-1.5 text-xs">
+          <span className="text-zinc-500">{label}</span>
+          <span className="font-medium tabular-nums text-zinc-200">{value}</span>
+        </div>
+      ))}
     </div>
   );
 }
@@ -454,9 +481,13 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                     <span className="text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
                     {g.neutralSite && <NeutralBadge />}
                   </div>
-                  <span className={`rounded-full border px-2 py-0.5 text-xs ${signalPillClass(g.model.signal)}`}>
-                    {g.model.signal}
-                  </span>
+                  {g.model.signal === "NONE" ? (
+                    <span className="text-zinc-600 text-xs">—</span>
+                  ) : (
+                    <span className={`rounded-full border px-2 py-0.5 text-xs ${signalPillClass(g.model.signal)}`}>
+                      {g.model.signal}
+                    </span>
+                  )}
                 </div>
 
                 {/* Teams */}
@@ -466,7 +497,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                     {g.awayLogo
                       ? <img src={g.awayLogo} alt="" className="h-5 w-5 shrink-0 object-contain opacity-90" loading="lazy" />
                       : <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />}
-                    <span className={`text-sm font-medium truncate flex-1 ${preferred === "AWAY" ? "text-zinc-100" : "text-zinc-400"}`}>
+                    <span className={`text-sm font-medium truncate flex-1 ${preferred === "AWAY" ? "text-zinc-100" : "text-zinc-300"}`}>
                       {g.awayTeam}
                     </span>
                     {preferred === "AWAY" && <span className="text-sm shrink-0">🏀</span>}
@@ -479,7 +510,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                     {g.homeLogo
                       ? <img src={g.homeLogo} alt="" className="h-5 w-5 shrink-0 object-contain opacity-90" loading="lazy" />
                       : <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />}
-                    <span className={`text-sm font-medium truncate flex-1 ${preferred === "HOME" ? "text-zinc-100" : "text-zinc-400"}`}>
+                    <span className={`text-sm font-medium truncate flex-1 ${preferred === "HOME" ? "text-zinc-100" : "text-zinc-300"}`}>
                       {g.homeTeam}
                     </span>
                     {preferred === "HOME" && <span className="text-sm shrink-0">🏀</span>}
@@ -520,6 +551,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
               {/* Expanded team stats */}
               {open && (
                 <div className="px-4 pb-4 bg-zinc-950/20">
+                  <GameInfoBar g={g} />
                   <div className="grid gap-3">
                     <TeamExpandedCard title={g.awayTeam} t={stats[g.awayTeamId]} />
                     <TeamExpandedCard title={g.homeTeam} t={stats[g.homeTeamId]} />
@@ -593,9 +625,13 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
 
                     {/* Signal */}
                     <td className={`${tdBase} align-middle`}>
-                      <span className={`rounded-full border px-2 py-0.5 text-xs ${signalPillClass(g.model.signal)}`}>
-                        {g.model.signal}
-                      </span>
+                      {g.model.signal === "NONE" ? (
+                        <span className="text-zinc-600">—</span>
+                      ) : (
+                        <span className={`rounded-full border px-2 py-0.5 text-xs ${signalPillClass(g.model.signal)}`}>
+                          {g.model.signal}
+                        </span>
+                      )}
                     </td>
 
                     {/* Pick */}
@@ -611,6 +647,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                   {open && (
                     <tr className="bg-zinc-950/20">
                       <td colSpan={7} className="px-3 py-4">
+                        <GameInfoBar g={g} />
                         <div className="grid gap-3 md:grid-cols-2">
                           <TeamExpandedCard title={g.awayTeam} t={stats[g.awayTeamId]} />
                           <TeamExpandedCard title={g.homeTeam} t={stats[g.homeTeamId]} />
