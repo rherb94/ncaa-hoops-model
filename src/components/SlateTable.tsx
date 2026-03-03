@@ -297,7 +297,7 @@ function TeamCard({ title, logo, t }: { title: string; logo?: string | null; t?:
 function SectionDivider({ label }: { label: string }) {
   return (
     <tr>
-      <td colSpan={5} className="px-4 pt-4 pb-1">
+      <td colSpan={6} className="px-4 pt-4 pb-1">
         <div className="flex items-center gap-3">
           <div className="h-px flex-1 bg-white/[0.06]" />
           <span className="text-[11px] font-medium uppercase tracking-widest text-zinc-600">
@@ -421,23 +421,24 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
 
       {/* ── Desktop table ── */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="w-full min-w-[640px] text-sm">
-          {/* Fixed narrow cols; GAME col auto-grows */}
+        <table className="w-full min-w-[860px] table-fixed text-sm">
           <colgroup>
-            <col className="w-[80px]" />  {/* Time */}
-            <col />                        {/* Game — takes remaining space */}
-            <col className="w-[72px]" />  {/* Spread */}
-            <col className="w-[68px]" />  {/* Edge */}
-            <col className="w-[220px]" /> {/* Pick */}
+            <col className="w-[88px]" />  {/* Time */}
+            <col />                        {/* Game — fills remainder */}
+            <col className="w-[100px]" /> {/* Mkt */}
+            <col className="w-[100px]" /> {/* Model */}
+            <col className="w-[92px]" />  {/* Edge */}
+            <col className="w-[220px]" /> {/* Play — fixed */}
           </colgroup>
 
           <thead className="border-b border-white/8">
             <tr>
               <th className={thCls}>Time</th>
               <th className={thCls}>Game</th>
-              <th className={thCls}>Spread</th>
-              <th className={thCls}>Edge</th>
-              <th className={thCls}>Pick</th>
+              <th className={`${thCls} text-center`}>Mkt</th>
+              <th className={`${thCls} text-center`}>Model</th>
+              <th className={`${thCls} text-center`}>Edge</th>
+              <th className={thCls}>Play</th>
             </tr>
           </thead>
 
@@ -469,16 +470,23 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                     </td>
 
                     {/* Spread */}
-                    <td className={`${tdBase} align-middle font-mono text-xs tabular-nums text-zinc-400`}>
+                    <td className={`${tdBase} align-middle text-center font-mono text-xs tabular-nums text-zinc-400`}>
                       {fmtSpread(g.consensus?.spread)}
                     </td>
 
+                    {/* Model */}
+                    <td className={`${tdBase} align-middle text-center font-mono text-xs tabular-nums font-semibold ${
+                      (g.model?.modelSpread ?? 0) < 0 ? "text-rose-300/80" : "text-emerald-300/80"
+                    }`}>
+                      {fmtSpread(g.model?.modelSpread)}
+                    </td>
+
                     {/* Edge */}
-                    <td className={`${tdBase} align-middle`}>
+                    <td className={`${tdBase} align-middle text-center`}>
                       <EdgeCell edge={g.model?.edge} />
                     </td>
 
-                    {/* Pick */}
+                    {/* Play */}
                     <td className={`${tdBase} align-middle`}>
                       <PickText
                         signal={g.model.signal}
@@ -491,7 +499,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                   {/* Expand row */}
                   {open && (
                     <tr>
-                      <td colSpan={5} className="px-4 py-4 bg-black/20 border-b border-white/[0.05]">
+                      <td colSpan={6} className="px-4 py-4 bg-black/20 border-b border-white/[0.05]">
                         <GameInfoBar g={g} />
                         <div className="grid gap-3 sm:grid-cols-2">
                           <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} />
