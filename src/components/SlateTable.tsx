@@ -117,12 +117,10 @@ function PickText({
   signal,
   side,
   line,
-  book,
 }: {
   signal: SlateGame["model"]["signal"];
   side?: "HOME" | "AWAY" | "NONE";
   line?: number | null;
-  book?: string | null;
 }) {
   if (signal === "NONE" || !side || side === "NONE")
     return <span className="text-zinc-600 text-xs">—</span>;
@@ -134,23 +132,11 @@ function PickText({
       : null;
 
   const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
-  const logoSrc = bookLogoSrc(book);
 
   return (
-    <div className="flex items-center gap-2">
-      <span className={`text-xs font-semibold ${color}`}>
-        {signal} {side}{lineStr ? ` ${lineStr}` : ""}
-      </span>
-      {logoSrc && (
-        <img
-          src={logoSrc}
-          alt={book ?? ""}
-          className="h-4 w-4 rounded object-contain opacity-60"
-          loading="lazy"
-          title={book ?? ""}
-        />
-      )}
-    </div>
+    <span className={`text-xs font-semibold ${color}`}>
+      {signal} {side}{lineStr ? ` ${lineStr}` : ""}
+    </span>
   );
 }
 
@@ -506,7 +492,6 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                         signal={g.model.signal}
                         side={g.recommended?.side}
                         line={g.recommended?.line ?? null}
-                        book={g.recommended?.book ?? null}
                       />
                     </td>
                   </tr>
@@ -556,7 +541,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs text-zinc-600">{fmtTime(g.startTimeISO)}</span>
                   <div className="flex items-center gap-2">
-                    <PickText signal={g.model.signal} side={g.recommended?.side} line={g.recommended?.line ?? null} book={g.recommended?.book ?? null} />
+                    <PickText signal={g.model.signal} side={g.recommended?.side} line={g.recommended?.line ?? null} />
                     <span className={`text-[9px] text-zinc-700 transition-transform duration-150 ${open ? "rotate-180" : ""}`}>▼</span>
                   </div>
                 </div>
