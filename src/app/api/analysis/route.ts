@@ -131,6 +131,8 @@ function analyzeDate(date: string) {
       date,
       home_team: sg.home_team,
       away_team: sg.away_team,
+      home_espnTeamId: sg.home_espnTeamId ?? null,
+      away_espnTeamId: sg.away_espnTeamId ?? null,
       opening_spread: sg.opening?.homePoint ?? null, // home spread
       opening_book: sg.opening?.book ?? null,
       model_spread: sg.model?.modelSpread ?? null,
