@@ -10,8 +10,11 @@ type GameRow = {
   away_team: string;
   home_espnTeamId: string | null;
   away_espnTeamId: string | null;
+  neutral_site: boolean;
   opening_spread: number | null;
   opening_book: string | null;
+  closing_spread: number | null;
+  clv: number | null;
   model_spread: number | null;
   edge: number | null;
   signal: string;
@@ -87,6 +90,11 @@ type CalibrationBucket = {
   losses: number;
 };
 
+// $100 flat-bet ROI at standard -110 odds
+// WIN: profit = $100 / 1.10 = $90.91; LOSS: -$100
+const BET_SIZE = 100;
+const WIN_PROFIT = BET_SIZE / 1.1; // ≈ $90.91
+
 function computeStats(byDate: DayResult[]) {
   const allGames = byDate.flatMap((d) => d.games);
   const completed = allGames.filter((g) => g.completed);
@@ -102,6 +110,22 @@ function computeStats(byDate: DayResult[]) {
     .map((g) => Math.abs(g.model_spread! - g.actual_spread!));
   const avgError = errors.length > 0
     ? errors.reduce((a, b) => a + b, 0) / errors.length
+    : null;
+
+  // ROI: flat $100 bet on every LEAN/STRONG pick
+  let roi: number | null = null;
+  let roiGames = 0;
+  for (const g of allGames) {
+    if (g.pick_result === "WIN")  { roi = (roi ?? 0) + WIN_PROFIT; roiGames++; }
+    if (g.pick_result === "LOSS") { roi = (roi ?? 0) - BET_SIZE;  roiGames++; }
+  }
+
+  // Average CLV across games where we have both a pick and a CLV
+  const clvGames = allGames.filter(
+    (g) => g.signal !== "NONE" && g.clv !== null
+  );
+  const avgClv = clvGames.length > 0
+    ? clvGames.reduce((sum, g) => sum + g.clv!, 0) / clvGames.length
     : null;
 
   const buckets: CalibrationBucket[] = [
@@ -126,7 +150,7 @@ function computeStats(byDate: DayResult[]) {
     }
   }
 
-  return { dirTotal, dirCorrect, avgError, buckets };
+  return { dirTotal, dirCorrect, avgError, roi, roiGames, avgClv, clvGames: clvGames.length, buckets };
 }
 
 // ---- UI atoms ----
@@ -163,6 +187,17 @@ function DirBadge({ g }: { g: GameRow }) {
     : <span className="text-red-500   text-xs font-semibold">✗</span>;
 }
 
+function NeutralBadge() {
+  return (
+    <span
+      title="Neutral site game — HCA set to 0"
+      className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-blue-500/15 text-blue-400 border border-blue-500/20"
+    >
+      <span>⚬</span> NEUTRAL
+    </span>
+  );
+}
+
 function SignalBadge({ signal, pickSide }: { signal: string; pickSide: string }) {
   if (signal === "NONE") return <span className="text-zinc-600 text-xs">—</span>;
   const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
@@ -190,9 +225,14 @@ function EdgeCalibrationTable({ buckets }: { buckets: CalibrationBucket[] }) {
   if (!buckets.some((b) => b.games > 0 || b.wins > 0 || b.losses > 0)) return null;
   return (
     <div className="rounded-xl border border-white/10 overflow-hidden">
-      <div className="px-4 py-2.5 bg-zinc-900 border-b border-white/10">
-        <span className="text-xs font-semibold text-zinc-300">Edge Calibration</span>
-        <span className="text-xs text-zinc-500 ml-2">direction accuracy &amp; simulated ATS by edge size</span>
+      <div className="px-4 py-2.5 bg-zinc-900 border-b border-white/10 flex items-center justify-between flex-wrap gap-2">
+        <div>
+          <span className="text-xs font-semibold text-zinc-300">Edge Calibration</span>
+          <span className="text-xs text-zinc-500 ml-2">direction accuracy &amp; simulated ATS by edge size</span>
+        </div>
+        <div className="text-[11px] text-zinc-600 font-mono">
+          break-even @ <span className="text-zinc-400 font-semibold">52.4%</span> at −110
+        </div>
       </div>
       <table className="w-full text-xs">
         <thead>
@@ -208,8 +248,8 @@ function EdgeCalibrationTable({ buckets }: { buckets: CalibrationBucket[] }) {
           {buckets.map((b) => {
             const dirPct  = b.games > 0            ? Math.round((b.dirCorrect / b.games) * 100) : null;
             const atsPct  = b.wins + b.losses > 0  ? Math.round((b.wins / (b.wins + b.losses)) * 100) : null;
-            const dirColor = dirPct === null ? "text-zinc-600" : dirPct >= 60 ? "text-emerald-400" : dirPct >= 50 ? "text-amber-400" : "text-red-400";
-            const atsColor = atsPct === null ? "text-zinc-600" : atsPct >= 60 ? "text-emerald-400" : atsPct >= 50 ? "text-amber-400" : "text-red-400";
+            const dirColor = dirPct === null ? "text-zinc-600" : dirPct >= 60 ? "text-emerald-400" : dirPct >= 52.4 ? "text-amber-400" : "text-red-400";
+            const atsColor = atsPct === null ? "text-zinc-600" : atsPct >= 60 ? "text-emerald-400" : atsPct >= 52.4 ? "text-amber-400" : "text-red-400";
             const lc = b.label === "STRONG" ? "text-emerald-400" : b.label === "LEAN" ? "text-amber-400" : "text-zinc-400";
             // Add a slightly thicker divider before LEAN to separate no-pick zone from picks
             const topBorder = b.label === "LEAN" ? "border-t border-white/10" : "";
@@ -286,6 +326,8 @@ function GameCard({ g }: { g: GameRow }) {
           )}
         </div>
       </div>
+      {/* neutral site badge */}
+      {g.neutral_site && <div className="mb-1"><NeutralBadge /></div>}
       {/* stats row */}
       <div className="flex items-center gap-3 text-[11px] text-zinc-500 flex-wrap">
         <span>Line <span className="text-zinc-300 font-mono">{spreadLabel(g.opening_spread)}</span></span>
@@ -293,6 +335,9 @@ function GameCard({ g }: { g: GameRow }) {
         <span>Edge <EdgeLabel edge={g.edge} /></span>
         {g.actual_spread !== null && (
           <span>Act <span className="text-zinc-400 font-mono">{spreadLabel(g.actual_spread)}</span></span>
+        )}
+        {g.clv !== null && hasPick && (
+          <span>CLV <span className={`font-mono font-semibold ${g.clv >= 0 ? "text-emerald-400" : "text-red-400"}`}>{g.clv >= 0 ? `+${g.clv.toFixed(1)}` : g.clv.toFixed(1)}</span></span>
         )}
         {hasPick && (
           <SignalBadge signal={g.signal} pickSide={g.pick_side} />
@@ -364,7 +409,7 @@ export default function ResultsClient() {
 
   const { summary, by_date } = data;
   const sorted = [...by_date].reverse();
-  const { dirTotal, dirCorrect, avgError, buckets } = computeStats(by_date);
+  const { dirTotal, dirCorrect, avgError, roi, roiGames, avgClv, clvGames, buckets } = computeStats(by_date);
 
   const sortGames = (games: GameRow[]) =>
     games.slice().sort((a, b) => {
@@ -434,6 +479,20 @@ export default function ResultsClient() {
               sub="vs. actual spread"
             />
           )}
+          {roi !== null && (
+            <StatCard
+              label="Flat-Bet ROI"
+              value={`${roi >= 0 ? "+" : ""}$${roi.toFixed(0)}`}
+              sub={`on ${roiGames} decided picks ($100/game)`}
+            />
+          )}
+          {avgClv !== null && (
+            <StatCard
+              label="Avg CLV"
+              value={`${avgClv >= 0 ? "+" : ""}${avgClv.toFixed(1)} pts`}
+              sub={`${clvGames} pick${clvGames !== 1 ? "s" : ""} vs. closing line`}
+            />
+          )}
           <StatCard
             label="Total Picks"
             value={String(summary.total_picks)}
@@ -495,6 +554,7 @@ export default function ResultsClient() {
                       <th className="px-3 py-2 text-left  font-medium">Pick</th>
                       <th className="px-3 py-2 text-right font-medium">Score</th>
                       <th className="px-3 py-2 text-right font-medium">Actual</th>
+                      <th className="px-3 py-2 text-right font-medium">CLV</th>
                       <th className="px-3 py-2 text-center font-medium">Dir</th>
                       <th className="px-3 py-2 text-left  font-medium">Result</th>
                     </tr>
@@ -524,6 +584,9 @@ export default function ResultsClient() {
                               <TeamLogo id={g.home_espnTeamId} name={g.home_team} size={16} />
                               <span className="text-zinc-200">{g.home_team}</span>
                             </div>
+                            {g.neutral_site && (
+                              <div className="mt-0.5"><NeutralBadge /></div>
+                            )}
                           </td>
                           <td className="px-3 py-2 text-right font-mono text-zinc-300 align-middle">
                             {spreadLabel(g.opening_spread)}
@@ -547,6 +610,15 @@ export default function ResultsClient() {
                           </td>
                           <td className="px-3 py-2 text-right font-mono text-zinc-400 align-middle">
                             {spreadLabel(g.actual_spread)}
+                          </td>
+                          <td className="px-3 py-2 text-right font-mono align-middle">
+                            {g.signal !== "NONE" && g.clv !== null ? (
+                              <span className={`text-xs font-semibold ${g.clv >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                                {g.clv >= 0 ? `+${g.clv.toFixed(1)}` : g.clv.toFixed(1)}
+                              </span>
+                            ) : (
+                              <span className="text-zinc-700">—</span>
+                            )}
                           </td>
                           <td className="px-3 py-2 text-center align-middle">
                             <DirBadge g={g} />

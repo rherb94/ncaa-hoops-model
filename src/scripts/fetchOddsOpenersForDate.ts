@@ -182,6 +182,55 @@ function topEspnSuggestions(oddsName: string, espnByName: Map<string, any>) {
   return out;
 }
 
+// ---- ESPN neutral-site detection ----
+type EspnCompetitor = {
+  id: string;
+  homeAway: "home" | "away";
+};
+type EspnCompetition = {
+  neutralSite: boolean;
+  competitors: EspnCompetitor[];
+};
+type EspnEvent = {
+  id: string;
+  competitions: EspnCompetition[];
+};
+
+async function fetchEspnNeutralSites(dateStr: string): Promise<Map<string, boolean>> {
+  // dateStr in YYYYMMDD format
+  const espnDate = dateStr.replace(/-/g, "");
+  const url =
+    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `/mens-college-basketball/scoreboard?dates=${espnDate}&groups=50&limit=200`;
+
+  const neutralByTeamPair = new Map<string, boolean>();
+  try {
+    const res = await fetch(url, {
+      headers: { "user-agent": "ncaam-model/1.0 (personal project)" },
+    });
+    if (!res.ok) {
+      console.warn(`⚠️  ESPN scoreboard fetch failed (${res.status}) — neutral site detection skipped`);
+      return neutralByTeamPair;
+    }
+    const json = (await res.json()) as { events?: EspnEvent[] };
+    for (const event of json.events ?? []) {
+      const comp = event.competitions?.[0];
+      if (!comp) continue;
+      const neutralSite = comp.neutralSite ?? false;
+      const home = comp.competitors?.find((c) => c.homeAway === "home");
+      const away = comp.competitors?.find((c) => c.homeAway === "away");
+      if (home?.id && away?.id) {
+        neutralByTeamPair.set(`${home.id}|${away.id}`, neutralSite);
+      }
+    }
+    const neutralCount = [...neutralByTeamPair.values()].filter(Boolean).length;
+    console.log(`ESPN scoreboard: ${neutralByTeamPair.size} games, ${neutralCount} neutral-site`);
+  } catch (err) {
+    console.warn(`⚠️  ESPN fetch error — neutral site detection skipped:`, err);
+  }
+  return neutralByTeamPair;
+}
+
 // ---------------- main ----------------
 async function main() {
   // Use the live endpoint — the GitHub Action runs at 11am ET specifically to
@@ -222,6 +271,9 @@ async function main() {
   });
 
   console.log(`API returned ${json.length} games; keeping ${filtered.length} on ${DATE} ET`);
+
+  // Fetch ESPN neutral-site flags for today's games
+  const neutralByTeamPair = await fetchEspnNeutralSites(DATE);
 
   // ESPN index (name lookup only)
   const espnIndex = loadEspnTeamsIndex() as any;
@@ -287,8 +339,20 @@ async function main() {
     if (awayTeamId && !awayTeam)
       console.warn(`⚠️  TEAM NOT IN teams.csv: awayTeamId="${awayTeamId}" (${g.away_team})`);
 
+    // Check if this game is at a neutral site (tournament, conference tourneys, etc.)
+    // ESPN returns neutralSite:true for games not played at either team's home arena.
+    // When neutral, HCA is 0 — neither team has a home advantage.
+    const neutralSite =
+      homeRes.espnTeamId && awayRes.espnTeamId
+        ? (neutralByTeamPair.get(`${homeRes.espnTeamId}|${awayRes.espnTeamId}`) ?? false)
+        : false;
+
+    if (neutralSite) {
+      console.log(`  🏟  Neutral site: ${g.away_team} @ ${g.home_team} (HCA → 0)`);
+    }
+
     if (homeTeam && awayTeam) {
-      const hca = homeTeam.hca ?? 2;
+      const hca = neutralSite ? 0 : (homeTeam.hca ?? 2);
       const eff = computeEfficiencyModel(homeTeam, awayTeam, hca);
 
       // Warn if efficiency model couldn't run (missing adjO/adjD/tempo in Torvik data)
@@ -327,6 +391,7 @@ async function main() {
       away_espnTeamId: awayRes.espnTeamId ?? null,
       home_resolve: homeRes.method,
       away_resolve: awayRes.method,
+      neutralSite,
 
       opening: spread
         ? {
