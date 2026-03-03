@@ -336,7 +336,7 @@ function GameCard({ g }: { g: GameRow }) {
         {g.actual_spread !== null && (
           <span>Act <span className="text-zinc-400 font-mono">{spreadLabel(g.actual_spread)}</span></span>
         )}
-        {g.clv !== null && hasPick && (
+        {g.clv !== null && (
           <span>CLV <span className={`font-mono font-semibold ${g.clv >= 0 ? "text-emerald-400" : "text-red-400"}`}>{g.clv >= 0 ? `+${g.clv.toFixed(1)}` : g.clv.toFixed(1)}</span></span>
         )}
         {hasPick && (
@@ -612,7 +612,7 @@ export default function ResultsClient() {
                             {spreadLabel(g.actual_spread)}
                           </td>
                           <td className="px-3 py-2 text-right font-mono align-middle">
-                            {g.signal !== "NONE" && g.clv !== null ? (
+                            {g.clv !== null ? (
                               <span className={`text-xs font-semibold ${g.clv >= 0 ? "text-emerald-400" : "text-red-400"}`}>
                                 {g.clv >= 0 ? `+${g.clv.toFixed(1)}` : g.clv.toFixed(1)}
                               </span>

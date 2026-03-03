@@ -171,8 +171,17 @@ function analyzeDate(date: string) {
         ? "HOME"
         : "AWAY";
 
+    // For CLV, use raw edge direction regardless of signal threshold so
+    // all games show whether the model direction beat the closing line.
+    const clvPickSide: "HOME" | "AWAY" | "NONE" =
+      sg.model?.edge == null || sg.model.edge === 0
+        ? "NONE"
+        : sg.model.edge < 0
+        ? "HOME"
+        : "AWAY";
+
     const closingSpread = closing?.homePoint ?? null;
-    const clv = computeClv(sg.opening?.homePoint ?? null, closingSpread, pickSide);
+    const clv = computeClv(sg.opening?.homePoint ?? null, closingSpread, clvPickSide);
 
     return {
       date,
