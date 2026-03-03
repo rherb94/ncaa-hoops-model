@@ -1,21 +1,25 @@
 name: Daily Closing Lines Snapshot
 
-# Runs TWICE to capture closing lines across the full NCAAB slate:
-#   Run 1 — 3:00pm ET (20:00 UTC): catches early games before they tip
-#   Run 2 — 7:30pm ET (00:30 UTC next day): catches evening games
+# Uses TheOddsAPI's historical endpoint (paid plan) to capture closing lines
+# at precise timestamps — no need to poll; we ask for the exact moment we want.
 #
-# TheOddsAPI only returns UPCOMING games, so:
-#   - Games that have already started are preserved from the earlier run
-#   - Both snapshots merge into a single file per date
+# Run 1 — 11:50am ET (16:50 UTC): captures closing lines for noon and early afternoon games
+# Run 2 —  6:50pm ET (23:50 UTC): captures closing lines for evening games (7pm+)
+#
+# Games that have already started at the snapshot time are absent from the API
+# response, but are preserved from Run 1 so no data is lost.
 
 on:
   schedule:
-    - cron: '0 20 * * *'    # 3:00pm ET (winter) / 4:00pm ET (summer)
-    - cron: '30 0 * * *'    # 7:30pm ET (winter) / 8:30pm ET (summer)
+    - cron: '50 16 * * *'    # 11:50am ET (winter) / 12:50pm ET (summer)
+    - cron: '50 23 * * *'    # 6:50pm ET (winter) / 7:50pm ET (summer)
   workflow_dispatch:
     inputs:
       date:
-        description: 'Date to snapshot (YYYY-MM-DD). Defaults to today ET.'
+        description: 'Date label (YYYY-MM-DD). Defaults to today ET.'
+        required: false
+      snapshot_time:
+        description: 'Historical snapshot time (ISO 8601 UTC, e.g. 2026-03-02T16:50:00Z). Defaults to now.'
         required: false
 
 jobs:
@@ -40,9 +44,16 @@ jobs:
         env:
           THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
           DATE: ${{ inputs.date || '' }}
-        run: npx tsx src/scripts/fetchClosingLines.ts
+          # Pass the actual cron trigger time as SNAPSHOT_TIME so historical queries
+          # are reproducible even if the job starts slightly late.
+          SNAPSHOT_TIME: ${{ inputs.snapshot_time || '' }}
+        run: |
+          # If SNAPSHOT_TIME not set by input, use the current UTC time
+          export SNAPSHOT_TIME="${SNAPSHOT_TIME:-$(date -u +%Y-%m-%dT%H:%M:%SZ)}"
+          echo "Querying historical odds at: $SNAPSHOT_TIME"
+          npx tsx src/scripts/fetchClosingLines.ts
 
-      - name: Commit snapshot
+      - name: Commit closing lines
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -51,7 +62,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            DATE_STR=$(date -u +%Y-%m-%d-%H%M)
-            git commit -m "chore: closing line snapshot ${DATE_STR} [skip ci]"
+            STAMP=$(date -u +%Y-%m-%dT%H:%MZ)
+            git commit -m "chore: closing lines snapshot ${STAMP} [skip ci]"
             git push
           fi

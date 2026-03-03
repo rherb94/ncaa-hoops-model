@@ -1,18 +1,24 @@
 // src/scripts/fetchClosingLines.ts
-// Captures a "closing line" snapshot from TheOddsAPI and saves to
-// src/data/closing_lines/YYYY-MM-DD.json. Used for CLV analysis.
+// Fetches closing lines using TheOddsAPI's historical endpoint (paid plan required).
 //
-// IMPORTANT LIMITATIONS:
-// TheOddsAPI's /odds endpoint only returns UPCOMING (not-yet-started) games.
-// Once a game tips off, it disappears from the response. This means:
-//   - Run at 5pm ET  → captures pre-game lines for ~5pm+ games
-//   - Noon ET games  → will have started; no closing line available
-//   - 8pm ET games   → captured, but still ~3 hrs before true close
+// The historical endpoint returns odds as they existed at a specific UTC timestamp,
+// making true closing-line capture possible without polling every minute.
 //
-// For best coverage, schedule TWO runs:
-//   1. 3:00pm ET (20:00 UTC) — early games
-//   2. 7:30pm ET (00:30 UTC next day) — evening games
-// The analysis API uses whichever lines exist; games with no closing data show "—".
+// Strategy: run twice per day, each time passing SNAPSHOT_TIME to the historical API.
+//   Run 1 — ~11:50am ET: captures closing lines for noon and early afternoon games
+//   Run 2 — ~6:50pm ET:  captures closing lines for evening games (7pm+)
+//
+// Results are MERGED into a single file per date. Each game keeps its LATEST snapshot,
+// so subsequent runs for evening games don't overwrite already-captured noon-game lines.
+//
+// CLV = (opening_homePoint - closing_homePoint) * direction_sign
+//   Positive CLV = we beat the closing line (the market agreed with us later).
+//
+// Env vars:
+//   THE_ODDS_API_KEY  — required
+//   DATE              — YYYY-MM-DD, defaults to today in ET
+//   SNAPSHOT_TIME     — ISO 8601 UTC timestamp for the historical query;
+//                       defaults to the current time (i.e., "right now")
 //
 // Run: npx tsx src/scripts/fetchClosingLines.ts
 
@@ -26,11 +32,15 @@ if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 const DATE =
   process.env.DATE ||
   (() => {
-    const d = new Date();
     return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" })
-      .format(d)
+      .format(new Date())
       .slice(0, 10);
   })();
+
+// The historical snapshot timestamp. Default = now (useful for manual runs).
+// GitHub Actions passes this as the actual cron trigger time so every run is
+// reproducible (in case the job starts slightly late).
+const SNAPSHOT_TIME = process.env.SNAPSHOT_TIME || new Date().toISOString();
 
 const SPORT_KEY = "basketball_ncaab";
 const REGIONS = "us";
@@ -59,6 +69,14 @@ type OddsGame = {
   home_team: string;
   away_team: string;
   bookmakers: OddsBookmaker[];
+};
+
+// Historical endpoint response wraps games in a `data` key
+type HistoricalResponse = {
+  data: OddsGame[];
+  timestamp: string;          // actual snapshot time (nearest cached snapshot)
+  previous_timestamp: string;
+  next_timestamp: string;
 };
 
 const PREFERRED_BOOKS = ["draftkings", "fanduel", "betmgm"];
@@ -91,10 +109,24 @@ function pickBookSpread(game: OddsGame) {
   return null;
 }
 
+type ClosingEntry = {
+  oddsEventId: string;
+  home_team: string;
+  away_team: string;
+  commence_time: string;
+  homePoint: number | null;
+  awayPoint: number | null;
+  book: string | null;
+  snapshotTime: string; // actual UTC timestamp of this snapshot
+};
+
 async function main() {
+  // Historical endpoint: returns odds as they existed at SNAPSHOT_TIME.
+  // Only games that had not yet started at that moment are included.
   const url =
-    `https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds` +
+    `https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds-history` +
     `?apiKey=${encodeURIComponent(ODDS_API_KEY!)}` +
+    `&date=${encodeURIComponent(SNAPSHOT_TIME)}` +
     `&regions=${encodeURIComponent(REGIONS)}` +
     `&markets=${encodeURIComponent(MARKETS)}` +
     `&oddsFormat=american`;
@@ -105,42 +137,35 @@ async function main() {
 
   if (!res.ok) {
     const text = await res.text().catch(() => "");
-    throw new Error(`Odds API failed (${res.status}): ${text.slice(0, 500)}`);
+    throw new Error(`Odds API historical failed (${res.status}): ${text.slice(0, 500)}`);
   }
 
-  const json = (await res.json()) as OddsGame[];
-  const capturedAt = new Date().toISOString();
+  const json = (await res.json()) as HistoricalResponse;
+  // The API returns the actual cached snapshot time (may differ slightly from requested)
+  const actualSnapshotTime = json.timestamp ?? SNAPSHOT_TIME;
 
-  // Filter to games on DATE in ET (games that haven't started yet are returned by the API)
+  console.log(`Requested: ${SNAPSHOT_TIME}`);
+  console.log(`Actual snapshot: ${actualSnapshotTime}`);
+  console.log(`Previous: ${json.previous_timestamp ?? "—"}`);
+  console.log(`Next: ${json.next_timestamp ?? "—"}`);
+  console.log(`Games in response: ${json.data?.length ?? 0}`);
+
+  // Filter to games on DATE in ET (same window as the opener script)
   const dayStartUTC = new Date(`${DATE}T05:00:00Z`);
   const dayEndUTC = new Date(dayStartUTC.getTime() + 24 * 60 * 60 * 1000);
 
-  const filtered = (json ?? []).filter((g) => {
+  const filtered = (json.data ?? []).filter((g) => {
     const ct = new Date(g.commence_time);
     return ct >= dayStartUTC && ct < dayEndUTC;
   });
 
-  // Load existing file (may have been written by an earlier run today)
-  let existing: Record<string, { homePoint: number; awayPoint: number; book: string; updatedAt: string }> = {};
-  try {
-    const old = JSON.parse(fs.readFileSync(OUT_FILE, "utf-8"));
-    for (const g of old.games ?? []) {
-      if (g.oddsEventId && g.homePoint != null) {
-        existing[g.oddsEventId] = {
-          homePoint: g.homePoint,
-          awayPoint: g.awayPoint,
-          book: g.book,
-          updatedAt: g.updatedAt ?? old.captured_at,
-        };
-      }
-    }
-  } catch {
-    // file may not exist yet — that's fine
-  }
+  console.log(`Filtered to ${DATE} ET window: ${filtered.length} games`);
 
-  const games = filtered.map((g) => {
+  // Build fresh entries from this snapshot
+  const fresh = new Map<string, ClosingEntry>();
+  for (const g of filtered) {
     const spread = pickBookSpread(g);
-    return {
+    fresh.set(g.id, {
       oddsEventId: g.id,
       home_team: g.home_team,
       away_team: g.away_team,
@@ -148,46 +173,53 @@ async function main() {
       homePoint: spread?.homePoint ?? null,
       awayPoint: spread?.awayPoint ?? null,
       book: spread?.book ?? null,
-      updatedAt: capturedAt,
-    };
-  });
-
-  // Merge: prefer freshly fetched data, but preserve existing entries for
-  // games that have since started (no longer in API response)
-  const merged = new Map<string, typeof games[number]>();
-
-  // Start with existing data (for games that already started)
-  for (const [id, prev] of Object.entries(existing)) {
-    merged.set(id, {
-      oddsEventId: id,
-      home_team: "",
-      away_team: "",
-      commence_time: "",
-      homePoint: prev.homePoint,
-      awayPoint: prev.awayPoint,
-      book: prev.book,
-      updatedAt: prev.updatedAt,
+      snapshotTime: actualSnapshotTime,
     });
   }
 
-  // Overwrite with fresh data (more accurate for games still upcoming)
-  for (const g of games) {
-    merged.set(g.oddsEventId, g);
+  // Load existing file to preserve entries from earlier runs (e.g., noon games
+  // captured in the first run won't be in the second run because they've already started)
+  const existing = new Map<string, ClosingEntry>();
+  try {
+    const old = JSON.parse(fs.readFileSync(OUT_FILE, "utf-8"));
+    for (const g of old.games ?? []) {
+      if (g.oddsEventId) existing.set(g.oddsEventId, g as ClosingEntry);
+    }
+    console.log(`Loaded ${existing.size} existing entries from prior run`);
+  } catch {
+    // file may not exist yet on the first run of the day
   }
 
-  const allGames = [...merged.values()];
-  const freshCount = games.length;
-  const preservedCount = allGames.length - freshCount;
+  // Merge: prefer the snapshot with the LATER snapshotTime for games present in both.
+  // This means the second run updates evening-game lines while preserving noon-game lines.
+  const merged = new Map<string, ClosingEntry>([...existing]);
+  let updated = 0;
+  let preserved = 0;
+
+  for (const [id, entry] of fresh) {
+    const prev = existing.get(id);
+    if (!prev || entry.snapshotTime > prev.snapshotTime) {
+      merged.set(id, entry);
+      updated++;
+    } else {
+      preserved++;
+    }
+  }
+
+  // Games in existing that weren't in fresh (already started) are kept as-is
+  const keptFromPrior = existing.size - preserved;
+
+  console.log(`Updated: ${updated}, preserved from prior: ${keptFromPrior + preserved}`);
+  console.log(`Total closing lines: ${merged.size} games for ${DATE}`);
 
   saveJson(OUT_FILE, {
     date: DATE,
-    captured_at: capturedAt,
-    games: allGames,
+    last_updated: new Date().toISOString(),
+    snapshot_times: [...new Set([...merged.values()].map((g) => g.snapshotTime))].sort(),
+    games: [...merged.values()],
   });
 
   console.log(`✅ Wrote closing lines: ${OUT_FILE}`);
-  console.log(`  ${freshCount} fresh from API, ${preservedCount} preserved from earlier snapshot`);
-  console.log(`  Total: ${allGames.length} games with closing lines for ${DATE}`);
 }
 
 main().catch((e) => {
