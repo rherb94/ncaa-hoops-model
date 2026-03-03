@@ -566,9 +566,10 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                   {g.neutralSite && <div className="mt-1"><NeutralBadge /></div>}
                 </div>
 
-                {/* Spread + edge */}
+                {/* Mkt / Model / Edge */}
                 <div className="flex gap-4 text-xs text-zinc-600">
-                  <span>Spread <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span></span>
+                  <span>Mkt <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span></span>
+                  <span>Model <span className={`font-mono font-semibold ${(g.model?.modelSpread ?? 0) < 0 ? "text-rose-300/80" : "text-emerald-300/80"}`}>{fmtSpread(g.model?.modelSpread)}</span></span>
                   <span>Edge <EdgeCell edge={g.model?.edge} /></span>
                 </div>
               </div>
