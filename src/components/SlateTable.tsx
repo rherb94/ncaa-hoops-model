@@ -593,11 +593,18 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                     className={`cursor-pointer transition-colors hover:bg-white/[0.03] ${rowTint(g.model.signal)}`}
                     onClick={() => toggleRow(g)}
                   >
-                    {/* Time */}
+                    {/* Time + expand indicator */}
                     <td
                       className={`${tdBase} text-zinc-400 whitespace-nowrap align-middle ${railClass(g.model.signal)}`}
                     >
-                      {fmtTime(g.startTimeISO)}
+                      <div className="flex items-center gap-1.5">
+                        <span>{fmtTime(g.startTimeISO)}</span>
+                        <span
+                          className={`text-[10px] text-zinc-600 transition-transform duration-150 ${open ? "rotate-180" : ""}`}
+                        >
+                          ▼
+                        </span>
+                      </div>
                     </td>
 
                     {/* Game — stacked teams */}
@@ -605,11 +612,22 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                       <GameCell g={g} />
                     </td>
 
-                    {/* Spread */}
+                    {/* Spread + source book logo */}
                     <td
                       className={`${tdBase} tabular-nums text-zinc-200 align-middle`}
                     >
-                      {fmtSpread(g.consensus?.spread)}
+                      <div className="flex items-center gap-1.5">
+                        <span>{fmtSpread(g.consensus?.spread)}</span>
+                        {bookLogoSrc(g.consensus?.source) && (
+                          <img
+                            src={bookLogoSrc(g.consensus?.source)!}
+                            alt={g.consensus?.source ?? ""}
+                            className="h-4 w-4 rounded object-contain opacity-50"
+                            loading="lazy"
+                            title={g.consensus?.source ?? ""}
+                          />
+                        )}
+                      </div>
                     </td>
 
                     {/* Model spread */}
