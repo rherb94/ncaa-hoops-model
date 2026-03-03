@@ -105,13 +105,16 @@ function computeStats(byDate: DayResult[]) {
     : null;
 
   const buckets: CalibrationBucket[] = [
-    { label: "No Pick", sublabel: "|edge| < 3",     games: 0, dirCorrect: 0, wins: 0, losses: 0 },
-    { label: "LEAN",    sublabel: "3 ≤ |edge| < 5", games: 0, dirCorrect: 0, wins: 0, losses: 0 },
-    { label: "STRONG",  sublabel: "|edge| ≥ 5",     games: 0, dirCorrect: 0, wins: 0, losses: 0 },
+    { label: "0–1",    sublabel: "|edge| < 1",       games: 0, dirCorrect: 0, wins: 0, losses: 0 },
+    { label: "1–2",    sublabel: "1 ≤ |edge| < 2",   games: 0, dirCorrect: 0, wins: 0, losses: 0 },
+    { label: "2–3",    sublabel: "2 ≤ |edge| < 3",   games: 0, dirCorrect: 0, wins: 0, losses: 0 },
+    { label: "LEAN",   sublabel: "3 ≤ |edge| < 5",   games: 0, dirCorrect: 0, wins: 0, losses: 0 },
+    { label: "STRONG", sublabel: "|edge| ≥ 5",        games: 0, dirCorrect: 0, wins: 0, losses: 0 },
   ];
   for (const g of completed) {
     if (g.edge === null) continue;
-    const bi = Math.abs(g.edge) >= 5 ? 2 : Math.abs(g.edge) >= 3 ? 1 : 0;
+    const abs = Math.abs(g.edge);
+    const bi = abs >= 5 ? 4 : abs >= 3 ? 3 : abs >= 2 ? 2 : abs >= 1 ? 1 : 0;
     const b = buckets[bi];
     const dc = modelDirectionCorrect(g);
     if (dc !== null) { b.games++; if (dc) b.dirCorrect++; }
@@ -203,9 +206,11 @@ function EdgeCalibrationTable({ buckets }: { buckets: CalibrationBucket[] }) {
             const atsPct  = b.wins + b.losses > 0  ? Math.round((b.wins / (b.wins + b.losses)) * 100) : null;
             const dirColor = dirPct === null ? "text-zinc-600" : dirPct >= 60 ? "text-emerald-400" : dirPct >= 50 ? "text-amber-400" : "text-red-400";
             const atsColor = atsPct === null ? "text-zinc-600" : atsPct >= 60 ? "text-emerald-400" : atsPct >= 50 ? "text-amber-400" : "text-red-400";
-            const lc = b.label === "STRONG" ? "text-emerald-400" : b.label === "LEAN" ? "text-amber-400" : "text-zinc-500";
+            const lc = b.label === "STRONG" ? "text-emerald-400" : b.label === "LEAN" ? "text-amber-400" : "text-zinc-400";
+            // Add a slightly thicker divider before LEAN to separate no-pick zone from picks
+            const topBorder = b.label === "LEAN" ? "border-t border-white/10" : "";
             return (
-              <tr key={b.label} className="border-b border-white/5 bg-zinc-900/30">
+              <tr key={b.label} className={`border-b border-white/5 bg-zinc-900/30 ${topBorder}`}>
                 <td className="px-4 py-2.5">
                   <span className={`font-semibold ${lc}`}>{b.label}</span>
                   <span className="text-zinc-600 ml-1.5 text-[11px]">{b.sublabel}</span>
