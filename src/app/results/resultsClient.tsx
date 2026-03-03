@@ -116,10 +116,14 @@ function computeStats(byDate: DayResult[]) {
     const abs = Math.abs(g.edge);
     const bi = abs >= 5 ? 4 : abs >= 3 ? 3 : abs >= 2 ? 2 : abs >= 1 ? 1 : 0;
     const b = buckets[bi];
+    // Use modelDirectionCorrect for all buckets so no-pick rows show
+    // simulated ATS (what would have happened if we'd bet the model side).
+    // For LEAN/STRONG this is equivalent to pick_result WIN/LOSS.
     const dc = modelDirectionCorrect(g);
-    if (dc !== null) { b.games++; if (dc) b.dirCorrect++; }
-    if (g.pick_result === "WIN")  b.wins++;
-    if (g.pick_result === "LOSS") b.losses++;
+    if (dc !== null) {
+      b.games++;
+      if (dc) { b.dirCorrect++; b.wins++; } else { b.losses++; }
+    }
   }
 
   return { dirTotal, dirCorrect, avgError, buckets };
@@ -188,7 +192,7 @@ function EdgeCalibrationTable({ buckets }: { buckets: CalibrationBucket[] }) {
     <div className="rounded-xl border border-white/10 overflow-hidden">
       <div className="px-4 py-2.5 bg-zinc-900 border-b border-white/10">
         <span className="text-xs font-semibold text-zinc-300">Edge Calibration</span>
-        <span className="text-xs text-zinc-500 ml-2">direction accuracy &amp; ATS by edge size</span>
+        <span className="text-xs text-zinc-500 ml-2">direction accuracy &amp; simulated ATS by edge size</span>
       </div>
       <table className="w-full text-xs">
         <thead>
