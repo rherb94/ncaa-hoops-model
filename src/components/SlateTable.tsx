@@ -423,12 +423,12 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
       <div className="hidden md:block overflow-x-auto">
         <table className="w-full min-w-[860px] table-fixed text-sm">
           <colgroup>
-            <col className="w-[80px]" />  {/* Time */}
-            <col className="w-[280px]" /> {/* Game */}
-            <col className="w-[76px]" />  {/* Mkt */}
-            <col className="w-[76px]" />  {/* Model */}
-            <col className="w-[72px]" />  {/* Edge */}
-            <col />                        {/* Play — fills remainder */}
+            <col className="w-[88px]" />  {/* Time */}
+            <col />                        {/* Game — fills remainder */}
+            <col className="w-[100px]" /> {/* Mkt */}
+            <col className="w-[100px]" /> {/* Model */}
+            <col className="w-[92px]" />  {/* Edge */}
+            <col className="w-[220px]" /> {/* Play — fixed */}
           </colgroup>
 
           <thead className="border-b border-white/8">
