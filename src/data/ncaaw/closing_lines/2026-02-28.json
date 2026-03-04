@@ -1,0 +1,130 @@
+{
+  "date": "2026-02-28",
+  "last_updated": "2026-03-04T16:22:58.972Z",
+  "snapshot_times": [
+    "2026-02-28T16:50:38Z",
+    "2026-02-28T23:50:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "a114d7feecc6a4d63ae1140ed4c00c72",
+      "home_team": "Tenn-Martin Skyhawks",
+      "away_team": "Tennessee St Tigers",
+      "commence_time": "2026-02-28T16:00:00Z",
+      "homePoint": -11.5,
+      "awayPoint": 11.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-02-28T16:50:38Z"
+    },
+    {
+      "oddsEventId": "7c39ec8404a701fa8c06ebd434249d23",
+      "home_team": "Indiana Hoosiers",
+      "away_team": "Penn State Nittany Lions",
+      "commence_time": "2026-02-28T19:00:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-28T16:50:38Z"
+    },
+    {
+      "oddsEventId": "8fa9c5ff4f904f199e8a15f1d170afdf",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "Rutgers Scarlet Knights",
+      "commence_time": "2026-02-28T19:00:00Z",
+      "homePoint": -22.5,
+      "awayPoint": 22.5,
+      "book": "williamhill_us",
+      "snapshotTime": "2026-02-28T16:50:38Z"
+    },
+    {
+      "oddsEventId": "07bd61b6414d51173a22b70e06b1845b",
+      "home_team": "Rhode Island Rams",
+      "away_team": "GW Revolutionaries",
+      "commence_time": "2026-02-28T19:30:00Z",
+      "homePoint": -16.5,
+      "awayPoint": 16.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-02-28T16:50:38Z"
+    },
+    {
+      "oddsEventId": "4783ffc62b42d9e5a895c5768ac94f60",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Maryland Terrapins",
+      "commence_time": "2026-02-28T19:30:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-28T16:50:38Z"
+    },
+    {
+      "oddsEventId": "ac460bd283611171d61a5f8f4347f4bc",
+      "home_team": "BYU Cougars",
+      "away_team": "Colorado Buffaloes",
+      "commence_time": "2026-02-28T21:00:00Z",
+      "homePoint": 2.5,
+      "awayPoint": -2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-28T16:50:38Z"
+    },
+    {
+      "oddsEventId": "0fda59ba2580534fb8c72cd6faaa2a00",
+      "home_team": "Oklahoma St Cowgirls",
+      "away_team": "Kansas Jayhawks",
+      "commence_time": "2026-02-28T23:00:00Z",
+      "homePoint": -14.5,
+      "awayPoint": 14.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-28T23:50:37Z"
+    },
+    {
+      "oddsEventId": "5460a3e6ca8f37b09b950c60574a0d5f",
+      "home_team": "Utah Utes",
+      "away_team": "Arizona Wildcats",
+      "commence_time": "2026-03-01T00:00:00Z",
+      "homePoint": -11.5,
+      "awayPoint": 11.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-28T23:50:37Z"
+    },
+    {
+      "oddsEventId": "c88922705478826a79ca3a7a97db7c0a",
+      "home_team": "Yale Bulldogs",
+      "away_team": "Cornell Big Red",
+      "commence_time": "2026-02-28T22:01:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-02-28T23:50:37Z"
+    },
+    {
+      "oddsEventId": "0a8131feb9bcc4e582e9aa807f32d1ef",
+      "home_team": "Harvard Crimson",
+      "away_team": "Princeton Tigers",
+      "commence_time": "2026-02-28T23:04:00Z",
+      "homePoint": 6.5,
+      "awayPoint": -6.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-02-28T23:50:37Z"
+    },
+    {
+      "oddsEventId": "3813ec72820f5af77fb9006bfeaf0bbd",
+      "home_team": "Idaho Vandals",
+      "away_team": "N Colorado Bears",
+      "commence_time": "2026-02-28T23:30:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-02-28T23:50:37Z"
+    },
+    {
+      "oddsEventId": "2dc2892907f93595c300c0881a21663a",
+      "home_team": "Portland Pilots",
+      "away_team": "Gonzaga Bulldogs",
+      "commence_time": "2026-03-01T01:00:00Z",
+      "homePoint": 6.5,
+      "awayPoint": -6.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-28T23:50:37Z"
+    }
+  ]
+}

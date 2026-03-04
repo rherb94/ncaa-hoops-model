@@ -1,0 +1,89 @@
+{
+  "date": "2026-03-03",
+  "last_updated": "2026-03-04T16:23:16.184Z",
+  "snapshot_times": [
+    "2026-03-03T23:50:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "c6ea891bd533f581b6cb01deb29b928e",
+      "home_team": "Charlotte 49ers",
+      "away_team": "Rice Owls",
+      "commence_time": "2026-03-03T23:30:00Z",
+      "homePoint": 11.5,
+      "awayPoint": -11.5,
+      "book": "betmgm",
+      "snapshotTime": "2026-03-03T23:50:38Z"
+    },
+    {
+      "oddsEventId": "10d554d607a2439fe0e37a553a54ab43",
+      "home_team": "Alcorn St Braves",
+      "away_team": "Miss Valley St Delta Devilettes",
+      "commence_time": "2026-03-04T00:00:00Z",
+      "homePoint": -16.5,
+      "awayPoint": 16.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-03T23:50:38Z"
+    },
+    {
+      "oddsEventId": "a7e2d7773a6386e770cc003dcdba56ec",
+      "home_team": "Florida Atlantic Owls",
+      "away_team": "Tulane Green Wave",
+      "commence_time": "2026-03-04T00:00:00Z",
+      "homePoint": 2.5,
+      "awayPoint": -2.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-03T23:50:38Z"
+    },
+    {
+      "oddsEventId": "2b6639de0d2e1fc1055cc6e921e6b870",
+      "home_team": "Wichita St Shockers",
+      "away_team": "North Texas Mean Green",
+      "commence_time": "2026-03-04T00:00:00Z",
+      "homePoint": 14.5,
+      "awayPoint": -14.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-03T23:50:38Z"
+    },
+    {
+      "oddsEventId": "9f3694892ad861302718a77b9d23ef88",
+      "home_team": "South Florida Bulls",
+      "away_team": "Temple Owls",
+      "commence_time": "2026-03-04T00:00:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-03T23:50:38Z"
+    },
+    {
+      "oddsEventId": "959e05174fab022cee74fb4f36e02012",
+      "home_team": "Utah State Aggies",
+      "away_team": "Nevada Wolf Pack",
+      "commence_time": "2026-03-04T01:00:00Z",
+      "homePoint": 4.5,
+      "awayPoint": -4.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-03-03T23:50:38Z"
+    },
+    {
+      "oddsEventId": "6ea98f0d65ff38888c2399fe707dc4e4",
+      "home_team": "New Mexico Lobos",
+      "away_team": "Fresno St Bulldogs",
+      "commence_time": "2026-03-04T02:00:00Z",
+      "homePoint": -7,
+      "awayPoint": 7,
+      "book": "williamhill_us",
+      "snapshotTime": "2026-03-03T23:50:38Z"
+    },
+    {
+      "oddsEventId": "814d309f06a368d80828310d1f8fb923",
+      "home_team": "San José St Spartans",
+      "away_team": "Colorado St Rams",
+      "commence_time": "2026-03-04T03:00:00Z",
+      "homePoint": 21.5,
+      "awayPoint": -21.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-03T23:50:38Z"
+    }
+  ]
+}

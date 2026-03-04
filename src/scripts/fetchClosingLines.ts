@@ -24,9 +24,13 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { LEAGUES } from "@/lib/leagues";
+import type { LeagueId } from "@/lib/leagues";
 
 const ODDS_API_KEY = process.env.THE_ODDS_API_KEY;
 if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
+
+const LEAGUE = process.env.LEAGUE ?? "ncaam";
 
 // Date to label snapshot (YYYY-MM-DD). Default = today in ET.
 const DATE =
@@ -42,11 +46,11 @@ const DATE =
 // reproducible (in case the job starts slightly late).
 const SNAPSHOT_TIME = process.env.SNAPSHOT_TIME || new Date().toISOString();
 
-const SPORT_KEY = "basketball_ncaab";
+const SPORT_KEY = LEAGUES[LEAGUE as LeagueId]?.sportKey ?? "basketball_ncaab";
 const REGIONS = "us";
 const MARKETS = "spreads";
 
-const OUT_DIR = path.join(process.cwd(), "src", "data", "closing_lines");
+const OUT_DIR = path.join(process.cwd(), "src", "data", LEAGUE, "closing_lines");
 const OUT_FILE = path.join(OUT_DIR, `${DATE}.json`);
 
 function saveJson(p: string, obj: unknown) {

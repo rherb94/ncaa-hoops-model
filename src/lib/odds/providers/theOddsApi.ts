@@ -2,6 +2,7 @@
 import type { OddsProvider } from "../provider";
 import type { OddsGame, OddsSlate, BookKey, MarketLines } from "../types";
 import { resolveTeamId } from "@/data/teamAliases";
+import type { LeagueId } from "@/lib/leagues";
 
 type OddsApiOutcome = {
   name: string; // team name OR "Over"/"Under"
@@ -100,6 +101,13 @@ function ymdET(iso: string): string {
 
 export class TheOddsApiProvider implements OddsProvider {
   name = "theoddsapi";
+  private readonly sportKey: string;
+  private readonly leagueId: LeagueId;
+
+  constructor(sportKey = "basketball_ncaab", leagueId: LeagueId = "ncaam") {
+    this.sportKey = sportKey;
+    this.leagueId = leagueId;
+  }
 
   async getSlate(date: string, forceRefresh = false): Promise<OddsSlate> {
     const apiKey = process.env.THE_ODDS_API_KEY;
@@ -109,10 +117,8 @@ export class TheOddsApiProvider implements OddsProvider {
     const markets = process.env.THE_ODDS_API_MARKETS ?? "h2h,spreads,totals";
     const oddsFormat = process.env.THE_ODDS_API_ODDS_FORMAT ?? "american";
 
-    const sportKey = "basketball_ncaab";
-
     const url =
-      `https://api.the-odds-api.com/v4/sports/${sportKey}/odds` +
+      `https://api.the-odds-api.com/v4/sports/${this.sportKey}/odds` +
       `?regions=${encodeURIComponent(region)}` +
       `&markets=${encodeURIComponent(markets)}` +
       `&oddsFormat=${encodeURIComponent(oddsFormat)}` +
@@ -141,12 +147,14 @@ export class TheOddsApiProvider implements OddsProvider {
           resolveTeamId({
             provider: "theoddsapi",
             teamName: homeTeamName,
+            league: this.leagueId,
           }) ?? undefined;
 
         const awayTeamId =
           resolveTeamId({
             provider: "theoddsapi",
             teamName: awayTeamName,
+            league: this.leagueId,
           }) ?? undefined;
 
         if (!homeTeamId) console.warn("UNMAPPED HOME:", homeTeamName);

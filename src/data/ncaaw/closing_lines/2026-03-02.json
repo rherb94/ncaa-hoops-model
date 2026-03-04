@@ -1,0 +1,59 @@
+{
+  "date": "2026-03-02",
+  "last_updated": "2026-03-04T16:23:10.569Z",
+  "snapshot_times": [
+    "2026-03-02T23:50:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "5f057552ce91678fcc9ddb882fe958fd",
+      "home_team": "Houston Christian Huskies",
+      "away_team": "Texas A&M-CC Islanders",
+      "commence_time": "2026-03-02T23:03:00Z",
+      "homePoint": 2.5,
+      "awayPoint": -2.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-02T23:50:37Z"
+    },
+    {
+      "oddsEventId": "02326505d9468fe05171503650c34115",
+      "home_team": "Belmont Bruins",
+      "away_team": "Southern Illinois Salukis",
+      "commence_time": "2026-03-03T00:30:00Z",
+      "homePoint": -21.5,
+      "awayPoint": 21.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-02T23:50:37Z"
+    },
+    {
+      "oddsEventId": "9122a603db8fd5d9c67de95c2c7a8397",
+      "home_team": "Milwaukee Panthers",
+      "away_team": "Detroit Mercy Titans",
+      "commence_time": "2026-03-03T01:00:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-02T23:50:37Z"
+    },
+    {
+      "oddsEventId": "9dce9bbce19a89652d213fd2692e8822",
+      "home_team": "Weber State Wildcats",
+      "away_team": "Portland St Vikings",
+      "commence_time": "2026-03-03T01:00:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-02T23:50:37Z"
+    },
+    {
+      "oddsEventId": "21891c247a5b764554c3666a18144aca",
+      "home_team": "Montana Grizzlies",
+      "away_team": "N Colorado Bears",
+      "commence_time": "2026-03-03T02:00:00Z",
+      "homePoint": 6.5,
+      "awayPoint": -6.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-02T23:50:37Z"
+    }
+  ]
+}

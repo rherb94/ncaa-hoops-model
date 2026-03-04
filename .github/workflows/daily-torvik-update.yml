@@ -31,13 +31,14 @@ jobs:
       - name: Update Torvik team ratings
         env:
           YEAR: ${{ inputs.year || '2026' }}
+          LEAGUE: ncaam
         run: npx tsx src/scripts/updateTeamsFromTorvik.ts
 
       - name: Commit updated teams.csv if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/teams.csv
+          git add src/data/ncaam/teams.csv
           if git diff --cached --quiet; then
             echo "No changes to teams.csv."
           else

@@ -1,0 +1,47 @@
+name: Daily Torvik Ratings Update - NCAAW
+
+on:
+  schedule:
+    # 7:00 AM ET = 12:00 UTC — runs before the odds opener so ratings are fresh
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+    inputs:
+      year:
+        description: 'Season year (e.g. 2026). Defaults to current year.'
+        required: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Update Torvik team ratings
+        env:
+          YEAR: ${{ inputs.year || '2026' }}
+          LEAGUE: ncaaw
+        run: npx tsx src/scripts/updateTeamsFromTorvik.ts
+
+      - name: Commit updated teams.csv if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/ncaaw/teams.csv
+          if git diff --cached --quiet; then
+            echo "No changes to teams.csv."
+          else
+            git commit -m "chore: update NCAAW Torvik ratings $(date -u +%Y-%m-%d) [skip ci]"
+            git push
+          fi

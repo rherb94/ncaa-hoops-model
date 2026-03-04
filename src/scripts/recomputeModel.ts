@@ -21,6 +21,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { loadTeams } from "@/data/teams";
 import { resolveTeamId } from "@/data/teamAliases";
+import type { LeagueId } from "@/lib/leagues";
 import {
   computeEfficiencyModel,
   computeModelSpread,
@@ -34,8 +35,9 @@ function clamp(n: number, lo: number, hi: number) {
 
 const DRY_RUN = process.env.DRY_RUN === "1";
 const DATE    = process.env.DATE || "";
+const LEAGUE  = process.env.LEAGUE ?? "ncaam";
 
-const OPEN_DIR = path.join(process.cwd(), "src", "data", "odds_opening");
+const OPEN_DIR = path.join(process.cwd(), "src", "data", LEAGUE, "odds_opening");
 
 function loadJson<T>(p: string): T {
   return JSON.parse(fs.readFileSync(p, "utf-8")) as T;
@@ -73,8 +75,8 @@ function recomputeGame(
   g: SnapshotGame,
   teamsMap: ReturnType<typeof loadTeams>
 ): { changed: boolean; oldModel: unknown; newModel: unknown } {
-  const homeTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.home_team });
-  const awayTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.away_team });
+  const homeTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.home_team, league: LEAGUE as LeagueId });
+  const awayTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.away_team, league: LEAGUE as LeagueId });
   const homeTeam   = homeTeamId ? teamsMap.get(homeTeamId) : undefined;
   const awayTeam   = awayTeamId ? teamsMap.get(awayTeamId) : undefined;
 
@@ -139,7 +141,7 @@ async function processFile(filePath: string, teamsMap: ReturnType<typeof loadTea
 }
 
 async function main() {
-  const teamsMap = loadTeams();
+  const teamsMap = loadTeams(LEAGUE as LeagueId);
   console.log(`Loaded ${teamsMap.size} teams from teams.csv`);
   if (DRY_RUN) console.log("DRY_RUN=1 — no files will be written\n");
 

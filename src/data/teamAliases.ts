@@ -1,6 +1,7 @@
 // src/data/teamAliases.ts
 import fs from "node:fs";
 import path from "node:path";
+import type { LeagueId } from "@/lib/leagues";
 
 type Parsed = { header: string[]; rows: string[][] };
 
@@ -79,41 +80,28 @@ function expandAbbreviations(name: string): string[] {
   return Array.from(cands);
 }
 
-let cachedExact: Map<string, string> | null = null;
-let cachedSlug: Map<string, string> | null = null;
-let cachedNorm: Map<string, string> | null = null;
+// Per-league alias caches
+type AliasCache = { exact: Map<string, string>; slug: Map<string, string>; norm: Map<string, string> };
+const aliasCache = new Map<string, AliasCache>();
 
 /**
- * Loads aliases from either:
- *  - src/data/teamAliases.csv   (teamId, alias)
- *  - src/data/team_aliases.csv  (aliasId/aliasTeamId, canonicalId/teamId)
+ * Loads aliases for a league from src/data/{league}/teamAliases.csv.
  *
  * Builds 3 lookup maps:
  *  - exact: alias text -> canonical teamId
  *  - slug:  team-<slug(alias)> -> canonical teamId
  *  - norm:  normalizeKey(alias) -> canonical teamId
  */
-export function loadTeamAliases(): {
-  exact: Map<string, string>;
-  slug: Map<string, string>;
-  norm: Map<string, string>;
-} {
-  if (cachedExact && cachedSlug && cachedNorm) {
-    return { exact: cachedExact, slug: cachedSlug, norm: cachedNorm };
-  }
+export function loadTeamAliases(league: LeagueId = "ncaam"): AliasCache {
+  if (aliasCache.has(league)) return aliasCache.get(league)!;
 
-  const p1 = path.join(process.cwd(), "src", "data", "teamAliases.csv");
-  const p2 = path.join(process.cwd(), "src", "data", "team_aliases.csv");
-
-  const filePath = fs.existsSync(p1) ? p1 : fs.existsSync(p2) ? p2 : null;
+  const filePath = path.join(process.cwd(), "src", "data", league, "teamAliases.csv");
   const exact = new Map<string, string>();
   const slug = new Map<string, string>();
   const norm = new Map<string, string>();
 
-  if (!filePath) {
-    cachedExact = exact;
-    cachedSlug = slug;
-    cachedNorm = norm;
+  if (!fs.existsSync(filePath)) {
+    aliasCache.set(league, { exact, slug, norm });
     return { exact, slug, norm };
   }
 
@@ -169,24 +157,23 @@ export function loadTeamAliases(): {
     put(aliasId, canonical);
   }
 
-  cachedExact = exact;
-  cachedSlug = slug;
-  cachedNorm = norm;
+  aliasCache.set(league, { exact, slug, norm });
   return { exact, slug, norm };
 }
 
-type ResolveInput = string | { provider: string; teamName: string };
+type ResolveInput = string | { provider: string; teamName: string; league?: LeagueId };
 
-export function resolveTeamId(input: ResolveInput): string | undefined {
+export function resolveTeamId(input: ResolveInput, league: LeagueId = "ncaam"): string | undefined {
   const teamName = typeof input === "string" ? input : input.teamName;
-  return resolveTeamIdFromName(teamName);
+  const effectiveLeague = typeof input === "object" ? (input.league ?? league) : league;
+  return resolveTeamIdFromName(teamName, effectiveLeague);
 }
 
-function resolveTeamIdFromName(teamName: string): string | undefined {
+function resolveTeamIdFromName(teamName: string, league: LeagueId = "ncaam"): string | undefined {
   const raw = (teamName ?? "").trim();
   if (!raw) return undefined;
 
-  const { exact, slug, norm } = loadTeamAliases();
+  const { exact, slug, norm } = loadTeamAliases(league);
 
   const tryResolve = (s: string): string | undefined => {
     const direct = exact.get(s);

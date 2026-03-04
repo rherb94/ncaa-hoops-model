@@ -1,0 +1,50 @@
+name: Daily NCAAW Odds Opener Snapshot
+
+on:
+  schedule:
+    # 11:00 AM ET = 16:00 UTC
+    - cron: '5 16 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Date to label the snapshot (YYYY-MM-DD). Defaults to today UTC.'
+        required: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Fetch opening odds snapshot (NCAAW)
+        env:
+          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+          DATE: ${{ inputs.date || '' }}
+          LEAGUE: ncaaw
+        run: npx tsx src/scripts/fetchOddsOpenersForDate.ts
+
+      - name: Commit snapshot if new
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+          git add src/data/ncaaw/odds_opening/
+          if git diff --cached --quiet; then
+            echo "No new snapshot to commit."
+          else
+            DATE_STR=$(date -u +%Y-%m-%d)
+            git commit -m "chore: ncaaw odds opener snapshot ${DATE_STR} [skip ci]"
+            git push
+          fi

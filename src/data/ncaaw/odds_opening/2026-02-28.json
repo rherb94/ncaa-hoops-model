@@ -1,0 +1,150 @@
+{
+  "date": "2026-02-28",
+  "captured_at": "2026-02-28T16:05:00Z",
+  "games": [
+    {
+      "oddsEventId": "a114d7feecc6a4d63ae1140ed4c00c72",
+      "commence_time": "2026-02-28T16:00:00Z",
+      "home_team": "Tenn-Martin Skyhawks",
+      "away_team": "Tennessee St Tigers",
+      "home_espnTeamId": "2630",
+      "away_espnTeamId": "2634",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-02-28T15:59:44Z",
+        "homePoint": -14.5,
+        "awayPoint": 14.5
+      },
+      "model": {
+        "homeTeamId": "team-tennessee-martin",
+        "awayTeamId": "team-tennessee-st",
+        "modelSpread": -6.5,
+        "edge": 8,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "e6c6f5635270c35a66719e6d5bd7e9ac",
+      "commence_time": "2026-02-28T16:30:00Z",
+      "home_team": "Boston Univ. Terriers",
+      "away_team": "American Eagles",
+      "home_espnTeamId": "104",
+      "away_espnTeamId": "44",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-02-28T15:59:44Z",
+        "homePoint": -7.5,
+        "awayPoint": 7.5
+      },
+      "model": {
+        "homeTeamId": "team-boston-university",
+        "awayTeamId": "team-american",
+        "modelSpread": -2.8,
+        "edge": 4.7,
+        "signal": "LEAN"
+      }
+    },
+    {
+      "oddsEventId": "7c39ec8404a701fa8c06ebd434249d23",
+      "commence_time": "2026-02-28T19:00:00Z",
+      "home_team": "Indiana Hoosiers",
+      "away_team": "Penn State Nittany Lions",
+      "home_espnTeamId": "84",
+      "away_espnTeamId": "213",
+      "home_resolve": "ESPN_BY_NAME",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "williamhill_us",
+        "last_update": "2026-02-28T15:59:19Z",
+        "homePoint": -6.5,
+        "awayPoint": 6.5
+      },
+      "model": {
+        "homeTeamId": "team-indiana",
+        "awayTeamId": "team-penn",
+        "modelSpread": -12.3,
+        "edge": -5.8,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "8fa9c5ff4f904f199e8a15f1d170afdf",
+      "commence_time": "2026-02-28T19:00:00Z",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "Rutgers Scarlet Knights",
+      "home_espnTeamId": "158",
+      "away_espnTeamId": "164",
+      "home_resolve": "MAP",
+      "away_resolve": "ESPN_BY_NAME",
+      "neutralSite": false,
+      "opening": {
+        "book": "williamhill_us",
+        "last_update": "2026-02-28T15:59:19Z",
+        "homePoint": -22.5,
+        "awayPoint": 22.5
+      },
+      "model": {
+        "homeTeamId": "team-nebraska",
+        "awayTeamId": "team-rutgers",
+        "modelSpread": -19.5,
+        "edge": 3,
+        "signal": "LEAN"
+      }
+    },
+    {
+      "oddsEventId": "07bd61b6414d51173a22b70e06b1845b",
+      "commence_time": "2026-02-28T19:30:00Z",
+      "home_team": "Rhode Island Rams",
+      "away_team": "GW Revolutionaries",
+      "home_espnTeamId": "227",
+      "away_espnTeamId": "45",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-02-28T15:59:59Z",
+        "homePoint": -16.5,
+        "awayPoint": 16.5
+      },
+      "model": {
+        "homeTeamId": "team-rhode-island",
+        "awayTeamId": "team-george-washington",
+        "modelSpread": -11.9,
+        "edge": 4.6,
+        "signal": "LEAN"
+      }
+    },
+    {
+      "oddsEventId": "4783ffc62b42d9e5a895c5768ac94f60",
+      "commence_time": "2026-02-28T19:30:00Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Maryland Terrapins",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "120",
+      "home_resolve": "MAP",
+      "away_resolve": "ESPN_BY_NAME",
+      "neutralSite": false,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-02-28T15:59:59Z",
+        "homePoint": -7.5,
+        "awayPoint": 7.5
+      },
+      "model": {
+        "homeTeamId": "team-michigan",
+        "awayTeamId": "team-maryland",
+        "modelSpread": -3.9,
+        "edge": 3.6,
+        "signal": "LEAN"
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "date": "2026-02-24",
+  "last_updated": "2026-03-04T16:23:37.609Z",
+  "snapshot_times": [
+    "2026-02-24T23:50:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "5fc3011c8dfa79ff1f9368509e52332e",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Houston Cougars",
+      "commence_time": "2026-02-25T01:00:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-24T23:50:37Z"
+    },
+    {
+      "oddsEventId": "c6ff782fb50e39ece11ae382f8d66d16",
+      "home_team": "Colorado Buffaloes",
+      "away_team": "Utah Utes",
+      "commence_time": "2026-02-25T02:00:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-24T23:50:37Z"
+    },
+    {
+      "oddsEventId": "60cbfa7c82c122323eb93807a9ffda37",
+      "home_team": "Georgia St Panthers",
+      "away_team": "Coastal Carolina Chanticleers",
+      "commence_time": "2026-02-24T22:00:00Z",
+      "homePoint": 6.5,
+      "awayPoint": -6.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-02-24T23:50:37Z"
+    },
+    {
+      "oddsEventId": "e5c8921c54e0a872045f7e9fd2f6d385",
+      "home_team": "Florida Atlantic Owls",
+      "away_team": "Charlotte 49ers",
+      "commence_time": "2026-02-25T00:00:00Z",
+      "homePoint": 3.5,
+      "awayPoint": -3.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-02-24T23:50:37Z"
+    }
+  ]
+}

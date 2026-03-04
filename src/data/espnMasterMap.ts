@@ -367,3 +367,15 @@ export const ESPN_MASTER_MAP_BY_TEAMID: Record<string, number> = {
   "team-yale": 43,
   "team-youngstown-st": 2754,
 };
+
+// AUTO-GENERATED NCAAW map — initially empty.
+// Populate by running: LEAGUE=ncaaw npx tsx src/scripts/fetchEspnTeams.ts
+// then regenerating via buildEspnMasterMap with LEAGUE=ncaaw.
+export const ESPN_MASTER_MAP_NCAAW: Record<string, number> = {};
+
+/** League-keyed lookup — use this in league-aware code. */
+export const ESPN_MASTER_MAP_BY_LEAGUE: Record<string, Record<string, number>> =
+  {
+    ncaam: ESPN_MASTER_MAP_BY_TEAMID,
+    ncaaw: ESPN_MASTER_MAP_NCAAW,
+  };
