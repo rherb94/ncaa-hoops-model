@@ -3,6 +3,7 @@
 import React, { Fragment, useMemo, useState } from "react";
 import type { SlateGame } from "@/lib/types";
 import type { LeagueId } from "@/lib/leagues";
+import type { L5Record } from "@/app/api/[league]/team-l5/route";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -237,7 +238,41 @@ function StatRow({ label, value, rank }: { label: string; value: string; rank?: 
   );
 }
 
-function TeamCard({ title, logo, t }: { title: string; logo?: string | null; t?: TeamStats }) {
+// ── Last-5 chips ──────────────────────────────────────────────────────────────
+
+function L5Chips({ record }: { record: L5Record }) {
+  const emoji = record.wins >= 4 ? "🔥" : record.losses >= 4 ? "🧊" : null;
+  return (
+    <div className="col-span-2 pt-2 mt-1 border-t border-white/[0.06]">
+      <div className="flex items-center gap-1.5 flex-wrap">
+        <div className="flex gap-1">
+          {record.games.map((g, i) => (
+            <span
+              key={i}
+              title={`${g.result === "W" ? "W" : "L"} ${Math.abs(g.margin)} vs ${g.opponent} (${g.homeAway})`}
+              className={`inline-flex items-center justify-center rounded w-5 h-5 text-[10px] font-bold cursor-default select-none ${
+                g.result === "W"
+                  ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                  : "bg-rose-500/20 text-rose-400 border border-rose-500/30"
+              }`}
+            >
+              {g.result}
+            </span>
+          ))}
+        </div>
+        <span className="text-[11px] text-zinc-500 font-mono">
+          {record.wins}-{record.losses}
+        </span>
+        <span className={`text-[11px] font-medium ${record.streak.startsWith("W") ? "text-emerald-400" : "text-rose-400"}`}>
+          {record.streak}
+        </span>
+        {emoji && <span className="text-sm leading-none">{emoji}</span>}
+      </div>
+    </div>
+  );
+}
+
+function TeamCard({ title, logo, t, l5 }: { title: string; logo?: string | null; t?: TeamStats; l5?: L5Record }) {
   const conf = t?.conference ?? null;
   const record = t?.record ?? null;
   const adjMargin = t?.adjOff != null && t?.adjDef != null ? Number(t.adjOff) - Number(t.adjDef) : null;
@@ -287,6 +322,7 @@ function TeamCard({ title, logo, t }: { title: string; logo?: string | null; t?:
             value={fmtNum(t.tempo)}
             rank={t.ranks?.tempo ? `#${fmtInt(t.ranks.tempo)}` : undefined}
           />
+          {l5 && <L5Chips record={l5} />}
         </div>
       )}
     </div>
@@ -319,6 +355,13 @@ async function fetchTeamStats(teamId: string, league: LeagueId): Promise<TeamSta
   return res.json();
 }
 
+async function fetchTeamL5(teamId: string, league: LeagueId): Promise<{ id: string; record: L5Record }> {
+  const res = await fetch(`/api/${league}/team-l5?teamId=${encodeURIComponent(teamId)}`);
+  if (!res.ok) throw new Error(`team-l5 failed (${res.status})`);
+  const record: L5Record = await res.json();
+  return { id: teamId, record };
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 type FilterMode = "ALL" | "PICKS" | "STRONG";
@@ -326,6 +369,7 @@ type FilterMode = "ALL" | "PICKS" | "STRONG";
 export default function SlateTable({ games, league }: { games: SlateGame[]; league: LeagueId }) {
   const [openGameId, setOpenGameId] = useState<string | null>(null);
   const [stats, setStats] = useState<Record<string, TeamStats>>({});
+  const [l5, setL5] = useState<Record<string, L5Record>>({});
   const [err, setErr] = useState<string | null>(null);
   const [filter, setFilter] = useState<FilterMode>("ALL");
 
@@ -373,17 +417,34 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
     const next = openGameId === g.gameId ? null : g.gameId;
     setOpenGameId(next);
     if (!next) return;
-    const want = [g.homeTeamId, g.awayTeamId].filter((id) => !stats[id]);
-    if (!want.length) return;
-    try {
-      const results = await Promise.all(want.map((id) => fetchTeamStats(id, league)));
-      setStats((prev) => {
-        const copy = { ...prev };
-        for (const r of results) copy[r.teamId] = r;
-        return copy;
+
+    // Fetch team stats (critical — show error if it fails)
+    const wantStats = [g.homeTeamId, g.awayTeamId].filter((id) => !stats[id]);
+    if (wantStats.length) {
+      try {
+        const results = await Promise.all(wantStats.map((id) => fetchTeamStats(id, league)));
+        setStats((prev) => {
+          const copy = { ...prev };
+          for (const r of results) copy[r.teamId] = r;
+          return copy;
+        });
+      } catch (e: any) {
+        setErr(e?.message ?? "Failed to fetch team stats");
+      }
+    }
+
+    // Fetch L5 records (non-critical — silently skip on failure)
+    const wantL5 = [g.homeTeamId, g.awayTeamId].filter((id) => !l5[id]);
+    if (wantL5.length) {
+      Promise.allSettled(wantL5.map((id) => fetchTeamL5(id, league))).then((results) => {
+        setL5((prev) => {
+          const copy = { ...prev };
+          for (const r of results) {
+            if (r.status === "fulfilled") copy[r.value.id] = r.value.record;
+          }
+          return copy;
+        });
       });
-    } catch (e: any) {
-      setErr(e?.message ?? "Failed to fetch team stats");
     }
   }
 
@@ -503,8 +564,8 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                       <td colSpan={6} className="px-4 py-4 bg-black/20 border-b border-white/[0.05]">
                         <GameInfoBar g={g} />
                         <div className="grid gap-3 sm:grid-cols-2">
-                          <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} />
-                          <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} />
+                          <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} />
+                          <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} />
                         </div>
                       </td>
                     </tr>
@@ -579,8 +640,8 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                 <div className="px-4 py-4 bg-black/20">
                   <GameInfoBar g={g} />
                   <div className="grid gap-3">
-                    <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} />
-                    <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} />
+                    <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} />
+                    <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} />
                   </div>
                 </div>
               )}
