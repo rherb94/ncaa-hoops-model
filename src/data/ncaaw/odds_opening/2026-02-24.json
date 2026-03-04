@@ -1,6 +1,6 @@
 {
   "date": "2026-02-24",
-  "captured_at": "2026-02-24T16:05:00Z",
+  "captured_at": "2026-02-24T16:00:00Z",
   "games": [
     {
       "oddsEventId": "5fc3011c8dfa79ff1f9368509e52332e",
@@ -14,15 +14,15 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-24T15:59:55Z",
-        "homePoint": -10.5,
-        "awayPoint": 10.5
+        "last_update": "2026-02-24T15:55:10Z",
+        "homePoint": -8.5,
+        "awayPoint": 8.5
       },
       "model": {
         "homeTeamId": "team-arizona",
         "awayTeamId": "team-houston",
         "modelSpread": -7.8,
-        "edge": 2.7,
+        "edge": 0.7,
         "signal": "NONE"
       }
     },
@@ -38,7 +38,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-24T15:59:55Z",
+        "last_update": "2026-02-24T15:55:10Z",
         "homePoint": -7.5,
         "awayPoint": 7.5
       },

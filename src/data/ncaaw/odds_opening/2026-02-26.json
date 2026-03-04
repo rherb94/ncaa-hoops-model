@@ -1,6 +1,6 @@
 {
   "date": "2026-02-26",
-  "captured_at": "2026-02-26T16:05:00Z",
+  "captured_at": "2026-02-26T16:00:00Z",
   "games": [
     {
       "oddsEventId": "7310ea38b66b4e11411009ac0f0d3559",
@@ -14,7 +14,7 @@
       "neutralSite": false,
       "opening": {
         "book": "betmgm",
-        "last_update": "2026-02-26T16:00:21Z",
+        "last_update": "2026-02-26T15:55:13Z",
         "homePoint": 1.5,
         "awayPoint": -1.5
       },
@@ -38,7 +38,7 @@
       "neutralSite": false,
       "opening": {
         "book": "betrivers",
-        "last_update": "2026-02-26T16:00:25Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -3.5,
         "awayPoint": 3.5
       },
@@ -62,7 +62,7 @@
       "neutralSite": true,
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-02-26T15:59:49Z",
+        "last_update": "2026-02-26T15:55:26Z",
         "homePoint": 5.5,
         "awayPoint": -5.5
       },
@@ -85,16 +85,16 @@
       "away_resolve": "MAP",
       "neutralSite": false,
       "opening": {
-        "book": "draftkings",
-        "last_update": "2026-02-26T15:59:49Z",
-        "homePoint": 16.5,
-        "awayPoint": -16.5
+        "book": "fanduel",
+        "last_update": "2026-02-26T15:55:30Z",
+        "homePoint": 17.5,
+        "awayPoint": -17.5
       },
       "model": {
         "homeTeamId": "team-georgia-tech",
         "awayTeamId": "team-louisville",
         "modelSpread": 13.2,
-        "edge": -3.3,
+        "edge": -4.3,
         "signal": "LEAN"
       }
     },
@@ -110,7 +110,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -18.5,
         "awayPoint": 18.5
       },
@@ -134,7 +134,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -28.5,
         "awayPoint": 28.5
       },
@@ -158,7 +158,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": 17.5,
         "awayPoint": -17.5
       },
@@ -182,7 +182,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -37.5,
         "awayPoint": 37.5
       },
@@ -206,7 +206,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -23.5,
         "awayPoint": 23.5
       },
@@ -230,7 +230,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": 3.5,
         "awayPoint": -3.5
       },
@@ -254,7 +254,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -7.5,
         "awayPoint": 7.5
       },
@@ -278,7 +278,7 @@
       "neutralSite": false,
       "opening": {
         "book": "betrivers",
-        "last_update": "2026-02-26T16:00:25Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": 3.5,
         "awayPoint": -3.5
       },
@@ -302,7 +302,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -11.5,
         "awayPoint": 11.5
       },
@@ -326,7 +326,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -29.5,
         "awayPoint": 29.5
       },
@@ -350,7 +350,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -37.5,
         "awayPoint": 37.5
       },
@@ -374,7 +374,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -10.5,
         "awayPoint": 10.5
       },
@@ -398,7 +398,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -11.5,
         "awayPoint": 11.5
       },
@@ -422,7 +422,7 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-02-26T16:00:34Z",
+        "last_update": "2026-02-26T15:55:30Z",
         "homePoint": -24.5,
         "awayPoint": 24.5
       },

@@ -1,6 +1,6 @@
 {
   "date": "2026-02-25",
-  "captured_at": "2026-02-25T16:05:00Z",
+  "captured_at": "2026-02-25T16:00:00Z",
   "games": [
     {
       "oddsEventId": "184feee95a5db436177c5174c50048f8",
@@ -13,17 +13,17 @@
       "away_resolve": "ESPN_BY_NAME",
       "neutralSite": false,
       "opening": {
-        "book": "draftkings",
-        "last_update": "2026-02-25T15:59:56Z",
+        "book": "fanduel",
+        "last_update": "2026-02-25T15:55:33Z",
         "homePoint": 14.5,
         "awayPoint": -14.5
       },
       "model": {
-        "homeTeamId": "team-penn",
+        "homeTeamId": "team-penn-st",
         "awayTeamId": "team-usc",
-        "modelSpread": 16.3,
-        "edge": 1.8,
-        "signal": "NONE"
+        "modelSpread": 9.8,
+        "edge": -4.7,
+        "signal": "LEAN"
       }
     },
     {
@@ -37,17 +37,17 @@
       "away_resolve": "MAP",
       "neutralSite": false,
       "opening": {
-        "book": "draftkings",
-        "last_update": "2026-02-25T15:59:56Z",
-        "homePoint": 17.5,
-        "awayPoint": -17.5
+        "book": "fanduel",
+        "last_update": "2026-02-25T15:55:33Z",
+        "homePoint": 18.5,
+        "awayPoint": -18.5
       },
       "model": {
         "homeTeamId": "team-cincinnati",
         "awayTeamId": "team-tcu",
         "modelSpread": 15,
-        "edge": -2.5,
-        "signal": "NONE"
+        "edge": -3.5,
+        "signal": "LEAN"
       }
     },
     {
@@ -61,16 +61,16 @@
       "away_resolve": "MAP",
       "neutralSite": false,
       "opening": {
-        "book": "draftkings",
-        "last_update": "2026-02-25T15:59:56Z",
-        "homePoint": -31.5,
-        "awayPoint": 31.5
+        "book": "fanduel",
+        "last_update": "2026-02-25T15:55:33Z",
+        "homePoint": -32.5,
+        "awayPoint": 32.5
       },
       "model": {
         "homeTeamId": "team-maryland",
         "awayTeamId": "team-northwestern",
         "modelSpread": -25.2,
-        "edge": 6.3,
+        "edge": 7.3,
         "signal": "STRONG"
       }
     },
@@ -85,17 +85,17 @@
       "away_resolve": "MAP",
       "neutralSite": false,
       "opening": {
-        "book": "draftkings",
-        "last_update": "2026-02-25T15:59:56Z",
-        "homePoint": 21.5,
-        "awayPoint": -21.5
+        "book": "fanduel",
+        "last_update": "2026-02-25T15:55:33Z",
+        "homePoint": 22.5,
+        "awayPoint": -22.5
       },
       "model": {
         "homeTeamId": "team-ucf",
         "awayTeamId": "team-west-virginia",
         "modelSpread": 19.1,
-        "edge": -2.4,
-        "signal": "NONE"
+        "edge": -3.4,
+        "signal": "LEAN"
       }
     },
     {
@@ -109,17 +109,17 @@
       "away_resolve": "MISS",
       "neutralSite": false,
       "opening": {
-        "book": "draftkings",
-        "last_update": "2026-02-25T15:59:56Z",
-        "homePoint": -4.5,
-        "awayPoint": 4.5
+        "book": "fanduel",
+        "last_update": "2026-02-25T15:55:33Z",
+        "homePoint": -5.5,
+        "awayPoint": 5.5
       },
       "model": {
-        "homeTeamId": "team-iowa",
+        "homeTeamId": "team-iowa-st",
         "awayTeamId": "team-oklahoma-st",
-        "modelSpread": -9.7,
-        "edge": -5.2,
-        "signal": "STRONG"
+        "modelSpread": -3.7,
+        "edge": 1.8,
+        "signal": "NONE"
       }
     },
     {
@@ -133,8 +133,8 @@
       "away_resolve": "MAP",
       "neutralSite": false,
       "opening": {
-        "book": "draftkings",
-        "last_update": "2026-02-25T15:59:56Z",
+        "book": "fanduel",
+        "last_update": "2026-02-25T15:55:33Z",
         "homePoint": 4.5,
         "awayPoint": -4.5
       },
@@ -157,17 +157,17 @@
       "away_resolve": "MAP",
       "neutralSite": false,
       "opening": {
-        "book": "draftkings",
-        "last_update": "2026-02-25T15:59:56Z",
-        "homePoint": 4.5,
-        "awayPoint": -4.5
+        "book": "fanduel",
+        "last_update": "2026-02-25T15:55:33Z",
+        "homePoint": 5.5,
+        "awayPoint": -5.5
       },
       "model": {
-        "homeTeamId": "team-ohio",
+        "homeTeamId": "team-ohio-st",
         "awayTeamId": "team-michigan",
-        "modelSpread": 27.2,
-        "edge": 12,
-        "signal": "STRONG"
+        "modelSpread": 2,
+        "edge": -3.5,
+        "signal": "LEAN"
       }
     },
     {
@@ -181,8 +181,8 @@
       "away_resolve": "MAP",
       "neutralSite": false,
       "opening": {
-        "book": "draftkings",
-        "last_update": "2026-02-25T15:59:56Z",
+        "book": "fanduel",
+        "last_update": "2026-02-25T15:55:33Z",
         "homePoint": -5.5,
         "awayPoint": 5.5
       },

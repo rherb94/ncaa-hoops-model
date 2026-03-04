@@ -1,6 +1,6 @@
 {
   "date": "2026-02-27",
-  "captured_at": "2026-02-27T16:05:00Z",
+  "captured_at": "2026-02-27T16:00:00Z",
   "games": [
     {
       "oddsEventId": "b84890f6e85c3510e31cdf834083e0b8",
@@ -14,7 +14,7 @@
       "neutralSite": false,
       "opening": {
         "book": "betrivers",
-        "last_update": "2026-02-27T16:00:20Z",
+        "last_update": "2026-02-27T15:54:35Z",
         "homePoint": 29.5,
         "awayPoint": -29.5
       },
@@ -38,7 +38,7 @@
       "neutralSite": false,
       "opening": {
         "book": "betrivers",
-        "last_update": "2026-02-27T16:00:20Z",
+        "last_update": "2026-02-27T15:54:35Z",
         "homePoint": 4.5,
         "awayPoint": -4.5
       },
@@ -62,7 +62,7 @@
       "neutralSite": false,
       "opening": {
         "book": "betrivers",
-        "last_update": "2026-02-27T16:00:20Z",
+        "last_update": "2026-02-27T15:54:35Z",
         "homePoint": -2.5,
         "awayPoint": 2.5
       },
@@ -86,7 +86,7 @@
       "neutralSite": false,
       "opening": {
         "book": "betrivers",
-        "last_update": "2026-02-27T16:00:20Z",
+        "last_update": "2026-02-27T15:54:35Z",
         "homePoint": -19.5,
         "awayPoint": 19.5
       },
@@ -110,7 +110,7 @@
       "neutralSite": false,
       "opening": {
         "book": "betrivers",
-        "last_update": "2026-02-27T16:00:20Z",
+        "last_update": "2026-02-27T15:54:35Z",
         "homePoint": -3.5,
         "awayPoint": 3.5
       },
@@ -134,7 +134,7 @@
       "neutralSite": false,
       "opening": {
         "book": "betrivers",
-        "last_update": "2026-02-27T16:00:20Z",
+        "last_update": "2026-02-27T15:54:35Z",
         "homePoint": -10.5,
         "awayPoint": 10.5
       },

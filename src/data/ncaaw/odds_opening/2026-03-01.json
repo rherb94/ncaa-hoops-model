@@ -1,6 +1,6 @@
 {
   "date": "2026-03-01",
-  "captured_at": "2026-03-01T16:05:00Z",
+  "captured_at": "2026-03-01T16:00:00Z",
   "games": [
     {
       "oddsEventId": "f6008f7d0e047a61489e7eac3a87cf42",
@@ -14,7 +14,7 @@
       "neutralSite": false,
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-01T16:00:03Z",
+        "last_update": "2026-03-01T15:54:25Z",
         "homePoint": 16.5,
         "awayPoint": -16.5
       },
@@ -38,7 +38,7 @@
       "neutralSite": false,
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-01T16:00:03Z",
+        "last_update": "2026-03-01T15:54:25Z",
         "homePoint": 2.5,
         "awayPoint": -2.5
       },
@@ -62,16 +62,16 @@
       "neutralSite": false,
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-01T16:00:03Z",
+        "last_update": "2026-03-01T15:54:25Z",
         "homePoint": -3.5,
         "awayPoint": 3.5
       },
       "model": {
         "homeTeamId": "team-michigan-st",
-        "awayTeamId": "team-ohio",
-        "modelSpread": -26,
-        "edge": -12,
-        "signal": "STRONG"
+        "awayTeamId": "team-ohio-st",
+        "modelSpread": -1.1,
+        "edge": 2.4,
+        "signal": "NONE"
       }
     },
     {
@@ -86,7 +86,7 @@
       "neutralSite": false,
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-01T16:00:03Z",
+        "last_update": "2026-03-01T15:54:25Z",
         "homePoint": -3.5,
         "awayPoint": 3.5
       },
@@ -99,30 +99,6 @@
       }
     },
     {
-      "oddsEventId": "fb7c888bee5725ed92db27a53a7b2315",
-      "commence_time": "2026-03-01T19:00:00Z",
-      "home_team": "Arkansas Razorbacks",
-      "away_team": "Auburn Tigers",
-      "home_espnTeamId": "8",
-      "away_espnTeamId": "2",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "neutralSite": false,
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-03-01T16:00:20Z",
-        "homePoint": 1.5,
-        "awayPoint": -1.5
-      },
-      "model": {
-        "homeTeamId": "team-arkansas",
-        "awayTeamId": "team-auburn",
-        "modelSpread": -1.5,
-        "edge": -3,
-        "signal": "LEAN"
-      }
-    },
-    {
       "oddsEventId": "9e4fedbd6a1ebe5793214259c0b12f0e",
       "commence_time": "2026-03-01T19:00:00Z",
       "home_team": "West Virginia Mountaineers",
@@ -132,17 +108,12 @@
       "home_resolve": "MAP",
       "away_resolve": "MISS",
       "neutralSite": false,
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-03-01T16:00:20Z",
-        "homePoint": -19.5,
-        "awayPoint": 19.5
-      },
+      "opening": null,
       "model": {
         "homeTeamId": "team-west-virginia",
         "awayTeamId": "team-cincinnati",
         "modelSpread": -19.9,
-        "edge": -0.4,
+        "edge": null,
         "signal": "NONE"
       }
     },
@@ -156,18 +127,13 @@
       "home_resolve": "MAP",
       "away_resolve": "MAP",
       "neutralSite": false,
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-03-01T16:00:20Z",
-        "homePoint": 5.5,
-        "awayPoint": -5.5
-      },
+      "opening": null,
       "model": {
         "homeTeamId": "team-kansas-st",
-        "awayTeamId": "team-iowa",
-        "modelSpread": 12,
-        "edge": 6.5,
-        "signal": "STRONG"
+        "awayTeamId": "team-iowa-st",
+        "modelSpread": 6,
+        "edge": null,
+        "signal": "NONE"
       }
     },
     {
@@ -182,7 +148,7 @@
       "neutralSite": false,
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-01T16:00:03Z",
+        "last_update": "2026-03-01T15:54:25Z",
         "homePoint": 13.5,
         "awayPoint": -13.5
       },
@@ -206,15 +172,15 @@
       "neutralSite": false,
       "opening": {
         "book": "fanduel",
-        "last_update": "2026-03-01T16:00:20Z",
-        "homePoint": 28.5,
-        "awayPoint": -28.5
+        "last_update": "2026-03-01T15:54:42Z",
+        "homePoint": 27.5,
+        "awayPoint": -27.5
       },
       "model": {
         "homeTeamId": "team-pittsburgh",
         "awayTeamId": "team-n-c-state",
         "modelSpread": 26.1,
-        "edge": -2.4,
+        "edge": -1.4,
         "signal": "NONE"
       }
     },
@@ -230,7 +196,7 @@
       "neutralSite": false,
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-01T16:00:03Z",
+        "last_update": "2026-03-01T15:54:25Z",
         "homePoint": 4.5,
         "awayPoint": -4.5
       },
@@ -254,7 +220,7 @@
       "neutralSite": false,
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-01T16:00:03Z",
+        "last_update": "2026-03-01T15:54:25Z",
         "homePoint": -9.5,
         "awayPoint": 9.5
       },
@@ -278,7 +244,7 @@
       "neutralSite": false,
       "opening": {
         "book": "draftkings",
-        "last_update": "2026-03-01T16:00:03Z",
+        "last_update": "2026-03-01T15:54:25Z",
         "homePoint": -4.5,
         "awayPoint": 4.5
       },
@@ -302,7 +268,7 @@
       "neutralSite": false,
       "opening": {
         "book": "betrivers",
-        "last_update": "2026-03-01T15:59:49Z",
+        "last_update": "2026-03-01T15:55:09Z",
         "homePoint": 30.5,
         "awayPoint": -30.5
       },
