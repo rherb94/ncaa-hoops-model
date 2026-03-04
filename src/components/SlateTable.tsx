@@ -239,6 +239,10 @@ function StatRow({ label, value, rank }: { label: string; value: string; rank?: 
 
 function L5Chips({ record }: { record: L5Record }) {
   if (!record.games.length) return null;
+  const tempEmoji =
+    record.wins >= 4 ? "🔥" :
+    record.losses >= 4 ? "🧊" :
+    null;
   return (
     <div className="col-span-2 mt-1.5 pt-2 border-t border-white/[0.06]">
       <div className="flex items-center justify-between gap-2">
@@ -265,6 +269,11 @@ function L5Chips({ record }: { record: L5Record }) {
               record.streak.startsWith("W") ? "text-emerald-500" : "text-red-400"
             }`}>
               ({record.streak})
+            </span>
+          )}
+          {tempEmoji && (
+            <span className="ml-0.5 text-sm leading-none" title={record.wins >= 4 ? "Hot team" : "Cold team"}>
+              {tempEmoji}
             </span>
           )}
         </div>
