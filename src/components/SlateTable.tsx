@@ -73,14 +73,14 @@ function bookLogoSrc(book?: string | null) {
 // ── Row / rail styling ────────────────────────────────────────────────────────
 
 function rowTint(signal?: SlateGame["model"]["signal"]) {
-  if (signal === "STRONG") return "bg-emerald-500/[0.07]";
-  if (signal === "LEAN")   return "bg-amber-400/[0.06]";
+  if (signal === "STRONG") return "bg-emerald-500/10";
+  if (signal === "LEAN")   return "bg-yellow-400/[0.07]";
   return "";
 }
 
 function railClass(signal?: SlateGame["model"]["signal"]) {
-  if (signal === "STRONG") return "border-l-2 border-emerald-400/60";
-  if (signal === "LEAN")   return "border-l-2 border-amber-400/50";
+  if (signal === "STRONG") return "border-l-2 border-emerald-500";
+  if (signal === "LEAN")   return "border-l-2 border-yellow-400";
   return "border-l-2 border-transparent";
 }
 
@@ -105,7 +105,7 @@ function EdgeCell({ edge }: { edge?: number | null }) {
   const a = Math.abs(edge);
   const color =
     a >= 5 ? "text-emerald-400" :
-    a >= 3 ? "text-amber-400" :
+    a >= 3 ? "text-yellow-400" :
     "text-zinc-500";
   const label = edge > 0 ? `+${fmtNum(edge)}` : fmtNum(edge);
   return <span className={`font-mono text-xs font-semibold ${color}`}>{label}</span>;
@@ -131,7 +131,7 @@ function PickText({
       ? displayLine > 0 ? `+${fmtNum(displayLine)}` : fmtNum(displayLine)
       : null;
 
-  const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
+  const color = signal === "STRONG" ? "text-emerald-400" : "text-yellow-400";
 
   return (
     <span className={`text-xs font-semibold ${color}`}>
@@ -476,7 +476,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
 
                     {/* Model */}
                     <td className={`${tdBase} align-middle text-center font-mono text-xs tabular-nums font-semibold ${
-                      (g.model?.modelSpread ?? 0) < 0 ? "text-rose-300/80" : "text-emerald-300/80"
+                      (g.model?.modelSpread ?? 0) < 0 ? "text-red-400" : "text-emerald-400"
                     }`}>
                       {fmtSpread(g.model?.modelSpread)}
                     </td>
@@ -569,7 +569,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                 {/* Mkt / Model / Edge */}
                 <div className="flex gap-4 text-xs text-zinc-600">
                   <span>Mkt <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span></span>
-                  <span>Model <span className={`font-mono font-semibold ${(g.model?.modelSpread ?? 0) < 0 ? "text-rose-300/80" : "text-emerald-300/80"}`}>{fmtSpread(g.model?.modelSpread)}</span></span>
+                  <span>Model <span className={`font-mono font-semibold ${(g.model?.modelSpread ?? 0) < 0 ? "text-red-400" : "text-emerald-400"}`}>{fmtSpread(g.model?.modelSpread)}</span></span>
                   <span>Edge <EdgeCell edge={g.model?.edge} /></span>
                 </div>
               </div>
