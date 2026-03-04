@@ -367,7 +367,8 @@ function GameCard({ g }: { g: GameRow }) {
 // ---- backfill cutoff ----
 // Games before this date were retroactively backfilled; toggle lets users
 // isolate only "live" model results where the model was running in real time.
-const LIVE_FROM = "2026-03-03";
+// Mar 2 was the first day with automated opener snapshots (Mar 1 and earlier were backfilled).
+const LIVE_FROM = "2026-03-02";
 
 // ---- filter helpers ----
 type Filter = "yesterday" | "7d" | "30d" | "season";
