@@ -89,8 +89,9 @@ function parseDebug(reqUrl: URL) {
   return reqUrl.searchParams.get("debug") === "1";
 }
 
-// Read neutral site flags from today's opener snapshot (written by daily workflow at 11am ET).
-// Falls back to empty map (all false) if snapshot hasn't been written yet.
+// Read neutral site flags from today's opener snapshot (written by daily workflow at 8am ET).
+// Falls back to empty map if snapshot hasn't been written yet — caller should follow up with
+// a live ESPN fetch in that case.
 function loadNeutralSiteByEventId(date: string): Map<string, boolean> {
   const p = path.join(process.cwd(), "src", "data", "odds_opening", `${date}.json`);
   try {
@@ -101,8 +102,37 @@ function loadNeutralSiteByEventId(date: string): Map<string, boolean> {
     }
     return m;
   } catch {
-    return new Map();
+    return new Map(); // opener not written yet
   }
+}
+
+// Live ESPN scoreboard fetch — keyed by "homeEspnId|awayEspnId".
+// Used as fallback when the opener snapshot doesn't exist yet (before 8am ET).
+async function fetchEspnNeutralByTeamPair(date: string): Promise<Map<string, boolean>> {
+  const espnDate = date.replace(/-/g, "");
+  const url =
+    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `/mens-college-basketball/scoreboard?dates=${espnDate}&groups=50&limit=200`;
+  const m = new Map<string, boolean>();
+  try {
+    const res = await fetch(url, {
+      headers: { "user-agent": "ncaam-model/1.0 (personal project)" },
+      next: { revalidate: 3600 }, // cache for 1 hour in Next.js
+    });
+    if (!res.ok) return m;
+    const json = await res.json() as { events?: any[] };
+    for (const event of json.events ?? []) {
+      const comp = event.competitions?.[0];
+      if (!comp) continue;
+      const neutral = comp.neutralSite ?? false;
+      const home = comp.competitors?.find((c: any) => c.homeAway === "home");
+      const away = comp.competitors?.find((c: any) => c.homeAway === "away");
+      if (home?.id && away?.id) {
+        m.set(`${home.id}|${away.id}`, neutral);
+      }
+    }
+  } catch { /* ignore — neutral site defaults to false */ }
+  return m;
 }
 
 export async function GET(req: Request) {
@@ -120,7 +150,15 @@ export async function GET(req: Request) {
 
   const teams = loadTeams();
   const getTeam = (teamId: string) => teams.get(teamId);
-  const neutralSiteMap = loadNeutralSiteByEventId(date);
+
+  // Neutral site detection: prefer opener snapshot (committed at 8am ET).
+  // If opener not yet written, fall back to a live ESPN scoreboard fetch so
+  // neutral sites are correctly detected around the clock.
+  const neutralSiteByEventId = loadNeutralSiteByEventId(date);
+  const openerMissing = neutralSiteByEventId.size === 0;
+  const espnNeutralByTeamPair = openerMissing
+    ? await fetchEspnNeutralByTeamPair(date)
+    : new Map<string, boolean>();
 
   const games: SlateGame[] = (oddsSlate.games ?? []).map((g: any) => {
     const books = g.books ?? {};
@@ -128,7 +166,13 @@ export async function GET(req: Request) {
 
     const away = getTeam(g.awayTeamId);
     const home = getTeam(g.homeTeamId);
-    const neutralSite = neutralSiteMap.get(g.gameId) ?? false;
+
+    // Look up neutral site: opener snapshot first, then live ESPN fallback.
+    const neutralSite = openerMissing
+      ? (home?.espnTeamId && away?.espnTeamId
+          ? (espnNeutralByTeamPair.get(`${home.espnTeamId}|${away.espnTeamId}`) ?? false)
+          : false)
+      : (neutralSiteByEventId.get(g.gameId) ?? false);
 
     const awayPR = away?.powerRating ?? 0;
     const homePR = home?.powerRating ?? 0;
