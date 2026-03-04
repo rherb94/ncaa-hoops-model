@@ -156,7 +156,16 @@ export async function GET(
   const forceRefresh = url.searchParams.get("refresh") === "1";
 
   const provider = new TheOddsApiProvider(league.sportKey, league.id);
-  const oddsSlate = await provider.getSlate(date, forceRefresh);
+  let oddsSlate;
+  try {
+    oddsSlate = await provider.getSlate(date, forceRefresh);
+  } catch (e: any) {
+    console.error(`[SLATE] TheOddsAPI failed for league=${league.id} sport=${league.sportKey}:`, e?.message ?? e);
+    return NextResponse.json(
+      { error: `Odds provider error: ${e?.message ?? "unknown"}` },
+      { status: 502 }
+    );
+  }
 
   const teams = loadTeams(league.id);
   const getTeam = (teamId: string) => teams.get(teamId);

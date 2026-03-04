@@ -9,11 +9,9 @@
 import { NextResponse } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
+import { getLeague } from "@/lib/leagues";
 
 const DATA_DIR = path.join(process.cwd(), "src", "data");
-const SNAP_DIR = path.join(DATA_DIR, "odds_opening");
-const RES_DIR = path.join(DATA_DIR, "results");
-const CLOSE_DIR = path.join(DATA_DIR, "closing_lines");
 
 function loadJson<T>(p: string): T | null {
   try {
@@ -34,10 +32,11 @@ function datesInRange(from: string, to: string, limit = 200): string[] {
   return dates;
 }
 
-function allAvailableDates(): string[] {
-  if (!fs.existsSync(SNAP_DIR)) return [];
+function allAvailableDates(leagueId: string): string[] {
+  const snapDir = path.join(DATA_DIR, leagueId, "odds_opening");
+  if (!fs.existsSync(snapDir)) return [];
   return fs
-    .readdirSync(SNAP_DIR)
+    .readdirSync(snapDir)
     .filter((f) => f.endsWith(".json"))
     .map((f) => f.replace(".json", ""))
     .sort();
@@ -122,15 +121,19 @@ function computeClv(
   return pickSide === "HOME" ? raw : -raw;
 }
 
-function analyzeDate(date: string) {
+function analyzeDate(date: string, leagueId: string) {
+  const snapDir  = path.join(DATA_DIR, leagueId, "odds_opening");
+  const resDir   = path.join(DATA_DIR, leagueId, "results");
+  const closeDir = path.join(DATA_DIR, leagueId, "closing_lines");
+
   const snap = loadJson<{ date: string; games: SnapshotGame[] }>(
-    path.join(SNAP_DIR, `${date}.json`)
+    path.join(snapDir, `${date}.json`)
   );
   const res = loadJson<{ date: string; games: ResultGame[] }>(
-    path.join(RES_DIR, `${date}.json`)
+    path.join(resDir, `${date}.json`)
   );
   const closeData = loadJson<{ date: string; games: ClosingLineGame[] }>(
-    path.join(CLOSE_DIR, `${date}.json`)
+    path.join(closeDir, `${date}.json`)
   );
 
   if (!snap) return null;
@@ -277,7 +280,21 @@ function toTextSummary(results: ReturnType<typeof analyzeDate>[]): string {
   return lines.join("\n");
 }
 
-export async function GET(req: Request) {
+export async function GET(
+  req: Request,
+  { params }: { params: Promise<{ league: string }> }
+) {
+  const { league: leagueId } = await params;
+
+  // Validate league — throws if unknown, which Next.js will surface as 500.
+  // Use try/catch so we can return a proper 400 instead.
+  let leagueCfg;
+  try {
+    leagueCfg = getLeague(leagueId);
+  } catch {
+    return NextResponse.json({ error: `Unknown league: ${leagueId}` }, { status: 400 });
+  }
+
   const url = new URL(req.url);
   const fmt = url.searchParams.get("fmt"); // "text" for paste-able summary
 
@@ -289,7 +306,7 @@ export async function GET(req: Request) {
 
   let dates: string[];
   if (allFlag === "1") {
-    dates = allAvailableDates();
+    dates = allAvailableDates(leagueCfg.id);
   } else if (dateSingle) {
     dates = [dateSingle];
   } else if (dateFrom) {
@@ -297,14 +314,14 @@ export async function GET(req: Request) {
     dates = datesInRange(dateFrom, to);
   } else {
     // default: last 7 days with available snapshots
-    dates = allAvailableDates().slice(-7);
+    dates = allAvailableDates(leagueCfg.id).slice(-7);
   }
 
   if (dates.length === 0) {
     return NextResponse.json({ error: "No snapshot data found" }, { status: 404 });
   }
 
-  const results = dates.map(analyzeDate).filter(Boolean);
+  const results = dates.map((d) => analyzeDate(d, leagueCfg.id)).filter(Boolean);
 
   if (fmt === "text") {
     return new Response(toTextSummary(results as any), {
