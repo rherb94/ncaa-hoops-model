@@ -2,15 +2,22 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const OUT = path.join(process.cwd(), "src", "data", "espnTeams.json");
+// LEAGUE env var: "ncaam" (default) or "ncaaw"
+const LEAGUE = (process.env.LEAGUE ?? "ncaam").toLowerCase();
+const ESPN_SPORT =
+  LEAGUE === "ncaaw" ? "womens-college-basketball" : "mens-college-basketball";
+
+// Output file: espnTeams.json (ncaam) or espnTeams.ncaaw.json (ncaaw)
+const OUT_FILE = LEAGUE === "ncaaw" ? "espnTeams.ncaaw.json" : "espnTeams.json";
+const OUT = path.join(process.cwd(), "src", "data", OUT_FILE);
+
+console.log(`League: ${LEAGUE} | ESPN sport: ${ESPN_SPORT} | Output: ${OUT_FILE}`);
 
 // ✅ Use ESPN "core" API (this is the one that tends to include the full NCAA list)
-const CORE_BASE =
-  "https://sports.core.api.espn.com/v2/sports/basketball/leagues/mens-college-basketball/teams";
+const CORE_BASE = `https://sports.core.api.espn.com/v2/sports/basketball/leagues/${ESPN_SPORT}/teams`;
 
 // Optional fallback (what you were using before)
-const SITE_BASE =
-  "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/teams";
+const SITE_BASE = `https://site.api.espn.com/apis/site/v2/sports/basketball/${ESPN_SPORT}/teams`;
 
 type EspnTeam = {
   id: string;

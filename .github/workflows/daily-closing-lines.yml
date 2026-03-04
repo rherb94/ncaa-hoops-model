@@ -47,6 +47,7 @@ jobs:
           # Pass the actual cron trigger time as SNAPSHOT_TIME so historical queries
           # are reproducible even if the job starts slightly late.
           SNAPSHOT_TIME: ${{ inputs.snapshot_time || '' }}
+          LEAGUE: ncaam
         run: |
           # If SNAPSHOT_TIME not set by input, use the current UTC time
           export SNAPSHOT_TIME="${SNAPSHOT_TIME:-$(date -u +%Y-%m-%dT%H:%M:%SZ)}"
@@ -58,7 +59,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main
-          git add src/data/closing_lines/
+          git add src/data/ncaam/closing_lines/
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

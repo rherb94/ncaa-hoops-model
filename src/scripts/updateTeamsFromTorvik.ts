@@ -3,10 +3,17 @@ import fs from "node:fs";
 import path from "node:path";
 
 const YEAR = process.env.YEAR ?? "2026";
+const LEAGUE = (process.env.LEAGUE ?? "ncaam") as "ncaam" | "ncaaw";
 
 // Existing overall CSV source
 const TORVIK_LOCAL = process.env.TORVIK_LOCAL;
-const TORVIK_URL = `https://barttorvik.com/${YEAR}_team_results.csv`;
+
+const TORVIK_BASE_URL =
+  LEAGUE === "ncaaw"
+    ? `https://barttorvik.com/ncaaw/${YEAR}_team_results.csv`
+    : `https://barttorvik.com/${YEAR}_team_results.csv`;
+
+const TORVIK_URL = process.env.TORVIK_URL ?? TORVIK_BASE_URL;
 
 // NEW: venue splits (set these once you confirm the exact Torvik URLs)
 const TORVIK_HOME_LOCAL = process.env.TORVIK_HOME_LOCAL;
@@ -20,10 +27,10 @@ const TORVIK_AWAY_URL =
   `https://barttorvik.com/${YEAR}_team_results.csv?venue=A`;
 
 // Output files
-const TEAMS_CSV = path.join(process.cwd(), "src", "data", "teams.csv");
+const TEAMS_CSV = path.join(process.cwd(), "src", "data", LEAGUE, "teams.csv");
 const OUT_OVERALL = TEAMS_CSV;
-const OUT_HOME = path.join(process.cwd(), "src", "data", "homeTeams.csv");
-const OUT_AWAY = path.join(process.cwd(), "src", "data", "awayTeams.csv");
+const OUT_HOME = path.join(process.cwd(), "src", "data", LEAGUE, "homeTeams.csv");
+const OUT_AWAY = path.join(process.cwd(), "src", "data", LEAGUE, "awayTeams.csv");
 
 function norm(s: string): string {
   return s
@@ -32,7 +39,7 @@ function norm(s: string): string {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/&/g, " and ")
     .replace(/[()]/g, "")
-    .replace(/['’]/g, "")
+    .replace(/['']/g, "")
     .replace(/\./g, "")
     .replace(/\buniv\b/g, "university")
     .replace(/\bst\b/g, "saint") // IMPORTANT: st => saint, not state
@@ -41,7 +48,7 @@ function norm(s: string): string {
     .trim();
 }
 
-// Torvik name quirks we already know we’ll hit.
+// Torvik name quirks we already know we'll hit.
 const TORVIK_SYNONYMS: Record<string, string[]> = {
   pennsylvania: ["penn"],
   penn: ["pennsylvania"],
@@ -347,6 +354,8 @@ function applyTorvikToTeams(args: {
 }
 
 async function main() {
+  console.log(`🏀 Updating Torvik ratings for league: ${LEAGUE}`);
+
   // 1) Overall (existing behavior)
   const overallRaw = await readTorvikCsv({
     localPath: TORVIK_LOCAL,

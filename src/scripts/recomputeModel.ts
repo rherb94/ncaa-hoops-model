@@ -34,8 +34,9 @@ function clamp(n: number, lo: number, hi: number) {
 
 const DRY_RUN = process.env.DRY_RUN === "1";
 const DATE    = process.env.DATE || "";
+const LEAGUE  = process.env.LEAGUE ?? "ncaam";
 
-const OPEN_DIR = path.join(process.cwd(), "src", "data", "odds_opening");
+const OPEN_DIR = path.join(process.cwd(), "src", "data", LEAGUE, "odds_opening");
 
 function loadJson<T>(p: string): T {
   return JSON.parse(fs.readFileSync(p, "utf-8")) as T;

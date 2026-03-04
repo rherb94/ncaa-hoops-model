@@ -28,6 +28,8 @@ import path from "node:path";
 const ODDS_API_KEY = process.env.THE_ODDS_API_KEY;
 if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 
+const LEAGUE = process.env.LEAGUE ?? "ncaam";
+
 // Date to label snapshot (YYYY-MM-DD). Default = today in ET.
 const DATE =
   process.env.DATE ||
@@ -46,7 +48,7 @@ const SPORT_KEY = "basketball_ncaab";
 const REGIONS = "us";
 const MARKETS = "spreads";
 
-const OUT_DIR = path.join(process.cwd(), "src", "data", "closing_lines");
+const OUT_DIR = path.join(process.cwd(), "src", "data", LEAGUE, "closing_lines");
 const OUT_FILE = path.join(OUT_DIR, `${DATE}.json`);
 
 function saveJson(p: string, obj: unknown) {

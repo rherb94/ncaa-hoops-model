@@ -19,6 +19,8 @@ function clamp(n: number, lo: number, hi: number) {
 const ODDS_API_KEY = process.env.THE_ODDS_API_KEY;
 if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 
+const LEAGUE = process.env.LEAGUE ?? "ncaam";
+
 // Date to label the snapshot (YYYY-MM-DD). Default = today in UTC.
 // Use || so an empty string from workflow_dispatch falls back to default.
 const DATE =
@@ -37,7 +39,7 @@ const SPORT_KEY = "basketball_ncaab";
 const REGIONS = "us";
 const MARKETS = "spreads";
 
-const OUT_DIR = path.join(process.cwd(), "src", "data", "odds_opening");
+const OUT_DIR = path.join(process.cwd(), "src", "data", LEAGUE, "odds_opening");
 const OUT_FILE = path.join(OUT_DIR, `${DATE}.json`);
 
 const MAP_FILE = path.join(
@@ -67,7 +69,7 @@ function normOddsTeamName(s: string): string {
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/&/g, " and ")
-    .replace(/[’']/g, "")
+    .replace(/['']/g, "")
     .replace(/\./g, "")
     .replace(/[()]/g, "")
     .replace(/[^a-z0-9]+/g, " ")
@@ -170,7 +172,7 @@ function resolveEspnTeamIdFromOddsName(
 }
 
 function topEspnSuggestions(oddsName: string, espnByName: Map<string, any>) {
-  // keep it deterministic + cheap: just try a few “trim” variants
+  // keep it deterministic + cheap: just try a few "trim" variants
   const out: Array<{ cand: string; id?: string; name?: string }> = [];
   const base = String(oddsName ?? "").trim();
   const toks = base.split(/\s+/).filter(Boolean);

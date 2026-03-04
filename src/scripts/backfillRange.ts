@@ -27,6 +27,7 @@ if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 
 const DRY_RUN = process.env.DRY_RUN === "1";
 const FORCE   = process.env.FORCE   === "1";
+const LEAGUE  = process.env.LEAGUE ?? "ncaam";
 
 // ---- date helpers ----
 function daysAgo(n: number): string {
@@ -111,6 +112,7 @@ async function main() {
       DATE: date,
       SNAPSHOT_TIME: openerSnapshotTime(date),
       THE_ODDS_API_KEY: ODDS_API_KEY!,
+      LEAGUE,
       ...(FORCE ? { FORCE: "1" } : {}),
     }, 2 /* allow exit 2 = unmapped teams warning */);
     if (!DRY_RUN) await sleep(1000);
@@ -121,6 +123,7 @@ async function main() {
       DATE: date,
       SNAPSHOT_TIME: closingSnapshotTimes(date)[0],
       THE_ODDS_API_KEY: ODDS_API_KEY!,
+      LEAGUE,
     });
     if (!DRY_RUN) await sleep(1000);
 
@@ -130,6 +133,7 @@ async function main() {
       DATE: date,
       SNAPSHOT_TIME: closingSnapshotTimes(date)[1],
       THE_ODDS_API_KEY: ODDS_API_KEY!,
+      LEAGUE,
     });
     if (!DRY_RUN) await sleep(1000);
 
@@ -137,6 +141,7 @@ async function main() {
     console.log("  [4/4] Game results (ESPN)");
     run(`${tsx} src/scripts/fetchGameResults.ts`, {
       DATE: date,
+      LEAGUE,
     });
     if (!DRY_RUN) await sleep(500);
   }

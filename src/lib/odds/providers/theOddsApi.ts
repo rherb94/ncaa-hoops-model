@@ -100,6 +100,11 @@ function ymdET(iso: string): string {
 
 export class TheOddsApiProvider implements OddsProvider {
   name = "theoddsapi";
+  private readonly sportKey: string;
+
+  constructor(sportKey = "basketball_ncaab") {
+    this.sportKey = sportKey;
+  }
 
   async getSlate(date: string, forceRefresh = false): Promise<OddsSlate> {
     const apiKey = process.env.THE_ODDS_API_KEY;
@@ -109,10 +114,8 @@ export class TheOddsApiProvider implements OddsProvider {
     const markets = process.env.THE_ODDS_API_MARKETS ?? "h2h,spreads,totals";
     const oddsFormat = process.env.THE_ODDS_API_ODDS_FORMAT ?? "american";
 
-    const sportKey = "basketball_ncaab";
-
     const url =
-      `https://api.the-odds-api.com/v4/sports/${sportKey}/odds` +
+      `https://api.the-odds-api.com/v4/sports/${this.sportKey}/odds` +
       `?regions=${encodeURIComponent(region)}` +
       `&markets=${encodeURIComponent(markets)}` +
       `&oddsFormat=${encodeURIComponent(oddsFormat)}` +

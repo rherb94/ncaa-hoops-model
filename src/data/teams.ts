@@ -3,7 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { resolveTeamId } from "./teamAliases";
 import { loadEspnTeamsIndex, norm } from "@/data/espn";
-import { ESPN_MASTER_MAP_BY_TEAMID } from "@/data/espnMasterMap";
+import { ESPN_MASTER_MAP_BY_LEAGUE } from "@/data/espnMasterMap";
+import type { LeagueId } from "@/lib/leagues";
 
 const DEV = process.env.NODE_ENV !== "production";
 
@@ -44,50 +45,8 @@ function parseCsv(filePath: string): Parsed {
   return { header, rows };
 }
 
-let cachedTeams: Map<string, Team> | null = null;
-let cachedAliases: Map<string, string> | null = null;
-
-/**
- * Loads aliasId -> canonicalId mapping from team_aliases.csv
- */
-function loadAliases(): Map<string, string> {
-  if (!DEV && cachedAliases) return cachedAliases;
-
-  const aliasPath = path.join(process.cwd(), "src", "data", "team_aliases.csv");
-  if (!fs.existsSync(aliasPath)) {
-    const m = new Map<string, string>();
-    if (!DEV) cachedAliases = m;
-    return m;
-  }
-
-  const { header, rows } = parseCsv(aliasPath);
-
-  const iAlias =
-    header.indexOf("aliasId") >= 0
-      ? header.indexOf("aliasId")
-      : header.indexOf("aliasTeamId");
-
-  const iCanon =
-    header.indexOf("canonicalId") >= 0
-      ? header.indexOf("canonicalId")
-      : header.indexOf("teamId");
-
-  if (iAlias < 0 || iCanon < 0) {
-    throw new Error(
-      "team_aliases.csv missing required columns (aliasId/aliasTeamId, canonicalId/teamId)"
-    );
-  }
-
-  const m = new Map<string, string>();
-  for (const r of rows) {
-    const alias = (r[iAlias] ?? "").trim();
-    const canon = (r[iCanon] ?? "").trim();
-    if (alias && canon) m.set(alias, canon);
-  }
-
-  if (!DEV) cachedAliases = m;
-  return m;
-}
+// Per-league caches: keyed by LeagueId
+const cachedTeamsPerLeague = new Map<string, Map<string, Team>>();
 
 // ---------------- ESPN matching ----------------
 
@@ -253,7 +212,8 @@ type ResolveResult =
 function resolveEspnForTeam(
   team: Team,
   espnByName: Map<string, EspnHit>,
-  espnById: Map<string, EspnHit>
+  espnById: Map<string, EspnHit>,
+  league: LeagueId = "ncaam"
 ): ResolveResult {
   // 0) hard pin by teamId (strongest)
   const pinned = ESPN_PINNED_IDS[team.teamId];
@@ -284,7 +244,8 @@ function resolveEspnForTeam(
   }
 
   // 2) deterministic master map (teamId -> espnId)
-  const masterEspnId = ESPN_MASTER_MAP_BY_TEAMID[team.teamId];
+  const masterMap = ESPN_MASTER_MAP_BY_LEAGUE[league] ?? {};
+  const masterEspnId = masterMap[team.teamId];
   if (masterEspnId != null) {
     const hit = espnById.get(String(masterEspnId));
     if (hit) return { method: "BY_ID", hit };
@@ -309,20 +270,23 @@ function resolveEspnForTeam(
 
 // ---------------- public API ----------------
 
-export function loadTeams(): Map<string, Team> {
-  if (!DEV && cachedTeams) return cachedTeams;
+export function loadTeams(league: LeagueId = "ncaam"): Map<string, Team> {
+  if (!DEV && cachedTeamsPerLeague.has(league)) {
+    return cachedTeamsPerLeague.get(league)!;
+  }
 
-  const filePath = path.join(process.cwd(), "src", "data", "teams.csv");
+  const filePath = path.join(process.cwd(), "src", "data", league, "teams.csv");
   if (!fs.existsSync(filePath)) {
     const m = new Map<string, Team>();
-    if (!DEV) cachedTeams = m;
+    if (!DEV) cachedTeamsPerLeague.set(league, m);
     return m;
   }
 
-  // still load aliases for resolveTeamId() convenience mapping
-  const aliases = loadAliases();
+  // Internal alias map is no longer used here — alias resolution happens
+  // via teamAliases.ts (resolveTeamId). Keeping the comment for reference.
+  const aliases = new Map<string, string>();
 
-  const espnIndex = loadEspnTeamsIndex() as any;
+  const espnIndex = loadEspnTeamsIndex(league) as any;
   const byName: Map<string, EspnHit> = (espnIndex?.byName ?? new Map()) as any;
   const byId: Map<string, EspnHit> = (espnIndex?.byId ?? new Map()) as any;
 
@@ -413,7 +377,7 @@ export function loadTeams(): Map<string, Team> {
 
   // Pass 2: attach ESPN logo/id
   for (const [, team] of map.entries()) {
-    const res = resolveEspnForTeam(team, byName, byId);
+    const res = resolveEspnForTeam(team, byName, byId, league);
 
     if (team.teamId === "team-texas-aandm-corpus-chris") {
       console.log("[ESPN RESOLVE DEBUG]", {
@@ -441,20 +405,20 @@ export function loadTeams(): Map<string, Team> {
     if (canonicalTeam) map.set(aliasId, canonicalTeam);
   }
 
-  if (!DEV) cachedTeams = map;
+  if (!DEV) cachedTeamsPerLeague.set(league, map);
   return map;
 }
 
-export function getTeam(input: any): Team | undefined {
+export function getTeam(input: any, league: LeagueId = "ncaam"): Team | undefined {
   const resolved = resolveTeamId(input);
   if (!resolved) return undefined;
-  return loadTeams().get(resolved);
+  return loadTeams(league).get(resolved);
 }
 
-export function getAllTeams(): Team[] {
+export function getAllTeams(league: LeagueId = "ncaam"): Team[] {
   const seen = new Set<string>();
   const out: Team[] = [];
-  for (const t of loadTeams().values()) {
+  for (const t of loadTeams(league).values()) {
     if (seen.has(t.teamId)) continue;
     seen.add(t.teamId);
     out.push(t);

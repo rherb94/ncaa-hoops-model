@@ -2,10 +2,9 @@ name: Daily Odds Opener Snapshot
 
 on:
   schedule:
-    # 8:00 AM ET = 13:00 UTC (accounts for ET = UTC-5 in winter, UTC-4 in summer)
-    # NCAAB lines are typically posted the night before or early morning; 8am captures
-    # opening lines and ESPN neutral-site flags well before games start.
-    - cron: '0 13 * * *'
+    # 11:00 AM ET = 16:00 UTC (accounts for ET = UTC-5 in winter, UTC-4 in summer)
+    # Running at 16:00 UTC works year-round since most NCAAB lines are open by 11am ET
+    - cron: '0 16 * * *'
   workflow_dispatch:
     inputs:
       date:
@@ -34,6 +33,7 @@ jobs:
         env:
           THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
           DATE: ${{ inputs.date || '' }}
+          LEAGUE: ncaam
         run: npx tsx src/scripts/fetchOddsOpenersForDate.ts
 
       - name: Commit snapshot if new
@@ -41,7 +41,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main
-          git add src/data/odds_opening/
+          git add src/data/ncaam/odds_opening/
           if git diff --cached --quiet; then
             echo "No new snapshot to commit."
           else

@@ -1,8 +1,10 @@
 // src/scripts/fetchGameResults.ts
 // Fetches final scores from ESPN's public scoreboard API and saves to
-// src/data/results/YYYY-MM-DD.json. Run after games finish (midnight ET).
+// src/data/${LEAGUE}/results/YYYY-MM-DD.json. Run after games finish (midnight ET).
 import fs from "node:fs";
 import path from "node:path";
+
+const LEAGUE = process.env.LEAGUE ?? "ncaam";
 
 // Date to fetch results for (YYYY-MM-DD). Default = yesterday in ET.
 // Use || so empty string from workflow_dispatch falls back to default.
@@ -42,7 +44,7 @@ function espnUrl(dateStr: string) {
   );
 }
 
-const OUT_DIR = path.join(process.cwd(), "src", "data", "results");
+const OUT_DIR = path.join(process.cwd(), "src", "data", LEAGUE, "results");
 const OUT_FILE = path.join(OUT_DIR, `${DATE}.json`);
 
 function saveJson(p: string, obj: unknown) {

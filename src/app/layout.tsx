@@ -1,22 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import { LEAGUES } from "@/lib/leagues";
 
 export const metadata: Metadata = {
-  title: "NCAA Hoops Model",
+  title: "Hoops Model",
   description: "College basketball betting model dashboard",
 };
-
-function NavLink({ href, label }: { href: string; label: string }) {
-  return (
-    <Link
-      href={href}
-      className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-800 hover:text-white"
-    >
-      {label}
-    </Link>
-  );
-}
 
 export default function RootLayout({
   children,
@@ -26,21 +16,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className="min-h-screen bg-zinc-950 text-zinc-100">
-        <header className="border-b border-white/10 bg-zinc-950/70 backdrop-blur">
-          <div className="mx-auto flex w-full max-w-none items-center justify-between px-6 py-4">
-            <div className="text-lg font-bold tracking-tight">
-              NCAA Hoops Model
-            </div>
-
-            <nav className="flex items-center gap-2">
-              <NavLink href="/slate" label="Daily Slate" />
-              <NavLink href="/results" label="Results" />
-              <NavLink href="/teams" label="Teams" />
-              <NavLink href="/sheet" label="Betting Sheet" />
+        <header className="border-b border-white/10 bg-zinc-950/70 backdrop-blur sticky top-0 z-10">
+          <div className="mx-auto flex w-full max-w-none items-center justify-between px-6 py-3.5">
+            <Link href="/" className="text-base font-bold tracking-tight hover:text-white transition-colors">
+              Hoops Model
+            </Link>
+            <nav className="flex items-center gap-1">
+              {Object.values(LEAGUES).map((l) => (
+                <Link
+                  key={l.id}
+                  href={`/${l.id}/slate`}
+                  className="rounded-lg px-3 py-1.5 text-sm font-semibold text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
+                >
+                  {l.shortName}
+                </Link>
+              ))}
             </nav>
           </div>
         </header>
-
         <main className="mx-auto w-full max-w-none px-6 py-6">{children}</main>
       </body>
     </html>

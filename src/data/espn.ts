@@ -1,6 +1,7 @@
 // src/data/espn.ts
 import fs from "node:fs";
 import path from "node:path";
+import type { LeagueId } from "@/lib/leagues";
 
 export type EspnTeam = {
   id: string;
@@ -20,7 +21,7 @@ export function norm(s: string): string {
       .replace(/[\u0300-\u036f]/g, "") // strip accents
       .replace(/&/g, " and ")
       .replace(/[()]/g, "") // remove parentheses
-      .replace(/['’]/g, "")
+      .replace(/['']/g, "")
       .replace(/\./g, "")
       .replace(/\buniv\b/g, "university")
       // IMPORTANT: treat "st" as "saint" (not "state")
@@ -32,8 +33,17 @@ export function norm(s: string): string {
   );
 }
 
-function readEspnJson(): any {
-  const filePath = path.join(process.cwd(), "src", "data", "espnTeams.json");
+function espnJsonFilename(league: LeagueId): string {
+  return league === "ncaaw" ? "espnTeams.ncaaw.json" : "espnTeams.json";
+}
+
+function readEspnJson(league: LeagueId = "ncaam"): any {
+  const filePath = path.join(
+    process.cwd(),
+    "src",
+    "data",
+    espnJsonFilename(league)
+  );
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf-8").trim();
   if (!raw) return null;
@@ -236,18 +246,20 @@ function extractTeams(root: any): EspnTeam[] {
   return [...byId.values()];
 }
 
-let cached: {
-  byName: Map<string, EspnTeam>;
-  byId: Map<string, EspnTeam>;
-} | null = null;
+// Per-league cache
+const cachedByLeague = new Map<
+  string,
+  { byName: Map<string, EspnTeam>; byId: Map<string, EspnTeam> }
+>();
 
-export function loadEspnTeamsIndex(): {
+export function loadEspnTeamsIndex(league: LeagueId = "ncaam"): {
   byName: Map<string, EspnTeam>;
   byId: Map<string, EspnTeam>;
 } {
-  if (cached) return cached;
+  const hit = cachedByLeague.get(league);
+  if (hit) return hit;
 
-  const root = readEspnJson();
+  const root = readEspnJson(league);
   const teams = root ? extractTeams(root) : [];
 
   const byName = new Map<string, EspnTeam>();
@@ -257,7 +269,7 @@ export function loadEspnTeamsIndex(): {
     if (!k) return;
     const nk = norm(k);
     if (!nk) return;
-    // first write wins (stable). If you want “best wins”, do it here later.
+    // first write wins (stable). If you want "best wins", do it here later.
     if (!byName.has(nk)) byName.set(nk, t);
   };
 
@@ -274,13 +286,14 @@ export function loadEspnTeamsIndex(): {
   }
 
   console.log(
-    "ESPN index built:",
+    `ESPN index built [${league}]:`,
     byName.size,
     "name keys,",
     byId.size,
-    "ids (scoped-safe)"
+    "ids"
   );
 
-  cached = { byName, byId };
-  return cached;
+  const result = { byName, byId };
+  cachedByLeague.set(league, result);
+  return result;
 }
