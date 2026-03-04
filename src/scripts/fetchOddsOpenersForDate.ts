@@ -10,6 +10,8 @@ import {
   computeEdge,
   computeSignal,
 } from "@/lib/model";
+import { LEAGUES } from "@/lib/leagues";
+import type { LeagueId } from "@/lib/leagues";
 
 function clamp(n: number, lo: number, hi: number) {
   return Math.max(lo, Math.min(hi, n));
@@ -35,7 +37,7 @@ const SNAPSHOT_TIME = process.env.SNAPSHOT_TIME || "";
 // This prevents burning API credits when re-running a backfill range.
 const SKIP_IF_EXISTS = process.env.FORCE !== "1";
 
-const SPORT_KEY = "basketball_ncaab";
+const SPORT_KEY = LEAGUES[LEAGUE as LeagueId]?.sportKey ?? "basketball_ncaab";
 const REGIONS = "us";
 const MARKETS = "spreads";
 
@@ -210,9 +212,12 @@ type EspnEvent = {
 async function fetchEspnNeutralSites(dateStr: string): Promise<Map<string, boolean>> {
   // dateStr in YYYYMMDD format
   const espnDate = dateStr.replace(/-/g, "");
+  const leagueCfg = LEAGUES[LEAGUE as LeagueId];
+  const espnSport = leagueCfg?.espnSport ?? "mens-college-basketball";
+  const espnGroupId = leagueCfg?.espnGroupId ?? "50";
   const url =
     `https://site.api.espn.com/apis/site/v2/sports/basketball` +
-    `/mens-college-basketball/scoreboard?dates=${espnDate}&groups=50&limit=200`;
+    `/${espnSport}/scoreboard?dates=${espnDate}&groups=${espnGroupId}&limit=200`;
 
   const neutralByTeamPair = new Map<string, boolean>();
   try {
@@ -308,14 +313,14 @@ async function main() {
   const neutralByTeamPair = await fetchEspnNeutralSites(DATE);
 
   // ESPN index (name lookup only)
-  const espnIndex = loadEspnTeamsIndex() as any;
+  const espnIndex = loadEspnTeamsIndex(LEAGUE as LeagueId) as any;
   const espnByName: Map<string, any> = (espnIndex?.byName ?? new Map()) as any;
 
   // load mapping file
   const oddsMap = loadJson<Record<string, string>>(MAP_FILE, {});
 
   // teams for model computation
-  const teamsMap = loadTeams();
+  const teamsMap = loadTeams(LEAGUE as LeagueId);
 
   const preferredBooks = ["draftkings", "fanduel", "betmgm"];
 
@@ -346,8 +351,8 @@ async function main() {
       misses.push({ side: "AWAY", name: g.away_team, key: awayKey });
 
     // --- model spread ---
-    const homeTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.home_team });
-    const awayTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.away_team });
+    const homeTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.home_team, league: LEAGUE as LeagueId });
+    const awayTeamId = resolveTeamId({ provider: "theoddsapi", teamName: g.away_team, league: LEAGUE as LeagueId });
     const homeTeam = homeTeamId ? teamsMap.get(homeTeamId) : undefined;
     const awayTeam = awayTeamId ? teamsMap.get(awayTeamId) : undefined;
 

@@ -3,6 +3,8 @@
 // src/data/${LEAGUE}/results/YYYY-MM-DD.json. Run after games finish (midnight ET).
 import fs from "node:fs";
 import path from "node:path";
+import { LEAGUES } from "@/lib/leagues";
+import type { LeagueId } from "@/lib/leagues";
 
 const LEAGUE = process.env.LEAGUE ?? "ncaam";
 
@@ -36,11 +38,14 @@ const DAY_START_UTC = new Date(`${DATE}T05:00:00Z`);
 const DAY_END_UTC   = new Date(DAY_START_UTC.getTime() + 24 * 60 * 60 * 1000);
 
 function espnUrl(dateStr: string) {
-  // groups=50 = NCAA Division I Men's Basketball — without this ESPN only
-  // returns a small "featured" subset of games, not the full D1 slate.
+  // groups=50 = NCAA Division I — without this ESPN only returns a small
+  // "featured" subset of games, not the full D1 slate.
+  const leagueCfg = LEAGUES[LEAGUE as LeagueId];
+  const espnSport = leagueCfg?.espnSport ?? "mens-college-basketball";
+  const espnGroupId = leagueCfg?.espnGroupId ?? "50";
   return (
     `https://site.api.espn.com/apis/site/v2/sports/basketball` +
-    `/mens-college-basketball/scoreboard?dates=${dateStr}&groups=50&limit=200`
+    `/${espnSport}/scoreboard?dates=${dateStr}&groups=${espnGroupId}&limit=200`
   );
 }
 

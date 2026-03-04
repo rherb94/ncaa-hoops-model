@@ -24,6 +24,8 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { LEAGUES } from "@/lib/leagues";
+import type { LeagueId } from "@/lib/leagues";
 
 const ODDS_API_KEY = process.env.THE_ODDS_API_KEY;
 if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
@@ -44,7 +46,7 @@ const DATE =
 // reproducible (in case the job starts slightly late).
 const SNAPSHOT_TIME = process.env.SNAPSHOT_TIME || new Date().toISOString();
 
-const SPORT_KEY = "basketball_ncaab";
+const SPORT_KEY = LEAGUES[LEAGUE as LeagueId]?.sportKey ?? "basketball_ncaab";
 const REGIONS = "us";
 const MARKETS = "spreads";
 

@@ -1,0 +1,57 @@
+name: Daily NCAAW Closing Lines Snapshot
+
+on:
+  schedule:
+    - cron: '55 16 * * *'    # ~11:55am ET
+    - cron: '55 23 * * *'    # ~6:55pm ET
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Date label (YYYY-MM-DD). Defaults to today ET.'
+        required: false
+      snapshot_time:
+        description: 'Historical snapshot time (ISO 8601 UTC, e.g. 2026-03-02T16:50:00Z). Defaults to now.'
+        required: false
+
+jobs:
+  closing-lines:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Fetch closing line snapshot (NCAAW)
+        env:
+          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+          DATE: ${{ inputs.date || '' }}
+          SNAPSHOT_TIME: ${{ inputs.snapshot_time || '' }}
+          LEAGUE: ncaaw
+        run: |
+          export SNAPSHOT_TIME="${SNAPSHOT_TIME:-$(date -u +%Y-%m-%dT%H:%M:%SZ)}"
+          echo "Querying historical odds at: $SNAPSHOT_TIME"
+          npx tsx src/scripts/fetchClosingLines.ts
+
+      - name: Commit closing lines
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+          git add src/data/ncaaw/closing_lines/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            STAMP=$(date -u +%Y-%m-%dT%H:%MZ)
+            git commit -m "chore: ncaaw closing lines snapshot ${STAMP} [skip ci]"
+            git push
+          fi
