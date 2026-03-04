@@ -126,7 +126,7 @@ function EdgeCell({ edge }: { edge?: number | null }) {
   return <span className={`font-mono text-xs font-semibold ${color}`}>{label}</span>;
 }
 
-// ── Pick text (colored pill badge) ───────────────────────────────────────────
+// ── Pick text ─────────────────────────────────────────────────────────────────
 
 function PickText({
   signal,
@@ -146,13 +146,10 @@ function PickText({
       ? displayLine > 0 ? `+${fmtNum(displayLine)}` : fmtNum(displayLine)
       : null;
 
-  const pillClass =
-    signal === "STRONG"
-      ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
-      : "bg-amber-400/15 text-amber-300 border border-amber-400/30";
+  const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
 
   return (
-    <span className={`inline-flex items-center gap-0.5 rounded-md px-1.5 py-0.5 text-xs font-semibold ${pillClass}`}>
+    <span className={`text-xs font-semibold ${color}`}>
       {signal} {side}{lineStr ? ` ${lineStr}` : ""}
     </span>
   );
@@ -163,11 +160,7 @@ function PickText({
 function GameCell({ g }: { g: SlateGame }) {
   const preferred = modelPrefersSide(g.model.edge);
   const hasPick = g.model.signal !== "NONE";
-  // Preferred team name gets signal color: emerald for STRONG, amber for LEAN
-  const preferredNameColor =
-    g.model.signal === "STRONG" ? "font-semibold text-emerald-300" :
-    g.model.signal === "LEAN"   ? "font-semibold text-amber-300" :
-    "font-semibold text-zinc-100";
+  const preferredNameColor = "font-semibold text-zinc-100";
 
   function TeamRow({ name, logo, isPreferred }: { name: string; logo?: string | null; isPreferred: boolean }) {
     return (
@@ -473,7 +466,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
   const tdBase = "px-3 py-3";
 
   return (
-    <div className="rounded-2xl border border-white/8 bg-zinc-950/60">
+    <div className="rounded-2xl border border-white/8 bg-zinc-950">
 
       {/* ── Header ── */}
       <div className="flex items-center justify-between gap-4 border-b border-white/8 px-5 py-3.5">
@@ -605,11 +598,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
           const preferred = modelPrefersSide(g.model.edge);
           const hasPick = g.model.signal !== "NONE";
 
-          // Signal-colored preferred team name (mobile mirrors GameCell above)
-          const preferredNameColor =
-            g.model.signal === "STRONG" ? "font-semibold text-emerald-300" :
-            g.model.signal === "LEAN"   ? "font-semibold text-amber-300" :
-            "font-semibold text-zinc-100";
+          const preferredNameColor = "font-semibold text-zinc-100";
 
           return (
             <div key={g.gameId}>
