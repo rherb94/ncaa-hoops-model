@@ -150,7 +150,24 @@ function computeStats(byDate: DayResult[]) {
     }
   }
 
-  return { dirTotal, dirCorrect, avgError, roi, roiGames, avgClv, clvGames: clvGames.length, buckets };
+  // ATS record (mirrors server-side summary but computed client-side so backfill
+  // toggle updates stat cards without a re-fetch)
+  const allPicks = allGames.filter((g) => g.signal !== "NONE");
+  const decidedPicks = allPicks.filter(
+    (g) => g.pick_result === "WIN" || g.pick_result === "LOSS"
+  );
+  const atsWins = decidedPicks.filter((g) => g.pick_result === "WIN").length;
+  const atsLosses = decidedPicks.length - atsWins;
+  const atsWinPct =
+    decidedPicks.length > 0
+      ? Math.round((atsWins / decidedPicks.length) * 100)
+      : null;
+
+  return {
+    dirTotal, dirCorrect, avgError, roi, roiGames, avgClv, clvGames: clvGames.length, buckets,
+    totalPicks: allPicks.length, decidedCount: decidedPicks.length,
+    atsWins, atsLosses, atsWinPct,
+  };
 }
 
 // ---- UI atoms ----
@@ -347,6 +364,12 @@ function GameCard({ g }: { g: GameRow }) {
   );
 }
 
+// ---- backfill cutoff ----
+// Games before this date were retroactively backfilled; toggle lets users
+// isolate only "live" model results where the model was running in real time.
+// Mar 2 was the first day with automated opener snapshots (Mar 1 and earlier were backfilled).
+const LIVE_FROM = "2026-03-02";
+
 // ---- filter helpers ----
 type Filter = "yesterday" | "7d" | "30d" | "season";
 
@@ -381,6 +404,7 @@ export default function ResultsClient() {
   const [err, setErr] = useState<string | null>(null);
   const [expandedDate, setExpandedDate] = useState<string | null>(null);
   const [filter, setFilter] = useState<Filter>("7d");
+  const [hideBackfill, setHideBackfill] = useState(false);
 
   async function load(f: Filter) {
     setLoading(true);
@@ -407,9 +431,16 @@ export default function ResultsClient() {
   if (err)     return <div className="text-red-400 text-sm py-8">{err}</div>;
   if (!data)   return null;
 
-  const { summary, by_date } = data;
-  const sorted = [...by_date].reverse();
-  const { dirTotal, dirCorrect, avgError, roi, roiGames, avgClv, clvGames, buckets } = computeStats(by_date);
+  const { by_date } = data;
+  // Client-side backfill filter — excludes dates before LIVE_FROM when toggled on
+  const visibleByDate = hideBackfill
+    ? by_date.filter((d) => d.date >= LIVE_FROM)
+    : by_date;
+  const sorted = [...visibleByDate].reverse();
+  const {
+    dirTotal, dirCorrect, avgError, roi, roiGames, avgClv, clvGames, buckets,
+    totalPicks, decidedCount, atsWins, atsLosses, atsWinPct,
+  } = computeStats(visibleByDate);
 
   const sortGames = (games: GameRow[]) =>
     games.slice().sort((a, b) => {
@@ -426,7 +457,10 @@ export default function ResultsClient() {
         <div className="flex-1">
           <div className="text-xs text-zinc-400">Model Results</div>
           <div className="text-sm text-zinc-500">
-            {by_date.length} day{by_date.length !== 1 ? "s" : ""} · {FILTER_LABELS[filter]}
+            {visibleByDate.length} day{visibleByDate.length !== 1 ? "s" : ""} · {FILTER_LABELS[filter]}
+            {hideBackfill && (
+              <span className="ml-1.5 text-xs text-blue-400/70">(live only)</span>
+            )}
           </div>
         </div>
 
@@ -447,6 +481,19 @@ export default function ResultsClient() {
           ))}
         </div>
 
+        {/* backfill toggle */}
+        <button
+          onClick={() => setHideBackfill((v) => !v)}
+          title={hideBackfill ? "Show backfilled games (pre-Mar 3)" : "Hide backfilled games (pre-Mar 3)"}
+          className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+            hideBackfill
+              ? "border-blue-500/40 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
+              : "border-white/10 bg-zinc-900 text-zinc-500 hover:text-zinc-300"
+          }`}
+        >
+          {hideBackfill ? "Live Only" : "All Dates"}
+        </button>
+
         <button
           onClick={() => load(filter)}
           className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:bg-zinc-700 self-start sm:self-auto"
@@ -456,14 +503,14 @@ export default function ResultsClient() {
       </div>
 
       {/* summary stat cards */}
-      {(summary.total_picks > 0 || dirTotal > 0) && (
+      {(totalPicks > 0 || dirTotal > 0) && (
         <div className="flex flex-wrap gap-3">
           <StatCard
             label="ATS Record"
-            value={summary.decided > 0 ? `${summary.wins}-${summary.losses}` : "—"}
-            sub={summary.decided > 0 && summary.win_pct !== null
-              ? `${summary.win_pct}% (${summary.decided} decided)`
-              : `${summary.total_picks} picks`}
+            value={decidedCount > 0 ? `${atsWins}-${atsLosses}` : "—"}
+            sub={decidedCount > 0 && atsWinPct !== null
+              ? `${atsWinPct}% (${decidedCount} decided)`
+              : `${totalPicks} picks`}
           />
           {dirTotal > 0 && (
             <StatCard
@@ -495,8 +542,8 @@ export default function ResultsClient() {
           )}
           <StatCard
             label="Total Picks"
-            value={String(summary.total_picks)}
-            sub={`${summary.decided} decided`}
+            value={String(totalPicks)}
+            sub={`${decidedCount} decided`}
           />
         </div>
       )}
@@ -504,7 +551,7 @@ export default function ResultsClient() {
       {/* edge calibration */}
       <EdgeCalibrationTable buckets={buckets} />
 
-      {by_date.length === 0 && (
+      {visibleByDate.length === 0 && (
         <div className="text-zinc-500 text-sm">No snapshot data yet. Run the odds opener workflow to start tracking.</div>
       )}
 
@@ -522,6 +569,11 @@ export default function ResultsClient() {
                 {day.total_games} games · {day.picks_made} pick{day.picks_made !== 1 ? "s" : ""}
                 {day.strong_picks > 0 && ` (${day.strong_picks} STRONG)`}
               </span>
+              {day.date < LIVE_FROM && (
+                <span className="inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-medium bg-zinc-800 text-zinc-500 border border-white/5">
+                  backfill
+                </span>
+              )}
               {!day.results_available && <span className="text-xs text-amber-400/70">results pending</span>}
             </div>
             <div className="flex items-center gap-3">
