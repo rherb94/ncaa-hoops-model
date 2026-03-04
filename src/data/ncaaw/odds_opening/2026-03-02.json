@@ -56,7 +56,7 @@
       "home_team": "Milwaukee Panthers",
       "away_team": "Detroit Mercy Titans",
       "home_espnTeamId": "270",
-      "away_espnTeamId": null,
+      "away_espnTeamId": "2174",
       "home_resolve": "ESPN_BY_NAME",
       "away_resolve": "MISS",
       "neutralSite": false,
