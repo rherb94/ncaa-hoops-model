@@ -249,6 +249,14 @@ function resolveEspnForTeam(
   if (masterEspnId != null) {
     const hit = espnById.get(String(masterEspnId));
     if (hit) return { method: "BY_ID", hit };
+    // The master map is authoritative even if the ESPN JSON doesn't have this
+    // ID (NCAAW JSON only covers IDs ≤ 2124). Synthesize a CDN logo so the
+    // team still gets a logo URL and espnTeamId rather than a MISS.
+    const syntheticHit: EspnHit = {
+      id: String(masterEspnId),
+      logo: `https://a.espncdn.com/i/teamlogos/ncaa/500/${masterEspnId}.png`,
+    };
+    return { method: "BY_ID", hit: syntheticHit };
   }
 
   // 3) by-name fallback

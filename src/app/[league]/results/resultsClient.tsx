@@ -55,12 +55,10 @@ type AnalysisResponse = {
 };
 
 // ---- helpers ----
-function espnLogoUrl(id: string | null, league: LeagueId) {
+function espnLogoUrl(id: string | null, _league: LeagueId) {
   if (!id) return null;
-  // NCAAW teams share ESPN numeric IDs with NCAAM (same school), but the
-  // women's CDN path gives slightly higher-res / correct-gendered logos.
-  const path = league === "ncaaw" ? "ncaaw" : "ncaa";
-  return `https://a.espncdn.com/i/teamlogos/${path}/500/${id}.png`;
+  // ESPN serves both NCAAM and NCAAW team logos at the ncaa/500/ CDN path.
+  return `https://a.espncdn.com/i/teamlogos/ncaa/500/${id}.png`;
 }
 
 function spreadLabel(n: number | null) {
