@@ -287,13 +287,15 @@ function GameCard({ g, league }: { g: GameRow; league: LeagueId }) {
   const hasPick = g.signal !== "NONE";
   const dc = modelDirectionCorrect(g);
   const rowBg = hasPick
-    ? g.pick_result === "WIN"  ? "border-l-2 border-emerald-500 bg-emerald-950/20"
-    : g.pick_result === "LOSS" ? "border-l-2 border-red-500 bg-red-950/20"
-    : "border-l-2 border-zinc-700 bg-zinc-900/50"
-    : "bg-zinc-900/20";
+    ? g.pick_result === "WIN"
+      ? "border border-emerald-500/35 bg-emerald-950/20 shadow-[0_0_22px_-4px_rgba(52,211,153,0.35)]"
+    : g.pick_result === "LOSS"
+      ? "border border-red-500/35 bg-red-950/20 shadow-[0_0_22px_-4px_rgba(239,68,68,0.3)]"
+    : "border border-zinc-700/40 bg-zinc-900/50"
+    : "border border-white/[0.04] bg-zinc-900/20";
 
   return (
-    <div className={`rounded-lg px-3 py-2.5 ${rowBg}`}>
+    <div className={`rounded-xl px-3 py-2.5 ${rowBg}`}>
       {/* teams row */}
       <div className="flex items-center justify-between mb-1.5">
         <div className="flex flex-col gap-1">

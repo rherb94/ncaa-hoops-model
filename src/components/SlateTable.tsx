@@ -74,16 +74,29 @@ function bookLogoSrc(book?: string | null) {
 
 // ── Row / rail styling ────────────────────────────────────────────────────────
 
+/** Desktop table row: subtle bg tint */
 function rowTint(signal?: SlateGame["model"]["signal"]) {
-  if (signal === "STRONG") return "bg-emerald-500/[0.07]";
-  if (signal === "LEAN")   return "bg-amber-400/[0.06]";
+  if (signal === "STRONG") return "bg-emerald-500/[0.09]";
+  if (signal === "LEAN")   return "bg-amber-400/[0.07]";
   return "";
 }
 
+/** Desktop table: left rail on Time column (border-l + inset glow) */
 function railClass(signal?: SlateGame["model"]["signal"]) {
-  if (signal === "STRONG") return "border-l-2 border-emerald-400/60";
-  if (signal === "LEAN")   return "border-l-2 border-amber-400/50";
-  return "border-l-2 border-transparent";
+  if (signal === "STRONG")
+    return "border-l-[3px] border-emerald-400 [box-shadow:inset_5px_0_18px_-5px_rgba(52,211,153,0.35)]";
+  if (signal === "LEAN")
+    return "border-l-[3px] border-amber-400 [box-shadow:inset_5px_0_18px_-5px_rgba(251,191,36,0.28)]";
+  return "border-l-[3px] border-transparent";
+}
+
+/** Mobile card: full-perimeter border + shadow glow */
+function mobileCardClass(signal?: SlateGame["model"]["signal"]) {
+  if (signal === "STRONG")
+    return "rounded-xl border border-emerald-500/35 bg-emerald-950/20 shadow-[0_0_22px_-4px_rgba(52,211,153,0.35)]";
+  if (signal === "LEAN")
+    return "rounded-xl border border-amber-400/30 bg-amber-950/[0.08] shadow-[0_0_22px_-4px_rgba(251,191,36,0.28)]";
+  return "rounded-xl border border-white/[0.05] bg-zinc-900/20";
 }
 
 // ── Neutral badge ─────────────────────────────────────────────────────────────
@@ -578,7 +591,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
       </div>
 
       {/* ── Mobile cards ── */}
-      <div className="md:hidden divide-y divide-white/[0.05]">
+      <div className="md:hidden py-3 px-3 space-y-2">
         {filtered.map((g, i) => {
           const open = openGameId === g.gameId;
           const preferred = modelPrefersSide(g.model.edge);
@@ -588,63 +601,66 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
             <div key={g.gameId}>
               {/* Mobile section divider */}
               {i === firstNoneIdx && firstNoneIdx > 0 && (
-                <div className="flex items-center gap-3 px-4 pt-4 pb-1">
+                <div className="flex items-center gap-3 py-2">
                   <div className="h-px flex-1 bg-white/[0.06]" />
                   <span className="text-[11px] font-medium uppercase tracking-widest text-zinc-600">Other games</span>
                   <div className="h-px flex-1 bg-white/[0.06]" />
                 </div>
               )}
 
-              <div
-                className={`cursor-pointer px-4 py-3 transition-colors hover:bg-white/[0.025] ${rowTint(g.model.signal)} ${railClass(g.model.signal)}`}
-                onClick={() => toggleRow(g)}
-              >
-                {/* Time + pick + chevron */}
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-zinc-600">{fmtTime(g.startTimeISO)}</span>
-                  <div className="flex items-center gap-2">
-                    <PickText signal={g.model.signal} side={g.recommended?.side} line={g.recommended?.line ?? null} />
-                    <span className={`text-[9px] text-zinc-700 transition-transform duration-150 ${open ? "rotate-180" : ""}`}>▼</span>
+              {/* Card — wraps both the summary row and the expanded panel */}
+              <div className={`overflow-hidden transition-all ${mobileCardClass(g.model.signal)}`}>
+                <div
+                  className="cursor-pointer px-4 py-3"
+                  onClick={() => toggleRow(g)}
+                >
+                  {/* Time + pick + chevron */}
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
+                    <div className="flex items-center gap-2">
+                      <PickText signal={g.model.signal} side={g.recommended?.side} line={g.recommended?.line ?? null} />
+                      <span className={`text-[9px] text-zinc-700 transition-transform duration-150 ${open ? "rotate-180" : ""}`}>▼</span>
+                    </div>
+                  </div>
+
+                  {/* Teams */}
+                  <div className="flex flex-col gap-px mb-2">
+                    {[{ name: g.awayTeam, logo: g.awayLogo, side: "AWAY" }, { name: g.homeTeam, logo: g.homeLogo, side: "HOME" }].map((team, ti) => (
+                      <React.Fragment key={team.side}>
+                        {ti === 1 && <div className="pl-0.5 text-[10px] text-zinc-700 select-none leading-none py-0.5">@</div>}
+                        <div className="flex items-center gap-2">
+                          {team.logo
+                            ? <img src={team.logo} alt="" className="h-5 w-5 shrink-0 rounded-sm object-contain opacity-90" loading="lazy" />
+                            : <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />
+                          }
+                          <span className={`text-sm truncate ${
+                            preferred === team.side && hasPick ? "font-semibold text-zinc-100" :
+                            hasPick && preferred ? "text-zinc-500" : "text-zinc-300"
+                          }`} title={team.name}>{team.name}</span>
+                        </div>
+                      </React.Fragment>
+                    ))}
+                    {g.neutralSite && <div className="mt-1"><NeutralBadge /></div>}
+                  </div>
+
+                  {/* Mkt / Model / Edge */}
+                  <div className="flex gap-4 text-xs text-zinc-600">
+                    <span>Mkt <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span></span>
+                    <span>Model <span className={`font-mono font-semibold ${(g.model?.modelSpread ?? 0) < 0 ? "text-rose-300/80" : "text-emerald-300/80"}`}>{fmtSpread(g.model?.modelSpread)}</span></span>
+                    <span>Edge <EdgeCell edge={g.model?.edge} /></span>
                   </div>
                 </div>
 
-                {/* Teams */}
-                <div className="flex flex-col gap-px mb-2">
-                  {[{ name: g.awayTeam, logo: g.awayLogo, side: "AWAY" }, { name: g.homeTeam, logo: g.homeLogo, side: "HOME" }].map((team, ti) => (
-                    <React.Fragment key={team.side}>
-                      {ti === 1 && <div className="pl-0.5 text-[10px] text-zinc-700 select-none leading-none py-0.5">@</div>}
-                      <div className="flex items-center gap-2">
-                        {team.logo
-                          ? <img src={team.logo} alt="" className="h-5 w-5 shrink-0 rounded-sm object-contain opacity-90" loading="lazy" />
-                          : <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />
-                        }
-                        <span className={`text-sm truncate ${
-                          preferred === team.side && hasPick ? "font-semibold text-zinc-100" :
-                          hasPick && preferred ? "text-zinc-500" : "text-zinc-300"
-                        }`} title={team.name}>{team.name}</span>
-                      </div>
-                    </React.Fragment>
-                  ))}
-                  {g.neutralSite && <div className="mt-1"><NeutralBadge /></div>}
-                </div>
-
-                {/* Mkt / Model / Edge */}
-                <div className="flex gap-4 text-xs text-zinc-600">
-                  <span>Mkt <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span></span>
-                  <span>Model <span className={`font-mono font-semibold ${(g.model?.modelSpread ?? 0) < 0 ? "text-rose-300/80" : "text-emerald-300/80"}`}>{fmtSpread(g.model?.modelSpread)}</span></span>
-                  <span>Edge <EdgeCell edge={g.model?.edge} /></span>
-                </div>
+                {open && (
+                  <div className="px-4 py-4 bg-black/20 border-t border-white/[0.06]">
+                    <GameInfoBar g={g} />
+                    <div className="grid gap-3">
+                      <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} />
+                      <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} />
+                    </div>
+                  </div>
+                )}
               </div>
-
-              {open && (
-                <div className="px-4 py-4 bg-black/20">
-                  <GameInfoBar g={g} />
-                  <div className="grid gap-3">
-                    <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} />
-                    <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} />
-                  </div>
-                </div>
-              )}
             </div>
           );
         })}

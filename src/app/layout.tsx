@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
-import { LEAGUES } from "@/lib/leagues";
+import LeagueNav from "@/components/LeagueNav";
 
 export const metadata: Metadata = {
   title: "Hoops Model",
@@ -21,17 +21,7 @@ export default function RootLayout({
             <Link href="/" className="text-base font-bold tracking-tight hover:text-white transition-colors">
               Hoops Model
             </Link>
-            <nav className="flex items-center gap-1">
-              {Object.values(LEAGUES).map((l) => (
-                <Link
-                  key={l.id}
-                  href={`/${l.id}/slate`}
-                  className="rounded-lg px-3 py-1.5 text-sm font-semibold text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
-                >
-                  {l.shortName}
-                </Link>
-              ))}
-            </nav>
+            <LeagueNav />
           </div>
         </header>
         <main className="mx-auto w-full max-w-none px-6 py-6">{children}</main>

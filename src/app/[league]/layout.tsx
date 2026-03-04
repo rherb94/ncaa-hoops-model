@@ -1,7 +1,7 @@
 // src/app/[league]/layout.tsx
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { isLeagueId } from "@/lib/leagues";
+import SubNav from "@/components/SubNav";
 
 export default async function LeagueLayout({
   children,
@@ -18,22 +18,7 @@ export default async function LeagueLayout({
 
   return (
     <div>
-      <nav className="mb-6 flex items-center gap-1 border-b border-white/8 pb-3">
-        {[
-          { href: `/${league}/slate`, label: "Daily Slate" },
-          { href: `/${league}/results`, label: "Results" },
-          { href: `/${league}/teams`, label: "Teams" },
-          { href: `/${league}/sheet`, label: "Betting Sheet" },
-        ].map(({ href, label }) => (
-          <Link
-            key={href}
-            href={href}
-            className="rounded-lg px-3 py-1.5 text-sm font-medium text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
-          >
-            {label}
-          </Link>
-        ))}
-      </nav>
+      <SubNav league={league} />
       {children}
     </div>
   );
