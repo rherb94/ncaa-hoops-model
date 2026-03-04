@@ -55,9 +55,12 @@ type AnalysisResponse = {
 };
 
 // ---- helpers ----
-function espnLogoUrl(id: string | null) {
+function espnLogoUrl(id: string | null, league: LeagueId) {
   if (!id) return null;
-  return `https://a.espncdn.com/i/teamlogos/ncaa/500/${id}.png`;
+  // NCAAW teams share ESPN numeric IDs with NCAAM (same school), but the
+  // women's CDN path gives slightly higher-res / correct-gendered logos.
+  const path = league === "ncaaw" ? "ncaaw" : "ncaa";
+  return `https://a.espncdn.com/i/teamlogos/${path}/500/${id}.png`;
 }
 
 function spreadLabel(n: number | null) {
@@ -155,8 +158,8 @@ function computeStats(byDate: DayResult[]) {
 }
 
 // ---- UI atoms ----
-function TeamLogo({ id, name, size = 20 }: { id: string | null; name: string; size?: number }) {
-  const src = espnLogoUrl(id);
+function TeamLogo({ id, name, league, size = 20 }: { id: string | null; name: string; league: LeagueId; size?: number }) {
+  const src = espnLogoUrl(id, league);
   if (!src) return <span className="inline-block bg-zinc-700 rounded-full" style={{ width: size, height: size }} />;
   return (
     <Image
@@ -282,7 +285,7 @@ function EdgeCalibrationTable({ buckets }: { buckets: CalibrationBucket[] }) {
 }
 
 // Mobile game card
-function GameCard({ g }: { g: GameRow }) {
+function GameCard({ g, league }: { g: GameRow; league: LeagueId }) {
   const hasPick = g.signal !== "NONE";
   const dc = modelDirectionCorrect(g);
   const rowBg = hasPick
@@ -298,7 +301,7 @@ function GameCard({ g }: { g: GameRow }) {
         <div className="flex flex-col gap-1">
           {/* away */}
           <div className="flex items-center gap-1.5">
-            <TeamLogo id={g.away_espnTeamId} name={g.away_team} size={16} />
+            <TeamLogo id={g.away_espnTeamId} name={g.away_team} league={league} size={16} />
             <span className="text-xs text-zinc-300">{g.away_team}</span>
             {g.away_score !== null && (
               <span className={`text-xs font-bold ml-1 ${g.winner === "AWAY" ? "text-zinc-100" : "text-zinc-500"}`}>
@@ -308,7 +311,7 @@ function GameCard({ g }: { g: GameRow }) {
           </div>
           {/* home */}
           <div className="flex items-center gap-1.5">
-            <TeamLogo id={g.home_espnTeamId} name={g.home_team} size={16} />
+            <TeamLogo id={g.home_espnTeamId} name={g.home_team} league={league} size={16} />
             <span className="text-xs text-zinc-300">{g.home_team}</span>
             {g.home_score !== null && (
               <span className={`text-xs font-bold ml-1 ${g.winner === "HOME" ? "text-zinc-100" : "text-zinc-500"}`}>
@@ -540,7 +543,7 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
             <>
               {/* ---- MOBILE: card list ---- */}
               <div className="md:hidden divide-y divide-white/5 px-3 py-2 space-y-1.5">
-                {sortGames(day.games).map((g, i) => <GameCard key={i} g={g} />)}
+                {sortGames(day.games).map((g, i) => <GameCard key={i} g={g} league={league} />)}
               </div>
 
               {/* ---- DESKTOP: table ---- */}
@@ -577,12 +580,12 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
                           <td className="px-4 py-2">
                             {/* away */}
                             <div className="flex items-center gap-1.5 mb-0.5">
-                              <TeamLogo id={g.away_espnTeamId} name={g.away_team} size={16} />
+                              <TeamLogo id={g.away_espnTeamId} name={g.away_team} league={league} size={16} />
                               <span className="text-zinc-400">{g.away_team}</span>
                             </div>
                             {/* home */}
                             <div className="flex items-center gap-1.5">
-                              <TeamLogo id={g.home_espnTeamId} name={g.home_team} size={16} />
+                              <TeamLogo id={g.home_espnTeamId} name={g.home_team} league={league} size={16} />
                               <span className="text-zinc-200">{g.home_team}</span>
                             </div>
                             {g.neutral_site && (

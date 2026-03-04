@@ -325,10 +325,16 @@ async function main() {
   const preferredBooks = ["draftkings", "fanduel", "betmgm"];
 
   const outGames: any[] = [];
+  const seenEventIds = new Set<string>(); // guard against API returning the same event twice
   const misses: Array<{ side: "HOME" | "AWAY"; name: string; key: string }> =
     [];
 
   for (const g of filtered) {
+    if (seenEventIds.has(g.id)) {
+      console.warn(`⚠️  Duplicate event skipped: ${g.id} (${g.away_team} @ ${g.home_team})`);
+      continue;
+    }
+    seenEventIds.add(g.id);
     const spread = pickBookSpread(g, preferredBooks);
 
     const homeKey = normOddsTeamName(g.home_team);
