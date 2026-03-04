@@ -90,12 +90,12 @@ function railClass(signal?: SlateGame["model"]["signal"]) {
   return "border-l-[3px] border-transparent";
 }
 
-/** Mobile card: full-perimeter border + shadow glow */
+/** Mobile card: full-perimeter border + shadow glow + visible fill */
 function mobileCardClass(signal?: SlateGame["model"]["signal"]) {
   if (signal === "STRONG")
-    return "rounded-xl border border-emerald-500/35 bg-emerald-950/20 shadow-[0_0_22px_-4px_rgba(52,211,153,0.35)]";
+    return "rounded-xl border border-emerald-500/40 bg-emerald-500/[0.11] shadow-[0_0_22px_-4px_rgba(52,211,153,0.4)]";
   if (signal === "LEAN")
-    return "rounded-xl border border-amber-400/30 bg-amber-950/[0.08] shadow-[0_0_22px_-4px_rgba(251,191,36,0.28)]";
+    return "rounded-xl border border-amber-400/35 bg-amber-400/[0.09] shadow-[0_0_22px_-4px_rgba(251,191,36,0.32)]";
   return "rounded-xl border border-white/[0.05] bg-zinc-900/20";
 }
 

@@ -288,9 +288,9 @@ function GameCard({ g, league }: { g: GameRow; league: LeagueId }) {
   const dc = modelDirectionCorrect(g);
   const rowBg = hasPick
     ? g.pick_result === "WIN"
-      ? "border border-emerald-500/35 bg-emerald-950/20 shadow-[0_0_22px_-4px_rgba(52,211,153,0.35)]"
+      ? "border border-emerald-500/40 bg-emerald-500/[0.11] shadow-[0_0_22px_-4px_rgba(52,211,153,0.4)]"
     : g.pick_result === "LOSS"
-      ? "border border-red-500/35 bg-red-950/20 shadow-[0_0_22px_-4px_rgba(239,68,68,0.3)]"
+      ? "border border-red-500/40 bg-red-500/[0.10] shadow-[0_0_22px_-4px_rgba(239,68,68,0.35)]"
     : "border border-zinc-700/40 bg-zinc-900/50"
     : "border border-white/[0.04] bg-zinc-900/20";
 
