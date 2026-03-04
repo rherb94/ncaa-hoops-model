@@ -50,20 +50,23 @@ jobs:
 
           FORCE_INPUT="${{ inputs.force }}"
 
+          # Exit code 2 = unmapped teams warning (snapshot still wrote OK). Treat as success.
+          run_fetch() { npx tsx src/scripts/fetchOddsOpenersForDate.ts; EC=$?; [ $EC -le 2 ] && return 0 || return $EC; }
+
           if [ "$FORCE_INPUT" = "true" ]; then
             echo "Manual force overwrite requested."
-            FORCE=1 npx tsx src/scripts/fetchOddsOpenersForDate.ts
+            FORCE=1 run_fetch
           elif [ -f "$FILE" ]; then
             GAME_COUNT=$(python3 -c "import json; d=json.load(open('$FILE')); print(len(d.get('games', [])))" 2>/dev/null || echo "0")
             if [ "$GAME_COUNT" = "0" ]; then
               echo "Existing snapshot has 0 games — retrying fetch..."
-              FORCE=1 npx tsx src/scripts/fetchOddsOpenersForDate.ts
+              FORCE=1 run_fetch
             else
               echo "Snapshot already has $GAME_COUNT games — nothing to do."
               echo "skipped=true" >> "$GITHUB_OUTPUT"
             fi
           else
-            npx tsx src/scripts/fetchOddsOpenersForDate.ts
+            run_fetch
           fi
 
       - name: Recompute model spreads
