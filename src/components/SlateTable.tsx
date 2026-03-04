@@ -81,12 +81,10 @@ function rowTint(signal?: SlateGame["model"]["signal"]) {
   return "";
 }
 
-/** Desktop table: left rail on Time column (border-l + inset glow) */
+/** Desktop table: left rail on Time column */
 function railClass(signal?: SlateGame["model"]["signal"]) {
-  if (signal === "STRONG")
-    return "border-l-[3px] border-emerald-400 [box-shadow:inset_5px_0_18px_-5px_rgba(52,211,153,0.35)]";
-  if (signal === "LEAN")
-    return "border-l-[3px] border-amber-400 [box-shadow:inset_5px_0_18px_-5px_rgba(251,191,36,0.28)]";
+  if (signal === "STRONG") return "border-l-[3px] border-emerald-400";
+  if (signal === "LEAN")   return "border-l-[3px] border-amber-400";
   return "border-l-[3px] border-transparent";
 }
 
