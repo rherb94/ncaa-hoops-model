@@ -126,7 +126,7 @@ function EdgeCell({ edge }: { edge?: number | null }) {
   return <span className={`font-mono text-xs font-semibold ${color}`}>{label}</span>;
 }
 
-// ── Pick text (plain colored, no pill — mirrors Results page) ─────────────────
+// ── Pick text (colored pill badge) ───────────────────────────────────────────
 
 function PickText({
   signal,
@@ -146,10 +146,13 @@ function PickText({
       ? displayLine > 0 ? `+${fmtNum(displayLine)}` : fmtNum(displayLine)
       : null;
 
-  const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
+  const pillClass =
+    signal === "STRONG"
+      ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
+      : "bg-amber-400/15 text-amber-300 border border-amber-400/30";
 
   return (
-    <span className={`text-xs font-semibold ${color}`}>
+    <span className={`inline-flex items-center gap-0.5 rounded-md px-1.5 py-0.5 text-xs font-semibold ${pillClass}`}>
       {signal} {side}{lineStr ? ` ${lineStr}` : ""}
     </span>
   );
@@ -160,6 +163,11 @@ function PickText({
 function GameCell({ g }: { g: SlateGame }) {
   const preferred = modelPrefersSide(g.model.edge);
   const hasPick = g.model.signal !== "NONE";
+  // Preferred team name gets signal color: emerald for STRONG, amber for LEAN
+  const preferredNameColor =
+    g.model.signal === "STRONG" ? "font-semibold text-emerald-300" :
+    g.model.signal === "LEAN"   ? "font-semibold text-amber-300" :
+    "font-semibold text-zinc-100";
 
   function TeamRow({ name, logo, isPreferred }: { name: string; logo?: string | null; isPreferred: boolean }) {
     return (
@@ -171,7 +179,7 @@ function GameCell({ g }: { g: SlateGame }) {
         <span
           title={name}
           className={`truncate text-sm leading-snug ${
-            isPreferred && hasPick   ? "font-semibold text-zinc-100" :
+            isPreferred && hasPick   ? preferredNameColor :
             hasPick && preferred     ? "text-zinc-500" :
             "text-zinc-300"
           }`}
@@ -551,7 +559,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
 
                     {/* Model */}
                     <td className={`${tdBase} align-middle text-center font-mono text-xs tabular-nums font-semibold ${
-                      (g.model?.modelSpread ?? 0) < 0 ? "text-rose-300/80" : "text-emerald-300/80"
+                      (g.model?.modelSpread ?? 0) < 0 ? "text-red-400" : "text-emerald-400"
                     }`}>
                       {fmtSpread(g.model?.modelSpread)}
                     </td>
@@ -597,6 +605,12 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
           const preferred = modelPrefersSide(g.model.edge);
           const hasPick = g.model.signal !== "NONE";
 
+          // Signal-colored preferred team name (mobile mirrors GameCell above)
+          const preferredNameColor =
+            g.model.signal === "STRONG" ? "font-semibold text-emerald-300" :
+            g.model.signal === "LEAN"   ? "font-semibold text-amber-300" :
+            "font-semibold text-zinc-100";
+
           return (
             <div key={g.gameId}>
               {/* Mobile section divider */}
@@ -634,7 +648,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                             : <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />
                           }
                           <span className={`text-sm truncate ${
-                            preferred === team.side && hasPick ? "font-semibold text-zinc-100" :
+                            preferred === team.side && hasPick ? preferredNameColor :
                             hasPick && preferred ? "text-zinc-500" : "text-zinc-300"
                           }`} title={team.name}>{team.name}</span>
                         </div>
@@ -646,7 +660,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                   {/* Mkt / Model / Edge */}
                   <div className="flex gap-4 text-xs text-zinc-600">
                     <span>Mkt <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span></span>
-                    <span>Model <span className={`font-mono font-semibold ${(g.model?.modelSpread ?? 0) < 0 ? "text-rose-300/80" : "text-emerald-300/80"}`}>{fmtSpread(g.model?.modelSpread)}</span></span>
+                    <span>Model <span className={`font-mono font-semibold ${(g.model?.modelSpread ?? 0) < 0 ? "text-red-400" : "text-emerald-400"}`}>{fmtSpread(g.model?.modelSpread)}</span></span>
                     <span>Edge <EdgeCell edge={g.model?.edge} /></span>
                   </div>
                 </div>
