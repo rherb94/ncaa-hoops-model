@@ -71,13 +71,6 @@ function bookLogoSrc(book?: string | null) {
   return null;
 }
 
-function l5Emoji(r?: L5Record): string | null {
-  if (!r) return null;
-  if (r.wins >= 4) return "🔥";
-  if (r.losses >= 4) return "🧊";
-  return null;
-}
-
 // ── Row / rail styling ────────────────────────────────────────────────────────
 
 function rowTint(signal?: SlateGame["model"]["signal"]) {
@@ -148,13 +141,13 @@ function PickText({
   );
 }
 
-// ── Game cell (stacked away @ home, with optional L5 emoji next to team name) ──
+// ── Game cell (stacked away @ home, no emoji) ─────────────────────────────────
 
-function GameCell({ g, awayEmoji, homeEmoji }: { g: SlateGame; awayEmoji?: string | null; homeEmoji?: string | null }) {
+function GameCell({ g }: { g: SlateGame }) {
   const preferred = modelPrefersSide(g.model.edge);
   const hasPick = g.model.signal !== "NONE";
 
-  function TeamRow({ name, logo, isPreferred, emoji }: { name: string; logo?: string | null; isPreferred: boolean; emoji?: string | null }) {
+  function TeamRow({ name, logo, isPreferred }: { name: string; logo?: string | null; isPreferred: boolean }) {
     return (
       <div className="flex items-center gap-2 min-w-0">
         {logo
@@ -171,20 +164,15 @@ function GameCell({ g, awayEmoji, homeEmoji }: { g: SlateGame; awayEmoji?: strin
         >
           {name}
         </span>
-        {emoji && (
-          <span className="shrink-0 text-sm leading-none" title={emoji === "🔥" ? "Hot team (4+ wins in L5)" : "Cold team (4+ losses in L5)"}>
-            {emoji}
-          </span>
-        )}
       </div>
     );
   }
 
   return (
     <div className="flex flex-col gap-px min-w-0">
-      <TeamRow name={g.awayTeam} logo={g.awayLogo} isPreferred={preferred === "AWAY"} emoji={awayEmoji} />
+      <TeamRow name={g.awayTeam} logo={g.awayLogo} isPreferred={preferred === "AWAY"} />
       <div className="pl-0.5 text-[10px] font-medium text-zinc-700 select-none leading-none py-0.5">@</div>
-      <TeamRow name={g.homeTeam} logo={g.homeLogo} isPreferred={preferred === "HOME"} emoji={homeEmoji} />
+      <TeamRow name={g.homeTeam} logo={g.homeLogo} isPreferred={preferred === "HOME"} />
       {g.neutralSite && <div className="mt-1"><NeutralBadge /></div>}
     </div>
   );
@@ -251,6 +239,10 @@ function StatRow({ label, value, rank }: { label: string; value: string; rank?: 
 
 function L5Chips({ record }: { record: L5Record }) {
   if (!record.games.length) return null;
+  const tempEmoji =
+    record.wins >= 4 ? "🔥" :
+    record.losses >= 4 ? "🧊" :
+    null;
   return (
     <div className="col-span-2 mt-1.5 pt-2 border-t border-white/[0.06]">
       <div className="flex items-center justify-between gap-2">
@@ -279,13 +271,18 @@ function L5Chips({ record }: { record: L5Record }) {
               ({record.streak})
             </span>
           )}
+          {tempEmoji && (
+            <span className="ml-0.5 text-sm leading-none" title={record.wins >= 4 ? "Hot team" : "Cold team"}>
+              {tempEmoji}
+            </span>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-function TeamCard({ title, logo, t, l5, emoji }: { title: string; logo?: string | null; t?: TeamStats; l5?: L5Record; emoji?: string | null }) {
+function TeamCard({ title, logo, t, l5 }: { title: string; logo?: string | null; t?: TeamStats; l5?: L5Record }) {
   const conf = t?.conference ?? null;
   const record = t?.record ?? null;
   const adjMargin = t?.adjOff != null && t?.adjDef != null ? Number(t.adjOff) - Number(t.adjDef) : null;
@@ -299,14 +296,7 @@ function TeamCard({ title, logo, t, l5, emoji }: { title: string; logo?: string 
           : <div className="h-7 w-7 shrink-0 rounded-sm bg-zinc-800" />
         }
         <div className="min-w-0">
-          <div className="flex items-center gap-1.5 min-w-0">
-            <div className="text-sm font-semibold text-zinc-100 truncate" title={title}>{title}</div>
-            {emoji && (
-              <span className="shrink-0 text-sm leading-none" title={emoji === "🔥" ? "Hot team (4+ wins in L5)" : "Cold team (4+ losses in L5)"}>
-                {emoji}
-              </span>
-            )}
-          </div>
+          <div className="text-sm font-semibold text-zinc-100 truncate" title={title}>{title}</div>
           <div className="flex items-center gap-1.5 mt-0.5">
             {conf && <span className="text-[11px] text-zinc-500">{conf}</span>}
             {conf && record && <span className="text-zinc-700">·</span>}
@@ -552,7 +542,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
 
                     {/* Game */}
                     <td className={`${tdBase} align-middle`}>
-                      <GameCell g={g} awayEmoji={l5Emoji(l5[g.awayTeamId])} homeEmoji={l5Emoji(l5[g.homeTeamId])} />
+                      <GameCell g={g} />
                     </td>
 
                     {/* Spread */}
@@ -588,8 +578,8 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                       <td colSpan={6} className="px-4 py-4 bg-black/20 border-b border-white/[0.05]">
                         <GameInfoBar g={g} />
                         <div className="grid gap-3 sm:grid-cols-2">
-                          <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} emoji={l5Emoji(l5[g.awayTeamId])} />
-                          <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} emoji={l5Emoji(l5[g.homeTeamId])} />
+                          <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} />
+                          <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} />
                         </div>
                       </td>
                     </tr>
@@ -634,10 +624,7 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
 
                 {/* Teams */}
                 <div className="flex flex-col gap-px mb-2">
-                  {[
-                    { name: g.awayTeam, logo: g.awayLogo, side: "AWAY", emoji: l5Emoji(l5[g.awayTeamId]) },
-                    { name: g.homeTeam, logo: g.homeLogo, side: "HOME", emoji: l5Emoji(l5[g.homeTeamId]) },
-                  ].map((team, ti) => (
+                  {[{ name: g.awayTeam, logo: g.awayLogo, side: "AWAY" }, { name: g.homeTeam, logo: g.homeLogo, side: "HOME" }].map((team, ti) => (
                     <React.Fragment key={team.side}>
                       {ti === 1 && <div className="pl-0.5 text-[10px] text-zinc-700 select-none leading-none py-0.5">@</div>}
                       <div className="flex items-center gap-2">
@@ -649,11 +636,6 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                           preferred === team.side && hasPick ? "font-semibold text-zinc-100" :
                           hasPick && preferred ? "text-zinc-500" : "text-zinc-300"
                         }`} title={team.name}>{team.name}</span>
-                        {team.emoji && (
-                          <span className="shrink-0 text-sm leading-none" title={team.emoji === "🔥" ? "Hot team (4+ wins in L5)" : "Cold team (4+ losses in L5)"}>
-                            {team.emoji}
-                          </span>
-                        )}
                       </div>
                     </React.Fragment>
                   ))}
@@ -672,8 +654,8 @@ export default function SlateTable({ games }: { games: SlateGame[] }) {
                 <div className="px-4 py-4 bg-black/20">
                   <GameInfoBar g={g} />
                   <div className="grid gap-3">
-                    <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} emoji={l5Emoji(l5[g.awayTeamId])} />
-                    <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} emoji={l5Emoji(l5[g.homeTeamId])} />
+                    <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} />
+                    <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} />
                   </div>
                 </div>
               )}
