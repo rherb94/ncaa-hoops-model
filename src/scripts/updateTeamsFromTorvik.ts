@@ -368,7 +368,7 @@ function bootstrapTeamsCsv(
   torvikByName: Map<string, TorvikTeam>,
   outPath: string
 ) {
-  const DEFAULT_HCA = LEAGUE === "ncaaw" ? 0 : 3;
+  const DEFAULT_HCA = 3; // 3-point home-court advantage for both NCAAM and NCAAW
 
   const header = [
     "teamId",

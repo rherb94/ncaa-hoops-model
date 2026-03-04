@@ -21,9 +21,9 @@
       "model": {
         "homeTeamId": "team-alabama",
         "awayTeamId": "team-texas",
-        "modelSpread": 16.2,
-        "edge": -0.3,
-        "signal": "NONE"
+        "modelSpread": 13.2,
+        "edge": -3.3,
+        "signal": "LEAN"
       }
     },
     {
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-north-carolina",
         "awayTeamId": "team-duke",
-        "modelSpread": 4,
-        "edge": 1.5,
+        "modelSpread": 1,
+        "edge": -1.5,
         "signal": "NONE"
       }
     },
@@ -69,7 +69,7 @@
       "model": {
         "homeTeamId": "team-michigan-st",
         "awayTeamId": "team-ohio",
-        "modelSpread": -23,
+        "modelSpread": -26,
         "edge": -12,
         "signal": "STRONG"
       }
@@ -93,9 +93,9 @@
       "model": {
         "homeTeamId": "team-virginia",
         "awayTeamId": "team-virginia-tech",
-        "modelSpread": 0.4,
-        "edge": 3.9,
-        "signal": "LEAN"
+        "modelSpread": -2.6,
+        "edge": 0.9,
+        "signal": "NONE"
       }
     },
     {
@@ -117,9 +117,9 @@
       "model": {
         "homeTeamId": "team-arkansas",
         "awayTeamId": "team-auburn",
-        "modelSpread": 1.5,
-        "edge": 0,
-        "signal": "NONE"
+        "modelSpread": -1.5,
+        "edge": -3,
+        "signal": "LEAN"
       }
     },
     {
@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-west-virginia",
         "awayTeamId": "team-cincinnati",
-        "modelSpread": -16.9,
-        "edge": 2.6,
+        "modelSpread": -19.9,
+        "edge": -0.4,
         "signal": "NONE"
       }
     },
@@ -165,8 +165,8 @@
       "model": {
         "homeTeamId": "team-kansas-st",
         "awayTeamId": "team-iowa",
-        "modelSpread": 15,
-        "edge": 9.5,
+        "modelSpread": 12,
+        "edge": 6.5,
         "signal": "STRONG"
       }
     },
@@ -189,33 +189,9 @@
       "model": {
         "homeTeamId": "team-kentucky",
         "awayTeamId": "team-south-carolina",
-        "modelSpread": 13.3,
-        "edge": -0.2,
-        "signal": "NONE"
-      }
-    },
-    {
-      "oddsEventId": "bed3b70716ca952e49878bf52561be1e",
-      "commence_time": "2026-03-01T19:00:00Z",
-      "home_team": "Kentucky Wildcats",
-      "away_team": "South Carolina Gamecocks",
-      "home_espnTeamId": "96",
-      "away_espnTeamId": "2579",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "neutralSite": false,
-      "opening": {
-        "book": "draftkings",
-        "last_update": "2026-03-01T16:00:03Z",
-        "homePoint": 13.5,
-        "awayPoint": -13.5
-      },
-      "model": {
-        "homeTeamId": "team-kentucky",
-        "awayTeamId": "team-south-carolina",
-        "modelSpread": 13.3,
-        "edge": -0.2,
-        "signal": "NONE"
+        "modelSpread": 10.3,
+        "edge": -3.2,
+        "signal": "LEAN"
       }
     },
     {
@@ -237,8 +213,8 @@
       "model": {
         "homeTeamId": "team-pittsburgh",
         "awayTeamId": "team-n-c-state",
-        "modelSpread": 29.1,
-        "edge": 0.6,
+        "modelSpread": 26.1,
+        "edge": -2.4,
         "signal": "NONE"
       }
     },
@@ -261,32 +237,8 @@
       "model": {
         "homeTeamId": "team-tennessee",
         "awayTeamId": "team-vanderbilt",
-        "modelSpread": 7,
-        "edge": 2.5,
-        "signal": "NONE"
-      }
-    },
-    {
-      "oddsEventId": "10935867f3fe679568e240cff51e9e10",
-      "commence_time": "2026-03-01T19:00:00Z",
-      "home_team": "Tennessee Volunteers",
-      "away_team": "Vanderbilt Commodores",
-      "home_espnTeamId": "2633",
-      "away_espnTeamId": "238",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "neutralSite": false,
-      "opening": {
-        "book": "draftkings",
-        "last_update": "2026-03-01T16:00:03Z",
-        "homePoint": 4.5,
-        "awayPoint": -4.5
-      },
-      "model": {
-        "homeTeamId": "team-tennessee",
-        "awayTeamId": "team-vanderbilt",
-        "modelSpread": 7,
-        "edge": 2.5,
+        "modelSpread": 4,
+        "edge": -0.5,
         "signal": "NONE"
       }
     },
@@ -309,8 +261,8 @@
       "model": {
         "homeTeamId": "team-tcu",
         "awayTeamId": "team-baylor",
-        "modelSpread": -6.9,
-        "edge": 2.6,
+        "modelSpread": -9.9,
+        "edge": -0.4,
         "signal": "NONE"
       }
     },
@@ -333,9 +285,9 @@
       "model": {
         "homeTeamId": "team-oregon",
         "awayTeamId": "team-washington",
-        "modelSpread": 2.2,
-        "edge": 6.7,
-        "signal": "STRONG"
+        "modelSpread": -0.8,
+        "edge": 3.7,
+        "signal": "LEAN"
       }
     },
     {
@@ -357,33 +309,9 @@
       "model": {
         "homeTeamId": "team-st-john-s",
         "awayTeamId": "team-connecticut",
-        "modelSpread": 33.9,
-        "edge": 3.4,
-        "signal": "LEAN"
-      }
-    },
-    {
-      "oddsEventId": "d323bd567a4a558782ea280c29c26968",
-      "commence_time": "2026-03-02T00:30:00Z",
-      "home_team": "St. John's Red Storm",
-      "away_team": "UConn Huskies",
-      "home_espnTeamId": "2599",
-      "away_espnTeamId": "41",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "neutralSite": false,
-      "opening": {
-        "book": "betrivers",
-        "last_update": "2026-03-01T16:00:36Z",
-        "homePoint": 30.5,
-        "awayPoint": -30.5
-      },
-      "model": {
-        "homeTeamId": "team-st-john-s",
-        "awayTeamId": "team-connecticut",
-        "modelSpread": 33.9,
-        "edge": 3.4,
-        "signal": "LEAN"
+        "modelSpread": 30.9,
+        "edge": 0.4,
+        "signal": "NONE"
       }
     }
   ]
