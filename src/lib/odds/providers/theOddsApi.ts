@@ -101,7 +101,7 @@ function ymdET(iso: string): string {
 export class TheOddsApiProvider implements OddsProvider {
   name = "theoddsapi";
 
-  async getSlate(date: string): Promise<OddsSlate> {
+  async getSlate(date: string, forceRefresh = false): Promise<OddsSlate> {
     const apiKey = process.env.THE_ODDS_API_KEY;
     if (!apiKey) throw new Error("Missing env THE_ODDS_API_KEY");
 
@@ -118,7 +118,12 @@ export class TheOddsApiProvider implements OddsProvider {
       `&oddsFormat=${encodeURIComponent(oddsFormat)}` +
       `&apiKey=${encodeURIComponent(apiKey)}`;
 
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(
+      url,
+      forceRefresh
+        ? { cache: "no-store" }
+        : { next: { revalidate: 3600 } } // cache for 1 hour; busted by "Refresh odds"
+    );
     if (!res.ok) {
       const text = await res.text().catch(() => "");
       throw new Error(`TheOddsAPI error ${res.status}: ${text}`);

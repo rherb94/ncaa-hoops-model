@@ -144,9 +144,11 @@ export async function GET(req: Request) {
   }
 
   const debug = parseDebug(url);
+  // "Refresh odds" button passes refresh=1 to bypass the hourly cache
+  const forceRefresh = url.searchParams.get("refresh") === "1";
 
   const provider = new TheOddsApiProvider();
-  const oddsSlate = await provider.getSlate(date);
+  const oddsSlate = await provider.getSlate(date, forceRefresh);
 
   const teams = loadTeams();
   const getTeam = (teamId: string) => teams.get(teamId);
