@@ -2,9 +2,10 @@ name: Daily Odds Opener Snapshot
 
 on:
   schedule:
-    # 11:00 AM ET = 16:00 UTC (accounts for ET = UTC-5 in winter, UTC-4 in summer)
-    # Running at 16:00 UTC works year-round since most NCAAB lines are open by 11am ET
-    - cron: '0 16 * * *'
+    # 8:00 AM ET = 13:00 UTC (accounts for ET = UTC-5 in winter, UTC-4 in summer)
+    # NCAAB lines are typically posted the night before or early morning; 8am captures
+    # opening lines and ESPN neutral-site flags well before games start.
+    - cron: '0 13 * * *'
   workflow_dispatch:
     inputs:
       date:
