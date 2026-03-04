@@ -18,13 +18,18 @@ const TORVIK_URL = process.env.TORVIK_URL ?? TORVIK_BASE_URL;
 // NEW: venue splits (set these once you confirm the exact Torvik URLs)
 const TORVIK_HOME_LOCAL = process.env.TORVIK_HOME_LOCAL;
 const TORVIK_AWAY_LOCAL = process.env.TORVIK_AWAY_LOCAL;
-const TORVIK_HOME_URL =
-  process.env.TORVIK_HOME_URL ??
-  `https://barttorvik.com/${YEAR}_team_results.csv?venue=H`;
+const TORVIK_HOME_BASE =
+  LEAGUE === "ncaaw"
+    ? `https://barttorvik.com/ncaaw/${YEAR}_team_results.csv?venue=H`
+    : `https://barttorvik.com/${YEAR}_team_results.csv?venue=H`;
 
-const TORVIK_AWAY_URL =
-  process.env.TORVIK_AWAY_URL ??
-  `https://barttorvik.com/${YEAR}_team_results.csv?venue=A`;
+const TORVIK_AWAY_BASE =
+  LEAGUE === "ncaaw"
+    ? `https://barttorvik.com/ncaaw/${YEAR}_team_results.csv?venue=A`
+    : `https://barttorvik.com/${YEAR}_team_results.csv?venue=A`;
+
+const TORVIK_HOME_URL = process.env.TORVIK_HOME_URL ?? TORVIK_HOME_BASE;
+const TORVIK_AWAY_URL = process.env.TORVIK_AWAY_URL ?? TORVIK_AWAY_BASE;
 
 // Output files
 const TEAMS_CSV = path.join(process.cwd(), "src", "data", LEAGUE, "teams.csv");
@@ -353,6 +358,70 @@ function applyTorvikToTeams(args: {
   }
 }
 
+/**
+ * Bootstrap teams.csv from scratch using only Torvik data.
+ * Used when the file is empty (new league setup). Generates a teamId slug
+ * from the Torvik team name and writes one row per team.
+ * HCA defaults to 0 for NCAAW (neutral sites during tournament season) or 3 for NCAAM.
+ */
+function bootstrapTeamsCsv(
+  torvikByName: Map<string, TorvikTeam>,
+  outPath: string
+) {
+  const DEFAULT_HCA = LEAGUE === "ncaaw" ? 0 : 3;
+
+  const header = [
+    "teamId",
+    "teamName",
+    "conference",
+    "powerRating",
+    "hca",
+    "adjO",
+    "adjD",
+    "tempo",
+    "barthag",
+    "torvikRank",
+    "torvikOeRank",
+    "torvikDeRank",
+    "wins",
+    "losses",
+  ];
+
+  const rows: string[][] = [];
+
+  for (const [, t] of torvikByName.entries()) {
+    // Slug: lowercase, spaces→hyphens, strip non-alphanumeric-hyphen
+    const slug = t.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+    const teamId = `team-${slug}`;
+
+    rows.push([
+      teamId,
+      t.name,
+      t.conf ?? "",
+      t.powerRating != null ? String(t.powerRating) : "0",
+      String(DEFAULT_HCA),
+      t.adjO != null ? String(t.adjO) : "",
+      t.adjD != null ? String(t.adjD) : "",
+      t.adjT != null ? String(t.adjT) : "",
+      t.barthag != null ? String(t.barthag) : "",
+      t.rank != null ? String(t.rank) : "",
+      t.oeRank != null ? String(t.oeRank) : "",
+      t.deRank != null ? String(t.deRank) : "",
+      t.w != null ? String(t.w) : "",
+      t.l != null ? String(t.l) : "",
+    ]);
+  }
+
+  // Sort by power rating descending
+  rows.sort((a, b) => Number(b[3] ?? 0) - Number(a[3] ?? 0));
+
+  writeCsvFile(outPath, header, rows);
+  console.log(`✅ [BOOTSTRAP] Wrote ${rows.length} teams to ${outPath}`);
+}
+
 async function main() {
   console.log(`🏀 Updating Torvik ratings for league: ${LEAGUE}`);
 
@@ -364,12 +433,22 @@ async function main() {
   });
   const overall = parseCsv(overallRaw);
   const overallByName = buildTorvikByName(overall);
-  applyTorvikToTeams({
-    baseTeamsCsvPath: TEAMS_CSV,
-    torvikByName: overallByName,
-    outPath: OUT_OVERALL,
-    label: "OVERALL",
-  });
+
+  // Bootstrap: if teams.csv is empty, seed it from Torvik instead of merging
+  const existingCsv = parseCsv(fs.readFileSync(TEAMS_CSV, "utf-8"));
+  if (existingCsv.rows.length === 0) {
+    console.log(
+      `ℹ️ teams.csv is empty — bootstrapping from Torvik (${overallByName.size} teams)`
+    );
+    bootstrapTeamsCsv(overallByName, OUT_OVERALL);
+  } else {
+    applyTorvikToTeams({
+      baseTeamsCsvPath: TEAMS_CSV,
+      torvikByName: overallByName,
+      outPath: OUT_OVERALL,
+      label: "OVERALL",
+    });
+  }
   console.log(`Torvik OVERALL URL: ${TORVIK_URL}`);
 
   // 2) Home split (optional until you set URLs)

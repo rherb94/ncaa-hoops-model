@@ -155,7 +155,7 @@ export async function GET(
   // "Refresh odds" button passes refresh=1 to bypass the hourly cache
   const forceRefresh = url.searchParams.get("refresh") === "1";
 
-  const provider = new TheOddsApiProvider(league.sportKey);
+  const provider = new TheOddsApiProvider(league.sportKey, league.id);
   const oddsSlate = await provider.getSlate(date, forceRefresh);
 
   const teams = loadTeams(league.id);
@@ -170,7 +170,22 @@ export async function GET(
     ? await fetchEspnNeutralByTeamPair(date, league)
     : new Map<string, boolean>();
 
-  const games: SlateGame[] = (oddsSlate.games ?? []).map((g: any) => {
+  // Only include games where both teams are in the model (i.e., in teams.csv).
+  // Unmapped teams (resolveTeamId returned null) get placeholder IDs like
+  // "unmapped-{eventId}-home" which will never be in the teams map.
+  const mappedGames = (oddsSlate.games ?? []).filter((g: any) => {
+    const hasHome = getTeam(g.homeTeamId) !== undefined;
+    const hasAway = getTeam(g.awayTeamId) !== undefined;
+    if (!hasHome || !hasAway) {
+      console.warn(
+        `⚠️  SLATE: dropping game — missing model data:`,
+        `${g.awayTeam} (${g.awayTeamId}) @ ${g.homeTeam} (${g.homeTeamId})`
+      );
+    }
+    return hasHome && hasAway;
+  });
+
+  const games: SlateGame[] = mappedGames.map((g: any) => {
     const books = g.books ?? {};
     const consensus = pickConsensusFromBooks(books);
 
@@ -187,10 +202,6 @@ export async function GET(
     const awayPR = away?.powerRating ?? 0;
     const homePR = home?.powerRating ?? 0;
     const hca = neutralSite ? 0 : (home?.hca ?? 2);
-
-    // --- raw model spread ---
-    if (!home) console.warn(`⚠️  SLATE: home team not found in teams.csv — teamId="${g.homeTeamId}" (${g.homeTeam})`);
-    if (!away) console.warn(`⚠️  SLATE: away team not found in teams.csv — teamId="${g.awayTeamId}" (${g.awayTeam})`);
 
     const eff =
       home && away ? computeEfficiencyModel(home, away, hca) : undefined;

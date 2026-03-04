@@ -144,17 +144,31 @@ async function fetchViaCore() {
   let offset = 0;
 
   const refs: string[] = [];
+  let totalCount: number | null = null;
+
   while (true) {
     const url = `${CORE_BASE}?limit=${limit}&offset=${offset}`;
     console.log(`GET ${url}`);
     const payload = await fetchJson(url);
+
+    // ESPN Core API includes a total `count` field — use it to know when to stop
+    if (totalCount === null && typeof payload?.count === "number") {
+      totalCount = payload.count;
+      console.log(`  total teams reported by API: ${totalCount}`);
+    }
 
     const batchRefs = extractRefsFromCoreList(payload);
     console.log(`  refs: ${batchRefs.length}`);
 
     refs.push(...batchRefs);
 
-    if (batchRefs.length < limit) break;
+    // Stop if: batch was short, OR we've collected enough, OR API says we're done
+    const reachedEnd =
+      batchRefs.length < limit ||
+      (totalCount !== null && refs.length >= totalCount) ||
+      payload?.pageIndex >= payload?.pageCount;
+
+    if (reachedEnd) break;
     offset += limit;
     await sleep(150);
   }

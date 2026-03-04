@@ -33,8 +33,8 @@ export const LEAGUES: Record<LeagueId, LeagueConfig> = {
     id: "ncaaw",
     name: "Women's College Basketball",
     shortName: "NCAAW",
-    // TheOddsAPI key for women's college basketball — verify at api.the-odds-api.com/v4/sports
-    sportKey: "basketball_ncaaw",
+    // TheOddsAPI key for women's college basketball (confirmed: basketball_wncaab)
+    sportKey: "basketball_wncaab",
     espnSport: "womens-college-basketball",
     espnGroupId: "50",
     torvikUrl: (y) => `https://barttorvik.com/ncaaw/${y}_team_results.csv`,
