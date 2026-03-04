@@ -271,7 +271,7 @@
       "commence_time": "2026-02-27T00:00:00Z",
       "home_team": "Seton Hall Pirates",
       "away_team": "Villanova Wildcats",
-      "home_espnTeamId": null,
+      "home_espnTeamId": "2550",
       "away_espnTeamId": "222",
       "home_resolve": "MISS",
       "away_resolve": "MAP",
