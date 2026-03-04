@@ -1,26 +1,20 @@
-import SlateClient from "./slateClient";
+import { SlateClient } from "./slateClient";
+import type { LeagueId } from "@/lib/leagues";
 
-const ET_TZ = "America/New_York";
-
-function todayET(): string {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: ET_TZ,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(new Date());
-
-  const get = (t: string) => parts.find((p) => p.type === t)?.value ?? "";
-  return `${get("year")}-${get("month")}-${get("day")}`;
+// Returns today's date in Eastern Time as YYYY-MM-DD
+function getTodayET(): string {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/New_York",
+    year: "numeric", month: "2-digit", day: "2-digit",
+  }).format(new Date());
 }
 
 export default async function SlatePage({
-  searchParams,
+  params,
 }: {
-  searchParams: Promise<{ date?: string }>;
+  params: Promise<{ league: string }>;
 }) {
-  const sp = await searchParams;
-  const date = sp?.date ?? todayET();
-
-  return <SlateClient date={date} />;
+  const { league } = await params;
+  const date = getTodayET();
+  return <SlateClient date={date} league={league as LeagueId} />;
 }

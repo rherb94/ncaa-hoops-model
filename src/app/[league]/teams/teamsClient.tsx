@@ -1,8 +1,9 @@
-// src/app/teams/teamsClient.tsx
+// src/app/[league]/teams/teamsClient.tsx
 "use client";
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
+import type { LeagueId } from "@/lib/leagues";
 
 type Team = {
   teamId: string;
@@ -11,15 +12,15 @@ type Team = {
   powerRating: number;
   hca?: number;
 
-  // ✅ from /api/teams enrichment
+  // from /api/[league]/teams enrichment
   logo?: string;
   espnTeamId?: string;
   espnName?: string;
   espnMatchNote?: string;
 };
 
-async function fetchTeams(): Promise<Team[]> {
-  const res = await fetch("/api/teams", { cache: "no-store" });
+async function fetchTeams(league: LeagueId): Promise<Team[]> {
+  const res = await fetch(`/api/${league}/teams`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to load teams");
   const data = await res.json();
   return data.teams as Team[];
@@ -45,7 +46,7 @@ function fmtMaybe(n: number | undefined, digits = 1) {
   return n.toFixed(digits);
 }
 
-export default function TeamsClient() {
+export default function TeamsClient({ league }: { league: LeagueId }) {
   const [teams, setTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -62,12 +63,12 @@ export default function TeamsClient() {
   useEffect(() => {
     (async () => {
       try {
-        setTeams(await fetchTeams());
+        setTeams(await fetchTeams(league));
       } finally {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [league]);
 
   const conferences = useMemo(() => {
     const set = new Set<string>();

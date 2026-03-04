@@ -12,6 +12,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { TheOddsApiProvider } from "@/lib/odds/providers/theOddsApi";
 import { loadTeams } from "@/data/teams";
+import { getLeague } from "@/lib/leagues";
+import type { LeagueConfig } from "@/lib/leagues";
 import type { SlateGame, SlateResponse } from "@/lib/types";
 import { pickBestSpreadForSide } from "@/lib/odds/bestLines";
 import {
@@ -92,8 +94,8 @@ function parseDebug(reqUrl: URL) {
 // Read neutral site flags from today's opener snapshot (written by daily workflow at 8am ET).
 // Falls back to empty map if snapshot hasn't been written yet — caller should follow up with
 // a live ESPN fetch in that case.
-function loadNeutralSiteByEventId(date: string): Map<string, boolean> {
-  const p = path.join(process.cwd(), "src", "data", "odds_opening", `${date}.json`);
+function loadNeutralSiteByEventId(date: string, leagueId: string): Map<string, boolean> {
+  const p = path.join(process.cwd(), "src", "data", leagueId, "odds_opening", `${date}.json`);
   try {
     const snap = JSON.parse(fs.readFileSync(p, "utf-8"));
     const m = new Map<string, boolean>();
@@ -108,11 +110,11 @@ function loadNeutralSiteByEventId(date: string): Map<string, boolean> {
 
 // Live ESPN scoreboard fetch — keyed by "homeEspnId|awayEspnId".
 // Used as fallback when the opener snapshot doesn't exist yet (before 8am ET).
-async function fetchEspnNeutralByTeamPair(date: string): Promise<Map<string, boolean>> {
+async function fetchEspnNeutralByTeamPair(date: string, league: LeagueConfig): Promise<Map<string, boolean>> {
   const espnDate = date.replace(/-/g, "");
   const url =
     `https://site.api.espn.com/apis/site/v2/sports/basketball` +
-    `/mens-college-basketball/scoreboard?dates=${espnDate}&groups=50&limit=200`;
+    `/${league.espnSport}/scoreboard?dates=${espnDate}&groups=${league.espnGroupId}&limit=200`;
   const m = new Map<string, boolean>();
   try {
     const res = await fetch(url, {
@@ -135,7 +137,13 @@ async function fetchEspnNeutralByTeamPair(date: string): Promise<Map<string, boo
   return m;
 }
 
-export async function GET(req: Request) {
+export async function GET(
+  req: Request,
+  { params }: { params: Promise<{ league: string }> }
+) {
+  const { league: leagueId } = await params;
+  const league = getLeague(leagueId);
+
   const url = new URL(req.url);
   const date = url.searchParams.get("date");
 
@@ -147,19 +155,19 @@ export async function GET(req: Request) {
   // "Refresh odds" button passes refresh=1 to bypass the hourly cache
   const forceRefresh = url.searchParams.get("refresh") === "1";
 
-  const provider = new TheOddsApiProvider();
+  const provider = new TheOddsApiProvider(league.sportKey);
   const oddsSlate = await provider.getSlate(date, forceRefresh);
 
-  const teams = loadTeams();
+  const teams = loadTeams(league.id);
   const getTeam = (teamId: string) => teams.get(teamId);
 
   // Neutral site detection: prefer opener snapshot (committed at 8am ET).
   // If opener not yet written, fall back to a live ESPN scoreboard fetch so
   // neutral sites are correctly detected around the clock.
-  const neutralSiteByEventId = loadNeutralSiteByEventId(date);
+  const neutralSiteByEventId = loadNeutralSiteByEventId(date, league.id);
   const openerMissing = neutralSiteByEventId.size === 0;
   const espnNeutralByTeamPair = openerMissing
-    ? await fetchEspnNeutralByTeamPair(date)
+    ? await fetchEspnNeutralByTeamPair(date, league)
     : new Map<string, boolean>();
 
   const games: SlateGame[] = (oddsSlate.games ?? []).map((g: any) => {

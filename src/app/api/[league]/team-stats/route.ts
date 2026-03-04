@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { loadTeams } from "@/data/teams";
+import { getLeague } from "@/lib/leagues";
+import type { LeagueId } from "@/lib/leagues";
 
 function buildRecord(team: any): string | null {
   const w = Number(team.wins);
@@ -11,13 +13,19 @@ function buildRecord(team: any): string | null {
   return null;
 }
 
-export async function GET(req: NextRequest) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: Promise<{ league: string }> }
+) {
+  const { league: leagueId } = await params;
+  getLeague(leagueId); // validate — throws on unknown league
+
   const teamId = req.nextUrl.searchParams.get("teamId");
   if (!teamId) {
     return NextResponse.json({ error: "Missing teamId" }, { status: 400 });
   }
 
-  const teams = loadTeams();
+  const teams = loadTeams(leagueId as LeagueId);
   const team = teams.get(teamId);
 
   if (!team) {

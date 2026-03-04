@@ -2,13 +2,14 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { SlateResponse } from "@/lib/types";
-import SlateTable from "../../components/SlateTable";
+import type { LeagueId } from "@/lib/leagues";
+import SlateTable from "@/components/SlateTable";
 
 function isYyyyMmDd(s: string) {
   return /^\d{4}-\d{2}-\d{2}$/.test(s);
 }
 
-export default function SlateClient({ date }: { date: string }) {
+export function SlateClient({ date, league }: { date: string; league: LeagueId }) {
   const [data, setData] = useState<SlateResponse | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -27,7 +28,7 @@ export default function SlateClient({ date }: { date: string }) {
     try {
       const qs = new URLSearchParams({ date: safeDate });
       if (refresh) qs.set("refresh", "1");
-      const res = await fetch(`/api/slate?${qs.toString()}`, {
+      const res = await fetch(`/api/${league}/slate?${qs.toString()}`, {
         cache: "no-store",
       });
 
@@ -74,7 +75,7 @@ export default function SlateClient({ date }: { date: string }) {
         </div>
       ) : null}
 
-      {data ? <SlateTable games={data.games} /> : null}
+      {data ? <SlateTable games={data.games} league={league} /> : null}
 
       {!data && !err ? (
         <div className="rounded-2xl border border-white/10 bg-zinc-900/60 p-4 text-sm text-zinc-300">
@@ -84,3 +85,6 @@ export default function SlateClient({ date }: { date: string }) {
     </div>
   );
 }
+
+// Keep default export for backwards compatibility
+export default SlateClient;
