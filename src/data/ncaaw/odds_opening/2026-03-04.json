@@ -3,48 +3,6 @@
   "captured_at": "2026-03-04T22:37:53.617Z",
   "games": [
     {
-      "oddsEventId": "59cc9a87c83cd24c67a22b0886095c39",
-      "commence_time": "2026-03-04T20:00:00Z",
-      "home_team": "UL Monroe Warhawks",
-      "away_team": "Louisiana Ragin' Cajuns",
-      "home_espnTeamId": "2433",
-      "away_espnTeamId": "309",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "neutralSite": true,
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-03-04T22:24:31Z",
-        "homePoint": -16.5,
-        "awayPoint": 16.5
-      },
-      "model": null
-    },
-    {
-      "oddsEventId": "fecde1b5205caae9f7010cc69d716f7d",
-      "commence_time": "2026-03-04T21:02:00Z",
-      "home_team": "Georgia Tech Yellow Jackets",
-      "away_team": "Florida St Seminoles",
-      "home_espnTeamId": "59",
-      "away_espnTeamId": "52",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "neutralSite": true,
-      "opening": {
-        "book": "draftkings",
-        "last_update": "2026-03-04T22:37:12Z",
-        "homePoint": -10.5,
-        "awayPoint": 10.5
-      },
-      "model": {
-        "homeTeamId": "team-georgia-tech",
-        "awayTeamId": "team-florida-st",
-        "modelSpread": -4.4,
-        "edge": 6.1,
-        "signal": "STRONG"
-      }
-    },
-    {
       "oddsEventId": "b957a116f23768f5489b070905582e91",
       "commence_time": "2026-03-04T23:00:00Z",
       "home_team": "Texas A&M Aggies",

@@ -302,12 +302,30 @@ async function main() {
   const dayStartUTC = new Date(`${DATE}T05:00:00Z`);
   const dayEndUTC   = new Date(dayStartUTC.getTime() + 24 * 60 * 60 * 1000);
 
-  const filtered = (json ?? []).filter((g) => {
+  const dateFiltered = (json ?? []).filter((g) => {
     const ct = new Date(g.commence_time);
     return ct >= dayStartUTC && ct < dayEndUTC;
   });
 
-  console.log(`API returned ${json.length} games; keeping ${filtered.length} on ${DATE} ET`);
+  // Drop games that have already started — their spreads may reflect live in-game lines,
+  // not true pregame openers. This matters most for NCAAW where lines post late in the day
+  // and the 5pm retry can run after some games have already tipped off.
+  const capturedAtMs = new Date(capturedAt).getTime();
+  const filtered = dateFiltered.filter((g) => {
+    const alreadyStarted = new Date(g.commence_time).getTime() <= capturedAtMs;
+    if (alreadyStarted) {
+      console.warn(
+        `⚠️  Skipping already-started game: ${g.away_team} @ ${g.home_team}` +
+        ` (tipped ${g.commence_time}, captured ${capturedAt})`
+      );
+    }
+    return !alreadyStarted;
+  });
+
+  console.log(
+    `API returned ${json.length} games; ${dateFiltered.length} on ${DATE} ET;` +
+    ` ${filtered.length} not yet started`
+  );
 
   // If there are no lines yet (e.g. NCAAW posted late), exit cleanly so we
   // don't write a 0-game file. The workflow's retry cron will try again later.
