@@ -142,14 +142,12 @@ async function main() {
   if (!res.ok) {
     const text = await res.text().catch(() => "");
     const msg = `Odds API historical failed (${res.status}): ${text.slice(0, 300)}`;
-    // 402 = quota exceeded, 429 = rate limited — treat as soft failure so the
-    // workflow doesn't crash and the existing first-run data is preserved.
-    if (res.status === 402 || res.status === 429 || res.status === 422) {
-      console.warn(`⚠️  ${msg}`);
-      console.warn("Skipping this run — existing closing-line data is preserved.");
-      return;
-    }
-    throw new Error(msg);
+    // Treat all API errors as soft failures — any existing data from an earlier
+    // run (e.g. the 11:50am snapshot) is preserved. Possible causes: quota (402),
+    // rate limit (429), snapshot not yet cached for the requested time, etc.
+    console.warn(`⚠️  ${msg}`);
+    console.warn("Skipping this run — existing closing-line data is preserved.");
+    return;
   }
 
   const json = (await res.json()) as HistoricalResponse;
