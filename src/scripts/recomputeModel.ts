@@ -35,7 +35,7 @@ function clamp(n: number, lo: number, hi: number) {
 
 const DRY_RUN = process.env.DRY_RUN === "1";
 const DATE    = process.env.DATE || "";
-const LEAGUE  = process.env.LEAGUE ?? "ncaam";
+const LEAGUE  = process.env.LEAGUE || "ncaam"; // use || so empty string also falls back
 
 const OPEN_DIR = path.join(process.cwd(), "src", "data", LEAGUE, "odds_opening");
 

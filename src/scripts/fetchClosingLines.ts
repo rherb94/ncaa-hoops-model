@@ -30,7 +30,7 @@ import type { LeagueId } from "@/lib/leagues";
 const ODDS_API_KEY = process.env.THE_ODDS_API_KEY;
 if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 
-const LEAGUE = process.env.LEAGUE ?? "ncaam";
+const LEAGUE = process.env.LEAGUE || "ncaam"; // use || so empty string also falls back
 
 // Date to label snapshot (YYYY-MM-DD). Default = today in ET.
 const DATE =
@@ -141,7 +141,15 @@ async function main() {
 
   if (!res.ok) {
     const text = await res.text().catch(() => "");
-    throw new Error(`Odds API historical failed (${res.status}): ${text.slice(0, 500)}`);
+    const msg = `Odds API historical failed (${res.status}): ${text.slice(0, 300)}`;
+    // 402 = quota exceeded, 429 = rate limited — treat as soft failure so the
+    // workflow doesn't crash and the existing first-run data is preserved.
+    if (res.status === 402 || res.status === 429 || res.status === 422) {
+      console.warn(`⚠️  ${msg}`);
+      console.warn("Skipping this run — existing closing-line data is preserved.");
+      return;
+    }
+    throw new Error(msg);
   }
 
   const json = (await res.json()) as HistoricalResponse;

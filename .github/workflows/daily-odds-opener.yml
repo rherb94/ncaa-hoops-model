@@ -10,6 +10,9 @@ on:
       date:
         description: 'Date to label the snapshot (YYYY-MM-DD). Defaults to today UTC.'
         required: false
+      snapshot_time:
+        description: 'Backfill: historical snapshot time (ISO 8601 UTC, e.g. 2026-03-04T16:00:00Z). Required to backfill a past date.'
+        required: false
 
 jobs:
   snapshot:
@@ -33,6 +36,7 @@ jobs:
         env:
           THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
           DATE: ${{ inputs.date || '' }}
+          SNAPSHOT_TIME: ${{ inputs.snapshot_time || '' }}
           LEAGUE: ncaam
         run: npx tsx src/scripts/fetchOddsOpenersForDate.ts
 

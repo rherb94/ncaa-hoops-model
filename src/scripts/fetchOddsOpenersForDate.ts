@@ -21,7 +21,7 @@ function clamp(n: number, lo: number, hi: number) {
 const ODDS_API_KEY = process.env.THE_ODDS_API_KEY;
 if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 
-const LEAGUE = process.env.LEAGUE ?? "ncaam";
+const LEAGUE = process.env.LEAGUE || "ncaam"; // use || so empty string also falls back
 
 // Date to label the snapshot (YYYY-MM-DD). Default = today in UTC.
 // Use || so an empty string from workflow_dispatch falls back to default.
@@ -308,6 +308,13 @@ async function main() {
   });
 
   console.log(`API returned ${json.length} games; keeping ${filtered.length} on ${DATE} ET`);
+
+  // If there are no lines yet (e.g. NCAAW posted late), exit cleanly so we
+  // don't write a 0-game file. The workflow's retry cron will try again later.
+  if (filtered.length === 0) {
+    console.warn("⚠️  No games found for this date — odds may not be posted yet. Exiting without writing.");
+    return;
+  }
 
   // Fetch ESPN neutral-site flags for today's games
   const neutralByTeamPair = await fetchEspnNeutralSites(DATE);
