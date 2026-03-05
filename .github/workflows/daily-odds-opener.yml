@@ -45,11 +45,11 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/ncaam/odds_opening/
-          git pull --rebase origin main
           if git diff --cached --quiet; then
             echo "No new snapshot to commit."
           else
             DATE_STR=$(date -u +%Y-%m-%d)
             git commit -m "chore: odds opener snapshot ${DATE_STR} [skip ci]"
+            git pull --rebase origin main
             git push
           fi
