@@ -6,46 +6,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "ba70c24dee6cdd4c257de854841d2b8a",
-      "home_team": "New Haven Chargers",
-      "away_team": "St. Francis (PA) Red Flash",
-      "commence_time": "2026-02-24T23:02:50Z",
-      "homePoint": 2.5,
-      "awayPoint": -2.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-24T23:50:37Z"
-    },
-    {
-      "oddsEventId": "9d4f2750bb648b69807562735209f8ed",
-      "home_team": "Eastern Michigan Eagles",
-      "away_team": "Miami (OH) RedHawks",
-      "commence_time": "2026-02-24T23:33:10Z",
-      "homePoint": 10.5,
-      "awayPoint": -10.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-24T23:50:37Z"
-    },
-    {
-      "oddsEventId": "30ad5a1b5fcdc6a19974dfa7c4189059",
-      "home_team": "La Salle Explorers",
-      "away_team": "GW Revolutionaries",
-      "commence_time": "2026-02-24T23:32:28Z",
-      "homePoint": 11.5,
-      "awayPoint": -11.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-24T23:50:37Z"
-    },
-    {
-      "oddsEventId": "289bc0301e48270d57b2f612d5c33018",
-      "home_team": "Rutgers Scarlet Knights",
-      "away_team": "Washington Huskies",
-      "commence_time": "2026-02-24T23:31:53Z",
-      "homePoint": 11.5,
-      "awayPoint": -11.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-24T23:50:37Z"
-    },
-    {
       "oddsEventId": "ab2376e5b605176205f9c2440ecaee64",
       "home_team": "Virginia Cavaliers",
       "away_team": "NC State Wolfpack",
@@ -248,7 +208,7 @@
     {
       "oddsEventId": "f01d666fdd942a80573a9412bbff08d9",
       "home_team": "Air Force Falcons",
-      "away_team": "San José St Spartans",
+      "away_team": "San Jos\u00e9 St Spartans",
       "commence_time": "2026-02-25T02:00:00Z",
       "homePoint": 6.5,
       "awayPoint": -6.5,

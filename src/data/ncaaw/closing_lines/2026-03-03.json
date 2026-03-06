@@ -6,16 +6,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "c6ea891bd533f581b6cb01deb29b928e",
-      "home_team": "Charlotte 49ers",
-      "away_team": "Rice Owls",
-      "commence_time": "2026-03-03T23:30:00Z",
-      "homePoint": 11.5,
-      "awayPoint": -11.5,
-      "book": "betmgm",
-      "snapshotTime": "2026-03-03T23:50:38Z"
-    },
-    {
       "oddsEventId": "10d554d607a2439fe0e37a553a54ab43",
       "home_team": "Alcorn St Braves",
       "away_team": "Miss Valley St Delta Devilettes",
@@ -77,7 +67,7 @@
     },
     {
       "oddsEventId": "814d309f06a368d80828310d1f8fb923",
-      "home_team": "San José St Spartans",
+      "home_team": "San Jos\u00e9 St Spartans",
       "away_team": "Colorado St Rams",
       "commence_time": "2026-03-04T03:00:00Z",
       "homePoint": 21.5,

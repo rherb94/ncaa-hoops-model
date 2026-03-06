@@ -7,26 +7,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "b84890f6e85c3510e31cdf834083e0b8",
-      "home_team": "Dartmouth Big Green",
-      "away_team": "Princeton Tigers",
-      "commence_time": "2026-02-27T23:02:00Z",
-      "homePoint": 25.5,
-      "awayPoint": -25.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-02-27T23:50:37Z"
-    },
-    {
-      "oddsEventId": "02695c23fa7e18b8ec91a77c3ad2efeb",
-      "home_team": "Hofstra Pride",
-      "away_team": "Elon Phoenix",
-      "commence_time": "2026-02-27T23:04:00Z",
-      "homePoint": 3.5,
-      "awayPoint": -3.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-02-27T23:50:37Z"
-    },
-    {
       "oddsEventId": "7712fdff307eac1f82bb8a8fb2e69706",
       "home_team": "Marshall Thundering Herd",
       "away_team": "Georgia Southern Eagles",
@@ -64,16 +44,6 @@
       "homePoint": -11.5,
       "awayPoint": 11.5,
       "book": "betrivers",
-      "snapshotTime": "2026-02-27T23:50:37Z"
-    },
-    {
-      "oddsEventId": "6257587e7c8cb35123103ec3f33d5bf3",
-      "home_team": "Georgia St Panthers",
-      "away_team": "Louisiana Ragin' Cajuns",
-      "commence_time": "2026-02-27T22:00:00Z",
-      "homePoint": -12.5,
-      "awayPoint": 12.5,
-      "book": "fanduel",
       "snapshotTime": "2026-02-27T23:50:37Z"
     }
   ]

@@ -7,66 +7,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "1e9c7cda68cf051d594e5952ba77dd33",
-      "home_team": "Hampton Pirates",
-      "away_team": "Charleston Cougars",
-      "commence_time": "2026-02-26T16:00:00Z",
-      "homePoint": 16.5,
-      "awayPoint": -16.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-26T16:50:38Z"
-    },
-    {
-      "oddsEventId": "206824ba294cdd1fdd50e81cbc4d035e",
-      "home_team": "St. Bonaventure Bonnies",
-      "away_team": "Rhode Island Rams",
-      "commence_time": "2026-02-26T22:05:00Z",
-      "homePoint": -15.5,
-      "awayPoint": 15.5,
-      "book": "fanduel",
-      "snapshotTime": "2026-02-26T23:50:37Z"
-    },
-    {
-      "oddsEventId": "51b0d9e1eabb6d019dd57c1f823473c0",
-      "home_team": "Binghamton Bearcats",
-      "away_team": "New Hampshire Wildcats",
-      "commence_time": "2026-02-26T23:00:00Z",
-      "homePoint": 7.5,
-      "awayPoint": -7.5,
-      "book": "fanduel",
-      "snapshotTime": "2026-02-26T23:50:37Z"
-    },
-    {
-      "oddsEventId": "c52118afde0fec63bfd445a3d7dc82fe",
-      "home_team": "UMBC Retrievers",
-      "away_team": "Bryant Bulldogs",
-      "commence_time": "2026-02-26T23:04:23Z",
-      "homePoint": -9.5,
-      "awayPoint": 9.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-26T23:50:37Z"
-    },
-    {
-      "oddsEventId": "6f2bfa4cb81c67b5463656f8b93c902a",
-      "home_team": "Albany Great Danes",
-      "away_team": "Maine Black Bears",
-      "commence_time": "2026-02-26T23:30:00Z",
-      "homePoint": -1.5,
-      "awayPoint": 1.5,
-      "book": "fanduel",
-      "snapshotTime": "2026-02-26T23:50:37Z"
-    },
-    {
-      "oddsEventId": "74aada8c55999add9fabf6687648c0cf",
-      "home_team": "Grambling St Tigers",
-      "away_team": "Bethune-Cookman Wildcats",
-      "commence_time": "2026-02-26T23:35:42Z",
-      "homePoint": -7.5,
-      "awayPoint": 7.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-26T23:50:37Z"
-    },
-    {
       "oddsEventId": "b96847075b9813d70f2bf77ae7fdda67",
       "home_team": "Drexel Dragons",
       "away_team": "Campbell Fighting Camels",

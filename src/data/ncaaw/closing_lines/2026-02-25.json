@@ -17,46 +17,6 @@
       "snapshotTime": "2026-02-25T16:50:37Z"
     },
     {
-      "oddsEventId": "8c4443d23caec304739854a988def106",
-      "home_team": "James Madison Dukes",
-      "away_team": "Old Dominion Monarchs",
-      "commence_time": "2026-02-25T22:00:00Z",
-      "homePoint": -22.5,
-      "awayPoint": 22.5,
-      "book": "fanduel",
-      "snapshotTime": "2026-02-25T23:50:38Z"
-    },
-    {
-      "oddsEventId": "184feee95a5db436177c5174c50048f8",
-      "home_team": "Penn State Nittany Lions",
-      "away_team": "USC Trojans",
-      "commence_time": "2026-02-25T23:01:22Z",
-      "homePoint": 12.5,
-      "awayPoint": -12.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-25T23:50:38Z"
-    },
-    {
-      "oddsEventId": "2104ac545262dfd260cfaf72266025d2",
-      "home_team": "Cincinnati Bearcats",
-      "away_team": "TCU Horned Frogs",
-      "commence_time": "2026-02-25T23:30:00Z",
-      "homePoint": 10.5,
-      "awayPoint": -10.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-25T23:50:38Z"
-    },
-    {
-      "oddsEventId": "1751d106bd91eccae43cb89c60978f7f",
-      "home_team": "Maryland Terrapins",
-      "away_team": "Northwestern Wildcats",
-      "commence_time": "2026-02-25T23:30:00Z",
-      "homePoint": -27.5,
-      "awayPoint": 27.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-25T23:50:38Z"
-    },
-    {
       "oddsEventId": "5302c911c3564c65ed190e98339e9178",
       "home_team": "UCF Knights",
       "away_team": "West Virginia Mountaineers",

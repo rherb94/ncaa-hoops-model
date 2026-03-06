@@ -6,36 +6,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "b30810522f2d3d88073f5aadd833d9ff",
-      "home_team": "Cornell Big Red",
-      "away_team": "Yale Bulldogs",
-      "commence_time": "2026-02-27T23:03:00Z",
-      "homePoint": 2.5,
-      "awayPoint": -2.5,
-      "book": "fanduel",
-      "snapshotTime": "2026-02-27T23:50:37Z"
-    },
-    {
-      "oddsEventId": "e3addfb23b48d473ac96346f0388ff86",
-      "home_team": "Western Michigan Broncos",
-      "away_team": "Miami (OH) RedHawks",
-      "commence_time": "2026-02-27T23:06:11Z",
-      "homePoint": 8.5,
-      "awayPoint": -8.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-27T23:50:37Z"
-    },
-    {
-      "oddsEventId": "aa4b8cb76b6e2ebf9b51bb2ad5467cc2",
-      "home_team": "Niagara Purple Eagles",
-      "away_team": "Quinnipiac Bobcats",
-      "commence_time": "2026-02-27T23:35:00Z",
-      "homePoint": 4.5,
-      "awayPoint": -4.5,
-      "book": "fanduel",
-      "snapshotTime": "2026-02-27T23:50:37Z"
-    },
-    {
       "oddsEventId": "246bfc5f2095b83bea3e2192e2109e44",
       "home_team": "Columbia Lions",
       "away_team": "Brown Bears",

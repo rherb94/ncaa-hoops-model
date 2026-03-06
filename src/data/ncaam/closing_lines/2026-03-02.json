@@ -6,16 +6,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "b8a1fb4112075494ff56f9d590d9767d",
-      "home_team": "Morgan St Bears",
-      "away_team": "Norfolk St Spartans",
-      "commence_time": "2026-03-02T23:02:17Z",
-      "homePoint": -9.5,
-      "awayPoint": 9.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-02T23:50:37Z"
-    },
-    {
       "oddsEventId": "d5a302d9b1fa62b3b31d1a4b185b53c5",
       "home_team": "Cleveland St Vikings",
       "away_team": "IUPUI Jaguars",

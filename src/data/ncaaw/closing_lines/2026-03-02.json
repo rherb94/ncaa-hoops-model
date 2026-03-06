@@ -6,16 +6,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "5f057552ce91678fcc9ddb882fe958fd",
-      "home_team": "Houston Christian Huskies",
-      "away_team": "Texas A&M-CC Islanders",
-      "commence_time": "2026-03-02T23:03:00Z",
-      "homePoint": 2.5,
-      "awayPoint": -2.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-03-02T23:50:37Z"
-    },
-    {
       "oddsEventId": "02326505d9468fe05171503650c34115",
       "home_team": "Belmont Bruins",
       "away_team": "Southern Illinois Salukis",

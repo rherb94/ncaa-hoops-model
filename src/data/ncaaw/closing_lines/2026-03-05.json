@@ -7,76 +7,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "ecf59c37218380647bc66f03af9843e8",
-      "home_team": "High Point Panthers",
-      "away_team": "South Carolina Upstate Spartans",
-      "commence_time": "2026-03-05T16:32:00Z",
-      "homePoint": -24.5,
-      "awayPoint": 24.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-03-05T18:25:38Z"
-    },
-    {
-      "oddsEventId": "c6689d43c44894f95b4be1d2c988f0bb",
-      "home_team": "Eastern Kentucky Colonels",
-      "away_team": "Austin Peay Governors",
-      "commence_time": "2026-03-05T17:00:00Z",
-      "homePoint": 3.5,
-      "awayPoint": -3.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-03-05T18:25:38Z"
-    },
-    {
-      "oddsEventId": "343b58ad269645a9a44d826b24275f11",
-      "home_team": "Manhattan Jaspers",
-      "away_team": "Marist Red Foxes",
-      "commence_time": "2026-03-05T17:00:00Z",
-      "homePoint": -12.5,
-      "awayPoint": 12.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-03-05T18:25:38Z"
-    },
-    {
-      "oddsEventId": "0c8cfd30ec657c8499788d9621658d5e",
-      "home_team": "Washington Huskies",
-      "away_team": "USC Trojans",
-      "commence_time": "2026-03-05T17:00:00Z",
-      "homePoint": -9.5,
-      "awayPoint": 9.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-05T18:25:38Z"
-    },
-    {
-      "oddsEventId": "93d515f2c9f3bad5b7dd6b61bde86a8b",
-      "home_team": "Texas Tech Red Raiders",
-      "away_team": "Kansas St Wildcats",
-      "commence_time": "2026-03-05T17:03:05Z",
-      "homePoint": -7.5,
-      "awayPoint": 7.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-05T18:25:38Z"
-    },
-    {
-      "oddsEventId": "3625066bc1a2701909685ce8ae162e3d",
-      "home_team": "South Dakota St Jackrabbits",
-      "away_team": "UMKC Kangaroos",
-      "commence_time": "2026-03-05T18:00:00Z",
-      "homePoint": -31.5,
-      "awayPoint": 31.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-03-05T18:25:38Z"
-    },
-    {
-      "oddsEventId": "42d882fac853fe32a37c42006009c182",
-      "home_team": "East Tennessee St Buccaneers",
-      "away_team": "UNC Greensboro Spartans",
-      "commence_time": "2026-03-05T18:21:00Z",
-      "homePoint": 2.5,
-      "awayPoint": -2.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-03-05T18:25:38Z"
-    },
-    {
       "oddsEventId": "d33da774cf15cdf3260ed926c2721db9",
       "home_team": "Saint Joseph's Hawks",
       "away_team": "Duquesne Dukes",
@@ -217,26 +147,6 @@
       "snapshotTime": "2026-03-05T18:25:38Z"
     },
     {
-      "oddsEventId": "a26c410ac6357c57d9214e43d14532c6",
-      "home_team": "Ole Miss Rebels",
-      "away_team": "Auburn Tigers",
-      "commence_time": "2026-03-05T23:00:00Z",
-      "homePoint": -16.5,
-      "awayPoint": 16.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-06T01:00:41Z"
-    },
-    {
-      "oddsEventId": "20db892c156344cbdc6f1bd2399543ff",
-      "home_team": "Radford Highlanders",
-      "away_team": "Charleston Southern Buccaneers",
-      "commence_time": "2026-03-05T23:02:00Z",
-      "homePoint": -19.5,
-      "awayPoint": 19.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-03-06T01:00:41Z"
-    },
-    {
       "oddsEventId": "fc82a41f0140ebfb1de3efc3165a43cf",
       "home_team": "Maine Black Bears",
       "away_team": "New Hampshire Wildcats",
@@ -257,36 +167,6 @@
       "snapshotTime": "2026-03-05T18:25:38Z"
     },
     {
-      "oddsEventId": "376010de5c76b8b0e3bcb9490008ebd6",
-      "home_team": "Iowa State Cyclones",
-      "away_team": "Arizona St Sun Devils",
-      "commence_time": "2026-03-05T23:32:00Z",
-      "homePoint": 6.5,
-      "awayPoint": -6.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-06T01:00:41Z"
-    },
-    {
-      "oddsEventId": "6a904c8777eb76808e492fbfb3f14562",
-      "home_team": "Michigan St Spartans",
-      "away_team": "Illinois Fighting Illini",
-      "commence_time": "2026-03-05T23:33:45Z",
-      "homePoint": -1.5,
-      "awayPoint": 1.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-06T01:00:41Z"
-    },
-    {
-      "oddsEventId": "081acb3578e31d286215f5018af39a31",
-      "home_team": "UMBC Retrievers",
-      "away_team": "NJIT Highlanders",
-      "commence_time": "2026-03-05T23:30:00Z",
-      "homePoint": 3.5,
-      "awayPoint": -3.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-03-06T01:00:41Z"
-    },
-    {
       "oddsEventId": "ae15cf5da83f77093e6f85d7efa8c211",
       "home_team": "Central Arkansas Bears",
       "away_team": "North Alabama Lions",
@@ -295,26 +175,6 @@
       "awayPoint": 9.5,
       "book": "betrivers",
       "snapshotTime": "2026-03-05T18:25:38Z"
-    },
-    {
-      "oddsEventId": "1a58b507234a7551f513202bc5692466",
-      "home_team": "Virginia Tech Hokies",
-      "away_team": "Georgia Tech Yellow Jackets",
-      "commence_time": "2026-03-06T00:30:00Z",
-      "homePoint": 3.5,
-      "awayPoint": -3.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-06T01:00:41Z"
-    },
-    {
-      "oddsEventId": "3b03d68fa2642d0d500bffdba47fa4f2",
-      "home_team": "La Salle Explorers",
-      "away_team": "Saint Louis Billikens",
-      "commence_time": "2026-03-06T00:30:00Z",
-      "homePoint": -3.5,
-      "awayPoint": 3.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-03-06T01:00:41Z"
     },
     {
       "oddsEventId": "d47ec9c19bdb131188d0ee08f18af162",
@@ -354,26 +214,6 @@
       "homePoint": -6.5,
       "awayPoint": 6.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-06T01:00:41Z"
-    },
-    {
-      "oddsEventId": "73f3ca021bc6c77a21fb03a208828aa8",
-      "home_team": "Furman Paladins",
-      "away_team": "Mercer Bears",
-      "commence_time": "2026-03-05T22:45:00Z",
-      "homePoint": -19.5,
-      "awayPoint": 19.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-03-06T01:00:41Z"
-    },
-    {
-      "oddsEventId": "2ae20714f31438983a07a7d48ae85850",
-      "home_team": "Vermont Catamounts",
-      "away_team": "Albany Great Danes",
-      "commence_time": "2026-03-05T23:04:00Z",
-      "homePoint": -17.5,
-      "awayPoint": 17.5,
-      "book": "betrivers",
       "snapshotTime": "2026-03-06T01:00:41Z"
     },
     {

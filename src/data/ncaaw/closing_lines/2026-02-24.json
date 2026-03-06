@@ -26,16 +26,6 @@
       "snapshotTime": "2026-02-24T23:50:37Z"
     },
     {
-      "oddsEventId": "60cbfa7c82c122323eb93807a9ffda37",
-      "home_team": "Georgia St Panthers",
-      "away_team": "Coastal Carolina Chanticleers",
-      "commence_time": "2026-02-24T22:00:00Z",
-      "homePoint": 6.5,
-      "awayPoint": -6.5,
-      "book": "fanduel",
-      "snapshotTime": "2026-02-24T23:50:37Z"
-    },
-    {
       "oddsEventId": "e5c8921c54e0a872045f7e9fd2f6d385",
       "home_team": "Florida Atlantic Owls",
       "away_team": "Charlotte 49ers",

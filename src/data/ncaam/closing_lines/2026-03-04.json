@@ -6,16 +6,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "76343f981d0bdaf7f428cfdfe9f5cbf6",
-      "home_team": "Bellarmine Knights",
-      "away_team": "Jacksonville Dolphins",
-      "commence_time": "2026-03-04T17:00:00Z",
-      "homePoint": -2.5,
-      "awayPoint": 2.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-04T17:25:38Z"
-    },
-    {
       "oddsEventId": "3f8510356b010d6698c1ea8f75b736b1",
       "home_team": "Florida Gulf Coast Eagles",
       "away_team": "North Alabama Lions",

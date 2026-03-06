@@ -3,30 +3,6 @@
   "captured_at": "2026-02-26T16:05:00Z",
   "games": [
     {
-      "oddsEventId": "1e9c7cda68cf051d594e5952ba77dd33",
-      "commence_time": "2026-02-26T16:00:00Z",
-      "home_team": "Hampton Pirates",
-      "away_team": "Charleston Cougars",
-      "home_espnTeamId": "2261",
-      "away_espnTeamId": "232",
-      "home_resolve": "ESPN_BY_NAME",
-      "away_resolve": "ESPN_BY_NAME",
-      "neutralSite": false,
-      "opening": {
-        "book": "draftkings",
-        "last_update": "2026-02-26T16:00:24Z",
-        "homePoint": 5.5,
-        "awayPoint": -5.5
-      },
-      "model": {
-        "homeTeamId": "team-hampton",
-        "awayTeamId": "team-charleston",
-        "modelSpread": 4.6,
-        "edge": -0.9,
-        "signal": "NONE"
-      }
-    },
-    {
       "oddsEventId": "206824ba294cdd1fdd50e81cbc4d035e",
       "commence_time": "2026-02-26T22:00:00Z",
       "home_team": "St. Bonaventure Bonnies",

@@ -7,56 +7,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "c783d43735f1a8f0fc89d60aaf123b9f",
-      "home_team": "Army Knights",
-      "away_team": "Bucknell Bison",
-      "commence_time": "2026-02-25T16:00:00Z",
-      "homePoint": 6.5,
-      "awayPoint": -6.5,
-      "book": "fanduel",
-      "snapshotTime": "2026-02-25T16:50:37Z"
-    },
-    {
-      "oddsEventId": "2c5682c7a9de2fa5ca57b372c22ac2ff",
-      "home_team": "Boston College Eagles",
-      "away_team": "Wake Forest Demon Deacons",
-      "commence_time": "2026-02-25T23:03:47Z",
-      "homePoint": 7.5,
-      "awayPoint": -7.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-25T23:50:38Z"
-    },
-    {
-      "oddsEventId": "460ee62be3a136a72f4834fcd53ae2c2",
-      "home_team": "Furman Paladins",
-      "away_team": "The Citadel Bulldogs",
-      "commence_time": "2026-02-25T23:05:00Z",
-      "homePoint": -10.5,
-      "awayPoint": 10.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-25T23:50:38Z"
-    },
-    {
-      "oddsEventId": "3b8678099ab35af3f658c7ee3d8c9460",
-      "home_team": "South Carolina St Bulldogs",
-      "away_team": "Morgan St Bears",
-      "commence_time": "2026-02-25T23:03:34Z",
-      "homePoint": 9.5,
-      "awayPoint": -9.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-25T23:50:38Z"
-    },
-    {
-      "oddsEventId": "7a8e19942fc7bc2abe13529cc491db92",
-      "home_team": "IUPUI Jaguars",
-      "away_team": "Oakland Golden Grizzlies",
-      "commence_time": "2026-02-25T23:32:25Z",
-      "homePoint": 13.5,
-      "awayPoint": -13.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-25T23:50:38Z"
-    },
-    {
       "oddsEventId": "a38118ef0cd800fad4c9c14a4d92d311",
       "home_team": "American Eagles",
       "away_team": "Lehigh Mountain Hawks",

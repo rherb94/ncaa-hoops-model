@@ -163,13 +163,31 @@ async function main() {
   // Filter to games on DATE in ET (same window as the opener script)
   const dayStartUTC = new Date(`${DATE}T05:00:00Z`);
   const dayEndUTC = new Date(dayStartUTC.getTime() + 24 * 60 * 60 * 1000);
+  const snapshotMs = new Date(actualSnapshotTime).getTime();
 
-  const filtered = (json.data ?? []).filter((g) => {
+  const dateFiltered = (json.data ?? []).filter((g) => {
     const ct = new Date(g.commence_time);
     return ct >= dayStartUTC && ct < dayEndUTC;
   });
 
-  console.log(`Filtered to ${DATE} ET window: ${filtered.length} games`);
+  // Drop games that have already started at the time of this snapshot.
+  // The historical API can return live in-game lines for in-progress games —
+  // those aren't true closing lines and produce wildly incorrect CLV values.
+  const filtered = dateFiltered.filter((g) => {
+    const alreadyStarted = new Date(g.commence_time).getTime() <= snapshotMs;
+    if (alreadyStarted) {
+      console.warn(
+        `⚠️  Skipping already-started game: ${g.away_team} @ ${g.home_team}` +
+        ` (tipped ${g.commence_time}, snapshot ${actualSnapshotTime})`
+      );
+    }
+    return !alreadyStarted;
+  });
+
+  console.log(
+    `API returned ${json.data?.length ?? 0} games; ${dateFiltered.length} on ${DATE} ET;` +
+    ` ${filtered.length} not yet started`
+  );
 
   // Build fresh entries from this snapshot
   const fresh = new Map<string, ClosingEntry>();
@@ -200,14 +218,25 @@ async function main() {
     // file may not exist yet on the first run of the day
   }
 
-  // Merge: prefer the snapshot with the LATER snapshotTime for games present in both.
-  // This means the second run updates evening-game lines while preserving noon-game lines.
+  // Merge: prefer the snapshot closest to (but before) the game's commence_time.
+  // For games not yet in the file, add them. For games already present, only update
+  // if the new snapshot is later AND still before the game started — this ensures
+  // the second run can update evening games (not yet captured) while preserving
+  // noon-game lines that would be overwritten with live in-game lines in a later run.
   const merged = new Map<string, ClosingEntry>([...existing]);
   let updated = 0;
   let preserved = 0;
 
   for (const [id, entry] of fresh) {
     const prev = existing.get(id);
+    // Double-check: skip if this snapshot was taken after the game started
+    // (the filter above should catch this, but be defensive)
+    const entryAfterStart = new Date(entry.snapshotTime) > new Date(entry.commence_time);
+    if (entryAfterStart) {
+      console.warn(`⚠️  Merge: skipping post-start snapshot for ${entry.away_team} @ ${entry.home_team}`);
+      preserved++;
+      continue;
+    }
     if (!prev || entry.snapshotTime > prev.snapshotTime) {
       merged.set(id, entry);
       updated++;

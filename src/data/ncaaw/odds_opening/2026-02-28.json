@@ -3,30 +3,6 @@
   "captured_at": "2026-02-28T16:00:00Z",
   "games": [
     {
-      "oddsEventId": "a114d7feecc6a4d63ae1140ed4c00c72",
-      "commence_time": "2026-02-28T16:00:00Z",
-      "home_team": "Tenn-Martin Skyhawks",
-      "away_team": "Tennessee St Tigers",
-      "home_espnTeamId": "2630",
-      "away_espnTeamId": "2634",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "neutralSite": false,
-      "opening": {
-        "book": "betrivers",
-        "last_update": "2026-02-28T15:55:22Z",
-        "homePoint": -14.5,
-        "awayPoint": 14.5
-      },
-      "model": {
-        "homeTeamId": "team-tennessee-martin",
-        "awayTeamId": "team-tennessee-st",
-        "modelSpread": -9.2,
-        "edge": 5.3,
-        "signal": "STRONG"
-      }
-    },
-    {
       "oddsEventId": "e6c6f5635270c35a66719e6d5bd7e9ac",
       "commence_time": "2026-02-28T16:30:00Z",
       "home_team": "Boston Univ. Terriers",

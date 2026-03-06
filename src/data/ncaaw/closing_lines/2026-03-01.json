@@ -257,52 +257,12 @@
       "snapshotTime": "2026-03-01T16:50:37Z"
     },
     {
-      "oddsEventId": "731cf306c2da7f0afba2a9a20995227f",
-      "home_team": "Oregon Ducks",
-      "away_team": "Washington Huskies",
-      "commence_time": "2026-03-01T22:00:00Z",
-      "homePoint": 0.5,
-      "awayPoint": -0.5,
-      "book": "fanatics",
-      "snapshotTime": "2026-03-01T23:50:37Z"
-    },
-    {
-      "oddsEventId": "e72ae2171e6b554edf0c224a0b5bee37",
-      "home_team": "Providence Friars",
-      "away_team": "Marquette Golden Eagles",
-      "commence_time": "2026-03-01T22:32:28Z",
-      "homePoint": 11.5,
-      "awayPoint": -11.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-01T23:50:37Z"
-    },
-    {
-      "oddsEventId": "d63a465b3350ff0743c674df2fdf946f",
-      "home_team": "USC Trojans",
-      "away_team": "UCLA Bruins",
-      "commence_time": "2026-03-01T23:16:54Z",
-      "homePoint": 22.5,
-      "awayPoint": -22.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-01T23:50:37Z"
-    },
-    {
       "oddsEventId": "d323bd567a4a558782ea280c29c26968",
       "home_team": "St. John's Red Storm",
       "away_team": "UConn Huskies",
       "commence_time": "2026-03-02T00:30:00Z",
       "homePoint": 33.5,
       "awayPoint": -33.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-01T23:50:37Z"
-    },
-    {
-      "oddsEventId": "57ad59bee50ca0b2367e657ddc98c847",
-      "home_team": "California Golden Bears",
-      "away_team": "SMU Mustangs",
-      "commence_time": "2026-03-01T22:02:49Z",
-      "homePoint": -43.5,
-      "awayPoint": 43.5,
       "book": "draftkings",
       "snapshotTime": "2026-03-01T23:50:37Z"
     }

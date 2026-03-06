@@ -6,46 +6,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "994301b37631edbf6e066ef675ae74e1",
-      "home_team": "Kentucky Wildcats",
-      "away_team": "Arkansas Razorbacks",
-      "commence_time": "2026-03-04T16:00:00Z",
-      "homePoint": -31.5,
-      "awayPoint": 31.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-04T17:25:38Z"
-    },
-    {
-      "oddsEventId": "545f3271a724291beb32c8555abeb9be",
-      "home_team": "Miami Hurricanes",
-      "away_team": "Stanford Cardinal",
-      "commence_time": "2026-03-04T16:03:08Z",
-      "homePoint": -9.5,
-      "awayPoint": 9.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-04T17:25:38Z"
-    },
-    {
-      "oddsEventId": "98ad40e192aede58a2ea08adf3d8bb8a",
-      "home_team": "Kansas St Wildcats",
-      "away_team": "Cincinnati Bearcats",
-      "commence_time": "2026-03-04T17:02:00Z",
-      "homePoint": -12.5,
-      "awayPoint": 12.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-03-04T17:25:38Z"
-    },
-    {
-      "oddsEventId": "6469fe8d12a2240b4a5e85c59540db8e",
-      "home_team": "Duquesne Dukes",
-      "away_team": "VCU Rams",
-      "commence_time": "2026-03-04T17:02:00Z",
-      "homePoint": 4.5,
-      "awayPoint": -4.5,
-      "book": "fanduel",
-      "snapshotTime": "2026-03-04T17:25:38Z"
-    },
-    {
       "oddsEventId": "6d3027aa2146ffa2d2f55dab9e3381d1",
       "home_team": "California Golden Bears",
       "away_team": "Wake Forest Demon Deacons",

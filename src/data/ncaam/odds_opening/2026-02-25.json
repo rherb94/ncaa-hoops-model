@@ -3,30 +3,6 @@
   "captured_at": "2026-02-25T16:05:00Z",
   "games": [
     {
-      "oddsEventId": "c783d43735f1a8f0fc89d60aaf123b9f",
-      "commence_time": "2026-02-25T16:00:00Z",
-      "home_team": "Army Knights",
-      "away_team": "Bucknell Bison",
-      "home_espnTeamId": "349",
-      "away_espnTeamId": "2083",
-      "home_resolve": "MAP",
-      "away_resolve": "MAP",
-      "neutralSite": false,
-      "opening": {
-        "book": "fanduel",
-        "last_update": "2026-02-25T15:59:46Z",
-        "homePoint": -2.5,
-        "awayPoint": 2.5
-      },
-      "model": {
-        "homeTeamId": "team-army",
-        "awayTeamId": "team-bucknell",
-        "modelSpread": -0.1,
-        "edge": 2.4,
-        "signal": "NONE"
-      }
-    },
-    {
       "oddsEventId": "2c5682c7a9de2fa5ca57b372c22ac2ff",
       "commence_time": "2026-02-25T23:00:00Z",
       "home_team": "Boston College Eagles",

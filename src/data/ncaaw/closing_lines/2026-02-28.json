@@ -7,16 +7,6 @@
   ],
   "games": [
     {
-      "oddsEventId": "a114d7feecc6a4d63ae1140ed4c00c72",
-      "home_team": "Tenn-Martin Skyhawks",
-      "away_team": "Tennessee St Tigers",
-      "commence_time": "2026-02-28T16:00:00Z",
-      "homePoint": -11.5,
-      "awayPoint": 11.5,
-      "book": "fanduel",
-      "snapshotTime": "2026-02-28T16:50:38Z"
-    },
-    {
       "oddsEventId": "7c39ec8404a701fa8c06ebd434249d23",
       "home_team": "Indiana Hoosiers",
       "away_team": "Penn State Nittany Lions",
@@ -67,16 +57,6 @@
       "snapshotTime": "2026-02-28T16:50:38Z"
     },
     {
-      "oddsEventId": "0fda59ba2580534fb8c72cd6faaa2a00",
-      "home_team": "Oklahoma St Cowgirls",
-      "away_team": "Kansas Jayhawks",
-      "commence_time": "2026-02-28T23:00:00Z",
-      "homePoint": -14.5,
-      "awayPoint": 14.5,
-      "book": "draftkings",
-      "snapshotTime": "2026-02-28T23:50:37Z"
-    },
-    {
       "oddsEventId": "5460a3e6ca8f37b09b950c60574a0d5f",
       "home_team": "Utah Utes",
       "away_team": "Arizona Wildcats",
@@ -84,36 +64,6 @@
       "homePoint": -11.5,
       "awayPoint": 11.5,
       "book": "draftkings",
-      "snapshotTime": "2026-02-28T23:50:37Z"
-    },
-    {
-      "oddsEventId": "c88922705478826a79ca3a7a97db7c0a",
-      "home_team": "Yale Bulldogs",
-      "away_team": "Cornell Big Red",
-      "commence_time": "2026-02-28T22:01:00Z",
-      "homePoint": -6.5,
-      "awayPoint": 6.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-02-28T23:50:37Z"
-    },
-    {
-      "oddsEventId": "0a8131feb9bcc4e582e9aa807f32d1ef",
-      "home_team": "Harvard Crimson",
-      "away_team": "Princeton Tigers",
-      "commence_time": "2026-02-28T23:04:00Z",
-      "homePoint": 6.5,
-      "awayPoint": -6.5,
-      "book": "betrivers",
-      "snapshotTime": "2026-02-28T23:50:37Z"
-    },
-    {
-      "oddsEventId": "3813ec72820f5af77fb9006bfeaf0bbd",
-      "home_team": "Idaho Vandals",
-      "away_team": "N Colorado Bears",
-      "commence_time": "2026-02-28T23:30:00Z",
-      "homePoint": -10.5,
-      "awayPoint": 10.5,
-      "book": "betrivers",
       "snapshotTime": "2026-02-28T23:50:37Z"
     },
     {
