@@ -1,6 +1,6 @@
 {
   "date": "2026-03-01",
-  "last_updated": "2026-03-03T17:07:17.637Z",
+  "last_updated": "2026-03-06T16:24:48.486Z",
   "snapshot_times": [
     "2026-03-01T16:50:37Z",
     "2026-03-01T23:50:37Z"
@@ -225,6 +225,16 @@
       "awayPoint": -15.5,
       "book": "draftkings",
       "snapshotTime": "2026-03-01T23:50:37Z"
+    },
+    {
+      "oddsEventId": "72956adb311374c8fa2dadcc3f8f28b7",
+      "home_team": "Illinois St Redbirds",
+      "away_team": "Belmont Bruins",
+      "commence_time": "2026-03-01T22:00:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-01T16:50:37Z"
     }
   ]
 }

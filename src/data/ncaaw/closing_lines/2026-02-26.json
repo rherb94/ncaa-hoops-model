@@ -1,6 +1,6 @@
 {
   "date": "2026-02-26",
-  "last_updated": "2026-03-04T16:22:47.608Z",
+  "last_updated": "2026-03-06T16:25:59.470Z",
   "snapshot_times": [
     "2026-02-26T16:50:38Z",
     "2026-02-26T23:50:37Z"
@@ -215,6 +215,36 @@
       "awayPoint": 26.5,
       "book": "draftkings",
       "snapshotTime": "2026-02-26T23:50:37Z"
+    },
+    {
+      "oddsEventId": "59af3584f1f8d10ccca4134733e4ada7",
+      "home_team": "Florida Gators",
+      "away_team": "Ole Miss Rebels",
+      "commence_time": "2026-02-26T23:00:00Z",
+      "homePoint": 5.5,
+      "awayPoint": -5.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-26T16:50:38Z"
+    },
+    {
+      "oddsEventId": "c1c7fdd1603df7b855d8a3bba66a5394",
+      "home_team": "Georgia Tech Yellow Jackets",
+      "away_team": "Louisville Cardinals",
+      "commence_time": "2026-02-26T23:00:00Z",
+      "homePoint": 16.5,
+      "awayPoint": -16.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-26T16:50:38Z"
+    },
+    {
+      "oddsEventId": "203a7ba5a2e4951e605b0a612ada4198",
+      "home_team": "LSU Tigers",
+      "away_team": "Tennessee Volunteers",
+      "commence_time": "2026-02-26T23:00:00Z",
+      "homePoint": -18.5,
+      "awayPoint": 18.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-26T16:50:38Z"
     }
   ]
 }

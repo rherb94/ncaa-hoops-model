@@ -1,6 +1,6 @@
 {
   "date": "2026-02-26",
-  "last_updated": "2026-03-03T17:06:51.834Z",
+  "last_updated": "2026-03-06T16:24:47.590Z",
   "snapshot_times": [
     "2026-02-26T16:50:38Z",
     "2026-02-26T23:50:37Z"
@@ -515,6 +515,56 @@
       "awayPoint": 5.5,
       "book": "draftkings",
       "snapshotTime": "2026-02-26T23:50:37Z"
+    },
+    {
+      "oddsEventId": "206824ba294cdd1fdd50e81cbc4d035e",
+      "home_team": "St. Bonaventure Bonnies",
+      "away_team": "Rhode Island Rams",
+      "commence_time": "2026-02-26T22:00:00Z",
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-02-26T16:50:38Z"
+    },
+    {
+      "oddsEventId": "51b0d9e1eabb6d019dd57c1f823473c0",
+      "home_team": "Binghamton Bearcats",
+      "away_team": "New Hampshire Wildcats",
+      "commence_time": "2026-02-26T23:00:00Z",
+      "homePoint": 2.5,
+      "awayPoint": -2.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-02-26T16:50:38Z"
+    },
+    {
+      "oddsEventId": "c52118afde0fec63bfd445a3d7dc82fe",
+      "home_team": "UMBC Retrievers",
+      "away_team": "Bryant Bulldogs",
+      "commence_time": "2026-02-26T23:00:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-26T16:50:38Z"
+    },
+    {
+      "oddsEventId": "6f2bfa4cb81c67b5463656f8b93c902a",
+      "home_team": "Albany Great Danes",
+      "away_team": "Maine Black Bears",
+      "commence_time": "2026-02-26T23:30:00Z",
+      "homePoint": -5.5,
+      "awayPoint": 5.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-02-26T16:50:38Z"
+    },
+    {
+      "oddsEventId": "74aada8c55999add9fabf6687648c0cf",
+      "home_team": "Grambling St Tigers",
+      "away_team": "Bethune-Cookman Wildcats",
+      "commence_time": "2026-02-26T23:30:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-02-26T16:50:38Z"
     }
   ]
 }

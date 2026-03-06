@@ -1,6 +1,6 @@
 {
   "date": "2026-03-05",
-  "last_updated": "2026-03-06T01:01:08.109Z",
+  "last_updated": "2026-03-06T16:26:01.620Z",
   "snapshot_times": [
     "2026-03-05T18:25:38Z",
     "2026-03-06T01:00:41Z"
@@ -225,6 +225,76 @@
       "awayPoint": 1.5,
       "book": "draftkings",
       "snapshotTime": "2026-03-06T01:00:41Z"
+    },
+    {
+      "oddsEventId": "a26c410ac6357c57d9214e43d14532c6",
+      "home_team": "Ole Miss Rebels",
+      "away_team": "Auburn Tigers",
+      "commence_time": "2026-03-05T23:00:00Z",
+      "homePoint": -15.5,
+      "awayPoint": 15.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-05T18:25:38Z"
+    },
+    {
+      "oddsEventId": "20db892c156344cbdc6f1bd2399543ff",
+      "home_team": "Radford Highlanders",
+      "away_team": "Charleston Southern Buccaneers",
+      "commence_time": "2026-03-05T23:00:00Z",
+      "homePoint": -11.5,
+      "awayPoint": 11.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-05T18:25:38Z"
+    },
+    {
+      "oddsEventId": "376010de5c76b8b0e3bcb9490008ebd6",
+      "home_team": "Iowa State Cyclones",
+      "away_team": "Arizona St Sun Devils",
+      "commence_time": "2026-03-05T23:30:00Z",
+      "homePoint": -9.5,
+      "awayPoint": 9.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-05T18:25:38Z"
+    },
+    {
+      "oddsEventId": "6a904c8777eb76808e492fbfb3f14562",
+      "home_team": "Michigan St Spartans",
+      "away_team": "Illinois Fighting Illini",
+      "commence_time": "2026-03-05T23:30:00Z",
+      "homePoint": -5.5,
+      "awayPoint": 5.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-05T18:25:38Z"
+    },
+    {
+      "oddsEventId": "081acb3578e31d286215f5018af39a31",
+      "home_team": "UMBC Retrievers",
+      "away_team": "NJIT Highlanders",
+      "commence_time": "2026-03-05T23:30:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-05T18:25:38Z"
+    },
+    {
+      "oddsEventId": "1a58b507234a7551f513202bc5692466",
+      "home_team": "Virginia Tech Hokies",
+      "away_team": "Georgia Tech Yellow Jackets",
+      "commence_time": "2026-03-06T00:30:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-05T18:25:38Z"
+    },
+    {
+      "oddsEventId": "3b03d68fa2642d0d500bffdba47fa4f2",
+      "home_team": "La Salle Explorers",
+      "away_team": "Saint Louis Billikens",
+      "commence_time": "2026-03-06T00:30:00Z",
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-05T18:25:38Z"
     }
   ]
 }
