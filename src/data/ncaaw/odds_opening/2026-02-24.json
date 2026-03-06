@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-colorado",
         "awayTeamId": "team-utah",
-        "modelSpread": -6.7,
-        "edge": 0.8,
+        "modelSpread": -7.2,
+        "edge": 0.3,
         "signal": "NONE"
       }
     }

@@ -29,7 +29,7 @@
     {
       "oddsEventId": "814d309f06a368d80828310d1f8fb923",
       "commence_time": "2026-03-04T03:00:00Z",
-      "home_team": "San Jos\u00e9 St Spartans",
+      "home_team": "San José St Spartans",
       "away_team": "Colorado St Rams",
       "home_espnTeamId": "23",
       "away_espnTeamId": "36",
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-san-jose-st",
         "awayTeamId": "team-colorado-st",
-        "modelSpread": 19.6,
-        "edge": -1.9,
+        "modelSpread": 19.5,
+        "edge": -2,
         "signal": "NONE"
       }
     }
