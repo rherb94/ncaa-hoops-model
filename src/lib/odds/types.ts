@@ -4,6 +4,7 @@ export type BookKey =
   | "betmgm"
   | "caesars"
   | "pointsbet"
+  | "betrivers"
   | "consensus";
 
 export type MarketLines = {

@@ -47,6 +47,7 @@ function pickConsensusFromBooks(books: any): Consensus {
     "betmgm",
     "caesars",
     "pointsbet",
+    "betrivers", // NCAAW lines often only appear on betrivers
   ] as const;
 
   for (const k of order) {

@@ -38,6 +38,7 @@ function asBookKey(key: string): BookKey | undefined {
   if (k === "betmgm") return "betmgm";
   if (k === "caesars") return "caesars";
   if (k === "pointsbetus" || k === "pointsbet") return "pointsbet";
+  if (k === "betrivers") return "betrivers";
   return undefined;
 }
 
