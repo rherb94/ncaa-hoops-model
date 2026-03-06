@@ -18,7 +18,13 @@
         "homePoint": -3.5,
         "awayPoint": 3.5
       },
-      "model": null
+      "model": {
+        "homeTeamId": "team-east-tennessee-st",
+        "awayTeamId": "team-unc-greensboro",
+        "modelSpread": -3.6,
+        "edge": -0.1,
+        "signal": "NONE"
+      }
     },
     {
       "oddsEventId": "d33da774cf15cdf3260ed926c2721db9",
@@ -36,7 +42,13 @@
         "homePoint": -10,
         "awayPoint": 10
       },
-      "model": null
+      "model": {
+        "homeTeamId": "team-saint-joseph-s",
+        "awayTeamId": "team-duquesne",
+        "modelSpread": -11.5,
+        "edge": -1.5,
+        "signal": "NONE"
+      }
     },
     {
       "oddsEventId": "b9d56050cf69572590d4f5fa20a5e608",
@@ -57,8 +69,8 @@
       "model": {
         "homeTeamId": "team-oklahoma",
         "awayTeamId": "team-florida",
-        "modelSpread": -8.8,
-        "edge": 1.7,
+        "modelSpread": -9.1,
+        "edge": 1.4,
         "signal": "NONE"
       }
     },
@@ -81,8 +93,8 @@
       "model": {
         "homeTeamId": "team-notre-dame",
         "awayTeamId": "team-miami-fl",
-        "modelSpread": -10,
-        "edge": 1.5,
+        "modelSpread": -10.5,
+        "edge": 1,
         "signal": "NONE"
       }
     },
@@ -102,7 +114,13 @@
         "homePoint": -3.5,
         "awayPoint": 3.5
       },
-      "model": null
+      "model": {
+        "homeTeamId": "team-morehead-st",
+        "awayTeamId": "team-southeast-missouri-st",
+        "modelSpread": -2.7,
+        "edge": 0.8,
+        "signal": "NONE"
+      }
     },
     {
       "oddsEventId": "a0e5f78b240c7b2abf9bf05167d54062",
@@ -120,7 +138,13 @@
         "homePoint": 1.5,
         "awayPoint": -1.5
       },
-      "model": null
+      "model": {
+        "homeTeamId": "team-gardner-webb",
+        "awayTeamId": "team-winthrop",
+        "modelSpread": 3.1,
+        "edge": 1.6,
+        "signal": "NONE"
+      }
     },
     {
       "oddsEventId": "47a6d97db5cfd65976e714b26e0b5223",
@@ -141,8 +165,8 @@
       "model": {
         "homeTeamId": "team-utah",
         "awayTeamId": "team-byu",
-        "modelSpread": -1.1,
-        "edge": 1.4,
+        "modelSpread": -0.3,
+        "edge": 2.2,
         "signal": "NONE"
       }
     },
@@ -165,8 +189,8 @@
       "model": {
         "homeTeamId": "team-stetson",
         "awayTeamId": "team-florida-gulf-coast",
-        "modelSpread": 1.6,
-        "edge": -1.9,
+        "modelSpread": 1.2,
+        "edge": -2.3,
         "signal": "NONE"
       }
     },
@@ -189,8 +213,8 @@
       "model": {
         "homeTeamId": "team-ohio-st",
         "awayTeamId": "team-indiana",
-        "modelSpread": -10.7,
-        "edge": -0.2,
+        "modelSpread": -11.1,
+        "edge": -0.6,
         "signal": "NONE"
       }
     },
@@ -210,7 +234,13 @@
         "homePoint": -7.5,
         "awayPoint": 7.5
       },
-      "model": null
+      "model": {
+        "homeTeamId": "team-sacred-heart",
+        "awayTeamId": "team-saint-peter-s",
+        "modelSpread": -5.9,
+        "edge": 1.6,
+        "signal": "NONE"
+      }
     },
     {
       "oddsEventId": "c2f1ab7154d531cc28a290208e1f662d",
@@ -228,7 +258,13 @@
         "homePoint": -16.5,
         "awayPoint": 16.5
       },
-      "model": null
+      "model": {
+        "homeTeamId": "team-washington-st",
+        "awayTeamId": "team-seattle",
+        "modelSpread": -11.4,
+        "edge": 5.1,
+        "signal": "STRONG"
+      }
     },
     {
       "oddsEventId": "8612e3477fdaa9625e2d97f5c56087d9",
@@ -246,7 +282,13 @@
         "homePoint": 1.5,
         "awayPoint": -1.5
       },
-      "model": null
+      "model": {
+        "homeTeamId": "team-southern-miss",
+        "awayTeamId": "team-louisiana-monroe",
+        "modelSpread": 3.9,
+        "edge": 2.4,
+        "signal": "NONE"
+      }
     },
     {
       "oddsEventId": "23bfc7a1751b42a018ac278a6d23f562",
@@ -264,7 +306,13 @@
         "homePoint": -6.5,
         "awayPoint": 6.5
       },
-      "model": null
+      "model": {
+        "homeTeamId": "team-wofford",
+        "awayTeamId": "team-samford",
+        "modelSpread": -3.9,
+        "edge": 2.6,
+        "signal": "NONE"
+      }
     },
     {
       "oddsEventId": "a26c410ac6357c57d9214e43d14532c6",
@@ -285,8 +333,8 @@
       "model": {
         "homeTeamId": "team-mississippi",
         "awayTeamId": "team-auburn",
-        "modelSpread": -13.7,
-        "edge": 1.8,
+        "modelSpread": -14.5,
+        "edge": 1,
         "signal": "NONE"
       }
     },
@@ -309,9 +357,9 @@
       "model": {
         "homeTeamId": "team-michigan-st",
         "awayTeamId": "team-illinois",
-        "modelSpread": -2.9,
-        "edge": 2.6,
-        "signal": "NONE"
+        "modelSpread": -2.4,
+        "edge": 3.1,
+        "signal": "LEAN"
       }
     },
     {
@@ -333,8 +381,8 @@
       "model": {
         "homeTeamId": "team-virginia-tech",
         "awayTeamId": "team-georgia-tech",
-        "modelSpread": -7,
-        "edge": 0.5,
+        "modelSpread": -6.9,
+        "edge": 0.6,
         "signal": "NONE"
       }
     }
