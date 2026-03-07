@@ -1,0 +1,348 @@
+{
+  "date": "2026-03-07",
+  "captured_at": "2026-03-07T16:33:39.876Z",
+  "games": [
+    {
+      "oddsEventId": "f504fc7b06a7bacb4157b28ed5f7b978",
+      "commence_time": "2026-03-07T17:00:00Z",
+      "home_team": "Duke Blue Devils",
+      "away_team": "Notre Dame Fighting Irish",
+      "home_espnTeamId": "150",
+      "away_espnTeamId": "87",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-07T16:33:36Z",
+        "homePoint": -4.5,
+        "awayPoint": 4.5
+      },
+      "model": {
+        "homeTeamId": "team-duke",
+        "awayTeamId": "team-notre-dame",
+        "modelSpread": -5.7,
+        "edge": -1.2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "1f36d7f3d1685cec843ac534302c4a5e",
+      "commence_time": "2026-03-07T17:00:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Georgetown Hoyas",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "46",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-07T16:33:36Z",
+        "homePoint": -38.5,
+        "awayPoint": 38.5
+      },
+      "model": {
+        "homeTeamId": "team-connecticut",
+        "awayTeamId": "team-georgetown",
+        "modelSpread": -33,
+        "edge": 5.5,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "bd07f388071dc6a051afe27df89c3186",
+      "commence_time": "2026-03-07T17:00:00Z",
+      "home_team": "Iona Gaels",
+      "away_team": "Siena Saints",
+      "home_espnTeamId": "314",
+      "away_espnTeamId": "2561",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-03-07T16:33:13Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "0f7d1331fbf504ec975eb2d3f25ff5b5",
+      "commence_time": "2026-03-07T18:00:00Z",
+      "home_team": "James Madison Dukes",
+      "away_team": "South Alabama Jaguars",
+      "home_espnTeamId": "256",
+      "away_espnTeamId": "6",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-03-07T16:33:13Z",
+        "homePoint": -16.5,
+        "awayPoint": 16.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "abff7d774db7231148722f6a0819a744",
+      "commence_time": "2026-03-07T18:30:00Z",
+      "home_team": "Jacksonville Dolphins",
+      "away_team": "Central Arkansas Bears",
+      "home_espnTeamId": "294",
+      "away_espnTeamId": "2110",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-03-07T16:33:13Z",
+        "homePoint": 3.5,
+        "awayPoint": -3.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "69bed66b3a53837e4118f0756b086691",
+      "commence_time": "2026-03-07T18:30:00Z",
+      "home_team": "George Mason Patriots",
+      "away_team": "Richmond Spiders",
+      "home_espnTeamId": "2244",
+      "away_espnTeamId": "257",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-07T16:33:36Z",
+        "homePoint": 6.5,
+        "awayPoint": -6.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "9de4088a2a8e9852e2d3571c6d28cca8",
+      "commence_time": "2026-03-07T19:00:00Z",
+      "home_team": "Boston Univ. Terriers",
+      "away_team": "American Eagles",
+      "home_espnTeamId": "104",
+      "away_espnTeamId": "44",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-03-07T16:33:13Z",
+        "homePoint": -7.5,
+        "awayPoint": 7.5
+      },
+      "model": {
+        "homeTeamId": "team-boston-university",
+        "awayTeamId": "team-american",
+        "modelSpread": -5.3,
+        "edge": 2.2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "08c7f35db68620119b0055cf1f59b68a",
+      "commence_time": "2026-03-07T19:00:00Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "Ohio State Buckeyes",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "194",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-07T16:33:36Z",
+        "homePoint": -12.5,
+        "awayPoint": 12.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "42e5c2160ab0f37600b614a9a822bc20",
+      "commence_time": "2026-03-07T19:00:00Z",
+      "home_team": "Princeton Tigers",
+      "away_team": "Yale Bulldogs",
+      "home_espnTeamId": "163",
+      "away_espnTeamId": "43",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-03-07T16:33:13Z",
+        "homePoint": -30.5,
+        "awayPoint": 30.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "d7287f777f360765f5838526e4d2c70d",
+      "commence_time": "2026-03-07T19:30:00Z",
+      "home_team": "Marquette Golden Eagles",
+      "away_team": "Creighton Bluejays",
+      "home_espnTeamId": "269",
+      "away_espnTeamId": "156",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-03-07T16:33:05Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "e91efc2a69223102e68cf6cd3ca02f54",
+      "commence_time": "2026-03-07T19:30:00Z",
+      "home_team": "Louisville Cardinals",
+      "away_team": "North Carolina Tar Heels",
+      "home_espnTeamId": "97",
+      "away_espnTeamId": "153",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-07T16:33:36Z",
+        "homePoint": -2.5,
+        "awayPoint": 2.5
+      },
+      "model": {
+        "homeTeamId": "team-louisville",
+        "awayTeamId": "team-north-carolina",
+        "modelSpread": -2.7,
+        "edge": -0.2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "7a4b7e775e0f04e15e89c70069fb63a7",
+      "commence_time": "2026-03-07T21:00:00Z",
+      "home_team": "TCU Horned Frogs",
+      "away_team": "Kansas St Wildcats",
+      "home_espnTeamId": "2628",
+      "away_espnTeamId": "2306",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-07T16:33:36Z",
+        "homePoint": -11.5,
+        "awayPoint": 11.5
+      },
+      "model": {
+        "homeTeamId": "team-tcu",
+        "awayTeamId": "team-kansas-st",
+        "modelSpread": -12.6,
+        "edge": -1.1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "25edd8a790e795121f622ab3c4d3d852",
+      "commence_time": "2026-03-07T21:30:00Z",
+      "home_team": "Iowa Hawkeyes",
+      "away_team": "Michigan Wolverines",
+      "home_espnTeamId": "2294",
+      "away_espnTeamId": "130",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-07T16:33:36Z",
+        "homePoint": 3.5,
+        "awayPoint": -3.5
+      },
+      "model": {
+        "homeTeamId": "team-iowa",
+        "awayTeamId": "team-michigan",
+        "modelSpread": 3.9,
+        "edge": 0.4,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "dcae903ac9bfc2aa9cb24b9fde6d2158",
+      "commence_time": "2026-03-07T21:30:00Z",
+      "home_team": "South Carolina Gamecocks",
+      "away_team": "LSU Tigers",
+      "home_espnTeamId": "2579",
+      "away_espnTeamId": "99",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-07T16:33:36Z",
+        "homePoint": -5.5,
+        "awayPoint": 5.5
+      },
+      "model": {
+        "homeTeamId": "team-south-carolina",
+        "awayTeamId": "team-lsu",
+        "modelSpread": -2.8,
+        "edge": 2.7,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "64f98aec58d4c74e98374b7c2c7da03d",
+      "commence_time": "2026-03-07T23:30:00Z",
+      "home_team": "West Virginia Mountaineers",
+      "away_team": "Colorado Buffaloes",
+      "home_espnTeamId": "277",
+      "away_espnTeamId": "38",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-03-07T16:26:43Z",
+        "homePoint": 8.5,
+        "awayPoint": -8.5
+      },
+      "model": {
+        "homeTeamId": "team-west-virginia",
+        "awayTeamId": "team-colorado",
+        "modelSpread": -6.6,
+        "edge": -12,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "c92ee4d67c9b5c1cd15cefd03fe231d5",
+      "commence_time": "2026-03-08T00:00:00Z",
+      "home_team": "Texas Longhorns",
+      "away_team": "Ole Miss Rebels",
+      "home_espnTeamId": "251",
+      "away_espnTeamId": "145",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-03-07T16:33:05Z",
+        "homePoint": -17.5,
+        "awayPoint": 17.5
+      },
+      "model": {
+        "homeTeamId": "team-texas",
+        "awayTeamId": "team-mississippi",
+        "modelSpread": -14,
+        "edge": 3.5,
+        "signal": "LEAN"
+      }
+    }
+  ]
+}

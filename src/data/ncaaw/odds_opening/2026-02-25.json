@@ -45,9 +45,9 @@
       "model": {
         "homeTeamId": "team-cincinnati",
         "awayTeamId": "team-tcu",
-        "modelSpread": 15.5,
-        "edge": -3,
-        "signal": "LEAN"
+        "modelSpread": 15.6,
+        "edge": -2.9,
+        "signal": "NONE"
       }
     },
     {
@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-maryland",
         "awayTeamId": "team-northwestern",
-        "modelSpread": -24.8,
-        "edge": 7.7,
+        "modelSpread": -24.7,
+        "edge": 7.8,
         "signal": "STRONG"
       }
     },
@@ -93,9 +93,9 @@
       "model": {
         "homeTeamId": "team-ucf",
         "awayTeamId": "team-west-virginia",
-        "modelSpread": 19.5,
-        "edge": -3,
-        "signal": "LEAN"
+        "modelSpread": 19.7,
+        "edge": -2.8,
+        "signal": "NONE"
       }
     },
     {
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-iowa-st",
         "awayTeamId": "team-oklahoma-st",
-        "modelSpread": -3,
-        "edge": 2.5,
+        "modelSpread": -3.3,
+        "edge": 2.2,
         "signal": "NONE"
       }
     },
@@ -165,8 +165,8 @@
       "model": {
         "homeTeamId": "team-ohio-st",
         "awayTeamId": "team-michigan",
-        "modelSpread": 1.8,
-        "edge": -3.7,
+        "modelSpread": 2,
+        "edge": -3.5,
         "signal": "LEAN"
       }
     },
@@ -189,8 +189,8 @@
       "model": {
         "homeTeamId": "team-arizona-st",
         "awayTeamId": "team-byu",
-        "modelSpread": -4.3,
-        "edge": 1.2,
+        "modelSpread": -4.7,
+        "edge": 0.8,
         "signal": "NONE"
       }
     }
