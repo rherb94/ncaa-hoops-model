@@ -330,7 +330,7 @@ function GameCard({ g, league }: { g: GameRow; league: LeagueId }) {
         </div>
         {/* result badge */}
         <div className="flex flex-col items-end gap-1">
-          <PickResultBadge result={g.pick_result} inProgress={g.home_score !== null && !g.completed} />
+          <PickResultBadge result={g.pick_result} inProgress={!g.completed && ((g.home_score ?? 0) > 0 || (g.away_score ?? 0) > 0)} />
           {dc !== null && (
             <span className="text-[10px] text-zinc-500">
               Dir {dc ? <span className="text-emerald-500">✓</span> : <span className="text-red-500">✗</span>}
@@ -649,7 +649,7 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
                               <div className="text-right leading-snug">
                                 <div className={g.winner === "AWAY" ? "text-zinc-100 font-semibold" : "text-zinc-500"}>{g.away_score}</div>
                                 <div className={g.winner === "HOME" ? "text-zinc-100 font-semibold" : "text-zinc-500"}>{g.home_score}</div>
-                                {!g.completed && (
+                                {!g.completed && ((g.home_score ?? 0) > 0 || (g.away_score ?? 0) > 0) && (
                                   <div className="flex items-center justify-end gap-1 mt-0.5">
                                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                                     <span className="text-[10px] text-blue-400 font-normal">live</span>
@@ -674,7 +674,7 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
                             <DirBadge g={g} />
                           </td>
                           <td className="px-3 py-2 align-middle">
-                            <PickResultBadge result={g.pick_result} inProgress={g.home_score !== null && !g.completed} />
+                            <PickResultBadge result={g.pick_result} inProgress={!g.completed && ((g.home_score ?? 0) > 0 || (g.away_score ?? 0) > 0)} />
                           </td>
                         </tr>
                       );
