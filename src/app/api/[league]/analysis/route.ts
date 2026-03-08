@@ -230,6 +230,10 @@ function computeClv(
   return pickSide === "HOME" ? raw : -raw;
 }
 
+// First date with a real automated live snapshot (anything before this was backfilled
+// retroactively using the TheOddsAPI historical endpoint).
+const LIVE_FROM = "2026-03-02";
+
 function analyzeDate(date: string, leagueId: string, liveResults?: ResultGame[]) {
   const snapDir  = path.join(DATA_DIR, leagueId, "odds_opening");
   const resDir   = path.join(DATA_DIR, leagueId, "results");
@@ -337,6 +341,7 @@ function analyzeDate(date: string, leagueId: string, liveResults?: ResultGame[])
   return {
     date,
     snapshot_available: true,
+    backfilled: date < LIVE_FROM,
     results_available: !!resFile || isLive,
     results_live: isLive,
     in_progress: inProgress,

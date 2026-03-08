@@ -31,6 +31,7 @@ type GameRow = {
 type DayResult = {
   date: string;
   snapshot_available: boolean;
+  backfilled?: boolean;     // true for dates before live tracking started (Feb 24 – Mar 1)
   results_available: boolean;
   results_live?: boolean;   // true when scores come from live ESPN fetch (no results file yet)
   in_progress?: number;     // count of games currently in progress
@@ -395,6 +396,7 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
   const [err, setErr] = useState<string | null>(null);
   const [expandedDate, setExpandedDate] = useState<string | null>(null);
   const [filter, setFilter] = useState<Filter>("7d");
+  const [showBackfilled, setShowBackfilled] = useState(false);
 
   async function load(f: Filter) {
     setLoading(true);
@@ -444,8 +446,10 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
   if (!data)   return null;
 
   const { summary, by_date } = data;
-  const sorted = [...by_date].reverse();
-  const { dirTotal, dirCorrect, avgError, roi, roiGames, avgClv, clvGames, buckets } = computeStats(by_date);
+  const visibleDates = showBackfilled ? by_date : by_date.filter((d) => !d.backfilled);
+  const sorted = [...visibleDates].reverse();
+  const { dirTotal, dirCorrect, avgError, roi, roiGames, avgClv, clvGames, buckets } = computeStats(visibleDates);
+  const backfilledCount = by_date.filter((d) => d.backfilled).length;
 
   const sortGames = (games: GameRow[]) =>
     games.slice().sort((a, b) => {
@@ -462,7 +466,12 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
         <div className="flex-1">
           <div className="text-xs text-zinc-400">Model Results</div>
           <div className="text-sm text-zinc-500">
-            {by_date.length} day{by_date.length !== 1 ? "s" : ""} · {FILTER_LABELS[filter]}
+            {visibleDates.length} day{visibleDates.length !== 1 ? "s" : ""} · {FILTER_LABELS[filter]}
+            {!showBackfilled && backfilledCount > 0 && (
+              <span className="ml-1 text-zinc-600">
+                ({backfilledCount} backfilled hidden)
+              </span>
+            )}
           </div>
         </div>
 
@@ -482,6 +491,20 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
             </button>
           ))}
         </div>
+
+        {backfilledCount > 0 && (
+          <button
+            onClick={() => setShowBackfilled((v) => !v)}
+            className={`rounded-lg px-3 py-1.5 text-xs font-medium self-start sm:self-auto transition-colors ${
+              showBackfilled
+                ? "bg-amber-500/20 text-amber-400 border border-amber-500/30 hover:bg-amber-500/30"
+                : "bg-zinc-800 text-zinc-500 hover:text-zinc-300 hover:bg-zinc-700"
+            }`}
+            title={showBackfilled ? "Hide backfilled dates (Feb 24–Mar 1)" : "Show backfilled dates (Feb 24–Mar 1)"}
+          >
+            {showBackfilled ? "Hide backfilled" : "Show backfilled"}
+          </button>
+        )}
 
         <button
           onClick={() => load(filter)}
@@ -563,6 +586,9 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                   {day.in_progress ? `${day.in_progress} LIVE` : "LIVE"}
                 </span>
+              )}
+              {day.backfilled && (
+                <span className="text-xs text-zinc-600 font-medium">backfilled</span>
               )}
               {!day.results_available && !day.results_live && (
                 <span className="text-xs text-amber-400/70">results pending</span>
