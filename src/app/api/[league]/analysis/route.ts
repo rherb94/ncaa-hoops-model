@@ -9,9 +9,118 @@
 import { NextResponse } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
-import { getLeague } from "@/lib/leagues";
+import { getLeague, LEAGUES } from "@/lib/leagues";
+import type { LeagueId } from "@/lib/leagues";
 
 const DATA_DIR = path.join(process.cwd(), "src", "data");
+
+// ---------------------------------------------------------------------------
+// Live results fetching (ESPN public API) — used when no results file exists
+// and the date is today or yesterday (games may still be in progress).
+// ---------------------------------------------------------------------------
+
+type EspnCompetitor = {
+  id: string;
+  homeAway: "home" | "away";
+  score?: string;
+  team: { id: string; displayName: string };
+};
+
+type EspnEvent = {
+  id: string;
+  date: string;
+  status: { type: { completed: boolean; description: string } };
+  competitions: Array<{ competitors: EspnCompetitor[] }>;
+};
+
+async function fetchLiveResults(date: string, leagueId: string): Promise<ResultGame[]> {
+  const league = LEAGUES[leagueId as LeagueId];
+  if (!league) return [];
+
+  const espnDateStr = date.replace(/-/g, "");
+  const nextDayDate = new Date(`${date}T12:00:00Z`);
+  nextDayDate.setUTCDate(nextDayDate.getUTCDate() + 1);
+  const espnDateNextStr = nextDayDate.toISOString().slice(0, 10).replace(/-/g, "");
+
+  const dayStartUtc = new Date(`${date}T05:00:00Z`);
+  const dayEndUtc   = new Date(dayStartUtc.getTime() + 24 * 60 * 60 * 1000);
+
+  const espnUrl = (d: string) =>
+    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `/${league.espnSport}/scoreboard?dates=${d}&groups=${league.espnGroupId}&limit=200`;
+
+  async function fetchEvents(d: string): Promise<EspnEvent[]> {
+    try {
+      const res = await fetch(espnUrl(d), {
+        headers: { "user-agent": "ncaam-model/1.0 (personal project)" },
+        next: { revalidate: 60 }, // cache for 60 seconds
+      });
+      if (!res.ok) return [];
+      const json = (await res.json()) as { events?: EspnEvent[] };
+      return json.events ?? [];
+    } catch {
+      return [];
+    }
+  }
+
+  const [eventsToday, eventsNextUtc] = await Promise.all([
+    fetchEvents(espnDateStr),
+    fetchEvents(espnDateNextStr),
+  ]);
+
+  // Deduplicate — prefer record from "today"
+  const eventMap = new Map<string, EspnEvent>();
+  for (const e of [...eventsNextUtc, ...eventsToday]) eventMap.set(e.id, e);
+
+  // Filter to ET date window
+  const events = [...eventMap.values()].filter((e) => {
+    const ct = new Date(e.date);
+    return ct >= dayStartUtc && ct < dayEndUtc;
+  });
+
+  return events.map((e) => {
+    const comp = e.competitions?.[0];
+    const home = comp?.competitors?.find((c) => c.homeAway === "home");
+    const away = comp?.competitors?.find((c) => c.homeAway === "away");
+
+    const homeScore = home?.score != null ? Number(home.score) : null;
+    const awayScore = away?.score != null ? Number(away.score) : null;
+    const completed = e.status?.type?.completed ?? false;
+
+    const actualSpread =
+      completed && homeScore != null && awayScore != null
+        ? -(homeScore - awayScore)
+        : null;
+
+    const winner: "HOME" | "AWAY" | "TIE" | null =
+      completed && homeScore != null && awayScore != null
+        ? homeScore > awayScore ? "HOME" : awayScore > homeScore ? "AWAY" : "TIE"
+        : null;
+
+    return {
+      espnEventId: e.id,
+      home_espnTeamId: home?.team.id ?? null,
+      away_espnTeamId: away?.team.id ?? null,
+      completed,
+      homeScore,
+      awayScore,
+      actualSpread,
+      winner,
+    };
+  });
+}
+
+function todayET(): string {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" })
+    .format(new Date())
+    .slice(0, 10);
+}
+
+function yesterdayET(): string {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" })
+    .format(new Date(Date.now() - 24 * 60 * 60 * 1000))
+    .slice(0, 10);
+}
 
 function loadJson<T>(p: string): T | null {
   try {
@@ -121,7 +230,7 @@ function computeClv(
   return pickSide === "HOME" ? raw : -raw;
 }
 
-function analyzeDate(date: string, leagueId: string) {
+function analyzeDate(date: string, leagueId: string, liveResults?: ResultGame[]) {
   const snapDir  = path.join(DATA_DIR, leagueId, "odds_opening");
   const resDir   = path.join(DATA_DIR, leagueId, "results");
   const closeDir = path.join(DATA_DIR, leagueId, "closing_lines");
@@ -129,7 +238,7 @@ function analyzeDate(date: string, leagueId: string) {
   const snap = loadJson<{ date: string; games: SnapshotGame[] }>(
     path.join(snapDir, `${date}.json`)
   );
-  const res = loadJson<{ date: string; games: ResultGame[] }>(
+  const resFile = loadJson<{ date: string; games: ResultGame[] }>(
     path.join(resDir, `${date}.json`)
   );
   const closeData = loadJson<{ date: string; games: ClosingLineGame[] }>(
@@ -138,9 +247,13 @@ function analyzeDate(date: string, leagueId: string) {
 
   if (!snap) return null;
 
+  // Use file-based results if available, otherwise fall back to live results
+  const isLive = !resFile && !!liveResults?.length;
+  const effectiveResults: ResultGame[] = resFile?.games ?? liveResults ?? [];
+
   // index results by ESPN team ID pair
   const resultByTeams = new Map<string, ResultGame>();
-  for (const g of res?.games ?? []) {
+  for (const g of effectiveResults) {
     if (g.home_espnTeamId && g.away_espnTeamId) {
       resultByTeams.set(`${g.home_espnTeamId}|${g.away_espnTeamId}`, g);
     }
@@ -219,11 +332,14 @@ function analyzeDate(date: string, leagueId: string) {
   const strongPicks = picks.filter((g) => g.signal === "STRONG");
   const strongDecided = strongPicks.filter((g) => g.pick_result === "WIN" || g.pick_result === "LOSS");
   const strongWins = strongDecided.filter((g) => g.pick_result === "WIN").length;
+  const inProgress = games.filter((g) => g.home_score !== null && !g.completed).length;
 
   return {
     date,
     snapshot_available: true,
-    results_available: !!res,
+    results_available: !!resFile || isLive,
+    results_live: isLive,
+    in_progress: inProgress,
     total_games: games.length,
     picks_made: picks.length,
     strong_picks: strongPicks.length,
@@ -321,7 +437,30 @@ export async function GET(
     return NextResponse.json({ error: "No snapshot data found" }, { status: 404 });
   }
 
-  const results = dates.map((d) => analyzeDate(d, leagueCfg.id)).filter(Boolean);
+  // For dates within the last 2 days that have no results file yet, fetch live
+  // scores from ESPN so the results page updates throughout the day.
+  const resDir = path.join(DATA_DIR, leagueCfg.id, "results");
+  const today     = todayET();
+  const yesterday = yesterdayET();
+  const datesNeedingLive = dates.filter(
+    (d) =>
+      (d === today || d === yesterday) &&
+      !fs.existsSync(path.join(resDir, `${d}.json`))
+  );
+
+  const liveResultsMap = new Map<string, ResultGame[]>();
+  if (datesNeedingLive.length > 0) {
+    await Promise.all(
+      datesNeedingLive.map(async (d) => {
+        const live = await fetchLiveResults(d, leagueCfg.id);
+        if (live.length > 0) liveResultsMap.set(d, live);
+      })
+    );
+  }
+
+  const results = dates
+    .map((d) => analyzeDate(d, leagueCfg.id, liveResultsMap.get(d)))
+    .filter(Boolean);
 
   if (fmt === "text") {
     return new Response(toTextSummary(results as any), {

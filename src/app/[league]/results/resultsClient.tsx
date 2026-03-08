@@ -32,6 +32,8 @@ type DayResult = {
   date: string;
   snapshot_available: boolean;
   results_available: boolean;
+  results_live?: boolean;   // true when scores come from live ESPN fetch (no results file yet)
+  in_progress?: number;     // count of games currently in progress
   total_games: number;
   picks_made: number;
   strong_picks: number;
@@ -171,12 +173,18 @@ function TeamLogo({ id, name, league, size = 20 }: { id: string | null; name: st
   );
 }
 
-function PickResultBadge({ result }: { result: GameRow["pick_result"] }) {
+function PickResultBadge({ result, inProgress }: { result: GameRow["pick_result"]; inProgress?: boolean }) {
   if (result === "NO_PICK") return null;
-  const base = "inline-flex items-center rounded px-1.5 py-0.5 text-xs font-semibold";
+  const base = "inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs font-semibold";
   if (result === "WIN")     return <span className={`${base} bg-emerald-500/20 text-emerald-400`}>WIN</span>;
   if (result === "LOSS")    return <span className={`${base} bg-red-500/20 text-red-400`}>LOSS</span>;
   if (result === "PUSH")    return <span className={`${base} bg-zinc-500/20 text-zinc-400`}>PUSH</span>;
+  if (result === "PENDING" && inProgress) return (
+    <span className={`${base} bg-blue-500/15 text-blue-400`}>
+      <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+      LIVE
+    </span>
+  );
   if (result === "PENDING") return <span className={`${base} bg-amber-500/20 text-amber-400`}>PENDING</span>;
   return null;
 }
@@ -322,7 +330,7 @@ function GameCard({ g, league }: { g: GameRow; league: LeagueId }) {
         </div>
         {/* result badge */}
         <div className="flex flex-col items-end gap-1">
-          <PickResultBadge result={g.pick_result} />
+          <PickResultBadge result={g.pick_result} inProgress={g.home_score !== null && !g.completed} />
           {dc !== null && (
             <span className="text-[10px] text-zinc-500">
               Dir {dc ? <span className="text-emerald-500">✓</span> : <span className="text-red-500">✗</span>}
@@ -352,9 +360,10 @@ function GameCard({ g, league }: { g: GameRow; league: LeagueId }) {
 }
 
 // ---- filter helpers ----
-type Filter = "yesterday" | "7d" | "30d" | "season";
+type Filter = "today" | "yesterday" | "7d" | "30d" | "season";
 
 const FILTER_LABELS: Record<Filter, string> = {
+  today:     "Today",
   yesterday: "Yesterday",
   "7d":      "Last 7 Days",
   "30d":     "Last 30 Days",
@@ -371,6 +380,7 @@ function etDateString(daysAgo = 0): string {
 
 function filterToApiUrl(f: Filter, league: LeagueId): string {
   switch (f) {
+    case "today":     return `/api/${league}/analysis?date=${etDateString(0)}`;
     case "yesterday": return `/api/${league}/analysis?date=${etDateString(1)}`;
     case "7d":        return `/api/${league}/analysis`;                         // default = last 7 available
     case "30d":       return `/api/${league}/analysis?from=${etDateString(30)}&to=${etDateString()}`;
@@ -391,7 +401,15 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
     setErr(null);
     try {
       const res = await fetch(filterToApiUrl(f, league), { cache: "no-store" });
-      if (!res.ok) throw new Error(`API error ${res.status}`);
+      if (!res.ok) {
+        // "Today" with no opener yet is expected — show a friendly message
+        if (f === "today" && res.status === 404) {
+          setData(null);
+          setErr("no-opener-today");
+          return;
+        }
+        throw new Error(`API error ${res.status}`);
+      }
       const json = (await res.json()) as AnalysisResponse;
       setData(json);
       // auto-expand most recent date
@@ -407,7 +425,21 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
 
   useEffect(() => { load(filter); }, [filter]);
 
+  // Auto-refresh every 60 seconds when any day has live results
+  useEffect(() => {
+    const hasLive = data?.by_date.some((d) => d.results_live);
+    if (!hasLive) return;
+    const interval = setInterval(() => load(filter), 60_000);
+    return () => clearInterval(interval);
+  }, [data, filter]);
+
   if (loading) return <div className="text-zinc-400 text-sm py-8">Loading results…</div>;
+  if (err === "no-opener-today") return (
+    <div className="text-zinc-500 text-sm py-8">
+      No opener data for today yet — check back after 11am ET when the odds snapshot runs.{" "}
+      <button onClick={() => load(filter)} className="text-zinc-300 underline">Refresh</button>
+    </div>
+  );
   if (err)     return <div className="text-red-400 text-sm py-8">{err}</div>;
   if (!data)   return null;
 
@@ -436,7 +468,7 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
 
         {/* filter tabs */}
         <div className="flex items-center gap-1 bg-zinc-900 border border-white/10 rounded-lg p-1">
-          {(["yesterday", "7d", "30d", "season"] as Filter[]).map((f) => (
+          {(["today", "yesterday", "7d", "30d", "season"] as Filter[]).map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
@@ -526,7 +558,15 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
                 {day.total_games} games · {day.picks_made} pick{day.picks_made !== 1 ? "s" : ""}
                 {day.strong_picks > 0 && ` (${day.strong_picks} STRONG)`}
               </span>
-              {!day.results_available && <span className="text-xs text-amber-400/70">results pending</span>}
+              {day.results_live && (
+                <span className="inline-flex items-center gap-1 text-xs font-semibold text-blue-400">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                  {day.in_progress ? `${day.in_progress} LIVE` : "LIVE"}
+                </span>
+              )}
+              {!day.results_available && !day.results_live && (
+                <span className="text-xs text-amber-400/70">results pending</span>
+              )}
             </div>
             <div className="flex items-center gap-3">
               {day.picks_made > 0 && (
@@ -609,6 +649,12 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
                               <div className="text-right leading-snug">
                                 <div className={g.winner === "AWAY" ? "text-zinc-100 font-semibold" : "text-zinc-500"}>{g.away_score}</div>
                                 <div className={g.winner === "HOME" ? "text-zinc-100 font-semibold" : "text-zinc-500"}>{g.home_score}</div>
+                                {!g.completed && (
+                                  <div className="flex items-center justify-end gap-1 mt-0.5">
+                                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                                    <span className="text-[10px] text-blue-400 font-normal">live</span>
+                                  </div>
+                                )}
                               </div>
                             ) : "—"}
                           </td>
@@ -628,7 +674,7 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
                             <DirBadge g={g} />
                           </td>
                           <td className="px-3 py-2 align-middle">
-                            <PickResultBadge result={g.pick_result} />
+                            <PickResultBadge result={g.pick_result} inProgress={g.home_score !== null && !g.completed} />
                           </td>
                         </tr>
                       );
