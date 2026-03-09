@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-dartmouth",
         "awayTeamId": "team-princeton",
-        "modelSpread": 23.3,
-        "edge": -6.2,
+        "modelSpread": 23.2,
+        "edge": -6.3,
         "signal": "STRONG"
       }
     },
@@ -69,9 +69,9 @@
       "model": {
         "homeTeamId": "team-marshall",
         "awayTeamId": "team-georgia-southern",
-        "modelSpread": 3,
-        "edge": 5.5,
-        "signal": "STRONG"
+        "modelSpread": 2.3,
+        "edge": 4.8,
+        "signal": "LEAN"
       }
     },
     {
@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-jacksonville",
         "awayTeamId": "team-north-florida",
-        "modelSpread": -13.6,
-        "edge": 5.9,
+        "modelSpread": -13.5,
+        "edge": 6,
         "signal": "STRONG"
       }
     },
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-florida-gulf-coast",
         "awayTeamId": "team-stetson",
-        "modelSpread": -4.6,
-        "edge": -1.1,
+        "modelSpread": -4.5,
+        "edge": -1,
         "signal": "NONE"
       }
     },
