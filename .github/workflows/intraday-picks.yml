@@ -1,0 +1,38 @@
+name: Intraday Pick Snapshot
+
+on:
+  schedule:
+    # Hourly from noon to 8pm ET (17:00–01:00 UTC covers EST/EDT)
+    - cron: '0 17-23 * * *'
+    - cron: '0 0-1 * * *'
+  workflow_dispatch:
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Intraday picks – NCAAM
+        env:
+          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+          LEAGUE: ncaam
+        run: npx tsx src/scripts/snapshotIntradayPicks.ts
+
+      - name: Intraday picks – NCAAW
+        env:
+          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+          LEAGUE: ncaaw
+        run: npx tsx src/scripts/snapshotIntradayPicks.ts

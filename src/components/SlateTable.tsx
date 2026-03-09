@@ -110,6 +110,46 @@ function NeutralBadge() {
   );
 }
 
+// ── Line movement ─────────────────────────────────────────────────────────────
+
+function LineMovement({
+  current,
+  opening,
+  edge,
+}: {
+  current?: number | null;
+  opening?: number | null;
+  edge?: number | null;
+}) {
+  if (current == null || opening == null) return null;
+  const diff = Math.round((current - opening) * 10) / 10;
+  if (diff === 0) return null;
+
+  // Determine if movement is favorable for the model's preferred side.
+  // edge < 0 → model likes HOME → a more negative current spread is favorable
+  // edge > 0 → model likes AWAY → a more positive current spread is favorable
+  const favorable = edge != null && edge !== 0
+    ? (edge < 0 ? diff < 0 : diff > 0)
+    : null;
+
+  const color = favorable === true
+    ? "text-emerald-400"
+    : favorable === false
+    ? "text-red-400"
+    : "text-zinc-500";
+
+  const arrow = diff < 0 ? "▼" : "▲";
+
+  return (
+    <span
+      className={`inline-flex items-center gap-0.5 text-[10px] font-medium ${color}`}
+      title={`Opened ${opening > 0 ? "+" : ""}${opening} → now ${current > 0 ? "+" : ""}${current}`}
+    >
+      {arrow}{Math.abs(diff).toFixed(1)}
+    </span>
+  );
+}
+
 // ── Edge cell ─────────────────────────────────────────────────────────────────
 
 function EdgeCell({ edge }: { edge?: number | null }) {
@@ -549,7 +589,10 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
 
                     {/* Spread */}
                     <td className={`${tdBase} align-middle text-center font-mono text-xs tabular-nums text-zinc-400`}>
-                      {fmtSpread(g.consensus?.spread)}
+                      <div className="flex items-center justify-center gap-1">
+                        {fmtSpread(g.consensus?.spread)}
+                        <LineMovement current={g.consensus?.spread} opening={g.openingSpread} edge={g.model?.edge} />
+                      </div>
                     </td>
 
                     {/* Model */}
@@ -651,7 +694,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
 
                   {/* Mkt / Model / Edge */}
                   <div className="flex gap-4 text-xs text-zinc-600">
-                    <span>Mkt <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span></span>
+                    <span>Mkt <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span> <LineMovement current={g.consensus?.spread} opening={g.openingSpread} edge={g.model?.edge} /></span>
                     <span>Model <span className={`font-mono font-semibold ${(g.model?.modelSpread ?? 0) < 0 ? "text-red-400" : "text-emerald-400"}`}>{fmtSpread(g.model?.modelSpread)}</span></span>
                     <span>Edge <EdgeCell edge={g.model?.edge} /></span>
                   </div>

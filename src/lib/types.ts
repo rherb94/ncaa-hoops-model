@@ -40,6 +40,9 @@ export type SlateGame = {
   awayLogo?: string;
   homeLogo?: string;
 
+  // Opening spread from the opener snapshot (for line movement display)
+  openingSpread?: number;
+
   consensus: ConsensusOdds;
   model: ModelBlock;
 
