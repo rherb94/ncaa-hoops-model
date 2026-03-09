@@ -494,6 +494,54 @@ async function main() {
       "ℹ️ Skipping AWAY split (set TORVIK_AWAY_URL or TORVIK_AWAY_LOCAL to enable)."
     );
   }
+
+  // ---- Dual-write team rating snapshot to DB (best-effort) ----
+  if (process.env.POSTGRES_URL) {
+    try {
+      const { syncTeamRatingsToDb } = await import("@/db/dailySync");
+      const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" })
+        .format(new Date())
+        .slice(0, 10);
+      const teamsRaw = fs.readFileSync(TEAMS_CSV, "utf-8");
+      const updatedTeams = parseCsv(teamsRaw);
+      const iId     = idx(updatedTeams.header, "teamId");
+      const iName   = idx(updatedTeams.header, "teamName") >= 0
+        ? idx(updatedTeams.header, "teamName")
+        : idx(updatedTeams.header, "name");
+      const iConf   = idx(updatedTeams.header, "conference");
+      const iPR     = idx(updatedTeams.header, "powerRating");
+      const iHca    = idx(updatedTeams.header, "hca");
+      const iAdjO   = idx(updatedTeams.header, "adjO");
+      const iAdjD   = idx(updatedTeams.header, "adjD");
+      const iTempo  = idx(updatedTeams.header, "tempo");
+      const iBarthag = idx(updatedTeams.header, "barthag");
+      const iRank   = idx(updatedTeams.header, "torvikRank");
+      const iW      = idx(updatedTeams.header, "wins");
+      const iL      = idx(updatedTeams.header, "losses");
+
+      const snapshots = updatedTeams.rows
+        .filter((r) => r[iId] && r[iName])
+        .map((r) => ({
+          teamId:      r[iId],
+          teamName:    r[iName],
+          conference:  iConf >= 0 ? (r[iConf] || null) : null,
+          wins:        iW >= 0 && r[iW] ? Number(r[iW]) : null,
+          losses:      iL >= 0 && r[iL] ? Number(r[iL]) : null,
+          powerRating: iPR >= 0 && r[iPR] ? Number(r[iPR]) : null,
+          hca:         iHca >= 0 && r[iHca] ? Number(r[iHca]) : null,
+          adjO:        iAdjO >= 0 && r[iAdjO] ? Number(r[iAdjO]) : null,
+          adjD:        iAdjD >= 0 && r[iAdjD] ? Number(r[iAdjD]) : null,
+          tempo:       iTempo >= 0 && r[iTempo] ? Number(r[iTempo]) : null,
+          barthag:     iBarthag >= 0 && r[iBarthag] ? Number(r[iBarthag]) : null,
+          torvikRank:  iRank >= 0 && r[iRank] ? Number(r[iRank]) : null,
+        }));
+
+      await syncTeamRatingsToDb(LEAGUE, today, snapshots);
+      console.log(`✅ DB sync: ${snapshots.length} team rating snapshot(s) for ${today}`);
+    } catch (err) {
+      console.warn("⚠️  DB sync failed (CSV file is unaffected):", err);
+    }
+  }
 }
 
 main().catch((e) => {

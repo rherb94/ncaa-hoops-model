@@ -176,6 +176,28 @@ async function main() {
       console.warn(`   ${g.away_team} @ ${g.home_team} — ${g.status}`);
     }
   }
+
+  // ---- Dual-write to DB (best-effort, non-blocking) ----
+  if (process.env.POSTGRES_URL) {
+    try {
+      const { syncResultsToDb } = await import("@/db/dailySync");
+      const fetchedAt = new Date().toISOString();
+      const resultsForDb = games.map((g) => ({
+        espnEventId:      g.espnEventId,
+        home_espnTeamId:  g.home_espnTeamId,
+        away_espnTeamId:  g.away_espnTeamId,
+        homeScore:        g.homeScore,
+        awayScore:        g.awayScore,
+        actualSpread:     g.actualSpread,
+        winner:           g.winner,
+        completed:        g.completed,
+      }));
+      await syncResultsToDb(LEAGUE, DATE, fetchedAt, resultsForDb);
+      console.log(`✅ DB sync: ${resultsForDb.length} result(s) written`);
+    } catch (err) {
+      console.warn("⚠️  DB sync failed (JSON file is unaffected):", err);
+    }
+  }
 }
 
 main().catch((e) => {

@@ -4,10 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const SUBNAV_LINKS = [
-  { slug: "slate",   label: "Daily Slate" },
-  { slug: "results", label: "Results" },
-  { slug: "teams",   label: "Teams" },
-  { slug: "sheet",   label: "Betting Sheet" },
+  { slug: "slate",     label: "Daily Slate" },
+  { slug: "results",   label: "Results" },
+  { slug: "teams",     label: "Teams" },
+  { slug: "sheet",     label: "Betting Sheet" },
+  { slug: "analytics", label: "Analytics" },
 ];
 
 export default function SubNav({ league }: { league: string }) {

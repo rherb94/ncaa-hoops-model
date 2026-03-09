@@ -259,6 +259,24 @@ async function main() {
   });
 
   console.log(`✅ Wrote closing lines: ${OUT_FILE}`);
+
+  // ---- Dual-write to DB (best-effort, non-blocking) ----
+  if (process.env.POSTGRES_URL) {
+    try {
+      const { syncClosingLinesToDb } = await import("@/db/dailySync");
+      const linesForDb = [...merged.values()].map((g) => ({
+        oddsEventId:  g.oddsEventId,
+        homePoint:    g.homePoint,
+        awayPoint:    g.awayPoint,
+        book:         g.book,
+        snapshotTime: g.snapshotTime,
+      }));
+      await syncClosingLinesToDb(LEAGUE, DATE, linesForDb);
+      console.log(`✅ DB sync: ${linesForDb.length} closing line(s) written`);
+    } catch (err) {
+      console.warn("⚠️  DB sync failed (JSON file is unaffected):", err);
+    }
+  }
 }
 
 main().catch((e) => {

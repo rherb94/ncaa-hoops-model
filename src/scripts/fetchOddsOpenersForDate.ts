@@ -484,6 +484,43 @@ async function main() {
   console.log(`✅ Wrote opening snapshot: ${OUT_FILE}`);
   console.log(`Games: ${outGames.length}`);
 
+  // ---- Dual-write to DB (best-effort, non-blocking) ----
+  if (process.env.POSTGRES_URL) {
+    try {
+      const { syncOpenerToDb } = await import("@/db/dailySync");
+      // Attach team ratings to each game for the model_predictions record
+      const gamesForDb = outGames.map((g) => {
+        const hId = g.model?.homeTeamId;
+        const aId = g.model?.awayTeamId;
+        const hTeam = hId ? teamsMap.get(hId) : undefined;
+        const aTeam = aId ? teamsMap.get(aId) : undefined;
+        return {
+          ...g,
+          model: g.model
+            ? {
+                ...g.model,
+                homeAdjO:        hTeam?.adjO ?? null,
+                homeAdjD:        hTeam?.adjD ?? null,
+                homeTempo:       hTeam?.tempo ?? null,
+                homeBarthag:     hTeam?.barthag ?? null,
+                homePowerRating: hTeam?.powerRating ?? null,
+                homeHca:         hTeam?.hca ?? null,
+                awayAdjO:        aTeam?.adjO ?? null,
+                awayAdjD:        aTeam?.adjD ?? null,
+                awayTempo:       aTeam?.tempo ?? null,
+                awayBarthag:     aTeam?.barthag ?? null,
+                awayPowerRating: aTeam?.powerRating ?? null,
+              }
+            : null,
+        };
+      });
+      await syncOpenerToDb(LEAGUE, DATE, capturedAt, gamesForDb);
+      console.log(`✅ DB sync: ${outGames.length} game(s) written to ${LEAGUE}_games`);
+    } catch (err) {
+      console.warn("⚠️  DB sync failed (JSON file is unaffected):", err);
+    }
+  }
+
   if (misses.length) {
     // de-dupe misses by normalized key (this is what you will pin)
     const uniq = new Map<string, { side: string; name: string; key: string }>();
