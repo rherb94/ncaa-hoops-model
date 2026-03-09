@@ -130,10 +130,12 @@ function PickText({
   signal,
   side,
   line,
+  neutralSite,
 }: {
   signal: SlateGame["model"]["signal"];
   side?: "HOME" | "AWAY" | "NONE";
   line?: number | null;
+  neutralSite?: boolean;
 }) {
   if (signal === "NONE" || !side || side === "NONE")
     return <span className="text-zinc-600 text-xs">—</span>;
@@ -145,11 +147,12 @@ function PickText({
       : null;
 
   const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
-  const sideEmoji = side === "HOME" ? "🏠" : side === "AWAY" ? "✈️" : "";
+  // Emoji after HOME/AWAY, omitted on neutral site games
+  const sideEmoji = neutralSite ? "" : side === "HOME" ? " 🏠" : side === "AWAY" ? " ✈️" : "";
 
   return (
     <span className={`text-xs font-semibold ${color}`}>
-      {signal} {sideEmoji} {side}{lineStr ? ` ${lineStr}` : ""}
+      {signal} {side}{sideEmoji}{lineStr ? ` ${lineStr}` : ""}
     </span>
   );
 }
@@ -496,14 +499,14 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
 
       {/* ── Desktop table ── */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="w-full min-w-[860px] table-fixed text-sm">
+        <table className="w-full min-w-[680px] table-fixed text-sm">
           <colgroup>
-            <col className="w-[88px]" />  {/* Time */}
+            <col className="w-[84px]" />  {/* Time */}
             <col />                        {/* Game — fills remainder */}
-            <col className="w-[100px]" /> {/* Mkt */}
-            <col className="w-[100px]" /> {/* Model */}
-            <col className="w-[92px]" />  {/* Edge */}
-            <col className="w-[220px]" /> {/* Play — fixed */}
+            <col className="w-[88px]" />  {/* Mkt */}
+            <col className="w-[88px]" />  {/* Model */}
+            <col className="w-[80px]" />  {/* Edge */}
+            <col className="w-[175px]" /> {/* Play — fixed */}
           </colgroup>
 
           <thead className="border-b border-white/8">
@@ -567,6 +570,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                         signal={g.model.signal}
                         side={g.recommended?.side}
                         line={g.recommended?.line ?? null}
+                        neutralSite={g.neutralSite}
                       />
                     </td>
                   </tr>
@@ -620,7 +624,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
                     <div className="flex items-center gap-2">
-                      <PickText signal={g.model.signal} side={g.recommended?.side} line={g.recommended?.line ?? null} />
+                      <PickText signal={g.model.signal} side={g.recommended?.side} line={g.recommended?.line ?? null} neutralSite={g.neutralSite} />
                       <span className={`text-[9px] text-zinc-700 transition-transform duration-150 ${open ? "rotate-180" : ""}`}>▼</span>
                     </div>
                   </div>

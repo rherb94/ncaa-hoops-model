@@ -15,7 +15,7 @@ export default function SubNav({ league }: { league: string }) {
   const pathname = usePathname();
 
   return (
-    <nav className="mb-6 flex items-center gap-1 border-b border-white/8 pb-3">
+    <nav className="mb-6 flex items-center gap-1 border-b border-white/8 pb-3 overflow-x-auto">
       {SUBNAV_LINKS.map(({ slug, label }) => {
         const href = `/${league}/${slug}`;
         const active = pathname === href || pathname.startsWith(`${href}/`);
@@ -23,7 +23,7 @@ export default function SubNav({ league }: { league: string }) {
           <Link
             key={slug}
             href={href}
-            className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
               active
                 ? "bg-zinc-800 text-zinc-100"
                 : "text-zinc-500 hover:bg-zinc-800 hover:text-zinc-200"

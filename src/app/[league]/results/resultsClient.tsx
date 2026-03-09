@@ -212,7 +212,7 @@ function NeutralBadge() {
 function SignalBadge({ signal, pickSide }: { signal: string; pickSide: string }) {
   if (signal === "NONE") return <span className="text-zinc-600 text-xs">—</span>;
   const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
-  return <span className={`text-xs font-semibold ${color}`}>{signal} {pickSide}</span>;
+  return <span className={`text-xs font-semibold whitespace-nowrap ${color}`}>{signal} {pickSide}</span>;
 }
 
 function EdgeLabel({ edge }: { edge: number | null }) {
