@@ -1,0 +1,59 @@
+{
+  "date": "2026-03-09",
+  "last_updated": "2026-03-09T17:36:47.481Z",
+  "snapshot_times": [
+    "2026-03-09T17:35:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "205921426ac76d6569ad1b613dc302c1",
+      "home_team": "Troy Trojans",
+      "away_team": "James Madison Dukes",
+      "commence_time": "2026-03-09T18:00:00Z",
+      "homePoint": 7.5,
+      "awayPoint": -7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-09T17:35:37Z"
+    },
+    {
+      "oddsEventId": "d4f62942b294cefa2b5482bdaaa47483",
+      "home_team": "Jacksonville Dolphins",
+      "away_team": "Austin Peay Governors",
+      "commence_time": "2026-03-09T21:00:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-09T17:35:37Z"
+    },
+    {
+      "oddsEventId": "056e61b2c3351c6707649a839e9ee52b",
+      "home_team": "UConn Huskies",
+      "away_team": "Villanova Wildcats",
+      "commence_time": "2026-03-09T23:00:00Z",
+      "homePoint": -28.5,
+      "awayPoint": 28.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-09T17:35:37Z"
+    },
+    {
+      "oddsEventId": "d883c6291fb6648aaf15a27132e6806a",
+      "home_team": "Boise State Broncos",
+      "away_team": "Air Force Falcons",
+      "commence_time": "2026-03-10T00:00:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-09T17:35:37Z"
+    },
+    {
+      "oddsEventId": "83a31c9360f4247ceaefe8a0b9066f87",
+      "home_team": "UNLV Rebels",
+      "away_team": "Colorado St Rams",
+      "commence_time": "2026-03-10T02:30:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-09T17:35:37Z"
+    }
+  ]
+}
