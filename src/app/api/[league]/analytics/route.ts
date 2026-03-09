@@ -9,7 +9,7 @@
 import { NextResponse } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
-import { getLeague } from "@/lib/leagues";
+import { getLeague, LEAGUES } from "@/lib/leagues";
 import { loadTeams } from "@/data/teams";
 import type { LeagueId } from "@/lib/leagues";
 
@@ -17,6 +17,101 @@ const DATA_DIR = path.join(process.cwd(), "src", "data");
 
 // First date with a real automated live snapshot (matches analysis/route.ts)
 const LIVE_FROM = "2026-03-02";
+
+// ---------------------------------------------------------------------------
+// Live results fetching — mirrors analysis/route.ts so analytics stays in sync
+// with today's/yesterday's games even before the results file is written.
+// ---------------------------------------------------------------------------
+
+type LiveResult = {
+  espnEventId: string;
+  home_espnTeamId: string | null;
+  away_espnTeamId: string | null;
+  completed: boolean;
+  homeScore: number | null;
+  awayScore: number | null;
+  actualSpread: number | null;
+  winner: "HOME" | "AWAY" | "TIE" | null;
+};
+
+async function fetchLiveResults(date: string, leagueId: string): Promise<LiveResult[]> {
+  const league = LEAGUES[leagueId as LeagueId];
+  if (!league) return [];
+
+  const espnDateStr     = date.replace(/-/g, "");
+  const nextDay         = new Date(`${date}T12:00:00Z`);
+  nextDay.setUTCDate(nextDay.getUTCDate() + 1);
+  const espnNextStr     = nextDay.toISOString().slice(0, 10).replace(/-/g, "");
+  const dayStartUtc     = new Date(`${date}T05:00:00Z`);
+  const dayEndUtc       = new Date(dayStartUtc.getTime() + 24 * 60 * 60 * 1000);
+
+  const espnUrl = (d: string) =>
+    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `/${league.espnSport}/scoreboard?dates=${d}&groups=${league.espnGroupId}&limit=200`;
+
+  async function fetchEvents(d: string) {
+    try {
+      const res = await fetch(espnUrl(d), {
+        headers: { "user-agent": "ncaam-model/1.0 (personal project)" },
+        next: { revalidate: 60 },
+      });
+      if (!res.ok) return [];
+      const json = (await res.json()) as { events?: { id: string; date: string; status: { type: { completed: boolean } }; competitions: { competitors: { id: string; homeAway: string; score?: string; team: { id: string } }[] }[] }[] };
+      return json.events ?? [];
+    } catch {
+      return [];
+    }
+  }
+
+  const [eventsToday, eventsNext] = await Promise.all([
+    fetchEvents(espnDateStr),
+    fetchEvents(espnNextStr),
+  ]);
+
+  const eventMap = new Map<string, typeof eventsToday[number]>();
+  for (const e of [...eventsNext, ...eventsToday]) eventMap.set(e.id, e);
+
+  return [...eventMap.values()]
+    .filter((e) => {
+      const ct = new Date(e.date);
+      return ct >= dayStartUtc && ct < dayEndUtc;
+    })
+    .map((e) => {
+      const comp      = e.competitions?.[0];
+      const home      = comp?.competitors?.find((c) => c.homeAway === "home");
+      const away      = comp?.competitors?.find((c) => c.homeAway === "away");
+      const homeScore = home?.score != null ? Number(home.score) : null;
+      const awayScore = away?.score != null ? Number(away.score) : null;
+      const completed = e.status?.type?.completed ?? false;
+      const actualSpread =
+        completed && homeScore != null && awayScore != null
+          ? -(homeScore - awayScore)
+          : null;
+      const winner: "HOME" | "AWAY" | "TIE" | null =
+        completed && homeScore != null && awayScore != null
+          ? homeScore > awayScore ? "HOME" : awayScore > homeScore ? "AWAY" : "TIE"
+          : null;
+      return {
+        espnEventId:      e.id,
+        home_espnTeamId:  home?.team.id ?? null,
+        away_espnTeamId:  away?.team.id ?? null,
+        completed,
+        homeScore,
+        awayScore,
+        actualSpread,
+        winner,
+      };
+    });
+}
+
+function todayET(): string {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" })
+    .format(new Date()).slice(0, 10);
+}
+function yesterdayET(): string {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" })
+    .format(new Date(Date.now() - 24 * 60 * 60 * 1000)).slice(0, 10);
+}
 
 // ---- types ----------------------------------------------------------------
 
@@ -26,6 +121,7 @@ type SnapshotGame = {
   away_team: string;
   home_espnTeamId?: string | null;
   away_espnTeamId?: string | null;
+  neutralSite?: boolean;
   opening: { homePoint: number; awayPoint: number } | null;
   model: {
     homeTeamId: string | null;
@@ -37,6 +133,7 @@ type SnapshotGame = {
 };
 
 type ResultGame = {
+  espnEventId?: string;
   home_espnTeamId: string | null;
   away_espnTeamId: string | null;
   completed: boolean;
@@ -161,9 +258,24 @@ type ConferenceAcc = {
   model_error_count: number;
 };
 
+type SideAcc = {
+  picks: number;
+  wins: number;
+  losses: number;
+  pushes: number;
+  clv_sum: number;
+  clv_count: number;
+  edge_sum: number;
+  edge_count: number;
+};
+
 // ---- main computation ------------------------------------------------------
 
-function computeAnalytics(dates: string[], leagueId: string) {
+function computeAnalytics(
+  dates: string[],
+  leagueId: string,
+  liveResultsMap: Map<string, LiveResult[]> = new Map(),
+) {
   const snapDir  = path.join(DATA_DIR, leagueId, "odds_opening");
   const resDir   = path.join(DATA_DIR, leagueId, "results");
   const closeDir = path.join(DATA_DIR, leagueId, "closing_lines");
@@ -179,6 +291,16 @@ function computeAnalytics(dates: string[], leagueId: string) {
   const teamAccs      = new Map<string, TeamAcc>();
   const confAccs      = new Map<string, ConferenceAcc>();
 
+  const emptySideAcc = (): SideAcc => ({
+    picks: 0, wins: 0, losses: 0, pushes: 0,
+    clv_sum: 0, clv_count: 0, edge_sum: 0, edge_count: 0,
+  });
+  const sideAccs: Record<"home" | "away" | "neutral", SideAcc> = {
+    home:    emptySideAcc(),
+    away:    emptySideAcc(),
+    neutral: emptySideAcc(),
+  };
+
   for (const date of dates) {
     const snap = loadJson<{ games: SnapshotGame[] }>(
       path.join(snapDir, `${date}.json`)
@@ -192,9 +314,12 @@ function computeAnalytics(dates: string[], leagueId: string) {
       path.join(closeDir, `${date}.json`)
     );
 
+    // Use file results if present, otherwise fall back to live ESPN results
+    const effectiveResults: ResultGame[] = resFile?.games ?? liveResultsMap.get(date) ?? [];
+
     // Index results by ESPN team ID pair
     const resultByTeams = new Map<string, ResultGame>();
-    for (const g of resFile?.games ?? []) {
+    for (const g of effectiveResults) {
       if (g.home_espnTeamId && g.away_espnTeamId) {
         resultByTeams.set(`${g.home_espnTeamId}|${g.away_espnTeamId}`, g);
       }
@@ -254,6 +379,22 @@ function computeAnalytics(dates: string[], leagueId: string) {
         }
         if (clv !== null)  { b.clv_sum  += clv;  b.clv_count++; }
         if (edge !== null) { b.edge_sum += Math.abs(edge); b.edge_count++; }
+      }
+
+      // ---- by side (home / away / neutral) --------------------------------
+      if (hasPick && pickSide) {
+        const isNeutral = sg.neutralSite ?? false;
+        const sideKey: "home" | "away" | "neutral" =
+          isNeutral ? "neutral" : pickSide === "HOME" ? "home" : "away";
+        const s = sideAccs[sideKey];
+        s.picks++;
+        if (isDecided) {
+          if (pickResult === "WIN")  s.wins++;
+          if (pickResult === "LOSS") s.losses++;
+          if (pickResult === "PUSH") s.pushes++;
+        }
+        if (clv !== null)  { s.clv_sum  += clv;  s.clv_count++; }
+        if (edge !== null) { s.edge_sum += Math.abs(edge); s.edge_count++; }
       }
 
       // ---- by team -------------------------------------------------------
@@ -381,7 +522,29 @@ function computeAnalytics(dates: string[], leagueId: string) {
         ? Math.round((c.model_error_sum / c.model_error_count) * 10) / 10 : null,
     }));
 
-  return { by_spread, by_team, by_conference };
+  // ---- finalise by_side --------------------------------------------------
+  const SIDE_META: { key: "home" | "away" | "neutral"; label: string }[] = [
+    { key: "home",    label: "Picking Home" },
+    { key: "away",    label: "Picking Away" },
+    { key: "neutral", label: "Neutral Site" },
+  ];
+  const by_side = SIDE_META.map(({ key, label }) => {
+    const s = sideAccs[key];
+    const decided = s.wins + s.losses;
+    return {
+      key,
+      label,
+      picks:    s.picks,
+      wins:     s.wins,
+      losses:   s.losses,
+      pushes:   s.pushes,
+      win_pct:  decided > 0 ? Math.round((s.wins / decided) * 100) : null,
+      avg_edge: s.edge_count > 0 ? Math.round((s.edge_sum / s.edge_count) * 10) / 10 : null,
+      avg_clv:  s.clv_count  > 0 ? Math.round((s.clv_sum  / s.clv_count)  * 10) / 10 : null,
+    };
+  });
+
+  return { by_spread, by_side, by_team, by_conference };
 }
 
 // ---- route handler ---------------------------------------------------------
@@ -420,7 +583,28 @@ export async function GET(
     return NextResponse.json({ error: "No data found" }, { status: 404 });
   }
 
-  const analytics = computeAnalytics(dates, leagueCfg.id);
+  // For today/yesterday dates with no results file yet, fetch live ESPN scores
+  // so analytics matches the results page (which also uses live data intraday).
+  const resDir = path.join(DATA_DIR, leagueCfg.id, "results");
+  const today     = todayET();
+  const yesterday = yesterdayET();
+  const datesNeedingLive = dates.filter(
+    (d) =>
+      (d === today || d === yesterday) &&
+      !fs.existsSync(path.join(resDir, `${d}.json`))
+  );
+
+  const liveResultsMap = new Map<string, LiveResult[]>();
+  if (datesNeedingLive.length > 0) {
+    await Promise.all(
+      datesNeedingLive.map(async (d) => {
+        const live = await fetchLiveResults(d, leagueCfg.id);
+        if (live.length > 0) liveResultsMap.set(d, live);
+      })
+    );
+  }
+
+  const analytics = computeAnalytics(dates, leagueCfg.id, liveResultsMap);
 
   return NextResponse.json({
     league: leagueCfg.id,

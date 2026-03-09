@@ -41,12 +41,25 @@ type ConfRow = {
   avg_model_error: number | null;
 };
 
+type SideRow = {
+  key: "home" | "away" | "neutral";
+  label: string;
+  picks: number;
+  wins: number;
+  losses: number;
+  pushes: number;
+  win_pct: number | null;
+  avg_edge: number | null;
+  avg_clv: number | null;
+};
+
 type AnalyticsResponse = {
   league: string;
   dates_analyzed: number;
   date_range: { from: string; to: string };
   backfilled_included: boolean;
   by_spread: SpreadRow[];
+  by_side: SideRow[];
   by_team: TeamRow[];
   by_conference: ConfRow[];
 };
@@ -401,6 +414,60 @@ function ConferenceTable({ rows }: { rows: ConfRow[] }) {
   );
 }
 
+// ---- Home / Away / Neutral Split Table --------------------------------------
+
+function HomeAwaySplitTable({ rows }: { rows: SideRow[] }) {
+  const hasData = rows.some((r) => r.picks > 0);
+  if (!hasData) return null;
+
+  return (
+    <TableSection title="Home / Away Split" subtitle="ATS record by pick direction">
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs">
+          <thead>
+            <tr className="border-b border-white/10 text-zinc-500">
+              <th className="px-4 py-2 text-left  font-medium">Direction</th>
+              <th className="px-3 py-2 text-right font-medium">Picks</th>
+              <th className="px-3 py-2 text-right font-medium">W-L</th>
+              <th className="px-3 py-2 text-right font-medium">Win%</th>
+              <th className="px-3 py-2 text-right font-medium">Avg Edge</th>
+              <th className="px-3 py-2 text-right font-medium">Avg CLV</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => {
+              const decided = r.wins + r.losses;
+              const iconMap: Record<string, string> = {
+                home:    "🏠",
+                away:    "✈️",
+                neutral: "⚪",
+              };
+              return (
+                <tr key={r.key} className="border-b border-white/5 bg-zinc-900/30 hover:bg-zinc-900/60">
+                  <td className="px-4 py-2.5">
+                    <span className="text-zinc-300 font-medium">
+                      {iconMap[r.key]} {r.label}
+                    </span>
+                  </td>
+                  <td className="px-3 py-2.5 text-right text-zinc-400">
+                    {r.picks > 0 ? r.picks : <span className="text-zinc-700">—</span>}
+                  </td>
+                  <td className="px-3 py-2.5 text-right font-mono text-zinc-400">
+                    {decided > 0 ? `${r.wins}-${r.losses}` : <span className="text-zinc-700">—</span>}
+                  </td>
+                  <td className="px-3 py-2.5 text-right"><WinPctCell pct={r.win_pct} /></td>
+                  <td className="px-3 py-2.5 text-right"><EdgeCell v={r.avg_edge} /></td>
+                  <td className="px-3 py-2.5 text-right"><ClvCell v={r.avg_clv} /></td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </TableSection>
+  );
+}
+
 // ---- Main component ---------------------------------------------------------
 
 export default function AnalyticsClient({ league }: { league: LeagueId }) {
@@ -437,7 +504,7 @@ export default function AnalyticsClient({ league }: { league: LeagueId }) {
   if (err)     return <div className="text-zinc-500 text-sm py-8">{err}</div>;
   if (!data)   return null;
 
-  const { by_spread, by_team, by_conference, dates_analyzed, date_range } = data;
+  const { by_spread, by_side, by_team, by_conference, dates_analyzed, date_range } = data;
 
   // Find any alarming patterns to surface at the top
   const alarmTeams = by_team.filter((t) => t.pick_for >= ALARM_THRESHOLD);
@@ -512,6 +579,9 @@ export default function AnalyticsClient({ league }: { league: LeagueId }) {
 
       {/* spread bias */}
       <SpreadBiasTable rows={by_spread} />
+
+      {/* home / away split */}
+      <HomeAwaySplitTable rows={by_side ?? []} />
 
       {/* team frequency */}
       <TeamFrequencyTable rows={by_team} />
