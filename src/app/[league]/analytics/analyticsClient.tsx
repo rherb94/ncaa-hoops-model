@@ -22,6 +22,7 @@ type TeamRow = {
   team_name: string;
   torvik_id: string | null;
   conference: string | null;
+  logo?: string | null;
   appearances: number;
   pick_for: number;
   wins: number;
@@ -240,7 +241,7 @@ function SpreadBiasTable({ rows }: { rows: SpreadRow[] }) {
 
 // ---- Team Frequency Table ---------------------------------------------------
 
-const ALARM_THRESHOLD = 5; // picks threshold to flag as potential overvaluation
+const ALARM_THRESHOLD = 3; // picks threshold to flag as potential overvaluation
 
 function TeamFrequencyTable({ rows }: { rows: TeamRow[] }) {
   const [sortKey, setSortKey]   = useState<TeamSortKey>("pick_for");
@@ -310,20 +311,28 @@ function TeamFrequencyTable({ rows }: { rows: TeamRow[] }) {
               return (
                 <tr key={t.torvik_id ?? t.team_name} className="border-b border-white/5 bg-zinc-900/30 hover:bg-zinc-900/60">
                   <td className="px-4 py-2.5">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-zinc-200 font-medium">{t.team_name}</span>
-                      {isAlarm && (
-                        <span
-                          title={`${t.pick_for} picks — potential overvaluation`}
-                          className="text-amber-400 text-[11px]"
-                        >
-                          ⚑
-                        </span>
-                      )}
+                    <div className="flex items-center gap-2">
+                      {t.logo
+                        ? <img src={t.logo} alt="" className="h-6 w-6 shrink-0 rounded-sm object-contain opacity-90" loading="lazy" />
+                        : <div className="h-6 w-6 shrink-0" />
+                      }
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-zinc-200 font-medium">{t.team_name}</span>
+                          {isAlarm && (
+                            <span
+                              title={`${t.pick_for} picks — potential overvaluation`}
+                              className="text-amber-400 text-[11px]"
+                            >
+                              ⚑
+                            </span>
+                          )}
+                        </div>
+                        {t.conference && (
+                          <div className="text-zinc-600 text-[11px]">{t.conference}</div>
+                        )}
+                      </div>
                     </div>
-                    {t.conference && (
-                      <div className="text-zinc-600 text-[11px]">{t.conference}</div>
-                    )}
                   </td>
                   <td className="px-3 py-2.5 text-right text-zinc-500">{t.appearances}</td>
                   <td className="px-3 py-2.5 text-right">

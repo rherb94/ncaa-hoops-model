@@ -145,10 +145,11 @@ function PickText({
       : null;
 
   const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
+  const sideEmoji = side === "HOME" ? "🏠" : side === "AWAY" ? "✈️" : "";
 
   return (
     <span className={`text-xs font-semibold ${color}`}>
-      {signal} {side}{lineStr ? ` ${lineStr}` : ""}
+      {signal} {sideEmoji} {side}{lineStr ? ` ${lineStr}` : ""}
     </span>
   );
 }

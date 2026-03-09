@@ -490,10 +490,12 @@ function computeAnalytics(
     .sort((a, b) => b.pick_for - a.pick_for || b.appearances - a.appearances)
     .map((t) => {
       const decided = t.wins + t.losses;
+      const teamData = t.torvik_id ? teamsMap.get(t.torvik_id) : undefined;
       return {
         team_name:    t.team_name,
         torvik_id:    t.torvik_id,
         conference:   t.torvik_id ? confByTorvikId.get(t.torvik_id) ?? null : null,
+        logo:         teamData?.logo ?? null,
         appearances:  t.appearances,
         pick_for:     t.pick_for,
         wins:         t.wins,
