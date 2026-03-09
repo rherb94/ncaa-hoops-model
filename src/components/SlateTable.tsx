@@ -438,7 +438,7 @@ type ModelRecord = { wins: number; losses: number };
 
 async function fetchModelRecords(league: LeagueId): Promise<Record<string, ModelRecord>> {
   try {
-    const res = await fetch(`/api/${league}/analysis?range=season&fmt=json`, { cache: "no-store" });
+    const res = await fetch(`/api/${league}/analysis?all=1`, { cache: "no-store" });
     if (!res.ok) return {};
     const json = await res.json();
     const map: Record<string, ModelRecord> = {};
