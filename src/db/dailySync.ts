@@ -7,7 +7,7 @@
 
 import { drizzle } from "drizzle-orm/vercel-postgres";
 import { sql as pgSql } from "@vercel/postgres";
-import { eq, and } from "drizzle-orm";
+import { eq, and, inArray } from "drizzle-orm";
 import { schemaByLeague } from "./schema";
 
 function getDb() {
@@ -71,8 +71,18 @@ export async function syncOpenerToDb(
 
     let gameId: number;
 
+    const openingHomePoint = sg.opening?.homePoint ?? null;
+    const openingBook      = sg.opening?.book ?? null;
+
     if (existing.length > 0) {
       gameId = existing[0].id;
+      // Backfill opening line if not set yet
+      if (openingHomePoint !== null) {
+        await db
+          .update(tables.games)
+          .set({ openingHomePoint, openingBook })
+          .where(eq(tables.games.id, gameId));
+      }
     } else {
       const ins = await db
         .insert(tables.games)
@@ -90,6 +100,8 @@ export async function syncOpenerToDb(
           awayConference: sg.awayConference ?? null,
           neutralSite:    sg.neutralSite ?? false,
           backfilled:     isBackfilled,
+          openingHomePoint,
+          openingBook,
         })
         .returning({ id: tables.games.id });
       gameId = ins[0].id;
@@ -275,7 +287,7 @@ export async function syncResultsToDb(
         .where(eq(tables.gameResults.id, existResult[0].id));
     }
 
-    // Upsert pick evaluation
+    // Upsert pick evaluations — evaluate ALL LEAN/STRONG predictions per game
     if (r.completed) {
       const predRows = await db
         .select({
@@ -285,67 +297,70 @@ export async function syncResultsToDb(
           openingHomePoint: tables.modelPredictions.openingHomePoint,
         })
         .from(tables.modelPredictions)
-        .where(eq(tables.modelPredictions.gameId, gameId))
+        .where(
+          and(
+            eq(tables.modelPredictions.gameId, gameId),
+            inArray(tables.modelPredictions.signal, ["LEAN", "STRONG"]),
+          )
+        );
+
+      // Get closing line once for all predictions
+      const closeRows = await db
+        .select({ homePoint: tables.closingLines.homePoint })
+        .from(tables.closingLines)
+        .where(eq(tables.closingLines.gameId, gameId))
         .limit(1);
+      const closePt = closeRows[0]?.homePoint ?? null;
 
-      if (predRows.length > 0) {
-        const pred = predRows[0];
-        const signal = pred.signal ?? "NONE";
+      for (const pred of predRows) {
         const edge   = pred.edge ?? null;
+        if (edge === null) continue;
 
-        if (signal !== "NONE" && edge !== null) {
-          const openPt = pred.openingHomePoint ?? null;
-          const actual = r.actualSpread ?? null;
+        const openPt = pred.openingHomePoint ?? null;
+        const actual = r.actualSpread ?? null;
 
-          // Determine pick result
-          let pickResult: string = "PENDING";
-          if (actual !== null && openPt !== null) {
-            const pickSide = edge < 0 ? "HOME" : "AWAY";
-            const margin = actual - openPt;
-            if (Math.abs(margin) < 0.01) {
-              pickResult = "PUSH";
-            } else {
-              const homeCovered = margin < 0;
-              pickResult = pickSide === "HOME"
-                ? (homeCovered ? "WIN" : "LOSS")
-                : (homeCovered ? "LOSS" : "WIN");
-            }
-          }
-
-          // Compute CLV if closing line exists
-          const closeRows = await db
-            .select({ homePoint: tables.closingLines.homePoint })
-            .from(tables.closingLines)
-            .where(eq(tables.closingLines.gameId, gameId))
-            .limit(1);
-
-          let clv: number | null = null;
-          const closePt = closeRows[0]?.homePoint ?? null;
-          if (openPt !== null && closePt !== null) {
-            const pickSide = edge < 0 ? "HOME" : "AWAY";
-            const raw = openPt - closePt;
-            clv = pickSide === "HOME" ? raw : -raw;
-          }
-
-          const existEval = await db
-            .select({ id: tables.pickEvaluations.id })
-            .from(tables.pickEvaluations)
-            .where(eq(tables.pickEvaluations.gameId, gameId))
-            .limit(1);
-
-          if (existEval.length === 0) {
-            await db.insert(tables.pickEvaluations).values({
-              gameId,
-              predictionId:  pred.id,
-              pickResult,
-              clv,
-            });
+        // Determine pick result
+        let pickResult: string = "PENDING";
+        if (actual !== null && openPt !== null) {
+          const pickSide = edge < 0 ? "HOME" : "AWAY";
+          const margin = actual - openPt;
+          if (Math.abs(margin) < 0.01) {
+            pickResult = "PUSH";
           } else {
-            await db
-              .update(tables.pickEvaluations)
-              .set({ pickResult, clv })
-              .where(eq(tables.pickEvaluations.id, existEval[0].id));
+            const homeCovered = margin < 0;
+            pickResult = pickSide === "HOME"
+              ? (homeCovered ? "WIN" : "LOSS")
+              : (homeCovered ? "LOSS" : "WIN");
           }
+        }
+
+        // Compute CLV
+        let clv: number | null = null;
+        if (openPt !== null && closePt !== null) {
+          const pickSide = edge < 0 ? "HOME" : "AWAY";
+          const raw = openPt - closePt;
+          clv = pickSide === "HOME" ? raw : -raw;
+        }
+
+        // Upsert by predictionId (not gameId)
+        const existEval = await db
+          .select({ id: tables.pickEvaluations.id })
+          .from(tables.pickEvaluations)
+          .where(eq(tables.pickEvaluations.predictionId, pred.id))
+          .limit(1);
+
+        if (existEval.length === 0) {
+          await db.insert(tables.pickEvaluations).values({
+            gameId,
+            predictionId:  pred.id,
+            pickResult,
+            clv,
+          });
+        } else {
+          await db
+            .update(tables.pickEvaluations)
+            .set({ pickResult, clv })
+            .where(eq(tables.pickEvaluations.id, existEval[0].id));
         }
       }
     }

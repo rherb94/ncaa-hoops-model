@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, useMemo, useState } from "react";
+import React, { Fragment, useEffect, useMemo, useState } from "react";
 import type { SlateGame } from "@/lib/types";
 import type { LeagueId } from "@/lib/leagues";
 import type { L5Record } from "@/app/api/[league]/team-l5/route";
@@ -106,6 +106,46 @@ function NeutralBadge() {
       className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-blue-500/15 text-blue-400 border border-blue-500/20"
     >
       ⚬ NEUTRAL
+    </span>
+  );
+}
+
+// ── Line movement ─────────────────────────────────────────────────────────────
+
+function LineMovement({
+  current,
+  opening,
+  edge,
+}: {
+  current?: number | null;
+  opening?: number | null;
+  edge?: number | null;
+}) {
+  if (current == null || opening == null) return null;
+  const diff = Math.round((current - opening) * 10) / 10;
+  if (diff === 0) return null;
+
+  // Determine if movement is favorable for the model's preferred side.
+  // edge < 0 → model likes HOME → a more negative current spread is favorable
+  // edge > 0 → model likes AWAY → a more positive current spread is favorable
+  const favorable = edge != null && edge !== 0
+    ? (edge < 0 ? diff < 0 : diff > 0)
+    : null;
+
+  const color = favorable === true
+    ? "text-emerald-400"
+    : favorable === false
+    ? "text-red-400"
+    : "text-zinc-500";
+
+  const arrow = diff < 0 ? "▼" : "▲";
+
+  return (
+    <span
+      className={`inline-flex items-center gap-0.5 text-[10px] font-medium ${color}`}
+      title={`Opened ${opening > 0 ? "+" : ""}${opening} → now ${current > 0 ? "+" : ""}${current}`}
+    >
+      {arrow}{Math.abs(diff).toFixed(1)}
     </span>
   );
 }
@@ -288,7 +328,7 @@ function L5Chips({ record }: { record: L5Record }) {
   );
 }
 
-function TeamCard({ title, logo, t, l5 }: { title: string; logo?: string | null; t?: TeamStats; l5?: L5Record }) {
+function TeamCard({ title, logo, t, l5, modelRecord }: { title: string; logo?: string | null; t?: TeamStats; l5?: L5Record; modelRecord?: ModelRecord }) {
   const conf = t?.conference ?? null;
   const record = t?.record ?? null;
   const adjMargin = t?.adjOff != null && t?.adjDef != null ? Number(t.adjOff) - Number(t.adjDef) : null;
@@ -339,6 +379,20 @@ function TeamCard({ title, logo, t, l5 }: { title: string; logo?: string | null;
             rank={t.ranks?.tempo ? `#${fmtInt(t.ranks.tempo)}` : undefined}
           />
           {l5 && <L5Chips record={l5} />}
+          {modelRecord && (modelRecord.wins + modelRecord.losses) > 0 && (
+            <div className="col-span-2 mt-1.5 pt-1.5 border-t border-white/5">
+              <span className="text-[11px] text-zinc-500">Model ATS </span>
+              <span className={`text-[11px] font-semibold font-mono ${
+                modelRecord.wins > modelRecord.losses ? "text-emerald-400" :
+                modelRecord.wins < modelRecord.losses ? "text-red-400" : "text-zinc-400"
+              }`}>
+                {modelRecord.wins}-{modelRecord.losses}
+              </span>
+              <span className="text-[11px] text-zinc-600 ml-1">
+                ({Math.round((modelRecord.wins / (modelRecord.wins + modelRecord.losses)) * 100)}%)
+              </span>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -378,6 +432,32 @@ async function fetchTeamL5(teamId: string, league: LeagueId): Promise<{ id: stri
   return { id: teamId, record };
 }
 
+// ── Model pick record per team ────────────────────────────────────────────────
+
+type ModelRecord = { wins: number; losses: number };
+
+async function fetchModelRecords(league: LeagueId): Promise<Record<string, ModelRecord>> {
+  try {
+    const res = await fetch(`/api/${league}/analysis?range=season&fmt=json`, { cache: "no-store" });
+    if (!res.ok) return {};
+    const json = await res.json();
+    const map: Record<string, ModelRecord> = {};
+    for (const day of json.by_date ?? []) {
+      for (const g of day.games ?? []) {
+        if (g.signal === "NONE") continue;
+        if (g.pick_result !== "WIN" && g.pick_result !== "LOSS") continue;
+        const team = g.pick_side === "HOME" ? g.home_team : g.away_team;
+        if (!map[team]) map[team] = { wins: 0, losses: 0 };
+        if (g.pick_result === "WIN") map[team].wins++;
+        else map[team].losses++;
+      }
+    }
+    return map;
+  } catch {
+    return {};
+  }
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 type FilterMode = "ALL" | "PICKS" | "STRONG";
@@ -386,8 +466,14 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
   const [openGameId, setOpenGameId] = useState<string | null>(null);
   const [stats, setStats] = useState<Record<string, TeamStats>>({});
   const [l5, setL5] = useState<Record<string, L5Record>>({});
+  const [modelRec, setModelRec] = useState<Record<string, ModelRecord>>({});
   const [err, setErr] = useState<string | null>(null);
   const [filter, setFilter] = useState<FilterMode>("ALL");
+
+  // Fetch season model records once on mount
+  useEffect(() => {
+    fetchModelRecords(league).then(setModelRec);
+  }, [league]);
 
   const now = Date.now();
 
@@ -549,7 +635,10 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
 
                     {/* Spread */}
                     <td className={`${tdBase} align-middle text-center font-mono text-xs tabular-nums text-zinc-400`}>
-                      {fmtSpread(g.consensus?.spread)}
+                      <div className="flex items-center justify-center gap-1">
+                        {fmtSpread(g.consensus?.spread)}
+                        <LineMovement current={g.consensus?.spread} opening={g.openingSpread} edge={g.model?.edge} />
+                      </div>
                     </td>
 
                     {/* Model */}
@@ -581,8 +670,8 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                       <td colSpan={6} className="px-4 py-4 bg-black/20 border-b border-white/[0.05]">
                         <GameInfoBar g={g} />
                         <div className="grid gap-3 sm:grid-cols-2">
-                          <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} />
-                          <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} />
+                          <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} modelRecord={modelRec[g.awayTeam]} />
+                          <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} modelRecord={modelRec[g.homeTeam]} />
                         </div>
                       </td>
                     </tr>
@@ -651,7 +740,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
 
                   {/* Mkt / Model / Edge */}
                   <div className="flex gap-4 text-xs text-zinc-600">
-                    <span>Mkt <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span></span>
+                    <span>Mkt <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span> <LineMovement current={g.consensus?.spread} opening={g.openingSpread} edge={g.model?.edge} /></span>
                     <span>Model <span className={`font-mono font-semibold ${(g.model?.modelSpread ?? 0) < 0 ? "text-red-400" : "text-emerald-400"}`}>{fmtSpread(g.model?.modelSpread)}</span></span>
                     <span>Edge <EdgeCell edge={g.model?.edge} /></span>
                   </div>
@@ -661,8 +750,8 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                   <div className="px-4 py-4 bg-black/20 border-t border-white/[0.06]">
                     <GameInfoBar g={g} />
                     <div className="grid gap-3">
-                      <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} />
-                      <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} />
+                      <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} modelRecord={modelRec[g.awayTeam]} />
+                      <TeamCard title={g.homeTeam} logo={g.homeLogo} t={stats[g.homeTeamId]} l5={l5[g.homeTeamId]} modelRecord={modelRec[g.homeTeam]} />
                     </div>
                   </div>
                 )}

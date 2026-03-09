@@ -47,7 +47,6 @@ function pickConsensusFromBooks(books: any): Consensus {
     "betmgm",
     "caesars",
     "pointsbet",
-    "betrivers", // NCAAW lines often only appear on betrivers
   ] as const;
 
   for (const k of order) {
@@ -92,16 +91,22 @@ function parseDebug(reqUrl: URL) {
   return reqUrl.searchParams.get("debug") === "1";
 }
 
-// Read neutral site flags from today's opener snapshot (written by daily workflow at 8am ET).
-// Falls back to empty map if snapshot hasn't been written yet — caller should follow up with
-// a live ESPN fetch in that case.
-function loadNeutralSiteByEventId(date: string, leagueId: string): Map<string, boolean> {
+type OpenerInfo = { neutralSite: boolean; openingSpread?: number };
+
+// Read neutral site flags + opening spreads from today's opener snapshot.
+// Falls back to empty map if snapshot hasn't been written yet.
+function loadOpenerInfoByEventId(date: string, leagueId: string): Map<string, OpenerInfo> {
   const p = path.join(process.cwd(), "src", "data", leagueId, "odds_opening", `${date}.json`);
   try {
     const snap = JSON.parse(fs.readFileSync(p, "utf-8"));
-    const m = new Map<string, boolean>();
+    const m = new Map<string, OpenerInfo>();
     for (const g of snap.games ?? []) {
-      if (g.oddsEventId) m.set(g.oddsEventId, g.neutralSite ?? false);
+      if (g.oddsEventId) {
+        m.set(g.oddsEventId, {
+          neutralSite: g.neutralSite ?? false,
+          openingSpread: g.opening?.homePoint ?? undefined,
+        });
+      }
     }
     return m;
   } catch {
@@ -171,11 +176,10 @@ export async function GET(
   const teams = loadTeams(league.id);
   const getTeam = (teamId: string) => teams.get(teamId);
 
-  // Neutral site detection: prefer opener snapshot (committed at 8am ET).
-  // If opener not yet written, fall back to a live ESPN scoreboard fetch so
-  // neutral sites are correctly detected around the clock.
-  const neutralSiteByEventId = loadNeutralSiteByEventId(date, league.id);
-  const openerMissing = neutralSiteByEventId.size === 0;
+  // Opener snapshot info (neutral sites + opening spreads for line movement).
+  // If opener not yet written, fall back to a live ESPN scoreboard fetch for neutral sites.
+  const openerInfoByEventId = loadOpenerInfoByEventId(date, league.id);
+  const openerMissing = openerInfoByEventId.size === 0;
   const espnNeutralByTeamPair = openerMissing
     ? await fetchEspnNeutralByTeamPair(date, league)
     : new Map<string, boolean>();
@@ -202,12 +206,14 @@ export async function GET(
     const away = getTeam(g.awayTeamId);
     const home = getTeam(g.homeTeamId);
 
-    // Look up neutral site: opener snapshot first, then live ESPN fallback.
+    // Look up opener info: neutral site + opening spread
+    const openerInfo = openerInfoByEventId.get(g.gameId);
     const neutralSite = openerMissing
       ? (home?.espnTeamId && away?.espnTeamId
           ? (espnNeutralByTeamPair.get(`${home.espnTeamId}|${away.espnTeamId}`) ?? false)
           : false)
-      : (neutralSiteByEventId.get(g.gameId) ?? false);
+      : (openerInfo?.neutralSite ?? false);
+    const openingSpread = openerInfo?.openingSpread;
 
     const awayPR = away?.powerRating ?? 0;
     const homePR = home?.powerRating ?? 0;
@@ -270,6 +276,8 @@ export async function GET(
 
       awayLogo: away?.logo,
       homeLogo: home?.logo,
+
+      openingSpread,
 
       consensus: {
         spread: consensus.spread,

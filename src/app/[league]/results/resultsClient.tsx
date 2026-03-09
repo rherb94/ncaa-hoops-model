@@ -26,6 +26,7 @@ type GameRow = {
   winner: "HOME" | "AWAY" | "TIE" | null;
   completed: boolean;
   pick_result: "WIN" | "LOSS" | "PUSH" | "NO_PICK" | "PENDING";
+  picked_at?: string | null; // ISO timestamp — present for intraday picks
 };
 
 type DayResult = {
@@ -215,6 +216,24 @@ function SignalBadge({ signal, pickSide }: { signal: string; pickSide: string })
   return <span className={`text-xs font-semibold whitespace-nowrap ${color}`}>{signal} {pickSide}</span>;
 }
 
+function IntradayBadge({ pickedAt }: { pickedAt: string }) {
+  const timeStr = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  }).format(new Date(pickedAt));
+
+  return (
+    <span
+      title={`Intraday pick detected at ${timeStr} ET`}
+      className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-violet-500/15 text-violet-400 border border-violet-500/20"
+    >
+      {timeStr}
+    </span>
+  );
+}
+
 function EdgeLabel({ edge }: { edge: number | null }) {
   if (edge === null) return <>—</>;
   const color = Math.abs(edge) >= 5 ? "text-emerald-400"
@@ -355,6 +374,7 @@ function GameCard({ g, league }: { g: GameRow; league: LeagueId }) {
         {hasPick && (
           <SignalBadge signal={g.signal} pickSide={g.pick_side} />
         )}
+        {g.picked_at && <IntradayBadge pickedAt={g.picked_at} />}
       </div>
     </div>
   );
@@ -668,7 +688,10 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
                             <EdgeLabel edge={g.edge} />
                           </td>
                           <td className="px-3 py-2 align-middle">
-                            <SignalBadge signal={g.signal} pickSide={g.pick_side} />
+                            <div className="flex items-center gap-1">
+                              <SignalBadge signal={g.signal} pickSide={g.pick_side} />
+                              {g.picked_at && <IntradayBadge pickedAt={g.picked_at} />}
+                            </div>
                           </td>
                           <td className="px-3 py-2 text-right font-mono align-middle">
                             {g.away_score !== null && g.home_score !== null ? (

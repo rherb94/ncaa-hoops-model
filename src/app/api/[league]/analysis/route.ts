@@ -230,11 +230,98 @@ function computeClv(
   return pickSide === "HOME" ? raw : -raw;
 }
 
+// ---------------------------------------------------------------------------
+// Intraday picks from DB — games that became picks after the opener snapshot
+// ---------------------------------------------------------------------------
+
+type IntradayPick = {
+  oddsEventId: string;
+  capturedAt: string;         // ISO timestamp
+  openingHomePoint: number;
+  openingBook: string | null;
+  modelSpread: number;
+  edge: number;
+  signal: string;
+  pickSide: string;
+};
+
+async function fetchIntradayPicks(
+  dates: string[],
+  leagueId: string
+): Promise<Map<string, IntradayPick[]>> {
+  const map = new Map<string, IntradayPick[]>();
+  if (!process.env.POSTGRES_URL) return map;
+
+  try {
+    const { drizzle } = await import("drizzle-orm/vercel-postgres");
+    const { sql: pgSql } = await import("@vercel/postgres");
+    const { eq, and, inArray } = await import("drizzle-orm");
+    const { schemaByLeague } = await import("@/db/schema");
+
+    const tables = schemaByLeague[leagueId];
+    if (!tables) return map;
+    const db = drizzle(pgSql);
+
+    // Query all LEAN/STRONG predictions for games on the requested dates
+    for (const date of dates) {
+      const rows = await db
+        .select({
+          oddsEventId:    tables.games.oddsEventId,
+          capturedAt:     tables.modelPredictions.capturedAt,
+          openingHomePoint: tables.modelPredictions.openingHomePoint,
+          openingBook:    tables.modelPredictions.openingBook,
+          modelSpread:    tables.modelPredictions.modelSpread,
+          edge:           tables.modelPredictions.edge,
+          signal:         tables.modelPredictions.signal,
+          pickSide:       tables.modelPredictions.pickSide,
+        })
+        .from(tables.modelPredictions)
+        .innerJoin(tables.games, eq(tables.games.id, tables.modelPredictions.gameId))
+        .where(
+          and(
+            eq(tables.games.gameDate, date),
+            inArray(tables.modelPredictions.signal, ["LEAN", "STRONG"]),
+          )
+        )
+        .orderBy(tables.modelPredictions.capturedAt);
+
+      if (rows.length > 0) {
+        // Keep only the FIRST LEAN/STRONG prediction per game (earliest capturedAt)
+        const byEvent = new Map<string, IntradayPick>();
+        for (const r of rows) {
+          if (!byEvent.has(r.oddsEventId) && r.edge != null && r.signal != null) {
+            byEvent.set(r.oddsEventId, {
+              oddsEventId: r.oddsEventId,
+              capturedAt: (r.capturedAt as Date).toISOString(),
+              openingHomePoint: r.openingHomePoint!,
+              openingBook: r.openingBook,
+              modelSpread: r.modelSpread!,
+              edge: r.edge,
+              signal: r.signal,
+              pickSide: r.pickSide ?? (r.edge < 0 ? "HOME" : "AWAY"),
+            });
+          }
+        }
+        map.set(date, [...byEvent.values()]);
+      }
+    }
+  } catch (err) {
+    console.warn("[ANALYSIS] Intraday picks query failed, using JSON-only:", err);
+  }
+
+  return map;
+}
+
 // First date with a real automated live snapshot (anything before this was backfilled
 // retroactively using the TheOddsAPI historical endpoint).
 const LIVE_FROM = "2026-03-02";
 
-function analyzeDate(date: string, leagueId: string, liveResults?: ResultGame[]) {
+function analyzeDate(
+  date: string,
+  leagueId: string,
+  liveResults?: ResultGame[],
+  intradayPicks?: IntradayPick[],
+) {
   const snapDir  = path.join(DATA_DIR, leagueId, "odds_opening");
   const resDir   = path.join(DATA_DIR, leagueId, "results");
   const closeDir = path.join(DATA_DIR, leagueId, "closing_lines");
@@ -269,6 +356,12 @@ function analyzeDate(date: string, leagueId: string, liveResults?: ResultGame[])
     if (g.oddsEventId) closingByEventId.set(g.oddsEventId, g);
   }
 
+  // Index intraday picks by oddsEventId for quick lookup
+  const intradayByEvent = new Map<string, IntradayPick>();
+  for (const ip of intradayPicks ?? []) {
+    intradayByEvent.set(ip.oddsEventId, ip);
+  }
+
   const games = snap.games.map((sg) => {
     const result =
       sg.home_espnTeamId && sg.away_espnTeamId
@@ -277,31 +370,45 @@ function analyzeDate(date: string, leagueId: string, liveResults?: ResultGame[])
 
     const closing = sg.oddsEventId ? closingByEventId.get(sg.oddsEventId) ?? null : null;
 
+    // Check for intraday pick: if the opener had signal=NONE but an intraday
+    // pick was detected later, overlay it onto this game row.
+    const openerSignal = sg.model?.signal ?? "NONE";
+    const intraday = openerSignal === "NONE" ? intradayByEvent.get(sg.oddsEventId) : undefined;
+
+    // Use intraday pick data if available, otherwise use opener data
+    const effectiveSignal = intraday?.signal ?? openerSignal;
+    const effectiveEdge   = intraday?.edge ?? sg.model?.edge ?? null;
+    const effectiveSpread = intraday ? intraday.openingHomePoint : (sg.opening?.homePoint ?? null);
+    const effectiveBook   = intraday ? intraday.openingBook : (sg.opening?.book ?? null);
+    const effectiveModelSpread = intraday ? intraday.modelSpread : (sg.model?.modelSpread ?? null);
+    const pickedAt = intraday?.capturedAt ?? null;
+
     const pickResult = evaluatePick(
-      sg.model?.signal ?? "NONE",
-      sg.model?.edge ?? null,
-      sg.opening?.homePoint ?? null,
+      effectiveSignal,
+      effectiveEdge,
+      effectiveSpread,
       result?.actualSpread ?? null
     );
 
     const pickSide: "HOME" | "AWAY" | "NONE" =
-      sg.model?.signal === "NONE" || !sg.model?.edge
+      effectiveSignal === "NONE" || !effectiveEdge
         ? "NONE"
-        : sg.model.edge < 0
+        : effectiveEdge < 0
         ? "HOME"
         : "AWAY";
 
     // For CLV, use raw edge direction regardless of signal threshold so
     // all games show whether the model direction beat the closing line.
+    const clvEdge = effectiveEdge ?? sg.model?.edge ?? null;
     const clvPickSide: "HOME" | "AWAY" | "NONE" =
-      sg.model?.edge == null || sg.model.edge === 0
+      clvEdge == null || clvEdge === 0
         ? "NONE"
-        : sg.model.edge < 0
+        : clvEdge < 0
         ? "HOME"
         : "AWAY";
 
     const closingSpread = closing?.homePoint ?? null;
-    const clv = computeClv(sg.opening?.homePoint ?? null, closingSpread, clvPickSide);
+    const clv = computeClv(effectiveSpread, closingSpread, clvPickSide);
 
     return {
       date,
@@ -310,13 +417,13 @@ function analyzeDate(date: string, leagueId: string, liveResults?: ResultGame[])
       home_espnTeamId: sg.home_espnTeamId ?? null,
       away_espnTeamId: sg.away_espnTeamId ?? null,
       neutral_site: sg.neutralSite ?? false,
-      opening_spread: sg.opening?.homePoint ?? null, // home spread
-      opening_book: sg.opening?.book ?? null,
+      opening_spread: effectiveSpread, // home spread (intraday line if applicable)
+      opening_book: effectiveBook,
       closing_spread: closingSpread,
       clv,
-      model_spread: sg.model?.modelSpread ?? null,
-      edge: sg.model?.edge ?? null,
-      signal: sg.model?.signal ?? "NONE",
+      model_spread: effectiveModelSpread,
+      edge: effectiveEdge,
+      signal: effectiveSignal,
       pick_side: pickSide,
       // result
       home_score: result?.homeScore ?? null,
@@ -326,6 +433,8 @@ function analyzeDate(date: string, leagueId: string, liveResults?: ResultGame[])
       completed: result?.completed ?? false,
       // evaluation
       pick_result: pickResult,
+      // intraday metadata
+      picked_at: pickedAt,
     };
   });
 
@@ -463,8 +572,11 @@ export async function GET(
     );
   }
 
+  // Fetch intraday picks from DB (graceful fallback if DB unavailable)
+  const intradayPicksMap = await fetchIntradayPicks(dates, leagueCfg.id);
+
   const results = dates
-    .map((d) => analyzeDate(d, leagueCfg.id, liveResultsMap.get(d)))
+    .map((d) => analyzeDate(d, leagueCfg.id, liveResultsMap.get(d), intradayPicksMap.get(d)))
     .filter(Boolean);
 
   if (fmt === "text") {

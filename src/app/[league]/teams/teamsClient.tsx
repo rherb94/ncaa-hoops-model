@@ -1,7 +1,6 @@
 // src/app/[league]/teams/teamsClient.tsx
 "use client";
 
-import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import type { LeagueId } from "@/lib/leagues";
 
@@ -10,13 +9,19 @@ type Team = {
   name: string;
   conference?: string;
   powerRating: number;
-  hca?: number;
-
-  // from /api/[league]/teams enrichment
+  hca: number;
   logo?: string;
   espnTeamId?: string;
-  espnName?: string;
-  espnMatchNote?: string;
+  wins?: number;
+  losses?: number;
+  record?: string;
+  barthag?: number;
+  adjO?: number;
+  adjD?: number;
+  tempo?: number;
+  torvikRank?: number;
+  torvikOeRank?: number;
+  torvikDeRank?: number;
 };
 
 async function fetchTeams(league: LeagueId): Promise<Team[]> {
@@ -26,39 +31,29 @@ async function fetchTeams(league: LeagueId): Promise<Team[]> {
   return data.teams as Team[];
 }
 
-type SortKey = "powerRating" | "hca" | "name";
+type SortKey = "torvikRank" | "adjO" | "adjD" | "tempo" | "barthag" | "hca" | "name" | "record";
 type SortDir = "asc" | "desc";
-
-function cmp(a: number, b: number) {
-  return a === b ? 0 : a > b ? 1 : -1;
-}
 
 function SortIcon({ active, dir }: { active: boolean; dir: SortDir }) {
   return (
-    <span className="ml-1 inline-block text-[10px] opacity-70">
+    <span className="ml-0.5 inline-block text-[10px] opacity-70">
       {!active ? "↕" : dir === "asc" ? "↑" : "↓"}
     </span>
   );
 }
 
-function fmtMaybe(n: number | undefined, digits = 1) {
-  if (n === undefined || !Number.isFinite(n)) return "—";
-  return n.toFixed(digits);
+function fmt(n: number | undefined | null, digits = 1) {
+  if (n == null || !Number.isFinite(n)) return "—";
+  return Number(n).toFixed(digits);
 }
 
 export default function TeamsClient({ league }: { league: LeagueId }) {
   const [teams, setTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState(true);
-
-  // search by team name only (keep conference filtering separate)
   const [q, setQ] = useState("");
-
-  // conference filter
   const [conf, setConf] = useState<string>("ALL");
-
-  // sorting
-  const [sortKey, setSortKey] = useState<SortKey>("powerRating");
-  const [sortDir, setSortDir] = useState<SortDir>("desc");
+  const [sortKey, setSortKey] = useState<SortKey>("torvikRank");
+  const [sortDir, setSortDir] = useState<SortDir>("asc");
 
   useEffect(() => {
     (async () => {
@@ -81,74 +76,51 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
 
   const filteredSorted = useMemo(() => {
     const query = q.trim().toLowerCase();
-
     let list = teams;
-
-    if (conf !== "ALL") {
-      list = list.filter((t) => (t.conference ?? "").trim() === conf);
-    }
-
-    if (query) {
-      list = list.filter((t) => t.name.toLowerCase().includes(query));
-    }
+    if (conf !== "ALL") list = list.filter((t) => (t.conference ?? "").trim() === conf);
+    if (query) list = list.filter((t) => t.name.toLowerCase().includes(query));
 
     const dir = sortDir === "asc" ? 1 : -1;
 
-    const getHca = (t: Team) =>
-      Number.isFinite(t.hca) ? (t.hca as number) : -Infinity;
-
-    const sorted = [...list].sort((a, b) => {
-      if (sortKey === "name") {
-        return dir * a.name.localeCompare(b.name);
+    const val = (t: Team): number => {
+      switch (sortKey) {
+        case "torvikRank": return t.torvikRank ?? 9999;
+        case "adjO": return t.adjO ?? -Infinity;
+        case "adjD": return t.adjD ?? Infinity;
+        case "tempo": return t.tempo ?? -Infinity;
+        case "barthag": return t.barthag ?? -Infinity;
+        case "hca": return Number.isFinite(t.hca) ? t.hca : -Infinity;
+        case "record": return (t.wins ?? 0) - (t.losses ?? 0);
+        default: return 0;
       }
+    };
 
-      if (sortKey === "powerRating") {
-        const r = cmp(a.powerRating, b.powerRating) * dir;
-        if (r !== 0) return r;
-        return a.name.localeCompare(b.name);
-      }
-
-      // hca: treat missing as very low so they sink when sorting desc
-      const ah = getHca(a);
-      const bh = getHca(b);
-      const r = cmp(ah, bh) * dir;
-      if (r !== 0) return r;
-      return a.name.localeCompare(b.name);
+    return [...list].sort((a, b) => {
+      if (sortKey === "name") return dir * a.name.localeCompare(b.name);
+      const r = (val(a) - val(b)) * dir;
+      return r !== 0 ? r : a.name.localeCompare(b.name);
     });
-
-    return sorted;
   }, [teams, q, conf, sortKey, sortDir]);
-
-  // rank number (based on current sort + filters)
-  const ranked = useMemo(() => {
-    return filteredSorted.map((t, idx) => ({
-      ...t,
-      rank: idx + 1,
-    }));
-  }, [filteredSorted]);
 
   function toggleSort(nextKey: SortKey) {
     if (sortKey === nextKey) {
       setSortDir((d) => (d === "asc" ? "desc" : "asc"));
     } else {
       setSortKey(nextKey);
-      // sensible defaults
-      setSortDir(nextKey === "name" ? "asc" : "desc");
+      // Lower is better for rank and adjD; higher is better for everything else
+      setSortDir(nextKey === "name" || nextKey === "torvikRank" || nextKey === "adjD" ? "asc" : "desc");
     }
   }
 
-  const thBtn =
-    "inline-flex items-center gap-1 rounded-md px-1 py-0.5 hover:bg-black/5 dark:hover:bg-zinc-900/60";
+  const thBtn = "inline-flex items-center gap-0.5 rounded-md px-1 py-0.5 hover:bg-zinc-900/60 cursor-pointer";
 
   return (
-    <main className="mx-auto max-w-5xl p-6">
+    <main className="mx-auto max-w-7xl p-6">
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold">Teams</h1>
           <p className="text-sm text-zinc-500">
-            Loaded from <span className="mono">src/data/teams.csv</span>
-            <span className="mx-2">•</span>
-            Logos from <span className="mono">src/data/espnTeams.json</span>
+            {teams.length} teams · Torvik ratings updated daily
           </p>
         </div>
 
@@ -156,14 +128,12 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
           <select
             value={conf}
             onChange={(e) => setConf(e.target.value)}
-            className="h-10 w-full rounded-lg border border-[color:var(--border)] bg-[color:var(--background)] px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-400 sm:w-56"
+            className="h-10 w-full rounded-lg border border-white/10 bg-zinc-950 px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-400 sm:w-56"
             aria-label="Conference filter"
           >
             <option value="ALL">All conferences</option>
             {conferences.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
+              <option key={c} value={c}>{c}</option>
             ))}
           </select>
 
@@ -171,113 +141,138 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search team…"
-            className="h-10 w-full rounded-lg border border-[color:var(--border)] bg-[color:var(--background)] px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-400 sm:w-64"
+            className="h-10 w-full rounded-lg border border-white/10 bg-zinc-950 px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-400 sm:w-64"
           />
         </div>
       </div>
 
       {loading ? (
-        <div className="rounded-xl border border-[color:var(--border)] p-6 text-zinc-500">
-          Loading teams…
-        </div>
+        <div className="rounded-xl border border-white/10 p-6 text-zinc-500">Loading teams…</div>
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-[color:var(--border)]">
-          <table className="min-w-full text-sm">
-            <thead className="bg-[color:var(--muted)]">
-              <tr className="text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-300">
-                <th className="px-3 py-2 text-left">#</th>
-                <th className="px-3 py-2 text-left">
-                  <button
-                    type="button"
-                    onClick={() => toggleSort("name")}
-                    className={thBtn}
-                    title="Sort by Team"
-                  >
-                    Team
-                    <SortIcon active={sortKey === "name"} dir={sortDir} />
-                  </button>
-                </th>
-                <th className="px-3 py-2 text-left">Conference</th>
-                <th className="px-3 py-2 text-right">
-                  <button
-                    type="button"
-                    onClick={() => toggleSort("powerRating")}
-                    className={thBtn}
-                    title="Sort by Power Rating"
-                  >
-                    PR
-                    <SortIcon
-                      active={sortKey === "powerRating"}
-                      dir={sortDir}
-                    />
-                  </button>
-                </th>
-                <th className="px-3 py-2 text-right">
-                  <button
-                    type="button"
-                    onClick={() => toggleSort("hca")}
-                    className={thBtn}
-                    title="Sort by Home Court Advantage"
-                  >
-                    HCA
-                    <SortIcon active={sortKey === "hca"} dir={sortDir} />
-                  </button>
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {ranked.map((t) => (
-                <tr
-                  key={t.teamId}
-                  className="border-t border-[color:var(--border)]"
-                >
-                  <td className="px-3 py-2 text-zinc-500 tabular-nums">
-                    {t.rank}
-                  </td>
-
-                  <td className="px-3 py-2 font-medium">
-                    <div className="flex items-center gap-2">
-                      {t.logo ? (
-                        <img
-                          src={t.logo}
-                          alt={`${t.name} logo`}
-                          className="h-6 w-6 rounded-sm"
-                          loading="lazy"
-                          referrerPolicy="no-referrer"
-                        />
-                      ) : (
-                        <div className="h-6 w-6 rounded-sm bg-zinc-950/10" />
-                      )}
-                      <span>{t.name}</span>
-                    </div>
-                  </td>
-
-                  <td className="px-3 py-2">{t.conference ?? "—"}</td>
-
-                  <td className="px-3 py-2 text-right mono tabular-nums">
-                    {t.powerRating.toFixed(1)}
-                  </td>
-
-                  <td className="px-3 py-2 text-right mono tabular-nums">
-                    {fmtMaybe(t.hca, 1)}
-                  </td>
+        <>
+          {/* Desktop table */}
+          <div className="hidden md:block overflow-x-auto rounded-xl border border-white/10">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-white/10 text-[11px] uppercase tracking-wide text-zinc-500">
+                  <th className="px-3 py-2.5 text-left">
+                    <button type="button" onClick={() => toggleSort("torvikRank")} className={thBtn}>
+                      # <SortIcon active={sortKey === "torvikRank"} dir={sortDir} />
+                    </button>
+                  </th>
+                  <th className="px-3 py-2.5 text-left">
+                    <button type="button" onClick={() => toggleSort("name")} className={thBtn}>
+                      Team <SortIcon active={sortKey === "name"} dir={sortDir} />
+                    </button>
+                  </th>
+                  <th className="px-3 py-2.5 text-left whitespace-nowrap">Conf</th>
+                  <th className="px-3 py-2.5 text-center whitespace-nowrap">
+                    <button type="button" onClick={() => toggleSort("record")} className={thBtn}>
+                      Record <SortIcon active={sortKey === "record"} dir={sortDir} />
+                    </button>
+                  </th>
+                  <th className="px-3 py-2.5 text-right whitespace-nowrap">
+                    <button type="button" onClick={() => toggleSort("adjO")} className={thBtn}>
+                      AdjO <SortIcon active={sortKey === "adjO"} dir={sortDir} />
+                    </button>
+                  </th>
+                  <th className="px-3 py-2.5 text-right whitespace-nowrap">
+                    <button type="button" onClick={() => toggleSort("adjD")} className={thBtn}>
+                      AdjD <SortIcon active={sortKey === "adjD"} dir={sortDir} />
+                    </button>
+                  </th>
+                  <th className="px-3 py-2.5 text-right whitespace-nowrap">
+                    <button type="button" onClick={() => toggleSort("tempo")} className={thBtn}>
+                      Tempo <SortIcon active={sortKey === "tempo"} dir={sortDir} />
+                    </button>
+                  </th>
+                  <th className="px-3 py-2.5 text-right whitespace-nowrap">
+                    <button type="button" onClick={() => toggleSort("barthag")} className={thBtn}>
+                      Barthag <SortIcon active={sortKey === "barthag"} dir={sortDir} />
+                    </button>
+                  </th>
+                  <th className="px-3 py-2.5 text-right whitespace-nowrap">
+                    <button type="button" onClick={() => toggleSort("hca")} className={thBtn}>
+                      HCA <SortIcon active={sortKey === "hca"} dir={sortDir} />
+                    </button>
+                  </th>
                 </tr>
-              ))}
+              </thead>
+              <tbody>
+                {filteredSorted.map((t) => {
+                  const adjEM = t.adjO != null && t.adjD != null ? t.adjO - t.adjD : null;
+                  return (
+                    <tr key={t.teamId} className="border-t border-white/5 hover:bg-zinc-900/40">
+                      <td className="px-3 py-2 text-zinc-500 font-mono tabular-nums">
+                        {t.torvikRank ?? "—"}
+                      </td>
+                      <td className="px-3 py-2">
+                        <div className="flex items-center gap-2 min-w-0">
+                          {t.logo ? (
+                            <img src={t.logo} alt="" className="h-5 w-5 shrink-0 rounded-sm object-contain" loading="lazy" referrerPolicy="no-referrer" />
+                          ) : (
+                            <div className="h-5 w-5 shrink-0 rounded-sm bg-zinc-800" />
+                          )}
+                          <span className="text-zinc-200 font-medium truncate">{t.name}</span>
+                        </div>
+                      </td>
+                      <td className="px-3 py-2 text-zinc-500 whitespace-nowrap">{t.conference ?? "—"}</td>
+                      <td className="px-3 py-2 text-center font-mono tabular-nums text-zinc-400 whitespace-nowrap">
+                        {t.record ?? "—"}
+                      </td>
+                      <td className="px-3 py-2 text-right font-mono tabular-nums text-zinc-300 whitespace-nowrap">
+                        {fmt(t.adjO)}
+                      </td>
+                      <td className="px-3 py-2 text-right font-mono tabular-nums text-zinc-300 whitespace-nowrap">
+                        {fmt(t.adjD)}
+                      </td>
+                      <td className="px-3 py-2 text-right font-mono tabular-nums text-zinc-400 whitespace-nowrap">
+                        {fmt(t.tempo)}
+                      </td>
+                      <td className="px-3 py-2 text-right font-mono tabular-nums text-zinc-400 whitespace-nowrap">
+                        {t.barthag != null ? (t.barthag * 100).toFixed(1) + "%" : "—"}
+                      </td>
+                      <td className="px-3 py-2 text-right font-mono tabular-nums text-zinc-500 whitespace-nowrap">
+                        {fmt(t.hca)}
+                      </td>
+                    </tr>
+                  );
+                })}
+                {filteredSorted.length === 0 && (
+                  <tr><td className="px-3 py-6 text-center text-zinc-500" colSpan={9}>No teams match your filters.</td></tr>
+                )}
+              </tbody>
+            </table>
+          </div>
 
-              {ranked.length === 0 && (
-                <tr>
-                  <td
-                    className="px-3 py-6 text-center text-zinc-500"
-                    colSpan={5}
-                  >
-                    No teams match your filters.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+          {/* Mobile cards */}
+          <div className="md:hidden space-y-2">
+            {filteredSorted.map((t) => (
+              <div key={t.teamId} className="rounded-xl border border-white/8 bg-zinc-950 px-3 py-2.5">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="text-zinc-600 text-xs font-mono w-6 text-right shrink-0">{t.torvikRank ?? "—"}</span>
+                  {t.logo ? (
+                    <img src={t.logo} alt="" className="h-5 w-5 rounded-sm object-contain" loading="lazy" referrerPolicy="no-referrer" />
+                  ) : (
+                    <div className="h-5 w-5 rounded-sm bg-zinc-800" />
+                  )}
+                  <span className="text-sm font-medium text-zinc-200 truncate">{t.name}</span>
+                  {t.record && <span className="text-xs text-zinc-500 ml-auto shrink-0">{t.record}</span>}
+                </div>
+                <div className="flex items-center gap-3 text-[11px] text-zinc-500 flex-wrap">
+                  {t.conference && <span>{t.conference}</span>}
+                  <span>O <span className="text-zinc-300 font-mono">{fmt(t.adjO)}</span></span>
+                  <span>D <span className="text-zinc-300 font-mono">{fmt(t.adjD)}</span></span>
+                  <span>T <span className="text-zinc-400 font-mono">{fmt(t.tempo)}</span></span>
+                  <span>B <span className="text-zinc-400 font-mono">{t.barthag != null ? (t.barthag * 100).toFixed(1) + "%" : "—"}</span></span>
+                </div>
+              </div>
+            ))}
+            {filteredSorted.length === 0 && (
+              <div className="text-zinc-500 text-sm text-center py-6">No teams match your filters.</div>
+            )}
+          </div>
+        </>
       )}
     </main>
   );

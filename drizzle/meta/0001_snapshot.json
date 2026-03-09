@@ -1,0 +1,1149 @@
+{
+  "id": "071a37a8-b31f-448d-8e04-dbdb0cd7acfb",
+  "prevId": "58db639f-bbc7-43d4-a3c0-a2dca79c0e9d",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.ncaam_closing_lines": {
+      "name": "ncaam_closing_lines",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "game_id": {
+          "name": "game_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "snapshot_time": {
+          "name": "snapshot_time",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "book": {
+          "name": "book",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_point": {
+          "name": "home_point",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_point": {
+          "name": "away_point",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaam_game_results": {
+      "name": "ncaam_game_results",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "game_id": {
+          "name": "game_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "home_score": {
+          "name": "home_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_score": {
+          "name": "away_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_spread": {
+          "name": "actual_spread",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "winner": {
+          "name": "winner",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "completed": {
+          "name": "completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaam_games": {
+      "name": "ncaam_games",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "odds_event_id": {
+          "name": "odds_event_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "espn_event_id": {
+          "name": "espn_event_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "game_date": {
+          "name": "game_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "commence_time": {
+          "name": "commence_time",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_team": {
+          "name": "home_team",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "away_team": {
+          "name": "away_team",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "home_torvik_id": {
+          "name": "home_torvik_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_torvik_id": {
+          "name": "away_torvik_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_espn_team_id": {
+          "name": "home_espn_team_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_espn_team_id": {
+          "name": "away_espn_team_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_conference": {
+          "name": "home_conference",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_conference": {
+          "name": "away_conference",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "neutral_site": {
+          "name": "neutral_site",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "backfilled": {
+          "name": "backfilled",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "opening_home_point": {
+          "name": "opening_home_point",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "opening_book": {
+          "name": "opening_book",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "ncaam_games_odds_event_id_unique": {
+          "name": "ncaam_games_odds_event_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "odds_event_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaam_model_predictions": {
+      "name": "ncaam_model_predictions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "game_id": {
+          "name": "game_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "captured_at": {
+          "name": "captured_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "opening_book": {
+          "name": "opening_book",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "opening_home_point": {
+          "name": "opening_home_point",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "opening_away_point": {
+          "name": "opening_away_point",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_adj_o": {
+          "name": "home_adj_o",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_adj_d": {
+          "name": "home_adj_d",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_tempo": {
+          "name": "home_tempo",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_barthag": {
+          "name": "home_barthag",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_power_rating": {
+          "name": "home_power_rating",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_hca": {
+          "name": "home_hca",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_adj_o": {
+          "name": "away_adj_o",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_adj_d": {
+          "name": "away_adj_d",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_tempo": {
+          "name": "away_tempo",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_barthag": {
+          "name": "away_barthag",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_power_rating": {
+          "name": "away_power_rating",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "raw_model_spread": {
+          "name": "raw_model_spread",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "model_spread": {
+          "name": "model_spread",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "edge": {
+          "name": "edge",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "signal": {
+          "name": "signal",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pick_side": {
+          "name": "pick_side",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaam_pick_evaluations": {
+      "name": "ncaam_pick_evaluations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "game_id": {
+          "name": "game_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "prediction_id": {
+          "name": "prediction_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pick_result": {
+          "name": "pick_result",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "clv": {
+          "name": "clv",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "evaluated_at": {
+          "name": "evaluated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaam_team_rating_snapshots": {
+      "name": "ncaam_team_rating_snapshots",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "team_id": {
+          "name": "team_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "snapshot_date": {
+          "name": "snapshot_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "team_name": {
+          "name": "team_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "conference": {
+          "name": "conference",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "wins": {
+          "name": "wins",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "losses": {
+          "name": "losses",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "power_rating": {
+          "name": "power_rating",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hca": {
+          "name": "hca",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "adj_o": {
+          "name": "adj_o",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "adj_d": {
+          "name": "adj_d",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tempo": {
+          "name": "tempo",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "barthag": {
+          "name": "barthag",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "torvik_rank": {
+          "name": "torvik_rank",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "ncaam_team_snapshot_uniq": {
+          "name": "ncaam_team_snapshot_uniq",
+          "columns": [
+            {
+              "expression": "team_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "snapshot_date",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaaw_closing_lines": {
+      "name": "ncaaw_closing_lines",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "game_id": {
+          "name": "game_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "snapshot_time": {
+          "name": "snapshot_time",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "book": {
+          "name": "book",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_point": {
+          "name": "home_point",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_point": {
+          "name": "away_point",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaaw_game_results": {
+      "name": "ncaaw_game_results",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "game_id": {
+          "name": "game_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "home_score": {
+          "name": "home_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_score": {
+          "name": "away_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_spread": {
+          "name": "actual_spread",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "winner": {
+          "name": "winner",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "completed": {
+          "name": "completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaaw_games": {
+      "name": "ncaaw_games",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "odds_event_id": {
+          "name": "odds_event_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "espn_event_id": {
+          "name": "espn_event_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "game_date": {
+          "name": "game_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "commence_time": {
+          "name": "commence_time",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_team": {
+          "name": "home_team",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "away_team": {
+          "name": "away_team",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "home_torvik_id": {
+          "name": "home_torvik_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_torvik_id": {
+          "name": "away_torvik_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_espn_team_id": {
+          "name": "home_espn_team_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_espn_team_id": {
+          "name": "away_espn_team_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_conference": {
+          "name": "home_conference",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_conference": {
+          "name": "away_conference",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "neutral_site": {
+          "name": "neutral_site",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "backfilled": {
+          "name": "backfilled",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "opening_home_point": {
+          "name": "opening_home_point",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "opening_book": {
+          "name": "opening_book",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "ncaaw_games_odds_event_id_unique": {
+          "name": "ncaaw_games_odds_event_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "odds_event_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaaw_model_predictions": {
+      "name": "ncaaw_model_predictions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "game_id": {
+          "name": "game_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "captured_at": {
+          "name": "captured_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "opening_book": {
+          "name": "opening_book",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "opening_home_point": {
+          "name": "opening_home_point",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "opening_away_point": {
+          "name": "opening_away_point",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_adj_o": {
+          "name": "home_adj_o",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_adj_d": {
+          "name": "home_adj_d",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_tempo": {
+          "name": "home_tempo",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_barthag": {
+          "name": "home_barthag",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_power_rating": {
+          "name": "home_power_rating",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_hca": {
+          "name": "home_hca",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_adj_o": {
+          "name": "away_adj_o",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_adj_d": {
+          "name": "away_adj_d",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_tempo": {
+          "name": "away_tempo",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_barthag": {
+          "name": "away_barthag",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "away_power_rating": {
+          "name": "away_power_rating",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "raw_model_spread": {
+          "name": "raw_model_spread",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "model_spread": {
+          "name": "model_spread",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "edge": {
+          "name": "edge",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "signal": {
+          "name": "signal",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pick_side": {
+          "name": "pick_side",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaaw_pick_evaluations": {
+      "name": "ncaaw_pick_evaluations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "game_id": {
+          "name": "game_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "prediction_id": {
+          "name": "prediction_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pick_result": {
+          "name": "pick_result",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "clv": {
+          "name": "clv",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "evaluated_at": {
+          "name": "evaluated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ncaaw_team_rating_snapshots": {
+      "name": "ncaaw_team_rating_snapshots",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "team_id": {
+          "name": "team_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "snapshot_date": {
+          "name": "snapshot_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "team_name": {
+          "name": "team_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "conference": {
+          "name": "conference",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "wins": {
+          "name": "wins",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "losses": {
+          "name": "losses",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "power_rating": {
+          "name": "power_rating",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hca": {
+          "name": "hca",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "adj_o": {
+          "name": "adj_o",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "adj_d": {
+          "name": "adj_d",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tempo": {
+          "name": "tempo",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "barthag": {
+          "name": "barthag",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "torvik_rank": {
+          "name": "torvik_rank",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fetched_at": {
+          "name": "fetched_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "ncaaw_team_snapshot_uniq": {
+          "name": "ncaaw_team_snapshot_uniq",
+          "columns": [
+            {
+              "expression": "team_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "snapshot_date",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -54,6 +54,11 @@ function makeGames(prefix: string) {
 
     neutralSite:       boolean("neutral_site").default(false),
     backfilled:        boolean("backfilled").default(false),
+
+    // Opening line (first line captured for this game, from opener snapshot)
+    openingHomePoint:  real("opening_home_point"),
+    openingBook:       text("opening_book"),
+
     createdAt:         timestamp("created_at", { withTimezone: true }).defaultNow(),
   });
 }
