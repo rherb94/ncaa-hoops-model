@@ -11,7 +11,9 @@
 //
 // Requires POSTGRES_URL env var (set in .env.local or CI secrets).
 
-import "dotenv/config";
+// Load .env.local (tsx doesn't auto-load it the way Next.js does)
+import { loadEnvConfig } from "@next/env";
+loadEnvConfig(process.cwd());
 import fs from "node:fs";
 import path from "node:path";
 import { drizzle } from "drizzle-orm/vercel-postgres";

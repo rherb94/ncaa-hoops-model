@@ -208,6 +208,24 @@ export const schemaByLeague: Record<string, typeof ncaam | typeof ncaaw> = {
 };
 
 // ---------------------------------------------------------------------------
+// Flat top-level exports so Drizzle Kit can discover all tables for migration
+// ---------------------------------------------------------------------------
+
+export const ncaamGames               = ncaam.games;
+export const ncaamModelPredictions    = ncaam.modelPredictions;
+export const ncaamClosingLines        = ncaam.closingLines;
+export const ncaamGameResults         = ncaam.gameResults;
+export const ncaamPickEvaluations     = ncaam.pickEvaluations;
+export const ncaamTeamRatingSnapshots = ncaam.teamRatingSnapshots;
+
+export const ncaawGames               = ncaaw.games;
+export const ncaawModelPredictions    = ncaaw.modelPredictions;
+export const ncaawClosingLines        = ncaaw.closingLines;
+export const ncaawGameResults         = ncaaw.gameResults;
+export const ncaawPickEvaluations     = ncaaw.pickEvaluations;
+export const ncaawTeamRatingSnapshots = ncaaw.teamRatingSnapshots;
+
+// ---------------------------------------------------------------------------
 // Type helpers (inferred from schema)
 // ---------------------------------------------------------------------------
 
