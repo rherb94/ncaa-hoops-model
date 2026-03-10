@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-montana",
         "awayTeamId": "team-northern-colorado",
-        "modelSpread": 7.1,
-        "edge": 0.6,
+        "modelSpread": 6.9,
+        "edge": 0.4,
         "signal": "NONE"
       }
     }

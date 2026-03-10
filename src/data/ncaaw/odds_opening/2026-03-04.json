@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-northern-illinois",
         "awayTeamId": "team-buffalo",
-        "modelSpread": -5.7,
-        "edge": -2.2,
+        "modelSpread": -5.6,
+        "edge": -2.1,
         "signal": "NONE"
       }
     },
@@ -189,8 +189,8 @@
       "model": {
         "homeTeamId": "team-oregon",
         "awayTeamId": "team-purdue",
-        "modelSpread": -11,
-        "edge": -0.5,
+        "modelSpread": -11.1,
+        "edge": -0.6,
         "signal": "NONE"
       }
     },
@@ -237,8 +237,8 @@
       "model": {
         "homeTeamId": "team-unlv",
         "awayTeamId": "team-boise-st",
-        "modelSpread": -6.8,
-        "edge": -0.3,
+        "modelSpread": -7.1,
+        "edge": -0.6,
         "signal": "NONE"
       }
     }

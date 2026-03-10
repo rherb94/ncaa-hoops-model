@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-hofstra",
         "awayTeamId": "team-elon",
-        "modelSpread": 2.5,
-        "edge": -2,
+        "modelSpread": 2.4,
+        "edge": -2.1,
         "signal": "NONE"
       }
     },
@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-marshall",
         "awayTeamId": "team-georgia-southern",
-        "modelSpread": 2.3,
-        "edge": 4.8,
+        "modelSpread": 2.4,
+        "edge": 4.9,
         "signal": "LEAN"
       }
     },
@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-jacksonville",
         "awayTeamId": "team-north-florida",
-        "modelSpread": -13.5,
-        "edge": 6,
+        "modelSpread": -13.7,
+        "edge": 5.8,
         "signal": "STRONG"
       }
     },
