@@ -1,8 +1,9 @@
 {
   "date": "2026-03-09",
-  "last_updated": "2026-03-09T17:37:34.072Z",
+  "last_updated": "2026-03-10T00:00:58.278Z",
   "snapshot_times": [
-    "2026-03-09T17:35:37Z"
+    "2026-03-09T17:35:37Z",
+    "2026-03-10T00:00:44Z"
   ],
   "games": [
     {
@@ -83,7 +84,7 @@
       "homePoint": -13.5,
       "awayPoint": 13.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-09T17:35:37Z"
+      "snapshotTime": "2026-03-10T00:00:44Z"
     },
     {
       "oddsEventId": "795c7c6bf892b023fdc275b12f046894",
@@ -93,7 +94,7 @@
       "homePoint": -5.5,
       "awayPoint": 5.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-09T17:35:37Z"
+      "snapshotTime": "2026-03-10T00:00:44Z"
     },
     {
       "oddsEventId": "90a67899f125844f6fff61cad314464a",
@@ -103,27 +104,27 @@
       "homePoint": -3.5,
       "awayPoint": 3.5,
       "book": "fanduel",
-      "snapshotTime": "2026-03-09T17:35:37Z"
+      "snapshotTime": "2026-03-10T00:00:44Z"
     },
     {
       "oddsEventId": "dade3c7f67979137f5351d568461b62a",
       "home_team": "Gonzaga Bulldogs",
       "away_team": "Oregon St Beavers",
       "commence_time": "2026-03-10T01:00:00Z",
-      "homePoint": -19.5,
-      "awayPoint": 19.5,
+      "homePoint": -20.5,
+      "awayPoint": 20.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-09T17:35:37Z"
+      "snapshotTime": "2026-03-10T00:00:44Z"
     },
     {
       "oddsEventId": "f4278e0139b27bc7bf27de72203a0d61",
       "home_team": "Robert Morris Colonials",
       "away_team": "Detroit Mercy Titans",
       "commence_time": "2026-03-10T01:30:00Z",
-      "homePoint": -5.5,
-      "awayPoint": 5.5,
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-09T17:35:37Z"
+      "snapshotTime": "2026-03-10T00:00:44Z"
     },
     {
       "oddsEventId": "7b0395b1b4860adf903c9d616453e9c5",
@@ -133,7 +134,7 @@
       "homePoint": -3.5,
       "awayPoint": 3.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-09T17:35:37Z"
+      "snapshotTime": "2026-03-10T00:00:44Z"
     },
     {
       "oddsEventId": "87330f770e99f45361d907153d4a08ea",
@@ -143,7 +144,7 @@
       "homePoint": -4.5,
       "awayPoint": 4.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-09T17:35:37Z"
+      "snapshotTime": "2026-03-10T00:00:44Z"
     }
   ]
 }
