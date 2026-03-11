@@ -14,7 +14,8 @@ import { TheOddsApiProvider } from "@/lib/odds/providers/theOddsApi";
 import { loadTeams } from "@/data/teams";
 import { getLeague } from "@/lib/leagues";
 import type { LeagueConfig } from "@/lib/leagues";
-import type { SlateGame, SlateResponse } from "@/lib/types";
+import type { SlateGame, SlateResponse, GameOverrideInfo } from "@/lib/types";
+import { getGameOverrides } from "@/lib/overrides";
 import { pickBestSpreadForSide } from "@/lib/odds/bestLines";
 import {
   computeEfficiencyModel,
@@ -208,12 +209,16 @@ export async function GET(
 
     // Look up opener info: neutral site + opening spread
     const openerInfo = openerInfoByEventId.get(g.gameId);
-    const neutralSite = openerMissing
+    const rawNeutralSite = openerMissing
       ? (home?.espnTeamId && away?.espnTeamId
           ? (espnNeutralByTeamPair.get(`${home.espnTeamId}|${away.espnTeamId}`) ?? false)
           : false)
       : (openerInfo?.neutralSite ?? false);
     const openingSpread = openerInfo?.openingSpread;
+
+    // Apply overrides (force neutral→home, skip game from picks)
+    const overrides = getGameOverrides(league.id, date, g.gameId);
+    const neutralSite = overrides.forceHome ? false : rawNeutralSite;
 
     const awayPR = away?.powerRating ?? 0;
     const homePR = home?.powerRating ?? 0;
@@ -238,7 +243,9 @@ export async function GET(
     // --- edge/signal (single source of truth in lib/model.ts) ---
     const edgeRaw = computeEdge(modelSpread, marketSpread); // undefined if no market
     const edge = edgeRaw === undefined ? undefined : clamp(edgeRaw, -12, 12);
-    const signal = computeSignal(edge);
+    const rawSignal = computeSignal(edge);
+    // Skip override: force signal to NONE so game never appears as a pick
+    const signal = overrides.skip ? "NONE" as const : rawSignal;
 
     const preferredSide: "HOME" | "AWAY" | "NONE" =
       signal === "NONE" || edge === undefined
@@ -309,6 +316,16 @@ export async function GET(
               line: best.line,
               book: best.book,
             },
+
+      // Override metadata for UI badges
+      overrides:
+        overrides.forceHome || overrides.skip
+          ? {
+              forceHome: overrides.forceHome || undefined,
+              skip: overrides.skip || undefined,
+              reason: overrides.reason,
+            }
+          : undefined,
     };
   });
 

@@ -75,21 +75,25 @@ function bookLogoSrc(book?: string | null) {
 // ── Row / rail styling ────────────────────────────────────────────────────────
 
 /** Desktop table row: subtle bg tint */
-function rowTint(signal?: SlateGame["model"]["signal"]) {
+function rowTint(signal?: SlateGame["model"]["signal"], skipped?: boolean) {
+  if (skipped) return "opacity-50";
   if (signal === "STRONG") return "bg-emerald-500/[0.09]";
   if (signal === "LEAN")   return "bg-amber-400/[0.07]";
   return "";
 }
 
 /** Desktop table: left rail on Time column */
-function railClass(signal?: SlateGame["model"]["signal"]) {
+function railClass(signal?: SlateGame["model"]["signal"], skipped?: boolean) {
+  if (skipped) return "border-l-[3px] border-rose-400/40";
   if (signal === "STRONG") return "border-l-[3px] border-emerald-400";
   if (signal === "LEAN")   return "border-l-[3px] border-amber-400";
   return "border-l-[3px] border-transparent";
 }
 
 /** Mobile card: full-perimeter border + shadow glow + visible fill */
-function mobileCardClass(signal?: SlateGame["model"]["signal"]) {
+function mobileCardClass(signal?: SlateGame["model"]["signal"], skipped?: boolean) {
+  if (skipped)
+    return "rounded-xl border border-rose-500/20 bg-zinc-900/20 opacity-50";
   if (signal === "STRONG")
     return "rounded-xl border border-emerald-500/40 bg-emerald-500/[0.11] shadow-[0_0_22px_-4px_rgba(52,211,153,0.4)]";
   if (signal === "LEAN")
@@ -106,6 +110,30 @@ function NeutralBadge() {
       className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-blue-500/15 text-blue-400 border border-blue-500/20"
     >
       ⚬ NEUTRAL
+    </span>
+  );
+}
+
+// ── Override badges ──────────────────────────────────────────────────────────
+
+function OverrideHomeBadge() {
+  return (
+    <span
+      title="Override: neutral site forced to home game (HCA applied)"
+      className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-orange-500/15 text-orange-400 border border-orange-500/20"
+    >
+      🏠 HOME OVERRIDE
+    </span>
+  );
+}
+
+function SkipBadge({ reason }: { reason?: string }) {
+  return (
+    <span
+      title={reason ?? "Game skipped — excluded from picks and results"}
+      className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-rose-500/15 text-rose-400 border border-rose-500/20"
+    >
+      ⊘ SKIPPED
     </span>
   );
 }
@@ -231,6 +259,8 @@ function GameCell({ g }: { g: SlateGame }) {
       <div className="pl-0.5 text-[10px] font-medium text-zinc-700 select-none leading-none py-0.5">@</div>
       <TeamRow name={g.homeTeam} logo={g.homeLogo} isPreferred={preferred === "HOME"} />
       {g.neutralSite && <div className="mt-1"><NeutralBadge /></div>}
+      {g.overrides?.forceHome && <div className="mt-1"><OverrideHomeBadge /></div>}
+      {g.overrides?.skip && <div className="mt-1"><SkipBadge reason={g.overrides.reason} /></div>}
     </div>
   );
 }
@@ -435,14 +465,20 @@ async function fetchTeamL5(teamId: string, league: LeagueId): Promise<{ id: stri
 // ── Model pick record per team ────────────────────────────────────────────────
 
 type ModelRecord = { wins: number; losses: number };
+type ModelSummary = { wins: number; losses: number; pct: number | null };
 
-async function fetchModelRecords(league: LeagueId): Promise<Record<string, ModelRecord>> {
+type ModelData = { teams: Record<string, ModelRecord>; summary: ModelSummary };
+
+async function fetchModelData(league: LeagueId): Promise<ModelData> {
+  const empty: ModelData = { teams: {}, summary: { wins: 0, losses: 0, pct: null } };
   try {
-    const res = await fetch(`/api/${league}/analysis?range=season&fmt=json`, { cache: "no-store" });
-    if (!res.ok) return {};
+    const res = await fetch(`/api/${league}/analysis?all=1`, { cache: "no-store" });
+    if (!res.ok) return empty;
     const json = await res.json();
     const map: Record<string, ModelRecord> = {};
-    for (const day of json.by_date ?? []) {
+    // Exclude backfilled dates from aggregate record
+    const liveDays = (json.by_date ?? []).filter((d: any) => !d.backfilled);
+    for (const day of liveDays) {
       for (const g of day.games ?? []) {
         if (g.signal === "NONE") continue;
         if (g.pick_result !== "WIN" && g.pick_result !== "LOSS") continue;
@@ -452,9 +488,17 @@ async function fetchModelRecords(league: LeagueId): Promise<Record<string, Model
         else map[team].losses++;
       }
     }
-    return map;
+    // Compute summary from live dates only (not backfilled)
+    const allPicks = liveDays.flatMap((d: any) => (d.games ?? []).filter((g: any) => g.signal !== "NONE"));
+    const decided = allPicks.filter((g: any) => g.pick_result === "WIN" || g.pick_result === "LOSS");
+    const wins = decided.filter((g: any) => g.pick_result === "WIN").length;
+    const losses = decided.length - wins;
+    return {
+      teams: map,
+      summary: { wins, losses, pct: decided.length > 0 ? Math.round((wins / decided.length) * 100) : null },
+    };
   } catch {
-    return {};
+    return empty;
   }
 }
 
@@ -467,12 +511,16 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
   const [stats, setStats] = useState<Record<string, TeamStats>>({});
   const [l5, setL5] = useState<Record<string, L5Record>>({});
   const [modelRec, setModelRec] = useState<Record<string, ModelRecord>>({});
+  const [modelSummary, setModelSummary] = useState<ModelSummary>({ wins: 0, losses: 0, pct: null });
   const [err, setErr] = useState<string | null>(null);
   const [filter, setFilter] = useState<FilterMode>("ALL");
 
   // Fetch season model records once on mount
   useEffect(() => {
-    fetchModelRecords(league).then(setModelRec);
+    fetchModelData(league).then(({ teams, summary }) => {
+      setModelRec(teams);
+      setModelSummary(summary);
+    });
   }, [league]);
 
   const now = Date.now();
@@ -564,6 +612,11 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
             {counts.games} games
             {counts.strong > 0 && <> · <span className="text-emerald-400">{counts.strong} STRONG</span></>}
             {counts.lean   > 0 && <> · <span className="text-amber-400">{counts.lean} LEAN</span></>}
+            {modelSummary.pct !== null && (
+              <> · <span className={modelSummary.wins > modelSummary.losses ? "text-emerald-400" : modelSummary.wins < modelSummary.losses ? "text-red-400" : "text-zinc-400"}>
+                Model ATS {modelSummary.wins}-{modelSummary.losses} ({modelSummary.pct}%)
+              </span></>
+            )}
           </span>
           {err && <span className="text-xs text-rose-400 shrink-0">{err}</span>}
         </div>
@@ -617,11 +670,11 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                   )}
 
                   <tr
-                    className={`cursor-pointer transition-colors hover:bg-white/[0.025] ${rowTint(g.model.signal)}`}
+                    className={`cursor-pointer transition-colors hover:bg-white/[0.025] ${rowTint(g.model.signal, g.overrides?.skip)}`}
                     onClick={() => toggleRow(g)}
                   >
                     {/* Time */}
-                    <td className={`${tdBase} whitespace-nowrap align-middle ${railClass(g.model.signal)}`}>
+                    <td className={`${tdBase} whitespace-nowrap align-middle ${railClass(g.model.signal, g.overrides?.skip)}`}>
                       <div className="flex items-center gap-1.5">
                         <span className="text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
                         <span className={`text-[9px] text-zinc-700 transition-transform duration-150 ${open ? "rotate-180" : ""}`}>▼</span>
@@ -704,7 +757,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
               )}
 
               {/* Card — wraps both the summary row and the expanded panel */}
-              <div className={`overflow-hidden transition-all ${mobileCardClass(g.model.signal)}`}>
+              <div className={`overflow-hidden transition-all ${mobileCardClass(g.model.signal, g.overrides?.skip)}`}>
                 <div
                   className="cursor-pointer px-4 py-3"
                   onClick={() => toggleRow(g)}
@@ -736,6 +789,8 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                       </React.Fragment>
                     ))}
                     {g.neutralSite && <div className="mt-1"><NeutralBadge /></div>}
+                    {g.overrides?.forceHome && <div className="mt-1"><OverrideHomeBadge /></div>}
+                    {g.overrides?.skip && <div className="mt-1"><SkipBadge reason={g.overrides.reason} /></div>}
                   </div>
 
                   {/* Mkt / Model / Edge */}
