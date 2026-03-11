@@ -493,11 +493,23 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
   if (err)     return <div className="text-red-400 text-sm py-8">{err}</div>;
   if (!data)   return null;
 
-  const { summary, by_date } = data;
+  const { by_date } = data;
   const visibleDates = showBackfilled ? by_date : by_date.filter((d) => !d.backfilled);
   const sorted = [...visibleDates].reverse();
   const { dirTotal, dirCorrect, avgError, roi, roiGames, avgClv, clvGames, buckets } = computeStats(visibleDates);
   const backfilledCount = by_date.filter((d) => d.backfilled).length;
+
+  // Compute ATS from visible dates (excludes backfilled when hidden)
+  const allPicks = visibleDates.flatMap((d) => d.games.filter((g) => g.signal !== "NONE"));
+  const allDecided = allPicks.filter((g) => g.pick_result === "WIN" || g.pick_result === "LOSS");
+  const totalWins = allDecided.filter((g) => g.pick_result === "WIN").length;
+  const summary = {
+    total_picks: allPicks.length,
+    decided: allDecided.length,
+    wins: totalWins,
+    losses: allDecided.length - totalWins,
+    win_pct: allDecided.length > 0 ? Math.round((totalWins / allDecided.length) * 100) : null,
+  };
 
   const sortGames = (games: GameRow[]) =>
     games.slice().sort((a, b) => {

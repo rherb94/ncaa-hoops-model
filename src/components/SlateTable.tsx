@@ -476,7 +476,9 @@ async function fetchModelData(league: LeagueId): Promise<ModelData> {
     if (!res.ok) return empty;
     const json = await res.json();
     const map: Record<string, ModelRecord> = {};
-    for (const day of json.by_date ?? []) {
+    // Exclude backfilled dates from aggregate record
+    const liveDays = (json.by_date ?? []).filter((d: any) => !d.backfilled);
+    for (const day of liveDays) {
       for (const g of day.games ?? []) {
         if (g.signal === "NONE") continue;
         if (g.pick_result !== "WIN" && g.pick_result !== "LOSS") continue;
@@ -486,10 +488,14 @@ async function fetchModelData(league: LeagueId): Promise<ModelData> {
         else map[team].losses++;
       }
     }
-    const s = json.summary ?? {};
+    // Compute summary from live dates only (not backfilled)
+    const allPicks = liveDays.flatMap((d: any) => (d.games ?? []).filter((g: any) => g.signal !== "NONE"));
+    const decided = allPicks.filter((g: any) => g.pick_result === "WIN" || g.pick_result === "LOSS");
+    const wins = decided.filter((g: any) => g.pick_result === "WIN").length;
+    const losses = decided.length - wins;
     return {
       teams: map,
-      summary: { wins: s.wins ?? 0, losses: s.losses ?? 0, pct: s.win_pct ?? null },
+      summary: { wins, losses, pct: decided.length > 0 ? Math.round((wins / decided.length) * 100) : null },
     };
   } catch {
     return empty;
