@@ -1,8 +1,9 @@
 {
   "date": "2026-03-10",
-  "last_updated": "2026-03-10T17:35:35.866Z",
+  "last_updated": "2026-03-11T00:00:48.454Z",
   "snapshot_times": [
-    "2026-03-10T17:30:38Z"
+    "2026-03-10T17:30:38Z",
+    "2026-03-10T23:55:37Z"
   ],
   "games": [
     {
@@ -163,17 +164,17 @@
       "homePoint": 6.5,
       "awayPoint": -6.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-10T17:30:38Z"
+      "snapshotTime": "2026-03-10T23:55:37Z"
     },
     {
       "oddsEventId": "4301641b5a49750fb39907178a80d83c",
       "home_team": "Gonzaga Bulldogs",
       "away_team": "Santa Clara Broncos",
       "commence_time": "2026-03-11T01:00:00Z",
-      "homePoint": -7.5,
-      "awayPoint": 7.5,
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-10T17:30:38Z"
+      "snapshotTime": "2026-03-10T23:55:37Z"
     },
     {
       "oddsEventId": "a4318fa09e6a201a20fef8f2afc3af5e",
@@ -183,27 +184,27 @@
       "homePoint": 1.5,
       "awayPoint": -1.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-10T17:30:38Z"
+      "snapshotTime": "2026-03-10T23:55:37Z"
     },
     {
       "oddsEventId": "87c88baa40388f1e8ea27a1cd67de5be",
       "home_team": "Merrimack Warriors",
       "away_team": "Siena Saints",
       "commence_time": "2026-03-11T01:00:00Z",
-      "homePoint": -3.5,
-      "awayPoint": 3.5,
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
       "book": "fanduel",
-      "snapshotTime": "2026-03-10T17:30:38Z"
+      "snapshotTime": "2026-03-10T23:55:37Z"
     },
     {
       "oddsEventId": "50fbf537b37e3e0a264af8bc02ee5e16",
       "home_team": "Portland St Vikings",
       "away_team": "Montana Grizzlies",
       "commence_time": "2026-03-11T01:00:59Z",
-      "homePoint": -2.5,
-      "awayPoint": 2.5,
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-10T17:30:38Z"
+      "snapshotTime": "2026-03-10T23:55:37Z"
     },
     {
       "oddsEventId": "c4ac106fad9ce7192bc88332dbaa806c",
@@ -213,7 +214,7 @@
       "homePoint": -1.5,
       "awayPoint": 1.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-10T17:30:38Z"
+      "snapshotTime": "2026-03-10T23:55:37Z"
     },
     {
       "oddsEventId": "1a74725cbaa18dc76413e6afc56adb68",
@@ -223,7 +224,7 @@
       "homePoint": -7.5,
       "awayPoint": 7.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-10T17:30:38Z"
+      "snapshotTime": "2026-03-10T23:55:37Z"
     },
     {
       "oddsEventId": "55fef0afdf27d7f1b2a5f6fc75cf964c",
@@ -233,7 +234,7 @@
       "homePoint": 1.5,
       "awayPoint": -1.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-10T17:30:38Z"
+      "snapshotTime": "2026-03-10T23:55:37Z"
     }
   ]
 }
