@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-boston-university",
         "awayTeamId": "team-american",
-        "modelSpread": -5.7,
-        "edge": 1.8,
+        "modelSpread": -6,
+        "edge": 1.5,
         "signal": "NONE"
       }
     },
@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-nebraska",
         "awayTeamId": "team-rutgers",
-        "modelSpread": -22.6,
-        "edge": -0.1,
+        "modelSpread": -22.5,
+        "edge": 0,
         "signal": "NONE"
       }
     },

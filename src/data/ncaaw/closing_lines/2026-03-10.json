@@ -1,0 +1,70 @@
+{
+  "date": "2026-03-10",
+  "last_updated": "2026-03-11T00:00:35.821Z",
+  "snapshot_times": [
+    "2026-03-10T17:30:38Z",
+    "2026-03-10T23:55:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "23d0bed8c99f190bfa2b13faa6cafbd9",
+      "home_team": "Idaho Vandals",
+      "away_team": "Sacramento St Hornets",
+      "commence_time": "2026-03-10T18:00:00Z",
+      "homePoint": -11.5,
+      "awayPoint": 11.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-10T17:30:38Z"
+    },
+    {
+      "oddsEventId": "5c7be94605c83ed45cb1cd7ddb6d4452",
+      "home_team": "Jacksonville St Gamecocks",
+      "away_team": "UTEP Miners",
+      "commence_time": "2026-03-10T19:00:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-10T17:30:38Z"
+    },
+    {
+      "oddsEventId": "83d1e94f280354bb9c7d6ea06f14c3bc",
+      "home_team": "Temple Owls",
+      "away_team": "Tulane Green Wave",
+      "commence_time": "2026-03-10T19:30:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-10T17:30:38Z"
+    },
+    {
+      "oddsEventId": "2bed19c64545db4f61c9e294bfbd4620",
+      "home_team": "Gonzaga Bulldogs",
+      "away_team": "Oregon St Beavers",
+      "commence_time": "2026-03-10T20:00:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-10T17:30:38Z"
+    },
+    {
+      "oddsEventId": "2f76b7fbb5cea28d4e659b4de2931a54",
+      "home_team": "Montana St Bobcats",
+      "away_team": "Eastern Washington Eagles",
+      "commence_time": "2026-03-10T20:30:00Z",
+      "homePoint": -13.5,
+      "awayPoint": 13.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-10T17:30:38Z"
+    },
+    {
+      "oddsEventId": "bf96d1a5a47f6742b6036cf81c769b55",
+      "home_team": "Colorado St Rams",
+      "away_team": "Air Force Falcons",
+      "commence_time": "2026-03-11T01:30:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-10T23:55:37Z"
+    }
+  ]
+}

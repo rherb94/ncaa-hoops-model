@@ -1,0 +1,108 @@
+{
+  "date": "2026-03-09",
+  "captured_at": "2026-03-09T17:00:21.594Z",
+  "games": [
+    {
+      "oddsEventId": "205921426ac76d6569ad1b613dc302c1",
+      "commence_time": "2026-03-09T18:00:00Z",
+      "home_team": "Troy Trojans",
+      "away_team": "James Madison Dukes",
+      "home_espnTeamId": "2653",
+      "away_espnTeamId": "256",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-09T16:59:52Z",
+        "homePoint": 7.5,
+        "awayPoint": -7.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "d4f62942b294cefa2b5482bdaaa47483",
+      "commence_time": "2026-03-09T21:00:00Z",
+      "home_team": "Jacksonville Dolphins",
+      "away_team": "Austin Peay Governors",
+      "home_espnTeamId": "294",
+      "away_espnTeamId": "2046",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-09T16:59:52Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "056e61b2c3351c6707649a839e9ee52b",
+      "commence_time": "2026-03-09T23:00:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Villanova Wildcats",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "222",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-09T16:59:52Z",
+        "homePoint": -28.5,
+        "awayPoint": 28.5
+      },
+      "model": {
+        "homeTeamId": "team-connecticut",
+        "awayTeamId": "team-villanova",
+        "modelSpread": -23.5,
+        "edge": 5,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "d883c6291fb6648aaf15a27132e6806a",
+      "commence_time": "2026-03-10T00:00:00Z",
+      "home_team": "Boise State Broncos",
+      "away_team": "Air Force Falcons",
+      "home_espnTeamId": "68",
+      "away_espnTeamId": "2005",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-09T16:59:52Z",
+        "homePoint": -7.5,
+        "awayPoint": 7.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "83a31c9360f4247ceaefe8a0b9066f87",
+      "commence_time": "2026-03-10T02:30:00Z",
+      "home_team": "UNLV Rebels",
+      "away_team": "Colorado St Rams",
+      "home_espnTeamId": "2439",
+      "away_espnTeamId": "36",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-09T16:59:52Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": {
+        "homeTeamId": "team-unlv",
+        "awayTeamId": "team-colorado-st",
+        "modelSpread": -1.7,
+        "edge": -0.2,
+        "signal": "NONE"
+      }
+    }
+  ]
+}

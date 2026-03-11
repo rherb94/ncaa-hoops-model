@@ -1,0 +1,66 @@
+{
+  "date": "2026-03-10",
+  "captured_at": "2026-03-10T16:59:08.330Z",
+  "games": [
+    {
+      "oddsEventId": "fa888fff0efade4652ec44c3a588cf9e",
+      "commence_time": "2026-03-10T17:00:00Z",
+      "home_team": "Charlotte 49ers",
+      "away_team": "Florida Atlantic Owls",
+      "home_espnTeamId": "2429",
+      "away_espnTeamId": "2226",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-03-10T16:58:46Z",
+        "homePoint": -6.5,
+        "awayPoint": 6.5
+      },
+      "model": {
+        "homeTeamId": "team-charlotte",
+        "awayTeamId": "team-florida-atlantic",
+        "modelSpread": -6.7,
+        "edge": -0.2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "2bed19c64545db4f61c9e294bfbd4620",
+      "commence_time": "2026-03-10T20:00:00Z",
+      "home_team": "Gonzaga Bulldogs",
+      "away_team": "Oregon St Beavers",
+      "home_espnTeamId": "2250",
+      "away_espnTeamId": "204",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-10T16:58:45Z",
+        "homePoint": -3.5,
+        "awayPoint": 3.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "bf96d1a5a47f6742b6036cf81c769b55",
+      "commence_time": "2026-03-11T01:30:00Z",
+      "home_team": "Colorado St Rams",
+      "away_team": "Air Force Falcons",
+      "home_espnTeamId": "36",
+      "away_espnTeamId": "2005",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-10T16:58:45Z",
+        "homePoint": -12.5,
+        "awayPoint": 12.5
+      },
+      "model": null
+    }
+  ]
+}
