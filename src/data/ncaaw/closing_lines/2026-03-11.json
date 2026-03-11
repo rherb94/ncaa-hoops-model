@@ -1,0 +1,129 @@
+{
+  "date": "2026-03-11",
+  "last_updated": "2026-03-11T17:37:36.508Z",
+  "snapshot_times": [
+    "2026-03-11T17:35:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "828ce7b3780a4497a10fa9c5e14e3cc8",
+      "home_team": "Central Michigan Chippewas",
+      "away_team": "Ohio Bobcats",
+      "commence_time": "2026-03-11T17:40:00Z",
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "be4e6dcf38caee3f50c78c3381ddeec1",
+      "home_team": "Lamar Cardinals",
+      "away_team": "Stephen F. Austin Lumberjacks",
+      "commence_time": "2026-03-11T18:00:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "f2c465c856ea6f506367e00d6c414798",
+      "home_team": "Northeastern Huskies",
+      "away_team": "North Carolina Tar Heels",
+      "commence_time": "2026-03-11T18:00:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "90ae1e5c0ec2647f92dda968da6692cd",
+      "home_team": "Maryland-Eastern Shore Hawks",
+      "away_team": "Delaware St Hornets",
+      "commence_time": "2026-03-11T18:30:00Z",
+      "homePoint": -12.5,
+      "awayPoint": 12.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "1fe5e0110e0d7797d7f53ac0b33c6d6c",
+      "home_team": "CSU Fullerton Titans",
+      "away_team": "CSU Northridge Matadors",
+      "commence_time": "2026-03-11T19:00:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "627558cb70c55298fa32d501f3bb14c5",
+      "home_team": "Florida Int'l Golden Panthers",
+      "away_team": "Jacksonville St Gamecocks",
+      "commence_time": "2026-03-11T19:00:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "0af64b1a1cbfed5a6f8e5c7468fb2eb8",
+      "home_team": "Ball State Cardinals",
+      "away_team": "Bowling Green Falcons",
+      "commence_time": "2026-03-11T19:30:00Z",
+      "homePoint": -11.5,
+      "awayPoint": 11.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "9a02033905696d60c23334fc1a332574",
+      "home_team": "UTSA Roadrunners",
+      "away_team": "Temple Owls",
+      "commence_time": "2026-03-11T19:30:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "f0e54aa0e31afe75de088161e566ae23",
+      "home_team": "Idaho Vandals",
+      "away_team": "Montana St Bobcats",
+      "commence_time": "2026-03-11T21:00:00Z",
+      "homePoint": 4.5,
+      "awayPoint": -4.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "fab504827288d67ed24950abd67708e6",
+      "home_team": "UC Santa Barbara Gauchos",
+      "away_team": "UC Riverside Highlanders",
+      "commence_time": "2026-03-11T21:30:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "ce8ead15dcf94e1b5fbaa4cc273b3f48",
+      "home_team": "Massachusetts Minutewomen",
+      "away_team": "Toledo Rockets",
+      "commence_time": "2026-03-11T21:45:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    },
+    {
+      "oddsEventId": "d776e91e6e141ea21a113b9a49cee91e",
+      "home_team": "UT-Arlington Mavericks",
+      "away_team": "Utah Tech Trailblazers",
+      "commence_time": "2026-03-11T22:00:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-11T17:35:38Z"
+    }
+  ]
+}
