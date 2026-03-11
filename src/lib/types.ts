@@ -18,6 +18,12 @@ export type ModelBlock = {
   signal: ModelSignal;
 };
 
+export type GameOverrideInfo = {
+  forceHome?: boolean;
+  skip?: boolean;
+  reason?: string;
+};
+
 export type RecommendedBet = {
   market: "SPREAD";
   side: "HOME" | "AWAY" | "NONE";
@@ -47,6 +53,9 @@ export type SlateGame = {
   model: ModelBlock;
 
   recommended?: RecommendedBet;
+
+  // Override flags (populated when overrides.json has entries for this game)
+  overrides?: GameOverrideInfo;
 };
 
 export type UnmappedAlias = {

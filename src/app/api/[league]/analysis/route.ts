@@ -11,6 +11,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { getLeague, LEAGUES } from "@/lib/leagues";
 import type { LeagueId } from "@/lib/leagues";
+import { getGameOverrides } from "@/lib/overrides";
 
 const DATA_DIR = path.join(process.cwd(), "src", "data");
 
@@ -383,15 +384,19 @@ function analyzeDate(
     const effectiveModelSpread = intraday ? intraday.modelSpread : (sg.model?.modelSpread ?? null);
     const pickedAt = intraday?.capturedAt ?? null;
 
+    // Apply overrides: skip → force NONE, forceHome → correct neutral site
+    const overrides = getGameOverrides(leagueId, date, sg.oddsEventId);
+    const finalSignal = overrides.skip ? "NONE" : effectiveSignal;
+
     const pickResult = evaluatePick(
-      effectiveSignal,
+      finalSignal,
       effectiveEdge,
       effectiveSpread,
       result?.actualSpread ?? null
     );
 
     const pickSide: "HOME" | "AWAY" | "NONE" =
-      effectiveSignal === "NONE" || !effectiveEdge
+      finalSignal === "NONE" || !effectiveEdge
         ? "NONE"
         : effectiveEdge < 0
         ? "HOME"
@@ -416,15 +421,19 @@ function analyzeDate(
       away_team: sg.away_team,
       home_espnTeamId: sg.home_espnTeamId ?? null,
       away_espnTeamId: sg.away_espnTeamId ?? null,
-      neutral_site: sg.neutralSite ?? false,
+      neutral_site: overrides.forceHome ? false : (sg.neutralSite ?? false),
       opening_spread: effectiveSpread, // home spread (intraday line if applicable)
       opening_book: effectiveBook,
       closing_spread: closingSpread,
       clv,
       model_spread: effectiveModelSpread,
       edge: effectiveEdge,
-      signal: effectiveSignal,
+      signal: finalSignal,
       pick_side: pickSide,
+      // Override flags
+      skipped: overrides.skip || undefined,
+      forced_home: overrides.forceHome || undefined,
+      override_reason: overrides.reason,
       // result
       home_score: result?.homeScore ?? null,
       away_score: result?.awayScore ?? null,

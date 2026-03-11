@@ -27,6 +27,10 @@ type GameRow = {
   completed: boolean;
   pick_result: "WIN" | "LOSS" | "PUSH" | "NO_PICK" | "PENDING";
   picked_at?: string | null; // ISO timestamp — present for intraday picks
+  // Override flags
+  skipped?: boolean;
+  forced_home?: boolean;
+  override_reason?: string;
 };
 
 type DayResult = {
@@ -210,6 +214,28 @@ function NeutralBadge() {
   );
 }
 
+function OverrideHomeBadge() {
+  return (
+    <span
+      title="Override: neutral site forced to home game (HCA applied)"
+      className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-orange-500/15 text-orange-400 border border-orange-500/20"
+    >
+      🏠 HOME OVERRIDE
+    </span>
+  );
+}
+
+function SkipBadge({ reason }: { reason?: string }) {
+  return (
+    <span
+      title={reason ?? "Game skipped — excluded from picks and results"}
+      className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-rose-500/15 text-rose-400 border border-rose-500/20"
+    >
+      ⊘ SKIPPED
+    </span>
+  );
+}
+
 function SignalBadge({ signal, pickSide }: { signal: string; pickSide: string }) {
   if (signal === "NONE") return <span className="text-zinc-600 text-xs">—</span>;
   const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
@@ -358,8 +384,10 @@ function GameCard({ g, league }: { g: GameRow; league: LeagueId }) {
           )}
         </div>
       </div>
-      {/* neutral site badge */}
+      {/* neutral site / override badges */}
       {g.neutral_site && <div className="mb-1"><NeutralBadge /></div>}
+      {g.forced_home && <div className="mb-1"><OverrideHomeBadge /></div>}
+      {g.skipped && <div className="mb-1"><SkipBadge reason={g.override_reason} /></div>}
       {/* stats row */}
       <div className="flex items-center gap-3 text-[11px] text-zinc-500 flex-wrap">
         <span>Line <span className="text-zinc-300 font-mono">{spreadLabel(g.opening_spread)}</span></span>
@@ -676,6 +704,12 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
                             </div>
                             {g.neutral_site && (
                               <div className="mt-0.5"><NeutralBadge /></div>
+                            )}
+                            {g.forced_home && (
+                              <div className="mt-0.5"><OverrideHomeBadge /></div>
+                            )}
+                            {g.skipped && (
+                              <div className="mt-0.5"><SkipBadge reason={g.override_reason} /></div>
                             )}
                           </td>
                           <td className="px-3 py-2 text-right font-mono text-zinc-300 align-middle">

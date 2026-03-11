@@ -1,0 +1,16 @@
+{
+  "neutralToHome": {
+    "2026-03-11": {
+      "343624f40b660c0cc01f65b45f62dd38": {
+        "reason": "UNLV hosting MW tournament at Thomas & Mack Center"
+      }
+    }
+  },
+  "skipGame": {
+    "2026-03-11": {
+      "be164ab3e31569cb7077302ea8fe5bbd": {
+        "reason": "USC star player injured"
+      }
+    }
+  }
+}

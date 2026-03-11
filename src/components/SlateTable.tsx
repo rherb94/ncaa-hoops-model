@@ -75,21 +75,25 @@ function bookLogoSrc(book?: string | null) {
 // ── Row / rail styling ────────────────────────────────────────────────────────
 
 /** Desktop table row: subtle bg tint */
-function rowTint(signal?: SlateGame["model"]["signal"]) {
+function rowTint(signal?: SlateGame["model"]["signal"], skipped?: boolean) {
+  if (skipped) return "opacity-50";
   if (signal === "STRONG") return "bg-emerald-500/[0.09]";
   if (signal === "LEAN")   return "bg-amber-400/[0.07]";
   return "";
 }
 
 /** Desktop table: left rail on Time column */
-function railClass(signal?: SlateGame["model"]["signal"]) {
+function railClass(signal?: SlateGame["model"]["signal"], skipped?: boolean) {
+  if (skipped) return "border-l-[3px] border-rose-400/40";
   if (signal === "STRONG") return "border-l-[3px] border-emerald-400";
   if (signal === "LEAN")   return "border-l-[3px] border-amber-400";
   return "border-l-[3px] border-transparent";
 }
 
 /** Mobile card: full-perimeter border + shadow glow + visible fill */
-function mobileCardClass(signal?: SlateGame["model"]["signal"]) {
+function mobileCardClass(signal?: SlateGame["model"]["signal"], skipped?: boolean) {
+  if (skipped)
+    return "rounded-xl border border-rose-500/20 bg-zinc-900/20 opacity-50";
   if (signal === "STRONG")
     return "rounded-xl border border-emerald-500/40 bg-emerald-500/[0.11] shadow-[0_0_22px_-4px_rgba(52,211,153,0.4)]";
   if (signal === "LEAN")
@@ -106,6 +110,30 @@ function NeutralBadge() {
       className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-blue-500/15 text-blue-400 border border-blue-500/20"
     >
       ⚬ NEUTRAL
+    </span>
+  );
+}
+
+// ── Override badges ──────────────────────────────────────────────────────────
+
+function OverrideHomeBadge() {
+  return (
+    <span
+      title="Override: neutral site forced to home game (HCA applied)"
+      className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-orange-500/15 text-orange-400 border border-orange-500/20"
+    >
+      🏠 HOME OVERRIDE
+    </span>
+  );
+}
+
+function SkipBadge({ reason }: { reason?: string }) {
+  return (
+    <span
+      title={reason ?? "Game skipped — excluded from picks and results"}
+      className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-rose-500/15 text-rose-400 border border-rose-500/20"
+    >
+      ⊘ SKIPPED
     </span>
   );
 }
@@ -231,6 +259,8 @@ function GameCell({ g }: { g: SlateGame }) {
       <div className="pl-0.5 text-[10px] font-medium text-zinc-700 select-none leading-none py-0.5">@</div>
       <TeamRow name={g.homeTeam} logo={g.homeLogo} isPreferred={preferred === "HOME"} />
       {g.neutralSite && <div className="mt-1"><NeutralBadge /></div>}
+      {g.overrides?.forceHome && <div className="mt-1"><OverrideHomeBadge /></div>}
+      {g.overrides?.skip && <div className="mt-1"><SkipBadge reason={g.overrides.reason} /></div>}
     </div>
   );
 }
@@ -634,11 +664,11 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                   )}
 
                   <tr
-                    className={`cursor-pointer transition-colors hover:bg-white/[0.025] ${rowTint(g.model.signal)}`}
+                    className={`cursor-pointer transition-colors hover:bg-white/[0.025] ${rowTint(g.model.signal, g.overrides?.skip)}`}
                     onClick={() => toggleRow(g)}
                   >
                     {/* Time */}
-                    <td className={`${tdBase} whitespace-nowrap align-middle ${railClass(g.model.signal)}`}>
+                    <td className={`${tdBase} whitespace-nowrap align-middle ${railClass(g.model.signal, g.overrides?.skip)}`}>
                       <div className="flex items-center gap-1.5">
                         <span className="text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
                         <span className={`text-[9px] text-zinc-700 transition-transform duration-150 ${open ? "rotate-180" : ""}`}>▼</span>
@@ -721,7 +751,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
               )}
 
               {/* Card — wraps both the summary row and the expanded panel */}
-              <div className={`overflow-hidden transition-all ${mobileCardClass(g.model.signal)}`}>
+              <div className={`overflow-hidden transition-all ${mobileCardClass(g.model.signal, g.overrides?.skip)}`}>
                 <div
                   className="cursor-pointer px-4 py-3"
                   onClick={() => toggleRow(g)}
@@ -753,6 +783,8 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                       </React.Fragment>
                     ))}
                     {g.neutralSite && <div className="mt-1"><NeutralBadge /></div>}
+                    {g.overrides?.forceHome && <div className="mt-1"><OverrideHomeBadge /></div>}
+                    {g.overrides?.skip && <div className="mt-1"><SkipBadge reason={g.overrides.reason} /></div>}
                   </div>
 
                   {/* Mkt / Model / Edge */}
