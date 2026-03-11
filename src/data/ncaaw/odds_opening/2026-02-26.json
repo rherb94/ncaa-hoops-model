@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-ut-rio-grande-valley",
         "awayTeamId": "team-northwestern-st",
-        "modelSpread": -3.2,
-        "edge": 0.3,
+        "modelSpread": -3.6,
+        "edge": -0.1,
         "signal": "NONE"
       }
     },
@@ -165,9 +165,9 @@
       "model": {
         "homeTeamId": "team-auburn",
         "awayTeamId": "team-kentucky",
-        "modelSpread": 14.5,
-        "edge": -3,
-        "signal": "LEAN"
+        "modelSpread": 14.6,
+        "edge": -2.9,
+        "signal": "NONE"
       }
     },
     {
@@ -309,8 +309,8 @@
       "model": {
         "homeTeamId": "team-vanderbilt",
         "awayTeamId": "team-alabama",
-        "modelSpread": -11.7,
-        "edge": -0.2,
+        "modelSpread": -11.8,
+        "edge": -0.3,
         "signal": "NONE"
       }
     },

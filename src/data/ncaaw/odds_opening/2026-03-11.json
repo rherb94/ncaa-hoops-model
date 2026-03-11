@@ -1,0 +1,120 @@
+{
+  "date": "2026-03-11",
+  "captured_at": "2026-03-11T16:58:17.449Z",
+  "games": [
+    {
+      "oddsEventId": "8591e1b5de69d151c7b4eed703f0028b",
+      "commence_time": "2026-03-11T17:00:00Z",
+      "home_team": "North Texas Mean Green",
+      "away_team": "Florida Atlantic Owls",
+      "home_espnTeamId": "249",
+      "away_espnTeamId": "2226",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-03-11T16:58:14Z",
+        "homePoint": -12.5,
+        "awayPoint": 12.5
+      },
+      "model": {
+        "homeTeamId": "team-north-texas",
+        "awayTeamId": "team-florida-atlantic",
+        "modelSpread": -10.9,
+        "edge": 1.6,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "828ce7b3780a4497a10fa9c5e14e3cc8",
+      "commence_time": "2026-03-11T17:15:00Z",
+      "home_team": "Central Michigan Chippewas",
+      "away_team": "Ohio Bobcats",
+      "home_espnTeamId": "2117",
+      "away_espnTeamId": "195",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-03-11T16:58:14Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "be4e6dcf38caee3f50c78c3381ddeec1",
+      "commence_time": "2026-03-11T18:00:00Z",
+      "home_team": "Lamar Cardinals",
+      "away_team": "Stephen F. Austin Lumberjacks",
+      "home_espnTeamId": "2320",
+      "away_espnTeamId": "2617",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-03-11T16:58:14Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "f2c465c856ea6f506367e00d6c414798",
+      "commence_time": "2026-03-11T18:00:00Z",
+      "home_team": "Northeastern Huskies",
+      "away_team": "North Carolina Tar Heels",
+      "home_espnTeamId": "111",
+      "away_espnTeamId": "153",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-03-11T16:58:14Z",
+        "homePoint": -3.5,
+        "awayPoint": 3.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "f0e54aa0e31afe75de088161e566ae23",
+      "commence_time": "2026-03-11T21:00:00Z",
+      "home_team": "Idaho Vandals",
+      "away_team": "Montana St Bobcats",
+      "home_espnTeamId": "70",
+      "away_espnTeamId": "147",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-11T16:57:18Z",
+        "homePoint": 4.5,
+        "awayPoint": -4.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "d776e91e6e141ea21a113b9a49cee91e",
+      "commence_time": "2026-03-11T22:00:00Z",
+      "home_team": "UT-Arlington Mavericks",
+      "away_team": "Utah Tech Trailblazers",
+      "home_espnTeamId": "250",
+      "away_espnTeamId": "3101",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-11T16:57:18Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": null
+    }
+  ]
+}

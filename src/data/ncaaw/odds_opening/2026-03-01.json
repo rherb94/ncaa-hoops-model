@@ -112,7 +112,7 @@
       "model": {
         "homeTeamId": "team-west-virginia",
         "awayTeamId": "team-cincinnati",
-        "modelSpread": -20.6,
+        "modelSpread": -20.7,
         "edge": null,
         "signal": "NONE"
       }
@@ -179,8 +179,8 @@
       "model": {
         "homeTeamId": "team-pittsburgh",
         "awayTeamId": "team-n-c-state",
-        "modelSpread": 25.3,
-        "edge": -2.2,
+        "modelSpread": 25.4,
+        "edge": -2.1,
         "signal": "NONE"
       }
     },
@@ -227,8 +227,8 @@
       "model": {
         "homeTeamId": "team-tcu",
         "awayTeamId": "team-baylor",
-        "modelSpread": -10.2,
-        "edge": -0.7,
+        "modelSpread": -10.3,
+        "edge": -0.8,
         "signal": "NONE"
       }
     },

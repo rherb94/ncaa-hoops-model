@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-houston-christian",
         "awayTeamId": "team-texas-a-m-corpus-chris",
-        "modelSpread": -6.5,
-        "edge": -1,
+        "modelSpread": -6.6,
+        "edge": -1.1,
         "signal": "NONE"
       }
     },
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-belmont",
         "awayTeamId": "team-southern-illinois",
-        "modelSpread": -14.6,
-        "edge": 6.9,
+        "modelSpread": -14.7,
+        "edge": 6.8,
         "signal": "STRONG"
       }
     },
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-montana",
         "awayTeamId": "team-northern-colorado",
-        "modelSpread": 6.9,
-        "edge": 0.4,
+        "modelSpread": 7,
+        "edge": 0.5,
         "signal": "NONE"
       }
     }
