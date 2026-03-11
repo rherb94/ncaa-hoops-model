@@ -275,6 +275,7 @@ function computeAnalytics(
   dates: string[],
   leagueId: string,
   liveResultsMap: Map<string, LiveResult[]> = new Map(),
+  neutralOnly: boolean = false,
 ) {
   const snapDir  = path.join(DATA_DIR, leagueId, "odds_opening");
   const resDir   = path.join(DATA_DIR, leagueId, "results");
@@ -299,6 +300,12 @@ function computeAnalytics(
     home:    emptySideAcc(),
     away:    emptySideAcc(),
     neutral: emptySideAcc(),
+  };
+
+  // Binary dog/fav accumulator (any points = dog, laying points = fav)
+  const dogFavAccs: Record<"dog" | "fav", SideAcc> = {
+    dog: emptySideAcc(),
+    fav: emptySideAcc(),
   };
 
   for (const date of dates) {
@@ -332,6 +339,9 @@ function computeAnalytics(
     }
 
     for (const sg of snap.games) {
+      // Skip non-neutral games when neutral-only filter is active
+      if (neutralOnly && !(sg.neutralSite ?? false)) continue;
+
       const result =
         sg.home_espnTeamId && sg.away_espnTeamId
           ? resultByTeams.get(`${sg.home_espnTeamId}|${sg.away_espnTeamId}`) ?? null
@@ -395,6 +405,21 @@ function computeAnalytics(
         }
         if (clv !== null)  { s.clv_sum  += clv;  s.clv_count++; }
         if (edge !== null) { s.edge_sum += Math.abs(edge); s.edge_count++; }
+      }
+
+      // ---- binary dog/fav (getting points vs laying points) ----------------
+      if (hasPick && pickSide && openingPt !== null) {
+        const pickLine = pickSide === "HOME" ? openingPt : -openingPt;
+        const dfKey: "dog" | "fav" = pickLine > 0 ? "dog" : "fav";
+        const df = dogFavAccs[dfKey];
+        df.picks++;
+        if (isDecided) {
+          if (pickResult === "WIN")  df.wins++;
+          if (pickResult === "LOSS") df.losses++;
+          if (pickResult === "PUSH") df.pushes++;
+        }
+        if (clv !== null)  { df.clv_sum  += clv;  df.clv_count++; }
+        if (edge !== null) { df.edge_sum += Math.abs(edge); df.edge_count++; }
       }
 
       // ---- by team -------------------------------------------------------
@@ -546,7 +571,28 @@ function computeAnalytics(
     };
   });
 
-  return { by_spread, by_side, by_team, by_conference };
+  // ---- finalise by_dog_fav -------------------------------------------------
+  const DOG_FAV_META: { key: "dog" | "fav"; label: string }[] = [
+    { key: "dog", label: "Underdog" },
+    { key: "fav", label: "Favorite" },
+  ];
+  const by_dog_fav = DOG_FAV_META.map(({ key, label }) => {
+    const df = dogFavAccs[key];
+    const decided = df.wins + df.losses;
+    return {
+      key,
+      label,
+      picks:    df.picks,
+      wins:     df.wins,
+      losses:   df.losses,
+      pushes:   df.pushes,
+      win_pct:  decided > 0 ? Math.round((df.wins / decided) * 100) : null,
+      avg_edge: df.edge_count > 0 ? Math.round((df.edge_sum / df.edge_count) * 10) / 10 : null,
+      avg_clv:  df.clv_count  > 0 ? Math.round((df.clv_sum  / df.clv_count)  * 10) / 10 : null,
+    };
+  });
+
+  return { by_spread, by_side, by_dog_fav, by_team, by_conference };
 }
 
 // ---- route handler ---------------------------------------------------------
@@ -566,6 +612,7 @@ export async function GET(
 
   const url            = new URL(req.url);
   const includeBackfilled = url.searchParams.get("backfilled") === "1";
+  const neutralOnly    = url.searchParams.get("neutral") === "1";
   const dateFrom       = url.searchParams.get("from");
   const dateTo         = url.searchParams.get("to");
 
@@ -606,13 +653,14 @@ export async function GET(
     );
   }
 
-  const analytics = computeAnalytics(dates, leagueCfg.id, liveResultsMap);
+  const analytics = computeAnalytics(dates, leagueCfg.id, liveResultsMap, neutralOnly);
 
   return NextResponse.json({
     league: leagueCfg.id,
     dates_analyzed: dates.length,
     date_range: { from: dates[0], to: dates[dates.length - 1] },
     backfilled_included: includeBackfilled,
+    neutral_only: neutralOnly,
     ...analytics,
   });
 }
