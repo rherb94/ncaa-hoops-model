@@ -435,11 +435,15 @@ async function fetchTeamL5(teamId: string, league: LeagueId): Promise<{ id: stri
 // ── Model pick record per team ────────────────────────────────────────────────
 
 type ModelRecord = { wins: number; losses: number };
+type ModelSummary = { wins: number; losses: number; pct: number | null };
 
-async function fetchModelRecords(league: LeagueId): Promise<Record<string, ModelRecord>> {
+type ModelData = { teams: Record<string, ModelRecord>; summary: ModelSummary };
+
+async function fetchModelData(league: LeagueId): Promise<ModelData> {
+  const empty: ModelData = { teams: {}, summary: { wins: 0, losses: 0, pct: null } };
   try {
     const res = await fetch(`/api/${league}/analysis?all=1`, { cache: "no-store" });
-    if (!res.ok) return {};
+    if (!res.ok) return empty;
     const json = await res.json();
     const map: Record<string, ModelRecord> = {};
     for (const day of json.by_date ?? []) {
@@ -452,9 +456,13 @@ async function fetchModelRecords(league: LeagueId): Promise<Record<string, Model
         else map[team].losses++;
       }
     }
-    return map;
+    const s = json.summary ?? {};
+    return {
+      teams: map,
+      summary: { wins: s.wins ?? 0, losses: s.losses ?? 0, pct: s.win_pct ?? null },
+    };
   } catch {
-    return {};
+    return empty;
   }
 }
 
@@ -467,12 +475,16 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
   const [stats, setStats] = useState<Record<string, TeamStats>>({});
   const [l5, setL5] = useState<Record<string, L5Record>>({});
   const [modelRec, setModelRec] = useState<Record<string, ModelRecord>>({});
+  const [modelSummary, setModelSummary] = useState<ModelSummary>({ wins: 0, losses: 0, pct: null });
   const [err, setErr] = useState<string | null>(null);
   const [filter, setFilter] = useState<FilterMode>("ALL");
 
   // Fetch season model records once on mount
   useEffect(() => {
-    fetchModelRecords(league).then(setModelRec);
+    fetchModelData(league).then(({ teams, summary }) => {
+      setModelRec(teams);
+      setModelSummary(summary);
+    });
   }, [league]);
 
   const now = Date.now();
@@ -564,6 +576,11 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
             {counts.games} games
             {counts.strong > 0 && <> · <span className="text-emerald-400">{counts.strong} STRONG</span></>}
             {counts.lean   > 0 && <> · <span className="text-amber-400">{counts.lean} LEAN</span></>}
+            {modelSummary.pct !== null && (
+              <> · <span className={modelSummary.wins > modelSummary.losses ? "text-emerald-400" : modelSummary.wins < modelSummary.losses ? "text-red-400" : "text-zinc-400"}>
+                Model ATS {modelSummary.wins}-{modelSummary.losses} ({modelSummary.pct}%)
+              </span></>
+            )}
           </span>
           {err && <span className="text-xs text-rose-400 shrink-0">{err}</span>}
         </div>
