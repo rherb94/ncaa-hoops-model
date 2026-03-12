@@ -1,0 +1,39 @@
+{
+  "date": "2026-03-12",
+  "last_updated": "2026-03-12T17:38:11.454Z",
+  "snapshot_times": [
+    "2026-03-12T17:35:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "a4a3ba7d9145cce89e34fef258ed9e55",
+      "home_team": "Norfolk St Spartans",
+      "away_team": "Morgan St Bears",
+      "commence_time": "2026-03-12T18:00:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-12T17:35:38Z"
+    },
+    {
+      "oddsEventId": "5454ce509ef60d7f1ed134fae07e0d46",
+      "home_team": "South Florida Bulls",
+      "away_team": "UTSA Roadrunners",
+      "commence_time": "2026-03-12T19:30:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-03-12T17:35:38Z"
+    },
+    {
+      "oddsEventId": "4d1b4a8fd8b317f05da2bfdddd94d34b",
+      "home_team": "McNeese Cowgirls",
+      "away_team": "Stephen F. Austin Lumberjacks",
+      "commence_time": "2026-03-12T21:00:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-12T17:35:38Z"
+    }
+  ]
+}
