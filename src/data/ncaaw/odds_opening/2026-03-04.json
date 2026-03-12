@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-eastern-michigan",
         "awayTeamId": "team-ohio",
-        "modelSpread": 3.8,
-        "edge": 2.3,
+        "modelSpread": 3.9,
+        "edge": 2.4,
         "signal": "NONE"
       }
     },

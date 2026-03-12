@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-milwaukee",
         "awayTeamId": "team-detroit-mercy",
-        "modelSpread": -3.3,
-        "edge": 3.2,
+        "modelSpread": -3.2,
+        "edge": 3.3,
         "signal": "LEAN"
       }
     },
