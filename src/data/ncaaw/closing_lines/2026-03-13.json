@@ -1,0 +1,39 @@
+{
+  "date": "2026-03-13",
+  "last_updated": "2026-03-13T17:24:08.762Z",
+  "snapshot_times": [
+    "2026-03-13T17:20:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "d311f0ba08cfe8bbb4b8968c8e0a469a",
+      "home_team": "Princeton Tigers",
+      "away_team": "Brown Bears",
+      "commence_time": "2026-03-13T20:30:00Z",
+      "homePoint": -11.5,
+      "awayPoint": 11.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-13T17:20:38Z"
+    },
+    {
+      "oddsEventId": "d71b182aa5b7ec220de67525217eaefe",
+      "home_team": "Vermont Catamounts",
+      "away_team": "Maine Black Bears",
+      "commence_time": "2026-03-13T21:00:00Z",
+      "homePoint": -9.5,
+      "awayPoint": 9.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-13T17:20:38Z"
+    },
+    {
+      "oddsEventId": "4db18452f5f41dd6609701369b12f050",
+      "home_team": "Florida Int'l Golden Panthers",
+      "away_team": "Missouri St Bears",
+      "commence_time": "2026-03-14T01:00:00Z",
+      "homePoint": 3.5,
+      "awayPoint": -3.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-13T17:20:38Z"
+    }
+  ]
+}
