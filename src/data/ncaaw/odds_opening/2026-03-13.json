@@ -1,0 +1,78 @@
+{
+  "date": "2026-03-13",
+  "captured_at": "2026-03-13T16:47:31.390Z",
+  "games": [
+    {
+      "oddsEventId": "2a108840abf0da543bc8800f94ebfc5c",
+      "commence_time": "2026-03-13T17:00:00Z",
+      "home_team": "Murray St Racers",
+      "away_team": "Indiana St Sycamores",
+      "home_espnTeamId": "93",
+      "away_espnTeamId": "282",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-03-13T16:46:54Z",
+        "homePoint": -22.5,
+        "awayPoint": 22.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "d311f0ba08cfe8bbb4b8968c8e0a469a",
+      "commence_time": "2026-03-13T20:30:00Z",
+      "home_team": "Princeton Tigers",
+      "away_team": "Brown Bears",
+      "home_espnTeamId": "163",
+      "away_espnTeamId": "225",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-03-13T16:47:16Z",
+        "homePoint": -11.5,
+        "awayPoint": 11.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "d71b182aa5b7ec220de67525217eaefe",
+      "commence_time": "2026-03-13T21:00:00Z",
+      "home_team": "Vermont Catamounts",
+      "away_team": "Maine Black Bears",
+      "home_espnTeamId": "261",
+      "away_espnTeamId": "311",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-13T16:46:46Z",
+        "homePoint": -9.5,
+        "awayPoint": 9.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "4db18452f5f41dd6609701369b12f050",
+      "commence_time": "2026-03-14T01:00:00Z",
+      "home_team": "Florida Int'l Golden Panthers",
+      "away_team": "Missouri St Bears",
+      "home_espnTeamId": "2229",
+      "away_espnTeamId": "2623",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-03-13T16:47:16Z",
+        "homePoint": 3.5,
+        "awayPoint": -3.5
+      },
+      "model": null
+    }
+  ]
+}

@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-illinois-chicago",
         "awayTeamId": "team-bradley",
-        "modelSpread": -0.5,
-        "edge": -2,
+        "modelSpread": -0.1,
+        "edge": -1.6,
         "signal": "NONE"
       }
     },
@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-georgia-tech",
         "awayTeamId": "team-louisville",
-        "modelSpread": 13.7,
-        "edge": -3.8,
+        "modelSpread": 13.8,
+        "edge": -3.7,
         "signal": "LEAN"
       }
     },
@@ -189,8 +189,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-georgetown",
-        "modelSpread": -37.7,
-        "edge": -0.2,
+        "modelSpread": -37.8,
+        "edge": -0.3,
         "signal": "NONE"
       }
     },
@@ -213,8 +213,8 @@
       "model": {
         "homeTeamId": "team-n-c-state",
         "awayTeamId": "team-wake-forest",
-        "modelSpread": -20.9,
-        "edge": 2.6,
+        "modelSpread": -21,
+        "edge": 2.5,
         "signal": "NONE"
       }
     },
@@ -237,8 +237,8 @@
       "model": {
         "homeTeamId": "team-virginia",
         "awayTeamId": "team-north-carolina",
-        "modelSpread": 4.4,
-        "edge": 0.9,
+        "modelSpread": 4.5,
+        "edge": 1,
         "signal": "NONE"
       }
     },
@@ -285,8 +285,8 @@
       "model": {
         "homeTeamId": "team-seton-hall",
         "awayTeamId": "team-villanova",
-        "modelSpread": 5.2,
-        "edge": 1.7,
+        "modelSpread": 5.3,
+        "edge": 1.8,
         "signal": "NONE"
       }
     },
@@ -309,8 +309,8 @@
       "model": {
         "homeTeamId": "team-vanderbilt",
         "awayTeamId": "team-alabama",
-        "modelSpread": -11.8,
-        "edge": -0.3,
+        "modelSpread": -11.9,
+        "edge": -0.4,
         "signal": "NONE"
       }
     },
@@ -357,8 +357,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-missouri",
-        "modelSpread": -32.1,
-        "edge": 5.4,
+        "modelSpread": -32.2,
+        "edge": 5.3,
         "signal": "STRONG"
       }
     },

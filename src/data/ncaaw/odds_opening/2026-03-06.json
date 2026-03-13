@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-n-c-state",
         "awayTeamId": "team-notre-dame",
-        "modelSpread": 0.9,
-        "edge": -0.6,
+        "modelSpread": 1,
+        "edge": -0.5,
         "signal": "NONE"
       }
     },
@@ -405,8 +405,8 @@
       "model": {
         "homeTeamId": "team-texas",
         "awayTeamId": "team-alabama",
-        "modelSpread": -17.9,
-        "edge": -2.4,
+        "modelSpread": -18,
+        "edge": -2.5,
         "signal": "NONE"
       }
     },

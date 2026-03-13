@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-georgetown",
-        "modelSpread": -34.7,
-        "edge": 3.8,
+        "modelSpread": -34.8,
+        "edge": 3.7,
         "signal": "LEAN"
       }
     },
@@ -243,8 +243,8 @@
       "model": {
         "homeTeamId": "team-tcu",
         "awayTeamId": "team-kansas-st",
-        "modelSpread": -11.8,
-        "edge": -0.3,
+        "modelSpread": -11.7,
+        "edge": -0.2,
         "signal": "NONE"
       }
     },
