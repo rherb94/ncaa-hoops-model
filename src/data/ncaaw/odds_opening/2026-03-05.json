@@ -213,8 +213,8 @@
       "model": {
         "homeTeamId": "team-ohio-st",
         "awayTeamId": "team-indiana",
-        "modelSpread": -11.3,
-        "edge": -0.8,
+        "modelSpread": -11.2,
+        "edge": -0.7,
         "signal": "NONE"
       }
     },

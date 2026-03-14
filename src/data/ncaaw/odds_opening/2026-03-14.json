@@ -1,0 +1,60 @@
+{
+  "date": "2026-03-14",
+  "captured_at": "2026-03-14T16:37:00.200Z",
+  "games": [
+    {
+      "oddsEventId": "0f4f389715970ef869179ada6de82494",
+      "commence_time": "2026-03-14T17:05:00Z",
+      "home_team": "Alabama St Hornets",
+      "away_team": "Southern Jaguars",
+      "home_espnTeamId": "2011",
+      "away_espnTeamId": "2582",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-14T16:35:59Z",
+        "homePoint": 7.5,
+        "awayPoint": -7.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "2c7d0615825fe1af99e0f016ae60ad18",
+      "commence_time": "2026-03-14T19:30:00Z",
+      "home_team": "Cal Baptist Lancers",
+      "away_team": "Abilene Christian Wildcats",
+      "home_espnTeamId": "2856",
+      "away_espnTeamId": "2000",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-14T16:35:59Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "0e853ecf172bde6b195be86cd885c35b",
+      "commence_time": "2026-03-14T20:00:00Z",
+      "home_team": "Howard Bison",
+      "away_team": "Norfolk St Spartans",
+      "home_espnTeamId": "47",
+      "away_espnTeamId": "2450",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-14T16:35:59Z",
+        "homePoint": -2.5,
+        "awayPoint": 2.5
+      },
+      "model": null
+    }
+  ]
+}

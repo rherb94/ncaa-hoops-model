@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-north-carolina",
         "awayTeamId": "team-duke",
-        "modelSpread": 0.6,
-        "edge": -1.9,
+        "modelSpread": 0.5,
+        "edge": -2,
         "signal": "NONE"
       }
     },

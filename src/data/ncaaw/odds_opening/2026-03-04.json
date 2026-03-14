@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-eastern-michigan",
         "awayTeamId": "team-ohio",
-        "modelSpread": 3.9,
-        "edge": 2.4,
+        "modelSpread": 3.2,
+        "edge": 1.7,
         "signal": "NONE"
       }
     },
@@ -189,8 +189,8 @@
       "model": {
         "homeTeamId": "team-oregon",
         "awayTeamId": "team-purdue",
-        "modelSpread": -11.1,
-        "edge": -0.6,
+        "modelSpread": -11,
+        "edge": -0.5,
         "signal": "NONE"
       }
     },

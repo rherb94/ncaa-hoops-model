@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-ucf",
         "awayTeamId": "team-west-virginia",
-        "modelSpread": 20,
-        "edge": -2.5,
+        "modelSpread": 20.1,
+        "edge": -2.4,
         "signal": "NONE"
       }
     },
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-iowa-st",
         "awayTeamId": "team-oklahoma-st",
-        "modelSpread": -3.5,
-        "edge": 2,
+        "modelSpread": -3.6,
+        "edge": 1.9,
         "signal": "NONE"
       }
     },

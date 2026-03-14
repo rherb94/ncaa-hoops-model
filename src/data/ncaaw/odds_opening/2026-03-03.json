@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-san-jose-st",
         "awayTeamId": "team-colorado-st",
-        "modelSpread": 19.2,
-        "edge": -2.3,
+        "modelSpread": 19.1,
+        "edge": -2.4,
         "signal": "NONE"
       }
     }
