@@ -1,0 +1,29 @@
+{
+  "date": "2026-03-14",
+  "last_updated": "2026-03-14T17:14:05.463Z",
+  "snapshot_times": [
+    "2026-03-14T17:10:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "2c7d0615825fe1af99e0f016ae60ad18",
+      "home_team": "Cal Baptist Lancers",
+      "away_team": "Abilene Christian Wildcats",
+      "commence_time": "2026-03-14T19:30:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-14T17:10:38Z"
+    },
+    {
+      "oddsEventId": "0e853ecf172bde6b195be86cd885c35b",
+      "home_team": "Howard Bison",
+      "away_team": "Norfolk St Spartans",
+      "commence_time": "2026-03-14T20:00:00Z",
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-14T17:10:38Z"
+    }
+  ]
+}
