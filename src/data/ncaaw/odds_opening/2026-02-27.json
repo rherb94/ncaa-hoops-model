@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-dartmouth",
         "awayTeamId": "team-princeton",
-        "modelSpread": 24,
-        "edge": -5.5,
+        "modelSpread": 24.2,
+        "edge": -5.3,
         "signal": "STRONG"
       }
     },
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-hofstra",
         "awayTeamId": "team-elon",
-        "modelSpread": 1.2,
-        "edge": -3.3,
+        "modelSpread": 0.8,
+        "edge": -3.7,
         "signal": "LEAN"
       }
     },
@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-harvard",
         "awayTeamId": "team-penn",
-        "modelSpread": -10.3,
-        "edge": 0.2,
+        "modelSpread": -9.9,
+        "edge": 0.6,
         "signal": "NONE"
       }
     }

@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-saint-joseph-s",
         "awayTeamId": "team-duquesne",
-        "modelSpread": -11.4,
-        "edge": -1.4,
+        "modelSpread": -11.3,
+        "edge": -1.3,
         "signal": "NONE"
       }
     },
@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-oklahoma",
         "awayTeamId": "team-florida",
-        "modelSpread": -8.7,
-        "edge": 1.8,
+        "modelSpread": -8.6,
+        "edge": 1.9,
         "signal": "NONE"
       }
     },
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-morehead-st",
         "awayTeamId": "team-southeast-missouri-st",
-        "modelSpread": -2.2,
-        "edge": 1.3,
+        "modelSpread": -2.1,
+        "edge": 1.4,
         "signal": "NONE"
       }
     },

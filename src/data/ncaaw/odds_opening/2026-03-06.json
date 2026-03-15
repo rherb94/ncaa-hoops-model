@@ -285,8 +285,8 @@
       "model": {
         "homeTeamId": "team-louisville",
         "awayTeamId": "team-syracuse",
-        "modelSpread": -10.9,
-        "edge": -0.4,
+        "modelSpread": -10.8,
+        "edge": -0.3,
         "signal": "NONE"
       }
     },

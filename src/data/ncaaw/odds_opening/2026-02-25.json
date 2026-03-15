@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-maryland",
         "awayTeamId": "team-northwestern",
-        "modelSpread": -24.8,
-        "edge": 7.7,
+        "modelSpread": -24.9,
+        "edge": 7.6,
         "signal": "STRONG"
       }
     },
@@ -165,8 +165,8 @@
       "model": {
         "homeTeamId": "team-ohio-st",
         "awayTeamId": "team-michigan",
-        "modelSpread": 1,
-        "edge": -4.5,
+        "modelSpread": 0.9,
+        "edge": -4.6,
         "signal": "LEAN"
       }
     },
