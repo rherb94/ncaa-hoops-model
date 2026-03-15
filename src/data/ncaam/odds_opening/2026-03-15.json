@@ -1,0 +1,102 @@
+{
+  "date": "2026-03-15",
+  "captured_at": "2026-03-15T16:40:27.353Z",
+  "games": [
+    {
+      "oddsEventId": "92f9253e9da70c1ae31330c678da91f8",
+      "commence_time": "2026-03-15T17:00:00Z",
+      "home_team": "Arkansas Razorbacks",
+      "away_team": "Vanderbilt Commodores",
+      "home_espnTeamId": "8",
+      "away_espnTeamId": "238",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-15T16:40:24Z",
+        "homePoint": 2.5,
+        "awayPoint": -2.5
+      },
+      "model": {
+        "homeTeamId": "team-arkansas",
+        "awayTeamId": "team-vanderbilt",
+        "modelSpread": 1.9,
+        "edge": -0.6,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "18d953313154b00d887282a0b920ccd4",
+      "commence_time": "2026-03-15T17:00:37Z",
+      "home_team": "VCU Rams",
+      "away_team": "Dayton Flyers",
+      "home_espnTeamId": "2670",
+      "away_espnTeamId": "2168",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-15T16:40:24Z",
+        "homePoint": -3.5,
+        "awayPoint": 3.5
+      },
+      "model": {
+        "homeTeamId": "team-vcu",
+        "awayTeamId": "team-dayton",
+        "modelSpread": -3.5,
+        "edge": 0,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "949f9f69eaf9a0d0bf9d76c31e5aa761",
+      "commence_time": "2026-03-15T19:15:00Z",
+      "home_team": "South Florida Bulls",
+      "away_team": "Wichita St Shockers",
+      "home_espnTeamId": "58",
+      "away_espnTeamId": "2724",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-15T16:40:24Z",
+        "homePoint": -6.5,
+        "awayPoint": 6.5
+      },
+      "model": {
+        "homeTeamId": "team-south-florida",
+        "awayTeamId": "team-wichita-st",
+        "modelSpread": -3.6,
+        "edge": 2.9,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "7b5d1be6fcb2f07046958febbd9627ae",
+      "commence_time": "2026-03-15T19:30:00Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Purdue Boilermakers",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "2509",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-15T16:40:24Z",
+        "homePoint": -5.5,
+        "awayPoint": 5.5
+      },
+      "model": {
+        "homeTeamId": "team-michigan",
+        "awayTeamId": "team-purdue",
+        "modelSpread": -3.3,
+        "edge": 2.2,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
