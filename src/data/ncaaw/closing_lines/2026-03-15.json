@@ -1,0 +1,29 @@
+{
+  "date": "2026-03-15",
+  "last_updated": "2026-03-15T17:14:53.157Z",
+  "snapshot_times": [
+    "2026-03-15T17:10:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "50b8d93a88cc620aaae100757b745ce1",
+      "home_team": "Charleston Cougars",
+      "away_team": "Hofstra Pride",
+      "commence_time": "2026-03-15T18:00:00Z",
+      "homePoint": -12.5,
+      "awayPoint": 12.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-03-15T17:10:37Z"
+    },
+    {
+      "oddsEventId": "a2fdc3c549cf2e00b1852484314bde52",
+      "home_team": "Murray St Racers",
+      "away_team": "Evansville Purple Aces",
+      "commence_time": "2026-03-15T18:00:00Z",
+      "homePoint": -15.5,
+      "awayPoint": 15.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-03-15T17:10:37Z"
+    }
+  ]
+}
