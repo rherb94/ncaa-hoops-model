@@ -54,6 +54,18 @@ type SideRow = {
   avg_clv: number | null;
 };
 
+type DogFavRow = {
+  key: "dog" | "fav";
+  label: string;
+  picks: number;
+  wins: number;
+  losses: number;
+  pushes: number;
+  win_pct: number | null;
+  avg_edge: number | null;
+  avg_clv: number | null;
+};
+
 type AnalyticsResponse = {
   league: string;
   dates_analyzed: number;
@@ -61,6 +73,7 @@ type AnalyticsResponse = {
   backfilled_included: boolean;
   by_spread: SpreadRow[];
   by_side: SideRow[];
+  by_dog_fav?: DogFavRow[];
   by_team: TeamRow[];
   by_conference: ConfRow[];
 };
@@ -423,6 +436,67 @@ function ConferenceTable({ rows }: { rows: ConfRow[] }) {
   );
 }
 
+// ---- Dog / Fav Split Table --------------------------------------------------
+
+function DogFavSplitTable({ rows }: { rows: DogFavRow[] }) {
+  const hasData = rows.some((r) => r.picks > 0);
+  if (!hasData) return null;
+
+  const totalPicks = rows.reduce((s, r) => s + r.picks, 0);
+
+  return (
+    <TableSection title="Underdog / Favorite Split" subtitle="binary split: getting points = dog, laying points = fav">
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs">
+          <thead>
+            <tr className="border-b border-white/10 text-zinc-500">
+              <th className="px-4 py-2 text-left  font-medium">Type</th>
+              <th className="px-3 py-2 text-right font-medium">Picks</th>
+              <th className="px-3 py-2 text-right font-medium">% of Picks</th>
+              <th className="px-3 py-2 text-right font-medium">W-L</th>
+              <th className="px-3 py-2 text-right font-medium">Win%</th>
+              <th className="px-3 py-2 text-right font-medium">Avg Edge</th>
+              <th className="px-3 py-2 text-right font-medium">Avg CLV</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => {
+              const decided = r.wins + r.losses;
+              const pctOfTotal = totalPicks > 0 ? Math.round((r.picks / totalPicks) * 100) : 0;
+              const color = r.key === "dog" ? "text-amber-400" : "text-blue-400";
+              return (
+                <tr key={r.key} className="border-b border-white/5 bg-zinc-900/30 hover:bg-zinc-900/60">
+                  <td className="px-4 py-2.5">
+                    <span className={`font-semibold ${color}`}>{r.label}</span>
+                  </td>
+                  <td className="px-3 py-2.5 text-right text-zinc-400">
+                    {r.picks > 0 ? r.picks : <span className="text-zinc-700">—</span>}
+                  </td>
+                  <td className="px-3 py-2.5 text-right">
+                    {r.picks > 0 ? (
+                      <span className={`font-semibold ${pctOfTotal > 60 ? "text-amber-400" : "text-zinc-400"}`}>
+                        {pctOfTotal}%
+                      </span>
+                    ) : (
+                      <span className="text-zinc-700">—</span>
+                    )}
+                  </td>
+                  <td className="px-3 py-2.5 text-right font-mono text-zinc-400">
+                    {decided > 0 ? `${r.wins}-${r.losses}` : <span className="text-zinc-700">—</span>}
+                  </td>
+                  <td className="px-3 py-2.5 text-right"><WinPctCell pct={r.win_pct} /></td>
+                  <td className="px-3 py-2.5 text-right"><EdgeCell v={r.avg_edge} /></td>
+                  <td className="px-3 py-2.5 text-right"><ClvCell v={r.avg_clv} /></td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </TableSection>
+  );
+}
+
 // ---- Home / Away / Neutral Split Table --------------------------------------
 
 function HomeAwaySplitTable({ rows }: { rows: SideRow[] }) {
@@ -484,12 +558,24 @@ export default function AnalyticsClient({ league }: { league: LeagueId }) {
   const [loading, setLoading]   = useState(false);
   const [err, setErr]           = useState<string | null>(null);
   const [backfilled, setBackfilled] = useState(false);
+  const [neutralOnly, setNeutralOnly] = useState(false);
+  const [range, setRange]       = useState<"all" | "7" | "30">("all");
 
-  async function load(includeBackfilled: boolean) {
+  async function load(includeBackfilled: boolean, neutral: boolean = false, r: "all" | "7" | "30" = "all") {
     setLoading(true);
     setErr(null);
     try {
-      const qs = includeBackfilled ? "?backfilled=1" : "";
+      const params = new URLSearchParams();
+      if (includeBackfilled) params.set("backfilled", "1");
+      if (neutral) params.set("neutral", "1");
+      if (r !== "all") {
+        const to = new Date();
+        const from = new Date(to);
+        from.setDate(from.getDate() - parseInt(r));
+        params.set("from", from.toISOString().slice(0, 10));
+        params.set("to", to.toISOString().slice(0, 10));
+      }
+      const qs = params.toString() ? `?${params.toString()}` : "";
       const res = await fetch(`/api/${league}/analytics${qs}`, { cache: "no-store" });
       if (!res.ok) {
         if (res.status === 404) {
@@ -507,13 +593,13 @@ export default function AnalyticsClient({ league }: { league: LeagueId }) {
     }
   }
 
-  useEffect(() => { load(backfilled); }, [backfilled]);
+  useEffect(() => { load(backfilled, neutralOnly, range); }, [backfilled, neutralOnly, range]);
 
   if (loading) return <div className="text-zinc-400 text-sm py-8">Loading analytics…</div>;
   if (err)     return <div className="text-zinc-500 text-sm py-8">{err}</div>;
   if (!data)   return null;
 
-  const { by_spread, by_side, by_team, by_conference, dates_analyzed, date_range } = data;
+  const { by_spread, by_side, by_dog_fav, by_team, by_conference, dates_analyzed, date_range } = data;
 
   // Find any alarming patterns to surface at the top
   const alarmTeams = by_team.filter((t) => t.pick_for >= ALARM_THRESHOLD);
@@ -530,14 +616,42 @@ export default function AnalyticsClient({ league }: { league: LeagueId }) {
   return (
     <div className="space-y-6">
       {/* header */}
-      <div className="flex flex-col sm:flex-row sm:items-start gap-3">
-        <div className="flex-1">
-          <div className="text-xs text-zinc-400">Model Analytics</div>
-          <div className="text-sm text-zinc-500">
-            {dates_analyzed} day{dates_analyzed !== 1 ? "s" : ""} · {date_range.from} → {date_range.to}
+      <div className="space-y-3">
+        <div className="flex flex-col sm:flex-row sm:items-start gap-3">
+          <div className="flex-1">
+            <div className="text-xs text-zinc-400">Model Analytics</div>
+            <div className="text-sm text-zinc-500">
+              {dates_analyzed} day{dates_analyzed !== 1 ? "s" : ""} · {date_range.from} → {date_range.to}
+            </div>
           </div>
         </div>
+
+        {/* time range pills */}
         <div className="flex items-center gap-2 flex-wrap">
+          {([["7", "Last 7 Days"], ["30", "Last 30 Days"], ["all", "Full Season"]] as const).map(([val, label]) => (
+            <button
+              key={val}
+              onClick={() => setRange(val)}
+              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                range === val
+                  ? "bg-zinc-700 text-zinc-100"
+                  : "bg-zinc-800/60 text-zinc-500 hover:text-zinc-300"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+          <span className="w-px h-5 bg-zinc-700 mx-1" />
+          <button
+            onClick={() => setNeutralOnly((v) => !v)}
+            className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+              neutralOnly
+                ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/30"
+                : "bg-zinc-800 text-zinc-500 hover:text-zinc-300 hover:bg-zinc-700"
+            }`}
+          >
+            {neutralOnly ? "Neutral only" : "Neutral only"}
+          </button>
           <button
             onClick={() => setBackfilled((v) => !v)}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
@@ -549,7 +663,7 @@ export default function AnalyticsClient({ league }: { league: LeagueId }) {
             {backfilled ? "Hide backfilled" : "Include backfilled"}
           </button>
           <button
-            onClick={() => load(backfilled)}
+            onClick={() => load(backfilled, neutralOnly, range)}
             className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:bg-zinc-700"
           >
             Refresh
@@ -588,6 +702,9 @@ export default function AnalyticsClient({ league }: { league: LeagueId }) {
 
       {/* spread bias */}
       <SpreadBiasTable rows={by_spread} />
+
+      {/* binary dog/fav split */}
+      {by_dog_fav && <DogFavSplitTable rows={by_dog_fav} />}
 
       {/* home / away split */}
       <HomeAwaySplitTable rows={by_side ?? []} />

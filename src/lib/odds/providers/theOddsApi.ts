@@ -110,7 +110,7 @@ export class TheOddsApiProvider implements OddsProvider {
     this.leagueId = leagueId;
   }
 
-  async getSlate(date: string, forceRefresh = false): Promise<OddsSlate> {
+  private async fetchEvents(forceRefresh: boolean): Promise<OddsApiEvent[]> {
     const apiKey = process.env.THE_ODDS_API_KEY;
     if (!apiKey) throw new Error("Missing env THE_ODDS_API_KEY");
 
@@ -129,18 +129,18 @@ export class TheOddsApiProvider implements OddsProvider {
       url,
       forceRefresh
         ? { cache: "no-store" }
-        : { next: { revalidate: 3600 } } // cache for 1 hour; busted by "Refresh odds"
+        : { next: { revalidate: 3600 } }
     );
     if (!res.ok) {
       const text = await res.text().catch(() => "");
       throw new Error(`TheOddsAPI error ${res.status}: ${text}`);
     }
 
-    const events = (await res.json()) as OddsApiEvent[];
+    return (await res.json()) as OddsApiEvent[];
+  }
 
-    const games: OddsGame[] = events
-      .filter((e) => ymdET(e.commence_time) === date)
-      .map((e) => {
+  private mapEvents(events: OddsApiEvent[]): OddsGame[] {
+    return events.map((e) => {
         const homeTeamName = e.home_team;
         const awayTeamName = e.away_team;
 
@@ -178,11 +178,35 @@ export class TheOddsApiProvider implements OddsProvider {
           books,
         };
       });
+  }
 
+  async getSlate(date: string, forceRefresh = false): Promise<OddsSlate> {
+    const events = await this.fetchEvents(forceRefresh);
+    const filtered = events.filter((e) => ymdET(e.commence_time) === date);
     return {
       date,
       lastUpdatedISO: new Date().toISOString(),
-      games,
+      games: this.mapEvents(filtered),
     };
+  }
+
+  /** Return all upcoming games grouped by ET date */
+  async getUpcoming(forceRefresh = false): Promise<Map<string, OddsSlate>> {
+    const events = await this.fetchEvents(forceRefresh);
+    const byDate = new Map<string, OddsApiEvent[]>();
+    for (const e of events) {
+      const d = ymdET(e.commence_time);
+      if (!byDate.has(d)) byDate.set(d, []);
+      byDate.get(d)!.push(e);
+    }
+    const result = new Map<string, OddsSlate>();
+    for (const [d, evts] of byDate) {
+      result.set(d, {
+        date: d,
+        lastUpdatedISO: new Date().toISOString(),
+        games: this.mapEvents(evts),
+      });
+    }
+    return result;
   }
 }
