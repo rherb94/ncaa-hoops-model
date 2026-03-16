@@ -1,0 +1,64 @@
+{
+  "date": "2026-03-15",
+  "fetched_at": "2026-03-16T07:44:10.338Z",
+  "total_games": 4,
+  "completed_games": 4,
+  "games": [
+    {
+      "espnEventId": "401851596",
+      "commence_time": "2026-03-15T16:00Z",
+      "home_team": "Holy Cross Crusaders",
+      "away_team": "Lehigh Mountain Hawks",
+      "home_espnTeamId": "107",
+      "away_espnTeamId": "2329",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 77,
+      "awayScore": 70,
+      "actualSpread": -7,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401851556",
+      "commence_time": "2026-03-15T16:00Z",
+      "home_team": "Fairleigh Dickinson Knights",
+      "away_team": "Long Island University Sharks",
+      "home_espnTeamId": "161",
+      "away_espnTeamId": "112358",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 79,
+      "awayScore": 57,
+      "actualSpread": -22,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856459",
+      "commence_time": "2026-03-15T18:00Z",
+      "home_team": "Charleston Cougars",
+      "away_team": "Hofstra Pride",
+      "home_espnTeamId": "232",
+      "away_espnTeamId": "2275",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 68,
+      "awayScore": 56,
+      "actualSpread": -12,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401851522",
+      "commence_time": "2026-03-15T18:00Z",
+      "home_team": "Murray State Racers",
+      "away_team": "Evansville Purple Aces",
+      "home_espnTeamId": "93",
+      "away_espnTeamId": "339",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 91,
+      "awayScore": 70,
+      "actualSpread": -21,
+      "winner": "HOME"
+    }
+  ]
+}
