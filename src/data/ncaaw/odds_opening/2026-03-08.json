@@ -63,8 +63,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-creighton",
-        "modelSpread": -33.4,
-        "edge": 3.1,
+        "modelSpread": -33.3,
+        "edge": 3.2,
         "signal": "LEAN"
       }
     },
@@ -147,8 +147,8 @@
       "model": {
         "homeTeamId": "team-villanova",
         "awayTeamId": "team-seton-hall",
-        "modelSpread": -8.3,
-        "edge": -0.8,
+        "modelSpread": -8.4,
+        "edge": -0.9,
         "signal": "NONE"
       }
     },
@@ -171,8 +171,8 @@
       "model": {
         "homeTeamId": "team-tcu",
         "awayTeamId": "team-west-virginia",
-        "modelSpread": -0.6,
-        "edge": 1.9,
+        "modelSpread": -0.5,
+        "edge": 2,
         "signal": "NONE"
       }
     },

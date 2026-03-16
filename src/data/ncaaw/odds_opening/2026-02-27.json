@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-jacksonville",
         "awayTeamId": "team-north-florida",
-        "modelSpread": -13.8,
-        "edge": 5.7,
+        "modelSpread": -13.7,
+        "edge": 5.8,
         "signal": "STRONG"
       }
     },
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-florida-gulf-coast",
         "awayTeamId": "team-stetson",
-        "modelSpread": -4.5,
-        "edge": -1,
+        "modelSpread": -4.4,
+        "edge": -0.9,
         "signal": "NONE"
       }
     },

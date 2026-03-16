@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-north-texas",
         "awayTeamId": "team-florida-atlantic",
-        "modelSpread": -11.7,
-        "edge": 0.8,
+        "modelSpread": -11.6,
+        "edge": 0.9,
         "signal": "NONE"
       }
     },

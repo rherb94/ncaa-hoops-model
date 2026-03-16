@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-georgia-tech",
         "awayTeamId": "team-louisville",
-        "modelSpread": 13.7,
-        "edge": -3.8,
+        "modelSpread": 13.6,
+        "edge": -3.9,
         "signal": "LEAN"
       }
     },
@@ -285,8 +285,8 @@
       "model": {
         "homeTeamId": "team-seton-hall",
         "awayTeamId": "team-villanova",
-        "modelSpread": 5.3,
-        "edge": 1.8,
+        "modelSpread": 5.4,
+        "edge": 1.9,
         "signal": "NONE"
       }
     },
