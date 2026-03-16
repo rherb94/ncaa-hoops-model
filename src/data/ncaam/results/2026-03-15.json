@@ -1,0 +1,78 @@
+{
+  "date": "2026-03-15",
+  "fetched_at": "2026-03-16T07:17:27.952Z",
+  "total_games": 5,
+  "completed_games": 5,
+  "games": [
+    {
+      "espnEventId": "401851388",
+      "commence_time": "2026-03-15T19:30Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Purdue Boilermakers",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "2509",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 72,
+      "awayScore": 80,
+      "actualSpread": 8,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401851571",
+      "commence_time": "2026-03-15T17:00Z",
+      "home_team": "Arkansas Razorbacks",
+      "away_team": "Vanderbilt Commodores",
+      "home_espnTeamId": "8",
+      "away_espnTeamId": "238",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 86,
+      "awayScore": 75,
+      "actualSpread": -11,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401851437",
+      "commence_time": "2026-03-15T16:00Z",
+      "home_team": "Yale Bulldogs",
+      "away_team": "Pennsylvania Quakers",
+      "home_espnTeamId": "43",
+      "away_espnTeamId": "219",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 84,
+      "awayScore": 88,
+      "actualSpread": 4,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401851277",
+      "commence_time": "2026-03-15T17:00Z",
+      "home_team": "VCU Rams",
+      "away_team": "Dayton Flyers",
+      "home_espnTeamId": "2670",
+      "away_espnTeamId": "2168",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 70,
+      "awayScore": 62,
+      "actualSpread": -8,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401851229",
+      "commence_time": "2026-03-15T19:15Z",
+      "home_team": "South Florida Bulls",
+      "away_team": "Wichita State Shockers",
+      "home_espnTeamId": "58",
+      "away_espnTeamId": "2724",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 70,
+      "awayScore": 55,
+      "actualSpread": -15,
+      "winner": "HOME"
+    }
+  ]
+}
