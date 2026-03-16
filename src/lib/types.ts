@@ -70,3 +70,13 @@ export type SlateResponse = {
   games: SlateGame[];
   unmappedAliases?: UnmappedAlias[];
 };
+
+export type DateSlate = {
+  date: string;
+  games: SlateGame[];
+};
+
+export type UpcomingResponse = {
+  lastUpdatedISO: string;
+  dates: DateSlate[];
+};

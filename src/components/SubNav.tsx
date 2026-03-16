@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const SUBNAV_LINKS = [
   { slug: "slate",     label: "Daily Slate" },
+  { slug: "bracket",   label: "Bracket" },
   { slug: "results",   label: "Results" },
   { slug: "teams",     label: "Teams" },
   { slug: "analytics", label: "Analytics" },

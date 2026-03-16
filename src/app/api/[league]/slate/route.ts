@@ -1,11 +1,5 @@
 // src/app/api/slate/route.ts
-// Cleaned up + safer + consistent math.
-// - Keeps response shape
-// - Tunable shrinkage (env + query param support)
-// - Uses computeEdge/computeSignal from model.ts (single source of truth)
-// - Avoids edge=0 when market missing (uses undefined instead)
-// - Optional debug logging per game
-// - Keeps slate summary logging
+// Supports single-date (?date=YYYY-MM-DD) and all-upcoming (?mode=upcoming) modes.
 
 import { NextResponse } from "next/server";
 import fs from "node:fs";
@@ -14,9 +8,10 @@ import { TheOddsApiProvider } from "@/lib/odds/providers/theOddsApi";
 import { loadTeams } from "@/data/teams";
 import { getLeague } from "@/lib/leagues";
 import type { LeagueConfig } from "@/lib/leagues";
-import type { SlateGame, SlateResponse, GameOverrideInfo } from "@/lib/types";
+import type { SlateGame, SlateResponse, UpcomingResponse, GameOverrideInfo } from "@/lib/types";
 import { getGameOverrides } from "@/lib/overrides";
 import { pickBestSpreadForSide } from "@/lib/odds/bestLines";
+import type { OddsGame } from "@/lib/odds/types";
 import {
   computeEfficiencyModel,
   computeModelSpread,
@@ -35,10 +30,6 @@ type Consensus = {
 
 function clamp(n: number, lo: number, hi: number) {
   return Math.max(lo, Math.min(hi, n));
-}
-
-function round1(n: number) {
-  return Math.round(n * 10) / 10;
 }
 
 function pickConsensusFromBooks(books: any): Consensus {
@@ -88,14 +79,8 @@ function pickConsensusFromBooks(books: any): Consensus {
   return { source: "provider" };
 }
 
-function parseDebug(reqUrl: URL) {
-  return reqUrl.searchParams.get("debug") === "1";
-}
-
 type OpenerInfo = { neutralSite: boolean; openingSpread?: number };
 
-// Read neutral site flags + opening spreads from today's opener snapshot.
-// Falls back to empty map if snapshot hasn't been written yet.
 function loadOpenerInfoByEventId(date: string, leagueId: string): Map<string, OpenerInfo> {
   const p = path.join(process.cwd(), "src", "data", leagueId, "odds_opening", `${date}.json`);
   try {
@@ -111,12 +96,10 @@ function loadOpenerInfoByEventId(date: string, leagueId: string): Map<string, Op
     }
     return m;
   } catch {
-    return new Map(); // opener not written yet
+    return new Map();
   }
 }
 
-// Live ESPN scoreboard fetch — keyed by "homeEspnId|awayEspnId".
-// Used as fallback when the opener snapshot doesn't exist yet (before 8am ET).
 async function fetchEspnNeutralByTeamPair(date: string, league: LeagueConfig): Promise<Map<string, boolean>> {
   const espnDate = date.replace(/-/g, "");
   const url =
@@ -126,7 +109,7 @@ async function fetchEspnNeutralByTeamPair(date: string, league: LeagueConfig): P
   try {
     const res = await fetch(url, {
       headers: { "user-agent": "ncaam-model/1.0 (personal project)" },
-      next: { revalidate: 3600 }, // cache for 1 hour in Next.js
+      next: { revalidate: 3600 },
     });
     if (!res.ok) return m;
     const json = await res.json() as { events?: any[] };
@@ -140,55 +123,27 @@ async function fetchEspnNeutralByTeamPair(date: string, league: LeagueConfig): P
         m.set(`${home.id}|${away.id}`, neutral);
       }
     }
-  } catch { /* ignore — neutral site defaults to false */ }
+  } catch { /* ignore */ }
   return m;
 }
 
-export async function GET(
-  req: Request,
-  { params }: { params: Promise<{ league: string }> }
-) {
-  const { league: leagueId } = await params;
-  const league = getLeague(leagueId);
-
-  const url = new URL(req.url);
-  const date = url.searchParams.get("date");
-
-  if (!date) {
-    return NextResponse.json({ error: "Missing date" }, { status: 400 });
-  }
-
-  const debug = parseDebug(url);
-  // "Refresh odds" button passes refresh=1 to bypass the hourly cache
-  const forceRefresh = url.searchParams.get("refresh") === "1";
-
-  const provider = new TheOddsApiProvider(league.sportKey, league.id);
-  let oddsSlate;
-  try {
-    oddsSlate = await provider.getSlate(date, forceRefresh);
-  } catch (e: any) {
-    console.error(`[SLATE] TheOddsAPI failed for league=${league.id} sport=${league.sportKey}:`, e?.message ?? e);
-    return NextResponse.json(
-      { error: `Odds provider error: ${e?.message ?? "unknown"}` },
-      { status: 502 }
-    );
-  }
-
-  const teams = loadTeams(league.id);
+/** Build SlateGame[] from raw OddsGame[] for a given date */
+async function buildSlateGames(
+  oddsGames: OddsGame[],
+  date: string,
+  league: LeagueConfig,
+  teams: ReturnType<typeof loadTeams>,
+  debug: boolean,
+): Promise<SlateGame[]> {
   const getTeam = (teamId: string) => teams.get(teamId);
 
-  // Opener snapshot info (neutral sites + opening spreads for line movement).
-  // If opener not yet written, fall back to a live ESPN scoreboard fetch for neutral sites.
   const openerInfoByEventId = loadOpenerInfoByEventId(date, league.id);
   const openerMissing = openerInfoByEventId.size === 0;
   const espnNeutralByTeamPair = openerMissing
     ? await fetchEspnNeutralByTeamPair(date, league)
     : new Map<string, boolean>();
 
-  // Only include games where both teams are in the model (i.e., in teams.csv).
-  // Unmapped teams (resolveTeamId returned null) get placeholder IDs like
-  // "unmapped-{eventId}-home" which will never be in the teams map.
-  const mappedGames = (oddsSlate.games ?? []).filter((g: any) => {
+  const mappedGames = oddsGames.filter((g: any) => {
     const hasHome = getTeam(g.homeTeamId) !== undefined;
     const hasAway = getTeam(g.awayTeamId) !== undefined;
     if (!hasHome || !hasAway) {
@@ -200,14 +155,13 @@ export async function GET(
     return hasHome && hasAway;
   });
 
-  const games: SlateGame[] = mappedGames.map((g: any) => {
+  return mappedGames.map((g: any) => {
     const books = g.books ?? {};
     const consensus = pickConsensusFromBooks(books);
 
     const away = getTeam(g.awayTeamId);
     const home = getTeam(g.homeTeamId);
 
-    // Look up opener info: neutral site + opening spread
     const openerInfo = openerInfoByEventId.get(g.gameId);
     const rawNeutralSite = openerMissing
       ? (home?.espnTeamId && away?.espnTeamId
@@ -216,7 +170,6 @@ export async function GET(
       : (openerInfo?.neutralSite ?? false);
     const openingSpread = openerInfo?.openingSpread;
 
-    // Apply overrides (force neutral→home, skip game from picks)
     const overrides = getGameOverrides(league.id, date, g.gameId);
     const neutralSite = overrides.forceHome ? false : rawNeutralSite;
 
@@ -236,15 +189,11 @@ export async function GET(
 
     const marketSpread = consensus.spread;
     const modelSpread = rawModelSpread;
-
-    // --- totals (unchanged; just keep as "modelTotal" if you later expose it) ---
     const modelTotal = eff?.modelTotal ?? consensus.total;
 
-    // --- edge/signal (single source of truth in lib/model.ts) ---
-    const edgeRaw = computeEdge(modelSpread, marketSpread); // undefined if no market
+    const edgeRaw = computeEdge(modelSpread, marketSpread);
     const edge = edgeRaw === undefined ? undefined : clamp(edgeRaw, -12, 12);
     const rawSignal = computeSignal(edge);
-    // Skip override: force signal to NONE so game never appears as a pick
     const signal = overrides.skip ? "NONE" as const : rawSignal;
 
     const preferredSide: "HOME" | "AWAY" | "NONE" =
@@ -300,11 +249,8 @@ export async function GET(
         homePR,
         hca,
         modelSpread,
-        edge: edge ?? 0, // keep response shape if your UI expects number
+        edge: edge ?? 0,
         signal,
-        // If your types allow it later:
-        // modelTotal,
-        // rawModelSpread,
       },
 
       recommended:
@@ -317,7 +263,6 @@ export async function GET(
               book: best.book,
             },
 
-      // Override metadata for UI badges
       overrides:
         overrides.forceHome || overrides.skip
           ? {
@@ -328,31 +273,21 @@ export async function GET(
           : undefined,
     };
   });
+}
 
-  // ---- SLATE SUMMARY LOG ----
+function logSlateSummary(date: string, games: SlateGame[]) {
   const edges = games
     .map((g) => g.model.edge)
     .filter((n): n is number => typeof n === "number");
 
   const abs = edges.map((e) => Math.abs(e));
-
   const mean = (arr: number[]) =>
     arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
 
   const buckets = edges.reduce<Record<string, number>>((acc, e) => {
     const a = Math.abs(e);
     const k =
-      a >= 8
-        ? "8+"
-        : a >= 6
-        ? "6-7.9"
-        : a >= 4
-        ? "4-5.9"
-        : a >= 3
-        ? "3-3.9"
-        : a >= 2
-        ? "2-2.9"
-        : "0-1.9";
+      a >= 8 ? "8+" : a >= 6 ? "6-7.9" : a >= 4 ? "4-5.9" : a >= 3 ? "3-3.9" : a >= 2 ? "2-2.9" : "0-1.9";
     acc[k] = (acc[k] ?? 0) + 1;
     return acc;
   }, {});
@@ -370,6 +305,74 @@ export async function GET(
     signals,
     buckets,
   });
+}
+
+export async function GET(
+  req: Request,
+  { params }: { params: Promise<{ league: string }> }
+) {
+  const { league: leagueId } = await params;
+  const league = getLeague(leagueId);
+
+  const url = new URL(req.url);
+  const mode = url.searchParams.get("mode");
+  const date = url.searchParams.get("date");
+  const debug = url.searchParams.get("debug") === "1";
+  const forceRefresh = url.searchParams.get("refresh") === "1";
+
+  const provider = new TheOddsApiProvider(league.sportKey, league.id);
+  const teams = loadTeams(league.id);
+
+  // ── Upcoming mode: return all dates with available odds ──
+  if (mode === "upcoming") {
+    let slatesByDate: Map<string, import("@/lib/odds/types").OddsSlate>;
+    try {
+      slatesByDate = await provider.getUpcoming(forceRefresh);
+    } catch (e: any) {
+      console.error(`[SLATE] TheOddsAPI failed:`, e?.message ?? e);
+      return NextResponse.json(
+        { error: `Odds provider error: ${e?.message ?? "unknown"}` },
+        { status: 502 }
+      );
+    }
+
+    const dates: UpcomingResponse["dates"] = [];
+    const sortedDates = [...slatesByDate.keys()].sort();
+
+    for (const d of sortedDates) {
+      const slate = slatesByDate.get(d)!;
+      const games = await buildSlateGames(slate.games, d, league, teams, debug);
+      if (games.length > 0) {
+        logSlateSummary(d, games);
+        dates.push({ date: d, games });
+      }
+    }
+
+    const body: UpcomingResponse = {
+      lastUpdatedISO: new Date().toISOString(),
+      dates,
+    };
+    return NextResponse.json(body);
+  }
+
+  // ── Single-date mode (default) ──
+  if (!date) {
+    return NextResponse.json({ error: "Missing date" }, { status: 400 });
+  }
+
+  let oddsSlate;
+  try {
+    oddsSlate = await provider.getSlate(date, forceRefresh);
+  } catch (e: any) {
+    console.error(`[SLATE] TheOddsAPI failed for league=${league.id} sport=${league.sportKey}:`, e?.message ?? e);
+    return NextResponse.json(
+      { error: `Odds provider error: ${e?.message ?? "unknown"}` },
+      { status: 502 }
+    );
+  }
+
+  const games = await buildSlateGames(oddsSlate.games, date, league, teams, debug);
+  logSlateSummary(date, games);
 
   const body: SlateResponse = {
     date,
