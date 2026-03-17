@@ -165,7 +165,9 @@ async function buildSlateGames(
     const openerInfo = openerInfoByEventId.get(g.gameId);
     const rawNeutralSite = openerMissing
       ? (home?.espnTeamId && away?.espnTeamId
-          ? (espnNeutralByTeamPair.get(`${home.espnTeamId}|${away.espnTeamId}`) ?? false)
+          ? (espnNeutralByTeamPair.get(`${home.espnTeamId}|${away.espnTeamId}`)
+             ?? espnNeutralByTeamPair.get(`${away.espnTeamId}|${home.espnTeamId}`)
+             ?? false)
           : false)
       : (openerInfo?.neutralSite ?? false);
     const openingSpread = openerInfo?.openingSpread;

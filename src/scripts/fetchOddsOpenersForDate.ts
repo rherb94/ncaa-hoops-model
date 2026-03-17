@@ -412,7 +412,9 @@ async function main() {
     // When neutral, HCA is 0 — neither team has a home advantage.
     const neutralSite =
       homeRes.espnTeamId && awayRes.espnTeamId
-        ? (neutralByTeamPair.get(`${homeRes.espnTeamId}|${awayRes.espnTeamId}`) ?? false)
+        ? (neutralByTeamPair.get(`${homeRes.espnTeamId}|${awayRes.espnTeamId}`)
+           ?? neutralByTeamPair.get(`${awayRes.espnTeamId}|${homeRes.espnTeamId}`)
+           ?? false)
         : false;
 
     if (neutralSite) {
