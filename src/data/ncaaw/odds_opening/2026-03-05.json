@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-notre-dame",
         "awayTeamId": "team-miami-fl",
-        "modelSpread": -11.5,
-        "edge": 0,
+        "modelSpread": -11.6,
+        "edge": -0.1,
         "signal": "NONE"
       }
     },
