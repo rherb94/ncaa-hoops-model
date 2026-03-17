@@ -155,7 +155,7 @@
       "away_espnTeamId": "152",
       "home_resolve": "MAP",
       "away_resolve": "MAP",
-      "neutralSite": false,
+      "neutralSite": true,
       "opening": {
         "book": "draftkings",
         "last_update": "2026-03-17T17:10:46Z",
