@@ -1,0 +1,109 @@
+{
+  "date": "2026-03-18",
+  "last_updated": "2026-03-18T17:48:04.957Z",
+  "snapshot_times": [
+    "2026-03-18T17:45:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "2e509835ca6e5a0564e5e470fca0ba82",
+      "home_team": "Lehigh Mountain Hawks",
+      "away_team": "Prairie View Panthers",
+      "commence_time": "2026-03-18T22:40:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-18T17:45:38Z"
+    },
+    {
+      "oddsEventId": "ba111359d05b7a48a008254fead20f33",
+      "home_team": "Wake Forest Demon Deacons",
+      "away_team": "Navy Midshipmen",
+      "commence_time": "2026-03-18T23:00:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-18T17:45:38Z"
+    },
+    {
+      "oddsEventId": "9499ce6802c6296c701eb10abb6a59d5",
+      "home_team": "Utah Valley Wolverines",
+      "away_team": "GW Revolutionaries",
+      "commence_time": "2026-03-19T00:00:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-18T17:45:38Z"
+    },
+    {
+      "oddsEventId": "ed17700f0b857560135df2ab3a31eb3d",
+      "home_team": "Illinois St Redbirds",
+      "away_team": "Kent State Golden Flashes",
+      "commence_time": "2026-03-19T00:00:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-18T17:45:38Z"
+    },
+    {
+      "oddsEventId": "eb42ecd8f93efdc247e7fb30c1af465f",
+      "home_team": "Bradley Braves",
+      "away_team": "Dayton Flyers",
+      "commence_time": "2026-03-19T01:00:00Z",
+      "homePoint": 2.5,
+      "awayPoint": -2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-18T17:45:38Z"
+    },
+    {
+      "oddsEventId": "484d21e9b0b932b9a39f3046d20b86c9",
+      "home_team": "New Mexico Lobos",
+      "away_team": "Sam Houston St Bearkats",
+      "commence_time": "2026-03-19T01:00:00Z",
+      "homePoint": -12.5,
+      "awayPoint": 12.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-18T17:45:38Z"
+    },
+    {
+      "oddsEventId": "174de90eaae141a31d206e3c911cfb4e",
+      "home_team": "SMU Mustangs",
+      "away_team": "Miami (OH) RedHawks",
+      "commence_time": "2026-03-19T01:15:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-18T17:45:38Z"
+    },
+    {
+      "oddsEventId": "5b18ad9fe99f0698bbc405d5414a4e0a",
+      "home_team": "Nevada Wolf Pack",
+      "away_team": "Murray St Racers",
+      "commence_time": "2026-03-19T02:00:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-18T17:45:38Z"
+    },
+    {
+      "oddsEventId": "bbba72cfb0145f250098f93d6e6f92fe",
+      "home_team": "California Golden Bears",
+      "away_team": "UIC Flames",
+      "commence_time": "2026-03-19T03:00:00Z",
+      "homePoint": -5.5,
+      "awayPoint": 5.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-18T17:45:38Z"
+    },
+    {
+      "oddsEventId": "499a4311275d0588b5ad945505220112",
+      "home_team": "Colorado St Rams",
+      "away_team": "Saint Joseph's Hawks",
+      "commence_time": "2026-03-19T03:00:00Z",
+      "homePoint": -5.5,
+      "awayPoint": 5.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-18T17:45:38Z"
+    }
+  ]
+}
