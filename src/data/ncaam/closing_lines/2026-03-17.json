@@ -1,8 +1,9 @@
 {
   "date": "2026-03-17",
-  "last_updated": "2026-03-17T17:46:58.410Z",
+  "last_updated": "2026-03-18T00:59:54.587Z",
   "snapshot_times": [
-    "2026-03-17T17:45:37Z"
+    "2026-03-17T17:45:37Z",
+    "2026-03-18T00:55:37Z"
   ],
   "games": [
     {
@@ -60,10 +61,10 @@
       "home_team": "Tulsa Golden Hurricane",
       "away_team": "Stephen F. Austin Lumberjacks",
       "commence_time": "2026-03-18T01:00:00Z",
-      "homePoint": -7.5,
-      "awayPoint": 7.5,
+      "homePoint": -5.5,
+      "awayPoint": 5.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-17T17:45:37Z"
+      "snapshotTime": "2026-03-18T00:55:37Z"
     },
     {
       "oddsEventId": "83db61d68c8c62ef872b1eee299ab99e",
@@ -73,27 +74,27 @@
       "homePoint": 1.5,
       "awayPoint": -1.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-17T17:45:37Z"
+      "snapshotTime": "2026-03-18T00:55:37Z"
     },
     {
       "oddsEventId": "053a196562aba960db6e7f274538d5c6",
       "home_team": "Auburn Tigers",
       "away_team": "South Alabama Jaguars",
       "commence_time": "2026-03-18T02:00:00Z",
-      "homePoint": -17.5,
-      "awayPoint": 17.5,
+      "homePoint": -18.5,
+      "awayPoint": 18.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-17T17:45:37Z"
+      "snapshotTime": "2026-03-18T00:55:37Z"
     },
     {
       "oddsEventId": "75b92ad01b2bc0d8a811df5bef96bbfc",
       "home_team": "Seattle Redhawks",
       "away_team": "St. Thomas (MN) Tommies",
       "commence_time": "2026-03-18T02:00:00Z",
-      "homePoint": -1.5,
-      "awayPoint": 1.5,
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-17T17:45:37Z"
+      "snapshotTime": "2026-03-18T00:55:37Z"
     },
     {
       "oddsEventId": "1e9a55a9c7539299852f3917b14f07c2",
@@ -103,7 +104,7 @@
       "homePoint": -1.5,
       "awayPoint": 1.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-17T17:45:37Z"
+      "snapshotTime": "2026-03-18T00:55:37Z"
     }
   ]
 }
