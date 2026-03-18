@@ -99,8 +99,8 @@
       "model": {
         "homeTeamId": "team-unlv",
         "awayTeamId": "team-colorado-st",
-        "modelSpread": -1.7,
-        "edge": -0.2,
+        "modelSpread": -1.6,
+        "edge": -0.1,
         "signal": "NONE"
       }
     }

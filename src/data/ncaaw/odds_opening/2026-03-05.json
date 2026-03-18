@@ -309,8 +309,8 @@
       "model": {
         "homeTeamId": "team-wofford",
         "awayTeamId": "team-samford",
-        "modelSpread": -2.8,
-        "edge": 3.7,
+        "modelSpread": -2.7,
+        "edge": 3.8,
         "signal": "LEAN"
       }
     },

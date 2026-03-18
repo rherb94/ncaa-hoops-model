@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-belmont",
         "awayTeamId": "team-southern-illinois",
-        "modelSpread": -14.2,
-        "edge": 7.3,
+        "modelSpread": -14.3,
+        "edge": 7.2,
         "signal": "STRONG"
       }
     },

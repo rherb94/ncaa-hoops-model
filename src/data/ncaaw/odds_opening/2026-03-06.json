@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-oklahoma-st",
         "awayTeamId": "team-kansas-st",
-        "modelSpread": -6.6,
-        "edge": 0.9,
+        "modelSpread": -6.5,
+        "edge": 1,
         "signal": "NONE"
       }
     },
@@ -381,8 +381,8 @@
       "model": {
         "homeTeamId": "team-north-carolina",
         "awayTeamId": "team-virginia-tech",
-        "modelSpread": -6.9,
-        "edge": 0.6,
+        "modelSpread": -7,
+        "edge": 0.5,
         "signal": "NONE"
       }
     },

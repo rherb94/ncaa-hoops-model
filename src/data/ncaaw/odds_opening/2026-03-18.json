@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-18",
+  "captured_at": "2026-03-18T17:06:38.457Z",
+  "games": [
+    {
+      "oddsEventId": "51f13969147a8b87eb27f8e34df8221f",
+      "commence_time": "2026-03-18T23:00:00Z",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "Richmond Spiders",
+      "home_espnTeamId": "158",
+      "away_espnTeamId": "257",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-18T17:06:22Z",
+        "homePoint": -4.5,
+        "awayPoint": 4.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "03ad906461465137057b6f3422f48a09",
+      "commence_time": "2026-03-19T01:00:00Z",
+      "home_team": "Stephen F. Austin Lumberjacks",
+      "away_team": "Missouri St Bears",
+      "home_espnTeamId": "2617",
+      "away_espnTeamId": "2623",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-18T17:06:22Z",
+        "homePoint": 2.5,
+        "awayPoint": -2.5
+      },
+      "model": null
+    }
+  ]
+}
