@@ -136,8 +136,8 @@ async function readTorvikCsv(opts: {
 
   const res = await fetch(url, {
     headers: {
-      "user-agent": "ncaam-model/1.0 (personal project)",
-      accept: "text/csv",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+      accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     },
   });
 
