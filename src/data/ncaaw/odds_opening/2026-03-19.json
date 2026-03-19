@@ -1,0 +1,48 @@
+{
+  "date": "2026-03-19",
+  "captured_at": "2026-03-19T17:02:02.119Z",
+  "games": [
+    {
+      "oddsEventId": "bd227047b43470dc45cd285045ae7ca3",
+      "commence_time": "2026-03-19T23:00:00Z",
+      "home_team": "Samford Bulldogs",
+      "away_team": "Southern Jaguars",
+      "home_espnTeamId": "2535",
+      "away_espnTeamId": "2582",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-19T17:01:28Z",
+        "homePoint": 3.5,
+        "awayPoint": -3.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "fa36a83acd3861a734f28ad96cca2f55",
+      "commence_time": "2026-03-20T01:00:00Z",
+      "home_team": "Virginia Cavaliers",
+      "away_team": "Arizona St Sun Devils",
+      "home_espnTeamId": "258",
+      "away_espnTeamId": "9",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-19T17:01:28Z",
+        "homePoint": -2.5,
+        "awayPoint": 2.5
+      },
+      "model": {
+        "homeTeamId": "team-virginia",
+        "awayTeamId": "team-arizona-st",
+        "modelSpread": -2.6,
+        "edge": -0.1,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
