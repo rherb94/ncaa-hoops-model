@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-18",
+  "fetched_at": "2026-03-19T07:09:57.633Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401859469",
+      "commence_time": "2026-03-18T23:00Z",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "Richmond Spiders",
+      "home_espnTeamId": "158",
+      "away_espnTeamId": "257",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 75,
+      "awayScore": 56,
+      "actualSpread": -19,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401859470",
+      "commence_time": "2026-03-19T01:00Z",
+      "home_team": "Missouri State Lady Bears",
+      "away_team": "Stephen F. Austin Ladyjacks",
+      "home_espnTeamId": "2623",
+      "away_espnTeamId": "2617",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 85,
+      "awayScore": 75,
+      "actualSpread": -10,
+      "winner": "HOME"
+    }
+  ]
+}
