@@ -1,8 +1,9 @@
 {
   "date": "2026-03-18",
-  "last_updated": "2026-03-18T17:48:00.403Z",
+  "last_updated": "2026-03-19T00:58:40.145Z",
   "snapshot_times": [
-    "2026-03-18T17:45:38Z"
+    "2026-03-18T17:45:38Z",
+    "2026-03-19T00:55:38Z"
   ],
   "games": [
     {
@@ -19,11 +20,11 @@
       "oddsEventId": "03ad906461465137057b6f3422f48a09",
       "home_team": "Stephen F. Austin Lumberjacks",
       "away_team": "Missouri St Bears",
-      "commence_time": "2026-03-19T01:00:00Z",
-      "homePoint": 2.5,
-      "awayPoint": -2.5,
+      "commence_time": "2026-03-19T01:05:00Z",
+      "homePoint": 3.5,
+      "awayPoint": -3.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-18T17:45:38Z"
+      "snapshotTime": "2026-03-19T00:55:38Z"
     }
   ]
 }
