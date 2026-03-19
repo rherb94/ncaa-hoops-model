@@ -1,0 +1,29 @@
+{
+  "date": "2026-03-19",
+  "last_updated": "2026-03-19T17:44:26.754Z",
+  "snapshot_times": [
+    "2026-03-19T17:40:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "bd227047b43470dc45cd285045ae7ca3",
+      "home_team": "Samford Bulldogs",
+      "away_team": "Southern Jaguars",
+      "commence_time": "2026-03-19T23:00:00Z",
+      "homePoint": 3.5,
+      "awayPoint": -3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-19T17:40:38Z"
+    },
+    {
+      "oddsEventId": "fa36a83acd3861a734f28ad96cca2f55",
+      "home_team": "Virginia Cavaliers",
+      "away_team": "Arizona St Sun Devils",
+      "commence_time": "2026-03-20T01:00:00Z",
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-19T17:40:38Z"
+    }
+  ]
+}
