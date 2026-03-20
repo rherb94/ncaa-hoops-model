@@ -1,0 +1,342 @@
+{
+  "date": "2026-03-20",
+  "captured_at": "2026-03-20T16:54:06.054Z",
+  "games": [
+    {
+      "oddsEventId": "3d46d5cd1d0973df199c49b59b0286d5",
+      "commence_time": "2026-03-20T17:35:00Z",
+      "home_team": "Arizona Wildcats",
+      "away_team": "LIU Sharks",
+      "home_espnTeamId": "12",
+      "away_espnTeamId": "112358",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -30.5,
+        "awayPoint": 30.5
+      },
+      "model": {
+        "homeTeamId": "team-arizona",
+        "awayTeamId": "team-liu",
+        "modelSpread": -28.6,
+        "edge": 1.9,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "8cfeb3ec76f8fe79812a18838365b21b",
+      "commence_time": "2026-03-20T17:50:03Z",
+      "home_team": "Virginia Cavaliers",
+      "away_team": "Wright St Raiders",
+      "home_espnTeamId": "258",
+      "away_espnTeamId": "2750",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -18.5,
+        "awayPoint": 18.5
+      },
+      "model": {
+        "homeTeamId": "team-virginia",
+        "awayTeamId": "team-wright-st",
+        "modelSpread": -15.1,
+        "edge": 3.4,
+        "signal": "LEAN"
+      }
+    },
+    {
+      "oddsEventId": "ce1b7df6a9120896f02b2859be04bc9e",
+      "commence_time": "2026-03-20T18:50:00Z",
+      "home_team": "Iowa State Cyclones",
+      "away_team": "Tennessee St Tigers",
+      "home_espnTeamId": "66",
+      "away_espnTeamId": "2634",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -25.5,
+        "awayPoint": 25.5
+      },
+      "model": {
+        "homeTeamId": "team-iowa-st",
+        "awayTeamId": "team-tennessee-st",
+        "modelSpread": -24,
+        "edge": 1.5,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "971d9d8ad2fe2607f127a619109a8cdf",
+      "commence_time": "2026-03-20T19:15:56Z",
+      "home_team": "Alabama Crimson Tide",
+      "away_team": "Hofstra Pride",
+      "home_espnTeamId": "333",
+      "away_espnTeamId": "2275",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -12.5,
+        "awayPoint": 12.5
+      },
+      "model": {
+        "homeTeamId": "team-alabama",
+        "awayTeamId": "team-hofstra",
+        "modelSpread": -12.5,
+        "edge": 0,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "6396d6d59de88139cd308d04ccbd362c",
+      "commence_time": "2026-03-20T20:10:00Z",
+      "home_team": "Villanova Wildcats",
+      "away_team": "Utah State Aggies",
+      "home_espnTeamId": "222",
+      "away_espnTeamId": "328",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": {
+        "homeTeamId": "team-villanova",
+        "awayTeamId": "team-utah-st",
+        "modelSpread": 1.4,
+        "edge": -0.1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "a656b2a076d07acff2b809012a37e667",
+      "commence_time": "2026-03-20T20:25:38Z",
+      "home_team": "Tennessee Volunteers",
+      "away_team": "Miami (OH) RedHawks",
+      "home_espnTeamId": "2633",
+      "away_espnTeamId": "193",
+      "home_resolve": "MAP",
+      "away_resolve": "ESPN_BY_NAME",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -12.5,
+        "awayPoint": 12.5
+      },
+      "model": {
+        "homeTeamId": "team-tennessee",
+        "awayTeamId": "team-miami-oh",
+        "modelSpread": -10.7,
+        "edge": 1.8,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "99561d434de6bc73f538827ccca64168",
+      "commence_time": "2026-03-20T22:50:00Z",
+      "home_team": "Clemson Tigers",
+      "away_team": "Iowa Hawkeyes",
+      "home_espnTeamId": "228",
+      "away_espnTeamId": "2294",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": {
+        "homeTeamId": "team-clemson",
+        "awayTeamId": "team-iowa",
+        "modelSpread": 1.6,
+        "edge": 0.1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "a50e57ea6aa17d46dda91f9a9d33fae8",
+      "commence_time": "2026-03-20T23:10:00Z",
+      "home_team": "St. John's Red Storm",
+      "away_team": "Northern Iowa Panthers",
+      "home_espnTeamId": "2599",
+      "away_espnTeamId": "2460",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -10.5,
+        "awayPoint": 10.5
+      },
+      "model": {
+        "homeTeamId": "team-st-johns",
+        "awayTeamId": "team-northern-iowa",
+        "modelSpread": -9.6,
+        "edge": 0.9,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "73aff5152ee4b2c05eff9ae407e6d65c",
+      "commence_time": "2026-03-20T23:25:00Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "UCF Knights",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "2116",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -5.5,
+        "awayPoint": 5.5
+      },
+      "model": {
+        "homeTeamId": "team-ucla",
+        "awayTeamId": "team-ucf",
+        "modelSpread": -5.5,
+        "edge": 0,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "db3e72207fdfaed613898c7b4952610f",
+      "commence_time": "2026-03-20T23:35:00Z",
+      "home_team": "Purdue Boilermakers",
+      "away_team": "Queens University Royals",
+      "home_espnTeamId": "2509",
+      "away_espnTeamId": "2511",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -25.5,
+        "awayPoint": 25.5
+      },
+      "model": {
+        "homeTeamId": "team-purdue",
+        "awayTeamId": "team-queens",
+        "modelSpread": -23.5,
+        "edge": 2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "91d3ab43f9a933f47a205f7597e8e89a",
+      "commence_time": "2026-03-21T01:25:00Z",
+      "home_team": "Florida Gators",
+      "away_team": "Prairie View Panthers",
+      "home_espnTeamId": "57",
+      "away_espnTeamId": "2504",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -35.5,
+        "awayPoint": 35.5
+      },
+      "model": {
+        "homeTeamId": "team-florida",
+        "awayTeamId": "team-prairie-view-aandm",
+        "modelSpread": -30.3,
+        "edge": 5.2,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "4ed1082ee462d367e6aef5bb3987f09f",
+      "commence_time": "2026-03-21T01:45:00Z",
+      "home_team": "Kansas Jayhawks",
+      "away_team": "Cal Baptist Lancers",
+      "home_espnTeamId": "2305",
+      "away_espnTeamId": "2856",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -13.5,
+        "awayPoint": 13.5
+      },
+      "model": {
+        "homeTeamId": "team-kansas",
+        "awayTeamId": "team-cal-baptist",
+        "modelSpread": -11,
+        "edge": 2.5,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "149f8ce2674cf5d5e2307fcb74cc8a71",
+      "commence_time": "2026-03-21T02:00:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Furman Paladins",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "231",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -20.5,
+        "awayPoint": 20.5
+      },
+      "model": {
+        "homeTeamId": "team-connecticut",
+        "awayTeamId": "team-furman",
+        "modelSpread": -19.6,
+        "edge": 0.9,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "e62a91878453459997f36fd803409c88",
+      "commence_time": "2026-03-21T02:10:00Z",
+      "home_team": "Miami Hurricanes",
+      "away_team": "Missouri Tigers",
+      "home_espnTeamId": "2390",
+      "away_espnTeamId": "142",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:53:57Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": {
+        "homeTeamId": "team-miami-fl",
+        "awayTeamId": "team-missouri",
+        "modelSpread": -1.7,
+        "edge": -0.2,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
