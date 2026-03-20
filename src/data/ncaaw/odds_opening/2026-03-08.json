@@ -87,8 +87,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-texas",
-        "modelSpread": -0.1,
-        "edge": 2.4,
+        "modelSpread": 0,
+        "edge": 2.5,
         "signal": "NONE"
       }
     },
@@ -147,8 +147,8 @@
       "model": {
         "homeTeamId": "team-villanova",
         "awayTeamId": "team-seton-hall",
-        "modelSpread": -8.5,
-        "edge": -1,
+        "modelSpread": -9,
+        "edge": -1.5,
         "signal": "NONE"
       }
     },

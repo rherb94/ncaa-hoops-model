@@ -39,8 +39,8 @@
       "model": {
         "homeTeamId": "team-virginia",
         "awayTeamId": "team-arizona-st",
-        "modelSpread": -2.6,
-        "edge": -0.1,
+        "modelSpread": -3,
+        "edge": -0.5,
         "signal": "NONE"
       }
     }

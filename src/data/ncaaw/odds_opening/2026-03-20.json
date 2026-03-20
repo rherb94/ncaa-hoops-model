@@ -1,0 +1,294 @@
+{
+  "date": "2026-03-20",
+  "captured_at": "2026-03-20T16:51:38.803Z",
+  "games": [
+    {
+      "oddsEventId": "c6f140ce6acfabaebbd4ed8b46daee40",
+      "commence_time": "2026-03-20T17:30:00Z",
+      "home_team": "Oregon Ducks",
+      "away_team": "Virginia Tech Hokies",
+      "home_espnTeamId": "2483",
+      "away_espnTeamId": "259",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -3.5,
+        "awayPoint": 3.5
+      },
+      "model": {
+        "homeTeamId": "team-oregon",
+        "awayTeamId": "team-virginia-tech",
+        "modelSpread": -3.2,
+        "edge": 0.3,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "19150c437953680443c10ac7dfedc5d8",
+      "commence_time": "2026-03-20T18:00:00Z",
+      "home_team": "Baylor Bears",
+      "away_team": "Nebraska Cornhuskers",
+      "home_espnTeamId": "239",
+      "away_espnTeamId": "158",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": {
+        "homeTeamId": "team-baylor",
+        "awayTeamId": "team-nebraska",
+        "modelSpread": 4.8,
+        "edge": 3.3,
+        "signal": "LEAN"
+      }
+    },
+    {
+      "oddsEventId": "23cd412904080c36545d3cd6be49f03d",
+      "commence_time": "2026-03-20T18:30:00Z",
+      "home_team": "Washington Huskies",
+      "away_team": "South Dakota St Jackrabbits",
+      "home_espnTeamId": "264",
+      "away_espnTeamId": "2571",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -5.5,
+        "awayPoint": 5.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "b50652345f1a725a096763e81f774419",
+      "commence_time": "2026-03-20T19:00:00Z",
+      "home_team": "Maryland Terrapins",
+      "away_team": "Murray St Racers",
+      "home_espnTeamId": "120",
+      "away_espnTeamId": "93",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -30.5,
+        "awayPoint": 30.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "6c5447387574f1bdb48a756fc9e74d6d",
+      "commence_time": "2026-03-20T19:30:00Z",
+      "home_team": "Ole Miss Rebels",
+      "away_team": "Gonzaga Bulldogs",
+      "home_espnTeamId": "145",
+      "away_espnTeamId": "2250",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -14.5,
+        "awayPoint": 14.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "e75707552abae9697765625389212844",
+      "commence_time": "2026-03-20T20:00:00Z",
+      "home_team": "Texas Longhorns",
+      "away_team": "Missouri St Bears",
+      "home_espnTeamId": "251",
+      "away_espnTeamId": "2623",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -44.5,
+        "awayPoint": 44.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "737fdaad9182134c533777fcdcda5482",
+      "commence_time": "2026-03-20T21:30:00Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Holy Cross Crusaders",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "107",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -41.5,
+        "awayPoint": 41.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "4eae0eea945256899b5d569afc285b99",
+      "commence_time": "2026-03-20T21:30:00Z",
+      "home_team": "North Carolina Tar Heels",
+      "away_team": "Western Illinois Leathernecks",
+      "home_espnTeamId": "153",
+      "away_espnTeamId": "2710",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -25.5,
+        "awayPoint": 25.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "0852e92ef980b0447320b3dc35495550",
+      "commence_time": "2026-03-20T22:00:00Z",
+      "home_team": "Minnesota Golden Gophers",
+      "away_team": "Green Bay Phoenix",
+      "home_espnTeamId": "135",
+      "away_espnTeamId": "2739",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -21.5,
+        "awayPoint": 21.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "815832a40806d97b85036b9c748c4f15",
+      "commence_time": "2026-03-20T22:00:00Z",
+      "home_team": "LSU Tigers",
+      "away_team": "Jacksonville Dolphins",
+      "home_espnTeamId": "99",
+      "away_espnTeamId": "294",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -51.5,
+        "awayPoint": 51.5
+      },
+      "model": {
+        "homeTeamId": "team-lsu",
+        "awayTeamId": "team-jacksonville",
+        "modelSpread": -40.5,
+        "edge": 11,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "cf72411d7c637c9becedd8e1867da322",
+      "commence_time": "2026-03-20T23:30:00Z",
+      "home_team": "Michigan St Spartans",
+      "away_team": "Colorado St Rams",
+      "home_espnTeamId": "127",
+      "away_espnTeamId": "36",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -18.5,
+        "awayPoint": 18.5
+      },
+      "model": {
+        "homeTeamId": "team-michigan-st",
+        "awayTeamId": "team-colorado-st",
+        "modelSpread": -13.5,
+        "edge": 5,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "c4d9edc86bf5a9563b7c4a1cef12738d",
+      "commence_time": "2026-03-21T00:00:00Z",
+      "home_team": "NC State Wolfpack",
+      "away_team": "Tennessee Volunteers",
+      "home_espnTeamId": "152",
+      "away_espnTeamId": "2633",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": {
+        "homeTeamId": "team-n-c-state",
+        "awayTeamId": "team-tennessee",
+        "modelSpread": 0.9,
+        "edge": 2.4,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "775551141f035fc16253c062a7c80f81",
+      "commence_time": "2026-03-21T00:30:00Z",
+      "home_team": "Texas Tech Red Raiders",
+      "away_team": "Villanova Wildcats",
+      "home_espnTeamId": "2641",
+      "away_espnTeamId": "222",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": {
+        "homeTeamId": "team-texas-tech",
+        "awayTeamId": "team-villanova",
+        "modelSpread": 0.7,
+        "edge": 2.2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "fd11ac10d120c5b1b42c52f124142dd7",
+      "commence_time": "2026-03-21T02:00:00Z",
+      "home_team": "Oklahoma Sooners",
+      "away_team": "Idaho Vandals",
+      "home_espnTeamId": "201",
+      "away_espnTeamId": "70",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-20T16:51:12Z",
+        "homePoint": -34.5,
+        "awayPoint": 34.5
+      },
+      "model": null
+    }
+  ]
+}

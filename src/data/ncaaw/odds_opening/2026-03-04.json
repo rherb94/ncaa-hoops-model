@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-texas-a-m",
         "awayTeamId": "team-auburn",
-        "modelSpread": -6.2,
-        "edge": 0.3,
+        "modelSpread": -5.1,
+        "edge": 1.4,
         "signal": "NONE"
       }
     },
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-illinois",
         "awayTeamId": "team-wisconsin",
-        "modelSpread": -10.3,
-        "edge": 1.2,
+        "modelSpread": -10,
+        "edge": 1.5,
         "signal": "NONE"
       }
     },
@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-arizona-st",
         "awayTeamId": "team-arizona",
-        "modelSpread": -9.4,
-        "edge": -1.9,
+        "modelSpread": -9.3,
+        "edge": -1.8,
         "signal": "NONE"
       }
     },
@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-eastern-michigan",
         "awayTeamId": "team-ohio",
-        "modelSpread": 3.1,
-        "edge": 1.6,
+        "modelSpread": 2.9,
+        "edge": 1.4,
         "signal": "NONE"
       }
     },
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-northern-illinois",
         "awayTeamId": "team-buffalo",
-        "modelSpread": -5.6,
-        "edge": -2.1,
+        "modelSpread": -5.5,
+        "edge": -2,
         "signal": "NONE"
       }
     },
@@ -165,8 +165,8 @@
       "model": {
         "homeTeamId": "team-alabama",
         "awayTeamId": "team-missouri",
-        "modelSpread": -10.5,
-        "edge": 2,
+        "modelSpread": -10.4,
+        "edge": 2.1,
         "signal": "NONE"
       }
     },
@@ -213,8 +213,8 @@
       "model": {
         "homeTeamId": "team-kansas",
         "awayTeamId": "team-ucf",
-        "modelSpread": -12.9,
-        "edge": 0.6,
+        "modelSpread": -12.7,
+        "edge": 0.8,
         "signal": "NONE"
       }
     },
@@ -237,8 +237,8 @@
       "model": {
         "homeTeamId": "team-unlv",
         "awayTeamId": "team-boise-st",
-        "modelSpread": -7.2,
-        "edge": -0.7,
+        "modelSpread": -7.3,
+        "edge": -0.8,
         "signal": "NONE"
       }
     }
