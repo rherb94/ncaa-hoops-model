@@ -1,0 +1,139 @@
+{
+  "date": "2026-03-21",
+  "last_updated": "2026-03-21T17:13:22.800Z",
+  "snapshot_times": [
+    "2026-03-21T17:10:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "a62732b9864803d3e7e2d5c7086a80b6",
+      "home_team": "Georgia Bulldogs",
+      "away_team": "Virginia Cavaliers",
+      "commence_time": "2026-03-21T17:30:00Z",
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "119f3be476105a230d57725aff80c143",
+      "home_team": "Notre Dame Fighting Irish",
+      "away_team": "Fairfield Stags",
+      "commence_time": "2026-03-21T18:00:00Z",
+      "homePoint": -12.5,
+      "awayPoint": 12.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "99cb560fb7df9ce3f1973457752ddc3b",
+      "home_team": "Alabama Crimson Tide",
+      "away_team": "Rhode Island Rams",
+      "commence_time": "2026-03-21T18:30:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "3ec47295d319eb3d016dee587a125c65",
+      "home_team": "Kentucky Wildcats",
+      "away_team": "James Madison Dukes",
+      "commence_time": "2026-03-21T18:30:00Z",
+      "homePoint": -15.5,
+      "awayPoint": 15.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "f42c4094e7706dc3407eb40a897c5e25",
+      "home_team": "UConn Huskies",
+      "away_team": "UTSA Roadrunners",
+      "commence_time": "2026-03-21T19:00:00Z",
+      "homePoint": -55.5,
+      "awayPoint": 55.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "f8f7cfaeb1770dd060656ed3a47d9575",
+      "home_team": "Clemson Tigers",
+      "away_team": "USC Trojans",
+      "commence_time": "2026-03-21T19:30:00Z",
+      "homePoint": 5.5,
+      "awayPoint": -5.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "96d088bd302835924786692a0caa8956",
+      "home_team": "Iowa Hawkeyes",
+      "away_team": "Fairleigh Dickinson Knights",
+      "commence_time": "2026-03-21T20:00:00Z",
+      "homePoint": -31.5,
+      "awayPoint": 31.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "f0c9253692ab3113b203948b0b80600c",
+      "home_team": "West Virginia Mountaineers",
+      "away_team": "Miami (OH) RedHawks",
+      "commence_time": "2026-03-21T21:00:00Z",
+      "homePoint": -25.5,
+      "awayPoint": 25.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "ec8de3335ba4eeb45f90b6b377fc25d5",
+      "home_team": "Iowa State Cyclones",
+      "away_team": "Syracuse Orange",
+      "commence_time": "2026-03-21T21:30:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "357407b59e4abaf746a3417b23820805",
+      "home_team": "Vanderbilt Commodores",
+      "away_team": "High Point Panthers",
+      "commence_time": "2026-03-21T23:00:00Z",
+      "homePoint": -36.5,
+      "awayPoint": 36.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "055ad1c559c7aeaada43d7e1d7694bac",
+      "home_team": "Oklahoma St Cowgirls",
+      "away_team": "Princeton Tigers",
+      "commence_time": "2026-03-21T23:30:00Z",
+      "homePoint": -5.5,
+      "awayPoint": 5.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "97e570134e38d2bb699d3bab9027e3ae",
+      "home_team": "Illinois Fighting Illini",
+      "away_team": "Colorado Buffaloes",
+      "commence_time": "2026-03-22T01:30:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "c81aaeadaee0ec1f78043964645ba72a",
+      "home_team": "UCLA Bruins",
+      "away_team": "Cal Baptist Lancers",
+      "commence_time": "2026-03-22T02:00:00Z",
+      "homePoint": -51.5,
+      "awayPoint": 51.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    }
+  ]
+}
