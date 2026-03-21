@@ -1,0 +1,49 @@
+{
+  "date": "2026-03-20",
+  "last_updated": "2026-03-21T00:52:18.751Z",
+  "snapshot_times": [
+    "2026-03-21T00:50:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "91d3ab43f9a933f47a205f7597e8e89a",
+      "home_team": "Florida Gators",
+      "away_team": "Prairie View Panthers",
+      "commence_time": "2026-03-21T01:25:00Z",
+      "homePoint": -35.5,
+      "awayPoint": 35.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T00:50:38Z"
+    },
+    {
+      "oddsEventId": "4ed1082ee462d367e6aef5bb3987f09f",
+      "home_team": "Kansas Jayhawks",
+      "away_team": "Cal Baptist Lancers",
+      "commence_time": "2026-03-21T01:45:00Z",
+      "homePoint": -14.5,
+      "awayPoint": 14.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T00:50:38Z"
+    },
+    {
+      "oddsEventId": "149f8ce2674cf5d5e2307fcb74cc8a71",
+      "home_team": "UConn Huskies",
+      "away_team": "Furman Paladins",
+      "commence_time": "2026-03-21T02:00:00Z",
+      "homePoint": -21.5,
+      "awayPoint": 21.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T00:50:38Z"
+    },
+    {
+      "oddsEventId": "e62a91878453459997f36fd803409c88",
+      "home_team": "Miami Hurricanes",
+      "away_team": "Missouri Tigers",
+      "commence_time": "2026-03-21T02:10:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T00:50:38Z"
+    }
+  ]
+}
