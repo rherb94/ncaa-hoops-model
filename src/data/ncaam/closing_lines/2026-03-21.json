@@ -1,0 +1,99 @@
+{
+  "date": "2026-03-21",
+  "last_updated": "2026-03-21T17:13:28.782Z",
+  "snapshot_times": [
+    "2026-03-21T17:10:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "ace9c8bae6287e02db6b04ebf9ee0de4",
+      "home_team": "Michigan St Spartans",
+      "away_team": "Louisville Cardinals",
+      "commence_time": "2026-03-21T18:45:00Z",
+      "homePoint": -5.5,
+      "awayPoint": 5.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "cb1a01294019c46704ff3863e18270e0",
+      "home_team": "Duke Blue Devils",
+      "away_team": "TCU Horned Frogs",
+      "commence_time": "2026-03-21T21:15:00Z",
+      "homePoint": -12.5,
+      "awayPoint": 12.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "4fae886c527fca3be21d0638a2b0b3a7",
+      "home_team": "Houston Cougars",
+      "away_team": "Texas A&M Aggies",
+      "commence_time": "2026-03-21T22:10:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "74efbde1edf27e08d3852a2ad41e3984",
+      "home_team": "UNC Wilmington Seahawks",
+      "away_team": "Dayton Flyers",
+      "commence_time": "2026-03-21T23:00:00Z",
+      "homePoint": 2.5,
+      "awayPoint": -2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "a10e497e52912c25444f881ab6242db2",
+      "home_team": "Gonzaga Bulldogs",
+      "away_team": "Texas Longhorns",
+      "commence_time": "2026-03-21T23:10:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "5679e0caf98d85bd0dbc1ca9a0ce4dfa",
+      "home_team": "Illinois Fighting Illini",
+      "away_team": "VCU Rams",
+      "commence_time": "2026-03-21T23:50:00Z",
+      "homePoint": -11.5,
+      "awayPoint": 11.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "15742a89b726bae263bff747e7a9aba7",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "Vanderbilt Commodores",
+      "commence_time": "2026-03-22T00:45:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "ae492a9a2bf377222a2adc7881b178cb",
+      "home_team": "Nevada Wolf Pack",
+      "away_team": "Liberty Flames",
+      "commence_time": "2026-03-22T01:00:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    },
+    {
+      "oddsEventId": "aed37e6b92d957aa7a08c0f23373cfca",
+      "home_team": "Arkansas Razorbacks",
+      "away_team": "High Point Panthers",
+      "commence_time": "2026-03-22T01:45:00Z",
+      "homePoint": -11.5,
+      "awayPoint": 11.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-21T17:10:37Z"
+    }
+  ]
+}
