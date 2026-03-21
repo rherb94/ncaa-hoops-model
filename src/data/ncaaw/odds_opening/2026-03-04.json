@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-memphis",
         "awayTeamId": "team-uab",
-        "modelSpread": -1.9,
-        "edge": 0.6,
+        "modelSpread": -1.8,
+        "edge": 0.7,
         "signal": "NONE"
       }
     },
@@ -165,8 +165,8 @@
       "model": {
         "homeTeamId": "team-alabama",
         "awayTeamId": "team-missouri",
-        "modelSpread": -10.4,
-        "edge": 2.1,
+        "modelSpread": -10.5,
+        "edge": 2,
         "signal": "NONE"
       }
     },
@@ -189,8 +189,8 @@
       "model": {
         "homeTeamId": "team-oregon",
         "awayTeamId": "team-purdue",
-        "modelSpread": -10.9,
-        "edge": -0.4,
+        "modelSpread": -11.3,
+        "edge": -0.8,
         "signal": "NONE"
       }
     },
