@@ -1,0 +1,69 @@
+{
+  "date": "2026-03-22",
+  "last_updated": "2026-03-22T17:13:00.450Z",
+  "snapshot_times": [
+    "2026-03-22T17:10:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "4884dc0326af2ad7bbeb1e78fa971ec7",
+      "home_team": "Minnesota Golden Gophers",
+      "away_team": "Ole Miss Rebels",
+      "commence_time": "2026-03-22T18:00:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-22T17:10:37Z"
+    },
+    {
+      "oddsEventId": "3308b28691efda8f1ae7641198df5e46",
+      "home_team": "LSU Tigers",
+      "away_team": "Texas Tech Red Raiders",
+      "commence_time": "2026-03-22T19:00:00Z",
+      "homePoint": -25.5,
+      "awayPoint": 25.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-22T17:10:37Z"
+    },
+    {
+      "oddsEventId": "b0dad7a02e4860124999a1e4b5cd70c9",
+      "home_team": "Duke Blue Devils",
+      "away_team": "Baylor Bears",
+      "commence_time": "2026-03-22T20:00:00Z",
+      "homePoint": -12.5,
+      "awayPoint": 12.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-22T17:10:37Z"
+    },
+    {
+      "oddsEventId": "f339d3fe2ca4c484ca94a7f76a9d4a2d",
+      "home_team": "Texas Longhorns",
+      "away_team": "Oregon Ducks",
+      "commence_time": "2026-03-22T22:00:00Z",
+      "homePoint": -26.5,
+      "awayPoint": 26.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-22T17:10:37Z"
+    },
+    {
+      "oddsEventId": "5e2056be20ee6055a378249bf9b56a9e",
+      "home_team": "Oklahoma Sooners",
+      "away_team": "Michigan St Spartans",
+      "commence_time": "2026-03-23T00:00:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-22T17:10:37Z"
+    },
+    {
+      "oddsEventId": "5aa765275115ff69d8acef44d62e619b",
+      "home_team": "TCU Horned Frogs",
+      "away_team": "Washington Huskies",
+      "commence_time": "2026-03-23T02:00:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-22T17:10:37Z"
+    }
+  ]
+}
