@@ -1,0 +1,168 @@
+{
+  "date": "2026-03-22",
+  "captured_at": "2026-03-22T16:36:35.018Z",
+  "games": [
+    {
+      "oddsEventId": "97983441d657ea749d23aa06978746ed",
+      "commence_time": "2026-03-22T17:00:00Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "NC State Wolfpack",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "152",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-22T16:36:29Z",
+        "homePoint": -13.5,
+        "awayPoint": 13.5
+      },
+      "model": {
+        "homeTeamId": "team-michigan",
+        "awayTeamId": "team-n-c-state",
+        "modelSpread": -11,
+        "edge": 2.5,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "4884dc0326af2ad7bbeb1e78fa971ec7",
+      "commence_time": "2026-03-22T18:00:00Z",
+      "home_team": "Minnesota Golden Gophers",
+      "away_team": "Ole Miss Rebels",
+      "home_espnTeamId": "135",
+      "away_espnTeamId": "145",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-22T16:36:29Z",
+        "homePoint": -4.5,
+        "awayPoint": 4.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "3308b28691efda8f1ae7641198df5e46",
+      "commence_time": "2026-03-22T19:00:00Z",
+      "home_team": "LSU Tigers",
+      "away_team": "Texas Tech Red Raiders",
+      "home_espnTeamId": "99",
+      "away_espnTeamId": "2641",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-22T16:36:29Z",
+        "homePoint": -25.5,
+        "awayPoint": 25.5
+      },
+      "model": {
+        "homeTeamId": "team-lsu",
+        "awayTeamId": "team-texas-tech",
+        "modelSpread": -20.2,
+        "edge": 5.3,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "b0dad7a02e4860124999a1e4b5cd70c9",
+      "commence_time": "2026-03-22T20:00:00Z",
+      "home_team": "Duke Blue Devils",
+      "away_team": "Baylor Bears",
+      "home_espnTeamId": "150",
+      "away_espnTeamId": "239",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-22T16:36:29Z",
+        "homePoint": -12.5,
+        "awayPoint": 12.5
+      },
+      "model": {
+        "homeTeamId": "team-duke",
+        "awayTeamId": "team-baylor",
+        "modelSpread": -12.6,
+        "edge": -0.1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "f339d3fe2ca4c484ca94a7f76a9d4a2d",
+      "commence_time": "2026-03-22T22:00:00Z",
+      "home_team": "Texas Longhorns",
+      "away_team": "Oregon Ducks",
+      "home_espnTeamId": "251",
+      "away_espnTeamId": "2483",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-22T16:36:29Z",
+        "homePoint": -26.5,
+        "awayPoint": 26.5
+      },
+      "model": {
+        "homeTeamId": "team-texas",
+        "awayTeamId": "team-oregon",
+        "modelSpread": -21.3,
+        "edge": 5.2,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "5e2056be20ee6055a378249bf9b56a9e",
+      "commence_time": "2026-03-23T00:00:00Z",
+      "home_team": "Oklahoma Sooners",
+      "away_team": "Michigan St Spartans",
+      "home_espnTeamId": "201",
+      "away_espnTeamId": "127",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-22T16:36:29Z",
+        "homePoint": -7.5,
+        "awayPoint": 7.5
+      },
+      "model": {
+        "homeTeamId": "team-oklahoma",
+        "awayTeamId": "team-michigan-st",
+        "modelSpread": -5.7,
+        "edge": 1.8,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "5aa765275115ff69d8acef44d62e619b",
+      "commence_time": "2026-03-23T02:00:00Z",
+      "home_team": "TCU Horned Frogs",
+      "away_team": "Washington Huskies",
+      "home_espnTeamId": "2628",
+      "away_espnTeamId": "264",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-22T16:36:29Z",
+        "homePoint": -10.5,
+        "awayPoint": 10.5
+      },
+      "model": {
+        "homeTeamId": "team-tcu",
+        "awayTeamId": "team-washington",
+        "modelSpread": -5.4,
+        "edge": 5.1,
+        "signal": "STRONG"
+      }
+    }
+  ]
+}

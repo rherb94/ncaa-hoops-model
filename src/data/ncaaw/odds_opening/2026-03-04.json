@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-texas-a-m",
         "awayTeamId": "team-auburn",
-        "modelSpread": -5.1,
-        "edge": 1.4,
+        "modelSpread": -5.2,
+        "edge": 1.3,
         "signal": "NONE"
       }
     },
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-illinois",
         "awayTeamId": "team-wisconsin",
-        "modelSpread": -10,
-        "edge": 1.5,
+        "modelSpread": -10.2,
+        "edge": 1.3,
         "signal": "NONE"
       }
     },
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-northern-illinois",
         "awayTeamId": "team-buffalo",
-        "modelSpread": -5.5,
-        "edge": -2,
+        "modelSpread": -5.4,
+        "edge": -1.9,
         "signal": "NONE"
       }
     },
@@ -165,8 +165,8 @@
       "model": {
         "homeTeamId": "team-alabama",
         "awayTeamId": "team-missouri",
-        "modelSpread": -10.5,
-        "edge": 2,
+        "modelSpread": -10.8,
+        "edge": 1.7,
         "signal": "NONE"
       }
     },
