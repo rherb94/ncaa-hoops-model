@@ -1,8 +1,9 @@
 {
   "date": "2026-03-22",
-  "last_updated": "2026-03-22T17:13:11.853Z",
+  "last_updated": "2026-03-23T01:00:41.628Z",
   "snapshot_times": [
-    "2026-03-22T17:10:37Z"
+    "2026-03-22T17:10:37Z",
+    "2026-03-23T01:00:37Z"
   ],
   "games": [
     {
@@ -109,11 +110,11 @@
       "oddsEventId": "0e6cf93ff2eed71ad76db394d07a5228",
       "home_team": "UConn Huskies",
       "away_team": "UCLA Bruins",
-      "commence_time": "2026-03-23T00:45:00Z",
-      "homePoint": -4.5,
-      "awayPoint": 4.5,
+      "commence_time": "2026-03-23T01:10:00Z",
+      "homePoint": -5.5,
+      "awayPoint": 5.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-22T17:10:37Z"
+      "snapshotTime": "2026-03-23T01:00:37Z"
     },
     {
       "oddsEventId": "9a8aa6fd1c0f7a16fc9f3aee8466aa87",
@@ -133,7 +134,7 @@
       "homePoint": 1.5,
       "awayPoint": -1.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-22T17:10:37Z"
+      "snapshotTime": "2026-03-23T01:00:37Z"
     }
   ]
 }
