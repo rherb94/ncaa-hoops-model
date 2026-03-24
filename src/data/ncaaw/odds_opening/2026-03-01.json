@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-alabama",
         "awayTeamId": "team-texas",
-        "modelSpread": 15.5,
-        "edge": -1,
+        "modelSpread": 15.3,
+        "edge": -1.2,
         "signal": "NONE"
       }
     },
@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-michigan-st",
         "awayTeamId": "team-ohio-st",
-        "modelSpread": 0,
-        "edge": 3.5,
+        "modelSpread": -0.3,
+        "edge": 3.2,
         "signal": "LEAN"
       }
     },
@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-virginia",
         "awayTeamId": "team-virginia-tech",
-        "modelSpread": -3.3,
-        "edge": 0.2,
+        "modelSpread": -3.8,
+        "edge": -0.3,
         "signal": "NONE"
       }
     },
@@ -155,8 +155,8 @@
       "model": {
         "homeTeamId": "team-kentucky",
         "awayTeamId": "team-south-carolina",
-        "modelSpread": 9.5,
-        "edge": -4,
+        "modelSpread": 9.7,
+        "edge": -3.8,
         "signal": "LEAN"
       }
     },
@@ -203,8 +203,8 @@
       "model": {
         "homeTeamId": "team-tennessee",
         "awayTeamId": "team-vanderbilt",
-        "modelSpread": 4.7,
-        "edge": 0.2,
+        "modelSpread": 4.9,
+        "edge": 0.4,
         "signal": "NONE"
       }
     },
@@ -251,8 +251,8 @@
       "model": {
         "homeTeamId": "team-oregon",
         "awayTeamId": "team-washington",
-        "modelSpread": -0.2,
-        "edge": 4.3,
+        "modelSpread": -0.3,
+        "edge": 4.2,
         "signal": "LEAN"
       }
     },
@@ -275,8 +275,8 @@
       "model": {
         "homeTeamId": "team-st-john-s",
         "awayTeamId": "team-connecticut",
-        "modelSpread": 33.5,
-        "edge": 3,
+        "modelSpread": 34.3,
+        "edge": 3.8,
         "signal": "LEAN"
       }
     }

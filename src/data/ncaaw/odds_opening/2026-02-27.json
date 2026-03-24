@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-marshall",
         "awayTeamId": "team-georgia-southern",
-        "modelSpread": 1.7,
-        "edge": 4.2,
+        "modelSpread": 1.6,
+        "edge": 4.1,
         "signal": "LEAN"
       }
     },
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-florida-gulf-coast",
         "awayTeamId": "team-stetson",
-        "modelSpread": -4.4,
-        "edge": -0.9,
+        "modelSpread": -4.1,
+        "edge": -0.6,
         "signal": "NONE"
       }
     },
