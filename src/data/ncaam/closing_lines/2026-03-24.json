@@ -1,0 +1,29 @@
+{
+  "date": "2026-03-24",
+  "last_updated": "2026-03-24T17:43:55.320Z",
+  "snapshot_times": [
+    "2026-03-24T17:40:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "5b8426555586aae5f7ed2a20c2262c86",
+      "home_team": "Tulsa Golden Hurricane",
+      "away_team": "Wichita St Shockers",
+      "commence_time": "2026-03-24T23:00:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-24T17:40:37Z"
+    },
+    {
+      "oddsEventId": "96177e1055b0f7869167edf123edc5f8",
+      "home_team": "New Mexico Lobos",
+      "away_team": "Saint Joseph's Hawks",
+      "commence_time": "2026-03-25T01:00:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-24T17:40:37Z"
+    }
+  ]
+}
