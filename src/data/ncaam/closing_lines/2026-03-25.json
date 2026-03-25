@@ -1,0 +1,29 @@
+{
+  "date": "2026-03-25",
+  "last_updated": "2026-03-25T17:45:43.818Z",
+  "snapshot_times": [
+    "2026-03-25T17:45:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "b9c52e0f4228b292b74bbf2be3bf4549",
+      "home_team": "Dayton Flyers",
+      "away_team": "Illinois St Redbirds",
+      "commence_time": "2026-03-25T23:00:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-25T17:45:37Z"
+    },
+    {
+      "oddsEventId": "0cf810433f027f2b1c9da531c3df1348",
+      "home_team": "Auburn Tigers",
+      "away_team": "Nevada Wolf Pack",
+      "commence_time": "2026-03-26T01:00:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-25T17:45:37Z"
+    }
+  ]
+}
