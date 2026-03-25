@@ -1,0 +1,50 @@
+{
+  "date": "2026-03-24",
+  "fetched_at": "2026-03-25T07:14:38.702Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401865112",
+      "commence_time": "2026-03-24T22:30Z",
+      "home_team": "Youngstown State Penguins",
+      "away_team": "Maryland Eastern Shore Hawks",
+      "home_espnTeamId": "2754",
+      "away_espnTeamId": "2379",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 61,
+      "awayScore": 42,
+      "actualSpread": -19,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401865122",
+      "commence_time": "2026-03-24T23:00Z",
+      "home_team": "Abilene Christian Wildcats",
+      "away_team": "Florida International Panthers",
+      "home_espnTeamId": "2000",
+      "away_espnTeamId": "2229",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 77,
+      "awayScore": 66,
+      "actualSpread": -11,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401865121",
+      "commence_time": "2026-03-24T23:00Z",
+      "home_team": "Purdue Fort Wayne Mastodons",
+      "away_team": "South Alabama Jaguars",
+      "home_espnTeamId": "2870",
+      "away_espnTeamId": "6",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 77,
+      "awayScore": 72,
+      "actualSpread": -5,
+      "winner": "HOME"
+    }
+  ]
+}
