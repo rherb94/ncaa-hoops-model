@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-north-carolina",
         "awayTeamId": "team-duke",
-        "modelSpread": 0.1,
-        "edge": -2.4,
+        "modelSpread": 0,
+        "edge": -2.5,
         "signal": "NONE"
       }
     },
@@ -179,8 +179,8 @@
       "model": {
         "homeTeamId": "team-pittsburgh",
         "awayTeamId": "team-n-c-state",
-        "modelSpread": 25.8,
-        "edge": -1.7,
+        "modelSpread": 25.7,
+        "edge": -1.8,
         "signal": "NONE"
       }
     },

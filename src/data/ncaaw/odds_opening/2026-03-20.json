@@ -195,8 +195,8 @@
       "model": {
         "homeTeamId": "team-lsu",
         "awayTeamId": "team-jacksonville",
-        "modelSpread": -42.5,
-        "edge": 9,
+        "modelSpread": -42.4,
+        "edge": 9.1,
         "signal": "STRONG"
       }
     },

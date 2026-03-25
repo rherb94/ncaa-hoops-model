@@ -213,8 +213,8 @@
       "model": {
         "homeTeamId": "team-kansas",
         "awayTeamId": "team-ucf",
-        "modelSpread": -12.7,
-        "edge": 0.8,
+        "modelSpread": -12.8,
+        "edge": 0.7,
         "signal": "NONE"
       }
     },
@@ -237,8 +237,8 @@
       "model": {
         "homeTeamId": "team-unlv",
         "awayTeamId": "team-boise-st",
-        "modelSpread": -7.4,
-        "edge": -0.9,
+        "modelSpread": -7.5,
+        "edge": -1,
         "signal": "NONE"
       }
     }

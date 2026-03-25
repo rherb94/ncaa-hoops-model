@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-ohio-st",
         "awayTeamId": "team-notre-dame",
-        "modelSpread": -4.9,
-        "edge": -0.4,
+        "modelSpread": -4.8,
+        "edge": -0.3,
         "signal": "NONE"
       }
     },
