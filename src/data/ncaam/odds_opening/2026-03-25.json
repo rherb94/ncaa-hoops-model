@@ -1,0 +1,54 @@
+{
+  "date": "2026-03-25",
+  "captured_at": "2026-03-25T17:11:48.431Z",
+  "games": [
+    {
+      "oddsEventId": "b9c52e0f4228b292b74bbf2be3bf4549",
+      "commence_time": "2026-03-25T23:00:00Z",
+      "home_team": "Dayton Flyers",
+      "away_team": "Illinois St Redbirds",
+      "home_espnTeamId": "2168",
+      "away_espnTeamId": "2287",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-25T17:11:46Z",
+        "homePoint": -7.5,
+        "awayPoint": 7.5
+      },
+      "model": {
+        "homeTeamId": "team-dayton",
+        "awayTeamId": "team-illinois-st",
+        "modelSpread": -6.4,
+        "edge": 1.1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "0cf810433f027f2b1c9da531c3df1348",
+      "commence_time": "2026-03-26T01:00:00Z",
+      "home_team": "Auburn Tigers",
+      "away_team": "Nevada Wolf Pack",
+      "home_espnTeamId": "2",
+      "away_espnTeamId": "2440",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-25T17:11:46Z",
+        "homePoint": -9.5,
+        "awayPoint": 9.5
+      },
+      "model": {
+        "homeTeamId": "team-auburn",
+        "awayTeamId": "team-nevada",
+        "modelSpread": -8.4,
+        "edge": 1.1,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
