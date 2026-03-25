@@ -1,8 +1,9 @@
 {
   "date": "2026-03-24",
-  "last_updated": "2026-03-24T17:43:55.320Z",
+  "last_updated": "2026-03-25T00:58:41.730Z",
   "snapshot_times": [
-    "2026-03-24T17:40:37Z"
+    "2026-03-24T17:40:37Z",
+    "2026-03-25T00:55:37Z"
   ],
   "games": [
     {
@@ -23,7 +24,7 @@
       "homePoint": -10.5,
       "awayPoint": 10.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-24T17:40:37Z"
+      "snapshotTime": "2026-03-25T00:55:37Z"
     }
   ]
 }
