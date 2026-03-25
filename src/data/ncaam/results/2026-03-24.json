@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-24",
+  "fetched_at": "2026-03-25T07:02:18.498Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401858357",
+      "commence_time": "2026-03-24T23:00Z",
+      "home_team": "Tulsa Golden Hurricane",
+      "away_team": "Wichita State Shockers",
+      "home_espnTeamId": "202",
+      "away_espnTeamId": "2724",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 83,
+      "awayScore": 79,
+      "actualSpread": -4,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858358",
+      "commence_time": "2026-03-25T01:00Z",
+      "home_team": "New Mexico Lobos",
+      "away_team": "Saint Joseph's Hawks",
+      "home_espnTeamId": "167",
+      "away_espnTeamId": "2603",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 84,
+      "awayScore": 69,
+      "actualSpread": -15,
+      "winner": "HOME"
+    }
+  ]
+}
