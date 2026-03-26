@@ -1,8 +1,9 @@
 {
   "date": "2026-03-25",
-  "last_updated": "2026-03-25T17:45:43.818Z",
+  "last_updated": "2026-03-26T01:03:28.711Z",
   "snapshot_times": [
-    "2026-03-25T17:45:37Z"
+    "2026-03-25T17:45:37Z",
+    "2026-03-26T01:00:38Z"
   ],
   "games": [
     {
@@ -19,11 +20,11 @@
       "oddsEventId": "0cf810433f027f2b1c9da531c3df1348",
       "home_team": "Auburn Tigers",
       "away_team": "Nevada Wolf Pack",
-      "commence_time": "2026-03-26T01:00:00Z",
+      "commence_time": "2026-03-26T01:04:00Z",
       "homePoint": -8.5,
       "awayPoint": 8.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-25T17:45:37Z"
+      "snapshotTime": "2026-03-26T01:00:38Z"
     }
   ]
 }
