@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-vanderbilt",
         "awayTeamId": "team-illinois",
-        "modelSpread": -12.4,
-        "edge": 0.1,
+        "modelSpread": -12.3,
+        "edge": 0.2,
         "signal": "NONE"
       }
     },
@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-usc",
-        "modelSpread": -22,
-        "edge": 1.5,
+        "modelSpread": -22.1,
+        "edge": 1.4,
         "signal": "NONE"
       }
     },

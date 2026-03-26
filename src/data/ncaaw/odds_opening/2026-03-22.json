@@ -87,8 +87,8 @@
       "model": {
         "homeTeamId": "team-duke",
         "awayTeamId": "team-baylor",
-        "modelSpread": -13.9,
-        "edge": -1.4,
+        "modelSpread": -14,
+        "edge": -1.5,
         "signal": "NONE"
       }
     },

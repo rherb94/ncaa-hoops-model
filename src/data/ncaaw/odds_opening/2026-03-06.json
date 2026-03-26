@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-kentucky",
-        "modelSpread": -12.7,
-        "edge": 2.8,
+        "modelSpread": -12.6,
+        "edge": 2.9,
         "signal": "NONE"
       }
     },
@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-n-c-state",
         "awayTeamId": "team-notre-dame",
-        "modelSpread": 1.5,
-        "edge": 0,
+        "modelSpread": 1.6,
+        "edge": 0.1,
         "signal": "NONE"
       }
     },
@@ -333,8 +333,8 @@
       "model": {
         "homeTeamId": "team-west-virginia",
         "awayTeamId": "team-arizona-st",
-        "modelSpread": -11.3,
-        "edge": -0.8,
+        "modelSpread": -11.4,
+        "edge": -0.9,
         "signal": "NONE"
       }
     },

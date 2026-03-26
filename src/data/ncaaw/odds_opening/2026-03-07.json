@@ -219,8 +219,8 @@
       "model": {
         "homeTeamId": "team-louisville",
         "awayTeamId": "team-north-carolina",
-        "modelSpread": -2.1,
-        "edge": 0.4,
+        "modelSpread": -2,
+        "edge": 0.5,
         "signal": "NONE"
       }
     },
@@ -291,8 +291,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-lsu",
-        "modelSpread": -2,
-        "edge": 3.5,
+        "modelSpread": -2.1,
+        "edge": 3.4,
         "signal": "LEAN"
       }
     },

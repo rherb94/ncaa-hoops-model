@@ -39,8 +39,8 @@
       "model": {
         "homeTeamId": "team-georgia",
         "awayTeamId": "team-virginia",
-        "modelSpread": -2,
-        "edge": 0.5,
+        "modelSpread": -1.9,
+        "edge": 0.6,
         "signal": "NONE"
       }
     },
@@ -81,8 +81,8 @@
       "model": {
         "homeTeamId": "team-alabama",
         "awayTeamId": "team-rhode-island",
-        "modelSpread": -8.5,
-        "edge": 0,
+        "modelSpread": -8.6,
+        "edge": -0.1,
         "signal": "NONE"
       }
     },
@@ -237,8 +237,8 @@
       "model": {
         "homeTeamId": "team-oklahoma-st",
         "awayTeamId": "team-princeton",
-        "modelSpread": -4.6,
-        "edge": 0.9,
+        "modelSpread": -4.5,
+        "edge": 1,
         "signal": "NONE"
       }
     },

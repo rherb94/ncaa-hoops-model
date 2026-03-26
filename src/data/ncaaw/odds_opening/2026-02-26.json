@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-lsu",
         "awayTeamId": "team-tennessee",
-        "modelSpread": -19.6,
-        "edge": -1.1,
+        "modelSpread": -19.7,
+        "edge": -1.2,
         "signal": "NONE"
       }
     },
@@ -261,8 +261,8 @@
       "model": {
         "homeTeamId": "team-notre-dame",
         "awayTeamId": "team-syracuse",
-        "modelSpread": -10.6,
-        "edge": -3.1,
+        "modelSpread": -10.7,
+        "edge": -3.2,
         "signal": "LEAN"
       }
     },
@@ -429,8 +429,8 @@
       "model": {
         "homeTeamId": "team-texas",
         "awayTeamId": "team-georgia",
-        "modelSpread": -22.4,
-        "edge": 2.1,
+        "modelSpread": -22.5,
+        "edge": 2,
         "signal": "NONE"
       }
     }
