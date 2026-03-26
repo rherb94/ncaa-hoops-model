@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-25",
+  "fetched_at": "2026-03-26T07:08:50.348Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401858359",
+      "commence_time": "2026-03-25T23:00Z",
+      "home_team": "Dayton Flyers",
+      "away_team": "Illinois State Redbirds",
+      "home_espnTeamId": "2168",
+      "away_espnTeamId": "2287",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 55,
+      "awayScore": 61,
+      "actualSpread": 6,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401858360",
+      "commence_time": "2026-03-26T01:00Z",
+      "home_team": "Auburn Tigers",
+      "away_team": "Nevada Wolf Pack",
+      "home_espnTeamId": "2",
+      "away_espnTeamId": "2440",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 75,
+      "awayScore": 69,
+      "actualSpread": -6,
+      "winner": "HOME"
+    }
+  ]
+}
