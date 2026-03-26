@@ -1,0 +1,102 @@
+{
+  "date": "2026-03-26",
+  "captured_at": "2026-03-26T17:11:41.772Z",
+  "games": [
+    {
+      "oddsEventId": "4cf401630aa10cb31037b56b00065701",
+      "commence_time": "2026-03-26T23:10:36Z",
+      "home_team": "Purdue Boilermakers",
+      "away_team": "Texas Longhorns",
+      "home_espnTeamId": "2509",
+      "away_espnTeamId": "251",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-26T17:11:26Z",
+        "homePoint": -7.5,
+        "awayPoint": 7.5
+      },
+      "model": {
+        "homeTeamId": "team-purdue",
+        "awayTeamId": "team-texas",
+        "modelSpread": -9.5,
+        "edge": -2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "46b1a59de36ee26bfe2ae0e3d3fdcb34",
+      "commence_time": "2026-03-26T23:30:00Z",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "Iowa Hawkeyes",
+      "home_espnTeamId": "158",
+      "away_espnTeamId": "2294",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-26T17:11:26Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": {
+        "homeTeamId": "team-nebraska",
+        "awayTeamId": "team-iowa",
+        "modelSpread": -0.7,
+        "edge": 0.8,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "f1d5502ed3f4cc204b50e2c84e7239f4",
+      "commence_time": "2026-03-27T01:45:00Z",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Arkansas Razorbacks",
+      "home_espnTeamId": "12",
+      "away_espnTeamId": "8",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-26T17:11:26Z",
+        "homePoint": -8.5,
+        "awayPoint": 8.5
+      },
+      "model": {
+        "homeTeamId": "team-arizona",
+        "awayTeamId": "team-arkansas",
+        "modelSpread": -6.7,
+        "edge": 1.8,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "ec6928723ac4bd2765eab1446eab4e81",
+      "commence_time": "2026-03-27T02:05:00Z",
+      "home_team": "Houston Cougars",
+      "away_team": "Illinois Fighting Illini",
+      "home_espnTeamId": "248",
+      "away_espnTeamId": "356",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-26T17:11:26Z",
+        "homePoint": -2.5,
+        "awayPoint": 2.5
+      },
+      "model": {
+        "homeTeamId": "team-houston",
+        "awayTeamId": "team-illinois",
+        "modelSpread": 0.3,
+        "edge": 2.8,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
