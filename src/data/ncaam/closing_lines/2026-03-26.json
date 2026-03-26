@@ -1,0 +1,49 @@
+{
+  "date": "2026-03-26",
+  "last_updated": "2026-03-26T17:47:02.483Z",
+  "snapshot_times": [
+    "2026-03-26T17:45:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "4cf401630aa10cb31037b56b00065701",
+      "home_team": "Purdue Boilermakers",
+      "away_team": "Texas Longhorns",
+      "commence_time": "2026-03-26T23:10:36Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-26T17:45:37Z"
+    },
+    {
+      "oddsEventId": "46b1a59de36ee26bfe2ae0e3d3fdcb34",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "Iowa Hawkeyes",
+      "commence_time": "2026-03-26T23:30:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-26T17:45:37Z"
+    },
+    {
+      "oddsEventId": "f1d5502ed3f4cc204b50e2c84e7239f4",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Arkansas Razorbacks",
+      "commence_time": "2026-03-27T01:45:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-26T17:45:37Z"
+    },
+    {
+      "oddsEventId": "ec6928723ac4bd2765eab1446eab4e81",
+      "home_team": "Houston Cougars",
+      "away_team": "Illinois Fighting Illini",
+      "commence_time": "2026-03-27T02:05:00Z",
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-26T17:45:37Z"
+    }
+  ]
+}
