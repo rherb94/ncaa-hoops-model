@@ -1,0 +1,22 @@
+{
+  "date": "2026-03-25",
+  "fetched_at": "2026-03-26T07:22:51.230Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401865125",
+      "commence_time": "2026-03-25T22:00Z",
+      "home_team": "Army Black Knights",
+      "away_team": "La Salle Explorers",
+      "home_espnTeamId": "349",
+      "away_espnTeamId": "2325",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 74,
+      "awayScore": 63,
+      "actualSpread": -11,
+      "winner": "HOME"
+    }
+  ]
+}
