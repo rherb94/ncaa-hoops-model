@@ -1,0 +1,49 @@
+{
+  "date": "2026-03-27",
+  "last_updated": "2026-03-27T17:38:59.553Z",
+  "snapshot_times": [
+    "2026-03-27T17:35:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "89f4834fc319b6e8ad1d734b2dee4472",
+      "home_team": "Vanderbilt Commodores",
+      "away_team": "Notre Dame Fighting Irish",
+      "commence_time": "2026-03-27T18:30:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-27T17:35:38Z"
+    },
+    {
+      "oddsEventId": "dd316675d9b1d54fe3f465a1fbc7ee24",
+      "home_team": "UConn Huskies",
+      "away_team": "North Carolina Tar Heels",
+      "commence_time": "2026-03-27T21:00:00Z",
+      "homePoint": -29.5,
+      "awayPoint": 29.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-27T17:35:38Z"
+    },
+    {
+      "oddsEventId": "2020f18703258789171e61a7cab03a64",
+      "home_team": "UCLA Bruins",
+      "away_team": "Minnesota Golden Gophers",
+      "commence_time": "2026-03-27T23:30:00Z",
+      "homePoint": -18.5,
+      "awayPoint": 18.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-27T17:35:38Z"
+    },
+    {
+      "oddsEventId": "e9ad912c3502be366231fba4e243b7b9",
+      "home_team": "LSU Tigers",
+      "away_team": "Duke Blue Devils",
+      "commence_time": "2026-03-28T02:00:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-27T17:35:38Z"
+    }
+  ]
+}
