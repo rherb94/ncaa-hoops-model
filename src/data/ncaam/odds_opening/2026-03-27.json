@@ -1,0 +1,102 @@
+{
+  "date": "2026-03-27",
+  "captured_at": "2026-03-27T17:01:34.767Z",
+  "games": [
+    {
+      "oddsEventId": "731c2ebbe43e00cbf104f9cbefaaaf63",
+      "commence_time": "2026-03-27T23:10:00Z",
+      "home_team": "Duke Blue Devils",
+      "away_team": "St. John's Red Storm",
+      "home_espnTeamId": "150",
+      "away_espnTeamId": "2599",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-27T17:00:24Z",
+        "homePoint": -6.5,
+        "awayPoint": 6.5
+      },
+      "model": {
+        "homeTeamId": "team-duke",
+        "awayTeamId": "team-st-johns",
+        "modelSpread": -5.7,
+        "edge": 0.8,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "38719ab42b9d3e3fa0d45da96fbdf765",
+      "commence_time": "2026-03-27T23:35:00Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Alabama Crimson Tide",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "333",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-27T17:00:24Z",
+        "homePoint": -9.5,
+        "awayPoint": 9.5
+      },
+      "model": {
+        "homeTeamId": "team-michigan",
+        "awayTeamId": "team-alabama",
+        "modelSpread": -6,
+        "edge": 3.5,
+        "signal": "LEAN"
+      }
+    },
+    {
+      "oddsEventId": "76d32e24b9c66ec3690e1c5a60f1e9cd",
+      "commence_time": "2026-03-28T01:45:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Michigan St Spartans",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "127",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-27T17:00:24Z",
+        "homePoint": -2.5,
+        "awayPoint": 2.5
+      },
+      "model": {
+        "homeTeamId": "team-connecticut",
+        "awayTeamId": "team-michigan-st",
+        "modelSpread": -0.4,
+        "edge": 2.1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "7046f8e5f278fa5a27cefcf8966620e4",
+      "commence_time": "2026-03-28T02:10:00Z",
+      "home_team": "Iowa State Cyclones",
+      "away_team": "Tennessee Volunteers",
+      "home_espnTeamId": "66",
+      "away_espnTeamId": "2633",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-27T17:00:24Z",
+        "homePoint": -4.5,
+        "awayPoint": 4.5
+      },
+      "model": {
+        "homeTeamId": "team-iowa-st",
+        "awayTeamId": "team-tennessee",
+        "modelSpread": -2.9,
+        "edge": 1.6,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
