@@ -1,0 +1,49 @@
+{
+  "date": "2026-03-27",
+  "last_updated": "2026-03-27T17:39:17.456Z",
+  "snapshot_times": [
+    "2026-03-27T17:35:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "731c2ebbe43e00cbf104f9cbefaaaf63",
+      "home_team": "Duke Blue Devils",
+      "away_team": "St. John's Red Storm",
+      "commence_time": "2026-03-27T23:10:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-27T17:35:38Z"
+    },
+    {
+      "oddsEventId": "38719ab42b9d3e3fa0d45da96fbdf765",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Alabama Crimson Tide",
+      "commence_time": "2026-03-27T23:35:00Z",
+      "homePoint": -9.5,
+      "awayPoint": 9.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-27T17:35:38Z"
+    },
+    {
+      "oddsEventId": "76d32e24b9c66ec3690e1c5a60f1e9cd",
+      "home_team": "UConn Huskies",
+      "away_team": "Michigan St Spartans",
+      "commence_time": "2026-03-28T01:45:00Z",
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-27T17:35:38Z"
+    },
+    {
+      "oddsEventId": "7046f8e5f278fa5a27cefcf8966620e4",
+      "home_team": "Iowa State Cyclones",
+      "away_team": "Tennessee Volunteers",
+      "commence_time": "2026-03-28T02:10:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-27T17:35:38Z"
+    }
+  ]
+}
