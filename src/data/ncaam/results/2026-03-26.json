@@ -1,0 +1,64 @@
+{
+  "date": "2026-03-26",
+  "fetched_at": "2026-03-27T07:07:20.169Z",
+  "total_games": 4,
+  "completed_games": 4,
+  "games": [
+    {
+      "espnEventId": "401856569",
+      "commence_time": "2026-03-27T02:06Z",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Arkansas Razorbacks",
+      "home_espnTeamId": "12",
+      "away_espnTeamId": "8",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 109,
+      "awayScore": 88,
+      "actualSpread": -21,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856568",
+      "commence_time": "2026-03-26T23:10Z",
+      "home_team": "Purdue Boilermakers",
+      "away_team": "Texas Longhorns",
+      "home_espnTeamId": "2509",
+      "away_espnTeamId": "251",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 79,
+      "awayScore": 77,
+      "actualSpread": -2,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856566",
+      "commence_time": "2026-03-27T02:05Z",
+      "home_team": "Houston Cougars",
+      "away_team": "Illinois Fighting Illini",
+      "home_espnTeamId": "248",
+      "away_espnTeamId": "356",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 55,
+      "awayScore": 65,
+      "actualSpread": 10,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401856567",
+      "commence_time": "2026-03-26T23:30Z",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "Iowa Hawkeyes",
+      "home_espnTeamId": "158",
+      "away_espnTeamId": "2294",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 71,
+      "awayScore": 77,
+      "actualSpread": 6,
+      "winner": "AWAY"
+    }
+  ]
+}
