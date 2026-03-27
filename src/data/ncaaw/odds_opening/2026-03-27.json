@@ -1,0 +1,96 @@
+{
+  "date": "2026-03-27",
+  "captured_at": "2026-03-27T16:59:54.028Z",
+  "games": [
+    {
+      "oddsEventId": "89f4834fc319b6e8ad1d734b2dee4472",
+      "commence_time": "2026-03-27T18:30:00Z",
+      "home_team": "Vanderbilt Commodores",
+      "away_team": "Notre Dame Fighting Irish",
+      "home_espnTeamId": "238",
+      "away_espnTeamId": "87",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-27T16:59:21Z",
+        "homePoint": -6.5,
+        "awayPoint": 6.5
+      },
+      "model": {
+        "homeTeamId": "team-vanderbilt",
+        "awayTeamId": "team-notre-dame",
+        "modelSpread": -6.2,
+        "edge": 0.3,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "dd316675d9b1d54fe3f465a1fbc7ee24",
+      "commence_time": "2026-03-27T21:00:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "North Carolina Tar Heels",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "153",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-27T16:59:21Z",
+        "homePoint": -29.5,
+        "awayPoint": 29.5
+      },
+      "model": {
+        "homeTeamId": "team-connecticut",
+        "awayTeamId": "team-north-carolina",
+        "modelSpread": -19.3,
+        "edge": 10.2,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "2020f18703258789171e61a7cab03a64",
+      "commence_time": "2026-03-27T23:30:00Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "Minnesota Golden Gophers",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "135",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-27T16:59:21Z",
+        "homePoint": -18.5,
+        "awayPoint": 18.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "e9ad912c3502be366231fba4e243b7b9",
+      "commence_time": "2026-03-28T02:00:00Z",
+      "home_team": "LSU Tigers",
+      "away_team": "Duke Blue Devils",
+      "home_espnTeamId": "99",
+      "away_espnTeamId": "150",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-27T16:59:21Z",
+        "homePoint": -8.5,
+        "awayPoint": 8.5
+      },
+      "model": {
+        "homeTeamId": "team-lsu",
+        "awayTeamId": "team-duke",
+        "modelSpread": -10,
+        "edge": -1.5,
+        "signal": "NONE"
+      }
+    }
+  ]
+}

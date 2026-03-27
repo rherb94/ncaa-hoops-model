@@ -63,8 +63,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-creighton",
-        "modelSpread": -34.3,
-        "edge": 2.2,
+        "modelSpread": -34.2,
+        "edge": 2.3,
         "signal": "NONE"
       }
     },

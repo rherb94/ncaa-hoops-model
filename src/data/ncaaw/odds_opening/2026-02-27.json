@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-dartmouth",
         "awayTeamId": "team-princeton",
-        "modelSpread": 24.1,
-        "edge": -5.4,
+        "modelSpread": 24,
+        "edge": -5.5,
         "signal": "STRONG"
       }
     },
@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-harvard",
         "awayTeamId": "team-penn",
-        "modelSpread": -10.9,
-        "edge": -0.4,
+        "modelSpread": -10.8,
+        "edge": -0.3,
         "signal": "NONE"
       }
     }

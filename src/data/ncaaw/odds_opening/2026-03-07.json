@@ -243,8 +243,8 @@
       "model": {
         "homeTeamId": "team-tcu",
         "awayTeamId": "team-kansas-st",
-        "modelSpread": -12.1,
-        "edge": -0.6,
+        "modelSpread": -12,
+        "edge": -0.5,
         "signal": "NONE"
       }
     },
