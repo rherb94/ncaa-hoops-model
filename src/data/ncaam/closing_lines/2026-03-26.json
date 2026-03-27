@@ -1,8 +1,9 @@
 {
   "date": "2026-03-26",
-  "last_updated": "2026-03-26T17:47:02.483Z",
+  "last_updated": "2026-03-27T01:02:59.307Z",
   "snapshot_times": [
-    "2026-03-26T17:45:37Z"
+    "2026-03-26T17:45:37Z",
+    "2026-03-27T01:00:37Z"
   ],
   "games": [
     {
@@ -30,10 +31,10 @@
       "home_team": "Arizona Wildcats",
       "away_team": "Arkansas Razorbacks",
       "commence_time": "2026-03-27T01:45:00Z",
-      "homePoint": -8.5,
-      "awayPoint": 8.5,
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-26T17:45:37Z"
+      "snapshotTime": "2026-03-27T01:00:37Z"
     },
     {
       "oddsEventId": "ec6928723ac4bd2765eab1446eab4e81",
@@ -43,7 +44,7 @@
       "homePoint": -2.5,
       "awayPoint": 2.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-26T17:45:37Z"
+      "snapshotTime": "2026-03-27T01:00:37Z"
     }
   ]
 }
