@@ -1,0 +1,54 @@
+{
+  "date": "2026-03-28",
+  "captured_at": "2026-03-28T16:42:19.489Z",
+  "games": [
+    {
+      "oddsEventId": "ad862e3e6452856177edb4d763ef9df9",
+      "commence_time": "2026-03-28T22:09:00Z",
+      "home_team": "Illinois Fighting Illini",
+      "away_team": "Iowa Hawkeyes",
+      "home_espnTeamId": "356",
+      "away_espnTeamId": "2294",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-28T16:41:27Z",
+        "homePoint": -6.5,
+        "awayPoint": 6.5
+      },
+      "model": {
+        "homeTeamId": "team-illinois",
+        "awayTeamId": "team-iowa",
+        "modelSpread": -7.2,
+        "edge": -0.7,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "b8f1c265896037786f17893bf5c3df0d",
+      "commence_time": "2026-03-29T00:49:00Z",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Purdue Boilermakers",
+      "home_espnTeamId": "12",
+      "away_espnTeamId": "2509",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-28T16:41:27Z",
+        "homePoint": -5.5,
+        "awayPoint": 5.5
+      },
+      "model": {
+        "homeTeamId": "team-arizona",
+        "awayTeamId": "team-purdue",
+        "modelSpread": -2.3,
+        "edge": 3.2,
+        "signal": "LEAN"
+      }
+    }
+  ]
+}
