@@ -1,0 +1,39 @@
+{
+  "date": "2026-03-28",
+  "last_updated": "2026-03-28T17:16:33.533Z",
+  "snapshot_times": [
+    "2026-03-28T17:15:37Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "c001d894fa89c02c7b9fdbd78fdff10b",
+      "home_team": "Texas Longhorns",
+      "away_team": "Kentucky Wildcats",
+      "commence_time": "2026-03-28T19:00:00Z",
+      "homePoint": -14.5,
+      "awayPoint": 14.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-28T17:15:37Z"
+    },
+    {
+      "oddsEventId": "edec4eaf9cf9667ef4f069b8be6089eb",
+      "home_team": "South Carolina Gamecocks",
+      "away_team": "Oklahoma Sooners",
+      "commence_time": "2026-03-28T21:00:00Z",
+      "homePoint": -17.5,
+      "awayPoint": 17.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-28T17:15:37Z"
+    },
+    {
+      "oddsEventId": "4a49b83737e5b133fc3b1464360fc387",
+      "home_team": "TCU Horned Frogs",
+      "away_team": "Virginia Cavaliers",
+      "commence_time": "2026-03-28T23:30:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-28T17:15:37Z"
+    }
+  ]
+}
