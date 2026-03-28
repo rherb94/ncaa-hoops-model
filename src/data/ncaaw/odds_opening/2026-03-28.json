@@ -1,0 +1,78 @@
+{
+  "date": "2026-03-28",
+  "captured_at": "2026-03-28T16:39:48.052Z",
+  "games": [
+    {
+      "oddsEventId": "c001d894fa89c02c7b9fdbd78fdff10b",
+      "commence_time": "2026-03-28T19:00:00Z",
+      "home_team": "Texas Longhorns",
+      "away_team": "Kentucky Wildcats",
+      "home_espnTeamId": "251",
+      "away_espnTeamId": "96",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-28T16:39:01Z",
+        "homePoint": -14.5,
+        "awayPoint": 14.5
+      },
+      "model": {
+        "homeTeamId": "team-texas",
+        "awayTeamId": "team-kentucky",
+        "modelSpread": -12.4,
+        "edge": 2.1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "edec4eaf9cf9667ef4f069b8be6089eb",
+      "commence_time": "2026-03-28T21:00:00Z",
+      "home_team": "South Carolina Gamecocks",
+      "away_team": "Oklahoma Sooners",
+      "home_espnTeamId": "2579",
+      "away_espnTeamId": "201",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-28T16:39:01Z",
+        "homePoint": -17.5,
+        "awayPoint": 17.5
+      },
+      "model": {
+        "homeTeamId": "team-south-carolina",
+        "awayTeamId": "team-oklahoma",
+        "modelSpread": -14.9,
+        "edge": 2.6,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "4a49b83737e5b133fc3b1464360fc387",
+      "commence_time": "2026-03-28T23:30:00Z",
+      "home_team": "TCU Horned Frogs",
+      "away_team": "Virginia Cavaliers",
+      "home_espnTeamId": "2628",
+      "away_espnTeamId": "258",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-28T16:39:01Z",
+        "homePoint": -7.5,
+        "awayPoint": 7.5
+      },
+      "model": {
+        "homeTeamId": "team-tcu",
+        "awayTeamId": "team-virginia",
+        "modelSpread": -7.3,
+        "edge": 0.2,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
