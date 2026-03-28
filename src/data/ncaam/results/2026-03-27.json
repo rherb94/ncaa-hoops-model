@@ -1,0 +1,64 @@
+{
+  "date": "2026-03-27",
+  "fetched_at": "2026-03-28T06:58:51.728Z",
+  "total_games": 4,
+  "completed_games": 4,
+  "games": [
+    {
+      "espnEventId": "401856570",
+      "commence_time": "2026-03-27T23:10Z",
+      "home_team": "Duke Blue Devils",
+      "away_team": "St. John's Red Storm",
+      "home_espnTeamId": "150",
+      "away_espnTeamId": "2599",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 80,
+      "awayScore": 75,
+      "actualSpread": -5,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856572",
+      "commence_time": "2026-03-27T23:35Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Alabama Crimson Tide",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "333",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 90,
+      "awayScore": 77,
+      "actualSpread": -13,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856571",
+      "commence_time": "2026-03-28T01:55Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Michigan State Spartans",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "127",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 67,
+      "awayScore": 63,
+      "actualSpread": -4,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856573",
+      "commence_time": "2026-03-28T02:35Z",
+      "home_team": "Iowa State Cyclones",
+      "away_team": "Tennessee Volunteers",
+      "home_espnTeamId": "66",
+      "away_espnTeamId": "2633",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 62,
+      "awayScore": 76,
+      "actualSpread": 14,
+      "winner": "AWAY"
+    }
+  ]
+}
