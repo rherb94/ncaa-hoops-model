@@ -1,8 +1,9 @@
 {
   "date": "2026-03-27",
-  "last_updated": "2026-03-27T17:39:17.456Z",
+  "last_updated": "2026-03-28T00:57:47.270Z",
   "snapshot_times": [
-    "2026-03-27T17:35:38Z"
+    "2026-03-27T17:35:38Z",
+    "2026-03-28T00:55:37Z"
   ],
   "games": [
     {
@@ -30,20 +31,20 @@
       "home_team": "UConn Huskies",
       "away_team": "Michigan St Spartans",
       "commence_time": "2026-03-28T01:45:00Z",
-      "homePoint": -2.5,
-      "awayPoint": 2.5,
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-27T17:35:38Z"
+      "snapshotTime": "2026-03-28T00:55:37Z"
     },
     {
       "oddsEventId": "7046f8e5f278fa5a27cefcf8966620e4",
       "home_team": "Iowa State Cyclones",
       "away_team": "Tennessee Volunteers",
       "commence_time": "2026-03-28T02:10:00Z",
-      "homePoint": -4.5,
-      "awayPoint": 4.5,
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-27T17:35:38Z"
+      "snapshotTime": "2026-03-28T00:55:37Z"
     }
   ]
 }
