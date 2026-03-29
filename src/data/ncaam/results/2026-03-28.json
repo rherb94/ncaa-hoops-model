@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-28",
+  "fetched_at": "2026-03-29T07:03:11.201Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401856575",
+      "commence_time": "2026-03-29T00:59Z",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Purdue Boilermakers",
+      "home_espnTeamId": "12",
+      "away_espnTeamId": "2509",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 79,
+      "awayScore": 64,
+      "actualSpread": -15,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856574",
+      "commence_time": "2026-03-28T22:09Z",
+      "home_team": "Illinois Fighting Illini",
+      "away_team": "Iowa Hawkeyes",
+      "home_espnTeamId": "356",
+      "away_espnTeamId": "2294",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 71,
+      "awayScore": 59,
+      "actualSpread": -12,
+      "winner": "HOME"
+    }
+  ]
+}
