@@ -1,0 +1,54 @@
+{
+  "date": "2026-03-29",
+  "captured_at": "2026-03-29T16:43:12.878Z",
+  "games": [
+    {
+      "oddsEventId": "766f36b45d2f1fe972b4314b8fb077e4",
+      "commence_time": "2026-03-29T18:15:00Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Tennessee Volunteers",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "2633",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-29T16:42:43Z",
+        "homePoint": -8.5,
+        "awayPoint": 8.5
+      },
+      "model": {
+        "homeTeamId": "team-michigan",
+        "awayTeamId": "team-tennessee",
+        "modelSpread": -5.9,
+        "edge": 2.6,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "b346eca1f4e19fa882dc963610acbf1b",
+      "commence_time": "2026-03-29T21:05:00Z",
+      "home_team": "Duke Blue Devils",
+      "away_team": "UConn Huskies",
+      "home_espnTeamId": "150",
+      "away_espnTeamId": "41",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-29T16:42:43Z",
+        "homePoint": -5.5,
+        "awayPoint": 5.5
+      },
+      "model": {
+        "homeTeamId": "team-duke",
+        "awayTeamId": "team-connecticut",
+        "modelSpread": -4.5,
+        "edge": 1,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
