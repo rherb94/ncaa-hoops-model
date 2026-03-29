@@ -1,0 +1,48 @@
+{
+  "date": "2026-03-29",
+  "captured_at": "2026-03-29T16:40:53.287Z",
+  "games": [
+    {
+      "oddsEventId": "9623f0d0c8f19e144ff222ba96f95c97",
+      "commence_time": "2026-03-29T17:00:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Notre Dame Fighting Irish",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "87",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-29T16:40:11Z",
+        "homePoint": -27.5,
+        "awayPoint": 27.5
+      },
+      "model": {
+        "homeTeamId": "team-connecticut",
+        "awayTeamId": "team-notre-dame",
+        "modelSpread": -20.7,
+        "edge": 6.8,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "4b3c19e7639a3b0b4246c069beec3411",
+      "commence_time": "2026-03-29T19:00:00Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "Duke Blue Devils",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "150",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-29T16:40:11Z",
+        "homePoint": -11.5,
+        "awayPoint": 11.5
+      },
+      "model": null
+    }
+  ]
+}

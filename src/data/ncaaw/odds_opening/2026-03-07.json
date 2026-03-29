@@ -219,8 +219,8 @@
       "model": {
         "homeTeamId": "team-louisville",
         "awayTeamId": "team-north-carolina",
-        "modelSpread": -2.4,
-        "edge": 0.1,
+        "modelSpread": -2,
+        "edge": 0.5,
         "signal": "NONE"
       }
     },
@@ -291,9 +291,9 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-lsu",
-        "modelSpread": -2.2,
-        "edge": 3.3,
-        "signal": "LEAN"
+        "modelSpread": -2.9,
+        "edge": 2.6,
+        "signal": "NONE"
       }
     },
     {
@@ -339,8 +339,8 @@
       "model": {
         "homeTeamId": "team-texas",
         "awayTeamId": "team-mississippi",
-        "modelSpread": -15.5,
-        "edge": 2,
+        "modelSpread": -15.8,
+        "edge": 1.7,
         "signal": "NONE"
       }
     }

@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-oklahoma",
         "awayTeamId": "team-florida",
-        "modelSpread": -8.6,
-        "edge": 1.9,
+        "modelSpread": -8.4,
+        "edge": 2.1,
         "signal": "NONE"
       }
     },
@@ -333,8 +333,8 @@
       "model": {
         "homeTeamId": "team-mississippi",
         "awayTeamId": "team-auburn",
-        "modelSpread": -16,
-        "edge": -0.5,
+        "modelSpread": -16.1,
+        "edge": -0.6,
         "signal": "NONE"
       }
     },

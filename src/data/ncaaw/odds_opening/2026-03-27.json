@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-north-carolina",
-        "modelSpread": -19.2,
-        "edge": 10.3,
+        "modelSpread": -19.3,
+        "edge": 10.2,
         "signal": "STRONG"
       }
     },
@@ -87,8 +87,8 @@
       "model": {
         "homeTeamId": "team-lsu",
         "awayTeamId": "team-duke",
-        "modelSpread": -8.9,
-        "edge": -0.4,
+        "modelSpread": -8.8,
+        "edge": -0.3,
         "signal": "NONE"
       }
     }

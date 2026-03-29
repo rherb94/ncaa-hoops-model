@@ -39,8 +39,8 @@
       "model": {
         "homeTeamId": "team-georgia",
         "awayTeamId": "team-virginia",
-        "modelSpread": -1.8,
-        "edge": 0.7,
+        "modelSpread": -1.6,
+        "edge": 0.9,
         "signal": "NONE"
       }
     },

@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-harvard",
         "awayTeamId": "team-penn",
-        "modelSpread": -10.8,
-        "edge": -0.3,
+        "modelSpread": -10.7,
+        "edge": -0.2,
         "signal": "NONE"
       }
     }
