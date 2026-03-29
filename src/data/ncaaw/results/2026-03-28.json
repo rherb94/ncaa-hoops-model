@@ -1,0 +1,64 @@
+{
+  "date": "2026-03-28",
+  "fetched_at": "2026-03-29T07:16:37.435Z",
+  "total_games": 4,
+  "completed_games": 4,
+  "games": [
+    {
+      "espnEventId": "401856581",
+      "commence_time": "2026-03-28T19:00Z",
+      "home_team": "Texas Longhorns",
+      "away_team": "Kentucky Wildcats",
+      "home_espnTeamId": "251",
+      "away_espnTeamId": "96",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 76,
+      "awayScore": 54,
+      "actualSpread": -22,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856583",
+      "commence_time": "2026-03-28T21:00Z",
+      "home_team": "South Carolina Gamecocks",
+      "away_team": "Oklahoma Sooners",
+      "home_espnTeamId": "2579",
+      "away_espnTeamId": "201",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 94,
+      "awayScore": 68,
+      "actualSpread": -26,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856580",
+      "commence_time": "2026-03-28T16:30Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Louisville Cardinals",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "97",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 71,
+      "awayScore": 52,
+      "actualSpread": -19,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856582",
+      "commence_time": "2026-03-28T23:30Z",
+      "home_team": "TCU Horned Frogs",
+      "away_team": "Virginia Cavaliers",
+      "home_espnTeamId": "2628",
+      "away_espnTeamId": "258",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 79,
+      "awayScore": 69,
+      "actualSpread": -10,
+      "winner": "HOME"
+    }
+  ]
+}
