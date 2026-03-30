@@ -1,0 +1,49 @@
+{
+  "date": "2026-03-30",
+  "last_updated": "2026-03-30T17:41:14.190Z",
+  "snapshot_times": [
+    "2026-03-30T17:40:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "9a1fb2be37be81ef1ba74fcf1d8ee297",
+      "home_team": "Wisconsin Badgers",
+      "away_team": "Columbia Lions",
+      "commence_time": "2026-03-30T18:30:00Z",
+      "homePoint": 7.5,
+      "awayPoint": -7.5,
+      "book": "williamhill_us",
+      "snapshotTime": "2026-03-30T17:40:38Z"
+    },
+    {
+      "oddsEventId": "0b1ed9cd7f0bfaa7a9019a96b7afbfcd",
+      "home_team": "BYU Cougars",
+      "away_team": "Kansas Jayhawks",
+      "commence_time": "2026-03-30T21:00:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "williamhill_us",
+      "snapshotTime": "2026-03-30T17:40:38Z"
+    },
+    {
+      "oddsEventId": "cc5c613aaf28592ed4ca080b04a47769",
+      "home_team": "Texas Longhorns",
+      "away_team": "Michigan Wolverines",
+      "commence_time": "2026-03-30T23:00:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-30T17:40:38Z"
+    },
+    {
+      "oddsEventId": "4fb408173afed6a53f9d001642ada7da",
+      "home_team": "South Carolina Gamecocks",
+      "away_team": "TCU Horned Frogs",
+      "commence_time": "2026-03-31T01:00:00Z",
+      "homePoint": -14.5,
+      "awayPoint": 14.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-03-30T17:40:38Z"
+    }
+  ]
+}
