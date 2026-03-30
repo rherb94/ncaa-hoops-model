@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-northern-illinois",
         "awayTeamId": "team-buffalo",
-        "modelSpread": -5.3,
-        "edge": -1.8,
+        "modelSpread": -5.4,
+        "edge": -1.9,
         "signal": "NONE"
       }
     },

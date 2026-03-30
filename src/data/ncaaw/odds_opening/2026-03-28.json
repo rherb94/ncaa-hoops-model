@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-tcu",
         "awayTeamId": "team-virginia",
-        "modelSpread": -7.3,
-        "edge": 0.2,
+        "modelSpread": -7.2,
+        "edge": 0.3,
         "signal": "NONE"
       }
     }

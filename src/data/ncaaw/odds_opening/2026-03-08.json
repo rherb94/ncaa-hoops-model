@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-duke",
         "awayTeamId": "team-louisville",
-        "modelSpread": -2,
-        "edge": 0.5,
+        "modelSpread": -2.1,
+        "edge": 0.4,
         "signal": "NONE"
       }
     },
@@ -63,8 +63,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-creighton",
-        "modelSpread": -34,
-        "edge": 2.5,
+        "modelSpread": -33.7,
+        "edge": 2.8,
         "signal": "NONE"
       }
     },

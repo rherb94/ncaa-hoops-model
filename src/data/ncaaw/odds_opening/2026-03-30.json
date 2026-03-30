@@ -1,0 +1,96 @@
+{
+  "date": "2026-03-30",
+  "captured_at": "2026-03-30T17:00:52.314Z",
+  "games": [
+    {
+      "oddsEventId": "9a1fb2be37be81ef1ba74fcf1d8ee297",
+      "commence_time": "2026-03-30T18:30:00Z",
+      "home_team": "Wisconsin Badgers",
+      "away_team": "Columbia Lions",
+      "home_espnTeamId": "275",
+      "away_espnTeamId": "171",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "williamhill_us",
+        "last_update": "2026-03-30T16:59:21Z",
+        "homePoint": 7.5,
+        "awayPoint": -7.5
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "0b1ed9cd7f0bfaa7a9019a96b7afbfcd",
+      "commence_time": "2026-03-30T21:00:00Z",
+      "home_team": "BYU Cougars",
+      "away_team": "Kansas Jayhawks",
+      "home_espnTeamId": "252",
+      "away_espnTeamId": "2305",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "williamhill_us",
+        "last_update": "2026-03-30T16:59:21Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": {
+        "homeTeamId": "team-byu",
+        "awayTeamId": "team-kansas",
+        "modelSpread": 1.2,
+        "edge": -0.3,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "cc5c613aaf28592ed4ca080b04a47769",
+      "commence_time": "2026-03-30T23:00:00Z",
+      "home_team": "Texas Longhorns",
+      "away_team": "Michigan Wolverines",
+      "home_espnTeamId": "251",
+      "away_espnTeamId": "130",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-30T17:00:08Z",
+        "homePoint": -10.5,
+        "awayPoint": 10.5
+      },
+      "model": {
+        "homeTeamId": "team-texas",
+        "awayTeamId": "team-michigan",
+        "modelSpread": -9.5,
+        "edge": 1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "4fb408173afed6a53f9d001642ada7da",
+      "commence_time": "2026-03-31T01:00:00Z",
+      "home_team": "South Carolina Gamecocks",
+      "away_team": "TCU Horned Frogs",
+      "home_espnTeamId": "2579",
+      "away_espnTeamId": "2628",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-03-30T17:00:09Z",
+        "homePoint": -14.5,
+        "awayPoint": 14.5
+      },
+      "model": {
+        "homeTeamId": "team-south-carolina",
+        "awayTeamId": "team-tcu",
+        "modelSpread": -14.3,
+        "edge": 0.2,
+        "signal": "NONE"
+      }
+    }
+  ]
+}

@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-notre-dame",
         "awayTeamId": "team-miami-fl",
-        "modelSpread": -12.5,
-        "edge": -1,
+        "modelSpread": -12.7,
+        "edge": -1.2,
         "signal": "NONE"
       }
     },
@@ -261,8 +261,8 @@
       "model": {
         "homeTeamId": "team-washington-st",
         "awayTeamId": "team-seattle",
-        "modelSpread": -12.2,
-        "edge": 4.3,
+        "modelSpread": -12.1,
+        "edge": 4.4,
         "signal": "LEAN"
       }
     },

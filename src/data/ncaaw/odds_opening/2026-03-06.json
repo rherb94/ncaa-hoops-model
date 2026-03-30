@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-n-c-state",
         "awayTeamId": "team-notre-dame",
-        "modelSpread": 1.7,
-        "edge": 0.2,
+        "modelSpread": 1.9,
+        "edge": 0.4,
         "signal": "NONE"
       }
     },

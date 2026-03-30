@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-north-carolina",
         "awayTeamId": "team-duke",
-        "modelSpread": 1,
-        "edge": -1.5,
+        "modelSpread": 1.1,
+        "edge": -1.4,
         "signal": "NONE"
       }
     },
@@ -227,8 +227,8 @@
       "model": {
         "homeTeamId": "team-tcu",
         "awayTeamId": "team-baylor",
-        "modelSpread": -11.2,
-        "edge": -1.7,
+        "modelSpread": -11.1,
+        "edge": -1.6,
         "signal": "NONE"
       }
     },
@@ -275,8 +275,8 @@
       "model": {
         "homeTeamId": "team-st-john-s",
         "awayTeamId": "team-connecticut",
-        "modelSpread": 34,
-        "edge": 3.5,
+        "modelSpread": 33.7,
+        "edge": 3.2,
         "signal": "LEAN"
       }
     }
