@@ -1,0 +1,50 @@
+{
+  "date": "2026-03-29",
+  "fetched_at": "2026-03-30T07:56:20.478Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401856584",
+      "commence_time": "2026-03-29T17:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Notre Dame Fighting Irish",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "87",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 70,
+      "awayScore": 52,
+      "actualSpread": -18,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856585",
+      "commence_time": "2026-03-29T19:00Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "Duke Blue Devils",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "150",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 70,
+      "awayScore": 58,
+      "actualSpread": -12,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401865132",
+      "commence_time": "2026-03-29T18:00Z",
+      "home_team": "South Dakota Coyotes",
+      "away_team": "Montana State Bobcats",
+      "home_espnTeamId": "233",
+      "away_espnTeamId": "147",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 65,
+      "awayScore": 56,
+      "actualSpread": -9,
+      "winner": "HOME"
+    }
+  ]
+}
