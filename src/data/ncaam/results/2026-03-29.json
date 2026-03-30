@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-29",
+  "fetched_at": "2026-03-30T07:27:43.165Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401856576",
+      "commence_time": "2026-03-29T18:15Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Tennessee Volunteers",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "2633",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 95,
+      "awayScore": 62,
+      "actualSpread": -33,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856577",
+      "commence_time": "2026-03-29T21:05Z",
+      "home_team": "Duke Blue Devils",
+      "away_team": "UConn Huskies",
+      "home_espnTeamId": "150",
+      "away_espnTeamId": "41",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 72,
+      "awayScore": 73,
+      "actualSpread": 1,
+      "winner": "AWAY"
+    }
+  ]
+}
