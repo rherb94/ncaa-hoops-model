@@ -1,8 +1,9 @@
 {
   "date": "2026-03-30",
-  "last_updated": "2026-03-30T17:41:14.190Z",
+  "last_updated": "2026-03-31T01:03:26.219Z",
   "snapshot_times": [
-    "2026-03-30T17:40:38Z"
+    "2026-03-30T17:40:38Z",
+    "2026-03-31T01:00:47Z"
   ],
   "games": [
     {
@@ -39,11 +40,11 @@
       "oddsEventId": "4fb408173afed6a53f9d001642ada7da",
       "home_team": "South Carolina Gamecocks",
       "away_team": "TCU Horned Frogs",
-      "commence_time": "2026-03-31T01:00:00Z",
-      "homePoint": -14.5,
-      "awayPoint": 14.5,
+      "commence_time": "2026-03-31T01:20:00Z",
+      "homePoint": -17.5,
+      "awayPoint": 17.5,
       "book": "draftkings",
-      "snapshotTime": "2026-03-30T17:40:38Z"
+      "snapshotTime": "2026-03-31T01:00:47Z"
     }
   ]
 }
