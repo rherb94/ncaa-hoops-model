@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-notre-dame",
         "awayTeamId": "team-miami-fl",
-        "modelSpread": -12.7,
-        "edge": -1.2,
+        "modelSpread": -12.6,
+        "edge": -1.1,
         "signal": "NONE"
       }
     },
@@ -165,8 +165,8 @@
       "model": {
         "homeTeamId": "team-utah",
         "awayTeamId": "team-byu",
-        "modelSpread": 1.1,
-        "edge": 3.6,
+        "modelSpread": 1.2,
+        "edge": 3.7,
         "signal": "LEAN"
       }
     },
@@ -357,8 +357,8 @@
       "model": {
         "homeTeamId": "team-michigan-st",
         "awayTeamId": "team-illinois",
-        "modelSpread": -2.4,
-        "edge": 3.1,
+        "modelSpread": -2.3,
+        "edge": 3.2,
         "signal": "LEAN"
       }
     },
