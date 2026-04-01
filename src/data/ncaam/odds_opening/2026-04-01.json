@@ -1,0 +1,54 @@
+{
+  "date": "2026-04-01",
+  "captured_at": "2026-04-01T17:04:12.685Z",
+  "games": [
+    {
+      "oddsEventId": "c16c0d972e1c9ed5e2190c74f1a17079",
+      "commence_time": "2026-04-02T00:00:00Z",
+      "home_team": "Colorado Buffaloes",
+      "away_team": "Oklahoma Sooners",
+      "home_espnTeamId": "38",
+      "away_espnTeamId": "201",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-04-01T17:04:11Z",
+        "homePoint": 9.5,
+        "awayPoint": -9.5
+      },
+      "model": {
+        "homeTeamId": "team-colorado",
+        "awayTeamId": "team-oklahoma",
+        "modelSpread": 5.8,
+        "edge": -3.7,
+        "signal": "LEAN"
+      }
+    },
+    {
+      "oddsEventId": "6f0765b4c7ea31444ec8a23fb86e6648",
+      "commence_time": "2026-04-02T02:30:00Z",
+      "home_team": "Minnesota Golden Gophers",
+      "away_team": "Baylor Bears",
+      "home_espnTeamId": "135",
+      "away_espnTeamId": "239",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-04-01T17:04:11Z",
+        "homePoint": 3.5,
+        "awayPoint": -3.5
+      },
+      "model": {
+        "homeTeamId": "team-minnesota",
+        "awayTeamId": "team-baylor",
+        "modelSpread": 1.9,
+        "edge": -1.6,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
