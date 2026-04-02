@@ -1,0 +1,49 @@
+{
+  "date": "2026-04-02",
+  "last_updated": "2026-04-02T17:38:30.789Z",
+  "snapshot_times": [
+    "2026-04-02T17:35:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "930319d687992d02e211708973d066c7",
+      "home_team": "Tulsa Golden Hurricane",
+      "away_team": "New Mexico Lobos",
+      "commence_time": "2026-04-02T23:00:00Z",
+      "homePoint": 2.5,
+      "awayPoint": -2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-04-02T17:35:38Z"
+    },
+    {
+      "oddsEventId": "9bcb056972126771a4d79b063cdb1a6c",
+      "home_team": "West Virginia Mountaineers",
+      "away_team": "Stanford Cardinal",
+      "commence_time": "2026-04-03T00:00:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-04-02T17:35:38Z"
+    },
+    {
+      "oddsEventId": "7e161041c04af752378a72c61faa0077",
+      "home_team": "Auburn Tigers",
+      "away_team": "Illinois St Redbirds",
+      "commence_time": "2026-04-03T01:30:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-04-02T17:35:38Z"
+    },
+    {
+      "oddsEventId": "afb08eee9f956db45e4f8c8249b5af8f",
+      "home_team": "Creighton Bluejays",
+      "away_team": "Rutgers Scarlet Knights",
+      "commence_time": "2026-04-03T02:30:00Z",
+      "homePoint": -6,
+      "awayPoint": 6,
+      "book": "betonlineag",
+      "snapshotTime": "2026-04-02T17:35:38Z"
+    }
+  ]
+}
