@@ -1,0 +1,36 @@
+{
+  "date": "2026-04-01",
+  "fetched_at": "2026-04-02T07:12:44.069Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401858379",
+      "commence_time": "2026-04-02T00:00Z",
+      "home_team": "Colorado Buffaloes",
+      "away_team": "Oklahoma Sooners",
+      "home_espnTeamId": "38",
+      "away_espnTeamId": "201",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 86,
+      "awayScore": 90,
+      "actualSpread": 4,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401858380",
+      "commence_time": "2026-04-02T03:15Z",
+      "home_team": "Minnesota Golden Gophers",
+      "away_team": "Baylor Bears",
+      "home_espnTeamId": "135",
+      "away_espnTeamId": "239",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 48,
+      "awayScore": 67,
+      "actualSpread": 19,
+      "winner": "AWAY"
+    }
+  ]
+}
