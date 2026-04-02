@@ -1,0 +1,50 @@
+{
+  "date": "2026-04-01",
+  "fetched_at": "2026-04-02T07:26:10.424Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401858323",
+      "commence_time": "2026-04-01T23:00Z",
+      "home_team": "BYU Cougars",
+      "away_team": "Columbia Lions",
+      "home_espnTeamId": "252",
+      "away_espnTeamId": "171",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 64,
+      "awayScore": 81,
+      "actualSpread": 17,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401865138",
+      "commence_time": "2026-04-02T00:00Z",
+      "home_team": "Arkansas State Red Wolves",
+      "away_team": "Marshall Thundering Herd",
+      "home_espnTeamId": "2032",
+      "away_espnTeamId": "276",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 62,
+      "awayScore": 69,
+      "actualSpread": 7,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401865137",
+      "commence_time": "2026-04-02T00:00Z",
+      "home_team": "South Dakota Coyotes",
+      "away_team": "Illinois State Redbirds",
+      "home_espnTeamId": "233",
+      "away_espnTeamId": "2287",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 60,
+      "awayScore": 67,
+      "actualSpread": 7,
+      "winner": "AWAY"
+    }
+  ]
+}
