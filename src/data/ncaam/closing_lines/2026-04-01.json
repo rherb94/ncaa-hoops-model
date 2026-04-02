@@ -1,8 +1,9 @@
 {
   "date": "2026-04-01",
-  "last_updated": "2026-04-01T17:38:54.658Z",
+  "last_updated": "2026-04-02T01:00:57.683Z",
   "snapshot_times": [
-    "2026-04-01T17:35:38Z"
+    "2026-04-01T17:35:38Z",
+    "2026-04-02T01:00:50Z"
   ],
   "games": [
     {
@@ -23,7 +24,7 @@
       "homePoint": 3.5,
       "awayPoint": -3.5,
       "book": "fanduel",
-      "snapshotTime": "2026-04-01T17:35:38Z"
+      "snapshotTime": "2026-04-02T01:00:50Z"
     }
   ]
 }
