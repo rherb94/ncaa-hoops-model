@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-north-carolina",
         "awayTeamId": "team-duke",
-        "modelSpread": 1.1,
-        "edge": -1.4,
+        "modelSpread": 1,
+        "edge": -1.5,
         "signal": "NONE"
       }
     },
@@ -131,7 +131,7 @@
       "model": {
         "homeTeamId": "team-kansas-st",
         "awayTeamId": "team-iowa-st",
-        "modelSpread": 3.7,
+        "modelSpread": 3.6,
         "edge": null,
         "signal": "NONE"
       }
@@ -203,8 +203,8 @@
       "model": {
         "homeTeamId": "team-tennessee",
         "awayTeamId": "team-vanderbilt",
-        "modelSpread": 4.3,
-        "edge": -0.2,
+        "modelSpread": 4.2,
+        "edge": -0.3,
         "signal": "NONE"
       }
     },

@@ -189,8 +189,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-georgetown",
-        "modelSpread": -38,
-        "edge": -0.5,
+        "modelSpread": -38.1,
+        "edge": -0.6,
         "signal": "NONE"
       }
     },
