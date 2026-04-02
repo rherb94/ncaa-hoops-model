@@ -1,0 +1,102 @@
+{
+  "date": "2026-04-02",
+  "captured_at": "2026-04-02T17:02:51.325Z",
+  "games": [
+    {
+      "oddsEventId": "930319d687992d02e211708973d066c7",
+      "commence_time": "2026-04-02T23:00:00Z",
+      "home_team": "Tulsa Golden Hurricane",
+      "away_team": "New Mexico Lobos",
+      "home_espnTeamId": "202",
+      "away_espnTeamId": "167",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-04-02T17:01:53Z",
+        "homePoint": 2.5,
+        "awayPoint": -2.5
+      },
+      "model": {
+        "homeTeamId": "team-tulsa",
+        "awayTeamId": "team-new-mexico",
+        "modelSpread": 1.6,
+        "edge": -0.9,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "9bcb056972126771a4d79b063cdb1a6c",
+      "commence_time": "2026-04-03T00:00:00Z",
+      "home_team": "West Virginia Mountaineers",
+      "away_team": "Stanford Cardinal",
+      "home_espnTeamId": "277",
+      "away_espnTeamId": "24",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-04-02T17:02:34Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": {
+        "homeTeamId": "team-west-virginia",
+        "awayTeamId": "team-stanford",
+        "modelSpread": 0.8,
+        "edge": 2.3,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "7e161041c04af752378a72c61faa0077",
+      "commence_time": "2026-04-03T01:30:00Z",
+      "home_team": "Auburn Tigers",
+      "away_team": "Illinois St Redbirds",
+      "home_espnTeamId": "2",
+      "away_espnTeamId": "2287",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-04-02T17:01:53Z",
+        "homePoint": -7.5,
+        "awayPoint": 7.5
+      },
+      "model": {
+        "homeTeamId": "team-auburn",
+        "awayTeamId": "team-illinois-st",
+        "modelSpread": -6.8,
+        "edge": 0.7,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "afb08eee9f956db45e4f8c8249b5af8f",
+      "commence_time": "2026-04-03T02:30:00Z",
+      "home_team": "Creighton Bluejays",
+      "away_team": "Rutgers Scarlet Knights",
+      "home_espnTeamId": "156",
+      "away_espnTeamId": "164",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "betonlineag",
+        "last_update": "2026-04-02T17:01:57Z",
+        "homePoint": -5.5,
+        "awayPoint": 5.5
+      },
+      "model": {
+        "homeTeamId": "team-creighton",
+        "awayTeamId": "team-rutgers",
+        "modelSpread": -3.3,
+        "edge": 2.2,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
