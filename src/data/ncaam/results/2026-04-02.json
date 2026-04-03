@@ -1,0 +1,64 @@
+{
+  "date": "2026-04-02",
+  "fetched_at": "2026-04-03T07:08:24.712Z",
+  "total_games": 4,
+  "completed_games": 4,
+  "games": [
+    {
+      "espnEventId": "401858381",
+      "commence_time": "2026-04-03T00:00Z",
+      "home_team": "West Virginia Mountaineers",
+      "away_team": "Stanford Cardinal",
+      "home_espnTeamId": "277",
+      "away_espnTeamId": "24",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 82,
+      "awayScore": 77,
+      "actualSpread": -5,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858382",
+      "commence_time": "2026-04-03T02:54Z",
+      "home_team": "Creighton Bluejays",
+      "away_team": "Rutgers Scarlet Knights",
+      "home_espnTeamId": "156",
+      "away_espnTeamId": "164",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 82,
+      "awayScore": 69,
+      "actualSpread": -13,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858361",
+      "commence_time": "2026-04-02T23:00Z",
+      "home_team": "New Mexico Lobos",
+      "away_team": "Tulsa Golden Hurricane",
+      "home_espnTeamId": "167",
+      "away_espnTeamId": "202",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 69,
+      "awayScore": 74,
+      "actualSpread": 5,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401858362",
+      "commence_time": "2026-04-03T01:47Z",
+      "home_team": "Auburn Tigers",
+      "away_team": "Illinois State Redbirds",
+      "home_espnTeamId": "2",
+      "away_espnTeamId": "2287",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 88,
+      "awayScore": 66,
+      "actualSpread": -22,
+      "winner": "HOME"
+    }
+  ]
+}
