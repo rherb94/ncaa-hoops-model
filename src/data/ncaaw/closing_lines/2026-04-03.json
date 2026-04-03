@@ -1,0 +1,29 @@
+{
+  "date": "2026-04-03",
+  "last_updated": "2026-04-03T17:21:02.559Z",
+  "snapshot_times": [
+    "2026-04-03T17:20:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "05b4546ee775071ed92ea4b756550cc8",
+      "home_team": "UConn Huskies",
+      "away_team": "South Carolina Gamecocks",
+      "commence_time": "2026-04-03T23:00:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-04-03T17:20:38Z"
+    },
+    {
+      "oddsEventId": "98c5a1da1f89a9a3b8b53a6c689caf93",
+      "home_team": "UCLA Bruins",
+      "away_team": "Texas Longhorns",
+      "commence_time": "2026-04-04T01:30:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-04-03T17:20:38Z"
+    }
+  ]
+}
