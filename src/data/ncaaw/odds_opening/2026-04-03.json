@@ -1,0 +1,48 @@
+{
+  "date": "2026-04-03",
+  "captured_at": "2026-04-03T16:48:12.837Z",
+  "games": [
+    {
+      "oddsEventId": "05b4546ee775071ed92ea4b756550cc8",
+      "commence_time": "2026-04-03T23:00:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "South Carolina Gamecocks",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "2579",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-04-03T16:47:40Z",
+        "homePoint": -6.5,
+        "awayPoint": 6.5
+      },
+      "model": {
+        "homeTeamId": "team-connecticut",
+        "awayTeamId": "team-south-carolina",
+        "modelSpread": -3.5,
+        "edge": 3,
+        "signal": "LEAN"
+      }
+    },
+    {
+      "oddsEventId": "98c5a1da1f89a9a3b8b53a6c689caf93",
+      "commence_time": "2026-04-04T01:30:00Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "Texas Longhorns",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "251",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-04-03T16:47:40Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": null
+    }
+  ]
+}
