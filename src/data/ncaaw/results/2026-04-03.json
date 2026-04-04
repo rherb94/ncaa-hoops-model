@@ -1,0 +1,36 @@
+{
+  "date": "2026-04-03",
+  "fetched_at": "2026-04-04T07:12:02.392Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401856588",
+      "commence_time": "2026-04-03T23:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "South Carolina Gamecocks",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "2579",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 48,
+      "awayScore": 62,
+      "actualSpread": 14,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401856589",
+      "commence_time": "2026-04-04T01:40Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "Texas Longhorns",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "251",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 51,
+      "awayScore": 44,
+      "actualSpread": -7,
+      "winner": "HOME"
+    }
+  ]
+}
