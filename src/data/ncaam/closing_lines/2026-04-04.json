@@ -1,0 +1,49 @@
+{
+  "date": "2026-04-04",
+  "last_updated": "2026-04-04T17:18:16.997Z",
+  "snapshot_times": [
+    "2026-04-04T17:15:38Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "0b1d66a8749e69eed9aef423368342da",
+      "home_team": "Baylor Bears",
+      "away_team": "Oklahoma Sooners",
+      "commence_time": "2026-04-04T17:30:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-04-04T17:15:38Z"
+    },
+    {
+      "oddsEventId": "cb594dfdc3259e7a3376bc1167311085",
+      "home_team": "Creighton Bluejays",
+      "away_team": "West Virginia Mountaineers",
+      "commence_time": "2026-04-04T20:00:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-04-04T17:15:38Z"
+    },
+    {
+      "oddsEventId": "107fec52e1d9d6f2f6e74f47eb1d520b",
+      "home_team": "UConn Huskies",
+      "away_team": "Illinois Fighting Illini",
+      "commence_time": "2026-04-04T22:09:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-04-04T17:15:38Z"
+    },
+    {
+      "oddsEventId": "2ac645adb59f24d77470e29dc52f0515",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Michigan Wolverines",
+      "commence_time": "2026-04-05T00:49:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-04-04T17:15:38Z"
+    }
+  ]
+}
