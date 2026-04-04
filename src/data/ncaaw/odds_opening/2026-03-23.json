@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-ohio-st",
         "awayTeamId": "team-notre-dame",
-        "modelSpread": -4.3,
-        "edge": 0.2,
+        "modelSpread": -4.4,
+        "edge": 0.1,
         "signal": "NONE"
       }
     },
@@ -93,9 +93,9 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-syracuse",
-        "modelSpread": -31.3,
-        "edge": 4.2,
-        "signal": "LEAN"
+        "modelSpread": -30.5,
+        "edge": 5,
+        "signal": "STRONG"
       }
     },
     {
@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-usc",
-        "modelSpread": -23,
-        "edge": 0.5,
+        "modelSpread": -23.2,
+        "edge": 0.3,
         "signal": "NONE"
       }
     },

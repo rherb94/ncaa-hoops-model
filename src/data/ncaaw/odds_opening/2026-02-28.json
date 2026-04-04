@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-indiana",
         "awayTeamId": "team-penn-st",
-        "modelSpread": -8.1,
-        "edge": -1.6,
+        "modelSpread": -8,
+        "edge": -1.5,
         "signal": "NONE"
       }
     },

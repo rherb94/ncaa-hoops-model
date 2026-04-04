@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-notre-dame",
-        "modelSpread": -20.2,
-        "edge": 7.3,
+        "modelSpread": -19.5,
+        "edge": 8,
         "signal": "STRONG"
       }
     },

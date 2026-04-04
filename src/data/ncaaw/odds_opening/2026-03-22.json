@@ -63,8 +63,8 @@
       "model": {
         "homeTeamId": "team-lsu",
         "awayTeamId": "team-texas-tech",
-        "modelSpread": -22.2,
-        "edge": 3.3,
+        "modelSpread": -22.3,
+        "edge": 3.2,
         "signal": "LEAN"
       }
     },
@@ -111,8 +111,8 @@
       "model": {
         "homeTeamId": "team-texas",
         "awayTeamId": "team-oregon",
-        "modelSpread": -23.4,
-        "edge": 3.1,
+        "modelSpread": -22.7,
+        "edge": 3.8,
         "signal": "LEAN"
       }
     },
