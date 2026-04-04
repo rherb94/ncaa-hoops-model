@@ -1,0 +1,102 @@
+{
+  "date": "2026-04-04",
+  "captured_at": "2026-04-04T16:44:51.612Z",
+  "games": [
+    {
+      "oddsEventId": "0b1d66a8749e69eed9aef423368342da",
+      "commence_time": "2026-04-04T17:30:00Z",
+      "home_team": "Baylor Bears",
+      "away_team": "Oklahoma Sooners",
+      "home_espnTeamId": "239",
+      "away_espnTeamId": "201",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-04-04T16:44:24Z",
+        "homePoint": -1.5,
+        "awayPoint": 1.5
+      },
+      "model": {
+        "homeTeamId": "team-baylor",
+        "awayTeamId": "team-oklahoma",
+        "modelSpread": 1,
+        "edge": 2.5,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "cb594dfdc3259e7a3376bc1167311085",
+      "commence_time": "2026-04-04T20:00:00Z",
+      "home_team": "Creighton Bluejays",
+      "away_team": "West Virginia Mountaineers",
+      "home_espnTeamId": "156",
+      "away_espnTeamId": "277",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-04-04T16:44:24Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": {
+        "homeTeamId": "team-creighton",
+        "awayTeamId": "team-west-virginia",
+        "modelSpread": 1.1,
+        "edge": -0.4,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "107fec52e1d9d6f2f6e74f47eb1d520b",
+      "commence_time": "2026-04-04T22:09:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Illinois Fighting Illini",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "356",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-04-04T16:43:32Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": {
+        "homeTeamId": "team-connecticut",
+        "awayTeamId": "team-illinois",
+        "modelSpread": 3.9,
+        "edge": 2.4,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "2ac645adb59f24d77470e29dc52f0515",
+      "commence_time": "2026-04-05T00:49:00Z",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Michigan Wolverines",
+      "home_espnTeamId": "12",
+      "away_espnTeamId": "130",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-04-04T16:43:32Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5
+      },
+      "model": {
+        "homeTeamId": "team-arizona",
+        "awayTeamId": "team-michigan",
+        "modelSpread": 0.5,
+        "edge": -1,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
