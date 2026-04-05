@@ -1,0 +1,22 @@
+{
+  "date": "2026-04-04",
+  "fetched_at": "2026-04-05T07:19:42.619Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401865139",
+      "commence_time": "2026-04-04T19:00Z",
+      "home_team": "Marshall Thundering Herd",
+      "away_team": "Illinois State Redbirds",
+      "home_espnTeamId": "276",
+      "away_espnTeamId": "2287",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 66,
+      "awayScore": 41,
+      "actualSpread": -25,
+      "winner": "HOME"
+    }
+  ]
+}
