@@ -165,8 +165,8 @@
       "model": {
         "homeTeamId": "team-alabama",
         "awayTeamId": "team-missouri",
-        "modelSpread": -11.7,
-        "edge": 0.8,
+        "modelSpread": -11.8,
+        "edge": 0.7,
         "signal": "NONE"
       }
     },

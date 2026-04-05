@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-west-virginia",
         "awayTeamId": "team-kentucky",
-        "modelSpread": -1.6,
-        "edge": 1.9,
+        "modelSpread": -1.5,
+        "edge": 2,
         "signal": "NONE"
       }
     },

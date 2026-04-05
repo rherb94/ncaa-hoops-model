@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-marshall",
         "awayTeamId": "team-georgia-southern",
-        "modelSpread": 0.3,
-        "edge": 2.8,
+        "modelSpread": -0.2,
+        "edge": 2.3,
         "signal": "NONE"
       }
     },

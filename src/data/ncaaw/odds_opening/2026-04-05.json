@@ -1,0 +1,24 @@
+{
+  "date": "2026-04-05",
+  "captured_at": "2026-04-05T16:41:29.524Z",
+  "games": [
+    {
+      "oddsEventId": "75775a1617698a80bb674b67fd71b772",
+      "commence_time": "2026-04-05T19:30:00Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "South Carolina Gamecocks",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "2579",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-04-05T16:40:31Z",
+        "homePoint": 4.5,
+        "awayPoint": -4.5
+      },
+      "model": null
+    }
+  ]
+}

@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-duke",
         "awayTeamId": "team-notre-dame",
-        "modelSpread": -5.2,
-        "edge": -0.7,
+        "modelSpread": -5.1,
+        "edge": -0.6,
         "signal": "NONE"
       }
     },

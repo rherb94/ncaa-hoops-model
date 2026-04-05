@@ -261,8 +261,8 @@
       "model": {
         "homeTeamId": "team-illinois",
         "awayTeamId": "team-colorado",
-        "modelSpread": -3,
-        "edge": 0.5,
+        "modelSpread": -2.9,
+        "edge": 0.6,
         "signal": "NONE"
       }
     },

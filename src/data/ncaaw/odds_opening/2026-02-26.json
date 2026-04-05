@@ -213,8 +213,8 @@
       "model": {
         "homeTeamId": "team-n-c-state",
         "awayTeamId": "team-wake-forest",
-        "modelSpread": -21.8,
-        "edge": 1.7,
+        "modelSpread": -21.9,
+        "edge": 1.6,
         "signal": "NONE"
       }
     },
@@ -309,8 +309,8 @@
       "model": {
         "homeTeamId": "team-vanderbilt",
         "awayTeamId": "team-alabama",
-        "modelSpread": -11,
-        "edge": 0.5,
+        "modelSpread": -10.9,
+        "edge": 0.6,
         "signal": "NONE"
       }
     },

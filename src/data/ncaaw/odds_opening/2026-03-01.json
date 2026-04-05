@@ -275,8 +275,8 @@
       "model": {
         "homeTeamId": "team-st-john-s",
         "awayTeamId": "team-connecticut",
-        "modelSpread": 33.1,
-        "edge": 2.6,
+        "modelSpread": 33,
+        "edge": 2.5,
         "signal": "NONE"
       }
     }
