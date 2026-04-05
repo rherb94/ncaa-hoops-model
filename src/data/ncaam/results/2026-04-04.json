@@ -1,0 +1,64 @@
+{
+  "date": "2026-04-04",
+  "fetched_at": "2026-04-05T07:06:20.869Z",
+  "total_games": 4,
+  "completed_games": 4,
+  "games": [
+    {
+      "espnEventId": "401858383",
+      "commence_time": "2026-04-04T17:30Z",
+      "home_team": "Baylor Bears",
+      "away_team": "Oklahoma Sooners",
+      "home_espnTeamId": "239",
+      "away_espnTeamId": "201",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 69,
+      "awayScore": 82,
+      "actualSpread": 13,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401858384",
+      "commence_time": "2026-04-04T20:14Z",
+      "home_team": "Creighton Bluejays",
+      "away_team": "West Virginia Mountaineers",
+      "home_espnTeamId": "156",
+      "away_espnTeamId": "277",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 70,
+      "awayScore": 87,
+      "actualSpread": 17,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401856599",
+      "commence_time": "2026-04-05T01:19Z",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Michigan Wolverines",
+      "home_espnTeamId": "12",
+      "away_espnTeamId": "130",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 73,
+      "awayScore": 91,
+      "actualSpread": 18,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401856598",
+      "commence_time": "2026-04-04T22:09Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Illinois Fighting Illini",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "356",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 71,
+      "awayScore": 62,
+      "actualSpread": -9,
+      "winner": "HOME"
+    }
+  ]
+}
