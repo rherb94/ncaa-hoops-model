@@ -1,0 +1,22 @@
+{
+  "date": "2026-04-05",
+  "fetched_at": "2026-04-06T07:57:46.151Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401856590",
+      "commence_time": "2026-04-05T19:30Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "South Carolina Gamecocks",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "2579",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 79,
+      "awayScore": 51,
+      "actualSpread": -28,
+      "winner": "HOME"
+    }
+  ]
+}
