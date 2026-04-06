@@ -189,8 +189,8 @@
       "model": {
         "homeTeamId": "team-stetson",
         "awayTeamId": "team-florida-gulf-coast",
-        "modelSpread": 1.2,
-        "edge": -2.3,
+        "modelSpread": 1.1,
+        "edge": -2.4,
         "signal": "NONE"
       }
     },

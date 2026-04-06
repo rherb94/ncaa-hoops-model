@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-oklahoma",
-        "modelSpread": -16.2,
-        "edge": 1.3,
+        "modelSpread": -15.3,
+        "edge": 2.2,
         "signal": "NONE"
       }
     },
