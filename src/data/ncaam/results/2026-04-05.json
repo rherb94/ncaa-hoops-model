@@ -1,0 +1,36 @@
+{
+  "date": "2026-04-05",
+  "fetched_at": "2026-04-06T07:43:15.636Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401858385",
+      "commence_time": "2026-04-05T21:30Z",
+      "home_team": "West Virginia Mountaineers",
+      "away_team": "Oklahoma Sooners",
+      "home_espnTeamId": "277",
+      "away_espnTeamId": "201",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 89,
+      "awayScore": 82,
+      "actualSpread": -7,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858363",
+      "commence_time": "2026-04-06T00:00Z",
+      "home_team": "Auburn Tigers",
+      "away_team": "Tulsa Golden Hurricane",
+      "home_espnTeamId": "2",
+      "away_espnTeamId": "202",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 92,
+      "awayScore": 86,
+      "actualSpread": -6,
+      "winner": "HOME"
+    }
+  ]
+}
