@@ -1,0 +1,22 @@
+{
+  "date": "2026-04-06",
+  "fetched_at": "2026-04-07T07:17:01.236Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401856600",
+      "commence_time": "2026-04-07T00:50Z",
+      "home_team": "Michigan Wolverines",
+      "away_team": "UConn Huskies",
+      "home_espnTeamId": "130",
+      "away_espnTeamId": "41",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 69,
+      "awayScore": 63,
+      "actualSpread": -6,
+      "winner": "HOME"
+    }
+  ]
+}
