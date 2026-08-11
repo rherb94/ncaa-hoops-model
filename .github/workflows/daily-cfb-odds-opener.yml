@@ -1,0 +1,92 @@
+name: Daily CFB Odds Opener Snapshot
+
+on:
+  schedule:
+    # 11:05 AM ET = 16:05 UTC (initial attempt)
+    - cron: '5 16 * * *'
+    # 2:05 PM ET = 19:05 UTC (retry if no lines posted yet)
+    - cron: '5 19 * * *'
+    # 5:05 PM ET = 22:05 UTC (final retry)
+    - cron: '5 22 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Date to label the snapshot (YYYY-MM-DD). Defaults to today UTC.'
+        required: false
+      force:
+        description: 'Force overwrite even if snapshot already has games (true/false)'
+        required: false
+        default: 'false'
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Fetch opening odds snapshot (CFB)
+        id: fetch
+        env:
+          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+          LEAGUE: cfb
+          DATE: ${{ inputs.date || '' }}
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          DATE_TO_USE="${{ inputs.date }}"
+          [ -z "$DATE_TO_USE" ] && DATE_TO_USE="$TODAY"
+          FILE="src/data/cfb/odds_opening/${DATE_TO_USE}.json"
+
+          FORCE_INPUT="${{ inputs.force }}"
+
+          # Exit code 2 = unmapped teams warning (snapshot still wrote OK). Treat as success.
+          run_fetch() { npx tsx src/scripts/fetchOddsOpenersForDate.ts; EC=$?; [ $EC -le 2 ] && return 0 || return $EC; }
+
+          if [ "$FORCE_INPUT" = "true" ]; then
+            echo "Manual force overwrite requested."
+            FORCE=1 run_fetch
+          elif [ -f "$FILE" ]; then
+            GAME_COUNT=$(python3 -c "import json; d=json.load(open('$FILE')); print(len(d.get('games', [])))" 2>/dev/null || echo "0")
+            if [ "$GAME_COUNT" = "0" ]; then
+              echo "Existing snapshot has 0 games — retrying fetch..."
+              FORCE=1 run_fetch
+            else
+              echo "Snapshot already has $GAME_COUNT games — nothing to do."
+              echo "skipped=true" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            run_fetch
+          fi
+
+      - name: Recompute model spreads
+        if: steps.fetch.outputs.skipped != 'true'
+        env:
+          LEAGUE: cfb
+          DATE: ${{ inputs.date || '' }}
+        run: npx tsx src/scripts/recomputeModel.ts
+
+      - name: Commit snapshot if new
+        if: steps.fetch.outputs.skipped != 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/cfb/odds_opening/
+          if git diff --cached --quiet; then
+            echo "No new snapshot to commit."
+          else
+            DATE_STR=$(date -u +%Y-%m-%d)
+            git commit -m "chore: cfb odds opener snapshot ${DATE_STR} [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi

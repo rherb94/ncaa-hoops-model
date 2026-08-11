@@ -206,10 +206,28 @@ export const ncaaw = {
   teamRatingSnapshots: makeTeamRatingSnapshots("ncaaw"),
 } as const;
 
+/**
+ * All tables for College Football (CFB).
+ * Same shape as basketball; fields are repurposed rather than renamed so the
+ * table factories stay sport-agnostic:
+ *   adjO/adjD  -> SP+ offense/defense rating
+ *   tempo      -> plays per game (pace proxy)
+ *   barthag    -> unused for cfb (no direct SP+ analog), left null
+ */
+export const cfb = {
+  games:               makeGames("cfb"),
+  modelPredictions:    makeModelPredictions("cfb"),
+  closingLines:        makeClosingLines("cfb"),
+  gameResults:         makeGameResults("cfb"),
+  pickEvaluations:     makePickEvaluations("cfb"),
+  teamRatingSnapshots: makeTeamRatingSnapshots("cfb"),
+} as const;
+
 /** Lookup by LeagueId string */
-export const schemaByLeague: Record<string, typeof ncaam | typeof ncaaw> = {
+export const schemaByLeague: Record<string, typeof ncaam | typeof ncaaw | typeof cfb> = {
   ncaam,
   ncaaw,
+  cfb,
 };
 
 // ---------------------------------------------------------------------------
@@ -229,6 +247,13 @@ export const ncaawClosingLines        = ncaaw.closingLines;
 export const ncaawGameResults         = ncaaw.gameResults;
 export const ncaawPickEvaluations     = ncaaw.pickEvaluations;
 export const ncaawTeamRatingSnapshots = ncaaw.teamRatingSnapshots;
+
+export const cfbGames               = cfb.games;
+export const cfbModelPredictions    = cfb.modelPredictions;
+export const cfbClosingLines        = cfb.closingLines;
+export const cfbGameResults         = cfb.gameResults;
+export const cfbPickEvaluations     = cfb.pickEvaluations;
+export const cfbTeamRatingSnapshots = cfb.teamRatingSnapshots;
 
 // ---------------------------------------------------------------------------
 // Type helpers (inferred from schema)
@@ -254,3 +279,11 @@ export type NcaawGameResult         = typeof ncaaw.gameResults.$inferSelect;
 export type NcaawClosingLine        = typeof ncaaw.closingLines.$inferSelect;
 export type NcaawPickEvaluation     = typeof ncaaw.pickEvaluations.$inferSelect;
 export type NcaawTeamRatingSnapshot = typeof ncaaw.teamRatingSnapshots.$inferSelect;
+
+// CFB types are structurally identical — use the same type aliases
+export type CfbGame               = typeof cfb.games.$inferSelect;
+export type CfbModelPrediction    = typeof cfb.modelPredictions.$inferSelect;
+export type CfbGameResult         = typeof cfb.gameResults.$inferSelect;
+export type CfbClosingLine        = typeof cfb.closingLines.$inferSelect;
+export type CfbPickEvaluation     = typeof cfb.pickEvaluations.$inferSelect;
+export type CfbTeamRatingSnapshot = typeof cfb.teamRatingSnapshots.$inferSelect;

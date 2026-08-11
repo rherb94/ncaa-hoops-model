@@ -13,7 +13,7 @@ import { getGameOverrides } from "@/lib/overrides";
 import { pickBestSpreadForSide } from "@/lib/odds/bestLines";
 import type { OddsGame } from "@/lib/odds/types";
 import {
-  computeEfficiencyModel,
+  computeAnyEfficiencyModel,
   computeModelSpread,
   computeEdge,
   computeSignal,
@@ -103,7 +103,7 @@ function loadOpenerInfoByEventId(date: string, leagueId: string): Map<string, Op
 async function fetchEspnNeutralByTeamPair(date: string, league: LeagueConfig): Promise<Map<string, boolean>> {
   const espnDate = date.replace(/-/g, "");
   const url =
-    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `https://site.api.espn.com/apis/site/v2/sports/${league.espnSportFamily}` +
     `/${league.espnSport}/scoreboard?dates=${espnDate}&groups=${league.espnGroupId}&limit=200`;
   const m = new Map<string, boolean>();
   try {
@@ -180,7 +180,7 @@ async function buildSlateGames(
     const hca = neutralSite ? 0 : (home?.hca ?? 2);
 
     const eff =
-      home && away ? computeEfficiencyModel(home, away, hca) : undefined;
+      home && away ? computeAnyEfficiencyModel(league.id, home, away, hca) : undefined;
 
     if (home && away && !eff) {
       console.warn(`⚠️  SLATE EFFICIENCY FALLBACK: ${g.awayTeam} @ ${g.homeTeam} — missing adjO/adjD/tempo, using power rating spread`);

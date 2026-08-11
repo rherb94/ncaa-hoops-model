@@ -328,7 +328,9 @@ export function loadTeams(league: LeagueId = "ncaam"): Map<string, Team> {
   }
 
   const toNum = (v: any): number | undefined => {
-    const n = Number(String(v ?? "").trim());
+    const s = String(v ?? "").trim();
+    if (!s) return undefined; // Number("") === 0, which would silently turn blank CSV cells into 0
+    const n = Number(s);
     return Number.isFinite(n) ? n : undefined;
   };
 

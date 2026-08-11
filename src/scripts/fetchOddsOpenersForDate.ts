@@ -5,7 +5,7 @@ import { loadEspnTeamsIndex, norm as espnNorm } from "@/data/espn";
 import { loadTeams } from "@/data/teams";
 import { resolveTeamId } from "@/data/teamAliases";
 import {
-  computeEfficiencyModel,
+  computeAnyEfficiencyModel,
   computeModelSpread,
   computeEdge,
   computeSignal,
@@ -213,10 +213,11 @@ async function fetchEspnNeutralSites(dateStr: string): Promise<Map<string, boole
   // dateStr in YYYYMMDD format
   const espnDate = dateStr.replace(/-/g, "");
   const leagueCfg = LEAGUES[LEAGUE as LeagueId];
+  const espnSportFamily = leagueCfg?.espnSportFamily ?? "basketball";
   const espnSport = leagueCfg?.espnSport ?? "mens-college-basketball";
   const espnGroupId = leagueCfg?.espnGroupId ?? "50";
   const url =
-    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `https://site.api.espn.com/apis/site/v2/sports/${espnSportFamily}` +
     `/${espnSport}/scoreboard?dates=${espnDate}&groups=${espnGroupId}&limit=200`;
 
   const neutralByTeamPair = new Map<string, boolean>();
@@ -423,7 +424,7 @@ async function main() {
 
     if (homeTeam && awayTeam) {
       const hca = neutralSite ? 0 : (homeTeam.hca ?? 2);
-      const eff = computeEfficiencyModel(homeTeam, awayTeam, hca);
+      const eff = computeAnyEfficiencyModel(LEAGUE as LeagueId, homeTeam, awayTeam, hca);
 
       // Warn if efficiency model couldn't run (missing adjO/adjD/tempo in Torvik data)
       if (!eff) {

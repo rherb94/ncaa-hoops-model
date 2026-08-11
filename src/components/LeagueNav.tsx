@@ -11,11 +11,13 @@ export default function LeagueNav() {
     <nav className="flex items-center gap-1">
       {Object.values(LEAGUES).map((l) => {
         const active = pathname.startsWith(`/${l.id}/`) || pathname === `/${l.id}`;
-        // NCAAM → sky blue, NCAAW → Barbie pink
+        // NCAAM → sky blue, NCAAW → Barbie pink, CFB → end-zone green
         const activeClass =
           l.id === "ncaam"
             ? "bg-sky-500/15 text-sky-300 ring-1 ring-sky-500/25"
-            : "bg-pink-500/20 text-pink-400 ring-1 ring-pink-400/50";
+            : l.id === "ncaaw"
+            ? "bg-pink-500/20 text-pink-400 ring-1 ring-pink-400/50"
+            : "bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-500/25";
 
         return (
           <Link

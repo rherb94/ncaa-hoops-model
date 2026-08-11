@@ -56,7 +56,7 @@ export async function GET(
   }
 
   const schedUrl =
-    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `https://site.api.espn.com/apis/site/v2/sports/${league.espnSportFamily}` +
     `/${league.espnSport}/teams/${espnId}/schedule`;
 
   const res = await fetch(schedUrl, {

@@ -1,23 +1,29 @@
 // src/scripts/fetchEspnTeams.ts
 import fs from "node:fs";
 import path from "node:path";
+import { LEAGUES } from "@/lib/leagues";
+import type { LeagueId } from "@/lib/leagues";
 
-// LEAGUE env var: "ncaam" (default) or "ncaaw"
-const LEAGUE = (process.env.LEAGUE ?? "ncaam").toLowerCase();
-const ESPN_SPORT =
-  LEAGUE === "ncaaw" ? "womens-college-basketball" : "mens-college-basketball";
+// LEAGUE env var: any key in LEAGUES (defaults to "ncaam")
+const LEAGUE = (process.env.LEAGUE ?? "ncaam").toLowerCase() as LeagueId;
+const leagueCfg = LEAGUES[LEAGUE];
+if (!leagueCfg) {
+  throw new Error(`Unknown LEAGUE "${LEAGUE}". Valid: ${Object.keys(LEAGUES).join(", ")}`);
+}
+const ESPN_SPORT = leagueCfg.espnSport;
+const ESPN_SPORT_FAMILY = leagueCfg.espnSportFamily;
 
-// Output file: espnTeams.json (ncaam) or espnTeams.ncaaw.json (ncaaw)
-const OUT_FILE = LEAGUE === "ncaaw" ? "espnTeams.ncaaw.json" : "espnTeams.json";
+// Output file: espnTeams.json (ncaam, kept for backwards compat) or espnTeams.<league>.json otherwise
+const OUT_FILE = LEAGUE === "ncaam" ? "espnTeams.json" : `espnTeams.${LEAGUE}.json`;
 const OUT = path.join(process.cwd(), "src", "data", OUT_FILE);
 
 console.log(`League: ${LEAGUE} | ESPN sport: ${ESPN_SPORT} | Output: ${OUT_FILE}`);
 
 // ✅ Use ESPN "core" API (this is the one that tends to include the full NCAA list)
-const CORE_BASE = `https://sports.core.api.espn.com/v2/sports/basketball/leagues/${ESPN_SPORT}/teams`;
+const CORE_BASE = `https://sports.core.api.espn.com/v2/sports/${ESPN_SPORT_FAMILY}/leagues/${ESPN_SPORT}/teams`;
 
 // Optional fallback (what you were using before)
-const SITE_BASE = `https://site.api.espn.com/apis/site/v2/sports/basketball/${ESPN_SPORT}/teams`;
+const SITE_BASE = `https://site.api.espn.com/apis/site/v2/sports/${ESPN_SPORT_FAMILY}/${ESPN_SPORT}/teams`;
 
 type EspnTeam = {
   id: string;

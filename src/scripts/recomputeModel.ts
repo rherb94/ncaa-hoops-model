@@ -23,7 +23,7 @@ import { loadTeams } from "@/data/teams";
 import { resolveTeamId } from "@/data/teamAliases";
 import type { LeagueId } from "@/lib/leagues";
 import {
-  computeEfficiencyModel,
+  computeAnyEfficiencyModel,
   computeModelSpread,
   computeEdge,
   computeSignal,
@@ -86,7 +86,7 @@ function recomputeGame(
 
   const neutralSite = g.neutralSite ?? false;
   const hca = neutralSite ? 0 : (homeTeam.hca ?? 2);
-  const eff = computeEfficiencyModel(homeTeam, awayTeam, hca);
+  const eff = computeAnyEfficiencyModel(LEAGUE as LeagueId, homeTeam, awayTeam, hca);
 
   const rawModelSpread =
     eff?.modelSpread ??

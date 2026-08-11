@@ -41,10 +41,11 @@ function espnUrl(dateStr: string) {
   // groups=50 = NCAA Division I — without this ESPN only returns a small
   // "featured" subset of games, not the full D1 slate.
   const leagueCfg = LEAGUES[LEAGUE as LeagueId];
+  const espnSportFamily = leagueCfg?.espnSportFamily ?? "basketball";
   const espnSport = leagueCfg?.espnSport ?? "mens-college-basketball";
   const espnGroupId = leagueCfg?.espnGroupId ?? "50";
   return (
-    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `https://site.api.espn.com/apis/site/v2/sports/${espnSportFamily}` +
     `/${espnSport}/scoreboard?dates=${dateStr}&groups=${espnGroupId}&limit=200`
   );
 }

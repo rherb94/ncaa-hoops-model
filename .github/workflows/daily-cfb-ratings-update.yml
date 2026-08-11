@@ -1,0 +1,48 @@
+name: Daily CFB Ratings Update
+
+on:
+  schedule:
+    # 7:00 AM ET = 12:00 UTC — runs before the odds opener so ratings are fresh
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+    inputs:
+      year:
+        description: 'Season year (e.g. 2026). Defaults to current year.'
+        required: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Update CFB team ratings (CFBD SP+)
+        env:
+          YEAR: ${{ inputs.year || '2026' }}
+          CFBD_API_KEY: ${{ secrets.CFBD_API_KEY }}
+        run: npx tsx src/scripts/updateTeamsFromCfbd.ts
+
+      - name: Commit updated teams.csv + team metadata if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/cfb/teams.csv src/data/espnTeams.cfb.json
+          if git diff --cached --quiet; then
+            echo "No changes to teams.csv."
+          else
+            git commit -m "chore: update CFB SP+ ratings $(date -u +%Y-%m-%d) [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi

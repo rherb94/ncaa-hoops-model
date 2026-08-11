@@ -46,7 +46,7 @@ async function fetchLiveResults(date: string, leagueId: string): Promise<LiveRes
   const dayEndUtc       = new Date(dayStartUtc.getTime() + 24 * 60 * 60 * 1000);
 
   const espnUrl = (d: string) =>
-    `https://site.api.espn.com/apis/site/v2/sports/basketball` +
+    `https://site.api.espn.com/apis/site/v2/sports/${league.espnSportFamily}` +
     `/${league.espnSport}/scoreboard?dates=${d}&groups=${league.espnGroupId}&limit=200`;
 
   async function fetchEvents(d: string) {

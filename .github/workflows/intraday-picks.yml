@@ -36,3 +36,10 @@ jobs:
           POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
           LEAGUE: ncaaw
         run: npx tsx src/scripts/snapshotIntradayPicks.ts
+
+      - name: Intraday picks – CFB
+        env:
+          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+          LEAGUE: cfb
+        run: npx tsx src/scripts/snapshotIntradayPicks.ts

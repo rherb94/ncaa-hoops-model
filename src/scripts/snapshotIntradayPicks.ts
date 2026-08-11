@@ -13,7 +13,7 @@ import { loadTeams } from "@/data/teams";
 import { getLeague } from "@/lib/leagues";
 import type { LeagueId } from "@/lib/leagues";
 import {
-  computeEfficiencyModel,
+  computeAnyEfficiencyModel,
   computeModelSpread,
   computeEdge,
   computeSignal,
@@ -149,7 +149,7 @@ async function main() {
     const hca = neutralSite ? 0 : (home.hca ?? 2);
 
     // Compute model
-    const eff = computeEfficiencyModel(home, away, hca);
+    const eff = computeAnyEfficiencyModel(LEAGUE, home, away, hca);
     const rawModelSpread =
       eff?.modelSpread ?? computeModelSpread(home.powerRating, away.powerRating, hca);
 

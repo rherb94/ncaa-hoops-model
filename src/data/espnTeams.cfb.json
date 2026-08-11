@@ -1,0 +1,2318 @@
+{
+  "fetchedAtISO": "2026-08-11T13:46:44.412Z",
+  "count": 136,
+  "teams": [
+    {
+      "id": "2005",
+      "displayName": "Air Force Falcons",
+      "shortDisplayName": "Air Force",
+      "name": "Falcons",
+      "location": "Air Force",
+      "abbreviation": "AF",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2005.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2005.png"
+    },
+    {
+      "id": "2006",
+      "displayName": "Akron Zips",
+      "shortDisplayName": "Akron",
+      "name": "Zips",
+      "location": "Akron",
+      "abbreviation": "AKR",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2006.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2006.png"
+    },
+    {
+      "id": "333",
+      "displayName": "Alabama Crimson Tide",
+      "shortDisplayName": "Alabama",
+      "name": "Crimson Tide",
+      "location": "Alabama",
+      "abbreviation": "ALA",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/333.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/333.png"
+    },
+    {
+      "id": "2026",
+      "displayName": "App State Mountaineers",
+      "shortDisplayName": "App State",
+      "name": "Mountaineers",
+      "location": "App State",
+      "abbreviation": "APP",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2026.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2026.png"
+    },
+    {
+      "id": "12",
+      "displayName": "Arizona Wildcats",
+      "shortDisplayName": "Arizona",
+      "name": "Wildcats",
+      "location": "Arizona",
+      "abbreviation": "ARIZ",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/12.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/12.png"
+    },
+    {
+      "id": "9",
+      "displayName": "Arizona State Sun Devils",
+      "shortDisplayName": "Arizona State",
+      "name": "Sun Devils",
+      "location": "Arizona State",
+      "abbreviation": "ASU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/9.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/9.png"
+    },
+    {
+      "id": "8",
+      "displayName": "Arkansas Razorbacks",
+      "shortDisplayName": "Arkansas",
+      "name": "Razorbacks",
+      "location": "Arkansas",
+      "abbreviation": "ARK",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/8.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/8.png"
+    },
+    {
+      "id": "2032",
+      "displayName": "Arkansas State Red Wolves",
+      "shortDisplayName": "Arkansas State",
+      "name": "Red Wolves",
+      "location": "Arkansas State",
+      "abbreviation": "ARST",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2032.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2032.png"
+    },
+    {
+      "id": "349",
+      "displayName": "Army Black Knights",
+      "shortDisplayName": "Army",
+      "name": "Black Knights",
+      "location": "Army",
+      "abbreviation": "ARMY",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/349.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/349.png"
+    },
+    {
+      "id": "2",
+      "displayName": "Auburn Tigers",
+      "shortDisplayName": "Auburn",
+      "name": "Tigers",
+      "location": "Auburn",
+      "abbreviation": "AUB",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2.png"
+    },
+    {
+      "id": "2050",
+      "displayName": "Ball State Cardinals",
+      "shortDisplayName": "Ball State",
+      "name": "Cardinals",
+      "location": "Ball State",
+      "abbreviation": "BALL",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2050.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2050.png"
+    },
+    {
+      "id": "239",
+      "displayName": "Baylor Bears",
+      "shortDisplayName": "Baylor",
+      "name": "Bears",
+      "location": "Baylor",
+      "abbreviation": "BAY",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/239.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/239.png"
+    },
+    {
+      "id": "68",
+      "displayName": "Boise State Broncos",
+      "shortDisplayName": "Boise State",
+      "name": "Broncos",
+      "location": "Boise State",
+      "abbreviation": "BOIS",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/68.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/68.png"
+    },
+    {
+      "id": "103",
+      "displayName": "Boston College Eagles",
+      "shortDisplayName": "Boston College",
+      "name": "Eagles",
+      "location": "Boston College",
+      "abbreviation": "BC",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/103.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/103.png"
+    },
+    {
+      "id": "189",
+      "displayName": "Bowling Green Falcons",
+      "shortDisplayName": "Bowling Green",
+      "name": "Falcons",
+      "location": "Bowling Green",
+      "abbreviation": "BGSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/189.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/189.png"
+    },
+    {
+      "id": "2084",
+      "displayName": "Buffalo Bulls",
+      "shortDisplayName": "Buffalo",
+      "name": "Bulls",
+      "location": "Buffalo",
+      "abbreviation": "BUF",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2084.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2084.png"
+    },
+    {
+      "id": "252",
+      "displayName": "BYU Cougars",
+      "shortDisplayName": "BYU",
+      "name": "Cougars",
+      "location": "BYU",
+      "abbreviation": "BYU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/252.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/252.png"
+    },
+    {
+      "id": "25",
+      "displayName": "California Golden Bears",
+      "shortDisplayName": "California",
+      "name": "Golden Bears",
+      "location": "California",
+      "abbreviation": "CAL",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/25.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/25.png"
+    },
+    {
+      "id": "2117",
+      "displayName": "Central Michigan Chippewas",
+      "shortDisplayName": "Central Michigan",
+      "name": "Chippewas",
+      "location": "Central Michigan",
+      "abbreviation": "CMU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2117.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2117.png"
+    },
+    {
+      "id": "2429",
+      "displayName": "Charlotte 49ers",
+      "shortDisplayName": "Charlotte",
+      "name": "49ers",
+      "location": "Charlotte",
+      "abbreviation": "CLT",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2429.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2429.png"
+    },
+    {
+      "id": "2132",
+      "displayName": "Cincinnati Bearcats",
+      "shortDisplayName": "Cincinnati",
+      "name": "Bearcats",
+      "location": "Cincinnati",
+      "abbreviation": "CIN",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2132.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2132.png"
+    },
+    {
+      "id": "228",
+      "displayName": "Clemson Tigers",
+      "shortDisplayName": "Clemson",
+      "name": "Tigers",
+      "location": "Clemson",
+      "abbreviation": "CLEM",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/228.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/228.png"
+    },
+    {
+      "id": "324",
+      "displayName": "Coastal Carolina Chanticleers",
+      "shortDisplayName": "Coastal Carolina",
+      "name": "Chanticleers",
+      "location": "Coastal Carolina",
+      "abbreviation": "CCU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/324.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/324.png"
+    },
+    {
+      "id": "38",
+      "displayName": "Colorado Buffaloes",
+      "shortDisplayName": "Colorado",
+      "name": "Buffaloes",
+      "location": "Colorado",
+      "abbreviation": "COLO",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/38.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/38.png"
+    },
+    {
+      "id": "36",
+      "displayName": "Colorado State Rams",
+      "shortDisplayName": "Colorado State",
+      "name": "Rams",
+      "location": "Colorado State",
+      "abbreviation": "CSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/36.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/36.png"
+    },
+    {
+      "id": "48",
+      "displayName": "Delaware Blue Hens",
+      "shortDisplayName": "Delaware",
+      "name": "Blue Hens",
+      "location": "Delaware",
+      "abbreviation": "DEL",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/48.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/48.png"
+    },
+    {
+      "id": "150",
+      "displayName": "Duke Blue Devils",
+      "shortDisplayName": "Duke",
+      "name": "Blue Devils",
+      "location": "Duke",
+      "abbreviation": "DUKE",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/150.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/150.png"
+    },
+    {
+      "id": "151",
+      "displayName": "East Carolina Pirates",
+      "shortDisplayName": "East Carolina",
+      "name": "Pirates",
+      "location": "East Carolina",
+      "abbreviation": "ECU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/151.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/151.png"
+    },
+    {
+      "id": "2199",
+      "displayName": "Eastern Michigan Eagles",
+      "shortDisplayName": "Eastern Michigan",
+      "name": "Eagles",
+      "location": "Eastern Michigan",
+      "abbreviation": "EMU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2199.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2199.png"
+    },
+    {
+      "id": "57",
+      "displayName": "Florida Gators",
+      "shortDisplayName": "Florida",
+      "name": "Gators",
+      "location": "Florida",
+      "abbreviation": "FLA",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/57.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/57.png"
+    },
+    {
+      "id": "2226",
+      "displayName": "Florida Atlantic Owls",
+      "shortDisplayName": "Florida Atlantic",
+      "name": "Owls",
+      "location": "Florida Atlantic",
+      "abbreviation": "FAU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2226.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2226.png"
+    },
+    {
+      "id": "2229",
+      "displayName": "Florida International Panthers",
+      "shortDisplayName": "Florida International",
+      "name": "Panthers",
+      "location": "Florida International",
+      "abbreviation": "FIU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2229.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2229.png"
+    },
+    {
+      "id": "52",
+      "displayName": "Florida State Seminoles",
+      "shortDisplayName": "Florida State",
+      "name": "Seminoles",
+      "location": "Florida State",
+      "abbreviation": "FSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/52.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/52.png"
+    },
+    {
+      "id": "278",
+      "displayName": "Fresno State Bulldogs",
+      "shortDisplayName": "Fresno State",
+      "name": "Bulldogs",
+      "location": "Fresno State",
+      "abbreviation": "FRES",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/278.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/278.png"
+    },
+    {
+      "id": "61",
+      "displayName": "Georgia Bulldogs",
+      "shortDisplayName": "Georgia",
+      "name": "Bulldogs",
+      "location": "Georgia",
+      "abbreviation": "UGA",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/61.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/61.png"
+    },
+    {
+      "id": "290",
+      "displayName": "Georgia Southern Eagles",
+      "shortDisplayName": "Georgia Southern",
+      "name": "Eagles",
+      "location": "Georgia Southern",
+      "abbreviation": "GASO",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/290.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/290.png"
+    },
+    {
+      "id": "2247",
+      "displayName": "Georgia State Panthers",
+      "shortDisplayName": "Georgia State",
+      "name": "Panthers",
+      "location": "Georgia State",
+      "abbreviation": "GAST",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2247.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2247.png"
+    },
+    {
+      "id": "59",
+      "displayName": "Georgia Tech Yellow Jackets",
+      "shortDisplayName": "Georgia Tech",
+      "name": "Yellow Jackets",
+      "location": "Georgia Tech",
+      "abbreviation": "GT",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/59.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/59.png"
+    },
+    {
+      "id": "62",
+      "displayName": "Hawai'i Rainbow Warriors",
+      "shortDisplayName": "Hawai'i",
+      "name": "Rainbow Warriors",
+      "location": "Hawai'i",
+      "abbreviation": "HAW",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/62.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/62.png"
+    },
+    {
+      "id": "248",
+      "displayName": "Houston Cougars",
+      "shortDisplayName": "Houston",
+      "name": "Cougars",
+      "location": "Houston",
+      "abbreviation": "HOU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/248.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/248.png"
+    },
+    {
+      "id": "356",
+      "displayName": "Illinois Fighting Illini",
+      "shortDisplayName": "Illinois",
+      "name": "Fighting Illini",
+      "location": "Illinois",
+      "abbreviation": "ILL",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/356.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/356.png"
+    },
+    {
+      "id": "84",
+      "displayName": "Indiana Hoosiers",
+      "shortDisplayName": "Indiana",
+      "name": "Hoosiers",
+      "location": "Indiana",
+      "abbreviation": "IU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/84.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/84.png"
+    },
+    {
+      "id": "2294",
+      "displayName": "Iowa Hawkeyes",
+      "shortDisplayName": "Iowa",
+      "name": "Hawkeyes",
+      "location": "Iowa",
+      "abbreviation": "IOWA",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2294.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2294.png"
+    },
+    {
+      "id": "66",
+      "displayName": "Iowa State Cyclones",
+      "shortDisplayName": "Iowa State",
+      "name": "Cyclones",
+      "location": "Iowa State",
+      "abbreviation": "ISU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/66.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/66.png"
+    },
+    {
+      "id": "55",
+      "displayName": "Jacksonville State Gamecocks",
+      "shortDisplayName": "Jacksonville State",
+      "name": "Gamecocks",
+      "location": "Jacksonville State",
+      "abbreviation": "JXST",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/55.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/55.png"
+    },
+    {
+      "id": "256",
+      "displayName": "James Madison Dukes",
+      "shortDisplayName": "James Madison",
+      "name": "Dukes",
+      "location": "James Madison",
+      "abbreviation": "JMU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/256.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/256.png"
+    },
+    {
+      "id": "2305",
+      "displayName": "Kansas Jayhawks",
+      "shortDisplayName": "Kansas",
+      "name": "Jayhawks",
+      "location": "Kansas",
+      "abbreviation": "KU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2305.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2305.png"
+    },
+    {
+      "id": "2306",
+      "displayName": "Kansas State Wildcats",
+      "shortDisplayName": "Kansas State",
+      "name": "Wildcats",
+      "location": "Kansas State",
+      "abbreviation": "KSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2306.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2306.png"
+    },
+    {
+      "id": "338",
+      "displayName": "Kennesaw State Owls",
+      "shortDisplayName": "Kennesaw State",
+      "name": "Owls",
+      "location": "Kennesaw State",
+      "abbreviation": "KENN",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/338.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/338.png"
+    },
+    {
+      "id": "2309",
+      "displayName": "Kent State Golden Flashes",
+      "shortDisplayName": "Kent State",
+      "name": "Golden Flashes",
+      "location": "Kent State",
+      "abbreviation": "KENT",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2309.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2309.png"
+    },
+    {
+      "id": "96",
+      "displayName": "Kentucky Wildcats",
+      "shortDisplayName": "Kentucky",
+      "name": "Wildcats",
+      "location": "Kentucky",
+      "abbreviation": "UK",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/96.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/96.png"
+    },
+    {
+      "id": "2335",
+      "displayName": "Liberty Flames",
+      "shortDisplayName": "Liberty",
+      "name": "Flames",
+      "location": "Liberty",
+      "abbreviation": "LIB",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2335.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2335.png"
+    },
+    {
+      "id": "309",
+      "displayName": "Louisiana Ragin' Cajuns",
+      "shortDisplayName": "Louisiana",
+      "name": "Ragin' Cajuns",
+      "location": "Louisiana",
+      "abbreviation": "UL",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/309.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/309.png"
+    },
+    {
+      "id": "2348",
+      "displayName": "Louisiana Tech Bulldogs",
+      "shortDisplayName": "Louisiana Tech",
+      "name": "Bulldogs",
+      "location": "Louisiana Tech",
+      "abbreviation": "LT",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2348.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2348.png"
+    },
+    {
+      "id": "97",
+      "displayName": "Louisville Cardinals",
+      "shortDisplayName": "Louisville",
+      "name": "Cardinals",
+      "location": "Louisville",
+      "abbreviation": "LOU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/97.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/97.png"
+    },
+    {
+      "id": "99",
+      "displayName": "LSU Tigers",
+      "shortDisplayName": "LSU",
+      "name": "Tigers",
+      "location": "LSU",
+      "abbreviation": "LSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/99.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/99.png"
+    },
+    {
+      "id": "276",
+      "displayName": "Marshall Thundering Herd",
+      "shortDisplayName": "Marshall",
+      "name": "Thundering Herd",
+      "location": "Marshall",
+      "abbreviation": "MRSH",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/276.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/276.png"
+    },
+    {
+      "id": "120",
+      "displayName": "Maryland Terrapins",
+      "shortDisplayName": "Maryland",
+      "name": "Terrapins",
+      "location": "Maryland",
+      "abbreviation": "MD",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/120.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/120.png"
+    },
+    {
+      "id": "113",
+      "displayName": "Massachusetts Minutemen",
+      "shortDisplayName": "Massachusetts",
+      "name": "Minutemen",
+      "location": "Massachusetts",
+      "abbreviation": "MASS",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/113.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/113.png"
+    },
+    {
+      "id": "235",
+      "displayName": "Memphis Tigers",
+      "shortDisplayName": "Memphis",
+      "name": "Tigers",
+      "location": "Memphis",
+      "abbreviation": "MEM",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/235.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/235.png"
+    },
+    {
+      "id": "2390",
+      "displayName": "Miami Hurricanes",
+      "shortDisplayName": "Miami",
+      "name": "Hurricanes",
+      "location": "Miami",
+      "abbreviation": "MIA",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2390.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2390.png"
+    },
+    {
+      "id": "193",
+      "displayName": "Miami (OH) RedHawks",
+      "shortDisplayName": "Miami (OH)",
+      "name": "RedHawks",
+      "location": "Miami (OH)",
+      "abbreviation": "M-OH",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/193.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/193.png"
+    },
+    {
+      "id": "130",
+      "displayName": "Michigan Wolverines",
+      "shortDisplayName": "Michigan",
+      "name": "Wolverines",
+      "location": "Michigan",
+      "abbreviation": "MICH",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/130.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/130.png"
+    },
+    {
+      "id": "127",
+      "displayName": "Michigan State Spartans",
+      "shortDisplayName": "Michigan State",
+      "name": "Spartans",
+      "location": "Michigan State",
+      "abbreviation": "MSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/127.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/127.png"
+    },
+    {
+      "id": "2393",
+      "displayName": "Middle Tennessee Blue Raiders",
+      "shortDisplayName": "Middle Tennessee",
+      "name": "Blue Raiders",
+      "location": "Middle Tennessee",
+      "abbreviation": "MTSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2393.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2393.png"
+    },
+    {
+      "id": "135",
+      "displayName": "Minnesota Golden Gophers",
+      "shortDisplayName": "Minnesota",
+      "name": "Golden Gophers",
+      "location": "Minnesota",
+      "abbreviation": "MINN",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/135.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/135.png"
+    },
+    {
+      "id": "344",
+      "displayName": "Mississippi State Bulldogs",
+      "shortDisplayName": "Mississippi State",
+      "name": "Bulldogs",
+      "location": "Mississippi State",
+      "abbreviation": "MSST",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/344.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/344.png"
+    },
+    {
+      "id": "142",
+      "displayName": "Missouri Tigers",
+      "shortDisplayName": "Missouri",
+      "name": "Tigers",
+      "location": "Missouri",
+      "abbreviation": "MIZ",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/142.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/142.png"
+    },
+    {
+      "id": "2623",
+      "displayName": "Missouri State Bears",
+      "shortDisplayName": "Missouri State",
+      "name": "Bears",
+      "location": "Missouri State",
+      "abbreviation": "MOST",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2623.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2623.png"
+    },
+    {
+      "id": "2426",
+      "displayName": "Navy Midshipmen",
+      "shortDisplayName": "Navy",
+      "name": "Midshipmen",
+      "location": "Navy",
+      "abbreviation": "NAVY",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2426.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2426.png"
+    },
+    {
+      "id": "152",
+      "displayName": "NC State Wolfpack",
+      "shortDisplayName": "NC State",
+      "name": "Wolfpack",
+      "location": "NC State",
+      "abbreviation": "NCSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/152.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/152.png"
+    },
+    {
+      "id": "158",
+      "displayName": "Nebraska Cornhuskers",
+      "shortDisplayName": "Nebraska",
+      "name": "Cornhuskers",
+      "location": "Nebraska",
+      "abbreviation": "NEB",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/158.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/158.png"
+    },
+    {
+      "id": "2440",
+      "displayName": "Nevada Wolf Pack",
+      "shortDisplayName": "Nevada",
+      "name": "Wolf Pack",
+      "location": "Nevada",
+      "abbreviation": "NEV",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2440.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2440.png"
+    },
+    {
+      "id": "167",
+      "displayName": "New Mexico Lobos",
+      "shortDisplayName": "New Mexico",
+      "name": "Lobos",
+      "location": "New Mexico",
+      "abbreviation": "UNM",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/167.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/167.png"
+    },
+    {
+      "id": "166",
+      "displayName": "New Mexico State Aggies",
+      "shortDisplayName": "New Mexico State",
+      "name": "Aggies",
+      "location": "New Mexico State",
+      "abbreviation": "NMSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/166.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/166.png"
+    },
+    {
+      "id": "153",
+      "displayName": "North Carolina Tar Heels",
+      "shortDisplayName": "North Carolina",
+      "name": "Tar Heels",
+      "location": "North Carolina",
+      "abbreviation": "UNC",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/153.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/153.png"
+    },
+    {
+      "id": "2459",
+      "displayName": "Northern Illinois Huskies",
+      "shortDisplayName": "Northern Illinois",
+      "name": "Huskies",
+      "location": "Northern Illinois",
+      "abbreviation": "NIU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2459.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2459.png"
+    },
+    {
+      "id": "249",
+      "displayName": "North Texas Mean Green",
+      "shortDisplayName": "North Texas",
+      "name": "Mean Green",
+      "location": "North Texas",
+      "abbreviation": "UNT",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/249.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/249.png"
+    },
+    {
+      "id": "77",
+      "displayName": "Northwestern Wildcats",
+      "shortDisplayName": "Northwestern",
+      "name": "Wildcats",
+      "location": "Northwestern",
+      "abbreviation": "NU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/77.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/77.png"
+    },
+    {
+      "id": "87",
+      "displayName": "Notre Dame Fighting Irish",
+      "shortDisplayName": "Notre Dame",
+      "name": "Fighting Irish",
+      "location": "Notre Dame",
+      "abbreviation": "ND",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/87.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/87.png"
+    },
+    {
+      "id": "195",
+      "displayName": "Ohio Bobcats",
+      "shortDisplayName": "Ohio",
+      "name": "Bobcats",
+      "location": "Ohio",
+      "abbreviation": "OHIO",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/195.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/195.png"
+    },
+    {
+      "id": "194",
+      "displayName": "Ohio State Buckeyes",
+      "shortDisplayName": "Ohio State",
+      "name": "Buckeyes",
+      "location": "Ohio State",
+      "abbreviation": "OSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/194.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/194.png"
+    },
+    {
+      "id": "201",
+      "displayName": "Oklahoma Sooners",
+      "shortDisplayName": "Oklahoma",
+      "name": "Sooners",
+      "location": "Oklahoma",
+      "abbreviation": "OU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/201.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/201.png"
+    },
+    {
+      "id": "197",
+      "displayName": "Oklahoma State Cowboys",
+      "shortDisplayName": "Oklahoma State",
+      "name": "Cowboys",
+      "location": "Oklahoma State",
+      "abbreviation": "OKST",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/197.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/197.png"
+    },
+    {
+      "id": "295",
+      "displayName": "Old Dominion Monarchs",
+      "shortDisplayName": "Old Dominion",
+      "name": "Monarchs",
+      "location": "Old Dominion",
+      "abbreviation": "ODU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/295.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/295.png"
+    },
+    {
+      "id": "145",
+      "displayName": "Ole Miss Rebels",
+      "shortDisplayName": "Ole Miss",
+      "name": "Rebels",
+      "location": "Ole Miss",
+      "abbreviation": "MISS",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/145.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/145.png"
+    },
+    {
+      "id": "2483",
+      "displayName": "Oregon Ducks",
+      "shortDisplayName": "Oregon",
+      "name": "Ducks",
+      "location": "Oregon",
+      "abbreviation": "ORE",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2483.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2483.png"
+    },
+    {
+      "id": "204",
+      "displayName": "Oregon State Beavers",
+      "shortDisplayName": "Oregon State",
+      "name": "Beavers",
+      "location": "Oregon State",
+      "abbreviation": "ORST",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/204.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/204.png"
+    },
+    {
+      "id": "213",
+      "displayName": "Penn State Nittany Lions",
+      "shortDisplayName": "Penn State",
+      "name": "Nittany Lions",
+      "location": "Penn State",
+      "abbreviation": "PSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/213.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/213.png"
+    },
+    {
+      "id": "221",
+      "displayName": "Pittsburgh Panthers",
+      "shortDisplayName": "Pittsburgh",
+      "name": "Panthers",
+      "location": "Pittsburgh",
+      "abbreviation": "PITT",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/221.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/221.png"
+    },
+    {
+      "id": "2509",
+      "displayName": "Purdue Boilermakers",
+      "shortDisplayName": "Purdue",
+      "name": "Boilermakers",
+      "location": "Purdue",
+      "abbreviation": "PUR",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2509.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2509.png"
+    },
+    {
+      "id": "242",
+      "displayName": "Rice Owls",
+      "shortDisplayName": "Rice",
+      "name": "Owls",
+      "location": "Rice",
+      "abbreviation": "RICE",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/242.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/242.png"
+    },
+    {
+      "id": "164",
+      "displayName": "Rutgers Scarlet Knights",
+      "shortDisplayName": "Rutgers",
+      "name": "Scarlet Knights",
+      "location": "Rutgers",
+      "abbreviation": "RUTG",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/164.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/164.png"
+    },
+    {
+      "id": "2534",
+      "displayName": "Sam Houston Bearkats",
+      "shortDisplayName": "Sam Houston",
+      "name": "Bearkats",
+      "location": "Sam Houston",
+      "abbreviation": "SHSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2534.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2534.png"
+    },
+    {
+      "id": "21",
+      "displayName": "San Diego State Aztecs",
+      "shortDisplayName": "San Diego State",
+      "name": "Aztecs",
+      "location": "San Diego State",
+      "abbreviation": "SDSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/21.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/21.png"
+    },
+    {
+      "id": "23",
+      "displayName": "San José State Spartans",
+      "shortDisplayName": "San José State",
+      "name": "Spartans",
+      "location": "San José State",
+      "abbreviation": "SJSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/23.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/23.png"
+    },
+    {
+      "id": "2567",
+      "displayName": "SMU Mustangs",
+      "shortDisplayName": "SMU",
+      "name": "Mustangs",
+      "location": "SMU",
+      "abbreviation": "SMU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2567.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2567.png"
+    },
+    {
+      "id": "6",
+      "displayName": "South Alabama Jaguars",
+      "shortDisplayName": "South Alabama",
+      "name": "Jaguars",
+      "location": "South Alabama",
+      "abbreviation": "USA",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/6.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/6.png"
+    },
+    {
+      "id": "2579",
+      "displayName": "South Carolina Gamecocks",
+      "shortDisplayName": "South Carolina",
+      "name": "Gamecocks",
+      "location": "South Carolina",
+      "abbreviation": "SC",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2579.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2579.png"
+    },
+    {
+      "id": "2572",
+      "displayName": "Southern Miss Golden Eagles",
+      "shortDisplayName": "Southern Miss",
+      "name": "Golden Eagles",
+      "location": "Southern Miss",
+      "abbreviation": "USM",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2572.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2572.png"
+    },
+    {
+      "id": "58",
+      "displayName": "South Florida Bulls",
+      "shortDisplayName": "South Florida",
+      "name": "Bulls",
+      "location": "South Florida",
+      "abbreviation": "USF",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/58.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/58.png"
+    },
+    {
+      "id": "24",
+      "displayName": "Stanford Cardinal",
+      "shortDisplayName": "Stanford",
+      "name": "Cardinal",
+      "location": "Stanford",
+      "abbreviation": "STAN",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/24.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/24.png"
+    },
+    {
+      "id": "183",
+      "displayName": "Syracuse Orange",
+      "shortDisplayName": "Syracuse",
+      "name": "Orange",
+      "location": "Syracuse",
+      "abbreviation": "SYR",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/183.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/183.png"
+    },
+    {
+      "id": "2628",
+      "displayName": "TCU Horned Frogs",
+      "shortDisplayName": "TCU",
+      "name": "Horned Frogs",
+      "location": "TCU",
+      "abbreviation": "TCU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2628.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2628.png"
+    },
+    {
+      "id": "218",
+      "displayName": "Temple Owls",
+      "shortDisplayName": "Temple",
+      "name": "Owls",
+      "location": "Temple",
+      "abbreviation": "TEM",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/218.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/218.png"
+    },
+    {
+      "id": "2633",
+      "displayName": "Tennessee Volunteers",
+      "shortDisplayName": "Tennessee",
+      "name": "Volunteers",
+      "location": "Tennessee",
+      "abbreviation": "TENN",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2633.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2633.png"
+    },
+    {
+      "id": "251",
+      "displayName": "Texas Longhorns",
+      "shortDisplayName": "Texas",
+      "name": "Longhorns",
+      "location": "Texas",
+      "abbreviation": "TEX",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/251.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/251.png"
+    },
+    {
+      "id": "245",
+      "displayName": "Texas A&M Aggies",
+      "shortDisplayName": "Texas A&M",
+      "name": "Aggies",
+      "location": "Texas A&M",
+      "abbreviation": "TA&M",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/245.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/245.png"
+    },
+    {
+      "id": "326",
+      "displayName": "Texas State Bobcats",
+      "shortDisplayName": "Texas State",
+      "name": "Bobcats",
+      "location": "Texas State",
+      "abbreviation": "TXST",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/326.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/326.png"
+    },
+    {
+      "id": "2641",
+      "displayName": "Texas Tech Red Raiders",
+      "shortDisplayName": "Texas Tech",
+      "name": "Red Raiders",
+      "location": "Texas Tech",
+      "abbreviation": "TTU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2641.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2641.png"
+    },
+    {
+      "id": "2649",
+      "displayName": "Toledo Rockets",
+      "shortDisplayName": "Toledo",
+      "name": "Rockets",
+      "location": "Toledo",
+      "abbreviation": "TOL",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2649.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2649.png"
+    },
+    {
+      "id": "2653",
+      "displayName": "Troy Trojans",
+      "shortDisplayName": "Troy",
+      "name": "Trojans",
+      "location": "Troy",
+      "abbreviation": "TROY",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2653.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2653.png"
+    },
+    {
+      "id": "2655",
+      "displayName": "Tulane Green Wave",
+      "shortDisplayName": "Tulane",
+      "name": "Green Wave",
+      "location": "Tulane",
+      "abbreviation": "TULN",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2655.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2655.png"
+    },
+    {
+      "id": "202",
+      "displayName": "Tulsa Golden Hurricane",
+      "shortDisplayName": "Tulsa",
+      "name": "Golden Hurricane",
+      "location": "Tulsa",
+      "abbreviation": "TLSA",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/202.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/202.png"
+    },
+    {
+      "id": "5",
+      "displayName": "UAB Blazers",
+      "shortDisplayName": "UAB",
+      "name": "Blazers",
+      "location": "UAB",
+      "abbreviation": "UAB",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/5.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/5.png"
+    },
+    {
+      "id": "2116",
+      "displayName": "UCF Knights",
+      "shortDisplayName": "UCF",
+      "name": "Knights",
+      "location": "UCF",
+      "abbreviation": "UCF",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2116.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2116.png"
+    },
+    {
+      "id": "26",
+      "displayName": "UCLA Bruins",
+      "shortDisplayName": "UCLA",
+      "name": "Bruins",
+      "location": "UCLA",
+      "abbreviation": "UCLA",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/26.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/26.png"
+    },
+    {
+      "id": "41",
+      "displayName": "UConn Huskies",
+      "shortDisplayName": "UConn",
+      "name": "Huskies",
+      "location": "UConn",
+      "abbreviation": "CONN",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/41.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/41.png"
+    },
+    {
+      "id": "2433",
+      "displayName": "UL Monroe Warhawks",
+      "shortDisplayName": "UL Monroe",
+      "name": "Warhawks",
+      "location": "UL Monroe",
+      "abbreviation": "ULM",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2433.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2433.png"
+    },
+    {
+      "id": "2439",
+      "displayName": "UNLV Rebels",
+      "shortDisplayName": "UNLV",
+      "name": "Rebels",
+      "location": "UNLV",
+      "abbreviation": "UNLV",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2439.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2439.png"
+    },
+    {
+      "id": "30",
+      "displayName": "USC Trojans",
+      "shortDisplayName": "USC",
+      "name": "Trojans",
+      "location": "USC",
+      "abbreviation": "USC",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/30.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/30.png"
+    },
+    {
+      "id": "254",
+      "displayName": "Utah Utes",
+      "shortDisplayName": "Utah",
+      "name": "Utes",
+      "location": "Utah",
+      "abbreviation": "UTAH",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/254.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/254.png"
+    },
+    {
+      "id": "328",
+      "displayName": "Utah State Aggies",
+      "shortDisplayName": "Utah State",
+      "name": "Aggies",
+      "location": "Utah State",
+      "abbreviation": "USU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/328.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/328.png"
+    },
+    {
+      "id": "2638",
+      "displayName": "UTEP Miners",
+      "shortDisplayName": "UTEP",
+      "name": "Miners",
+      "location": "UTEP",
+      "abbreviation": "UTEP",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2638.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2638.png"
+    },
+    {
+      "id": "2636",
+      "displayName": "UTSA Roadrunners",
+      "shortDisplayName": "UTSA",
+      "name": "Roadrunners",
+      "location": "UTSA",
+      "abbreviation": "UTSA",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2636.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2636.png"
+    },
+    {
+      "id": "238",
+      "displayName": "Vanderbilt Commodores",
+      "shortDisplayName": "Vanderbilt",
+      "name": "Commodores",
+      "location": "Vanderbilt",
+      "abbreviation": "VAN",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/238.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/238.png"
+    },
+    {
+      "id": "258",
+      "displayName": "Virginia Cavaliers",
+      "shortDisplayName": "Virginia",
+      "name": "Cavaliers",
+      "location": "Virginia",
+      "abbreviation": "UVA",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/258.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/258.png"
+    },
+    {
+      "id": "259",
+      "displayName": "Virginia Tech Hokies",
+      "shortDisplayName": "Virginia Tech",
+      "name": "Hokies",
+      "location": "Virginia Tech",
+      "abbreviation": "VT",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/259.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/259.png"
+    },
+    {
+      "id": "154",
+      "displayName": "Wake Forest Demon Deacons",
+      "shortDisplayName": "Wake Forest",
+      "name": "Demon Deacons",
+      "location": "Wake Forest",
+      "abbreviation": "WAKE",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/154.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/154.png"
+    },
+    {
+      "id": "264",
+      "displayName": "Washington Huskies",
+      "shortDisplayName": "Washington",
+      "name": "Huskies",
+      "location": "Washington",
+      "abbreviation": "WASH",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/264.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/264.png"
+    },
+    {
+      "id": "265",
+      "displayName": "Washington State Cougars",
+      "shortDisplayName": "Washington State",
+      "name": "Cougars",
+      "location": "Washington State",
+      "abbreviation": "WSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/265.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/265.png"
+    },
+    {
+      "id": "98",
+      "displayName": "Western Kentucky Hilltoppers",
+      "shortDisplayName": "Western Kentucky",
+      "name": "Hilltoppers",
+      "location": "Western Kentucky",
+      "abbreviation": "WKU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/98.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/98.png"
+    },
+    {
+      "id": "2711",
+      "displayName": "Western Michigan Broncos",
+      "shortDisplayName": "Western Michigan",
+      "name": "Broncos",
+      "location": "Western Michigan",
+      "abbreviation": "WMU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2711.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2711.png"
+    },
+    {
+      "id": "277",
+      "displayName": "West Virginia Mountaineers",
+      "shortDisplayName": "West Virginia",
+      "name": "Mountaineers",
+      "location": "West Virginia",
+      "abbreviation": "WVU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/277.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/277.png"
+    },
+    {
+      "id": "275",
+      "displayName": "Wisconsin Badgers",
+      "shortDisplayName": "Wisconsin",
+      "name": "Badgers",
+      "location": "Wisconsin",
+      "abbreviation": "WIS",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/275.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/275.png"
+    },
+    {
+      "id": "2751",
+      "displayName": "Wyoming Cowboys",
+      "shortDisplayName": "Wyoming",
+      "name": "Cowboys",
+      "location": "Wyoming",
+      "abbreviation": "WYO",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2751.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2751.png"
+    }
+  ]
+}

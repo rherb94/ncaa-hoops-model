@@ -48,6 +48,7 @@ function fmt(n: number | undefined | null, digits = 1) {
 }
 
 export default function TeamsClient({ league }: { league: LeagueId }) {
+  const isCfb = league === "cfb";
   const [teams, setTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState("");
@@ -120,7 +121,7 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
         <div>
           <h1 className="text-2xl font-bold">Teams</h1>
           <p className="text-sm text-zinc-500">
-            {teams.length} teams · Torvik ratings updated daily
+            {teams.length} teams · {isCfb ? "SP+ ratings" : "Torvik ratings"} updated daily
           </p>
         </div>
 
@@ -173,24 +174,26 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
                   </th>
                   <th className="px-3 py-2.5 text-right whitespace-nowrap">
                     <button type="button" onClick={() => toggleSort("adjO")} className={thBtn}>
-                      AdjO <SortIcon active={sortKey === "adjO"} dir={sortDir} />
+                      {isCfb ? "Off" : "AdjO"} <SortIcon active={sortKey === "adjO"} dir={sortDir} />
                     </button>
                   </th>
                   <th className="px-3 py-2.5 text-right whitespace-nowrap">
                     <button type="button" onClick={() => toggleSort("adjD")} className={thBtn}>
-                      AdjD <SortIcon active={sortKey === "adjD"} dir={sortDir} />
+                      {isCfb ? "Def" : "AdjD"} <SortIcon active={sortKey === "adjD"} dir={sortDir} />
                     </button>
                   </th>
                   <th className="px-3 py-2.5 text-right whitespace-nowrap">
                     <button type="button" onClick={() => toggleSort("tempo")} className={thBtn}>
-                      Tempo <SortIcon active={sortKey === "tempo"} dir={sortDir} />
+                      {isCfb ? "Plays" : "Tempo"} <SortIcon active={sortKey === "tempo"} dir={sortDir} />
                     </button>
                   </th>
-                  <th className="px-3 py-2.5 text-right whitespace-nowrap">
-                    <button type="button" onClick={() => toggleSort("barthag")} className={thBtn}>
-                      Barthag <SortIcon active={sortKey === "barthag"} dir={sortDir} />
-                    </button>
-                  </th>
+                  {!isCfb && (
+                    <th className="px-3 py-2.5 text-right whitespace-nowrap">
+                      <button type="button" onClick={() => toggleSort("barthag")} className={thBtn}>
+                        Barthag <SortIcon active={sortKey === "barthag"} dir={sortDir} />
+                      </button>
+                    </th>
+                  )}
                   <th className="px-3 py-2.5 text-right whitespace-nowrap">
                     <button type="button" onClick={() => toggleSort("hca")} className={thBtn}>
                       HCA <SortIcon active={sortKey === "hca"} dir={sortDir} />
@@ -229,9 +232,11 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
                       <td className="px-3 py-2 text-right font-mono tabular-nums text-zinc-400 whitespace-nowrap">
                         {fmt(t.tempo)}
                       </td>
-                      <td className="px-3 py-2 text-right font-mono tabular-nums text-zinc-400 whitespace-nowrap">
-                        {t.barthag != null ? (t.barthag * 100).toFixed(1) + "%" : "—"}
-                      </td>
+                      {!isCfb && (
+                        <td className="px-3 py-2 text-right font-mono tabular-nums text-zinc-400 whitespace-nowrap">
+                          {t.barthag != null ? (t.barthag * 100).toFixed(1) + "%" : "—"}
+                        </td>
+                      )}
                       <td className="px-3 py-2 text-right font-mono tabular-nums text-zinc-500 whitespace-nowrap">
                         {fmt(t.hca)}
                       </td>
@@ -239,7 +244,7 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
                   );
                 })}
                 {filteredSorted.length === 0 && (
-                  <tr><td className="px-3 py-6 text-center text-zinc-500" colSpan={9}>No teams match your filters.</td></tr>
+                  <tr><td className="px-3 py-6 text-center text-zinc-500" colSpan={isCfb ? 8 : 9}>No teams match your filters.</td></tr>
                 )}
               </tbody>
             </table>
@@ -264,7 +269,9 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
                   <span>O <span className="text-zinc-300 font-mono">{fmt(t.adjO)}</span></span>
                   <span>D <span className="text-zinc-300 font-mono">{fmt(t.adjD)}</span></span>
                   <span>T <span className="text-zinc-400 font-mono">{fmt(t.tempo)}</span></span>
-                  <span>B <span className="text-zinc-400 font-mono">{t.barthag != null ? (t.barthag * 100).toFixed(1) + "%" : "—"}</span></span>
+                  {!isCfb && (
+                    <span>B <span className="text-zinc-400 font-mono">{t.barthag != null ? (t.barthag * 100).toFixed(1) + "%" : "—"}</span></span>
+                  )}
                 </div>
               </div>
             ))}

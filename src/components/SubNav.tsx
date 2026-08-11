@@ -14,9 +14,12 @@ const SUBNAV_LINKS = [
 export default function SubNav({ league }: { league: string }) {
   const pathname = usePathname();
 
+  // CFB has no bracket-style single-elim tournament equivalent to March Madness
+  const links = league === "cfb" ? SUBNAV_LINKS.filter((l) => l.slug !== "bracket") : SUBNAV_LINKS;
+
   return (
     <nav className="mb-6 flex items-center gap-1 border-b border-white/8 pb-3 overflow-x-auto">
-      {SUBNAV_LINKS.map(({ slug, label }) => {
+      {links.map(({ slug, label }) => {
         const href = `/${league}/${slug}`;
         const active = pathname === href || pathname.startsWith(`${href}/`);
         return (

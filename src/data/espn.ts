@@ -34,7 +34,7 @@ export function norm(s: string): string {
 }
 
 function espnJsonFilename(league: LeagueId): string {
-  return league === "ncaaw" ? "espnTeams.ncaaw.json" : "espnTeams.json";
+  return league === "ncaam" ? "espnTeams.json" : `espnTeams.${league}.json`;
 }
 
 function readEspnJson(league: LeagueId = "ncaam"): any {

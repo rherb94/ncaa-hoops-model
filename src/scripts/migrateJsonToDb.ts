@@ -19,7 +19,7 @@ import path from "node:path";
 import { drizzle } from "drizzle-orm/vercel-postgres";
 import { sql as pgSql } from "@vercel/postgres";
 import { eq } from "drizzle-orm";
-import { ncaam, ncaaw } from "@/db/schema";
+import { ncaam, ncaaw, cfb } from "@/db/schema";
 import { loadTeams } from "@/data/teams";
 import type { LeagueId } from "@/lib/leagues";
 
@@ -38,7 +38,7 @@ const db = drizzle(pgSql);
 
 // ---- schema map by league --------------------------------------------------
 
-const schemaMap = { ncaam, ncaaw };
+const schemaMap = { ncaam, ncaaw, cfb };
 
 // ---- helpers ---------------------------------------------------------------
 

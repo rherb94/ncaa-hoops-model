@@ -3,7 +3,13 @@
 // All league-specific constants (API keys, URL paths, ESPN sport identifiers)
 // live here so adding a new league is a single-file change.
 
-export type LeagueId = "ncaam" | "ncaaw";
+export type LeagueId = "ncaam" | "ncaaw" | "cfb";
+
+/** Which ESPN sport family the league lives under, e.g. site.api.espn.com/apis/site/v2/sports/<family>/... */
+export type EspnSportFamily = "basketball" | "football";
+
+/** Where team ratings come from — determines which ingestion script populates teams.csv */
+export type RatingsSource = "torvik" | "cfbd";
 
 export type LeagueConfig = {
   id: LeagueId;
@@ -11,12 +17,14 @@ export type LeagueConfig = {
   shortName: string;    // e.g. "NCAAM" (used in nav tabs)
   /** TheOddsAPI sport key, e.g. "basketball_ncaab" */
   sportKey: string;
+  /** ESPN sport family path segment, e.g. "basketball" or "football" */
+  espnSportFamily: EspnSportFamily;
   /** ESPN sport path segment, e.g. "mens-college-basketball" */
   espnSport: string;
-  /** ESPN scoreboard ?groups= param for filtering D-I games */
+  /** ESPN scoreboard ?groups= param for filtering top-division games */
   espnGroupId: string;
-  /** Torvik CSV URL for a given season year */
-  torvikUrl: (year: string) => string;
+  /** Which ratings ingestion source populates this league's teams.csv */
+  ratingsSource: RatingsSource;
 };
 
 export const LEAGUES: Record<LeagueId, LeagueConfig> = {
@@ -25,9 +33,10 @@ export const LEAGUES: Record<LeagueId, LeagueConfig> = {
     name: "Men's College Basketball",
     shortName: "NCAAM",
     sportKey: "basketball_ncaab",
+    espnSportFamily: "basketball",
     espnSport: "mens-college-basketball",
     espnGroupId: "50",
-    torvikUrl: (y) => `https://barttorvik.com/${y}_team_results.csv`,
+    ratingsSource: "torvik",
   },
   ncaaw: {
     id: "ncaaw",
@@ -35,9 +44,22 @@ export const LEAGUES: Record<LeagueId, LeagueConfig> = {
     shortName: "NCAAW",
     // TheOddsAPI key for women's college basketball (confirmed: basketball_wncaab)
     sportKey: "basketball_wncaab",
+    espnSportFamily: "basketball",
     espnSport: "womens-college-basketball",
     espnGroupId: "50",
-    torvikUrl: (y) => `https://barttorvik.com/ncaaw/${y}_team_results.csv`,
+    ratingsSource: "torvik",
+  },
+  cfb: {
+    id: "cfb",
+    name: "College Football",
+    shortName: "CFB",
+    // TheOddsAPI key for NCAAF
+    sportKey: "americanfootball_ncaaf",
+    espnSportFamily: "football",
+    espnSport: "college-football",
+    // FBS group id — verified against live ESPN scoreboard response in updateTeamsFromCfbd research spike
+    espnGroupId: "80",
+    ratingsSource: "cfbd",
   },
 };
 
