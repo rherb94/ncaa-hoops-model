@@ -1,6 +1,6 @@
 {
-  "fetchedAtISO": "2026-08-13T12:37:08.542Z",
-  "count": 136,
+  "fetchedAtISO": "2026-08-14T12:33:10.991Z",
+  "count": 138,
   "teams": [
     {
       "id": "2005",
@@ -1295,6 +1295,23 @@
       "logo": "https://cdn.collegefootballdata.com/logos/500/153.png"
     },
     {
+      "id": "2449",
+      "displayName": "North Dakota State Bison",
+      "shortDisplayName": "North Dakota State",
+      "name": "Bison",
+      "location": "North Dakota State",
+      "abbreviation": "NDSU",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/2449.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/2449.png"
+    },
+    {
       "id": "2459",
       "displayName": "Northern Illinois Huskies",
       "shortDisplayName": "Northern Illinois",
@@ -1582,6 +1599,23 @@
         }
       ],
       "logo": "https://cdn.collegefootballdata.com/logos/500/164.png"
+    },
+    {
+      "id": "16",
+      "displayName": "Sacramento State Hornets",
+      "shortDisplayName": "Sacramento State",
+      "name": "Hornets",
+      "location": "Sacramento State",
+      "abbreviation": "SAC",
+      "logos": [
+        {
+          "href": "https://cdn.collegefootballdata.com/logos/500/16.png",
+          "rel": [
+            "default"
+          ]
+        }
+      ],
+      "logo": "https://cdn.collegefootballdata.com/logos/500/16.png"
     },
     {
       "id": "2534",
