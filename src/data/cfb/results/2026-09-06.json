@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-06",
+  "fetched_at": "2026-09-07T11:52:06.230Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401858438",
+      "commence_time": "2026-09-06T23:30Z",
+      "home_team": "Notre Dame Fighting Irish",
+      "away_team": "Wisconsin Badgers",
+      "home_espnTeamId": "87",
+      "away_espnTeamId": "275",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 41,
+      "awayScore": 13,
+      "actualSpread": -28,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856661",
+      "commence_time": "2026-09-06T23:30Z",
+      "home_team": "Ole Miss Rebels",
+      "away_team": "Louisville Cardinals",
+      "home_espnTeamId": "145",
+      "away_espnTeamId": "97",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 41,
+      "awayScore": 38,
+      "actualSpread": -3,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858437",
+      "commence_time": "2026-09-06T20:00Z",
+      "home_team": "Washington Huskies",
+      "away_team": "Washington State Cougars",
+      "home_espnTeamId": "264",
+      "away_espnTeamId": "265",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 24,
+      "awayScore": 10,
+      "actualSpread": -14,
+      "winner": "HOME"
+    }
+  ]
+}
