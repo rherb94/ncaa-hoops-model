@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-07",
+  "fetched_at": "2026-09-08T10:48:58.428Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401858212",
+      "commence_time": "2026-09-07T23:30Z",
+      "home_team": "Florida State Seminoles",
+      "away_team": "SMU Mustangs",
+      "home_espnTeamId": "52",
+      "away_espnTeamId": "2567",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 24,
+      "awayScore": 27,
+      "actualSpread": 3,
+      "winner": "AWAY"
+    }
+  ]
+}
