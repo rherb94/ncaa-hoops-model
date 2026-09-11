@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-10",
+  "fetched_at": "2026-09-11T10:48:03.751Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401858213",
+      "commence_time": "2026-09-11T00:00Z",
+      "home_team": "Miami Hurricanes",
+      "away_team": "Florida A&M Rattlers",
+      "home_espnTeamId": "2390",
+      "away_espnTeamId": "50",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 77,
+      "awayScore": 7,
+      "actualSpread": -70,
+      "winner": "HOME"
+    }
+  ]
+}
