@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-17",
+  "fetched_at": "2026-09-18T10:45:30.455Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401858225",
+      "commence_time": "2026-09-17T23:30Z",
+      "home_team": "Pittsburgh Panthers",
+      "away_team": "Syracuse Orange",
+      "home_espnTeamId": "221",
+      "away_espnTeamId": "183",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 27,
+      "awayScore": 13,
+      "actualSpread": -14,
+      "winner": "HOME"
+    }
+  ]
+}
