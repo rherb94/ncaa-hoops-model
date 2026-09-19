@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-18",
+  "fetched_at": "2026-09-19T10:29:32.611Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401858226",
+      "commence_time": "2026-09-18T23:30Z",
+      "home_team": "Wake Forest Demon Deacons",
+      "away_team": "Miami Hurricanes",
+      "home_espnTeamId": "154",
+      "away_espnTeamId": "2390",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 20,
+      "awayScore": 33,
+      "actualSpread": 13,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401856811",
+      "commence_time": "2026-09-19T00:00Z",
+      "home_team": "Texas Tech Red Raiders",
+      "away_team": "Houston Cougars",
+      "home_espnTeamId": "2641",
+      "away_espnTeamId": "248",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 28,
+      "awayScore": 26,
+      "actualSpread": -2,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858455",
+      "commence_time": "2026-09-19T02:30Z",
+      "home_team": "Oregon Ducks",
+      "away_team": "Portland State Vikings",
+      "home_espnTeamId": "2483",
+      "away_espnTeamId": "2502",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 84,
+      "awayScore": 0,
+      "actualSpread": -84,
+      "winner": "HOME"
+    }
+  ]
+}
