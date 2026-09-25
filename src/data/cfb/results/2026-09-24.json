@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-24",
+  "fetched_at": "2026-09-25T11:23:45.133Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401869941",
+      "commence_time": "2026-09-24T23:30Z",
+      "home_team": "Coastal Carolina Chanticleers",
+      "away_team": "Liberty Flames",
+      "home_espnTeamId": "324",
+      "away_espnTeamId": "2335",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 17,
+      "awayScore": 34,
+      "actualSpread": 17,
+      "winner": "AWAY"
+    }
+  ]
+}
