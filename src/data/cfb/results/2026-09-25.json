@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-25",
+  "fetched_at": "2026-09-26T10:59:30.453Z",
+  "total_games": 5,
+  "completed_games": 5,
+  "games": [
+    {
+      "espnEventId": "401858461",
+      "commence_time": "2026-09-26T00:00Z",
+      "home_team": "Indiana Hoosiers",
+      "away_team": "Northwestern Wildcats",
+      "home_espnTeamId": "84",
+      "away_espnTeamId": "77",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 29,
+      "awayScore": 23,
+      "actualSpread": -6,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401862779",
+      "commence_time": "2026-09-25T20:00Z",
+      "home_team": "Temple Owls",
+      "away_team": "Army Black Knights",
+      "home_espnTeamId": "218",
+      "away_espnTeamId": "349",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 17,
+      "awayScore": 21,
+      "actualSpread": 4,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401858468",
+      "commence_time": "2026-09-25T23:00Z",
+      "home_team": "Rutgers Scarlet Knights",
+      "away_team": "Howard Bison",
+      "home_espnTeamId": "164",
+      "away_espnTeamId": "47",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 58,
+      "awayScore": 7,
+      "actualSpread": -51,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401862778",
+      "commence_time": "2026-09-25T23:00Z",
+      "home_team": "UAB Blazers",
+      "away_team": "Navy Midshipmen",
+      "home_espnTeamId": "5",
+      "away_espnTeamId": "2426",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 24,
+      "awayScore": 20,
+      "actualSpread": -4,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858234",
+      "commence_time": "2026-09-26T02:30Z",
+      "home_team": "California Golden Bears",
+      "away_team": "Clemson Tigers",
+      "home_espnTeamId": "25",
+      "away_espnTeamId": "228",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 10,
+      "awayScore": 24,
+      "actualSpread": 14,
+      "winner": "AWAY"
+    }
+  ]
+}
