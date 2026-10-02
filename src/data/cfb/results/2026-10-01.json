@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-01",
+  "fetched_at": "2026-10-02T12:03:57.093Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401871049",
+      "commence_time": "2026-10-02T00:00Z",
+      "home_team": "New Mexico State Aggies",
+      "away_team": "Western Kentucky Hilltoppers",
+      "home_espnTeamId": "166",
+      "away_espnTeamId": "98",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 34,
+      "awayScore": 13,
+      "actualSpread": -21,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401862786",
+      "commence_time": "2026-10-02T01:00Z",
+      "home_team": "Tulsa Golden Hurricane",
+      "away_team": "North Texas Mean Green",
+      "home_espnTeamId": "202",
+      "away_espnTeamId": "249",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 44,
+      "awayScore": 45,
+      "actualSpread": 1,
+      "winner": "AWAY"
+    }
+  ]
+}
