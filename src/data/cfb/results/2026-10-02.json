@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-02",
+  "fetched_at": "2026-10-03T11:16:03.532Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401858245",
+      "commence_time": "2026-10-02T23:00Z",
+      "home_team": "Virginia Tech Hokies",
+      "away_team": "Pittsburgh Panthers",
+      "home_espnTeamId": "259",
+      "away_espnTeamId": "221",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 33,
+      "awayScore": 35,
+      "actualSpread": 2,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401871050",
+      "commence_time": "2026-10-02T23:00Z",
+      "home_team": "Delaware Blue Hens",
+      "away_team": "Liberty Flames",
+      "home_espnTeamId": "48",
+      "away_espnTeamId": "2335",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 14,
+      "awayScore": 30,
+      "actualSpread": 16,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401858476",
+      "commence_time": "2026-10-03T00:00Z",
+      "home_team": "Northwestern Wildcats",
+      "away_team": "Penn State Nittany Lions",
+      "home_espnTeamId": "77",
+      "away_espnTeamId": "213",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 34,
+      "awayScore": 13,
+      "actualSpread": -21,
+      "winner": "HOME"
+    }
+  ]
+}
