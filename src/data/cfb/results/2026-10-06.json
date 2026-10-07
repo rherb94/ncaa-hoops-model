@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-06",
+  "fetched_at": "2026-10-07T12:51:24.984Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401871090",
+      "commence_time": "2026-10-07T00:00Z",
+      "home_team": "Troy Trojans",
+      "away_team": "Southern Miss Golden Eagles",
+      "home_espnTeamId": "2653",
+      "away_espnTeamId": "2572",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 55,
+      "awayScore": 34,
+      "actualSpread": -21,
+      "winner": "HOME"
+    }
+  ]
+}
