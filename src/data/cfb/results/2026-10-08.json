@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-08",
+  "fetched_at": "2026-10-09T12:46:37.439Z",
+  "total_games": 4,
+  "completed_games": 4,
+  "games": [
+    {
+      "espnEventId": "401870766",
+      "commence_time": "2026-10-08T23:00Z",
+      "home_team": "Liberty Flames",
+      "away_team": "Sam Houston Bearkats",
+      "home_espnTeamId": "2335",
+      "away_espnTeamId": "2534",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 35,
+      "awayScore": 3,
+      "actualSpread": -32,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401871052",
+      "commence_time": "2026-10-08T23:00Z",
+      "home_team": "Western Kentucky Hilltoppers",
+      "away_team": "Missouri State Bears",
+      "home_espnTeamId": "98",
+      "away_espnTeamId": "2623",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 34,
+      "awayScore": 13,
+      "actualSpread": -21,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401862794",
+      "commence_time": "2026-10-08T23:30Z",
+      "home_team": "UTSA Roadrunners",
+      "away_team": "South Florida Bulls",
+      "home_espnTeamId": "2636",
+      "away_espnTeamId": "58",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 31,
+      "awayScore": 24,
+      "actualSpread": -7,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401869933",
+      "commence_time": "2026-10-08T23:30Z",
+      "home_team": "Arkansas State Red Wolves",
+      "away_team": "South Alabama Jaguars",
+      "home_espnTeamId": "2032",
+      "away_espnTeamId": "6",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 49,
+      "awayScore": 56,
+      "actualSpread": 7,
+      "winner": "AWAY"
+    }
+  ]
+}
