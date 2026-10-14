@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-13",
+  "fetched_at": "2026-10-14T11:24:18.563Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401871067",
+      "commence_time": "2026-10-13T23:00Z",
+      "home_team": "Middle Tennessee Blue Raiders",
+      "away_team": "Delaware Blue Hens",
+      "home_espnTeamId": "2393",
+      "away_espnTeamId": "48",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 33,
+      "awayScore": 30,
+      "actualSpread": -3,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401871053",
+      "commence_time": "2026-10-14T00:00Z",
+      "home_team": "Jacksonville State Gamecocks",
+      "away_team": "Florida International Panthers",
+      "home_espnTeamId": "55",
+      "away_espnTeamId": "2229",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 27,
+      "awayScore": 24,
+      "actualSpread": -3,
+      "winner": "HOME"
+    }
+  ]
+}
