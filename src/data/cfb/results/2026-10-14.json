@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-14",
+  "fetched_at": "2026-10-15T11:01:18.779Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401871054",
+      "commence_time": "2026-10-14T23:30Z",
+      "home_team": "Missouri State Bears",
+      "away_team": "Kennesaw State Owls",
+      "home_espnTeamId": "2623",
+      "away_espnTeamId": "338",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 24,
+      "awayScore": 21,
+      "actualSpread": -3,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401871068",
+      "commence_time": "2026-10-15T00:00Z",
+      "home_team": "Sam Houston Bearkats",
+      "away_team": "Western Kentucky Hilltoppers",
+      "home_espnTeamId": "2534",
+      "away_espnTeamId": "98",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 3,
+      "awayScore": 16,
+      "actualSpread": 13,
+      "winner": "AWAY"
+    }
+  ]
+}
