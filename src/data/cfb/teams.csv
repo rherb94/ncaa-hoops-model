@@ -47,7 +47,7 @@ team-jacksonville-state,Jacksonville State,Conference USA,-2.400,2.3,26.200,28.4
 team-james-madison,James Madison,Sun Belt,9.400,2.3,31.100,21.800,68.833,,40,44,39,6,0
 team-kansas,Kansas,Big 12,7.200,2.3,29.400,22.300,73.000,,50,49,43,2,3
 team-kansas-state,Kansas State,Big 12,11.000,2.3,33.500,22.700,71.200,,31,28,46,3,2
-team-kennesaw-state,Kennesaw State,Conference USA,-9.800,2.3,20.800,30.200,67.400,,107,106,102,1,4
+team-kennesaw-state,Kennesaw State,Conference USA,-9.800,2.3,20.800,30.200,67.000,,107,106,102,1,5
 team-kent-state,Kent State,Mid-American,-22.600,2.3,12.200,34.300,64.000,,132,137,124,2,4
 team-kentucky,Kentucky,SEC,8.000,2.3,33.100,25.000,66.667,,46,31,60,5,1
 team-liberty,Liberty,Conference USA,7.300,2.3,29.000,21.600,65.333,,49,56,38,5,1
@@ -67,7 +67,7 @@ team-middle-tennessee,Middle Tennessee,Conference USA,-19.500,2.3,15.500,35.100,
 team-minnesota,Minnesota,Big Ten,2.900,2.3,25.000,22.100,64.000,,60,87,40,4,2
 team-mississippi-state,Mississippi State,SEC,12.600,2.3,37.800,25.500,72.000,,28,12,65,4,1
 team-missouri,Missouri,SEC,18.000,2.3,33.000,14.900,70.500,,13,33,10,5,1
-team-missouri-state,Missouri State,Conference USA,-19.500,2.3,17.200,36.300,63.000,,129,119,129,1,4
+team-missouri-state,Missouri State,Conference USA,-19.500,2.3,17.200,36.300,64.833,,129,119,129,2,4
 team-navy,Navy,American Athletic,-0.200,2.3,26.300,26.400,65.400,,70,75,74,2,3
 team-nc-state,NC State,ACC,-1.300,2.3,29.200,30.600,71.667,,78,52,106,3,3
 team-nebraska,Nebraska,Big Ten,16.900,2.3,34.700,17.700,73.500,,14,22,20,5,1
@@ -94,7 +94,7 @@ team-purdue,Purdue,Big Ten,1.600,2.3,31.300,30.100,70.333,,62,42,100,3,3
 team-rice,Rice,American Athletic,-13.400,2.3,16.500,29.800,63.833,,120,122,99,1,5
 team-rutgers,Rutgers,Big Ten,-5.300,2.3,29.200,34.700,66.200,,94,52,125,1,4
 team-sacramento-state,Sacramento State,Mid-American,-24.700,2.3,12.100,36.600,68.833,,135,138,130,1,5
-team-sam-houston,Sam Houston,Conference USA,-16.500,2.3,17.100,33.300,67.800,,125,120,119,1,4
+team-sam-houston,Sam Houston,Conference USA,-16.500,2.3,17.100,33.300,65.833,,125,120,119,1,5
 team-san-diego-state,San Diego State,Pac-12,-10.200,2.3,19.500,30.100,61.500,,109,110,100,2,4
 team-san-jose-state,San José State,Mountain West,-12.200,2.3,16.000,27.900,68.500,,114,125,85,3,3
 team-smu,SMU,ACC,12.800,2.3,34.200,21.000,69.200,,26,25,31,4,1
@@ -132,7 +132,7 @@ team-virginia-tech,Virginia Tech,ACC,9.500,2.3,32.000,22.400,76.000,,39,38,45,4,
 team-wake-forest,Wake Forest,ACC,10.500,2.3,32.600,22.300,66.833,,34,34,43,5,1
 team-washington,Washington,Big Ten,7.100,2.3,28.200,21.100,66.167,,51,59,32,3,3
 team-washington-state,Washington State,Pac-12,-11.100,2.3,15.300,26.000,62.500,,111,127,69,1,5
-team-western-kentucky,Western Kentucky,Conference USA,-13.000,2.3,20.300,33.600,72.833,,117,107,120,2,4
+team-western-kentucky,Western Kentucky,Conference USA,-13.000,2.3,20.300,33.600,73.286,,117,107,120,3,4
 team-western-michigan,Western Michigan,Mid-American,-3.200,2.3,21.100,24.400,61.833,,88,105,55,4,2
 team-west-virginia,West Virginia,Big 12,-0.600,2.3,32.100,32.900,77.500,,73,36,116,3,3
 team-wisconsin,Wisconsin,Big Ten,10.500,2.3,26.300,15.800,62.000,,34,75,14,4,1
