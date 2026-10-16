@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-15",
+  "fetched_at": "2026-10-16T10:56:37.153Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401862800",
+      "commence_time": "2026-10-15T23:30Z",
+      "home_team": "UAB Blazers",
+      "away_team": "East Carolina Pirates",
+      "home_espnTeamId": "5",
+      "away_espnTeamId": "151",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 30,
+      "awayScore": 17,
+      "actualSpread": -13,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401869950",
+      "commence_time": "2026-10-15T23:30Z",
+      "home_team": "Old Dominion Monarchs",
+      "away_team": "Georgia Southern Eagles",
+      "home_espnTeamId": "295",
+      "away_espnTeamId": "290",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 15,
+      "awayScore": 23,
+      "actualSpread": 8,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401860923",
+      "commence_time": "2026-10-16T00:00Z",
+      "home_team": "Texas State Bobcats",
+      "away_team": "Colorado State Rams",
+      "home_espnTeamId": "326",
+      "away_espnTeamId": "36",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 66,
+      "awayScore": 27,
+      "actualSpread": -39,
+      "winner": "HOME"
+    }
+  ]
+}
