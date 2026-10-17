@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-16",
+  "fetched_at": "2026-10-17T10:18:27.249Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401862801",
+      "commence_time": "2026-10-16T23:30Z",
+      "home_team": "Tulane Green Wave",
+      "away_team": "Memphis Tigers",
+      "home_espnTeamId": "2655",
+      "away_espnTeamId": "235",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 31,
+      "awayScore": 17,
+      "actualSpread": -14,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858493",
+      "commence_time": "2026-10-17T00:00Z",
+      "home_team": "Purdue Boilermakers",
+      "away_team": "Washington Huskies",
+      "home_espnTeamId": "2509",
+      "away_espnTeamId": "264",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 26,
+      "awayScore": 38,
+      "actualSpread": 12,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401869844",
+      "commence_time": "2026-10-17T00:00Z",
+      "home_team": "Coastal Carolina Chanticleers",
+      "away_team": "App State Mountaineers",
+      "home_espnTeamId": "324",
+      "away_espnTeamId": "2026",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 32,
+      "awayScore": 35,
+      "actualSpread": 3,
+      "winner": "AWAY"
+    }
+  ]
+}
