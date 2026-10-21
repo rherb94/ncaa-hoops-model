@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-20",
+  "fetched_at": "2026-10-21T11:21:44.916Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401871055",
+      "commence_time": "2026-10-20T23:00Z",
+      "home_team": "Florida International Panthers",
+      "away_team": "Middle Tennessee Blue Raiders",
+      "home_espnTeamId": "2229",
+      "away_espnTeamId": "2393",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 23,
+      "awayScore": 26,
+      "actualSpread": 3,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401871069",
+      "commence_time": "2026-10-20T23:00Z",
+      "home_team": "Delaware Blue Hens",
+      "away_team": "Missouri State Bears",
+      "home_espnTeamId": "48",
+      "away_espnTeamId": "2623",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 61,
+      "awayScore": 38,
+      "actualSpread": -23,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401871092",
+      "commence_time": "2026-10-20T23:30Z",
+      "home_team": "Marshall Thundering Herd",
+      "away_team": "South Alabama Jaguars",
+      "home_espnTeamId": "276",
+      "away_espnTeamId": "6",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 20,
+      "awayScore": 13,
+      "actualSpread": -7,
+      "winner": "HOME"
+    }
+  ]
+}
