@@ -24,13 +24,13 @@ team-clemson,Clemson,ACC,4.000,2.3,23.100,19.500,70.333,,56,98,25,4,2
 team-coastal-carolina,Coastal Carolina,Sun Belt,-8.900,2.3,24.900,34.000,65.000,,105,88,122,2,5
 team-colorado,Colorado,Big 12,-1.300,2.3,22.800,23.600,71.667,,80,99,48,2,4
 team-colorado-state,Colorado State,Pac-12,-9.600,2.3,27.700,37.300,68.333,,111,64,132,2,4
-team-delaware,Delaware,Conference USA,-12.900,2.3,21.100,33.700,65.167,,120,102,121,2,4
+team-delaware,Delaware,Conference USA,-12.900,2.3,21.100,33.700,66.571,,120,102,121,3,4
 team-duke,Duke,ACC,6.500,2.3,30.100,23.700,71.833,,50,44,50,4,2
 team-east-carolina,East Carolina,American Athletic,-3.800,2.3,20.900,24.500,66.167,,91,105,58,3,3
 team-eastern-michigan,Eastern Michigan,Mid-American,-14.400,2.3,17.800,31.800,68.500,,123,115,113,4,4
 team-florida,Florida,SEC,9.200,2.3,33.500,24.900,72.857,,38,27,61,5,2
 team-florida-atlantic,Florida Atlantic,American Athletic,-2.600,2.3,28.900,31.800,77.000,,86,54,113,4,2
-team-florida-international,Florida International,Conference USA,-6.200,2.3,17.500,23.700,72.667,,97,119,50,3,3
+team-florida-international,Florida International,Conference USA,-6.200,2.3,17.500,23.700,70.857,,97,119,50,3,4
 team-florida-state,Florida State,ACC,4.900,2.3,32.800,28.200,65.286,,55,33,89,3,4
 team-fresno-state,Fresno State,Pac-12,3.400,2.3,26.500,23.500,62.143,,59,73,45,4,3
 team-georgia,Georgia,SEC,26.500,2.3,39.400,13.300,62.714,,2,2,4,6,1
@@ -55,7 +55,7 @@ team-louisiana,Louisiana,Sun Belt,1.900,2.3,27.600,25.600,67.143,,63,66,63,5,2
 team-louisiana-tech,Louisiana Tech,Sun Belt,-3.800,2.3,24.900,28.500,66.000,,91,88,93,4,2
 team-louisville,Louisville,ACC,12.900,2.3,38.900,25.900,63.714,,24,5,65,4,3
 team-lsu,LSU,SEC,22.600,2.3,37.300,14.400,80.429,,6,10,7,5,2
-team-marshall,Marshall,Sun Belt,-13.200,2.3,24.100,37.300,71.500,,121,93,132,3,3
+team-marshall,Marshall,Sun Belt,-13.200,2.3,24.100,37.300,71.000,,121,93,132,4,3
 team-maryland,Maryland,Big Ten,-2.900,2.3,26.900,29.900,69.429,,88,69,102,2,5
 team-massachusetts,Massachusetts,Mid-American,-6.500,2.3,20.200,26.800,58.714,,99,109,75,4,3
 team-memphis,Memphis,American Athletic,6.500,2.3,32.800,26.300,70.143,,50,33,72,5,2
@@ -63,11 +63,11 @@ team-miami,Miami,ACC,25.300,2.3,40.200,15.200,70.500,,3,1,10,6,0
 team-miami-oh,Miami (OH),Mid-American,-4.000,2.3,23.400,27.200,57.857,,94,97,79,4,3
 team-michigan,Michigan,Big Ten,13.000,2.3,26.200,13.200,58.333,,23,75,2,4,2
 team-michigan-state,Michigan State,Big Ten,-1.100,2.3,24.600,26.100,65.000,,79,91,68,2,5
-team-middle-tennessee,Middle Tennessee,Conference USA,-17.300,2.3,17.600,35.000,58.667,,129,117,127,3,3
+team-middle-tennessee,Middle Tennessee,Conference USA,-17.300,2.3,17.600,35.000,59.857,,129,117,127,4,3
 team-minnesota,Minnesota,Big Ten,3.100,2.3,25.000,21.800,64.000,,60,85,39,4,2
 team-mississippi-state,Mississippi State,SEC,7.300,2.3,33.700,26.800,71.500,,47,24,75,4,2
 team-missouri,Missouri,SEC,13.600,2.3,30.100,16.600,70.429,,20,44,16,5,2
-team-missouri-state,Missouri State,Conference USA,-16.600,2.3,17.800,34.000,64.833,,126,115,122,2,4
+team-missouri-state,Missouri State,Conference USA,-16.600,2.3,17.800,34.000,63.857,,126,115,122,2,5
 team-navy,Navy,American Athletic,0.200,2.3,28.300,28.000,64.333,,72,58,88,2,4
 team-nc-state,NC State,ACC,-1.000,2.3,29.200,30.300,71.667,,78,51,104,3,3
 team-nebraska,Nebraska,Big Ten,15.600,2.3,32.600,16.900,72.714,,16,37,18,5,2
@@ -98,7 +98,7 @@ team-sam-houston,Sam Houston,Conference USA,-16.900,2.3,14.700,31.200,65.833,,12
 team-san-diego-state,San Diego State,Pac-12,-8.700,2.3,20.300,29.500,61.714,,104,108,99,3,4
 team-san-jose-state,San José State,Mountain West,-9.300,2.3,17.600,26.400,67.286,,109,117,73,4,3
 team-smu,SMU,ACC,12.900,2.3,33.000,19.800,69.500,,24,31,27,5,1
-team-south-alabama,South Alabama,Sun Belt,-11.200,2.3,28.800,39.700,72.833,,113,56,136,4,2
+team-south-alabama,South Alabama,Sun Belt,-11.200,2.3,28.800,39.700,73.286,,113,56,136,4,3
 team-south-carolina,South Carolina,SEC,10.000,2.3,33.300,23.600,74.167,,32,29,48,3,3
 team-southern-miss,Southern Miss,Sun Belt,-17.100,2.3,19.600,36.300,69.000,,128,112,128,1,5
 team-south-florida,South Florida,American Athletic,2.700,2.3,26.600,24.200,60.143,,61,71,55,5,2
