@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-21",
+  "fetched_at": "2026-10-22T11:21:06.664Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401871070",
+      "commence_time": "2026-10-22T00:00Z",
+      "home_team": "Sam Houston Bearkats",
+      "away_team": "New Mexico State Aggies",
+      "home_espnTeamId": "2534",
+      "away_espnTeamId": "166",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 24,
+      "awayScore": 30,
+      "actualSpread": 6,
+      "winner": "AWAY"
+    }
+  ]
+}
