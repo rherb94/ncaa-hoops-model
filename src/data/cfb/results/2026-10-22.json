@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-22",
+  "fetched_at": "2026-10-23T11:11:43.677Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401869845",
+      "commence_time": "2026-10-22T23:00Z",
+      "home_team": "App State Mountaineers",
+      "away_team": "James Madison Dukes",
+      "home_espnTeamId": "2026",
+      "away_espnTeamId": "256",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 34,
+      "awayScore": 31,
+      "actualSpread": -3,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401871056",
+      "commence_time": "2026-10-22T23:00Z",
+      "home_team": "Kennesaw State Owls",
+      "away_team": "Liberty Flames",
+      "home_espnTeamId": "338",
+      "away_espnTeamId": "2335",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 6,
+      "awayScore": 34,
+      "actualSpread": 28,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401862807",
+      "commence_time": "2026-10-22T23:30Z",
+      "home_team": "Memphis Tigers",
+      "away_team": "East Carolina Pirates",
+      "home_espnTeamId": "235",
+      "away_espnTeamId": "151",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 41,
+      "awayScore": 34,
+      "actualSpread": -7,
+      "winner": "HOME"
+    }
+  ]
+}
