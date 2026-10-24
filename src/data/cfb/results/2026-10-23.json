@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-23",
+  "fetched_at": "2026-10-24T10:29:22.371Z",
+  "total_games": 5,
+  "completed_games": 5,
+  "games": [
+    {
+      "espnEventId": "401858271",
+      "commence_time": "2026-10-23T23:00Z",
+      "home_team": "Virginia Cavaliers",
+      "away_team": "Duke Blue Devils",
+      "home_espnTeamId": "258",
+      "away_espnTeamId": "150",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 16,
+      "awayScore": 19,
+      "actualSpread": 3,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401861965",
+      "commence_time": "2026-10-23T23:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Massachusetts Minutemen",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "113",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 35,
+      "awayScore": 16,
+      "actualSpread": -19,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401862808",
+      "commence_time": "2026-10-24T00:30Z",
+      "home_team": "Tulsa Golden Hurricane",
+      "away_team": "Army Black Knights",
+      "home_espnTeamId": "202",
+      "away_espnTeamId": "349",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 35,
+      "awayScore": 38,
+      "actualSpread": 3,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401864525",
+      "commence_time": "2026-10-24T01:00Z",
+      "home_team": "Wyoming Cowboys",
+      "away_team": "Air Force Falcons",
+      "home_espnTeamId": "2751",
+      "away_espnTeamId": "2005",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 28,
+      "awayScore": 14,
+      "actualSpread": -14,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858272",
+      "commence_time": "2026-10-24T02:30Z",
+      "home_team": "Stanford Cardinal",
+      "away_team": "NC State Wolfpack",
+      "home_espnTeamId": "24",
+      "away_espnTeamId": "152",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 31,
+      "awayScore": 28,
+      "actualSpread": -3,
+      "winner": "HOME"
+    }
+  ]
+}
