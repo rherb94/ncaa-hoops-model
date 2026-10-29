@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-28",
+  "fetched_at": "2026-10-29T12:28:36.556Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401871058",
+      "commence_time": "2026-10-28T23:00Z",
+      "home_team": "Middle Tennessee Blue Raiders",
+      "away_team": "Kennesaw State Owls",
+      "home_espnTeamId": "2393",
+      "away_espnTeamId": "338",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 28,
+      "awayScore": 44,
+      "actualSpread": 16,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401871057",
+      "commence_time": "2026-10-29T00:00Z",
+      "home_team": "New Mexico State Aggies",
+      "away_team": "Jacksonville State Gamecocks",
+      "home_espnTeamId": "166",
+      "away_espnTeamId": "55",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 0,
+      "awayScore": 24,
+      "actualSpread": 24,
+      "winner": "AWAY"
+    }
+  ]
+}
