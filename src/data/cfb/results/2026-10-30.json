@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-30",
+  "fetched_at": "2026-10-31T11:51:22.766Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401862813",
+      "commence_time": "2026-10-30T23:00Z",
+      "home_team": "Charlotte 49ers",
+      "away_team": "Tulane Green Wave",
+      "home_espnTeamId": "2429",
+      "away_espnTeamId": "2655",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 31,
+      "awayScore": 38,
+      "actualSpread": 7,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401856844",
+      "commence_time": "2026-10-30T23:30Z",
+      "home_team": "UCF Knights",
+      "away_team": "Baylor Bears",
+      "home_espnTeamId": "2116",
+      "away_espnTeamId": "239",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 9,
+      "awayScore": 41,
+      "actualSpread": 32,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401866451",
+      "commence_time": "2026-10-31T02:30Z",
+      "home_team": "Sacramento State Hornets",
+      "away_team": "Kent State Golden Flashes",
+      "home_espnTeamId": "16",
+      "away_espnTeamId": "2309",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 31,
+      "awayScore": 10,
+      "actualSpread": -21,
+      "winner": "HOME"
+    }
+  ]
+}
