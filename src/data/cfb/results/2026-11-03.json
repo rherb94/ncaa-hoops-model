@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-03",
+  "fetched_at": "2026-11-04T13:55:50.637Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401866453",
+      "commence_time": "2026-11-04T00:00Z",
+      "home_team": "Akron Zips",
+      "away_team": "Ohio Bobcats",
+      "home_espnTeamId": "2006",
+      "away_espnTeamId": "195",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 20,
+      "awayScore": 28,
+      "actualSpread": 8,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401866454",
+      "commence_time": "2026-11-04T01:00Z",
+      "home_team": "Miami (OH) RedHawks",
+      "away_team": "Buffalo Bulls",
+      "home_espnTeamId": "193",
+      "away_espnTeamId": "2084",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 31,
+      "awayScore": 34,
+      "actualSpread": 3,
+      "winner": "AWAY"
+    }
+  ]
+}
