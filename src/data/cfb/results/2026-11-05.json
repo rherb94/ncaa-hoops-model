@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-05",
+  "fetched_at": "2026-11-06T13:53:31.606Z",
+  "total_games": 2,
+  "completed_games": 2,
+  "games": [
+    {
+      "espnEventId": "401862817",
+      "commence_time": "2026-11-06T00:30Z",
+      "home_team": "Florida Atlantic Owls",
+      "away_team": "UTSA Roadrunners",
+      "home_espnTeamId": "2226",
+      "away_espnTeamId": "2636",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 60,
+      "awayScore": 29,
+      "actualSpread": -31,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401869964",
+      "commence_time": "2026-11-06T01:00Z",
+      "home_team": "Southern Miss Golden Eagles",
+      "away_team": "James Madison Dukes",
+      "home_espnTeamId": "2572",
+      "away_espnTeamId": "256",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 23,
+      "awayScore": 54,
+      "actualSpread": 31,
+      "winner": "AWAY"
+    }
+  ]
+}
