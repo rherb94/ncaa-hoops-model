@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { loadEspnTeamsIndex, norm as espnNorm } from "@/data/espn";
 import { loadTeams } from "@/data/teams";
+import { getRatingsStatus } from "@/data/ratingsMeta";
 import { resolveTeamId } from "@/data/teamAliases";
 import {
   computeAnyEfficiencyModel,
@@ -474,10 +475,20 @@ async function main() {
     });
   }
 
+  // Record which ratings this snapshot was built on, and shout if they're old —
+  // picks made on stale ratings should be identifiable afterwards.
+  const ratings = getRatingsStatus(LEAGUE);
+  if (ratings.stale) {
+    const msg = `Snapshot for ${DATE} was computed on STALE ratings. ${ratings.message ?? ""}`;
+    console.log(process.env.GITHUB_ACTIONS ? `::warning::${msg}` : `⚠️  ${msg}`);
+  }
+
   // Write output snapshot
   saveJson(OUT_FILE, {
     date: DATE,
     captured_at: capturedAt,
+    ratings_updated_at: ratings.updatedAt,
+    ratings_stale: ratings.stale,
     games: outGames,
   });
 

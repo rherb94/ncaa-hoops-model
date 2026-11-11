@@ -45,10 +45,11 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/ncaam/teams.csv src/data/ncaam/teamAliases.csv
+          git add src/data/ncaam/teams.csv src/data/ncaam/teamAliases.csv src/data/ncaam/ratingsMeta.json
           if git diff --cached --quiet; then
-            echo "No changes to teams.csv or teamAliases.csv."
+            echo "No changes."
           else
             git commit -m "chore: update Torvik ratings $(date -u +%Y-%m-%d) [skip ci]"
+            git pull --rebase origin main
             git push
           fi

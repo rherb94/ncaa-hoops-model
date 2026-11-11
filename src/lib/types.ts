@@ -8,6 +8,7 @@ export type ConsensusOdds = {
 };
 
 import type { ModelSignal } from "./signal";
+import type { RatingsStatus } from "./ratingsFreshness";
 export type { ModelSignal };
 
 export type ModelBlock = {
@@ -70,6 +71,8 @@ export type UnmappedAlias = {
 export type SlateResponse = {
   date: string;
   lastUpdatedISO: string;
+  /** Freshness of the team ratings the model lines were computed from. */
+  ratings?: RatingsStatus;
   games: SlateGame[];
   unmappedAliases?: UnmappedAlias[];
 };
@@ -81,5 +84,6 @@ export type DateSlate = {
 
 export type UpcomingResponse = {
   lastUpdatedISO: string;
+  ratings?: RatingsStatus;
   dates: DateSlate[];
 };

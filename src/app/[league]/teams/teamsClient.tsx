@@ -24,11 +24,24 @@ type Team = {
   torvikDeRank?: number;
 };
 
-async function fetchTeams(league: LeagueId): Promise<Team[]> {
+type RatingsInfo = { updatedAt: string | null; stale: boolean; message?: string };
+
+async function fetchTeams(league: LeagueId): Promise<{ teams: Team[]; ratings?: RatingsInfo }> {
   const res = await fetch(`/api/${league}/teams`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to load teams");
   const data = await res.json();
-  return data.teams as Team[];
+  return { teams: data.teams as Team[], ratings: data.ratings as RatingsInfo | undefined };
+}
+
+function formatUpdated(iso: string) {
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZoneName: "short",
+  }).format(new Date(iso));
 }
 
 type SortKey = "torvikRank" | "adjO" | "adjD" | "tempo" | "barthag" | "hca" | "name" | "record";
@@ -50,6 +63,7 @@ function fmt(n: number | undefined | null, digits = 1) {
 export default function TeamsClient({ league }: { league: LeagueId }) {
   const isCfb = league === "cfb";
   const [teams, setTeams] = useState<Team[]>([]);
+  const [ratings, setRatings] = useState<RatingsInfo | undefined>();
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState("");
   const [conf, setConf] = useState<string>("ALL");
@@ -59,7 +73,9 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
   useEffect(() => {
     (async () => {
       try {
-        setTeams(await fetchTeams(league));
+        const data = await fetchTeams(league);
+        setTeams(data.teams);
+        setRatings(data.ratings);
       } finally {
         setLoading(false);
       }
@@ -121,8 +137,14 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
         <div>
           <h1 className="text-2xl font-bold">Teams</h1>
           <p className="text-sm text-zinc-500">
-            {teams.length} teams · {isCfb ? "SP+ ratings" : "Torvik ratings"} updated daily
+            {teams.length} teams · {isCfb ? "SP+ ratings" : "Torvik ratings"}{" "}
+            {ratings?.updatedAt ? `updated ${formatUpdated(ratings.updatedAt)}` : "updated daily"}
           </p>
+          {ratings?.stale && (
+            <p role="alert" className="mt-1 text-sm text-amber-300">
+              ⚠ Stale ratings. {ratings.message}
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">

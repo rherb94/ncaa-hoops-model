@@ -21,6 +21,16 @@ function formatDateHeading(dateStr: string): string {
   });
 }
 
+function formatUpdated(iso: string) {
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    weekday: "short",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZoneName: "short",
+  }).format(new Date(iso));
+}
+
 export function SlateClient({ date, league }: { date: string; league: LeagueId }) {
   const [mode, setMode] = useState<ViewMode>("today");
   const [todayData, setTodayData] = useState<SlateResponse | null>(null);
@@ -78,6 +88,8 @@ export function SlateClient({ date, league }: { date: string; league: LeagueId }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [safeDate, mode]);
 
+  const ratings = mode === "today" ? todayData?.ratings : upcomingData?.ratings;
+
   const pillBase = "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors";
   const pillActive = "bg-cyan-600/30 text-cyan-300 border border-cyan-500/40";
   const pillInactive = "bg-zinc-800/60 text-zinc-400 border border-white/5 hover:bg-zinc-800";
@@ -124,6 +136,19 @@ export function SlateClient({ date, league }: { date: string; league: LeagueId }
       {err ? (
         <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-sm text-rose-100">
           {err}
+        </div>
+      ) : null}
+
+      {ratings?.stale ? (
+        <div
+          role="alert"
+          className="rounded-xl border border-amber-400/40 bg-amber-400/10 p-3 text-sm text-amber-100"
+        >
+          <span className="font-semibold">⚠ Stale ratings.</span> {ratings.message}
+        </div>
+      ) : ratings?.updatedAt ? (
+        <div className="text-xs text-zinc-600">
+          Ratings updated {formatUpdated(ratings.updatedAt)}
         </div>
       ) : null}
 

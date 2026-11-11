@@ -12,8 +12,8 @@ git pull --rebase --autostash origin main
 npx tsx src/scripts/updateTeamsFromTorvik.ts
 LEAGUE=ncaaw npx tsx src/scripts/updateTeamsFromTorvik.ts
 
-git add src/data/ncaam/teams.csv src/data/ncaam/teamAliases.csv \
-        src/data/ncaaw/teams.csv src/data/ncaaw/teamAliases.csv
+git add src/data/ncaam/teams.csv src/data/ncaam/teamAliases.csv src/data/ncaam/ratingsMeta.json \
+        src/data/ncaaw/teams.csv src/data/ncaaw/teamAliases.csv src/data/ncaaw/ratingsMeta.json
 if git diff --cached --quiet; then
   echo "Ratings unchanged — nothing to commit."
 else

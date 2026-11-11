@@ -7,6 +7,7 @@ import path from "node:path";
 import { TheOddsApiProvider } from "@/lib/odds/providers/theOddsApi";
 import { loadTeams } from "@/data/teams";
 import { getLeague } from "@/lib/leagues";
+import { getRatingsStatus } from "@/data/ratingsMeta";
 import type { LeagueConfig } from "@/lib/leagues";
 import type { SlateGame, SlateResponse, UpcomingResponse, GameOverrideInfo } from "@/lib/types";
 import { getGameOverrides } from "@/lib/overrides";
@@ -351,6 +352,7 @@ export async function GET(
 
     const body: UpcomingResponse = {
       lastUpdatedISO: new Date().toISOString(),
+      ratings: getRatingsStatus(league.id),
       dates,
     };
     return NextResponse.json(body);
@@ -378,6 +380,7 @@ export async function GET(
   const body: SlateResponse = {
     date,
     lastUpdatedISO: new Date().toISOString(),
+    ratings: getRatingsStatus(league.id),
     games,
     unmappedAliases: [],
   };

@@ -4,6 +4,7 @@ import type { NextRequest } from "next/server";
 import { getAllTeams } from "@/data/teams";
 import { getLeague } from "@/lib/leagues";
 import type { LeagueId } from "@/lib/leagues";
+import { getRatingsStatus } from "@/data/ratingsMeta";
 
 export async function GET(
   _req: NextRequest,
@@ -11,5 +12,8 @@ export async function GET(
 ) {
   const { league: leagueId } = await params;
   getLeague(leagueId); // validate — throws on unknown league
-  return NextResponse.json({ teams: getAllTeams(leagueId as LeagueId) });
+  return NextResponse.json({
+    teams: getAllTeams(leagueId as LeagueId),
+    ratings: getRatingsStatus(leagueId),
+  });
 }

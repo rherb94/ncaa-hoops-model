@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { basketballSeasonYear } from "@/lib/season";
+import { writeRatingsMeta } from "@/data/ratingsMeta";
 
 // Season year (the year the season ends in). Derived from today's date unless
 // YEAR is set; `||` so an empty string from a workflow input also falls back.
@@ -550,6 +551,14 @@ async function main() {
     });
   }
   console.log(`Torvik OVERALL URL: ${TORVIK_URL}`);
+
+  // Heartbeat: written on every successful pull, even when no rating changed,
+  // so the site can warn when the daily update has silently stopped.
+  writeRatingsMeta(LEAGUE, {
+    updatedAt: new Date().toISOString(),
+    season: YEAR,
+    source: TORVIK_LOCAL ? "local file" : new URL(TORVIK_URL).host,
+  });
 
   // 2) Home split (optional until you set URLs)
   if (TORVIK_HOME_LOCAL || TORVIK_HOME_URL) {
