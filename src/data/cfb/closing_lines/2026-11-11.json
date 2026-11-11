@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-11",
+  "last_updated": "2026-11-11T23:07:38.727Z",
+  "snapshot_times": [
+    "2026-11-11T23:05:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "a8f5a967982255fd6be0435c3b213b0f",
+      "home_team": "Ball State Cardinals",
+      "away_team": "Buffalo Bulls",
+      "commence_time": "2026-11-12T00:30:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    },
+    {
+      "oddsEventId": "88407c59161b47299b7d8f5d730f916c",
+      "home_team": "Central Michigan Chippewas",
+      "away_team": "Sacramento State Hornets",
+      "commence_time": "2026-11-12T00:30:00Z",
+      "homePoint": -17.5,
+      "awayPoint": 17.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    },
+    {
+      "oddsEventId": "5129a94416920cd3c476cd56af387f47",
+      "home_team": "Toledo Rockets",
+      "away_team": "UMass Minutemen",
+      "commence_time": "2026-11-12T00:30:00Z",
+      "homePoint": -14,
+      "awayPoint": 14,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    }
+  ]
+}
