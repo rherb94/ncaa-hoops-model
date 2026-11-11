@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-11",
+  "last_updated": "2026-11-11T23:08:41.350Z",
+  "snapshot_times": [
+    "2026-11-11T23:05:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "7ad133b20f9ee2145dd29257038f3623",
+      "home_team": "Kentucky Wildcats",
+      "away_team": "Evansville Purple Aces",
+      "commence_time": "2026-11-11T23:30:00Z",
+      "homePoint": -50.5,
+      "awayPoint": 50.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    },
+    {
+      "oddsEventId": "bf05f289f370a08742706fbdf13ab1e4",
+      "home_team": "Ole Miss Rebels",
+      "away_team": "Albany Great Danes",
+      "commence_time": "2026-11-12T00:00:00Z",
+      "homePoint": -30.5,
+      "awayPoint": 30.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    },
+    {
+      "oddsEventId": "131d2ee6ff8f43ac5f9940280f855940",
+      "home_team": "North Carolina Tar Heels",
+      "away_team": "North Carolina Central Eagles",
+      "commence_time": "2026-11-12T00:00:00Z",
+      "homePoint": -46.5,
+      "awayPoint": 46.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    },
+    {
+      "oddsEventId": "8baf644d41d3fd3005f01a963d085fd0",
+      "home_team": "Texas Longhorns",
+      "away_team": "South Dakota St Jackrabbits",
+      "commence_time": "2026-11-12T00:00:00Z",
+      "homePoint": -27.5,
+      "awayPoint": 27.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    },
+    {
+      "oddsEventId": "69bf0bc2fd0c0f216862ad3b191028d2",
+      "home_team": "Wisconsin Badgers",
+      "away_team": "Delaware Blue Hens",
+      "commence_time": "2026-11-12T00:30:00Z",
+      "homePoint": -25.5,
+      "awayPoint": 25.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    },
+    {
+      "oddsEventId": "dba231e9bcb81907c2772d5712c14a7b",
+      "home_team": "Vanderbilt Commodores",
+      "away_team": "Western Kentucky Hilltoppers",
+      "commence_time": "2026-11-12T00:30:00Z",
+      "homePoint": -46.5,
+      "awayPoint": 46.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    },
+    {
+      "oddsEventId": "eeea2853b492004acfa9a589eefc2efd",
+      "home_team": "Fresno St Bulldogs",
+      "away_team": "New Mexico Lobos",
+      "commence_time": "2026-11-12T02:30:00Z",
+      "homePoint": -5,
+      "awayPoint": 5,
+      "book": "betonlineag",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    },
+    {
+      "oddsEventId": "bcc63d750a942e1f5fb267de55ef6ae0",
+      "home_team": "San Diego St Aztecs",
+      "away_team": "Colorado Buffaloes",
+      "commence_time": "2026-11-12T03:00:00Z",
+      "homePoint": 5,
+      "awayPoint": -5,
+      "book": "betonlineag",
+      "snapshotTime": "2026-11-11T23:05:36Z"
+    }
+  ]
+}
