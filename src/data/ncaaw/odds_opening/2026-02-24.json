@@ -21,9 +21,9 @@
       "model": {
         "homeTeamId": "team-arizona",
         "awayTeamId": "team-houston",
-        "modelSpread": -7.8,
-        "edge": 0.7,
-        "signal": "NONE"
+        "modelSpread": -4.1,
+        "edge": 4.4,
+        "signal": "LEAN"
       }
     },
     {
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-colorado",
         "awayTeamId": "team-utah",
-        "modelSpread": -8.2,
-        "edge": -0.7,
+        "modelSpread": -8.1,
+        "edge": -0.6,
         "signal": "NONE"
       }
     }

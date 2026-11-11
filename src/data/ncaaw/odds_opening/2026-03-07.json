@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-duke",
         "awayTeamId": "team-notre-dame",
-        "modelSpread": -5.2,
-        "edge": -0.7,
+        "modelSpread": -2.8,
+        "edge": 1.7,
         "signal": "NONE"
       }
     },
@@ -45,9 +45,9 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-georgetown",
-        "modelSpread": -34.4,
-        "edge": 4.1,
-        "signal": "LEAN"
+        "modelSpread": -26.3,
+        "edge": 12.2,
+        "signal": "CAUTION"
       }
     },
     {
@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-boston-university",
         "awayTeamId": "team-american",
-        "modelSpread": -6.2,
-        "edge": 1.3,
+        "modelSpread": -5,
+        "edge": 2.5,
         "signal": "NONE"
       }
     },
@@ -219,8 +219,8 @@
       "model": {
         "homeTeamId": "team-louisville",
         "awayTeamId": "team-north-carolina",
-        "modelSpread": -1.9,
-        "edge": 0.6,
+        "modelSpread": -3.8,
+        "edge": -1.3,
         "signal": "NONE"
       }
     },
@@ -243,8 +243,8 @@
       "model": {
         "homeTeamId": "team-tcu",
         "awayTeamId": "team-kansas-st",
-        "modelSpread": -12,
-        "edge": -0.5,
+        "modelSpread": -9.6,
+        "edge": 1.9,
         "signal": "NONE"
       }
     },
@@ -267,9 +267,9 @@
       "model": {
         "homeTeamId": "team-iowa",
         "awayTeamId": "team-michigan",
-        "modelSpread": 4.2,
-        "edge": 0.7,
-        "signal": "NONE"
+        "modelSpread": -0.4,
+        "edge": -3.9,
+        "signal": "LEAN"
       }
     },
     {
@@ -291,9 +291,9 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-lsu",
-        "modelSpread": -2.4,
-        "edge": 3.1,
-        "signal": "LEAN"
+        "modelSpread": -4.3,
+        "edge": 1.2,
+        "signal": "NONE"
       }
     },
     {
@@ -315,9 +315,9 @@
       "model": {
         "homeTeamId": "team-west-virginia",
         "awayTeamId": "team-colorado",
-        "modelSpread": -7.6,
-        "edge": -12,
-        "signal": "STRONG"
+        "modelSpread": -1.9,
+        "edge": -10.4,
+        "signal": "CAUTION"
       }
     },
     {
@@ -339,9 +339,9 @@
       "model": {
         "homeTeamId": "team-texas",
         "awayTeamId": "team-mississippi",
-        "modelSpread": -15.7,
-        "edge": 1.8,
-        "signal": "NONE"
+        "modelSpread": -7.6,
+        "edge": 9.9,
+        "signal": "CAUTION"
       }
     }
   ]

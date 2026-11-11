@@ -21,9 +21,9 @@
       "model": {
         "homeTeamId": "team-houston-christian",
         "awayTeamId": "team-texas-a-m-corpus-chris",
-        "modelSpread": -6.7,
-        "edge": -1.2,
-        "signal": "NONE"
+        "modelSpread": -1.6,
+        "edge": 3.9,
+        "signal": "LEAN"
       }
     },
     {
@@ -45,9 +45,9 @@
       "model": {
         "homeTeamId": "team-belmont",
         "awayTeamId": "team-southern-illinois",
-        "modelSpread": -14.5,
-        "edge": 7,
-        "signal": "STRONG"
+        "modelSpread": -8.5,
+        "edge": 13,
+        "signal": "CAUTION"
       }
     },
     {
@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-milwaukee",
         "awayTeamId": "team-detroit-mercy",
-        "modelSpread": -2.8,
-        "edge": 3.7,
+        "modelSpread": -1.7,
+        "edge": 4.8,
         "signal": "LEAN"
       }
     },
@@ -93,9 +93,9 @@
       "model": {
         "homeTeamId": "team-weber-st",
         "awayTeamId": "team-portland-st",
-        "modelSpread": -10.6,
-        "edge": -3.1,
-        "signal": "LEAN"
+        "modelSpread": -5.3,
+        "edge": 2.2,
+        "signal": "NONE"
       }
     },
     {
@@ -117,9 +117,9 @@
       "model": {
         "homeTeamId": "team-montana",
         "awayTeamId": "team-northern-colorado",
-        "modelSpread": 6.8,
-        "edge": 0.3,
-        "signal": "NONE"
+        "modelSpread": -2.5,
+        "edge": -9,
+        "signal": "CAUTION"
       }
     }
   ]
