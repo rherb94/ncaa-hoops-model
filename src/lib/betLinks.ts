@@ -20,6 +20,11 @@ export type BetOption = {
    * "market"/"event" open the game; "home" is the sportsbook's front page.
    */
   level: BetLinkLevel;
+  /**
+   * The game's own page at the sportsbook, when known and different from
+   * `url`. Offered as a fallback if the bet-slip link doesn't take.
+   */
+  gameUrl?: string;
   /** True for the option with the best number (then best price). */
   best?: boolean;
 };
@@ -84,6 +89,9 @@ export function buildBetOptions(
       }
     }
 
+    const gameUrl =
+      safeBookUrl(book, l.eventLink, state) ?? safeBookUrl(book, l.spreadMarketLink, state) ?? undefined;
+
     const price = side === "HOME" ? l.spreadOddsHome : l.spreadOddsAway;
     out.push({
       book,
@@ -92,6 +100,7 @@ export function buildBetOptions(
       price: typeof price === "number" && Number.isFinite(price) ? price : null,
       url,
       level,
+      gameUrl: gameUrl && gameUrl !== url ? gameUrl : undefined,
     });
   }
 
