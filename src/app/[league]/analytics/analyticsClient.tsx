@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { LeagueId } from "@/lib/leagues";
+import { PageHeader, Segmented, ToolButton } from "@/components/PageHeader";
 
 // ---- types from API response -----------------------------------------------
 
@@ -165,10 +166,10 @@ function TableSection({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-xl border border-white/10 overflow-hidden">
+    <div className="overflow-hidden rounded-xl border border-white/[0.07] bg-zinc-900/30">
       <div className="px-4 py-2.5 bg-zinc-900 border-b border-white/10 flex items-center justify-between flex-wrap gap-2">
         <div>
-          <span className="text-xs font-semibold text-zinc-300">{title}</span>
+          <span className="text-sm font-semibold text-zinc-200">{title}</span>
           {subtitle && <span className="text-xs text-zinc-500 ml-2">{subtitle}</span>}
         </div>
       </div>
@@ -177,13 +178,13 @@ function TableSection({
   );
 }
 
-// ---- Spread Bias Table ------------------------------------------------------
+// ---- By spread Table ------------------------------------------------------
 
 function SpreadBiasTable({ rows }: { rows: SpreadRow[] }) {
   const hasData = rows.some((r) => r.games > 0);
   if (!hasData) {
     return (
-      <TableSection title="Spread Bias" subtitle="ATS performance by pick type">
+      <TableSection title="By spread" subtitle="ATS performance by pick type">
         <div className="px-4 py-6 text-xs text-zinc-600">No pick data yet.</div>
       </TableSection>
     );
@@ -196,7 +197,7 @@ function SpreadBiasTable({ rows }: { rows: SpreadRow[] }) {
   const totalWinPct = totalDecided > 0 ? Math.round((totalWins / totalDecided) * 100) : null;
 
   return (
-    <TableSection title="Spread Bias" subtitle="ATS performance by pick type (from the picked team's perspective)">
+    <TableSection title="By spread" subtitle="record against the spread by the size of the line, from the picked team's side">
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
@@ -204,9 +205,9 @@ function SpreadBiasTable({ rows }: { rows: SpreadRow[] }) {
               <th className="px-4 py-2 text-left  font-medium">Type</th>
               <th className="px-3 py-2 text-right font-medium">Range</th>
               <th className="px-3 py-2 text-right font-medium">Picks</th>
-              <th className="px-3 py-2 text-right font-medium">W-L</th>
-              <th className="px-3 py-2 text-right font-medium">Win%</th>
-              <th className="px-3 py-2 text-right font-medium">Avg Edge</th>
+              <th className="px-3 py-2 text-right font-medium">Record</th>
+              <th className="px-3 py-2 text-right font-medium">Win %</th>
+              <th className="px-3 py-2 text-right font-medium">Avg edge</th>
               <th className="px-3 py-2 text-right font-medium">Avg CLV</th>
             </tr>
           </thead>
@@ -273,14 +274,14 @@ function TeamFrequencyTable({ rows }: { rows: TeamRow[] }) {
 
   if (!hasData) {
     return (
-      <TableSection title="Team Frequency" subtitle="Pick distribution by team">
+      <TableSection title="By team" subtitle="Pick distribution by team">
         <div className="px-4 py-6 text-xs text-zinc-600">No team data yet.</div>
       </TableSection>
     );
   }
 
   return (
-    <TableSection title="Team Frequency" subtitle={`${ALARM_THRESHOLD}+ picks flagged ⚑ as potential overvaluation`}>
+    <TableSection title="By team" subtitle={`${ALARM_THRESHOLD}+ plays on one team is flagged: the model may be overrating it`}>
       <div className="overflow-x-auto">
         <div className="px-4 py-2 flex items-center gap-2 border-b border-white/5">
           <button
@@ -311,7 +312,7 @@ function TeamFrequencyTable({ rows }: { rows: TeamRow[] }) {
               <th className="px-4 py-2 text-left font-medium text-zinc-500">Team</th>
               <SortHeader label="Apps"    col="appearances" current={sortKey} dir={sortDir} onClick={handleSort} />
               <SortHeader label="Picks"   col="pick_for"    current={sortKey} dir={sortDir} onClick={handleSort} />
-              <th className="px-3 py-2 text-right font-medium text-zinc-500">W-L</th>
+              <th className="px-3 py-2 text-right font-medium text-zinc-500">Record</th>
               <SortHeader label="Win%"    col="win_pct"     current={sortKey} dir={sortDir} onClick={handleSort} />
               <SortHeader label="Avg Edge" col="avg_edge"   current={sortKey} dir={sortDir} onClick={handleSort} />
               <SortHeader label="Avg CLV"  col="avg_clv"    current={sortKey} dir={sortDir} onClick={handleSort} />
@@ -389,21 +390,21 @@ function ConferenceTable({ rows }: { rows: ConfRow[] }) {
 
   if (rows.length === 0) {
     return (
-      <TableSection title="Conference Breakdown" subtitle="Pick performance by conference">
+      <TableSection title="By conference" subtitle="Pick performance by conference">
         <div className="px-4 py-6 text-xs text-zinc-600">No conference data yet.</div>
       </TableSection>
     );
   }
 
   return (
-    <TableSection title="Conference Breakdown" subtitle="Model performance grouped by picked team's conference">
+    <TableSection title="By conference" subtitle="Model performance grouped by picked team's conference">
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
             <tr className="border-b border-white/10">
               <th className="px-4 py-2 text-left font-medium text-zinc-500">Conference</th>
               <SortHeader label="Picks"       col="pick_games"       current={sortKey} dir={sortDir} onClick={handleSort} />
-              <th className="px-3 py-2 text-right font-medium text-zinc-500">W-L</th>
+              <th className="px-3 py-2 text-right font-medium text-zinc-500">Record</th>
               <SortHeader label="Win%"         col="win_pct"          current={sortKey} dir={sortDir} onClick={handleSort} />
               <SortHeader label="Avg Err"      col="avg_model_error"  current={sortKey} dir={sortDir} onClick={handleSort} />
             </tr>
@@ -445,7 +446,7 @@ function DogFavSplitTable({ rows }: { rows: DogFavRow[] }) {
   const totalPicks = rows.reduce((s, r) => s + r.picks, 0);
 
   return (
-    <TableSection title="Underdog / Favorite Split" subtitle="binary split: getting points = dog, laying points = fav">
+    <TableSection title="Underdogs vs favorites" subtitle="getting points is an underdog, laying points is a favorite">
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
@@ -453,9 +454,9 @@ function DogFavSplitTable({ rows }: { rows: DogFavRow[] }) {
               <th className="px-4 py-2 text-left  font-medium">Type</th>
               <th className="px-3 py-2 text-right font-medium">Picks</th>
               <th className="px-3 py-2 text-right font-medium">% of Picks</th>
-              <th className="px-3 py-2 text-right font-medium">W-L</th>
-              <th className="px-3 py-2 text-right font-medium">Win%</th>
-              <th className="px-3 py-2 text-right font-medium">Avg Edge</th>
+              <th className="px-3 py-2 text-right font-medium">Record</th>
+              <th className="px-3 py-2 text-right font-medium">Win %</th>
+              <th className="px-3 py-2 text-right font-medium">Avg edge</th>
               <th className="px-3 py-2 text-right font-medium">Avg CLV</th>
             </tr>
           </thead>
@@ -504,16 +505,16 @@ function HomeAwaySplitTable({ rows }: { rows: SideRow[] }) {
   if (!hasData) return null;
 
   return (
-    <TableSection title="Home / Away Split" subtitle="ATS record by pick direction">
+    <TableSection title="Home vs away" subtitle="record by which side was picked">
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
             <tr className="border-b border-white/10 text-zinc-500">
               <th className="px-4 py-2 text-left  font-medium">Direction</th>
               <th className="px-3 py-2 text-right font-medium">Picks</th>
-              <th className="px-3 py-2 text-right font-medium">W-L</th>
-              <th className="px-3 py-2 text-right font-medium">Win%</th>
-              <th className="px-3 py-2 text-right font-medium">Avg Edge</th>
+              <th className="px-3 py-2 text-right font-medium">Record</th>
+              <th className="px-3 py-2 text-right font-medium">Win %</th>
+              <th className="px-3 py-2 text-right font-medium">Avg edge</th>
               <th className="px-3 py-2 text-right font-medium">Avg CLV</th>
             </tr>
           </thead>
@@ -552,6 +553,13 @@ function HomeAwaySplitTable({ rows }: { rows: SideRow[] }) {
 }
 
 // ---- Main component ---------------------------------------------------------
+
+function fmtDay(dateStr?: string): string {
+  if (!dateStr) return "—";
+  const [y, m, d] = dateStr.split("-").map(Number);
+  if (!y || !m || !d) return dateStr;
+  return new Date(y, m - 1, d).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+}
 
 export default function AnalyticsClient({ league }: { league: LeagueId }) {
   const [data, setData]         = useState<AnalyticsResponse | null>(null);
@@ -615,82 +623,58 @@ export default function AnalyticsClient({ league }: { league: LeagueId }) {
 
   return (
     <div className="space-y-6">
-      {/* header */}
-      <div className="space-y-3">
-        <div className="flex flex-col sm:flex-row sm:items-start gap-3">
-          <div className="flex-1">
-            <div className="text-xs text-zinc-400">Model Analytics</div>
-            <div className="text-sm text-zinc-500">
-              {dates_analyzed} day{dates_analyzed !== 1 ? "s" : ""} · {date_range.from} → {date_range.to}
-            </div>
-          </div>
-        </div>
-
-        {/* time range pills */}
-        <div className="flex items-center gap-2 flex-wrap">
-          {([["7", "Last 7 Days"], ["30", "Last 30 Days"], ["all", "Full Season"]] as const).map(([val, label]) => (
-            <button
-              key={val}
-              onClick={() => setRange(val)}
-              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-                range === val
-                  ? "bg-zinc-700 text-zinc-100"
-                  : "bg-zinc-800/60 text-zinc-500 hover:text-zinc-300"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-          <span className="w-px h-5 bg-zinc-700 mx-1" />
-          <button
-            onClick={() => setNeutralOnly((v) => !v)}
-            className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-              neutralOnly
-                ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/30"
-                : "bg-zinc-800 text-zinc-500 hover:text-zinc-300 hover:bg-zinc-700"
-            }`}
-          >
-            {neutralOnly ? "Neutral only" : "Neutral only"}
-          </button>
-          <button
-            onClick={() => setBackfilled((v) => !v)}
-            className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-              backfilled
-                ? "bg-amber-500/20 text-amber-400 border border-amber-500/30 hover:bg-amber-500/30"
-                : "bg-zinc-800 text-zinc-500 hover:text-zinc-300 hover:bg-zinc-700"
-            }`}
-          >
-            {backfilled ? "Hide backfilled" : "Include backfilled"}
-          </button>
-          <button
-            onClick={() => load(backfilled, neutralOnly, range)}
-            className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:bg-zinc-700"
-          >
-            Refresh
-          </button>
-        </div>
-      </div>
+      <PageHeader
+        title="Analytics"
+        meta={
+          <>
+            Where the plays come from and how each kind has done · {dates_analyzed} day
+            {dates_analyzed !== 1 ? "s" : ""}, {fmtDay(date_range.from)} to {fmtDay(date_range.to)}
+          </>
+        }
+      >
+        <Segmented
+          label="Time range"
+          value={range}
+          onChange={setRange}
+          options={[
+            { value: "7", label: "Last 7 days" },
+            { value: "30", label: "Last 30 days" },
+            { value: "all", label: "Season" },
+          ]}
+        />
+        <ToolButton onClick={() => setNeutralOnly((v) => !v)} active={neutralOnly}>
+          Neutral site only
+        </ToolButton>
+        <ToolButton
+          onClick={() => setBackfilled((v) => !v)}
+          active={backfilled}
+          title="Backfilled dates were graded after the fact with later ratings, so they overstate the model"
+        >
+          {backfilled ? "Hide backfilled" : "Include backfilled"}
+        </ToolButton>
+        <ToolButton onClick={() => load(backfilled, neutralOnly, range)}>Refresh</ToolButton>
+      </PageHeader>
 
       {/* bias summary callout */}
       {totalPicksCounted > 0 && (
         <div className="rounded-xl border border-white/10 bg-zinc-900/50 px-4 py-3 space-y-1.5">
-          <div className="text-xs font-semibold text-zinc-400 mb-2">Bias Snapshot</div>
+          <div className="mb-2 text-sm font-semibold text-zinc-200">Where the plays lean</div>
           <div className="flex flex-wrap gap-x-6 gap-y-1.5 text-xs text-zinc-500">
             <span>
-              Underdog picks:{" "}
+              Underdogs (3+ points):{" "}
               <span className={`font-semibold ${underdogPicks / totalPicksCounted > 0.5 ? "text-amber-400" : "text-zinc-300"}`}>
                 {underdogPicks} ({Math.round((underdogPicks / totalPicksCounted) * 100)}%)
               </span>
             </span>
             <span>
-              Favorite picks:{" "}
+              Favorites (3+ points):{" "}
               <span className={`font-semibold ${favPicks / totalPicksCounted > 0.5 ? "text-blue-400" : "text-zinc-300"}`}>
                 {favPicks} ({Math.round((favPicks / totalPicksCounted) * 100)}%)
               </span>
             </span>
             {alarmTeams.length > 0 && (
               <span>
-                High-frequency teams:{" "}
+                Teams picked most:{" "}
                 <span className="font-semibold text-amber-400">
                   {alarmTeams.map((t) => `${t.team_name} (${t.pick_for})`).join(", ")}
                 </span>

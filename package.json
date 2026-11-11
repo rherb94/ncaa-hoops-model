@@ -13,9 +13,11 @@
     "db:studio": "drizzle-kit studio",
     "db:seed": "tsx src/scripts/migrateJsonToDb.ts",
     "intraday-picks": "tsx src/scripts/snapshotIntradayPicks.ts",
-    "ratings": "bash scripts/update-ratings.sh"
+    "ratings": "bash scripts/update-ratings.sh",
+    "season-record": "tsx src/scripts/updateSeasonRecord.ts"
   },
   "dependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
     "@vercel/postgres": "^0.10.0",
     "drizzle-orm": "^0.45.1",
     "next": "16.1.6",

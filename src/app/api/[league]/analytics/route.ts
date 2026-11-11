@@ -218,11 +218,11 @@ function spreadBucketKey(openingHomePoint: number, pickSide: "HOME" | "AWAY"): s
 }
 
 const SPREAD_BUCKET_META: Record<string, { label: string; range: string; order: number }> = {
-  big_fav: { label: "Big Favorite", range: "< −7",      order: 0 },
+  big_fav: { label: "Big favorite", range: "< −7",      order: 0 },
   fav:     { label: "Favorite",     range: "−7 to −3",  order: 1 },
   pick:    { label: "Pick'em",      range: "−3 to +3",  order: 2 },
   dog:     { label: "Underdog",     range: "+3 to +7",  order: 3 },
-  big_dog: { label: "Big Dog",      range: "> +7",      order: 4 },
+  big_dog: { label: "Big underdog",     range: "> +7",      order: 4 },
 };
 
 // ---- accumulators ----------------------------------------------------------

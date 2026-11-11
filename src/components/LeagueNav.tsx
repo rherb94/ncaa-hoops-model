@@ -4,29 +4,28 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LEAGUES } from "@/lib/leagues";
 
+const FULL_NAME: Record<string, string> = {
+  ncaam: "Men's college basketball",
+  ncaaw: "Women's college basketball",
+  cfb: "College football",
+};
+
+/** League switcher: a single segmented control in the header. */
 export default function LeagueNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center gap-1">
+    <nav aria-label="League" className="flex items-center rounded-lg border border-white/[0.08] bg-zinc-900/70 p-0.5">
       {Object.values(LEAGUES).map((l) => {
         const active = pathname.startsWith(`/${l.id}/`) || pathname === `/${l.id}`;
-        // NCAAM → sky blue, NCAAW → Barbie pink, CFB → end-zone green
-        const activeClass =
-          l.id === "ncaam"
-            ? "bg-sky-500/15 text-sky-300 ring-1 ring-sky-500/25"
-            : l.id === "ncaaw"
-            ? "bg-pink-500/20 text-pink-400 ring-1 ring-pink-400/50"
-            : "bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-500/25";
-
         return (
           <Link
             key={l.id}
             href={`/${l.id}/slate`}
-            className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors ${
-              active
-                ? activeClass
-                : "text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+            title={FULL_NAME[l.id]}
+            aria-current={active ? "page" : undefined}
+            className={`rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors sm:px-3 ${
+              active ? "bg-zinc-100 text-zinc-950" : "text-zinc-400 hover:text-zinc-100"
             }`}
           >
             {l.shortName}

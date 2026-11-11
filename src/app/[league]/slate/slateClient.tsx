@@ -2,8 +2,10 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { SlateResponse, UpcomingResponse, DateSlate } from "@/lib/types";
+import { LEAGUES } from "@/lib/leagues";
 import type { LeagueId } from "@/lib/leagues";
 import SlateTable from "@/components/SlateTable";
+import { PageHeader, Segmented, ToolButton } from "@/components/PageHeader";
 
 type ViewMode = "today" | "upcoming";
 
@@ -17,6 +19,16 @@ function formatDateHeading(dateStr: string): string {
   return dt.toLocaleDateString("en-US", {
     weekday: "long",
     month: "short",
+    day: "numeric",
+  });
+}
+
+function formatLongDate(dateStr: string): string {
+  if (!isYyyyMmDd(dateStr)) return "Slate";
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
     day: "numeric",
   });
 }
@@ -90,48 +102,36 @@ export function SlateClient({ date, league }: { date: string; league: LeagueId }
 
   const ratings = mode === "today" ? todayData?.ratings : upcomingData?.ratings;
 
-  const pillBase = "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors";
-  const pillActive = "bg-cyan-600/30 text-cyan-300 border border-cyan-500/40";
-  const pillInactive = "bg-zinc-800/60 text-zinc-400 border border-white/5 hover:bg-zinc-800";
+  const gameCount =
+    mode === "today"
+      ? todayData?.games.length
+      : upcomingData?.dates.reduce((n, d) => n + d.games.length, 0);
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div>
-            <div className="text-xs text-zinc-400">
-              {mode === "today" ? "Daily Slate" : "All Upcoming"}
-            </div>
-            <div className="text-sm font-semibold text-zinc-100">
-              {mode === "today" ? safeDate : `${upcomingData?.dates.length ?? 0} dates`}
-            </div>
-          </div>
-
-          {/* Mode toggle */}
-          <div className="flex gap-1 ml-2">
-            <button
-              className={`${pillBase} ${mode === "today" ? pillActive : pillInactive}`}
-              onClick={() => setMode("today")}
-            >
-              Today
-            </button>
-            <button
-              className={`${pillBase} ${mode === "upcoming" ? pillActive : pillInactive}`}
-              onClick={() => setMode("upcoming")}
-            >
-              Upcoming
-            </button>
-          </div>
-        </div>
-
-        <button
-          onClick={() => load(true)}
-          disabled={loading}
-          className="rounded-xl border border-white/10 bg-zinc-900/60 px-3 py-2 text-xs text-zinc-200 hover:bg-zinc-950/10 disabled:opacity-50"
-        >
-          {loading ? "Refreshing..." : "Refresh odds"}
-        </button>
-      </div>
+      <PageHeader
+        title={mode === "today" ? formatLongDate(safeDate) : "Upcoming games"}
+        meta={
+          <>
+            {LEAGUES[league].name}
+            {gameCount != null ? <> · {gameCount} game{gameCount === 1 ? "" : "s"} with lines</> : null}
+            {ratings?.updatedAt && !ratings.stale ? <> · ratings updated {formatUpdated(ratings.updatedAt)}</> : null}
+          </>
+        }
+      >
+        <Segmented
+          label="Which games"
+          value={mode}
+          onChange={setMode}
+          options={[
+            { value: "today", label: "Today" },
+            { value: "upcoming", label: "Upcoming" },
+          ]}
+        />
+        <ToolButton onClick={() => load(true)} disabled={loading}>
+          {loading ? "Refreshing…" : "Refresh odds"}
+        </ToolButton>
+      </PageHeader>
 
       {err ? (
         <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-sm text-rose-100">
@@ -144,11 +144,7 @@ export function SlateClient({ date, league }: { date: string; league: LeagueId }
           role="alert"
           className="rounded-xl border border-amber-400/40 bg-amber-400/10 p-3 text-sm text-amber-100"
         >
-          <span className="font-semibold">⚠ Stale ratings.</span> {ratings.message}
-        </div>
-      ) : ratings?.updatedAt ? (
-        <div className="text-xs text-zinc-600">
-          Ratings updated {formatUpdated(ratings.updatedAt)}
+          <span className="font-semibold">Stale ratings.</span> {ratings.message}
         </div>
       ) : null}
 
@@ -172,16 +168,16 @@ export function SlateClient({ date, league }: { date: string; league: LeagueId }
             </div>
           ))}
           {upcomingData.dates.length === 0 && (
-            <div className="rounded-2xl border border-white/10 bg-zinc-900/60 p-4 text-sm text-zinc-400">
-              No upcoming games with available odds.
+            <div className="rounded-xl border border-white/[0.07] bg-zinc-900/30 px-5 py-10 text-center text-sm text-zinc-500">
+              No upcoming games have lines posted yet.
             </div>
           )}
         </div>
       ) : null}
 
       {!todayData && !upcomingData && !err ? (
-        <div className="rounded-2xl border border-white/10 bg-zinc-900/60 p-4 text-sm text-zinc-300">
-          Loading…
+        <div className="rounded-xl border border-white/[0.07] bg-zinc-900/30 px-5 py-10 text-center text-sm text-zinc-500">
+          Loading lines…
         </div>
       ) : null}
     </div>

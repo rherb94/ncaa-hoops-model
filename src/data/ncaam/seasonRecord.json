@@ -1,0 +1,54 @@
+{
+  "league": "ncaam",
+  "season_start": "2026-11-01",
+  "updated_at": "2026-11-11T13:39:47.448Z",
+  "days_tracked": 0,
+  "first_date": null,
+  "last_date": null,
+  "total_picks": 0,
+  "decided": 0,
+  "wins": 0,
+  "losses": 0,
+  "pushes": 0,
+  "win_pct": null,
+  "units": 0,
+  "roi_pct": null,
+  "plays": {
+    "wins": 0,
+    "losses": 0,
+    "pushes": 0,
+    "units": 0,
+    "roi_pct": null,
+    "win_pct": null
+  },
+  "lean": {
+    "wins": 0,
+    "losses": 0,
+    "pushes": 0,
+    "units": 0,
+    "roi_pct": null,
+    "win_pct": null
+  },
+  "strong": {
+    "wins": 0,
+    "losses": 0,
+    "pushes": 0,
+    "units": 0,
+    "roi_pct": null,
+    "win_pct": null
+  },
+  "all_games": {
+    "wins": 0,
+    "losses": 0,
+    "win_pct": null
+  },
+  "caution": {
+    "wins": 0,
+    "losses": 0,
+    "win_pct": null
+  },
+  "avg_clv": null,
+  "clv_games": 0,
+  "pending": 0,
+  "daily": []
+}

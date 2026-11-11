@@ -1,57 +1,46 @@
 @import "tailwindcss";
 
-/* ---- Theme variables ---- */
-/* Default to DARK so it’s consistent everywhere */
+/* ── Design tokens ──────────────────────────────────────────────────────────
+   One typeface (Archivo, variable width + weight) and a cool blue-black ink
+   scale. Tailwind's `zinc` ramp is remapped to the ink scale so every existing
+   surface, border and text colour shifts together.
+
+   Colour is reserved for meaning:
+     emerald = a strong play / a win      amber = a lean / a warning
+     red     = a loss                     slate = caution, not a play
+   The orange brand mark is the only decorative colour on the page. */
+@theme {
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Numbers use the same face, narrower and tabular (see .font-mono below). */
+  --font-mono: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-zinc-50: #f4f6fa;
+  --color-zinc-100: #e9ecf2;
+  --color-zinc-200: #d5dae4;
+  --color-zinc-300: #b6bdcb;
+  --color-zinc-400: #8f98a9;
+  --color-zinc-500: #6c7587;
+  --color-zinc-600: #525a6b;
+  --color-zinc-700: #353c4a;
+  --color-zinc-800: #222834;
+  --color-zinc-900: #151a23;
+  --color-zinc-950: #0c1016;
+
+  --color-brand: #f08a3c;
+}
+
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-
-  --muted: #111111;
-  --border: #262626;
+  --background: #0c1016;
+  --foreground: #e9ecf2;
 }
 
-/* Optional: if you ever want a real light mode later, use .light */
-.light {
-  --background: #ffffff;
-  --foreground: #171717;
-
-  --muted: #f5f5f5;
-  --border: #e5e7eb;
-}
-
-/* Force dark whenever the .dark class exists (your layout already sets it) */
-.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-
-  --muted: #111111;
-  --border: #262626;
-}
-
-/* If you want “system theme” behavior in the future, you can re-enable this,
-   but it will override things when no .dark/.light is set. */
-/*
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #111111;
-    --border: #262626;
-  }
-}
-*/
-
-/* ---- Tailwind theme bridge ---- */
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-}
-
-/* ---- Base styles ---- */
 * {
   box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
 }
 
 html,
@@ -59,29 +48,62 @@ body {
   height: 100%;
 }
 
-/* Helps native UI (scrollbars/forms) stay dark */
-html {
-  color-scheme: dark;
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* ---- Nice defaults for tables ---- */
+/* Figures: tabular so columns line up, slightly condensed so dense tables
+   stay compact. Replaces the monospace face that was used for numbers. */
+.font-mono,
+.tabular-nums,
+.num {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-stretch: 90%;
+  letter-spacing: 0;
+}
+
 table {
   border-collapse: collapse;
 }
 
+/* Column headings: condensed, quiet, sentence case comes from the markup. */
 th {
   font-weight: 600;
-  letter-spacing: 0.02em;
+  font-stretch: 88%;
 }
 
-/* ---- Utility tweaks ---- */
-.mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+h1,
+h2,
+h3 {
+  font-stretch: 96%;
+  letter-spacing: -0.01em;
+}
+
+/* Keyboard focus is always visible. */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Horizontal pill rows scroll on small screens without a visible scrollbar. */
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

@@ -132,26 +132,26 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
   const thBtn = "inline-flex items-center gap-0.5 rounded-md px-1 py-0.5 hover:bg-zinc-900/60 cursor-pointer";
 
   return (
-    <main className="mx-auto max-w-7xl p-6">
-      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-bold">Teams</h1>
-          <p className="text-sm text-zinc-500">
+    <div>
+      {ratings?.stale && (
+        <div role="alert" className="mb-4 rounded-xl border border-amber-400/40 bg-amber-400/10 p-3 text-sm text-amber-100">
+          <span className="font-semibold">Stale ratings.</span> {ratings.message}
+        </div>
+      )}
+      <div className="mb-5 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+        <div className="min-w-0">
+          <h1 className="text-xl font-semibold text-zinc-100 sm:text-2xl">Teams</h1>
+          <p className="mt-1 text-sm text-zinc-500">
             {teams.length} teams · {isCfb ? "SP+ ratings" : "Torvik ratings"}{" "}
             {ratings?.updatedAt ? `updated ${formatUpdated(ratings.updatedAt)}` : "updated daily"}
           </p>
-          {ratings?.stale && (
-            <p role="alert" className="mt-1 text-sm text-amber-300">
-              ⚠ Stale ratings. {ratings.message}
-            </p>
-          )}
         </div>
 
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <select
             value={conf}
             onChange={(e) => setConf(e.target.value)}
-            className="h-10 w-full rounded-lg border border-white/10 bg-zinc-950 px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-400 sm:w-56"
+            className="h-9 w-full rounded-lg border border-white/[0.08] bg-zinc-900/70 px-3 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 sm:w-56"
             aria-label="Conference filter"
           >
             <option value="ALL">All conferences</option>
@@ -164,7 +164,7 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search team…"
-            className="h-10 w-full rounded-lg border border-white/10 bg-zinc-950 px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-400 sm:w-64"
+            className="h-9 w-full rounded-lg border border-white/[0.08] bg-zinc-900/70 px-3 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 sm:w-64"
           />
         </div>
       </div>
@@ -174,10 +174,10 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
       ) : (
         <>
           {/* Desktop table */}
-          <div className="hidden md:block overflow-x-auto rounded-xl border border-white/10">
-            <table className="w-full text-xs">
+          <div className="hidden md:block overflow-x-auto rounded-xl border border-white/[0.07] bg-zinc-900/30">
+            <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-white/10 text-[11px] uppercase tracking-wide text-zinc-500">
+                <tr className="border-b border-white/10 text-xs text-zinc-500">
                   <th className="px-3 py-2.5 text-left">
                     <button type="button" onClick={() => toggleSort("torvikRank")} className={thBtn}>
                       # <SortIcon active={sortKey === "torvikRank"} dir={sortDir} />
@@ -303,6 +303,6 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
           </div>
         </>
       )}
-    </main>
+    </div>
   );
 }

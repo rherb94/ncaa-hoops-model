@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import type { LeagueId } from "@/lib/leagues";
 import { isPlay } from "@/lib/signal";
+import { PageHeader, Segmented, StatTile, ToolButton } from "@/components/PageHeader";
 
 // ---- types ----
 type GameRow = {
@@ -27,6 +28,11 @@ type GameRow = {
   winner: "HOME" | "AWAY" | "TIE" | null;
   completed: boolean;
   pick_result: "WIN" | "LOSS" | "PUSH" | "NO_PICK" | "PENDING";
+  /** American odds on the picked side; -110 assumed when the snapshot has none. */
+  pick_price?: number | null;
+  price_assumed?: boolean;
+  /** Units won or lost at one unit risked, graded at pick_price. */
+  units?: number | null;
   picked_at?: string | null; // ISO timestamp — present for intraday picks
   // Override flags
   skipped?: boolean;
@@ -101,11 +107,6 @@ type CalibrationBucket = {
   losses: number;
 };
 
-// $100 flat-bet ROI at standard -110 odds
-// WIN: profit = $100 / 1.10 = $90.91; LOSS: -$100
-const BET_SIZE = 100;
-const WIN_PROFIT = BET_SIZE / 1.1; // ≈ $90.91
-
 function computeStats(byDate: DayResult[]) {
   const allGames = byDate.flatMap((d) => d.games);
   const completed = allGames.filter((g) => g.completed);
@@ -123,12 +124,15 @@ function computeStats(byDate: DayResult[]) {
     ? errors.reduce((a, b) => a + b, 0) / errors.length
     : null;
 
-  // ROI: flat $100 bet on every LEAN/STRONG pick
+  // Units: one unit risked per play, graded at the price on the line taken
+  // (falls back to -110 for snapshots that pre-date price capture).
   let roi: number | null = null;
   let roiGames = 0;
   for (const g of allGames) {
-    if (g.pick_result === "WIN")  { roi = (roi ?? 0) + WIN_PROFIT; roiGames++; }
-    if (g.pick_result === "LOSS") { roi = (roi ?? 0) - BET_SIZE;  roiGames++; }
+    if (g.pick_result !== "WIN" && g.pick_result !== "LOSS" && g.pick_result !== "PUSH") continue;
+    const u = g.units ?? (g.pick_result === "WIN" ? 100 / 110 : g.pick_result === "LOSS" ? -1 : 0);
+    roi = (roi ?? 0) + u;
+    roiGames++;
   }
 
   // Average CLV across games where we have both a pick and a CLV
@@ -212,7 +216,7 @@ function NeutralBadge() {
       title="Neutral site game — HCA set to 0"
       className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-blue-500/15 text-blue-400 border border-blue-500/20"
     >
-      <span>⚬</span> NEUTRAL
+      Neutral site
     </span>
   );
 }
@@ -223,7 +227,7 @@ function OverrideHomeBadge() {
       title="Override: neutral site forced to home game (HCA applied)"
       className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-orange-500/15 text-orange-400 border border-orange-500/20"
     >
-      🏠 HOME OVERRIDE
+      Home override
     </span>
   );
 }
@@ -234,7 +238,7 @@ function SkipBadge({ reason }: { reason?: string }) {
       title={reason ?? "Game skipped — excluded from picks and results"}
       className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-rose-500/15 text-rose-400 border border-rose-500/20"
     >
-      ⊘ SKIPPED
+      Skipped
     </span>
   );
 }
@@ -246,12 +250,16 @@ function SignalBadge({ signal, pickSide }: { signal: string; pickSide: string })
         className="text-xs font-semibold whitespace-nowrap text-zinc-500 cursor-help"
         title="Edge of 8+ points or a 20+ point spread. The model is known to be off on big spreads — not a play, not counted in the record."
       >
-        ⚠ CAUTION
+        Caution
       </span>
     );
   if (signal === "NONE") return <span className="text-zinc-600 text-xs">—</span>;
   const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
-  return <span className={`text-xs font-semibold whitespace-nowrap ${color}`}>{signal} {pickSide}</span>;
+  return (
+    <span className={`text-xs font-semibold whitespace-nowrap ${color}`}>
+      {signal === "STRONG" ? "Strong" : "Lean"} · {pickSide === "HOME" ? "home" : "away"}
+    </span>
+  );
 }
 
 function IntradayBadge({ pickedAt }: { pickedAt: string }) {
@@ -292,31 +300,28 @@ function StatCard({ label, value, sub }: { label: string; value: string; sub?: s
 function EdgeCalibrationTable({ buckets }: { buckets: CalibrationBucket[] }) {
   if (!buckets.some((b) => b.games > 0 || b.wins > 0 || b.losses > 0)) return null;
   return (
-    <div className="rounded-xl border border-white/10 overflow-hidden">
+    <div className="overflow-hidden rounded-xl border border-white/[0.07] bg-zinc-900/30">
       <div className="px-4 py-2.5 bg-zinc-900 border-b border-white/10 flex items-center justify-between flex-wrap gap-2">
         <div>
-          <span className="text-xs font-semibold text-zinc-300">Edge Calibration</span>
-          <span className="text-xs text-zinc-500 ml-2">direction accuracy &amp; simulated ATS by edge size</span>
+          <span className="text-sm font-semibold text-zinc-200">By edge size</span>
+          <span className="text-xs text-zinc-500 ml-2">how the model&rsquo;s side did against the spread, whether or not it was played</span>
         </div>
-        <div className="text-[11px] text-zinc-600 font-mono">
-          break-even @ <span className="text-zinc-400 font-semibold">52.4%</span> at −110
+        <div className="text-xs text-zinc-500">
+          Break-even at −110 is <span className="num font-semibold text-zinc-300">52.4%</span>
         </div>
       </div>
-      <table className="w-full text-xs">
+      <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-white/10 text-zinc-500">
-            <th className="px-4 py-2 text-left  font-medium">Bucket</th>
+          <tr className="border-b border-white/10 text-xs text-zinc-500">
+            <th className="px-4 py-2 text-left  font-medium">Edge</th>
             <th className="px-3 py-2 text-right font-medium">Games</th>
-            <th className="px-3 py-2 text-right font-medium">Direction %</th>
-            <th className="px-3 py-2 text-right font-medium">ATS Record</th>
-            <th className="px-3 py-2 text-right font-medium">ATS %</th>
+            <th className="px-3 py-2 text-right font-medium">Record</th>
+            <th className="px-4 py-2 text-right font-medium">Covered</th>
           </tr>
         </thead>
         <tbody>
           {buckets.map((b) => {
-            const dirPct  = b.games > 0            ? Math.round((b.dirCorrect / b.games) * 100) : null;
             const atsPct  = b.wins + b.losses > 0  ? Math.round((b.wins / (b.wins + b.losses)) * 100) : null;
-            const dirColor = dirPct === null ? "text-zinc-600" : dirPct >= 60 ? "text-emerald-400" : dirPct >= 52.4 ? "text-amber-400" : "text-red-400";
             const atsColor = atsPct === null ? "text-zinc-600" : atsPct >= 60 ? "text-emerald-400" : atsPct >= 52.4 ? "text-amber-400" : "text-red-400";
             const lc = b.label === "STRONG" ? "text-emerald-400" : b.label === "LEAN" ? "text-amber-400" : "text-zinc-400";
             // Add a slightly thicker divider before LEAN to separate no-pick zone from picks
@@ -324,19 +329,16 @@ function EdgeCalibrationTable({ buckets }: { buckets: CalibrationBucket[] }) {
             return (
               <tr key={b.label} className={`border-b border-white/5 bg-zinc-900/30 ${topBorder}`}>
                 <td className="px-4 py-2.5">
-                  <span className={`font-semibold ${lc}`}>{b.label}</span>
+                  <span className={`font-semibold ${lc}`}>{b.label.length > 3 ? b.label[0] + b.label.slice(1).toLowerCase() : b.label}</span>
                   <span className="text-zinc-600 ml-1.5 text-[11px]">{b.sublabel}</span>
                 </td>
-                <td className="px-3 py-2.5 text-right text-zinc-400">
+                <td className="num px-3 py-2.5 text-right text-zinc-400">
                   {b.games > 0 ? b.games : <span className="text-zinc-700">—</span>}
-                </td>
-                <td className={`px-3 py-2.5 text-right font-semibold ${dirColor}`}>
-                  {dirPct !== null ? <>{dirPct}% <span className="text-zinc-600 font-normal">({b.dirCorrect}/{b.games})</span></> : "—"}
                 </td>
                 <td className="px-3 py-2.5 text-right text-zinc-400 font-mono">
                   {b.wins + b.losses > 0 ? `${b.wins}-${b.losses}` : "—"}
                 </td>
-                <td className={`px-3 py-2.5 text-right font-semibold ${atsColor}`}>
+                <td className={`num px-4 py-2.5 text-right font-semibold ${atsColor}`}>
                   {atsPct !== null ? `${atsPct}%` : "—"}
                 </td>
               </tr>
@@ -426,9 +428,9 @@ type Filter = "today" | "yesterday" | "7d" | "30d" | "season";
 const FILTER_LABELS: Record<Filter, string> = {
   today:     "Today",
   yesterday: "Yesterday",
-  "7d":      "Last 7 Days",
-  "30d":     "Last 30 Days",
-  season:    "Full Season",
+  "7d":      "Last 7 days",
+  "30d":     "Last 30 days",
+  season:    "Season",
 };
 
 function etDateString(daysAgo = 0): string {
@@ -447,6 +449,19 @@ function filterToApiUrl(f: Filter, league: LeagueId): string {
     case "30d":       return `/api/${league}/analysis?from=${etDateString(30)}&to=${etDateString()}`;
     case "season":    return `/api/${league}/analysis?all=1`;
   }
+}
+
+function formatDay(dateStr: string): string {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  if (!y || !m || !d) return dateStr;
+  return new Date(y, m - 1, d).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+}
+
+/** Net units on a day's settled plays; null when none have settled. */
+function dayUnits(day: DayResult): number | null {
+  const settled = day.games.filter((g) => g.pick_result === "WIN" || g.pick_result === "LOSS" || g.pick_result === "PUSH");
+  if (!settled.length) return null;
+  return settled.reduce((sum, g) => sum + (g.units ?? (g.pick_result === "WIN" ? 100 / 110 : g.pick_result === "LOSS" ? -1 : 0)), 0);
 }
 
 // ---- main component ----
@@ -533,102 +548,77 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
 
   return (
     <div className="space-y-6">
-      {/* header */}
-      <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-        <div className="flex-1">
-          <div className="text-xs text-zinc-400">Model Results</div>
-          <div className="text-sm text-zinc-500">
-            {visibleDates.length} day{visibleDates.length !== 1 ? "s" : ""} · {FILTER_LABELS[filter]}
-            {!showBackfilled && backfilledCount > 0 && (
-              <span className="ml-1 text-zinc-600">
-                ({backfilledCount} backfilled hidden)
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* filter tabs */}
-        <div className="flex items-center gap-1 bg-zinc-900 border border-white/10 rounded-lg p-1">
-          {(["today", "yesterday", "7d", "30d", "season"] as Filter[]).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
-                filter === f
-                  ? "bg-zinc-700 text-zinc-100"
-                  : "text-zinc-500 hover:text-zinc-300"
-              }`}
-            >
-              {FILTER_LABELS[f]}
-            </button>
-          ))}
-        </div>
-
+      <PageHeader
+        title="Results"
+        meta={
+          <>
+            {visibleDates.length} day{visibleDates.length !== 1 ? "s" : ""} · {FILTER_LABELS[filter].toLowerCase()}
+            {!showBackfilled && backfilledCount > 0 ? <> · {backfilledCount} backfilled hidden</> : null}
+          </>
+        }
+      >
+        <Segmented
+          label="Time range"
+          value={filter}
+          onChange={setFilter}
+          options={(["today", "yesterday", "7d", "30d", "season"] as Filter[]).map((f) => ({
+            value: f,
+            label: FILTER_LABELS[f],
+          }))}
+        />
         {backfilledCount > 0 && (
-          <button
+          <ToolButton
             onClick={() => setShowBackfilled((v) => !v)}
-            className={`rounded-lg px-3 py-1.5 text-xs font-medium self-start sm:self-auto transition-colors ${
-              showBackfilled
-                ? "bg-amber-500/20 text-amber-400 border border-amber-500/30 hover:bg-amber-500/30"
-                : "bg-zinc-800 text-zinc-500 hover:text-zinc-300 hover:bg-zinc-700"
-            }`}
-            title={showBackfilled ? "Hide backfilled dates (Feb 24–Mar 1)" : "Show backfilled dates (Feb 24–Mar 1)"}
+            active={showBackfilled}
+            title="Backfilled dates were graded after the fact with later ratings, so they overstate the model"
           >
             {showBackfilled ? "Hide backfilled" : "Show backfilled"}
-          </button>
+          </ToolButton>
         )}
+        <ToolButton onClick={() => load(filter)}>Refresh</ToolButton>
+      </PageHeader>
 
-        <button
-          onClick={() => load(filter)}
-          className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:bg-zinc-700 self-start sm:self-auto"
-        >
-          Refresh
-        </button>
-      </div>
-
-      {/* summary stat cards */}
+      {/* headline numbers */}
       {(summary.total_picks > 0 || dirTotal > 0) && (
-        <div className="flex flex-wrap gap-3">
-          <StatCard
-            label="ATS Record"
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
+          <StatTile
+            label="Record on plays"
             value={summary.decided > 0 ? `${summary.wins}-${summary.losses}` : "—"}
-            sub={summary.decided > 0 && summary.win_pct !== null
-              ? `${summary.win_pct}% (${summary.decided} decided)`
-              : `${summary.total_picks} picks`}
+            sub={
+              summary.decided > 0 && summary.win_pct !== null
+                ? `${summary.win_pct}% · break-even is 52.4%`
+                : `${summary.total_picks} play${summary.total_picks === 1 ? "" : "s"}, none settled`
+            }
+          />
+          <StatTile
+            label="Units"
+            value={roi !== null ? `${roi > 0 ? "+" : ""}${roi.toFixed(1)}u` : "—"}
+            tone={roi === null || roi === 0 ? "neutral" : roi > 0 ? "good" : "bad"}
+            sub={
+              roi !== null && roiGames > 0
+                ? `${((roi / roiGames) * 100).toFixed(1)}% return on ${roiGames} settled`
+                : "1 unit risked per play"
+            }
+            title="One unit risked per play, graded at the price on the line taken (-110 where no price was recorded)"
+          />
+          <StatTile
+            label="Closing-line value"
+            value={avgClv !== null ? `${avgClv >= 0 ? "+" : ""}${avgClv.toFixed(2)}` : "—"}
+            tone={avgClv === null || Math.abs(avgClv) < 0.05 ? "neutral" : avgClv > 0 ? "good" : "bad"}
+            sub={avgClv !== null ? `points per play, ${clvGames} with a close` : "no closing lines yet"}
+            title="Average points by which the closing line moved toward the play. Positive means the market came to agree."
           />
           {dirTotal > 0 && (
-            <StatCard
-              label="Direction Acc."
+            <StatTile
+              label="All games, model side"
               value={`${Math.round((dirCorrect / dirTotal) * 100)}%`}
-              sub={`${dirCorrect}/${dirTotal} all completed games`}
+              sub={`${dirCorrect} of ${dirTotal} covered`}
+              title="How often the model's side of the line covered across every game, play or not"
             />
           )}
           {avgError !== null && (
-            <StatCard
-              label="Avg Model Error"
-              value={`±${avgError.toFixed(1)} pts`}
-              sub="vs. actual spread"
-            />
+            <StatTile label="Average miss" value={`${avgError.toFixed(1)} pts`} sub="model spread vs final margin" />
           )}
-          {roi !== null && (
-            <StatCard
-              label="Flat-Bet ROI"
-              value={`${roi >= 0 ? "+" : ""}$${roi.toFixed(0)}`}
-              sub={`on ${roiGames} decided picks ($100/game)`}
-            />
-          )}
-          {avgClv !== null && (
-            <StatCard
-              label="Avg CLV"
-              value={`${avgClv >= 0 ? "+" : ""}${avgClv.toFixed(1)} pts`}
-              sub={`${clvGames} pick${clvGames !== 1 ? "s" : ""} vs. closing line`}
-            />
-          )}
-          <StatCard
-            label="Total Picks"
-            value={String(summary.total_picks)}
-            sub={`${summary.decided} decided`}
-          />
         </div>
       )}
 
@@ -636,22 +626,24 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
       <EdgeCalibrationTable buckets={buckets} />
 
       {by_date.length === 0 && (
-        <div className="text-zinc-500 text-sm">No snapshot data yet. Run the odds opener workflow to start tracking.</div>
+        <div className="rounded-xl border border-white/[0.07] bg-zinc-900/30 px-5 py-10 text-center text-sm text-zinc-500">
+          Nothing tracked in this range yet. Games appear here after the 11am ET odds snapshot.
+        </div>
       )}
 
       {/* per-day sections */}
       {sorted.map((day) => (
-        <div key={day.date} className="rounded-xl border border-white/10 overflow-hidden">
+        <div key={day.date} className="overflow-hidden rounded-xl border border-white/[0.07] bg-zinc-900/30">
           {/* day header — toggle */}
           <button
             className="w-full flex items-center justify-between px-4 py-3 bg-zinc-900 hover:bg-zinc-800 transition-colors"
             onClick={() => setExpandedDate(expandedDate === day.date ? null : day.date)}
           >
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="text-sm font-semibold text-zinc-100">{day.date}</span>
+              <span className="text-sm font-semibold text-zinc-100">{formatDay(day.date)}</span>
               <span className="text-xs text-zinc-500">
                 {day.total_games} games · {day.picks_made} pick{day.picks_made !== 1 ? "s" : ""}
-                {day.strong_picks > 0 && ` (${day.strong_picks} STRONG)`}
+                {day.strong_picks > 0 && ` (${day.strong_picks} strong)`}
               </span>
               {day.results_live && (
                 <span className="inline-flex items-center gap-1 text-xs font-semibold text-blue-400">
@@ -669,8 +661,12 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
             <div className="flex items-center gap-3">
               {day.picks_made > 0 && (
                 <span className="text-xs font-medium text-zinc-300">
-                  {day.record === "pending" ? "—" : day.record} ATS
-                  {day.win_pct !== null ? ` (${day.win_pct}%)` : ""}
+                  {day.record === "pending" ? "—" : day.record}
+                  {dayUnits(day) !== null && (
+                    <span className={`num ml-2 ${dayUnits(day)! > 0 ? "text-emerald-400" : dayUnits(day)! < 0 ? "text-red-400" : "text-zinc-500"}`}>
+                      {dayUnits(day)! > 0 ? "+" : ""}{dayUnits(day)!.toFixed(1)}u
+                    </span>
+                  )}
                 </span>
               )}
               <span className="text-zinc-500 text-xs">{expandedDate === day.date ? "▲" : "▼"}</span>

@@ -114,7 +114,7 @@ function NeutralBadge() {
       title="Neutral site — HCA set to 0"
       className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-blue-500/15 text-blue-400 border border-blue-500/20"
     >
-      ⚬ NEUTRAL
+      Neutral site
     </span>
   );
 }
@@ -127,7 +127,7 @@ function OverrideHomeBadge() {
       title="Override: neutral site forced to home game (HCA applied)"
       className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-orange-500/15 text-orange-400 border border-orange-500/20"
     >
-      🏠 HOME OVERRIDE
+      Home override
     </span>
   );
 }
@@ -138,7 +138,7 @@ function SkipBadge({ reason }: { reason?: string }) {
       title={reason ?? "Game skipped — excluded from picks and results"}
       className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-rose-500/15 text-rose-400 border border-rose-500/20"
     >
-      ⊘ SKIPPED
+      Skipped
     </span>
   );
 }
@@ -190,11 +190,12 @@ function EdgeCell({ edge }: { edge?: number | null }) {
     return <span className="text-zinc-600">—</span>;
   const a = Math.abs(edge);
   const color =
+    a >= 8 ? "text-zinc-400" :   // caution territory — not a play
     a >= 5 ? "text-emerald-400" :
     a >= 3 ? "text-amber-400" :
     "text-zinc-500";
   const label = edge > 0 ? `+${fmtNum(edge)}` : fmtNum(edge);
-  return <span className={`font-mono text-xs font-semibold ${color}`}>{label}</span>;
+  return <span className={`font-mono text-sm font-semibold ${color}`}>{label}</span>;
 }
 
 // ── Pick text ─────────────────────────────────────────────────────────────────
@@ -205,8 +206,14 @@ function PickText({
   line,
   neutralSite,
   cautionNote,
+  teamName,
+  compact,
 }: {
   cautionNote?: string;
+  /** Name of the team being picked. */
+  teamName?: string;
+  /** Tag and number only — for cards where the picked team is already bold. */
+  compact?: boolean;
   signal: SlateGame["model"]["signal"];
   side?: "HOME" | "AWAY" | "NONE";
   line?: number | null;
@@ -215,14 +222,15 @@ function PickText({
   if (signal === "CAUTION")
     return (
       <span
-        className="text-xs font-semibold text-zinc-400 cursor-help"
-        title={cautionNote ?? "Not a play — the model is unreliable here. Not tracked in results."}
+        className="inline-flex cursor-help items-center gap-2 text-xs"
+        title={cautionNote ?? "Not a play: the model is unreliable here. Not tracked in results."}
       >
-        ⚠ CAUTION <span className="font-normal text-zinc-500">· no play</span>
+        <SignalTag signal="CAUTION" />
+        <span className="text-zinc-500">No play</span>
       </span>
     );
   if (signal === "NONE" || !side || side === "NONE")
-    return <span className="text-zinc-600 text-xs">—</span>;
+    return <span className="text-zinc-700 text-xs">—</span>;
 
   const displayLine = line != null && side === "AWAY" ? -line : line;
   const lineStr =
@@ -230,13 +238,33 @@ function PickText({
       ? displayLine > 0 ? `+${fmtNum(displayLine)}` : fmtNum(displayLine)
       : null;
 
-  const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
-  // Emoji after HOME/AWAY, omitted on neutral site games
-  const sideEmoji = neutralSite ? "" : side === "HOME" ? " 🏠" : side === "AWAY" ? " ✈️" : "";
+  // Reads as the bet itself: tag, team, number. Venue is spelled out, small.
+  const venue = neutralSite ? "neutral" : side === "HOME" ? "home" : "away";
 
   return (
-    <span className={`text-xs font-semibold ${color}`}>
-      {signal} {side}{sideEmoji}{lineStr ? ` ${lineStr}` : ""}
+    <span className="flex min-w-0 items-center gap-2 text-sm">
+      <SignalTag signal={signal} />
+      {!compact && (
+        <span className="min-w-0 truncate font-semibold text-zinc-100" title={teamName}>
+          {teamName ?? (side === "HOME" ? "Home" : "Away")}
+        </span>
+      )}
+      {lineStr && <span className="num shrink-0 font-semibold text-zinc-100">{lineStr}</span>}
+      <span className="hidden shrink-0 text-xs text-zinc-600 xl:inline">{venue}</span>
+    </span>
+  );
+}
+
+/** The one place signal colour is defined for the slate. */
+function SignalTag({ signal }: { signal: SlateGame["model"]["signal"] }) {
+  const cls =
+    signal === "STRONG" ? "bg-emerald-400/15 text-emerald-300 ring-emerald-400/30" :
+    signal === "LEAN"   ? "bg-amber-400/15 text-amber-300 ring-amber-400/30" :
+                          "bg-zinc-500/10 text-zinc-400 ring-zinc-500/40 ring-dashed";
+  const label = signal === "STRONG" ? "Strong" : signal === "LEAN" ? "Lean" : "Caution";
+  return (
+    <span className={`shrink-0 rounded px-1.5 py-0.5 text-[11px] font-semibold ring-1 ring-inset ${cls}`}>
+      {label}
     </span>
   );
 }
@@ -453,7 +481,7 @@ function SectionDivider({ label }: { label: string }) {
       <td colSpan={6} className="px-4 pt-4 pb-1">
         <div className="flex items-center gap-3">
           <div className="h-px flex-1 bg-white/[0.06]" />
-          <span className="text-[11px] font-medium uppercase tracking-widest text-zinc-600">
+          <span className="text-xs font-medium text-zinc-600">
             {label}
           </span>
           <div className="h-px flex-1 bg-white/[0.06]" />
@@ -481,7 +509,7 @@ async function fetchTeamL5(teamId: string, league: LeagueId): Promise<{ id: stri
 // ── Model pick record per team ────────────────────────────────────────────────
 
 type ModelRecord = { wins: number; losses: number };
-type ModelSummary = { wins: number; losses: number; pct: number | null };
+type ModelSummary = { wins: number; losses: number; pct: number | null; units?: number | null };
 
 type ModelData = { teams: Record<string, ModelRecord>; summary: ModelSummary };
 
@@ -504,14 +532,19 @@ async function fetchModelData(league: LeagueId): Promise<ModelData> {
         else map[team].losses++;
       }
     }
-    // Compute summary from live dates only (not backfilled)
-    const allPicks = liveDays.flatMap((d: any) => (d.games ?? []).filter((g: any) => isPlay(g.signal)));
-    const decided = allPicks.filter((g: any) => g.pick_result === "WIN" || g.pick_result === "LOSS");
-    const wins = decided.filter((g: any) => g.pick_result === "WIN").length;
-    const losses = decided.length - wins;
+    // Season record on plays comes straight from the API so the slate, the
+    // results page and the stored season record always agree.
+    const sm = json.summary ?? {};
+    const wins = sm.wins ?? 0;
+    const losses = sm.losses ?? 0;
     return {
       teams: map,
-      summary: { wins, losses, pct: decided.length > 0 ? Math.round((wins / decided.length) * 100) : null },
+      summary: {
+        wins,
+        losses,
+        pct: wins + losses > 0 ? Math.round((wins / (wins + losses)) * 100) : null,
+        units: typeof sm.units === "number" ? sm.units : null,
+      },
     };
   } catch {
     return empty;
@@ -615,42 +648,58 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
     }
   }
 
-  const thCls = "px-3 py-2.5 text-[11px] font-semibold uppercase tracking-widest text-zinc-600 text-left";
+  const thCls = "px-3 py-2.5 text-xs font-medium text-zinc-500 text-left";
   const tdBase = "px-3 py-3";
 
   return (
-    <div className="rounded-2xl border border-white/8 bg-zinc-950">
+    <div className="overflow-hidden rounded-xl border border-white/[0.07] bg-zinc-900/30">
 
-      {/* ── Header ── */}
-      <div className="flex items-center justify-between gap-4 border-b border-white/8 px-5 py-3.5">
-        <div className="flex items-baseline gap-3 min-w-0">
-          <span className="text-sm font-semibold text-zinc-100 shrink-0">Daily Slate</span>
-          <span className="text-xs text-zinc-600 truncate">
-            {counts.games} games
-            {counts.strong > 0 && <> · <span className="text-emerald-400">{counts.strong} STRONG</span></>}
-            {counts.lean   > 0 && <> · <span className="text-amber-400">{counts.lean} LEAN</span></>}
-            {counts.caution > 0 && (
-              <> · <span className="text-zinc-400" title="Edge of 8+ points or a 20+ point spread. The model is known to be off on big spreads, so these are not plays and are not tracked in results.">{counts.caution} CAUTION</span></>
-            )}
-            {modelSummary.pct !== null && (
-              <> · <span className={modelSummary.wins > modelSummary.losses ? "text-emerald-400" : modelSummary.wins < modelSummary.losses ? "text-red-400" : "text-zinc-400"}>
-                Model ATS {modelSummary.wins}-{modelSummary.losses} ({modelSummary.pct}%)
-              </span></>
-            )}
+      {/* ── Summary bar ── */}
+      <div className="flex flex-col gap-3 border-b border-white/[0.07] px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm">
+          <span className="text-zinc-300">
+            <span className="num font-semibold text-zinc-100">{counts.games}</span> games
           </span>
-          {err && <span className="text-xs text-rose-400 shrink-0">{err}</span>}
+          {counts.strong > 0 && (
+            <span className="text-emerald-300"><span className="num font-semibold">{counts.strong}</span> strong</span>
+          )}
+          {counts.lean > 0 && (
+            <span className="text-amber-300"><span className="num font-semibold">{counts.lean}</span> lean</span>
+          )}
+          {counts.caution > 0 && (
+            <span
+              className="cursor-help text-zinc-500"
+              title="Edge of 8+ points or a 20+ point spread. The model is known to be off on big spreads, so these are not plays and are not tracked in results."
+            >
+              <span className="num font-semibold">{counts.caution}</span> caution
+            </span>
+          )}
+          {modelSummary.pct !== null && (
+            <span className="text-zinc-500 sm:border-l sm:border-white/10 sm:pl-4" title="Record on plays this season, graded at the price taken">
+              Season{" "}
+              <span className="num font-semibold text-zinc-200">{modelSummary.wins}-{modelSummary.losses}</span>
+              {modelSummary.units != null && (
+                <span className={`num ml-1.5 font-semibold ${modelSummary.units > 0 ? "text-emerald-400" : modelSummary.units < 0 ? "text-red-400" : "text-zinc-400"}`}>
+                  {modelSummary.units > 0 ? "+" : ""}{modelSummary.units.toFixed(1)}u
+                </span>
+              )}
+            </span>
+          )}
+          {err && <span className="text-xs text-rose-400">{err}</span>}
         </div>
 
-        <div className="flex rounded-lg border border-white/10 bg-zinc-900/80 p-0.5 shrink-0">
+        <div role="group" aria-label="Filter games" className="flex shrink-0 self-start rounded-lg border border-white/[0.08] bg-zinc-900/70 p-0.5 sm:self-auto">
           {(["ALL", "PICKS", "STRONG"] as FilterMode[]).map((f) => (
             <button
               key={f}
+              type="button"
+              aria-pressed={filter === f}
               onClick={() => setFilter(f)}
-              className={`rounded-md px-3 py-1.5 text-xs font-medium transition ${
-                filter === f ? "bg-white/10 text-zinc-100" : "text-zinc-500 hover:text-zinc-300"
+              className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+                filter === f ? "bg-white/[0.1] text-zinc-100" : "text-zinc-500 hover:text-zinc-200"
               }`}
             >
-              {f === "ALL" ? "All" : f === "PICKS" ? "Lean+" : "Strong"}
+              {f === "ALL" ? "All games" : f === "PICKS" ? "Plays" : "Strong only"}
             </button>
           ))}
         </div>
@@ -658,24 +707,24 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
 
       {/* ── Desktop table ── */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="w-full min-w-[680px] table-fixed text-sm">
+        <table className="w-full min-w-[760px] table-fixed text-sm">
           <colgroup>
             <col className="w-[84px]" />  {/* Time */}
             <col />                        {/* Game — fills remainder */}
-            <col className="w-[88px]" />  {/* Mkt */}
-            <col className="w-[88px]" />  {/* Model */}
-            <col className="w-[80px]" />  {/* Edge */}
-            <col className="w-[175px]" /> {/* Play — fixed */}
+            <col className="w-[92px]" />  {/* Market */}
+            <col className="w-[80px]" />  {/* Model */}
+            <col className="w-[76px]" />  {/* Edge */}
+            <col className="w-[340px]" /> {/* Play */}
           </colgroup>
 
           <thead className="border-b border-white/8">
             <tr>
               <th className={thCls}>Time</th>
               <th className={thCls}>Game</th>
-              <th className={`${thCls} text-center`}>Mkt</th>
-              <th className={`${thCls} text-center`}>Model</th>
-              <th className={`${thCls} text-center`}>Edge</th>
-              <th className={thCls}>Play</th>
+              <th className={`${thCls} !text-right`} title="Market spread for the home team">Market</th>
+              <th className={`${thCls} !text-right`} title="Model spread for the home team">Model</th>
+              <th className={`${thCls} !text-right`} title="Model minus market, in points">Edge</th>
+              <th className={`${thCls} pl-6`}>Play</th>
             </tr>
           </thead>
 
@@ -686,7 +735,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                 <Fragment key={g.gameId}>
                   {/* Group divider between picks and other games */}
                   {i === firstNoneIdx && firstNoneIdx > 0 && (
-                    <SectionDivider label="Other games" />
+                    <SectionDivider label="No play" />
                   )}
 
                   <tr
@@ -707,33 +756,32 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                     </td>
 
                     {/* Spread */}
-                    <td className={`${tdBase} align-middle text-center font-mono text-xs tabular-nums text-zinc-400`}>
-                      <div className="flex items-center justify-center gap-1">
+                    <td className={`${tdBase} align-middle text-right font-mono text-sm text-zinc-400`}>
+                      <div className="flex items-center justify-end gap-1">
                         {fmtSpread(g.consensus?.spread)}
                         <LineMovement current={g.consensus?.spread} opening={g.openingSpread} edge={g.model?.edge} />
                       </div>
                     </td>
 
                     {/* Model */}
-                    <td className={`${tdBase} align-middle text-center font-mono text-xs tabular-nums font-semibold ${
-                      (g.model?.modelSpread ?? 0) < 0 ? "text-red-400" : "text-emerald-400"
-                    }`}>
+                    <td className={`${tdBase} align-middle text-right font-mono text-sm text-zinc-200`}>
                       {fmtSpread(g.model?.modelSpread)}
                     </td>
 
                     {/* Edge */}
-                    <td className={`${tdBase} align-middle text-center`}>
+                    <td className={`${tdBase} align-middle text-right`}>
                       <EdgeCell edge={g.model?.edge} />
                     </td>
 
                     {/* Play */}
-                    <td className={`${tdBase} align-middle`}>
+                    <td className={`${tdBase} pl-6 align-middle`}>
                       <PickText
                         signal={g.model.signal}
                         side={g.recommended?.side}
                         line={g.recommended?.line ?? null}
                         neutralSite={g.neutralSite}
                         cautionNote={g.model.cautionNote}
+                        teamName={g.recommended?.side === "HOME" ? g.homeTeam : g.recommended?.side === "AWAY" ? g.awayTeam : undefined}
                       />
                     </td>
                   </tr>
@@ -772,7 +820,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
               {i === firstNoneIdx && firstNoneIdx > 0 && (
                 <div className="flex items-center gap-3 py-2">
                   <div className="h-px flex-1 bg-white/[0.06]" />
-                  <span className="text-[11px] font-medium uppercase tracking-widest text-zinc-600">Other games</span>
+                  <span className="text-xs font-medium text-zinc-600">No play</span>
                   <div className="h-px flex-1 bg-white/[0.06]" />
                 </div>
               )}
@@ -785,9 +833,9 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                 >
                   {/* Time + pick + chevron */}
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
+                    <span className="whitespace-nowrap text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
                     <div className="flex items-center gap-2">
-                      <PickText signal={g.model.signal} side={g.recommended?.side} line={g.recommended?.line ?? null} neutralSite={g.neutralSite} cautionNote={g.model.cautionNote} />
+                      <PickText signal={g.model.signal} side={g.recommended?.side} line={g.recommended?.line ?? null} neutralSite={g.neutralSite} cautionNote={g.model.cautionNote} compact />
                       <span className={`text-[9px] text-zinc-700 transition-transform duration-150 ${open ? "rotate-180" : ""}`}>▼</span>
                     </div>
                   </div>
@@ -815,9 +863,9 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                   </div>
 
                   {/* Mkt / Model / Edge */}
-                  <div className="flex gap-4 text-xs text-zinc-600">
-                    <span>Mkt <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span> <LineMovement current={g.consensus?.spread} opening={g.openingSpread} edge={g.model?.edge} /></span>
-                    <span>Model <span className={`font-mono font-semibold ${(g.model?.modelSpread ?? 0) < 0 ? "text-red-400" : "text-emerald-400"}`}>{fmtSpread(g.model?.modelSpread)}</span></span>
+                  <div className="flex items-baseline gap-4 text-xs text-zinc-500">
+                    <span>Market <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span> <LineMovement current={g.consensus?.spread} opening={g.openingSpread} edge={g.model?.edge} /></span>
+                    <span>Model <span className="font-mono text-zinc-200">{fmtSpread(g.model?.modelSpread)}</span></span>
                     <span>Edge <EdgeCell edge={g.model?.edge} /></span>
                   </div>
                 </div>

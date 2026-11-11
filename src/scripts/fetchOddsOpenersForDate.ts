@@ -110,45 +110,71 @@ type OddsGame = {
 
 type LiveOddsResponse = OddsGame[];
 
-function pickBookSpread(game: OddsGame, preferredBooks: string[]) {
-  const books = game.bookmakers ?? [];
-  const byKey = new Map(books.map((b) => [b.key, b]));
+type BookSpread = {
+  book: string;
+  last_update: string;
+  homePoint: number;
+  awayPoint: number;
+  /** American odds on each side (the juice). Null if the book didn't quote one. */
+  homePrice: number | null;
+  awayPrice: number | null;
+};
 
+/** Every book's spread for a game, in the order the API returned them. */
+function allBookSpreads(game: OddsGame): BookSpread[] {
+  const out: BookSpread[] = [];
+  for (const b of game.bookmakers ?? []) {
+    const m = b.markets?.find((x) => x.key === "spreads");
+    if (!m) continue;
+    const home = m.outcomes.find((o) => o.name === game.home_team);
+    const away = m.outcomes.find((o) => o.name === game.away_team);
+    if (home?.point == null || away?.point == null) continue;
+    out.push({
+      book: b.key,
+      last_update: b.last_update,
+      homePoint: Number(home.point),
+      awayPoint: Number(away.point),
+      homePrice: home.price != null ? Number(home.price) : null,
+      awayPrice: away.price != null ? Number(away.price) : null,
+    });
+  }
+  return out;
+}
+
+/** The line of record: first preferred book that has a spread, else any book. */
+function pickBookSpread(game: OddsGame, preferredBooks: string[]): BookSpread | null {
+  const spreads = allBookSpreads(game);
   for (const key of preferredBooks) {
-    const b = byKey.get(key);
-    if (!b) continue;
-    const m = b.markets?.find((x) => x.key === "spreads");
-    if (!m) continue;
-
-    const home = m.outcomes.find((o) => o.name === game.home_team);
-    const away = m.outcomes.find((o) => o.name === game.away_team);
-    if (home?.point == null || away?.point == null) continue;
-
-    return {
-      book: b.key,
-      last_update: b.last_update,
-      homePoint: Number(home.point),
-      awayPoint: Number(away.point),
-    };
+    const hit = spreads.find((s) => s.book === key);
+    if (hit) return hit;
   }
+  return spreads[0] ?? null;
+}
 
-  // fallback: first book that has spreads
-  for (const b of books) {
-    const m = b.markets?.find((x) => x.key === "spreads");
-    if (!m) continue;
-    const home = m.outcomes.find((o) => o.name === game.home_team);
-    const away = m.outcomes.find((o) => o.name === game.away_team);
-    if (home?.point == null || away?.point == null) continue;
+function median(nums: number[]): number | null {
+  if (!nums.length) return null;
+  const a = [...nums].sort((x, y) => x - y);
+  const mid = Math.floor(a.length / 2);
+  return a.length % 2 ? a[mid] : (a[mid - 1] + a[mid]) / 2;
+}
 
-    return {
-      book: b.key,
-      last_update: b.last_update,
-      homePoint: Number(home.point),
-      awayPoint: Number(away.point),
-    };
-  }
-
-  return null;
+/**
+ * Cross-book picture of the spread at snapshot time. Recorded for later
+ * analysis (is the line of record an outlier? what was the best number?);
+ * the model's edge is still computed against the line of record.
+ */
+function marketSummary(game: OddsGame) {
+  const spreads = allBookSpreads(game);
+  if (!spreads.length) return null;
+  // Best number for a HOME bettor is the highest home spread; for AWAY the lowest.
+  const bestHome = spreads.reduce((a, b) => (b.homePoint > a.homePoint ? b : a));
+  const bestAway = spreads.reduce((a, b) => (b.homePoint < a.homePoint ? b : a));
+  return {
+    books: spreads.length,
+    medianHomePoint: median(spreads.map((s) => s.homePoint)),
+    bestHome: { book: bestHome.book, homePoint: bestHome.homePoint, price: bestHome.homePrice },
+    bestAway: { book: bestAway.book, homePoint: bestAway.homePoint, price: bestAway.awayPrice },
+  };
 }
 
 function resolveEspnTeamIdFromOddsName(
@@ -468,8 +494,12 @@ async function main() {
             last_update: spread.last_update,
             homePoint: spread.homePoint,
             awayPoint: spread.awayPoint,
+            homePrice: spread.homePrice,
+            awayPrice: spread.awayPrice,
           }
         : null,
+
+      market: marketSummary(g),
 
       model: modelData,
     });
