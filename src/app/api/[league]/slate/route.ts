@@ -8,6 +8,7 @@ import { TheOddsApiProvider } from "@/lib/odds/providers/theOddsApi";
 import { loadTeams } from "@/data/teams";
 import { getLeague } from "@/lib/leagues";
 import { getRatingsStatus } from "@/data/ratingsMeta";
+import { buildBetOptions } from "@/lib/betLinks";
 import type { LeagueConfig } from "@/lib/leagues";
 import type { SlateGame, SlateResponse, UpcomingResponse, GameOverrideInfo } from "@/lib/types";
 import { getGameOverrides } from "@/lib/overrides";
@@ -264,6 +265,8 @@ async function buildSlateGames(
               line: best.line,
               book: best.book,
             },
+
+      betOptions: preferredSide === "NONE" ? undefined : buildBetOptions(books, preferredSide),
 
       overrides:
         overrides.forceHome || overrides.skip

@@ -309,6 +309,71 @@ function GameCell({ g }: { g: SlateGame }) {
   );
 }
 
+// ── Expand: bet buttons ───────────────────────────────────────────────────────
+
+/**
+ * One button per sportsbook for a play. Each opens the sportsbook with the
+ * selection loaded into the bet slip when the book supplies that link; the
+ * stake and confirmation always happen in the sportsbook, never here.
+ */
+function BetBar({ g }: { g: SlateGame }) {
+  const options = g.betOptions ?? [];
+  if (!options.length || !g.recommended || g.recommended.side === "NONE") return null;
+  const team = g.recommended.side === "HOME" ? g.homeTeam : g.awayTeam;
+
+  return (
+    <div className="mb-3 rounded-xl border border-white/[0.08] bg-zinc-900/60 px-4 py-3">
+      <div className="mb-2.5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <span className="text-sm text-zinc-300">
+          Bet <span className="font-semibold text-zinc-100">{team}</span>
+        </span>
+        <span className="text-xs text-zinc-500">Opens the sportsbook. You set the stake and confirm there.</span>
+      </div>
+      <div className="grid gap-2 sm:grid-cols-2">
+        {options.map((o) => {
+          const logo = bookLogoSrc(o.book);
+          const action =
+            o.level === "betslip" ? "Add to bet slip" :
+            o.level === "home"    ? `Open ${o.bookName}` :
+                                    "Open game";
+          return (
+            <a
+              key={o.book}
+              href={o.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              title={
+                o.level === "betslip"
+                  ? `Opens ${o.bookName} with ${team} ${fmtSpread(o.line)} in the bet slip`
+                  : `${o.bookName} did not supply a bet-slip link for this game, so this opens ${o.level === "home" ? "the sportsbook" : "the game page"} instead`
+              }
+              className="group flex items-center gap-3 rounded-lg border border-white/[0.1] bg-zinc-950/60 px-3 py-2.5 transition-colors hover:border-white/25 hover:bg-zinc-800/70"
+            >
+              {logo
+                ? <img src={logo} alt="" className="h-6 w-6 shrink-0 rounded object-contain" />
+                : <span className="h-6 w-6 shrink-0 rounded bg-zinc-800" />}
+              <span className="min-w-0 flex-1">
+                <span className="flex items-baseline gap-2">
+                  <span className="text-sm font-semibold text-zinc-100">{o.bookName}</span>
+                  <span className="num text-sm font-semibold text-zinc-100">{fmtSpread(o.line)}</span>
+                  {o.price != null && <span className="num text-xs text-zinc-400">({fmtML(o.price)})</span>}
+                  {o.best && (
+                    <span className="rounded bg-emerald-400/15 px-1.5 py-0.5 text-[11px] font-semibold text-emerald-300">Best number</span>
+                  )}
+                </span>
+              </span>
+              <span className={`shrink-0 text-xs font-medium ${o.level === "betslip" ? "text-zinc-200" : "text-zinc-500"} group-hover:text-zinc-100`}>
+                {action}
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // ── Expand: game info bar ─────────────────────────────────────────────────────
 
 function GameInfoBar({ g }: { g: SlateGame }) {
@@ -790,6 +855,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                   {open && (
                     <tr>
                       <td colSpan={6} className="px-4 py-4 bg-black/20 border-b border-white/[0.05]">
+                        <BetBar g={g} />
                         <GameInfoBar g={g} />
                         <div className="grid gap-3 sm:grid-cols-2">
                           <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} modelRecord={modelRec[g.awayTeam]} />
@@ -872,6 +938,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
 
                 {open && (
                   <div className="px-4 py-4 bg-black/20 border-t border-white/[0.06]">
+                    <BetBar g={g} />
                     <GameInfoBar g={g} />
                     <div className="grid gap-3">
                       <TeamCard title={g.awayTeam} logo={g.awayLogo} t={stats[g.awayTeamId]} l5={l5[g.awayTeamId]} modelRecord={modelRec[g.awayTeam]} />

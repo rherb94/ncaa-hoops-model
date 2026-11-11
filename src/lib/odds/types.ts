@@ -20,6 +20,15 @@ export type MarketLines = {
   moneylineAway?: number;
 
   updatedAtISO?: string;
+
+  // Sportsbook deep links (from TheOddsAPI's includeLinks). Any may be absent.
+  /** Adds the home / away spread selection to the bet slip. */
+  spreadLinkHome?: string;
+  spreadLinkAway?: string;
+  /** The spread market for this game. */
+  spreadMarketLink?: string;
+  /** The game's page at the sportsbook. */
+  eventLink?: string;
 };
 
 export type OddsGame = {

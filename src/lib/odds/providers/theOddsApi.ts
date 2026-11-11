@@ -8,10 +8,12 @@ type OddsApiOutcome = {
   name: string; // team name OR "Over"/"Under"
   price?: number; // American odds
   point?: number; // spread/total number
+  link?: string | null; // add-to-betslip deep link (includeLinks=true)
 };
 
 type OddsApiMarket = {
   key: "h2h" | "spreads" | "totals";
+  link?: string | null;
   outcomes: OddsApiOutcome[];
 };
 
@@ -19,6 +21,7 @@ type OddsApiBookmaker = {
   key: string; // e.g. "draftkings", "fanduel", "betmgm"
   title: string;
   last_update: string; // ISO
+  link?: string | null; // event page at the sportsbook
   markets: OddsApiMarket[];
 };
 
@@ -48,6 +51,7 @@ function parseBookLines(
   awayTeam: string
 ): MarketLines {
   const lines: MarketLines = { updatedAtISO: book.last_update };
+  if (book.link) lines.eventLink = book.link;
 
   for (const m of book.markets ?? []) {
     if (m.key === "h2h") {
@@ -64,9 +68,12 @@ function parseBookLines(
       // Convention: store HOME spread (negative => home favored)
       if (home?.point !== undefined) lines.spread = home.point;
 
-      // Optional: only keep these if your MarketLines type supports them
-      if (home?.price !== undefined) (lines as any).spreadOddsHome = home.price;
-      if (away?.price !== undefined) (lines as any).spreadOddsAway = away.price;
+      if (home?.price !== undefined) lines.spreadOddsHome = home.price;
+      if (away?.price !== undefined) lines.spreadOddsAway = away.price;
+
+      if (home?.link) lines.spreadLinkHome = home.link;
+      if (away?.link) lines.spreadLinkAway = away.link;
+      if (m.link) lines.spreadMarketLink = m.link;
     }
 
     if (m.key === "totals") {
@@ -123,6 +130,8 @@ export class TheOddsApiProvider implements OddsProvider {
       `?regions=${encodeURIComponent(region)}` +
       `&markets=${encodeURIComponent(markets)}` +
       `&oddsFormat=${encodeURIComponent(oddsFormat)}` +
+      // Sportsbook deep links, used for the "add to bet slip" buttons.
+      `&includeLinks=true` +
       `&apiKey=${encodeURIComponent(apiKey)}`;
 
     const res = await fetch(

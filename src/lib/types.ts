@@ -9,6 +9,8 @@ export type ConsensusOdds = {
 
 import type { ModelSignal } from "./signal";
 import type { RatingsStatus } from "./ratingsFreshness";
+import type { BetOption } from "./betLinks";
+export type { BetOption };
 export type { ModelSignal };
 
 export type ModelBlock = {
@@ -57,6 +59,9 @@ export type SlateGame = {
   model: ModelBlock;
 
   recommended?: RecommendedBet;
+
+  /** Where the play can be bet, per sportsbook. Only present on plays. */
+  betOptions?: BetOption[];
 
   // Override flags (populated when overrides.json has entries for this game)
   overrides?: GameOverrideInfo;
