@@ -5,6 +5,7 @@
 // GET /api/[league]/analytics               → all live dates (excludes backfilled)
 // GET /api/[league]/analytics?backfilled=1  → include backfilled dates
 // GET /api/[league]/analytics?from=YYYY-MM-DD&to=YYYY-MM-DD
+// All of the above cover the current season only; add season=all for every season.
 
 import { NextResponse } from "next/server";
 import fs from "node:fs";
@@ -12,6 +13,7 @@ import path from "node:path";
 import { getLeague, LEAGUES } from "@/lib/leagues";
 import { loadTeams } from "@/data/teams";
 import type { LeagueId } from "@/lib/leagues";
+import { filterToCurrentSeason, seasonStartDate } from "@/lib/season";
 
 const DATA_DIR = path.join(process.cwd(), "src", "data");
 
@@ -628,6 +630,10 @@ export async function GET(
     dates = dates.filter((d) => d >= LIVE_FROM);
   }
 
+  // Current season only unless ?season=all — each season starts a fresh record.
+  const seasonParam = url.searchParams.get("season");
+  dates = filterToCurrentSeason(dates, leagueCfg.id, seasonParam);
+
   if (dates.length === 0) {
     return NextResponse.json({ error: "No data found" }, { status: 404 });
   }
@@ -659,6 +665,7 @@ export async function GET(
     league: leagueCfg.id,
     dates_analyzed: dates.length,
     date_range: { from: dates[0], to: dates[dates.length - 1] },
+    season_start: seasonParam === "all" ? null : seasonStartDate(leagueCfg.id),
     backfilled_included: includeBackfilled,
     neutral_only: neutralOnly,
     ...analytics,

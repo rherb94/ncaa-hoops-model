@@ -5,6 +5,7 @@
 // GET /api/analysis?date=YYYY-MM-DD          — single day
 // GET /api/analysis?from=YYYY-MM-DD&to=...   — date range (max 30 days)
 // GET /api/analysis?date=YYYY-MM-DD&fmt=text — plain text summary (paste-able for Claude)
+// Ranges and ?all=1 cover the current season only; add &season=all for every season.
 
 import { NextResponse } from "next/server";
 import fs from "node:fs";
@@ -12,6 +13,7 @@ import path from "node:path";
 import { getLeague, LEAGUES } from "@/lib/leagues";
 import type { LeagueId } from "@/lib/leagues";
 import { getGameOverrides } from "@/lib/overrides";
+import { filterToCurrentSeason, seasonStartDate } from "@/lib/season";
 
 const DATA_DIR = path.join(process.cwd(), "src", "data");
 
@@ -556,8 +558,30 @@ export async function GET(
     dates = allAvailableDates(leagueCfg.id).slice(-7);
   }
 
+  // Performance is tracked per season: anything before the current season's
+  // start is left out unless ?season=all. A single explicit ?date= is honoured
+  // as-is so an old day can still be pulled up directly.
+  const seasonParam = url.searchParams.get("season");
+  if (!dateSingle) {
+    dates = filterToCurrentSeason(dates, leagueCfg.id, seasonParam);
+  }
+
   if (dates.length === 0) {
-    return NextResponse.json({ error: "No snapshot data found" }, { status: 404 });
+    if (dateSingle) {
+      return NextResponse.json({ error: "No snapshot data found" }, { status: 404 });
+    }
+    // New season with nothing tracked yet — an empty record, not an error.
+    if (fmt === "text") {
+      return new Response("No games tracked yet this season.\n", {
+        headers: { "content-type": "text/plain; charset=utf-8" },
+      });
+    }
+    return NextResponse.json({
+      dates_analyzed: [],
+      season_start: seasonStartDate(leagueCfg.id),
+      summary: { total_picks: 0, decided: 0, wins: 0, losses: 0, win_pct: null },
+      by_date: [],
+    });
   }
 
   // For dates within the last 2 days that have no results file yet, fetch live
@@ -607,6 +631,7 @@ export async function GET(
 
   return NextResponse.json({
     dates_analyzed: dates,
+    season_start: seasonParam === "all" ? null : seasonStartDate(leagueCfg.id),
     summary: {
       total_picks: allPicks.length,
       decided: allDecided.length,

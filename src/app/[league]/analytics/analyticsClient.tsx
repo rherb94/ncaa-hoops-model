@@ -580,7 +580,7 @@ export default function AnalyticsClient({ league }: { league: LeagueId }) {
       if (!res.ok) {
         if (res.status === 404) {
           setData(null);
-          setErr("No analytics data available yet. Run the odds opener workflow to start tracking.");
+          setErr("No games tracked yet this season. Analytics will fill in once the daily odds snapshot has run and games have finished.");
           return;
         }
         throw new Error(`API error ${res.status}`);
