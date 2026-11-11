@@ -1,10 +1,12 @@
 name: Daily Torvik Ratings Update - NCAAW
 
-# Schedule removed 2026-11-11: Torvik returns HTTP 403 to GitHub's servers, so
-# this job fails every time it runs here. Ratings are updated from a local
-# machine instead with `npm run ratings`. Left runnable by hand in case the
-# block is ever lifted.
+# Torvik returns HTTP 403 to GitHub's servers, so this job fetches the file
+# through the site's own /api/torvik pass-through (Vercel is not blocked).
+# `npm run ratings` does the same job from a local machine as a fallback.
 on:
+  schedule:
+    # 7:00 AM ET = 12:00 UTC — runs before the odds opener so ratings are fresh
+    - cron: '0 12 * * *'
   workflow_dispatch:
     inputs:
       year:
@@ -33,6 +35,10 @@ jobs:
         env:
           YEAR: ${{ inputs.year || '' }}  # blank = derived from today's date (src/lib/season.ts)
           LEAGUE: ncaaw
+          TORVIK_URL: https://ncaa-hoops-model.vercel.app/api/torvik?league=ncaaw${{ inputs.year && format('&year={0}', inputs.year) || '' }}
+          # Both optional — only needed if the endpoint is locked down.
+          TORVIK_PROXY_SECRET: ${{ secrets.TORVIK_PROXY_SECRET }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: npx tsx src/scripts/updateTeamsFromTorvik.ts
 
       - name: Commit updated teams.csv if changed

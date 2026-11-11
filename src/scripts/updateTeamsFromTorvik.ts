@@ -16,7 +16,7 @@ const TORVIK_BASE_URL =
     ? `https://barttorvik.com/ncaaw/${YEAR}_team_results.csv`
     : `https://barttorvik.com/${YEAR}_team_results.csv`;
 
-const TORVIK_URL = process.env.TORVIK_URL ?? TORVIK_BASE_URL;
+const TORVIK_URL = process.env.TORVIK_URL || TORVIK_BASE_URL;
 
 // Venue splits are opt-in. Torvik ignores the `?venue=H|A` query on this CSV
 // (checked 2026-11-11: both return the same rows as the overall file), so the
@@ -143,6 +143,15 @@ async function readTorvikCsv(opts: {
         headers: {
           "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
           accept: "text/csv,text/plain;q=0.9,*/*;q=0.8",
+          // Only relevant when TORVIK_URL points at our own /api/torvik
+          // pass-through: optional shared secret, and Vercel's deployment-
+          // protection bypass token if the site sits behind Vercel auth.
+          ...(process.env.TORVIK_PROXY_SECRET
+            ? { "x-proxy-secret": process.env.TORVIK_PROXY_SECRET }
+            : {}),
+          ...(process.env.VERCEL_AUTOMATION_BYPASS_SECRET
+            ? { "x-vercel-protection-bypass": process.env.VERCEL_AUTOMATION_BYPASS_SECRET }
+            : {}),
         },
       });
       const text = await res.text().catch(() => "");
