@@ -44,7 +44,7 @@ export default function RootLayout({
               className="flex items-center gap-2.5 text-[15px] font-bold tracking-tight text-zinc-100 [font-stretch:108%]"
             >
               <BrandMark />
-              <span>Hoops Model</span>
+              <span className="hidden whitespace-nowrap min-[340px]:inline">Hoops Model</span>
             </Link>
             <LeagueNav />
           </div>

@@ -322,7 +322,7 @@ function BetBar({ g }: { g: SlateGame }) {
   const team = g.recommended.side === "HOME" ? g.homeTeam : g.awayTeam;
 
   return (
-    <div className="mb-3 rounded-xl border border-white/[0.08] bg-zinc-900/60 px-4 py-3">
+    <div className="mb-3 rounded-xl border border-white/[0.08] bg-zinc-900/60 px-3 py-3 sm:px-4">
       <div className="mb-2.5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <span className="text-sm text-zinc-300">
           Bet <span className="font-semibold text-zinc-100">{team}</span>
@@ -353,18 +353,22 @@ function BetBar({ g }: { g: SlateGame }) {
               {logo
                 ? <img src={logo} alt="" className="h-6 w-6 shrink-0 rounded object-contain" />
                 : <span className="h-6 w-6 shrink-0 rounded bg-zinc-800" />}
-              <span className="min-w-0 flex-1">
-                <span className="flex items-baseline gap-2">
-                  <span className="text-sm font-semibold text-zinc-100">{o.bookName}</span>
-                  <span className="num text-sm font-semibold text-zinc-100">{fmtSpread(o.line)}</span>
-                  {o.price != null && <span className="num text-xs text-zinc-400">({fmtML(o.price)})</span>}
+              {/* Narrow screens: details on one line, action underneath.
+                  Wider: action sits at the right edge. Nothing may overlap. */}
+              <span className="flex min-w-0 flex-1 flex-col gap-1 min-[480px]:flex-row min-[480px]:items-center min-[480px]:justify-between min-[480px]:gap-3">
+                <span className="flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-1">
+                  <span className="whitespace-nowrap text-sm font-semibold text-zinc-100">{o.bookName}</span>
+                  <span className="num whitespace-nowrap text-sm font-semibold text-zinc-100">{fmtSpread(o.line)}</span>
+                  {o.price != null && <span className="num whitespace-nowrap text-xs text-zinc-400">({fmtML(o.price)})</span>}
                   {o.best && (
-                    <span className="rounded bg-emerald-400/15 px-1.5 py-0.5 text-[11px] font-semibold text-emerald-300">Best number</span>
+                    <span className="whitespace-nowrap rounded bg-emerald-400/15 px-1.5 py-0.5 text-[11px] font-semibold leading-none text-emerald-300">
+                      Best number
+                    </span>
                   )}
                 </span>
-              </span>
-              <span className={`shrink-0 text-xs font-medium ${o.level === "betslip" ? "text-zinc-200" : "text-zinc-500"} group-hover:text-zinc-100`}>
-                {action}
+                <span className={`shrink-0 whitespace-nowrap text-xs font-medium ${o.level === "betslip" ? "text-zinc-300" : "text-zinc-500"} group-hover:text-zinc-100`}>
+                  {action}
+                </span>
               </span>
             </a>
           );
@@ -937,7 +941,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                 </div>
 
                 {open && (
-                  <div className="px-4 py-4 bg-black/20 border-t border-white/[0.06]">
+                  <div className="px-2.5 py-3 bg-black/20 border-t border-white/[0.06] min-[400px]:px-4 min-[400px]:py-4">
                     <BetBar g={g} />
                     <GameInfoBar g={g} />
                     <div className="grid gap-3">
