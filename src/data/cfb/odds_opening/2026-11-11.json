@@ -1,0 +1,116 @@
+{
+  "date": "2026-11-11",
+  "captured_at": "2026-11-11T22:35:19.538Z",
+  "ratings_updated_at": null,
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "a8f5a967982255fd6be0435c3b213b0f",
+      "commence_time": "2026-11-12T00:30:00Z",
+      "home_team": "Ball State Cardinals",
+      "away_team": "Buffalo Bulls",
+      "home_espnTeamId": "2050",
+      "away_espnTeamId": "2084",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-11T22:34:37Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5,
+        "homePrice": -118,
+        "awayPrice": -102
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": 1,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": 2,
+          "price": -114
+        },
+        "bestAway": {
+          "book": "fanatics",
+          "homePoint": 1,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-ball-state",
+        "awayTeamId": "team-buffalo",
+        "modelSpread": 7.6,
+        "edge": 6.1,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "88407c59161b47299b7d8f5d730f916c",
+      "commence_time": "2026-11-12T00:30:00Z",
+      "home_team": "Central Michigan Chippewas",
+      "away_team": "Sacramento State Hornets",
+      "home_espnTeamId": "2117",
+      "away_espnTeamId": "16",
+      "home_resolve": "MAP",
+      "away_resolve": "ESPN_BY_NAME",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-11T22:34:37Z",
+        "homePoint": -17.5,
+        "awayPoint": 17.5,
+        "homePrice": -102,
+        "awayPrice": -118
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -17,
+        "bestHome": {
+          "book": "williamhill_us",
+          "homePoint": -17,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -17.5,
+          "price": -120
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "5129a94416920cd3c476cd56af387f47",
+      "commence_time": "2026-11-12T00:30:00Z",
+      "home_team": "Toledo Rockets",
+      "away_team": "UMass Minutemen",
+      "home_espnTeamId": "2649",
+      "away_espnTeamId": null,
+      "home_resolve": "MAP",
+      "away_resolve": "MISS",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-11T22:34:37Z",
+        "homePoint": -14,
+        "awayPoint": 14,
+        "homePrice": -112,
+        "awayPrice": -108
+      },
+      "market": {
+        "books": 10,
+        "medianHomePoint": -14.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -14,
+          "price": -112
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -14.5,
+          "price": -120
+        }
+      },
+      "model": null
+    }
+  ]
+}
