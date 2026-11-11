@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import type { LeagueId } from "@/lib/leagues";
+import { isPlay } from "@/lib/signal";
 
 // ---- types ----
 type GameRow = {
@@ -132,7 +133,7 @@ function computeStats(byDate: DayResult[]) {
 
   // Average CLV across games where we have both a pick and a CLV
   const clvGames = allGames.filter(
-    (g) => g.signal !== "NONE" && g.clv !== null
+    (g) => isPlay(g.signal) && g.clv !== null
   );
   const avgClv = clvGames.length > 0
     ? clvGames.reduce((sum, g) => sum + g.clv!, 0) / clvGames.length
@@ -143,12 +144,14 @@ function computeStats(byDate: DayResult[]) {
     { label: "1–2",    sublabel: "1 ≤ |edge| < 2",   games: 0, dirCorrect: 0, wins: 0, losses: 0 },
     { label: "2–3",    sublabel: "2 ≤ |edge| < 3",   games: 0, dirCorrect: 0, wins: 0, losses: 0 },
     { label: "LEAN",   sublabel: "3 ≤ |edge| < 5",   games: 0, dirCorrect: 0, wins: 0, losses: 0 },
-    { label: "STRONG", sublabel: "|edge| ≥ 5",        games: 0, dirCorrect: 0, wins: 0, losses: 0 },
+    { label: "STRONG", sublabel: "5 ≤ |edge| < 8",        games: 0, dirCorrect: 0, wins: 0, losses: 0 },
+    // Not plays: shown so you can see how they would have done, never in the record.
+    { label: "CAUTION", sublabel: "edge ≥ 8 or 20+ spread · not played", games: 0, dirCorrect: 0, wins: 0, losses: 0 },
   ];
   for (const g of completed) {
     if (g.edge === null) continue;
     const abs = Math.abs(g.edge);
-    const bi = abs >= 5 ? 4 : abs >= 3 ? 3 : abs >= 2 ? 2 : abs >= 1 ? 1 : 0;
+    const bi = g.signal === "CAUTION" ? 5 : abs >= 5 ? 4 : abs >= 3 ? 3 : abs >= 2 ? 2 : abs >= 1 ? 1 : 0;
     const b = buckets[bi];
     // Use modelDirectionCorrect for all buckets so no-pick rows show
     // simulated ATS (what would have happened if we'd bet the model side).
@@ -237,6 +240,15 @@ function SkipBadge({ reason }: { reason?: string }) {
 }
 
 function SignalBadge({ signal, pickSide }: { signal: string; pickSide: string }) {
+  if (signal === "CAUTION")
+    return (
+      <span
+        className="text-xs font-semibold whitespace-nowrap text-zinc-500 cursor-help"
+        title="Edge of 8+ points or a 20+ point spread. The model is known to be off on big spreads — not a play, not counted in the record."
+      >
+        ⚠ CAUTION
+      </span>
+    );
   if (signal === "NONE") return <span className="text-zinc-600 text-xs">—</span>;
   const color = signal === "STRONG" ? "text-emerald-400" : "text-amber-400";
   return <span className={`text-xs font-semibold whitespace-nowrap ${color}`}>{signal} {pickSide}</span>;
@@ -338,7 +350,7 @@ function EdgeCalibrationTable({ buckets }: { buckets: CalibrationBucket[] }) {
 
 // Mobile game card
 function GameCard({ g, league }: { g: GameRow; league: LeagueId }) {
-  const hasPick = g.signal !== "NONE";
+  const hasPick = isPlay(g.signal);
   const dc = modelDirectionCorrect(g);
   const rowBg = hasPick
     ? g.pick_result === "WIN"
@@ -500,7 +512,7 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
   const backfilledCount = by_date.filter((d) => d.backfilled).length;
 
   // Compute ATS from visible dates (excludes backfilled when hidden)
-  const allPicks = visibleDates.flatMap((d) => d.games.filter((g) => g.signal !== "NONE"));
+  const allPicks = visibleDates.flatMap((d) => d.games.filter((g) => isPlay(g.signal)));
   const allDecided = allPicks.filter((g) => g.pick_result === "WIN" || g.pick_result === "LOSS");
   const totalWins = allDecided.filter((g) => g.pick_result === "WIN").length;
   const summary = {
@@ -513,8 +525,8 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
 
   const sortGames = (games: GameRow[]) =>
     games.slice().sort((a, b) => {
-      const ap = a.signal !== "NONE" ? 1 : 0;
-      const bp = b.signal !== "NONE" ? 1 : 0;
+      const ap = isPlay(a.signal) ? 1 : 0;
+      const bp = isPlay(b.signal) ? 1 : 0;
       if (bp !== ap) return bp - ap;
       return Math.abs(b.edge ?? 0) - Math.abs(a.edge ?? 0);
     });
@@ -691,7 +703,7 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
                   </thead>
                   <tbody>
                     {sortGames(day.games).map((g, i) => {
-                      const hasPick = g.signal !== "NONE";
+                      const hasPick = isPlay(g.signal);
                       return (
                         <tr
                           key={i}

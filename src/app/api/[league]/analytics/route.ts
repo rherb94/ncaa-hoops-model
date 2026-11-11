@@ -13,6 +13,7 @@ import path from "node:path";
 import { getLeague, LEAGUES } from "@/lib/leagues";
 import { loadTeams } from "@/data/teams";
 import type { LeagueId } from "@/lib/leagues";
+import { isPlay } from "@/lib/signal";
 import { filterToCurrentSeason, seasonStartDate } from "@/lib/season";
 
 const DATA_DIR = path.join(process.cwd(), "src", "data");
@@ -184,7 +185,7 @@ function evaluatePick(
   openingHomePoint: number | null,
   actualSpread: number | null
 ): "WIN" | "LOSS" | "PUSH" | "NO_PICK" | "PENDING" {
-  if (signal === "NONE" || edge === null) return "NO_PICK";
+  if (!isPlay(signal) || edge === null) return "NO_PICK"; // CAUTION is not a play
   if (actualSpread === null || openingHomePoint === null) return "PENDING";
   const pickSide = edge < 0 ? "HOME" : "AWAY";
   const margin = actualSpread - openingHomePoint;

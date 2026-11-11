@@ -37,13 +37,9 @@ export function computeEdge(modelSpread: number, vegasSpread?: number) {
   return round(modelSpread - vegasSpread);
 }
 
-export function computeSignal(edge?: number): "STRONG" | "LEAN" | "NONE" {
-  if (edge === undefined) return "NONE";
-  const a = Math.abs(edge);
-  if (a >= 5) return "STRONG";
-  if (a >= 3) return "LEAN";
-  return "NONE";
-}
+// Signal thresholds (NONE / LEAN / STRONG / CAUTION) live in ./signal so client
+// components can share them.
+export { computeSignal, isPlay, cautionNote } from "./signal";
 
 // ------------------------------
 // AdjO/AdjD/Tempo efficiency model

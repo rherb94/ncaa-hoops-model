@@ -7,15 +7,18 @@ export type ConsensusOdds = {
   updatedAtISO?: string;
 };
 
-export type ModelSignal = "NONE" | "LEAN" | "STRONG";
+import type { ModelSignal } from "./signal";
+export type { ModelSignal };
 
 export type ModelBlock = {
   awayPR: number;
   homePR: number;
   hca: number;
   modelSpread: number; // HOME spread (negative = home favored)
-  edge?: number; // modelSpread - marketSpread (both HOME spread convention)
+  edge?: number; // modelSpread - marketSpread (both HOME spread convention), uncapped
   signal: ModelSignal;
+  /** Why a CAUTION game is not a play (only set when signal === "CAUTION"). */
+  cautionNote?: string;
 };
 
 export type GameOverrideInfo = {

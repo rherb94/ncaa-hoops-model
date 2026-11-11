@@ -66,7 +66,7 @@ function evaluatePick(
   openingHomePoint: number | null,
   actualSpread: number | null
 ): "WIN" | "LOSS" | "PUSH" | "PENDING" | null {
-  if (signal === "NONE" || edge === null) return null;
+  if ((signal !== "LEAN" && signal !== "STRONG") || edge === null) return null;
   if (actualSpread === null || openingHomePoint === null) return "PENDING";
   const pickSide = edge < 0 ? "HOME" : "AWAY";
   const margin = actualSpread - openingHomePoint;
@@ -239,7 +239,7 @@ async function migrateLeague(leagueId: LeagueId) {
           const signal = sg.model?.signal ?? "NONE";
           const edge   = sg.model?.edge ?? null;
           const pickSide: string | null =
-            signal !== "NONE" && edge !== null
+            (signal === "LEAN" || signal === "STRONG") && edge !== null
               ? edge < 0 ? "HOME" : "AWAY"
               : null;
 
@@ -329,7 +329,7 @@ async function migrateLeague(leagueId: LeagueId) {
       // ---- 5. Insert pick evaluation ----
       const signal = sg.model?.signal ?? "NONE";
       const edge   = sg.model?.edge ?? null;
-      if (signal !== "NONE" && edge !== null) {
+      if ((signal === "LEAN" || signal === "STRONG") && edge !== null) {
         const existingEval = await db
           .select({ id: tables.pickEvaluations.id })
           .from(tables.pickEvaluations)

@@ -13,6 +13,7 @@ import path from "node:path";
 import { getLeague, LEAGUES } from "@/lib/leagues";
 import type { LeagueId } from "@/lib/leagues";
 import { getGameOverrides } from "@/lib/overrides";
+import { isPlay } from "@/lib/signal";
 import { filterToCurrentSeason, seasonStartDate } from "@/lib/season";
 
 const DATA_DIR = path.join(process.cwd(), "src", "data");
@@ -196,7 +197,7 @@ function evaluatePick(
   openingHomePoint: number | null,
   actualSpread: number | null // home spread: neg = home won by abs(n)
 ): "WIN" | "LOSS" | "PUSH" | "NO_PICK" | "PENDING" {
-  if (signal === "NONE" || edge === null) return "NO_PICK";
+  if (!isPlay(signal) || edge === null) return "NO_PICK"; // CAUTION is not a play
   if (actualSpread === null) return "PENDING";
   if (openingHomePoint === null) return "PENDING";
 
@@ -376,7 +377,7 @@ function analyzeDate(
     // Check for intraday pick: if the opener had signal=NONE but an intraday
     // pick was detected later, overlay it onto this game row.
     const openerSignal = sg.model?.signal ?? "NONE";
-    const intraday = openerSignal === "NONE" ? intradayByEvent.get(sg.oddsEventId) : undefined;
+    const intraday = !isPlay(openerSignal) ? intradayByEvent.get(sg.oddsEventId) : undefined;
 
     // Use intraday pick data if available, otherwise use opener data
     const effectiveSignal = intraday?.signal ?? openerSignal;
@@ -398,7 +399,7 @@ function analyzeDate(
     );
 
     const pickSide: "HOME" | "AWAY" | "NONE" =
-      finalSignal === "NONE" || !effectiveEdge
+      !isPlay(finalSignal) || !effectiveEdge
         ? "NONE"
         : effectiveEdge < 0
         ? "HOME"
@@ -450,7 +451,7 @@ function analyzeDate(
   });
 
   // aggregate stats
-  const picks = games.filter((g) => g.signal !== "NONE");
+  const picks = games.filter((g) => isPlay(g.signal));
   const decided = picks.filter((g) => g.pick_result === "WIN" || g.pick_result === "LOSS");
   const wins = decided.filter((g) => g.pick_result === "WIN").length;
   const strongPicks = picks.filter((g) => g.signal === "STRONG");
@@ -469,6 +470,7 @@ function analyzeDate(
     picks_made: picks.length,
     strong_picks: strongPicks.length,
     lean_picks: picks.filter((g) => g.signal === "LEAN").length,
+    caution_games: games.filter((g) => g.signal === "CAUTION").length,
     record: decided.length > 0 ? `${wins}-${decided.length - wins}` : "pending",
     strong_record:
       strongDecided.length > 0
@@ -498,8 +500,8 @@ function toTextSummary(results: ReturnType<typeof analyzeDate>[]): string {
           ? `${g.away_score}-${g.home_score}`
           : "TBD";
       const pickStr =
-        g.signal === "NONE"
-          ? "NO PICK"
+        !isPlay(g.signal)
+          ? g.signal === "CAUTION" ? `CAUTION, not a play (edge: ${g.edge?.toFixed(1)})` : "NO PICK"
           : `${g.signal} ${g.pick_side} (edge: ${g.edge?.toFixed(1)})`;
       const resultStr =
         g.pick_result === "NO_PICK"
@@ -626,7 +628,7 @@ export async function GET(
   );
   const totalWins = allDecided.filter((g) => g.pick_result === "WIN").length;
   const allPicks = results.flatMap((r) =>
-    (r?.games ?? []).filter((g) => g.signal !== "NONE")
+    (r?.games ?? []).filter((g) => isPlay(g.signal))
   );
 
   return NextResponse.json({

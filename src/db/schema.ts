@@ -96,7 +96,7 @@ function makeModelPredictions(prefix: string) {
     rawModelSpread:    real("raw_model_spread"),
     modelSpread:       real("model_spread"),
     edge:              real("edge"),
-    signal:            text("signal"),                      // "NONE" | "LEAN" | "STRONG"
+    signal:            text("signal"),                      // "NONE" | "LEAN" | "STRONG" | "CAUTION" (CAUTION is never a play)
     pickSide:          text("pick_side"),                   // "HOME" | "AWAY" | null
   });
 }

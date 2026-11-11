@@ -118,7 +118,7 @@ export async function syncOpenerToDb(
       if (existPred.length === 0) {
         const signal   = sg.model?.signal ?? "NONE";
         const edge     = sg.model?.edge ?? null;
-        const pickSide = signal !== "NONE" && edge !== null
+        const pickSide = (signal === "LEAN" || signal === "STRONG") && edge !== null
           ? edge < 0 ? "HOME" : "AWAY"
           : null;
 

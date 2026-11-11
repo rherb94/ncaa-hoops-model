@@ -17,6 +17,7 @@ import {
   computeModelSpread,
   computeEdge,
   computeSignal,
+  isPlay,
 } from "@/lib/model";
 
 // ---------------------------------------------------------------------------
@@ -47,10 +48,6 @@ function todayET(): string {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" })
     .format(new Date())
     .slice(0, 10);
-}
-
-function clamp(n: number, lo: number, hi: number) {
-  return Math.max(lo, Math.min(hi, n));
 }
 
 /** Pick the consensus home spread from preferred books (excluding BetRivers). */
@@ -161,10 +158,11 @@ async function main() {
     }
 
     const edgeRaw = computeEdge(rawModelSpread, consensus.spread);
-    const edge = edgeRaw === undefined ? undefined : clamp(edgeRaw, -12, 12);
-    const signal = computeSignal(edge);
+    const edge = edgeRaw;
+    const signal = computeSignal(edge, consensus.spread);
 
-    if (signal === "NONE") continue;
+    // Only real plays are recorded — CAUTION games are never stored as picks.
+    if (!isPlay(signal)) continue;
 
     // Look up game in DB by oddsEventId
     const gameRows = await db

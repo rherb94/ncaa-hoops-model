@@ -13,10 +13,6 @@ import {
 import { LEAGUES } from "@/lib/leagues";
 import type { LeagueId } from "@/lib/leagues";
 
-function clamp(n: number, lo: number, hi: number) {
-  return Math.max(lo, Math.min(hi, n));
-}
-
 // ---------------- config ----------------
 const ODDS_API_KEY = process.env.THE_ODDS_API_KEY;
 if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
@@ -440,8 +436,9 @@ async function main() {
       const marketSpread = spread?.homePoint;
       const modelSpread = rawModelSpread;
       const edgeRaw = computeEdge(modelSpread, marketSpread);
-      const edge = edgeRaw === undefined ? null : clamp(edgeRaw, -12, 12);
-      const signal = computeSignal(edge ?? undefined);
+      const edge = edgeRaw === undefined ? null : edgeRaw; // stored uncapped
+      // CAUTION (edge 8+ or a 20+ point spread) is recorded but is not a play.
+      const signal = computeSignal(edge, marketSpread);
 
       modelData = {
         homeTeamId: homeTeamId ?? null,

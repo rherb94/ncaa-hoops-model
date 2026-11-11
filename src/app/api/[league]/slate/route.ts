@@ -17,6 +17,8 @@ import {
   computeModelSpread,
   computeEdge,
   computeSignal,
+  isPlay,
+  cautionNote,
 } from "@/lib/model";
 
 type Consensus = {
@@ -27,10 +29,6 @@ type Consensus = {
   source: string;
   updatedAtISO?: string;
 };
-
-function clamp(n: number, lo: number, hi: number) {
-  return Math.max(lo, Math.min(hi, n));
-}
 
 function pickConsensusFromBooks(books: any): Consensus {
   const order = [
@@ -194,12 +192,12 @@ async function buildSlateGames(
     const modelTotal = eff?.modelTotal ?? consensus.total;
 
     const edgeRaw = computeEdge(modelSpread, marketSpread);
-    const edge = edgeRaw === undefined ? undefined : clamp(edgeRaw, -12, 12);
-    const rawSignal = computeSignal(edge);
+    const edge = edgeRaw; // uncapped — a huge edge is information, not something to hide
+    const rawSignal = computeSignal(edge, marketSpread);
     const signal = overrides.skip ? "NONE" as const : rawSignal;
 
     const preferredSide: "HOME" | "AWAY" | "NONE" =
-      signal === "NONE" || edge === undefined
+      !isPlay(signal) || edge === undefined
         ? "NONE"
         : edge < 0
         ? "HOME"
@@ -253,6 +251,7 @@ async function buildSlateGames(
         modelSpread,
         edge: edge ?? 0,
         signal,
+        cautionNote: signal === "CAUTION" ? cautionNote(edge, marketSpread) : undefined,
       },
 
       recommended:

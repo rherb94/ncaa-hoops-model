@@ -3,6 +3,7 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
 import type { SlateGame } from "@/lib/types";
 import type { LeagueId } from "@/lib/leagues";
+import { isPlay } from "@/lib/signal";
 import type { L5Record } from "@/app/api/[league]/team-l5/route";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -79,6 +80,7 @@ function rowTint(signal?: SlateGame["model"]["signal"], skipped?: boolean) {
   if (skipped) return "opacity-50";
   if (signal === "STRONG") return "bg-emerald-500/[0.09]";
   if (signal === "LEAN")   return "bg-amber-400/[0.07]";
+  if (signal === "CAUTION") return "bg-zinc-500/[0.06]";
   return "";
 }
 
@@ -87,6 +89,7 @@ function railClass(signal?: SlateGame["model"]["signal"], skipped?: boolean) {
   if (skipped) return "border-l-[3px] border-rose-400/40";
   if (signal === "STRONG") return "border-l-[3px] border-emerald-400";
   if (signal === "LEAN")   return "border-l-[3px] border-amber-400";
+  if (signal === "CAUTION") return "border-l-[3px] border-dashed border-zinc-500";
   return "border-l-[3px] border-transparent";
 }
 
@@ -98,6 +101,8 @@ function mobileCardClass(signal?: SlateGame["model"]["signal"], skipped?: boolea
     return "rounded-xl border border-emerald-500/40 bg-emerald-500/[0.11] shadow-[0_0_22px_-4px_rgba(52,211,153,0.4)]";
   if (signal === "LEAN")
     return "rounded-xl border border-amber-400/35 bg-amber-400/[0.09] shadow-[0_0_22px_-4px_rgba(251,191,36,0.32)]";
+  if (signal === "CAUTION")
+    return "rounded-xl border border-dashed border-zinc-500/50 bg-zinc-500/[0.06]";
   return "rounded-xl border border-white/[0.05] bg-zinc-900/20";
 }
 
@@ -199,12 +204,23 @@ function PickText({
   side,
   line,
   neutralSite,
+  cautionNote,
 }: {
+  cautionNote?: string;
   signal: SlateGame["model"]["signal"];
   side?: "HOME" | "AWAY" | "NONE";
   line?: number | null;
   neutralSite?: boolean;
 }) {
+  if (signal === "CAUTION")
+    return (
+      <span
+        className="text-xs font-semibold text-zinc-400 cursor-help"
+        title={cautionNote ?? "Not a play — the model is unreliable here. Not tracked in results."}
+      >
+        ⚠ CAUTION <span className="font-normal text-zinc-500">· no play</span>
+      </span>
+    );
   if (signal === "NONE" || !side || side === "NONE")
     return <span className="text-zinc-600 text-xs">—</span>;
 
@@ -229,7 +245,7 @@ function PickText({
 
 function GameCell({ g }: { g: SlateGame }) {
   const preferred = modelPrefersSide(g.model.edge);
-  const hasPick = g.model.signal !== "NONE";
+  const hasPick = isPlay(g.model.signal);
   const preferredNameColor = "font-semibold text-zinc-100";
 
   function TeamRow({ name, logo, isPreferred }: { name: string; logo?: string | null; isPreferred: boolean }) {
@@ -480,7 +496,7 @@ async function fetchModelData(league: LeagueId): Promise<ModelData> {
     const liveDays = (json.by_date ?? []).filter((d: any) => !d.backfilled);
     for (const day of liveDays) {
       for (const g of day.games ?? []) {
-        if (g.signal === "NONE") continue;
+        if (!isPlay(g.signal)) continue;
         if (g.pick_result !== "WIN" && g.pick_result !== "LOSS") continue;
         const team = g.pick_side === "HOME" ? g.home_team : g.away_team;
         if (!map[team]) map[team] = { wins: 0, losses: 0 };
@@ -489,7 +505,7 @@ async function fetchModelData(league: LeagueId): Promise<ModelData> {
       }
     }
     // Compute summary from live dates only (not backfilled)
-    const allPicks = liveDays.flatMap((d: any) => (d.games ?? []).filter((g: any) => g.signal !== "NONE"));
+    const allPicks = liveDays.flatMap((d: any) => (d.games ?? []).filter((g: any) => isPlay(g.signal)));
     const decided = allPicks.filter((g: any) => g.pick_result === "WIN" || g.pick_result === "LOSS");
     const wins = decided.filter((g: any) => g.pick_result === "WIN").length;
     const losses = decided.length - wins;
@@ -537,11 +553,12 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
     games:  upcoming.length,
     lean:   upcoming.filter((g) => g.model.signal === "LEAN").length,
     strong: upcoming.filter((g) => g.model.signal === "STRONG").length,
+    caution: upcoming.filter((g) => g.model.signal === "CAUTION").length,
   }), [upcoming]);
 
   const filtered = useMemo(() => {
     let arr = [...upcoming];
-    if (filter === "PICKS")  arr = arr.filter((g) => g.model.signal !== "NONE");
+    if (filter === "PICKS")  arr = arr.filter((g) => isPlay(g.model.signal));
     if (filter === "STRONG") arr = arr.filter((g) => g.model.signal === "STRONG");
 
     arr.sort((a, b) => {
@@ -558,7 +575,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
 
   // Index where NONE games begin (for group divider)
   const firstNoneIdx = useMemo(() =>
-    filter === "ALL" ? filtered.findIndex((g) => g.model.signal === "NONE") : -1,
+    filter === "ALL" ? filtered.findIndex((g) => !isPlay(g.model.signal)) : -1,
     [filtered, filter]
   );
 
@@ -612,6 +629,9 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
             {counts.games} games
             {counts.strong > 0 && <> · <span className="text-emerald-400">{counts.strong} STRONG</span></>}
             {counts.lean   > 0 && <> · <span className="text-amber-400">{counts.lean} LEAN</span></>}
+            {counts.caution > 0 && (
+              <> · <span className="text-zinc-400" title="Edge of 8+ points or a 20+ point spread. The model is known to be off on big spreads, so these are not plays and are not tracked in results.">{counts.caution} CAUTION</span></>
+            )}
             {modelSummary.pct !== null && (
               <> · <span className={modelSummary.wins > modelSummary.losses ? "text-emerald-400" : modelSummary.wins < modelSummary.losses ? "text-red-400" : "text-zinc-400"}>
                 Model ATS {modelSummary.wins}-{modelSummary.losses} ({modelSummary.pct}%)
@@ -713,6 +733,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                         side={g.recommended?.side}
                         line={g.recommended?.line ?? null}
                         neutralSite={g.neutralSite}
+                        cautionNote={g.model.cautionNote}
                       />
                     </td>
                   </tr>
@@ -741,7 +762,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
         {filtered.map((g, i) => {
           const open = openGameId === g.gameId;
           const preferred = modelPrefersSide(g.model.edge);
-          const hasPick = g.model.signal !== "NONE";
+          const hasPick = isPlay(g.model.signal);
 
           const preferredNameColor = "font-semibold text-zinc-100";
 
@@ -766,7 +787,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs text-zinc-500">{fmtTime(g.startTimeISO)}</span>
                     <div className="flex items-center gap-2">
-                      <PickText signal={g.model.signal} side={g.recommended?.side} line={g.recommended?.line ?? null} neutralSite={g.neutralSite} />
+                      <PickText signal={g.model.signal} side={g.recommended?.side} line={g.recommended?.line ?? null} neutralSite={g.neutralSite} cautionNote={g.model.cautionNote} />
                       <span className={`text-[9px] text-zinc-700 transition-transform duration-150 ${open ? "rotate-180" : ""}`}>▼</span>
                     </div>
                   </div>

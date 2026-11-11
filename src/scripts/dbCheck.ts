@@ -36,7 +36,7 @@ async function main() {
     `SELECT p.id, p.game_id, p.signal, p.edge, p.model_spread, p.opening_home_point,
             p.home_adj_o, p.home_adj_d, p.away_adj_o, p.away_adj_d
      FROM ncaam_model_predictions p
-     WHERE p.signal != 'NONE'
+     WHERE p.signal IN ('LEAN','STRONG')
      LIMIT 3`
   ));
   preds.rows.forEach(r => console.log(" ", r));

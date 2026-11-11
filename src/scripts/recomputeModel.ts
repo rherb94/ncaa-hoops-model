@@ -29,10 +29,6 @@ import {
   computeSignal,
 } from "@/lib/model";
 
-function clamp(n: number, lo: number, hi: number) {
-  return Math.max(lo, Math.min(hi, n));
-}
-
 const DRY_RUN = process.env.DRY_RUN === "1";
 const DATE    = process.env.DATE || "";
 const LEAGUE  = process.env.LEAGUE || "ncaam"; // use || so empty string also falls back
@@ -94,8 +90,8 @@ function recomputeGame(
 
   const marketSpread = g.opening?.homePoint;
   const edgeRaw      = computeEdge(rawModelSpread, marketSpread);
-  const edge         = edgeRaw === undefined ? null : clamp(edgeRaw, -12, 12);
-  const signal       = computeSignal(edge ?? undefined);
+  const edge         = edgeRaw === undefined ? null : edgeRaw;
+  const signal       = computeSignal(edge, marketSpread);
 
   const newModel = {
     homeTeamId: homeTeamId ?? null,
