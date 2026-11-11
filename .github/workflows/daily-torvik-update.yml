@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       year:
-        description: 'Season year (e.g. 2026). Defaults to current year.'
+        description: 'Season year, the year the season ends in (e.g. 2027). Blank = derived from the date.'
         required: false
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
 
       - name: Update Torvik team ratings
         env:
-          YEAR: ${{ inputs.year || '2026' }}
+          YEAR: ${{ inputs.year || '' }}  # blank = derived from today's date (src/lib/season.ts)
           LEAGUE: ncaam
         run: npx tsx src/scripts/updateTeamsFromTorvik.ts
 
@@ -38,9 +38,9 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/ncaam/teams.csv
+          git add src/data/ncaam/teams.csv src/data/ncaam/teamAliases.csv
           if git diff --cached --quiet; then
-            echo "No changes to teams.csv."
+            echo "No changes to teams.csv or teamAliases.csv."
           else
             git commit -m "chore: update Torvik ratings $(date -u +%Y-%m-%d) [skip ci]"
             git push

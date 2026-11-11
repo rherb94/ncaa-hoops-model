@@ -555,8 +555,16 @@ async function main() {
       console.error("");
     }
 
+    // The snapshot above is already written, so unmapped teams are a warning,
+    // not a failed run — unless STRICT=1. (Exit code 2 used to fail the NCAAM
+    // workflow, which then skipped its commit step and lost the snapshot.)
+    if (process.env.GITHUB_ACTIONS) {
+      console.log(
+        `::warning::${uniq.size} odds team name(s) have no ESPN id — their results won't be graded: ` +
+          [...uniq.values()].slice(0, 8).map((m) => m.name).join(", ")
+      );
+    }
     if (STRICT) process.exit(2);
-    process.exitCode = 2;
   }
 }
 

@@ -1,8 +1,11 @@
 // src/scripts/updateTeamsFromTorvik.ts
 import fs from "node:fs";
 import path from "node:path";
+import { basketballSeasonYear } from "@/lib/season";
 
-const YEAR = process.env.YEAR ?? "2026";
+// Season year (the year the season ends in). Derived from today's date unless
+// YEAR is set; `||` so an empty string from a workflow input also falls back.
+const YEAR = process.env.YEAR || String(basketballSeasonYear());
 const LEAGUE = (process.env.LEAGUE ?? "ncaam") as "ncaam" | "ncaaw";
 
 // Existing overall CSV source
@@ -15,21 +18,15 @@ const TORVIK_BASE_URL =
 
 const TORVIK_URL = process.env.TORVIK_URL ?? TORVIK_BASE_URL;
 
-// NEW: venue splits (set these once you confirm the exact Torvik URLs)
+// Venue splits are opt-in. Torvik ignores the `?venue=H|A` query on this CSV
+// (checked 2026-11-11: both return the same rows as the overall file), so the
+// old defaults just tripled the requests to a host that rate-limits bots.
+// Set TORVIK_HOME_URL / TORVIK_AWAY_URL (or the *_LOCAL paths) to a real
+// split source to re-enable homeTeams.csv / awayTeams.csv.
 const TORVIK_HOME_LOCAL = process.env.TORVIK_HOME_LOCAL;
 const TORVIK_AWAY_LOCAL = process.env.TORVIK_AWAY_LOCAL;
-const TORVIK_HOME_BASE =
-  LEAGUE === "ncaaw"
-    ? `https://barttorvik.com/ncaaw/${YEAR}_team_results.csv?venue=H`
-    : `https://barttorvik.com/${YEAR}_team_results.csv?venue=H`;
-
-const TORVIK_AWAY_BASE =
-  LEAGUE === "ncaaw"
-    ? `https://barttorvik.com/ncaaw/${YEAR}_team_results.csv?venue=A`
-    : `https://barttorvik.com/${YEAR}_team_results.csv?venue=A`;
-
-const TORVIK_HOME_URL = process.env.TORVIK_HOME_URL ?? TORVIK_HOME_BASE;
-const TORVIK_AWAY_URL = process.env.TORVIK_AWAY_URL ?? TORVIK_AWAY_BASE;
+const TORVIK_HOME_URL = process.env.TORVIK_HOME_URL || undefined;
+const TORVIK_AWAY_URL = process.env.TORVIK_AWAY_URL || undefined;
 
 // Output files
 const TEAMS_CSV = path.join(process.cwd(), "src", "data", LEAGUE, "teams.csv");
@@ -134,22 +131,40 @@ async function readTorvikCsv(opts: {
     );
   }
 
-  const res = await fetch(url, {
-    headers: {
-      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-      accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    },
-  });
-
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(
-      `[${label}] Failed to fetch Torvik CSV (${
-        res.status
-      }) ${url}\n${text.slice(0, 300)}`
-    );
+  // Torvik sits behind bot protection that intermittently 403s (or serves an
+  // HTML challenge with a 200) to datacenter IPs, so retry a few times and
+  // refuse anything that isn't the CSV we expect.
+  const delaysMs = [0, 5_000, 20_000, 60_000];
+  let lastErr = "";
+  for (let attempt = 0; attempt < delaysMs.length; attempt++) {
+    if (delaysMs[attempt]) await new Promise((r) => setTimeout(r, delaysMs[attempt]));
+    try {
+      const res = await fetch(url, {
+        headers: {
+          "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+          accept: "text/csv,text/plain;q=0.9,*/*;q=0.8",
+        },
+      });
+      const text = await res.text().catch(() => "");
+      if (!res.ok) {
+        lastErr = `HTTP ${res.status}: ${text.slice(0, 200)}`;
+      } else if (!/^rank,team,/i.test(text.trimStart())) {
+        lastErr = `200 but not the expected CSV (starts: ${JSON.stringify(text.slice(0, 80))})`;
+      } else {
+        return text;
+      }
+    } catch (e) {
+      lastErr = String(e);
+    }
+    console.warn(`[${label}] attempt ${attempt + 1}/${delaysMs.length} failed — ${lastErr}`);
   }
-  return res.text();
+  throw new Error(`[${label}] Failed to fetch Torvik CSV from ${url}\n${lastErr}`);
+}
+
+/** Surfaces a message in the GitHub Actions run summary (plain warn locally). */
+function annotate(msg: string) {
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning::${msg}`);
+  else console.warn(`⚠️  ${msg}`);
 }
 
 function writeCsvFile(outPath: string, header: string[], rows: string[][]) {
@@ -256,8 +271,10 @@ function applyTorvikToTeams(args: {
   torvikByName: Map<string, TorvikTeam>;
   outPath: string;
   label: string;
+  /** Append Torvik teams that have no row yet (new D1 members). */
+  addNewTeams?: boolean;
 }) {
-  const { baseTeamsCsvPath, torvikByName, outPath, label } = args;
+  const { baseTeamsCsvPath, torvikByName, outPath, label, addNewTeams } = args;
 
   if (!fs.existsSync(baseTeamsCsvPath))
     throw new Error(`Missing ${baseTeamsCsvPath}`);
@@ -298,6 +315,7 @@ function applyTorvikToTeams(args: {
   const oL = ensureCol("losses");
 
   const misses: Array<{ teamId: string; teamName: string }> = [];
+  const matchedTorvik = new Set<TorvikTeam>();
 
   for (const row of teams.rows) {
     const teamId = (row[iTeamId] ?? "").trim();
@@ -329,6 +347,10 @@ function applyTorvikToTeams(args: {
       continue;
     }
 
+    matchedTorvik.add(hit);
+    // Keep conference current — realignment moves dozens of teams a year.
+    if (iConf >= 0 && hit.conf) row[iConf] = hit.conf;
+
     row[oPR] = hit.powerRating != null ? String(hit.powerRating) : "";
     row[oAdjO] = hit.adjO != null ? String(hit.adjO) : "";
     row[oAdjD] = hit.adjD != null ? String(hit.adjD) : "";
@@ -341,7 +363,50 @@ function applyTorvikToTeams(args: {
     row[oL] = hit.l != null ? String(hit.l) : "";
   }
 
+  // New D1 members: in Torvik's file but not in ours. Without a row their
+  // games are silently dropped from the slate, so add them here.
+  const added: Array<{ teamId: string; teamName: string }> = [];
+  if (addNewTeams) {
+    const iHca = idx(teams.header, "hca");
+    const iHcaNote = idx(teams.header, "hca_note");
+    const existingIds = new Set(teams.rows.map((r) => (r[iTeamId] ?? "").trim()));
+    for (const t of torvikByName.values()) {
+      if (matchedTorvik.has(t)) continue;
+      const teamId = torvikSlugId(t.name);
+      if (existingIds.has(teamId)) continue; // id exists under another name — leave for a human
+      const row = teams.header.map(() => "");
+      row[iTeamId] = teamId;
+      row[iTeamName] = t.name;
+      if (iConf >= 0) row[iConf] = t.conf ?? "";
+      if (iHca >= 0) row[iHca] = String(DEFAULT_HCA);
+      if (iHcaNote >= 0) row[iHcaNote] = `default HCA=${DEFAULT_HCA.toFixed(1)} (new team ${YEAR})`;
+      row[oPR] = t.powerRating != null ? String(t.powerRating) : "0";
+      row[oAdjO] = t.adjO != null ? String(t.adjO) : "";
+      row[oAdjD] = t.adjD != null ? String(t.adjD) : "";
+      row[oTempo] = t.adjT != null ? String(t.adjT) : "";
+      row[oBarthag] = t.barthag != null ? String(t.barthag) : "";
+      row[oRank] = t.rank != null ? String(Math.round(t.rank)) : "";
+      row[oOERank] = t.oeRank != null ? String(Math.round(t.oeRank)) : "";
+      row[oDERank] = t.deRank != null ? String(Math.round(t.deRank)) : "";
+      row[oW] = t.w != null ? String(t.w) : "";
+      row[oL] = t.l != null ? String(t.l) : "";
+      teams.rows.push(row);
+      existingIds.add(teamId);
+      added.push({ teamId, teamName: t.name });
+    }
+  }
+
   writeCsvFile(outPath, teams.header, teams.rows);
+
+  if (added.length) {
+    ensureAliases(added);
+    for (const a of added) {
+      annotate(
+        `New team added from Torvik: ${a.teamName} (${a.teamId}). ` +
+          `Check its sportsbook alias in teamAliases.csv and add its ESPN id to espnMasterMap.ts.`
+      );
+    }
+  }
 
   console.log(`✅ [${label}] Wrote: ${outPath}`);
   console.log(`Rows: ${teams.rows.length}`);
@@ -355,7 +420,39 @@ function applyTorvikToTeams(args: {
     console.warn(
       `Add synonyms in TORVIK_SYNONYMS in this script for the misses above.`
     );
+    // These rows keep whatever ratings they had before, i.e. they go stale.
+    annotate(
+      `[${label}] ${misses.length} team(s) in teams.csv not found in Torvik ${YEAR} ` +
+        `(ratings NOT updated): ${misses.slice(0, 10).map((m) => m.teamName).join(", ")}. ` +
+        `Remove the row if the team left D1, or add a synonym if it was renamed.`
+    );
   }
+}
+
+const DEFAULT_HCA = 3; // league-average home-court advantage, in points
+
+function torvikSlugId(name: string): string {
+  const slug = name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return `team-${slug}`;
+}
+
+/** Make sure each new team has at least its plain name in teamAliases.csv. */
+function ensureAliases(added: Array<{ teamId: string; teamName: string }>) {
+  const aliasPath = path.join(process.cwd(), "src", "data", LEAGUE, "teamAliases.csv");
+  if (!fs.existsSync(aliasPath)) return;
+  const raw = fs.readFileSync(aliasPath, "utf-8");
+  const have = new Set(
+    raw.split(/\r?\n/).map((l) => l.split(",")[0]?.trim()).filter(Boolean)
+  );
+  const lines = added
+    .filter((a) => !have.has(a.teamId) && !a.teamName.includes(","))
+    .map((a) => `${a.teamId},${a.teamName}`);
+  if (!lines.length) return;
+  fs.writeFileSync(aliasPath, raw.replace(/\n*$/, "\n") + lines.join("\n") + "\n", "utf-8");
+  console.log(`✅ Added ${lines.length} alias row(s) to ${aliasPath}`);
 }
 
 /**
@@ -368,8 +465,6 @@ function bootstrapTeamsCsv(
   torvikByName: Map<string, TorvikTeam>,
   outPath: string
 ) {
-  const DEFAULT_HCA = 3; // 3-point home-court advantage for both NCAAM and NCAAW
-
   const header = [
     "teamId",
     "teamName",
@@ -390,12 +485,7 @@ function bootstrapTeamsCsv(
   const rows: string[][] = [];
 
   for (const [, t] of torvikByName.entries()) {
-    // Slug: lowercase, spaces→hyphens, strip non-alphanumeric-hyphen
-    const slug = t.name
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-    const teamId = `team-${slug}`;
+    const teamId = torvikSlugId(t.name);
 
     rows.push([
       teamId,
@@ -423,7 +513,7 @@ function bootstrapTeamsCsv(
 }
 
 async function main() {
-  console.log(`🏀 Updating Torvik ratings for league: ${LEAGUE}`);
+  console.log(`🏀 Updating Torvik ratings for league: ${LEAGUE}, season ${YEAR}`);
 
   // 1) Overall (existing behavior)
   const overallRaw = await readTorvikCsv({
@@ -447,6 +537,7 @@ async function main() {
       torvikByName: overallByName,
       outPath: OUT_OVERALL,
       label: "OVERALL",
+      addNewTeams: true,
     });
   }
   console.log(`Torvik OVERALL URL: ${TORVIK_URL}`);
