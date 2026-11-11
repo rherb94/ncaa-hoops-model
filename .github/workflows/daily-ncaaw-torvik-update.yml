@@ -1,9 +1,10 @@
 name: Daily Torvik Ratings Update - NCAAW
 
+# Schedule removed 2026-11-11: Torvik returns HTTP 403 to GitHub's servers, so
+# this job fails every time it runs here. Ratings are updated from a local
+# machine instead with `npm run ratings`. Left runnable by hand in case the
+# block is ever lifted.
 on:
-  schedule:
-    # 7:00 AM ET = 12:00 UTC — runs before the odds opener so ratings are fresh
-    - cron: '0 12 * * *'
   workflow_dispatch:
     inputs:
       year:

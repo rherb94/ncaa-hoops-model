@@ -1,12 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Updating PR
+## Updating ratings
 
-run this script to fetch latest PR's from Torvik:
+Run this each morning before the 11am ET odds snapshot:
 
 ```bash
-YEAR=2026 npx tsx src/scripts/updateTeamsFromTorvik.ts
+npm run ratings
 ```
+
+It pulls the current Torvik ratings for men's and women's basketball, then commits and pushes them. It has to run from your own machine: Torvik blocks GitHub's servers, so the scheduled workflows for it are turned off.
 
 ## Getting Started
 
