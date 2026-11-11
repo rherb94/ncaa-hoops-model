@@ -2,13 +2,13 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Updating ratings
 
-Run this each morning before the 11am ET odds snapshot:
+Ratings update automatically at 7am ET. Torvik blocks GitHub's servers, so the two "Daily Torvik Ratings Update" workflows fetch the file through the site's own `/api/torvik` endpoint, which runs on Vercel and is not blocked.
+
+If a run fails, do it from your own machine before the 11am ET odds snapshot:
 
 ```bash
 npm run ratings
 ```
-
-It pulls the current Torvik ratings for men's and women's basketball, then commits and pushes them. It has to run from your own machine: Torvik blocks GitHub's servers, so the scheduled workflows for it are turned off.
 
 ## Getting Started
 
