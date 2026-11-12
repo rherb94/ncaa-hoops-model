@@ -23,13 +23,7 @@ export function writeRatingsMeta(league: string, meta: RatingsMeta) {
   fs.writeFileSync(ratingsMetaPath(league), JSON.stringify(meta, null, 2) + "\n", "utf-8");
 }
 
-/**
- * Freshness for a league. Only the Torvik (basketball) leagues are tracked
- * for now; other leagues report "not stale" so nothing warns falsely.
- */
+/** Freshness of a league's ratings (each sport has its own season window). */
 export function getRatingsStatus(league: string, now: Date = new Date()): RatingsStatus {
-  if (league !== "ncaam" && league !== "ncaaw") {
-    return { updatedAt: loadRatingsMeta(league)?.updatedAt ?? null, ageHours: null, stale: false };
-  }
-  return ratingsStatus(loadRatingsMeta(league), now);
+  return ratingsStatus(loadRatingsMeta(league), now, league);
 }

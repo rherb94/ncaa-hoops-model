@@ -14,6 +14,15 @@ export function basketballSeasonYear(now: Date = new Date()): number {
 }
 
 /**
+ * College football seasons are labelled by the year they start in (Aug 2026 –
+ * Jan 2027 is "2026"). From July onward that's this year; before, last year.
+ */
+export function footballSeasonYear(now: Date = new Date()): number {
+  const year = now.getUTCFullYear();
+  return now.getUTCMonth() >= 6 ? year : year - 1;
+}
+
+/**
  * First date (YYYY-MM-DD) of the season currently being tracked. Performance
  * pages only count dates on or after this, so each season starts from a clean
  * record instead of inheriting last year's.

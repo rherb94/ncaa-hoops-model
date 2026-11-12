@@ -465,7 +465,7 @@ async function main() {
       const edgeRaw = computeEdge(modelSpread, marketSpread);
       const edge = edgeRaw === undefined ? null : edgeRaw; // stored uncapped
       // CAUTION (edge 8+ or a 20+ point spread) is recorded but is not a play.
-      const signal = computeSignal(edge, marketSpread);
+      const signal = computeSignal(edge, marketSpread, LEAGUE);
 
       modelData = {
         homeTeamId: homeTeamId ?? null,

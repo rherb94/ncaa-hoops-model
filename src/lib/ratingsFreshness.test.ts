@@ -38,3 +38,10 @@ describe("inBasketballSeason", () => {
     expect(inBasketballSeason(at("2026-10-15T12:00:00Z"))).toBe(false);
   });
 });
+
+describe("football window", () => {
+  test("cfb is checked in November, not in March", () => {
+    expect(ratingsStatus({ updatedAt: "2026-11-10T12:00:00Z" }, new Date("2026-11-12T16:00:00Z"), "cfb").stale).toBe(true);
+    expect(ratingsStatus({ updatedAt: "2026-12-20T12:00:00Z" }, new Date("2027-03-01T16:00:00Z"), "cfb").stale).toBe(false);
+  });
+});

@@ -1,4 +1,4 @@
-import { basketballSeasonYear, seasonStartDate, filterToCurrentSeason } from "./season";
+import { basketballSeasonYear, footballSeasonYear, seasonStartDate, filterToCurrentSeason } from "./season";
 
 describe("basketballSeasonYear", () => {
   test("November belongs to the season ending next year", () => {
@@ -29,5 +29,13 @@ describe("seasonStartDate / filterToCurrentSeason", () => {
     const dates = ["2026-03-02", "2026-04-06", "2026-11-12"];
     expect(filterToCurrentSeason(dates, "ncaam", null, nov)).toEqual(["2026-11-12"]);
     expect(filterToCurrentSeason(dates, "ncaam", "all", nov)).toEqual(dates);
+  });
+});
+
+describe("footballSeasonYear", () => {
+  test("fall and January belong to the season that started in the fall", () => {
+    expect(footballSeasonYear(new Date("2026-11-12T12:00:00Z"))).toBe(2026);
+    expect(footballSeasonYear(new Date("2027-01-10T12:00:00Z"))).toBe(2026);
+    expect(footballSeasonYear(new Date("2027-08-01T12:00:00Z"))).toBe(2027);
   });
 });

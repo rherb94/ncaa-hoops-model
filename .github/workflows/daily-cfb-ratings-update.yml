@@ -2,12 +2,12 @@ name: Daily CFB Ratings Update
 
 on:
   schedule:
-    # 7:00 AM ET = 12:00 UTC — runs before the odds opener so ratings are fresh
-    - cron: '22 10 * * *'   # off the hour: GitHub delays :00 runs
+    # 5:22am ET, before the odds snapshots. Off the hour: GitHub delays :00 runs.
+    - cron: '22 10 * * *'
   workflow_dispatch:
     inputs:
       year:
-        description: 'Season year (e.g. 2026). Defaults to current year.'
+        description: 'Season year, the year the season starts in (e.g. 2026). Blank = derived from the date.'
         required: false
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
 
       - name: Update CFB team ratings (CFBD SP+)
         env:
-          YEAR: ${{ inputs.year || '2026' }}
+          YEAR: ${{ inputs.year || '' }}
           CFBD_API_KEY: ${{ secrets.CFBD_API_KEY }}
         run: npx tsx src/scripts/updateTeamsFromCfbd.ts
 
@@ -38,7 +38,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/cfb/teams.csv src/data/espnTeams.cfb.json
+          git add src/data/cfb/teams.csv src/data/espnTeams.cfb.json src/data/cfb/ratingsMeta.json
           if git diff --cached --quiet; then
             echo "No changes to teams.csv."
           else

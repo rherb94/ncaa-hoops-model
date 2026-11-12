@@ -41,3 +41,18 @@ describe("isPlay / cautionNote", () => {
     expect(cautionNote(4, -4.5)).toBeUndefined();
   });
 });
+
+describe("football thresholds", () => {
+  test("bands are wider and the blowout guard starts at 28", () => {
+    expect(computeSignal(3.5, -7, "cfb")).toBe("NONE");
+    expect(computeSignal(4, -7, "cfb")).toBe("LEAN");
+    expect(computeSignal(6.5, -7, "cfb")).toBe("STRONG");
+    expect(computeSignal(10, -7, "cfb")).toBe("CAUTION");
+    expect(computeSignal(5, -24.5, "cfb")).toBe("LEAN");     // 24.5 is a normal football spread
+    expect(computeSignal(5, -31, "cfb")).toBe("CAUTION");
+    expect(cautionNote(5, -31, "cfb")).toMatch(/28\+ point spreads/);
+  });
+  test("basketball unchanged when no league is given", () => {
+    expect(computeSignal(5, -24.5)).toBe("CAUTION");
+  });
+});

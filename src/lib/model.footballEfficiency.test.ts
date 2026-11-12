@@ -1,91 +1,50 @@
 // src/lib/model.footballEfficiency.test.ts
-import { computeFootballEfficiencyModel } from "./model";
+import { computeFootballModel, computeAnyEfficiencyModel, CFB_AVG_GAME_POINTS, CFB_DEFAULT_HCA } from "./model";
 import type { Team } from "@/data/teams";
 
-const team = (p: Partial<Team>): Team => ({ ...(p as any) });
+const team = (p: Partial<Team>): Team => ({ teamId: "t", name: "T", powerRating: 0, hca: CFB_DEFAULT_HCA, ...p });
 
-describe("Football efficiency model math", () => {
-  test("swap teams w/ HCA=0 => modelSpread should flip sign", () => {
-    const a = team({ adjO: 40, adjD: 10, tempo: 70 });
-    const b = team({ adjO: 30, adjD: 20, tempo: 65 });
-
-    const ab = computeFootballEfficiencyModel(a, b, 0)!;
-    const ba = computeFootballEfficiencyModel(b, a, 0)!;
-
-    expect(ab.modelSpread).toBeCloseTo(-ba.modelSpread, 1);
+describe("Football model (SP+)", () => {
+  test("spread is the SP+ difference plus home field, home-spread convention", () => {
+    const home = team({ powerRating: 10 });
+    const away = team({ powerRating: 4 });
+    expect(computeFootballModel(home, away, 3)!.modelSpread).toBe(-9);   // home by 9
+    expect(computeFootballModel(away, home, 3)!.modelSpread).toBe(3);    // home dog by 3
   });
 
-  test("golden: outputs match step-by-step math (incl HCA + sign)", () => {
-    const home = team({ adjO: 40, adjD: 10, tempo: 70, hca: 2 });
-    const away = team({ adjO: 30, adjD: 20, tempo: 65 });
-
-    const out = computeFootballEfficiencyModel(home, away, 2)!;
-
-    // plays = avg(70,65) = 67.5
-    expect(out.plays).toBe(67.5);
-
-    // homeOffPP=40/70=0.5714  homeDefPP=10/70=0.1429
-    // awayOffPP=30/65=0.4615  awayDefPP=20/65=0.3077
-    // homePPPlay = homeOffPP + (awayDefPP - 0.397) = 0.482
-    // awayPPPlay = awayOffPP + (homeDefPP - 0.397) = 0.207
-    expect(out.homePPPlay).toBeCloseTo(0.482, 3);
-    expect(out.awayPPPlay).toBeCloseTo(0.207, 3);
-
-    // homePts = 0.482*67.5=32.5  awayPts = 0.207*67.5=14.0
-    expect(out.homePts).toBeCloseTo(32.5, 1);
-    expect(out.awayPts).toBeCloseTo(14.0, 1);
-
-    // marginPerPlay=0.275, scaledMargin=18.5, homeMarginPts=20.5
-    expect(out.marginPerPlay).toBeCloseTo(0.275, 3);
-    expect(out.scaledMargin).toBeCloseTo(18.5, 1);
-    expect(out.homeMarginPts).toBeCloseTo(20.5, 1);
-
-    // spread = -homeMarginPts => -20.5 (home favored)
-    expect(out.modelSpread).toBeCloseTo(-20.5, 1);
-
-    // total = 46.5
-    expect(out.modelTotal).toBeCloseTo(46.5, 1);
+  test("neutral site (hca 0) flips sign cleanly", () => {
+    const a = team({ powerRating: 12.5 });
+    const b = team({ powerRating: -3 });
+    expect(computeFootballModel(a, b, 0)!.modelSpread).toBe(-computeFootballModel(b, a, 0)!.modelSpread);
   });
 
-  test("HCA shifts spread by exactly -HCA", () => {
-    const home = team({ adjO: 40, adjD: 10, tempo: 70 });
-    const away = team({ adjO: 30, adjD: 20, tempo: 65 });
-
-    const h0 = computeFootballEfficiencyModel(home, away, 0)!;
-    const h2 = computeFootballEfficiencyModel(home, away, 2)!;
-
-    expect(h2.modelSpread - h0.modelSpread).toBeCloseTo(-2, 1);
+  test("defaults to the team's hca, then the league default", () => {
+    expect(computeFootballModel(team({ powerRating: 0, hca: 2 }), team({}))!.hcaUsed).toBe(2);
+    expect(computeFootballModel(team({ powerRating: 0, hca: NaN }), team({}))!.hcaUsed).toBe(CFB_DEFAULT_HCA);
   });
 
-  test("plays are clamped to [55,85]", () => {
-    const fast = team({ adjO: 30, adjD: 20, tempo: 95 });
-    const faster = team({ adjO: 30, adjD: 20, tempo: 92 });
-    const slow = team({ adjO: 30, adjD: 20, tempo: 45 });
-
-    expect(computeFootballEfficiencyModel(fast, faster, 0)!.plays).toBe(85);
-    expect(computeFootballEfficiencyModel(slow, slow, 0)!.plays).toBe(55);
+  test("total and scores agree with offense/defense ratings and the margin", () => {
+    const home = team({ powerRating: 10, adjO: 34, adjD: 22 });
+    const away = team({ powerRating: 0, adjO: 27, adjD: 27 });
+    const out = computeFootballModel(home, away, 3)!;
+    // 34 + 27 + 27 + 22 − 52.5 = 57.5
+    expect(out.modelTotal).toBeCloseTo(34 + 27 + 27 + 22 - CFB_AVG_GAME_POINTS, 1);
+    expect(out.homePts! - out.awayPts!).toBeCloseTo(13, 0);
+    expect(out.homePts! + out.awayPts!).toBeCloseTo(out.modelTotal!, 0);
   });
 
-  test("total is clamped to [24,90]", () => {
-    const highOctane = team({ adjO: 45, adjD: 5, tempo: 85 });
-    const stalemate = team({ adjO: 8, adjD: 42, tempo: 55 });
-
-    expect(computeFootballEfficiencyModel(highOctane, highOctane, 0)!.modelTotal).toBeLessThanOrEqual(90);
-    expect(computeFootballEfficiencyModel(stalemate, stalemate, 0)!.modelTotal).toBeGreaterThanOrEqual(24);
+  test("missing offense/defense still gives a spread, just no total", () => {
+    const out = computeFootballModel(team({ powerRating: 5 }), team({ powerRating: 1 }), 3)!;
+    expect(out.modelSpread).toBe(-7);
+    expect(out.modelTotal).toBeUndefined();
   });
 
-  test("returns undefined if required cfbd fields missing", () => {
-    const bad = team({ adjO: 30, adjD: 20 }); // tempo missing
-    const ok = team({ adjO: 30, adjD: 20, tempo: 65 });
-
-    expect(computeFootballEfficiencyModel(bad, ok, 0)).toBeUndefined();
-    expect(computeFootballEfficiencyModel(ok, bad, 0)).toBeUndefined();
+  test("missing overall rating gives no model", () => {
+    expect(computeFootballModel(team({ powerRating: NaN }), team({}), 3)).toBeUndefined();
   });
 
-  test("returns undefined if tempo is zero (would divide by zero)", () => {
-    const zeroTempo = team({ adjO: 30, adjD: 20, tempo: 0 });
-    const ok = team({ adjO: 30, adjD: 20, tempo: 65 });
-
-    expect(computeFootballEfficiencyModel(zeroTempo, ok, 0)).toBeUndefined();
+  test("dispatcher routes cfb to the football model", () => {
+    const out = computeAnyEfficiencyModel("cfb", team({ powerRating: 10 }), team({ powerRating: 4 }), 3);
+    expect(out?.modelSpread).toBe(-9);
   });
 });

@@ -39,8 +39,8 @@
       "model": {
         "homeTeamId": "team-south-florida",
         "awayTeamId": "team-memphis",
-        "modelSpread": 2.5,
-        "edge": -1,
+        "modelSpread": 2.6,
+        "edge": -0.9,
         "signal": "NONE"
       }
     },
@@ -79,8 +79,8 @@
       "model": {
         "homeTeamId": "team-ul-monroe",
         "awayTeamId": "team-louisiana",
-        "modelSpread": 22.2,
-        "edge": 11.7,
+        "modelSpread": 21.9,
+        "edge": 11.4,
         "signal": "CAUTION"
       }
     }

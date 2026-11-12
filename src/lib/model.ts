@@ -154,116 +154,81 @@ export function computeEfficiencyModel(
 }
 
 // ------------------------------
-// Football (CFB) efficiency model
+// Football (CFB) model — SP+
 // ------------------------------
 //
-// Structurally mirrors computeEfficiencyModel above, with "plays" standing in
-// for basketball's "possessions" and SP+ offense/defense ratings standing in
-// for AdjO/AdjD. Team fields are repurposed (see src/db/schema.ts comment):
-//   adjO   = SP+ offense.rating (points/game at the team's own pace)
-//   adjD   = SP+ defense.rating (points/game allowed at the team's own pace)
-//   tempo  = plays per game (that team's own offensive play volume)
+// Team fields for cfb (see updateTeamsFromCfbd.ts):
+//   powerRating = SP+ overall (offense − defense + special teams), points vs an
+//                 average team on a neutral field
+//   adjO / adjD = SP+ offense / defense: points scored / allowed per game
+//                 against an average opponent
+//   tempo       = plays per game (shown on the Teams page; not used here)
 //
-// Constants below (LEAGUE_BASE_PP, clamp ranges) were derived empirically
-// from live 2025 CFBD data (see updateTeamsFromCfbd.ts research spike):
-//   offense pts/play: mean 0.4016  |  defense pts/play allowed: mean 0.3927
-//   plays/game: mean 67.5, observed range ~58-79
-// LEAGUE_BASE_PP uses the average of the two — recalibrate once a full
-// season of results is available to backtest against.
+// SP+ is already opponent- and pace-adjusted, so it is used directly:
+//   spread = −(SP+ home − SP+ away + home field)
+//   total  = (home off + away def − avg def) + (away off + home def − avg def)
+//          with the league averages folded into CFB_AVG_GAME_POINTS.
+//
+// This replaced a per-play conversion (rating ÷ own plays × blended plays)
+// that differed from the plain SP+ difference by under a point on average,
+// left out special teams, and was slightly worse on both spread and total
+// against this season's results.
 
-export type FootballEfficiencyModelOut = {
-  plays: number;
+// Mean SP+ offense + mean SP+ defense across FBS (2026 season ≈ 26.7 + 25.9).
+// SP+ is normalised, so this is stable year to year.
+export const CFB_AVG_GAME_POINTS = 52.5;
 
-  homePPPlay: number;
-  awayPPPlay: number;
+// Points of home-field advantage. Provisional: home teams beat the SP+
+// difference by ~3.3 points in 2026 games through mid-November (in-sample,
+// neutral sites included). Revisit with a no-hindsight backtest.
+export const CFB_DEFAULT_HCA = 3.0;
 
-  homePts: number;
-  awayPts: number;
-
-  marginPerPlay: number;
-  scaledMargin: number; // margin in points before HCA
+export type FootballModelOut = {
+  homeRating: number;
+  awayRating: number;
   hcaUsed: number;
-  homeMarginPts: number; // margin in points after HCA
-
-  // "home spread" convention (home favored => negative)
+  /** Expected home margin in points (positive = home better). */
+  homeMarginPts: number;
+  homePts?: number;
+  awayPts?: number;
+  /** "home spread" convention (home favored ⇒ negative). */
   modelSpread: number;
-  modelTotal: number;
+  /** Undefined when offense/defense ratings are missing. */
+  modelTotal?: number;
 };
 
-const CFB_LEAGUE_BASE_PP = 0.397;
-const CFB_DEFAULT_HCA = 2.3; // CFB HCA commonly cited ~2-3 pts, lower/more variable than basketball's ~3-4
-
-// Per-play rates live in ~0.3-0.5 range — round()'s 1-decimal precision would
-// destroy nearly all signal, so these fields get 3 decimals instead.
-function round3(n: number) {
-  return Math.round(n * 1000) / 1000;
-}
-
-export function computeFootballEfficiencyModel(
+export function computeFootballModel(
   home: Team,
   away: Team,
   hca?: number
-): FootballEfficiencyModelOut | undefined {
-  // Require plays-per-game + SP+ offense/defense fields
-  if (
-    !isFiniteNum(home.adjO) ||
-    !isFiniteNum(home.adjD) ||
-    !isFiniteNum(home.tempo) ||
-    home.tempo <= 0
-  )
-    return undefined;
-  if (
-    !isFiniteNum(away.adjO) ||
-    !isFiniteNum(away.adjD) ||
-    !isFiniteNum(away.tempo) ||
-    away.tempo <= 0
-  )
-    return undefined;
+): FootballModelOut | undefined {
+  if (!isFiniteNum(home.powerRating) || !isFiniteNum(away.powerRating)) return undefined;
 
   const HCA = isFiniteNum(hca) ? hca : isFiniteNum(home.hca) ? home.hca : CFB_DEFAULT_HCA;
+  const homeMarginPts = home.powerRating - away.powerRating + HCA;
 
-  // --- Step 1: convert each team's own season output to a pace-free rate ---
-  const homeOffPPPlay = home.adjO / home.tempo;
-  const homeDefPPPlay = home.adjD / home.tempo;
-  const awayOffPPPlay = away.adjO / away.tempo;
-  const awayDefPPPlay = away.adjD / away.tempo;
-
-  // --- Step 2: expected plays for THIS matchup (pace blend, clamped to observed FBS range) ---
-  const plays = clamp(avg(home.tempo, away.tempo), 55, 85);
-
-  // --- Step 3: matchup-adjusted points-per-play ---
-  const homePPPlay = homeOffPPPlay + (awayDefPPPlay - CFB_LEAGUE_BASE_PP);
-  const awayPPPlay = awayOffPPPlay + (homeDefPPPlay - CFB_LEAGUE_BASE_PP);
-
-  const homePts = homePPPlay * plays;
-  const awayPts = awayPPPlay * plays;
-
-  // Margin math
-  const marginPerPlay = homePPPlay - awayPPPlay;
-  const scaledMargin = marginPerPlay * plays; // points before HCA
-  const homeMarginPts = scaledMargin + HCA;
-
-  // Convert to "home spread" convention
-  const modelSpread = round(-homeMarginPts);
-
-  // Total — CFB has much higher variance than basketball, clamp is wide
-  const modelTotal = round(clamp(homePts + awayPts, 24, 90));
+  let homePts: number | undefined;
+  let awayPts: number | undefined;
+  let modelTotal: number | undefined;
+  if (
+    isFiniteNum(home.adjO) && isFiniteNum(home.adjD) &&
+    isFiniteNum(away.adjO) && isFiniteNum(away.adjD)
+  ) {
+    const rawTotal = home.adjO + away.adjD + away.adjO + home.adjD - CFB_AVG_GAME_POINTS;
+    modelTotal = round(clamp(rawTotal, 20, 100));
+    // Split the total by the expected margin so the two scores agree with both.
+    homePts = round(modelTotal / 2 + homeMarginPts / 2);
+    awayPts = round(modelTotal / 2 - homeMarginPts / 2);
+  }
 
   return {
-    plays: round(plays),
-
-    homePPPlay: round3(homePPPlay),
-    awayPPPlay: round3(awayPPPlay),
-
-    homePts: round(homePts),
-    awayPts: round(awayPts),
-
-    marginPerPlay: round3(marginPerPlay),
-    scaledMargin: round(scaledMargin),
+    homeRating: home.powerRating,
+    awayRating: away.powerRating,
     hcaUsed: round(HCA),
     homeMarginPts: round(homeMarginPts),
-
-    modelSpread,
+    homePts,
+    awayPts,
+    modelSpread: round(-homeMarginPts),
     modelTotal,
   };
 }
@@ -272,11 +237,9 @@ export function computeFootballEfficiencyModel(
 // Sport dispatcher
 // ------------------------------
 //
-// computeEfficiencyModel (basketball) and computeFootballEfficiencyModel both
-// require Team.adjO/adjD/tempo to be present — but those fields are repurposed
-// per-sport (see src/db/schema.ts), so calling the wrong one for a league does
-// NOT return undefined, it silently runs the wrong formula on the data (e.g.
-// basketball's ~100-centered PP100 math on football's ~0.4-scale SP+ ratings).
+// Team.adjO/adjD/powerRating mean different things per sport (Torvik
+// efficiencies for basketball, SP+ points for football), so calling the wrong
+// model for a league silently produces nonsense rather than undefined.
 // Every call site that runs the efficiency model on a Team pair MUST go
 // through this dispatcher rather than calling either function directly.
 export function computeAnyEfficiencyModel(
@@ -284,8 +247,8 @@ export function computeAnyEfficiencyModel(
   home: Team,
   away: Team,
   hca?: number
-): { modelSpread: number; modelTotal: number } | undefined {
-  if (leagueId === "cfb") return computeFootballEfficiencyModel(home, away, hca);
+): { modelSpread: number; modelTotal?: number } | undefined {
+  if (leagueId === "cfb") return computeFootballModel(home, away, hca);
   return computeEfficiencyModel(home, away, hca);
 }
 

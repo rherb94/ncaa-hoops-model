@@ -159,7 +159,7 @@ async function main() {
 
     const edgeRaw = computeEdge(rawModelSpread, consensus.spread);
     const edge = edgeRaw;
-    const signal = computeSignal(edge, consensus.spread);
+    const signal = computeSignal(edge, consensus.spread, LEAGUE);
 
     // Only real plays are recorded — CAUTION games are never stored as picks.
     if (!isPlay(signal)) continue;

@@ -30,8 +30,21 @@ export function inBasketballSeason(now: Date = new Date()): boolean {
   return m === 3 && now.getUTCDate() <= 10;
 }
 
-export function ratingsStatus(meta: RatingsMeta | null, now: Date = new Date()): RatingsStatus {
-  const inSeason = inBasketballSeason(now);
+/** Aug 20 – Jan 20: college football ratings change during this window. */
+export function inFootballSeason(now: Date = new Date()): boolean {
+  const m = now.getUTCMonth();
+  const d = now.getUTCDate();
+  if (m >= 8 && m <= 11) return true;           // Sep – Dec
+  if (m === 7) return d >= 20;                  // late Aug
+  return m === 0 && d <= 20;                    // early Jan (bowls, playoff)
+}
+
+export function ratingsStatus(
+  meta: RatingsMeta | null,
+  now: Date = new Date(),
+  league: string = "ncaam"
+): RatingsStatus {
+  const inSeason = league === "cfb" ? inFootballSeason(now) : inBasketballSeason(now);
   const t = meta?.updatedAt ? Date.parse(meta.updatedAt) : NaN;
 
   if (!Number.isFinite(t)) {

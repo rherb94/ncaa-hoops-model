@@ -91,7 +91,7 @@ function recomputeGame(
   const marketSpread = g.opening?.homePoint;
   const edgeRaw      = computeEdge(rawModelSpread, marketSpread);
   const edge         = edgeRaw === undefined ? null : edgeRaw;
-  const signal       = computeSignal(edge, marketSpread);
+  const signal       = computeSignal(edge, marketSpread, LEAGUE);
 
   const newModel = {
     homeTeamId: homeTeamId ?? null,

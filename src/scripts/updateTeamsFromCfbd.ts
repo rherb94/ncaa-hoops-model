@@ -17,7 +17,7 @@
 // Usage:
 //   YEAR=2026 npx tsx src/scripts/updateTeamsFromCfbd.ts
 //
-// Ratings formula (see src/lib/model.ts computeFootballEfficiencyModel):
+// Ratings formula (see src/lib/model.ts computeFootballModel):
 //   powerRating = SP+ overall rating (offense.rating - defense.rating + specialTeams.rating)
 //   adjO        = SP+ offense.rating (points/game at the team's own pace)
 //   adjD        = SP+ defense.rating (points/game allowed at the team's own pace)
@@ -28,15 +28,19 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { footballSeasonYear } from "@/lib/season";
+import { CFB_DEFAULT_HCA } from "@/lib/model";
+import { writeRatingsMeta } from "@/data/ratingsMeta";
 
-const YEAR = process.env.YEAR ?? "2026";
+// Season year (the year the season starts in). Derived from the date unless
+// YEAR is set; `||` so an empty workflow input also falls back.
+const YEAR = process.env.YEAR || String(footballSeasonYear());
 const CFBD_API_KEY = process.env.CFBD_API_KEY;
 if (!CFBD_API_KEY) {
   console.error("Missing env CFBD_API_KEY");
   process.exit(1);
 }
 
-const CFB_DEFAULT_HCA = 2.3;
 
 const TEAMS_CSV = path.join(process.cwd(), "src", "data", "cfb", "teams.csv");
 const ESPN_JSON = path.join(process.cwd(), "src", "data", "espnTeams.cfb.json");
@@ -240,6 +244,9 @@ async function main() {
     "utf-8"
   );
   console.log(`✅ Wrote ${espnJsonTeams.length} team logos/metadata to ${ESPN_JSON}`);
+
+  // Heartbeat for the site's stale-ratings warning.
+  writeRatingsMeta("cfb", { updatedAt: new Date().toISOString(), season: ratingsYear, source: "collegefootballdata.com" });
 
   if (missingRatings.length) {
     console.warn(`⚠️  ${missingRatings.length} FBS teams had no SP+ rating (dropped):`, missingRatings.join(", "));

@@ -195,7 +195,7 @@ async function buildSlateGames(
 
     const edgeRaw = computeEdge(modelSpread, marketSpread);
     const edge = edgeRaw; // uncapped — a huge edge is information, not something to hide
-    const rawSignal = computeSignal(edge, marketSpread);
+    const rawSignal = computeSignal(edge, marketSpread, league.id);
     const signal = overrides.skip ? "NONE" as const : rawSignal;
 
     const preferredSide: "HOME" | "AWAY" | "NONE" =
@@ -253,7 +253,7 @@ async function buildSlateGames(
         modelSpread,
         edge: edge ?? 0,
         signal,
-        cautionNote: signal === "CAUTION" ? cautionNote(edge, marketSpread) : undefined,
+        cautionNote: signal === "CAUTION" ? cautionNote(edge, marketSpread, league.id) : undefined,
       },
 
       recommended:

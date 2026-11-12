@@ -185,14 +185,14 @@ function LineMovement({
 
 // ── Edge cell ─────────────────────────────────────────────────────────────────
 
-function EdgeCell({ edge }: { edge?: number | null }) {
+function EdgeCell({ edge, signal }: { edge?: number | null; signal?: SlateGame["model"]["signal"] }) {
   if (edge == null || Number.isNaN(edge))
     return <span className="text-zinc-600">—</span>;
-  const a = Math.abs(edge);
+  // Colour follows the signal so each sport's own thresholds apply.
   const color =
-    a >= 8 ? "text-zinc-400" :   // caution territory — not a play
-    a >= 5 ? "text-emerald-400" :
-    a >= 3 ? "text-amber-400" :
+    signal === "STRONG" ? "text-emerald-400" :
+    signal === "LEAN"   ? "text-amber-400" :
+    signal === "CAUTION" ? "text-zinc-400" :
     "text-zinc-500";
   const label = edge > 0 ? `+${fmtNum(edge)}` : fmtNum(edge);
   return <span className={`font-mono text-sm font-semibold ${color}`}>{label}</span>;
@@ -851,7 +851,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
 
                     {/* Edge */}
                     <td className={`${tdBase} align-middle text-right`}>
-                      <EdgeCell edge={g.model?.edge} />
+                      <EdgeCell edge={g.model?.edge} signal={g.model?.signal} />
                     </td>
 
                     {/* Play */}
@@ -948,7 +948,7 @@ export default function SlateTable({ games, league }: { games: SlateGame[]; leag
                   <div className="flex items-baseline gap-4 text-xs text-zinc-500">
                     <span>Market <span className="text-zinc-400 font-mono">{fmtSpread(g.consensus?.spread)}</span> <LineMovement current={g.consensus?.spread} opening={g.openingSpread} edge={g.model?.edge} /></span>
                     <span>Model <span className="font-mono text-zinc-200">{fmtSpread(g.model?.modelSpread)}</span></span>
-                    <span>Edge <EdgeCell edge={g.model?.edge} /></span>
+                    <span>Edge <EdgeCell edge={g.model?.edge} signal={g.model?.signal} /></span>
                   </div>
                 </div>
 
