@@ -144,7 +144,7 @@ export function SlateClient({ date, league }: { date: string; league: LeagueId }
           role="alert"
           className="rounded-xl border border-amber-400/40 bg-amber-400/10 p-3 text-sm text-amber-100"
         >
-          <span className="font-semibold">Stale ratings.</span> {ratings.message}
+          {ratings.message}
         </div>
       ) : null}
 

@@ -5,8 +5,10 @@ name: Daily Torvik Ratings Update
 # `npm run ratings` does the same job from a local machine as a fallback.
 on:
   schedule:
-    # 7:00 AM ET = 12:00 UTC — runs before the odds opener so ratings are fresh
-    - cron: '0 12 * * *'
+    # Off the hour on purpose: GitHub delays scheduled runs heavily at :00 (on
+    # 2026-11-11 the 11am opener started at 5:35pm). A second time is a backup.
+    - cron: '17 10 * * *'   # 5:17am ET
+    - cron: '47 11 * * *'   # 6:47am ET backup
   workflow_dispatch:
     inputs:
       year:

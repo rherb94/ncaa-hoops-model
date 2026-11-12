@@ -40,7 +40,7 @@ export function ratingsStatus(meta: RatingsMeta | null, now: Date = new Date()):
       ageHours: null,
       stale: inSeason,
       message: inSeason
-        ? "No record of when ratings were last updated. Run “Daily Torvik Ratings Update” in GitHub Actions, or `npm run ratings` locally."
+        ? "Ratings are stale."
         : undefined,
     };
   }
@@ -52,8 +52,7 @@ export function ratingsStatus(meta: RatingsMeta | null, now: Date = new Date()):
     ageHours: Math.round(ageHours * 10) / 10,
     stale,
     message: stale
-      ? `Ratings are ${formatAge(ageHours)} old — the daily Torvik update has not run. ` +
-        "Model lines below use old ratings. Check “Daily Torvik Ratings Update” in GitHub Actions, or run `npm run ratings` locally."
+      ? `Ratings are stale (${formatAge(ageHours)} old).`
       : undefined,
   };
 }

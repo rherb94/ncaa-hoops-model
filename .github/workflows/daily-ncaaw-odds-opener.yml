@@ -3,11 +3,11 @@ name: Daily NCAAW Odds Opener Snapshot
 on:
   schedule:
     # 11:05 AM ET = 16:05 UTC (initial attempt)
-    - cron: '5 16 * * *'
+    - cron: '27 15 * * *'
     # 2:05 PM ET = 19:05 UTC (retry if no lines posted yet)
-    - cron: '5 19 * * *'
+    - cron: '27 18 * * *'
     # 5:05 PM ET = 22:05 UTC (final retry)
-    - cron: '5 22 * * *'
+    - cron: '27 21 * * *'
   workflow_dispatch:
     inputs:
       date:

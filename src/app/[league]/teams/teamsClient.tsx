@@ -135,7 +135,7 @@ export default function TeamsClient({ league }: { league: LeagueId }) {
     <div>
       {ratings?.stale && (
         <div role="alert" className="mb-4 rounded-xl border border-amber-400/40 bg-amber-400/10 p-3 text-sm text-amber-100">
-          <span className="font-semibold">Stale ratings.</span> {ratings.message}
+          {ratings.message}
         </div>
       )}
       <div className="mb-5 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">

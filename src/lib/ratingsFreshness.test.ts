@@ -15,11 +15,11 @@ describe("ratingsStatus", () => {
   test("stale: yesterday's pull, today's failed, viewed before the 11am snapshot", () => {
     const s = ratingsStatus({ updatedAt: "2026-11-12T12:03:00Z" }, at("2026-11-13T15:30:00Z"));
     expect(s.stale).toBe(true);
-    expect(s.message).toMatch(/27 hours old/);
+    expect(s.message).toBe("Ratings are stale (27 hours old).");
   });
   test("several days stale reads in days", () => {
     const s = ratingsStatus({ updatedAt: "2026-11-12T12:00:00Z" }, at("2026-11-16T12:00:00Z"));
-    expect(s.message).toMatch(/4 days old/);
+    expect(s.message).toBe("Ratings are stale (4 days old).");
   });
   test("no metadata at all counts as stale in season", () => {
     expect(ratingsStatus(null, at("2026-11-13T15:30:00Z")).stale).toBe(true);

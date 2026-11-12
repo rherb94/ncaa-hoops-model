@@ -3,7 +3,7 @@ name: Daily NCAAW Game Results
 on:
   schedule:
     # 1:05 AM ET = 06:05 UTC — after late west coast games finish
-    - cron: '5 6 * * *'
+    - cron: '16 6 * * *'   # off the hour: GitHub delays :00 runs
   workflow_dispatch:
     inputs:
       date:

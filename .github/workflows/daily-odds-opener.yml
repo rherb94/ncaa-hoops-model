@@ -4,7 +4,11 @@ on:
   schedule:
     # 11:00 AM ET = 16:00 UTC (accounts for ET = UTC-5 in winter, UTC-4 in summer)
     # Running at 16:00 UTC works year-round since most NCAAB lines are open by 11am ET
-    - cron: '0 16 * * *'
+    # Off the hour on purpose: GitHub delays scheduled runs heavily at :00 (on
+    # 2026-11-11 the 11am opener started at 5:35pm). A second time is a backup.
+    # The script skips if today's snapshot already exists, so the backup is free.
+    - cron: '23 15 * * *'   # 10:23am ET
+    - cron: '13 17 * * *'   # 12:13pm ET backup
   workflow_dispatch:
     inputs:
       date:

@@ -3,8 +3,8 @@ name: Intraday Pick Snapshot
 on:
   schedule:
     # Hourly from noon to 8pm ET (17:00–01:00 UTC covers EST/EDT)
-    - cron: '0 17-23 * * *'
-    - cron: '0 0-1 * * *'
+    - cron: '19 17-23 * * *'   # off the hour: GitHub delays :00 runs
+    - cron: '19 0-1 * * *'
   workflow_dispatch:
 
 jobs:
