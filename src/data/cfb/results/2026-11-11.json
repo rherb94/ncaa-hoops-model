@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-11",
+  "fetched_at": "2026-11-12T14:48:13.055Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401866461",
+      "commence_time": "2026-11-12T00:30Z",
+      "home_team": "Ball State Cardinals",
+      "away_team": "Buffalo Bulls",
+      "home_espnTeamId": "2050",
+      "away_espnTeamId": "2084",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 7,
+      "awayScore": 28,
+      "actualSpread": 21,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401866462",
+      "commence_time": "2026-11-12T00:30Z",
+      "home_team": "Central Michigan Chippewas",
+      "away_team": "Sacramento State Hornets",
+      "home_espnTeamId": "2117",
+      "away_espnTeamId": "16",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 28,
+      "awayScore": 7,
+      "actualSpread": -21,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401866463",
+      "commence_time": "2026-11-12T00:30Z",
+      "home_team": "Toledo Rockets",
+      "away_team": "Massachusetts Minutemen",
+      "home_espnTeamId": "2649",
+      "away_espnTeamId": "113",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 24,
+      "awayScore": 0,
+      "actualSpread": -24,
+      "winner": "HOME"
+    }
+  ]
+}

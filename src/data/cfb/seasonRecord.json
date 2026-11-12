@@ -1,25 +1,25 @@
 {
   "league": "cfb",
   "season_start": "2026-08-01",
-  "updated_at": "2026-11-11T13:39:48.576Z",
-  "days_tracked": 0,
-  "first_date": null,
-  "last_date": null,
-  "total_picks": 0,
-  "decided": 0,
-  "wins": 0,
+  "updated_at": "2026-11-12T14:48:15.814Z",
+  "days_tracked": 2,
+  "first_date": "2026-11-11",
+  "last_date": "2026-11-12",
+  "total_picks": 1,
+  "decided": 1,
+  "wins": 1,
   "losses": 0,
   "pushes": 0,
-  "win_pct": null,
-  "units": 0,
-  "roi_pct": null,
+  "win_pct": 100,
+  "units": 0.98,
+  "roi_pct": 98,
   "plays": {
-    "wins": 0,
+    "wins": 1,
     "losses": 0,
     "pushes": 0,
-    "units": 0,
-    "roi_pct": null,
-    "win_pct": null
+    "units": 0.98,
+    "roi_pct": 98,
+    "win_pct": 100
   },
   "lean": {
     "wins": 0,
@@ -30,25 +30,54 @@
     "win_pct": null
   },
   "strong": {
-    "wins": 0,
+    "wins": 1,
     "losses": 0,
     "pushes": 0,
-    "units": 0,
-    "roi_pct": null,
-    "win_pct": null
+    "units": 0.98,
+    "roi_pct": 98,
+    "win_pct": 100
   },
   "all_games": {
-    "wins": 0,
+    "wins": 1,
     "losses": 0,
-    "win_pct": null
+    "win_pct": 100
   },
   "caution": {
     "wins": 0,
     "losses": 0,
     "win_pct": null
   },
-  "avg_clv": null,
-  "clv_games": 0,
+  "avg_clv": 0,
+  "clv_games": 1,
   "pending": 0,
-  "daily": []
+  "daily": [
+    {
+      "date": "2026-11-11",
+      "plays": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "units": 0.98,
+      "cumulative": {
+        "wins": 1,
+        "losses": 0,
+        "pushes": 0,
+        "units": 0.98
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "plays": 0,
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "units": 0,
+      "cumulative": {
+        "wins": 1,
+        "losses": 0,
+        "pushes": 0,
+        "units": 0.98
+      }
+    }
+  ]
 }
