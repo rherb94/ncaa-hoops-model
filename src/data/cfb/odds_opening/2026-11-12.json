@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-12",
+  "captured_at": "2026-11-12T01:24:18.938Z",
+  "ratings_updated_at": null,
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "9d463c4686f84c78b890f0fcf2ac90c5",
+      "commence_time": "2026-11-13T01:00:00Z",
+      "home_team": "South Florida Bulls",
+      "away_team": "Memphis Tigers",
+      "home_espnTeamId": "58",
+      "away_espnTeamId": "235",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-12T01:22:26Z",
+        "homePoint": 3.5,
+        "awayPoint": -3.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": 3.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": 4,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": 3.5,
+          "price": -115
+        }
+      },
+      "model": {
+        "homeTeamId": "team-south-florida",
+        "awayTeamId": "team-memphis",
+        "modelSpread": 2.5,
+        "edge": -1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "6a3fbf6388d7c72076555fc4a4bbedf2",
+      "commence_time": "2026-11-13T02:00:00Z",
+      "home_team": "UL Monroe Warhawks",
+      "away_team": "Louisiana Ragin Cajuns",
+      "home_espnTeamId": "2433",
+      "away_espnTeamId": "309",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-12T01:22:26Z",
+        "homePoint": 10.5,
+        "awayPoint": -10.5,
+        "homePrice": -112,
+        "awayPrice": -108
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": 10.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": 11,
+          "price": -112
+        },
+        "bestAway": {
+          "book": "lowvig",
+          "homePoint": 10,
+          "price": -101
+        }
+      },
+      "model": {
+        "homeTeamId": "team-ul-monroe",
+        "awayTeamId": "team-louisiana",
+        "modelSpread": 22.2,
+        "edge": 11.7,
+        "signal": "CAUTION"
+      }
+    }
+  ]
+}
