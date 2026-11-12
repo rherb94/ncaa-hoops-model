@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-penn-st",
         "awayTeamId": "team-usc",
-        "modelSpread": 25.2,
-        "edge": 10.7,
+        "modelSpread": 24.9,
+        "edge": 10.4,
         "signal": "CAUTION"
       }
     },
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-cincinnati",
         "awayTeamId": "team-tcu",
-        "modelSpread": 9.1,
-        "edge": -9.4,
+        "modelSpread": 9.7,
+        "edge": -8.8,
         "signal": "CAUTION"
       }
     },
@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-maryland",
         "awayTeamId": "team-northwestern",
-        "modelSpread": -20,
-        "edge": 12.5,
+        "modelSpread": -19.8,
+        "edge": 12.7,
         "signal": "CAUTION"
       }
     },
@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-ucf",
         "awayTeamId": "team-west-virginia",
-        "modelSpread": 10.2,
-        "edge": -12.3,
+        "modelSpread": 9.3,
+        "edge": -13.2,
         "signal": "CAUTION"
       }
     },
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-iowa-st",
         "awayTeamId": "team-oklahoma-st",
-        "modelSpread": 6.1,
-        "edge": 11.6,
+        "modelSpread": 6,
+        "edge": 11.5,
         "signal": "CAUTION"
       }
     },
@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-kansas",
         "awayTeamId": "team-texas-tech",
-        "modelSpread": -4.9,
-        "edge": -9.4,
+        "modelSpread": -4.8,
+        "edge": -9.3,
         "signal": "CAUTION"
       }
     },
@@ -165,8 +165,8 @@
       "model": {
         "homeTeamId": "team-ohio-st",
         "awayTeamId": "team-michigan",
-        "modelSpread": -1.4,
-        "edge": -6.9,
+        "modelSpread": -1.5,
+        "edge": -7,
         "signal": "STRONG"
       }
     },
@@ -189,8 +189,8 @@
       "model": {
         "homeTeamId": "team-arizona-st",
         "awayTeamId": "team-byu",
-        "modelSpread": -5.4,
-        "edge": 0.1,
+        "modelSpread": -5.3,
+        "edge": 0.2,
         "signal": "NONE"
       }
     }

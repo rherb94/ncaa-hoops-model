@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-charlotte",
         "awayTeamId": "team-florida-atlantic",
-        "modelSpread": 4.1,
-        "edge": 10.6,
+        "modelSpread": 5,
+        "edge": 11.5,
         "signal": "CAUTION"
       }
     },

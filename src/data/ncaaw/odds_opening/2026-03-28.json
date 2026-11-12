@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-texas",
         "awayTeamId": "team-kentucky",
-        "modelSpread": -4.5,
-        "edge": 10,
+        "modelSpread": -4.7,
+        "edge": 9.8,
         "signal": "CAUTION"
       }
     },
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-oklahoma",
-        "modelSpread": -9.7,
-        "edge": 7.8,
+        "modelSpread": -9.6,
+        "edge": 7.9,
         "signal": "STRONG"
       }
     },
@@ -69,9 +69,9 @@
       "model": {
         "homeTeamId": "team-tcu",
         "awayTeamId": "team-virginia",
-        "modelSpread": -5.1,
-        "edge": 2.4,
-        "signal": "NONE"
+        "modelSpread": -4.1,
+        "edge": 3.4,
+        "signal": "LEAN"
       }
     }
   ]

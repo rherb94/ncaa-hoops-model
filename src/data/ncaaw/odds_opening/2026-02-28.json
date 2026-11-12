@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-nebraska",
         "awayTeamId": "team-rutgers",
-        "modelSpread": -10.1,
-        "edge": 12.4,
+        "modelSpread": -11,
+        "edge": 11.5,
         "signal": "CAUTION"
       }
     },

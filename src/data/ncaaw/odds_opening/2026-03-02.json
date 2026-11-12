@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-houston-christian",
         "awayTeamId": "team-texas-a-m-corpus-chris",
-        "modelSpread": -1.6,
-        "edge": 3.9,
+        "modelSpread": -2,
+        "edge": 3.5,
         "signal": "LEAN"
       }
     },
@@ -117,8 +117,8 @@
       "model": {
         "homeTeamId": "team-montana",
         "awayTeamId": "team-northern-colorado",
-        "modelSpread": -2.5,
-        "edge": -9,
+        "modelSpread": -2.4,
+        "edge": -8.9,
         "signal": "CAUTION"
       }
     }
