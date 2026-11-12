@@ -62,6 +62,21 @@ export function safeBookUrl(book: BetOption["book"], raw: unknown, state = "md")
   return ok ? u.toString() : null;
 }
 
+/** Move a DraftKings `?outcomes=` selection from the front page onto the event page. */
+export function draftKingsEventSlipUrl(slipUrl: string, eventUrl: string): string | null {
+  try {
+    const slip = new URL(slipUrl);
+    const event = new URL(eventUrl);
+    const outcomes = slip.searchParams.get("outcomes");
+    if (!outcomes || !/^\/event\/[\w-]+\/?$/.test(event.pathname)) return null;
+    if (slip.pathname !== "/" && slip.pathname !== "") return null; // already specific
+    event.searchParams.set("outcomes", outcomes);
+    return event.toString();
+  } catch {
+    return null;
+  }
+}
+
 export function buildBetOptions(
   books: Partial<Record<BookKey, MarketLines>>,
   side: "HOME" | "AWAY",
@@ -91,6 +106,14 @@ export function buildBetOptions(
 
     const gameUrl =
       safeBookUrl(book, l.eventLink, state) ?? safeBookUrl(book, l.spreadMarketLink, state) ?? undefined;
+
+    // DraftKings: the supplied bet-slip link points at the sportsbook's front
+    // page (/?outcomes=…), which the DraftKings app rejected with "Your pick
+    // couldn't be added". Attach the same selection to the game's own page
+    // (/event/<id>?outcomes=…), the form DraftKings uses for its own links.
+    if (book === "draftkings" && level === "betslip" && gameUrl) {
+      url = draftKingsEventSlipUrl(url, gameUrl) ?? url;
+    }
 
     const price = side === "HOME" ? l.spreadOddsHome : l.spreadOddsAway;
     out.push({

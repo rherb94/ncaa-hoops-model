@@ -1,4 +1,4 @@
-import { buildBetOptions, safeBookUrl } from "./betLinks";
+import { buildBetOptions, draftKingsEventSlipUrl, safeBookUrl } from "./betLinks";
 
 describe("safeBookUrl", () => {
   test("accepts the book's own https domains", () => {
@@ -62,5 +62,30 @@ describe("buildBetOptions", () => {
   test("a hostile link is ignored, not used", () => {
     const opts = buildBetOptions({ fanduel: { spread: 3, spreadLinkHome: "https://phish.example/x" } }, "HOME", "md");
     expect(opts[0].level).toBe("home");
+  });
+});
+
+describe("DraftKings event-page bet slip link", () => {
+  test("moves the selection from the front page onto the event page", () => {
+    expect(
+      draftKingsEventSlipUrl(
+        "https://sportsbook.draftkings.com/?outcomes=0HC87189132P850_1",
+        "https://sportsbook.draftkings.com/event/34998863"
+      )
+    ).toBe("https://sportsbook.draftkings.com/event/34998863?outcomes=0HC87189132P850_1");
+  });
+  test("leaves anything unexpected alone", () => {
+    expect(draftKingsEventSlipUrl("https://sportsbook.draftkings.com/", "https://sportsbook.draftkings.com/event/1")).toBeNull();
+    expect(draftKingsEventSlipUrl("https://sportsbook.draftkings.com/?outcomes=x", "https://sportsbook.draftkings.com/leagues/basketball")).toBeNull();
+  });
+  test("used by buildBetOptions when both links are present", () => {
+    const opts = buildBetOptions(
+      { draftkings: { spread: 8.5, spreadLinkHome: "https://sportsbook.draftkings.com/?outcomes=ABC_1", eventLink: "https://sportsbook.draftkings.com/event/42" } },
+      "HOME",
+      "md"
+    );
+    expect(opts[0].url).toBe("https://sportsbook.draftkings.com/event/42?outcomes=ABC_1");
+    expect(opts[0].level).toBe("betslip");
+    expect(opts[0].gameUrl).toBe("https://sportsbook.draftkings.com/event/42");
   });
 });
