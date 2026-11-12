@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-12",
+  "last_updated": "2026-11-12T22:28:16.066Z",
+  "snapshot_times": [
+    "2026-11-12T22:25:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "9d463c4686f84c78b890f0fcf2ac90c5",
+      "home_team": "South Florida Bulls",
+      "away_team": "Memphis Tigers",
+      "commence_time": "2026-11-13T01:00:00Z",
+      "homePoint": 4,
+      "awayPoint": -4,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-12T22:25:36Z"
+    },
+    {
+      "oddsEventId": "6a3fbf6388d7c72076555fc4a4bbedf2",
+      "home_team": "UL Monroe Warhawks",
+      "away_team": "Louisiana Ragin Cajuns",
+      "commence_time": "2026-11-13T02:00:00Z",
+      "homePoint": 10.5,
+      "awayPoint": -10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-12T22:25:36Z"
+    }
+  ]
+}
