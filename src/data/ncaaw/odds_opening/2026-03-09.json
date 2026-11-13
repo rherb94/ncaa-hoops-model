@@ -57,8 +57,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-villanova",
-        "modelSpread": -17.5,
-        "edge": 11,
+        "modelSpread": -18.5,
+        "edge": 10,
         "signal": "CAUTION"
       }
     },
@@ -99,8 +99,8 @@
       "model": {
         "homeTeamId": "team-unlv",
         "awayTeamId": "team-colorado-st",
-        "modelSpread": -2.7,
-        "edge": -1.2,
+        "modelSpread": -2.6,
+        "edge": -1.1,
         "signal": "NONE"
       }
     }

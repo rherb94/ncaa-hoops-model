@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-dartmouth",
         "awayTeamId": "team-princeton",
-        "modelSpread": 12.8,
-        "edge": -16.7,
+        "modelSpread": 12.7,
+        "edge": -16.8,
         "signal": "CAUTION"
       }
     },
@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-marshall",
         "awayTeamId": "team-georgia-southern",
-        "modelSpread": -6.5,
-        "edge": -4,
+        "modelSpread": -6.4,
+        "edge": -3.9,
         "signal": "LEAN"
       }
     },
@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-jacksonville",
         "awayTeamId": "team-north-florida",
-        "modelSpread": -3.2,
-        "edge": 16.3,
+        "modelSpread": -2.8,
+        "edge": 16.7,
         "signal": "CAUTION"
       }
     },
@@ -141,8 +141,8 @@
       "model": {
         "homeTeamId": "team-harvard",
         "awayTeamId": "team-penn",
-        "modelSpread": -8.1,
-        "edge": 2.4,
+        "modelSpread": -8.2,
+        "edge": 2.3,
         "signal": "NONE"
       }
     }

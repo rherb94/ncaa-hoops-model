@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-oklahoma",
-        "modelSpread": -9.6,
-        "edge": 7.9,
+        "modelSpread": -9.9,
+        "edge": 7.6,
         "signal": "STRONG"
       }
     },
@@ -69,9 +69,9 @@
       "model": {
         "homeTeamId": "team-tcu",
         "awayTeamId": "team-virginia",
-        "modelSpread": -4.1,
-        "edge": 3.4,
-        "signal": "LEAN"
+        "modelSpread": -4.6,
+        "edge": 2.9,
+        "signal": "NONE"
       }
     }
   ]

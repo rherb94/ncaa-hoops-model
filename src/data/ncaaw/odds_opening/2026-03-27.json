@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-vanderbilt",
         "awayTeamId": "team-notre-dame",
-        "modelSpread": -2.7,
-        "edge": 3.8,
+        "modelSpread": -2.8,
+        "edge": 3.7,
         "signal": "LEAN"
       }
     },
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-north-carolina",
-        "modelSpread": -12.8,
-        "edge": 16.7,
+        "modelSpread": -13.9,
+        "edge": 15.6,
         "signal": "CAUTION"
       }
     },
@@ -87,9 +87,9 @@
       "model": {
         "homeTeamId": "team-lsu",
         "awayTeamId": "team-duke",
-        "modelSpread": -3.8,
-        "edge": 4.7,
-        "signal": "LEAN"
+        "modelSpread": -2.8,
+        "edge": 5.7,
+        "signal": "STRONG"
       }
     }
   ]

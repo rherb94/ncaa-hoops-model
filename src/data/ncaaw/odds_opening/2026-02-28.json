@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-michigan",
         "awayTeamId": "team-maryland",
-        "modelSpread": -8.8,
-        "edge": -1.3,
+        "modelSpread": -9.3,
+        "edge": -1.8,
         "signal": "NONE"
       }
     }

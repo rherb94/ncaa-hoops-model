@@ -81,8 +81,8 @@
       "model": {
         "homeTeamId": "team-alabama",
         "awayTeamId": "team-rhode-island",
-        "modelSpread": -9.5,
-        "edge": -1,
+        "modelSpread": -7.2,
+        "edge": 1.3,
         "signal": "NONE"
       }
     },
@@ -195,8 +195,8 @@
       "model": {
         "homeTeamId": "team-iowa-st",
         "awayTeamId": "team-syracuse",
-        "modelSpread": -0.2,
-        "edge": 7.3,
+        "modelSpread": -0.5,
+        "edge": 7,
         "signal": "STRONG"
       }
     },
@@ -237,9 +237,9 @@
       "model": {
         "homeTeamId": "team-oklahoma-st",
         "awayTeamId": "team-princeton",
-        "modelSpread": -8.9,
-        "edge": -3.4,
-        "signal": "LEAN"
+        "modelSpread": -8,
+        "edge": -2.5,
+        "signal": "NONE"
       }
     },
     {
