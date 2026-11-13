@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-13",
+  "last_updated": "2026-11-13T22:15:20.417Z",
+  "snapshot_times": [
+    "2026-11-13T22:10:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "eff5d01c8683ed700c896743f0490989",
+      "home_team": "Pittsburgh Panthers",
+      "away_team": "Florida State Seminoles",
+      "commence_time": "2026-11-14T00:00:00Z",
+      "homePoint": -3,
+      "awayPoint": 3,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-13T22:10:36Z"
+    },
+    {
+      "oddsEventId": "bc528be865b10cd4a63a9e642c90d554",
+      "home_team": "UCLA Bruins",
+      "away_team": "Illinois Fighting Illini",
+      "commence_time": "2026-11-14T02:00:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-13T22:10:36Z"
+    },
+    {
+      "oddsEventId": "73d83d88b3a35eeb4bcf8462ff2070b2",
+      "home_team": "Colorado Buffaloes",
+      "away_team": "Houston Cougars",
+      "commence_time": "2026-11-14T03:15:00Z",
+      "homePoint": 7.5,
+      "awayPoint": -7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-13T22:10:36Z"
+    }
+  ]
+}
