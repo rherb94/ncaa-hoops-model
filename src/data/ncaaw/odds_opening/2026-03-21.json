@@ -81,8 +81,8 @@
       "model": {
         "homeTeamId": "team-alabama",
         "awayTeamId": "team-rhode-island",
-        "modelSpread": -7.2,
-        "edge": 1.3,
+        "modelSpread": -7.1,
+        "edge": 1.4,
         "signal": "NONE"
       }
     },
