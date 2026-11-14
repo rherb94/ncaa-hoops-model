@@ -1,55 +1,55 @@
 {
   "league": "cfb",
   "season_start": "2026-08-01",
-  "updated_at": "2026-11-13T14:33:16.547Z",
-  "days_tracked": 3,
+  "updated_at": "2026-11-14T13:29:46.738Z",
+  "days_tracked": 4,
   "first_date": "2026-11-11",
-  "last_date": "2026-11-13",
-  "total_picks": 3,
-  "decided": 0,
+  "last_date": "2026-11-14",
+  "total_picks": 23,
+  "decided": 3,
   "wins": 0,
-  "losses": 0,
+  "losses": 3,
   "pushes": 0,
-  "win_pct": null,
-  "units": 0,
-  "roi_pct": null,
+  "win_pct": 0,
+  "units": -3,
+  "roi_pct": -100,
   "plays": {
     "wins": 0,
-    "losses": 0,
+    "losses": 3,
     "pushes": 0,
-    "units": 0,
-    "roi_pct": null,
-    "win_pct": null
+    "units": -3,
+    "roi_pct": -100,
+    "win_pct": 0
   },
   "lean": {
     "wins": 0,
-    "losses": 0,
+    "losses": 2,
     "pushes": 0,
-    "units": 0,
-    "roi_pct": null,
-    "win_pct": null
+    "units": -2,
+    "roi_pct": -100,
+    "win_pct": 0
   },
   "strong": {
     "wins": 0,
-    "losses": 0,
+    "losses": 1,
     "pushes": 0,
-    "units": 0,
-    "roi_pct": null,
-    "win_pct": null
+    "units": -1,
+    "roi_pct": -100,
+    "win_pct": 0
   },
   "all_games": {
     "wins": 2,
-    "losses": 2,
-    "win_pct": 50
+    "losses": 5,
+    "win_pct": 28.6
   },
   "caution": {
     "wins": 1,
     "losses": 0,
     "win_pct": 100
   },
-  "avg_clv": null,
-  "clv_games": 0,
-  "pending": 3,
+  "avg_clv": -0.67,
+  "clv_games": 3,
+  "pending": 20,
   "daily": [
     {
       "date": "2026-11-11",
@@ -83,14 +83,28 @@
       "date": "2026-11-13",
       "plays": 3,
       "wins": 0,
+      "losses": 3,
+      "pushes": 0,
+      "units": -3,
+      "cumulative": {
+        "wins": 0,
+        "losses": 3,
+        "pushes": 0,
+        "units": -3
+      }
+    },
+    {
+      "date": "2026-11-14",
+      "plays": 20,
+      "wins": 0,
       "losses": 0,
       "pushes": 0,
       "units": 0,
       "cumulative": {
         "wins": 0,
-        "losses": 0,
+        "losses": 3,
         "pushes": 0,
-        "units": 0
+        "units": -3
       }
     }
   ]

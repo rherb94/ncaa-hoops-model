@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-13",
+  "fetched_at": "2026-11-14T13:29:44.953Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401858526",
+      "commence_time": "2026-11-14T02:00Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "Illinois Fighting Illini",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "356",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 22,
+      "awayScore": 14,
+      "actualSpread": -8,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401856860",
+      "commence_time": "2026-11-14T03:15Z",
+      "home_team": "Colorado Buffaloes",
+      "away_team": "Houston Cougars",
+      "home_espnTeamId": "38",
+      "away_espnTeamId": "248",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 42,
+      "awayScore": 32,
+      "actualSpread": -10,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858293",
+      "commence_time": "2026-11-14T00:00Z",
+      "home_team": "Pittsburgh Panthers",
+      "away_team": "Florida State Seminoles",
+      "home_espnTeamId": "221",
+      "away_espnTeamId": "52",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 10,
+      "awayScore": 16,
+      "actualSpread": 6,
+      "winner": "AWAY"
+    }
+  ]
+}
