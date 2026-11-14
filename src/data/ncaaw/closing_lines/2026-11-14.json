@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-14",
+  "last_updated": "2026-11-14T20:59:10.200Z",
+  "snapshot_times": [
+    "2026-11-14T20:55:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "b036152c3cda8eacd42028fffe843475",
+      "home_team": "Pennsylvania Quakers",
+      "away_team": "North Carolina Tar Heels",
+      "commence_time": "2026-11-14T21:00:00Z",
+      "homePoint": 18.5,
+      "awayPoint": -18.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-14T20:55:36Z"
+    },
+    {
+      "oddsEventId": "05b77491273e5dee1ff862b5b34a1ee2",
+      "home_team": "Kansas Jayhawks",
+      "away_team": "Nebraska Cornhuskers",
+      "commence_time": "2026-11-14T21:30:00Z",
+      "homePoint": 5.5,
+      "awayPoint": -5.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-14T20:55:36Z"
+    },
+    {
+      "oddsEventId": "082b825bc4e1902a7435a7530d883f43",
+      "home_team": "Appalachian St Mountaineers",
+      "away_team": "Northwestern Wildcats",
+      "commence_time": "2026-11-14T23:00:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "betonlineag",
+      "snapshotTime": "2026-11-14T20:55:36Z"
+    }
+  ]
+}
