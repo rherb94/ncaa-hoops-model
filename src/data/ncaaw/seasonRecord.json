@@ -1,10 +1,10 @@
 {
   "league": "ncaaw",
   "season_start": "2026-11-01",
-  "updated_at": "2026-11-13T14:30:17.103Z",
-  "days_tracked": 2,
+  "updated_at": "2026-11-14T13:27:30.226Z",
+  "days_tracked": 3,
   "first_date": "2026-11-11",
-  "last_date": "2026-11-12",
+  "last_date": "2026-11-13",
   "total_picks": 1,
   "decided": 1,
   "wins": 0,
@@ -38,14 +38,14 @@
     "win_pct": null
   },
   "all_games": {
-    "wins": 0,
-    "losses": 1,
-    "win_pct": 0
+    "wins": 2,
+    "losses": 2,
+    "win_pct": 50
   },
   "caution": {
-    "wins": 0,
+    "wins": 1,
     "losses": 0,
-    "win_pct": null
+    "win_pct": 100
   },
   "avg_clv": 0,
   "clv_games": 1,
@@ -67,6 +67,20 @@
     },
     {
       "date": "2026-11-12",
+      "plays": 0,
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "units": 0,
+      "cumulative": {
+        "wins": 0,
+        "losses": 1,
+        "pushes": 0,
+        "units": -1
+      }
+    },
+    {
+      "date": "2026-11-13",
       "plays": 0,
       "wins": 0,
       "losses": 0,
