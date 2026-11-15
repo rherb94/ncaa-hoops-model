@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-15",
+  "last_updated": "2026-11-15T21:23:17.221Z",
+  "snapshot_times": [
+    "2026-11-15T21:20:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "545480a9c5c65f5a3fdec505fd358de3",
+      "home_team": "Clemson Tigers",
+      "away_team": "Stetson Hatters",
+      "commence_time": "2026-11-15T22:00:00Z",
+      "homePoint": -31.5,
+      "awayPoint": 31.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-15T21:20:36Z"
+    },
+    {
+      "oddsEventId": "2a96e862273e8e072a6daad5f5854de4",
+      "home_team": "Stanford Cardinal",
+      "away_team": "Gonzaga Bulldogs",
+      "commence_time": "2026-11-15T22:00:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-15T21:20:36Z"
+    },
+    {
+      "oddsEventId": "4b19704f8590d7e70fa70bb13c54447b",
+      "home_team": "Louisville Cardinals",
+      "away_team": "UConn Huskies",
+      "commence_time": "2026-11-15T22:30:00Z",
+      "homePoint": 13.5,
+      "awayPoint": -13.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-15T21:20:36Z"
+    },
+    {
+      "oddsEventId": "20a12622fce82cc709635cfc6a020f77",
+      "home_team": "UCLA Bruins",
+      "away_team": "Princeton Tigers",
+      "commence_time": "2026-11-15T23:00:00Z",
+      "homePoint": -22.5,
+      "awayPoint": 22.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-15T21:20:36Z"
+    },
+    {
+      "oddsEventId": "9293917d61a9b30f91ad56a7f8882e7b",
+      "home_team": "Syracuse Orange",
+      "away_team": "Canisius Golden Griffins",
+      "commence_time": "2026-11-16T00:00:00Z",
+      "homePoint": -33.5,
+      "awayPoint": 33.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-15T21:20:36Z"
+    }
+  ]
+}
