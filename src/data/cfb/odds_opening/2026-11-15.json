@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-15",
+  "captured_at": "2026-11-15T01:09:40.066Z",
+  "ratings_updated_at": "2026-11-14T16:39:32.963Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "8ad669f4c9b70f38fdb057c114588776",
+      "commence_time": "2026-11-15T18:00:00Z",
+      "home_team": "Oklahoma Sooners",
+      "away_team": "Ole Miss Rebels",
+      "home_espnTeamId": "201",
+      "away_espnTeamId": "145",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-15T01:09:34Z",
+        "homePoint": -2.5,
+        "awayPoint": 2.5,
+        "homePrice": -118,
+        "awayPrice": -102
+      },
+      "market": {
+        "books": 10,
+        "medianHomePoint": -2.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -2.5,
+          "price": -118
+        },
+        "bestAway": {
+          "book": "bovada",
+          "homePoint": -3,
+          "price": -112
+        }
+      },
+      "model": {
+        "homeTeamId": "team-oklahoma",
+        "awayTeamId": "team-ole-miss",
+        "modelSpread": 2.7,
+        "edge": 5.2,
+        "signal": "LEAN"
+      }
+    }
+  ]
+}
