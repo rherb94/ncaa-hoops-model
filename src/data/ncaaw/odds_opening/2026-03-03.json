@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-new-mexico",
         "awayTeamId": "team-fresno-st",
-        "modelSpread": -4,
-        "edge": 3,
+        "modelSpread": -3.6,
+        "edge": 3.4,
         "signal": "LEAN"
       }
     },
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-san-jose-st",
         "awayTeamId": "team-colorado-st",
-        "modelSpread": 10.5,
-        "edge": -11,
+        "modelSpread": 10.4,
+        "edge": -11.1,
         "signal": "CAUTION"
       }
     }

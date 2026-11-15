@@ -39,8 +39,8 @@
       "model": {
         "homeTeamId": "team-byu",
         "awayTeamId": "team-kansas",
-        "modelSpread": 1.8,
-        "edge": 0.3,
+        "modelSpread": 0.6,
+        "edge": -0.9,
         "signal": "NONE"
       }
     },
@@ -63,8 +63,8 @@
       "model": {
         "homeTeamId": "team-texas",
         "awayTeamId": "team-michigan",
-        "modelSpread": 1.1,
-        "edge": 11.6,
+        "modelSpread": 0.6,
+        "edge": 11.1,
         "signal": "CAUTION"
       }
     },
@@ -87,8 +87,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-tcu",
-        "modelSpread": -11.8,
-        "edge": 2.7,
+        "modelSpread": -11.7,
+        "edge": 2.8,
         "signal": "NONE"
       }
     }

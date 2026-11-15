@@ -73,8 +73,8 @@
       "model": {
         "homeTeamId": "team-west-virginia",
         "awayTeamId": "team-northwestern",
-        "modelSpread": -12.4,
-        "edge": 12.1,
+        "modelSpread": -11.9,
+        "edge": 12.6,
         "signal": "CAUTION"
       }
     },
@@ -255,8 +255,8 @@
       "model": {
         "homeTeamId": "team-boise-st",
         "awayTeamId": "team-utah",
-        "modelSpread": 5.5,
-        "edge": 1,
+        "modelSpread": 5.6,
+        "edge": 1.1,
         "signal": "NONE"
       }
     },

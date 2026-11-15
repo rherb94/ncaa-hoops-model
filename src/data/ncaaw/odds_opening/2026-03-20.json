@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-baylor",
         "awayTeamId": "team-nebraska",
-        "modelSpread": -3.2,
-        "edge": -4.7,
+        "modelSpread": -1.5,
+        "edge": -3,
         "signal": "LEAN"
       }
     },
@@ -195,8 +195,8 @@
       "model": {
         "homeTeamId": "team-lsu",
         "awayTeamId": "team-jacksonville",
-        "modelSpread": -35.5,
-        "edge": 16,
+        "modelSpread": -35.4,
+        "edge": 16.1,
         "signal": "CAUTION"
       }
     },
@@ -219,8 +219,8 @@
       "model": {
         "homeTeamId": "team-michigan-st",
         "awayTeamId": "team-colorado-st",
-        "modelSpread": -10.1,
-        "edge": 8.4,
+        "modelSpread": -10,
+        "edge": 8.5,
         "signal": "CAUTION"
       }
     },
@@ -243,8 +243,8 @@
       "model": {
         "homeTeamId": "team-n-c-state",
         "awayTeamId": "team-tennessee",
-        "modelSpread": 3.3,
-        "edge": 4.8,
+        "modelSpread": 3.4,
+        "edge": 4.9,
         "signal": "LEAN"
       }
     },

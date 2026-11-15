@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-north-carolina",
-        "modelSpread": -13.8,
-        "edge": 15.7,
+        "modelSpread": -14.4,
+        "edge": 15.1,
         "signal": "CAUTION"
       }
     },

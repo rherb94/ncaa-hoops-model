@@ -1,0 +1,184 @@
+{
+  "date": "2026-11-15",
+  "captured_at": "2026-11-15T20:28:29.324Z",
+  "ratings_updated_at": "2026-11-15T18:00:54.976Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "545480a9c5c65f5a3fdec505fd358de3",
+      "commence_time": "2026-11-15T22:00:00Z",
+      "home_team": "Clemson Tigers",
+      "away_team": "Stetson Hatters",
+      "home_espnTeamId": "228",
+      "away_espnTeamId": "56",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-15T20:27:43Z",
+        "homePoint": -31.5,
+        "awayPoint": 31.5,
+        "homePrice": -115,
+        "awayPrice": -105
+      },
+      "market": {
+        "books": 3,
+        "medianHomePoint": -31.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -29.5,
+          "price": -148
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -33.5,
+          "price": -120
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "2a96e862273e8e072a6daad5f5854de4",
+      "commence_time": "2026-11-15T22:00:00Z",
+      "home_team": "Stanford Cardinal",
+      "away_team": "Gonzaga Bulldogs",
+      "home_espnTeamId": "24",
+      "away_espnTeamId": "2250",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-15T20:27:43Z",
+        "homePoint": -8.5,
+        "awayPoint": 8.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 6,
+        "medianHomePoint": -8.5,
+        "bestHome": {
+          "book": "betonlineag",
+          "homePoint": -7.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -8.5,
+          "price": -114
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "4b19704f8590d7e70fa70bb13c54447b",
+      "commence_time": "2026-11-15T22:30:00Z",
+      "home_team": "Louisville Cardinals",
+      "away_team": "UConn Huskies",
+      "home_espnTeamId": "97",
+      "away_espnTeamId": "41",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-15T20:27:43Z",
+        "homePoint": 13.5,
+        "awayPoint": -13.5,
+        "homePrice": -105,
+        "awayPrice": -115
+      },
+      "market": {
+        "books": 7,
+        "medianHomePoint": 13.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": 14.5,
+          "price": -118
+        },
+        "bestAway": {
+          "book": "betonlineag",
+          "homePoint": 12,
+          "price": -105
+        }
+      },
+      "model": {
+        "homeTeamId": "team-louisville",
+        "awayTeamId": "team-connecticut",
+        "modelSpread": 7.3,
+        "edge": -6.2,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "20a12622fce82cc709635cfc6a020f77",
+      "commence_time": "2026-11-15T23:00:00Z",
+      "home_team": "UCLA Bruins",
+      "away_team": "Princeton Tigers",
+      "home_espnTeamId": "26",
+      "away_espnTeamId": "163",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-15T20:27:43Z",
+        "homePoint": -22.5,
+        "awayPoint": 22.5,
+        "homePrice": -105,
+        "awayPrice": -115
+      },
+      "market": {
+        "books": 5,
+        "medianHomePoint": -21.5,
+        "bestHome": {
+          "book": "lowvig",
+          "homePoint": -21,
+          "price": -125
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": -22.5,
+          "price": -115
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "9293917d61a9b30f91ad56a7f8882e7b",
+      "commence_time": "2026-11-16T00:00:00Z",
+      "home_team": "Syracuse Orange",
+      "away_team": "Canisius Golden Griffins",
+      "home_espnTeamId": "183",
+      "away_espnTeamId": "2099",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-15T20:27:43Z",
+        "homePoint": -33.5,
+        "awayPoint": 33.5,
+        "homePrice": -105,
+        "awayPrice": -115
+      },
+      "market": {
+        "books": 3,
+        "medianHomePoint": -34.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -33.5,
+          "price": -105
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": -34.5,
+          "price": -114
+        }
+      },
+      "model": null
+    }
+  ]
+}
