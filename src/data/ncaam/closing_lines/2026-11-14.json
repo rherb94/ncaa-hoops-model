@@ -1,8 +1,9 @@
 {
   "date": "2026-11-14",
-  "last_updated": "2026-11-14T20:59:12.322Z",
+  "last_updated": "2026-11-15T03:08:45.231Z",
   "snapshot_times": [
-    "2026-11-14T20:55:36Z"
+    "2026-11-14T20:55:36Z",
+    "2026-11-15T03:05:36Z"
   ],
   "games": [
     {
@@ -379,11 +380,11 @@
       "oddsEventId": "1c57d052083707257ef138fc5f40c068",
       "home_team": "Nevada Wolf Pack",
       "away_team": "Utah Valley Wolverines",
-      "commence_time": "2026-11-15T03:00:00Z",
+      "commence_time": "2026-11-15T03:15:00Z",
       "homePoint": -9.5,
       "awayPoint": 9.5,
       "book": "draftkings",
-      "snapshotTime": "2026-11-14T20:55:36Z"
+      "snapshotTime": "2026-11-15T03:05:36Z"
     },
     {
       "oddsEventId": "092a4bf6afc9115d9bb2f994199dae7b",
