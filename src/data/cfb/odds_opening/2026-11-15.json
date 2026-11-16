@@ -39,8 +39,8 @@
       "model": {
         "homeTeamId": "team-oklahoma",
         "awayTeamId": "team-ole-miss",
-        "modelSpread": 2.7,
-        "edge": 5.2,
+        "modelSpread": 2.4,
+        "edge": 4.9,
         "signal": "LEAN"
       }
     }

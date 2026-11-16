@@ -39,9 +39,9 @@
       "model": {
         "homeTeamId": "team-pittsburgh",
         "awayTeamId": "team-florida-state",
-        "modelSpread": -7.7,
-        "edge": -4.2,
-        "signal": "LEAN"
+        "modelSpread": -5.5,
+        "edge": -2,
+        "signal": "NONE"
       }
     },
     {
@@ -79,9 +79,9 @@
       "model": {
         "homeTeamId": "team-ucla",
         "awayTeamId": "team-illinois",
-        "modelSpread": -15.2,
-        "edge": -5.2,
-        "signal": "LEAN"
+        "modelSpread": -17.2,
+        "edge": -7.2,
+        "signal": "STRONG"
       }
     },
     {
@@ -119,9 +119,9 @@
       "model": {
         "homeTeamId": "team-colorado",
         "awayTeamId": "team-houston",
-        "modelSpread": 16.3,
-        "edge": 6.8,
-        "signal": "STRONG"
+        "modelSpread": 13.6,
+        "edge": 4.1,
+        "signal": "LEAN"
       }
     }
   ]

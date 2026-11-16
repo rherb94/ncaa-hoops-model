@@ -39,9 +39,9 @@
       "model": {
         "homeTeamId": "team-ball-state",
         "awayTeamId": "team-buffalo",
-        "modelSpread": 5.4,
-        "edge": 3.9,
-        "signal": "NONE"
+        "modelSpread": 9.1,
+        "edge": 7.6,
+        "signal": "STRONG"
       }
     },
     {
@@ -79,8 +79,8 @@
       "model": {
         "homeTeamId": "team-central-michigan",
         "awayTeamId": "team-sacramento-state",
-        "modelSpread": -14.7,
-        "edge": 2.8,
+        "modelSpread": -18.4,
+        "edge": -0.9,
         "signal": "NONE"
       }
     },
@@ -119,8 +119,8 @@
       "model": {
         "homeTeamId": "team-toledo",
         "awayTeamId": "team-massachusetts",
-        "modelSpread": -14.5,
-        "edge": -0.5,
+        "modelSpread": -17.3,
+        "edge": -3.3,
         "signal": "NONE"
       }
     }
