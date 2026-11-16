@@ -209,8 +209,8 @@
       "model": {
         "homeTeamId": "team-fresno-st",
         "awayTeamId": "team-new-mexico",
-        "modelSpread": -2.4,
-        "edge": 2.6,
+        "modelSpread": -2.5,
+        "edge": 2.5,
         "signal": "NONE"
       }
     },

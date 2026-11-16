@@ -39,8 +39,8 @@
       "model": {
         "homeTeamId": "team-penn",
         "awayTeamId": "team-north-carolina",
-        "modelSpread": 12.2,
-        "edge": -6.3,
+        "modelSpread": 12.1,
+        "edge": -6.4,
         "signal": "STRONG"
       }
     },

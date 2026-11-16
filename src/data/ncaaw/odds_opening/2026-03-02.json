@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-belmont",
         "awayTeamId": "team-southern-illinois",
-        "modelSpread": -10.2,
-        "edge": 11.3,
+        "modelSpread": -10.1,
+        "edge": 11.4,
         "signal": "CAUTION"
       }
     },
@@ -69,9 +69,9 @@
       "model": {
         "homeTeamId": "team-milwaukee",
         "awayTeamId": "team-detroit-mercy",
-        "modelSpread": -3.6,
-        "edge": 2.9,
-        "signal": "NONE"
+        "modelSpread": -3.5,
+        "edge": 3,
+        "signal": "LEAN"
       }
     },
     {
@@ -93,8 +93,8 @@
       "model": {
         "homeTeamId": "team-weber-st",
         "awayTeamId": "team-portland-st",
-        "modelSpread": -4.8,
-        "edge": 2.7,
+        "modelSpread": -5.1,
+        "edge": 2.4,
         "signal": "NONE"
       }
     },

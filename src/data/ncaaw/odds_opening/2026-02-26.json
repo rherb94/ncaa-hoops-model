@@ -21,8 +21,8 @@
       "model": {
         "homeTeamId": "team-illinois-chicago",
         "awayTeamId": "team-bradley",
-        "modelSpread": -6.7,
-        "edge": -8.2,
+        "modelSpread": -7.1,
+        "edge": -8.6,
         "signal": "CAUTION"
       }
     },
@@ -45,8 +45,8 @@
       "model": {
         "homeTeamId": "team-ut-rio-grande-valley",
         "awayTeamId": "team-northwestern-st",
-        "modelSpread": -7.1,
-        "edge": -3.6,
+        "modelSpread": -7,
+        "edge": -3.5,
         "signal": "LEAN"
       }
     },
@@ -69,8 +69,8 @@
       "model": {
         "homeTeamId": "team-florida",
         "awayTeamId": "team-mississippi",
-        "modelSpread": 4.6,
-        "edge": -0.9,
+        "modelSpread": 5,
+        "edge": -0.5,
         "signal": "NONE"
       }
     },
@@ -93,9 +93,9 @@
       "model": {
         "homeTeamId": "team-georgia-tech",
         "awayTeamId": "team-louisville",
-        "modelSpread": 13.5,
-        "edge": -4,
-        "signal": "LEAN"
+        "modelSpread": 14.9,
+        "edge": -2.6,
+        "signal": "NONE"
       }
     },
     {
@@ -165,8 +165,8 @@
       "model": {
         "homeTeamId": "team-auburn",
         "awayTeamId": "team-kentucky",
-        "modelSpread": 5.1,
-        "edge": -12.4,
+        "modelSpread": 5.8,
+        "edge": -11.7,
         "signal": "CAUTION"
       }
     },
@@ -189,8 +189,8 @@
       "model": {
         "homeTeamId": "team-connecticut",
         "awayTeamId": "team-georgetown",
-        "modelSpread": -30.3,
-        "edge": 7.2,
+        "modelSpread": -28.3,
+        "edge": 9.2,
         "signal": "CAUTION"
       }
     },
@@ -213,8 +213,8 @@
       "model": {
         "homeTeamId": "team-n-c-state",
         "awayTeamId": "team-wake-forest",
-        "modelSpread": -15.5,
-        "edge": 8,
+        "modelSpread": -17.2,
+        "edge": 6.3,
         "signal": "CAUTION"
       }
     },
@@ -261,8 +261,8 @@
       "model": {
         "homeTeamId": "team-notre-dame",
         "awayTeamId": "team-syracuse",
-        "modelSpread": -13.9,
-        "edge": -6.4,
+        "modelSpread": -14.3,
+        "edge": -6.8,
         "signal": "STRONG"
       }
     },
@@ -285,9 +285,9 @@
       "model": {
         "homeTeamId": "team-seton-hall",
         "awayTeamId": "team-villanova",
-        "modelSpread": 6.2,
-        "edge": 2.7,
-        "signal": "NONE"
+        "modelSpread": 7.1,
+        "edge": 3.6,
+        "signal": "LEAN"
       }
     },
     {
@@ -309,8 +309,8 @@
       "model": {
         "homeTeamId": "team-vanderbilt",
         "awayTeamId": "team-alabama",
-        "modelSpread": -11.5,
-        "edge": 0,
+        "modelSpread": -10.5,
+        "edge": 1,
         "signal": "NONE"
       }
     },
@@ -333,8 +333,8 @@
       "model": {
         "homeTeamId": "team-duke",
         "awayTeamId": "team-florida-st",
-        "modelSpread": -13.3,
-        "edge": 16.2,
+        "modelSpread": -13.6,
+        "edge": 15.9,
         "signal": "CAUTION"
       }
     },
@@ -357,8 +357,8 @@
       "model": {
         "homeTeamId": "team-south-carolina",
         "awayTeamId": "team-missouri",
-        "modelSpread": -24.3,
-        "edge": 13.2,
+        "modelSpread": -25.2,
+        "edge": 12.3,
         "signal": "CAUTION"
       }
     },
@@ -381,8 +381,8 @@
       "model": {
         "homeTeamId": "team-creighton",
         "awayTeamId": "team-providence",
-        "modelSpread": -9.6,
-        "edge": 0.9,
+        "modelSpread": -10.3,
+        "edge": 0.2,
         "signal": "NONE"
       }
     },
@@ -405,8 +405,8 @@
       "model": {
         "homeTeamId": "team-iowa",
         "awayTeamId": "team-illinois",
-        "modelSpread": -9.9,
-        "edge": 1.6,
+        "modelSpread": -10.3,
+        "edge": 1.2,
         "signal": "NONE"
       }
     },
@@ -429,8 +429,8 @@
       "model": {
         "homeTeamId": "team-texas",
         "awayTeamId": "team-georgia",
-        "modelSpread": -15.5,
-        "edge": 9,
+        "modelSpread": -15.3,
+        "edge": 9.2,
         "signal": "CAUTION"
       }
     }

@@ -107,9 +107,9 @@
       "model": {
         "homeTeamId": "team-louisville",
         "awayTeamId": "team-connecticut",
-        "modelSpread": 7.3,
-        "edge": -6.2,
-        "signal": "STRONG"
+        "modelSpread": 3.8,
+        "edge": -9.7,
+        "signal": "CAUTION"
       }
     },
     {

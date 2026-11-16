@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-16",
+  "captured_at": "2026-11-16T23:48:32.178Z",
+  "ratings_updated_at": "2026-11-16T21:16:40.239Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "14756ddc839f328163853cded10eeb37",
+      "commence_time": "2026-11-17T01:00:00Z",
+      "home_team": "Arkansas-Little Rock Trojans",
+      "away_team": "Arkansas Razorbacks",
+      "home_espnTeamId": "2031",
+      "away_espnTeamId": "8",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-11-16T23:48:28Z",
+        "homePoint": 12.5,
+        "awayPoint": -12.5,
+        "homePrice": -114,
+        "awayPrice": -117
+      },
+      "market": {
+        "books": 1,
+        "medianHomePoint": 12.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": 12.5,
+          "price": -114
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": 12.5,
+          "price": -117
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "d7fe55544761449bf32ccbbaa132cc1a",
+      "commence_time": "2026-11-17T01:00:00Z",
+      "home_team": "Central Michigan Chippewas",
+      "away_team": "Michigan Wolverines",
+      "home_espnTeamId": "2117",
+      "away_espnTeamId": "130",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-16T23:48:11Z",
+        "homePoint": 45.5,
+        "awayPoint": -45.5,
+        "homePrice": -105,
+        "awayPrice": -115
+      },
+      "market": {
+        "books": 4,
+        "medianHomePoint": 45.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": 45.5,
+          "price": -105
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": 45.5,
+          "price": -115
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "83bd899fe54e217b661bcf0b54b65c76",
+      "commence_time": "2026-11-17T01:00:00Z",
+      "home_team": "LSU Tigers",
+      "away_team": "Troy Trojans",
+      "home_espnTeamId": "99",
+      "away_espnTeamId": "2653",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-16T23:48:11Z",
+        "homePoint": -52.5,
+        "awayPoint": 52.5,
+        "homePrice": -105,
+        "awayPrice": -115
+      },
+      "market": {
+        "books": 4,
+        "medianHomePoint": -52.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -50.5,
+          "price": -132
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": -52.5,
+          "price": -115
+        }
+      },
+      "model": null
+    }
+  ]
+}
