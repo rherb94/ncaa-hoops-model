@@ -1,33 +1,33 @@
 {
   "league": "cfb",
   "season_start": "2026-08-01",
-  "updated_at": "2026-11-15T13:55:09.894Z",
+  "updated_at": "2026-11-16T15:42:51.917Z",
   "days_tracked": 5,
   "first_date": "2026-11-11",
   "last_date": "2026-11-15",
   "total_picks": 24,
-  "decided": 21,
+  "decided": 22,
   "wins": 10,
-  "losses": 11,
+  "losses": 12,
   "pushes": 1,
-  "win_pct": 48,
-  "units": -1.71,
-  "roi_pct": -7.8,
+  "win_pct": 45,
+  "units": -2.71,
+  "roi_pct": -11.8,
   "plays": {
     "wins": 10,
-    "losses": 11,
+    "losses": 12,
     "pushes": 1,
-    "units": -1.71,
-    "roi_pct": -7.8,
-    "win_pct": 47.6
+    "units": -2.71,
+    "roi_pct": -11.8,
+    "win_pct": 45.5
   },
   "lean": {
     "wins": 7,
-    "losses": 5,
+    "losses": 6,
     "pushes": 1,
-    "units": 1.49,
-    "roi_pct": 11.5,
-    "win_pct": 58.3
+    "units": 0.49,
+    "roi_pct": 3.5,
+    "win_pct": 53.8
   },
   "strong": {
     "wins": 3,
@@ -39,8 +39,8 @@
   },
   "all_games": {
     "wins": 29,
-    "losses": 27,
-    "win_pct": 51.8
+    "losses": 28,
+    "win_pct": 50.9
   },
   "caution": {
     "wins": 3,
@@ -49,7 +49,7 @@
   },
   "avg_clv": -0.17,
   "clv_games": 12,
-  "pending": 2,
+  "pending": 1,
   "daily": [
     {
       "date": "2026-11-11",
@@ -111,14 +111,14 @@
       "date": "2026-11-15",
       "plays": 1,
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "units": 0,
+      "units": -1,
       "cumulative": {
         "wins": 10,
-        "losses": 11,
+        "losses": 12,
         "pushes": 1,
-        "units": -1.71
+        "units": -2.71
       }
     }
   ]

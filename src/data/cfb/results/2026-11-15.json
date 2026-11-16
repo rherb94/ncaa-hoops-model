@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-15",
+  "fetched_at": "2026-11-16T15:42:49.418Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401856887",
+      "commence_time": "2026-11-15T18:00Z",
+      "home_team": "Oklahoma Sooners",
+      "away_team": "Ole Miss Rebels",
+      "home_espnTeamId": "201",
+      "away_espnTeamId": "145",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 24,
+      "awayScore": 17,
+      "actualSpread": -7,
+      "winner": "HOME"
+    }
+  ]
+}
