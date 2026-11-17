@@ -1,33 +1,33 @@
 {
   "league": "ncaam",
   "season_start": "2026-11-01",
-  "updated_at": "2026-11-17T13:39:39.776Z",
-  "days_tracked": 6,
+  "updated_at": "2026-11-17T13:45:03.021Z",
+  "days_tracked": 7,
   "first_date": "2026-11-11",
   "last_date": "2026-11-17",
-  "total_picks": 41,
-  "decided": 31,
-  "wins": 15,
-  "losses": 16,
+  "total_picks": 46,
+  "decided": 36,
+  "wins": 17,
+  "losses": 19,
   "pushes": 0,
-  "win_pct": 48,
-  "units": -2.31,
-  "roi_pct": -7.5,
+  "win_pct": 47,
+  "units": -3.38,
+  "roi_pct": -9.4,
   "plays": {
-    "wins": 15,
-    "losses": 16,
+    "wins": 17,
+    "losses": 19,
     "pushes": 0,
-    "units": -2.31,
-    "roi_pct": -7.5,
-    "win_pct": 48.4
+    "units": -3.38,
+    "roi_pct": -9.4,
+    "win_pct": 47.2
   },
   "lean": {
-    "wins": 10,
-    "losses": 14,
+    "wins": 12,
+    "losses": 17,
     "pushes": 0,
-    "units": -4.91,
-    "roi_pct": -20.5,
-    "win_pct": 41.7
+    "units": -5.98,
+    "roi_pct": -20.6,
+    "win_pct": 41.4
   },
   "strong": {
     "wins": 5,
@@ -38,17 +38,17 @@
     "win_pct": 71.4
   },
   "all_games": {
-    "wins": 93,
-    "losses": 78,
-    "win_pct": 54.4
+    "wins": 104,
+    "losses": 89,
+    "win_pct": 53.9
   },
   "caution": {
-    "wins": 23,
-    "losses": 16,
-    "win_pct": 59
+    "wins": 26,
+    "losses": 21,
+    "win_pct": 55.3
   },
-  "avg_clv": 0.2,
-  "clv_games": 35,
+  "avg_clv": 0.21,
+  "clv_games": 38,
   "pending": 10,
   "daily": [
     {
@@ -122,6 +122,20 @@
       }
     },
     {
+      "date": "2026-11-16",
+      "plays": 5,
+      "wins": 2,
+      "losses": 3,
+      "pushes": 0,
+      "units": -1.07,
+      "cumulative": {
+        "wins": 17,
+        "losses": 19,
+        "pushes": 0,
+        "units": -3.38
+      }
+    },
+    {
       "date": "2026-11-17",
       "plays": 10,
       "wins": 0,
@@ -129,10 +143,10 @@
       "pushes": 0,
       "units": 0,
       "cumulative": {
-        "wins": 15,
-        "losses": 16,
+        "wins": 17,
+        "losses": 19,
         "pushes": 0,
-        "units": -2.31
+        "units": -3.38
       }
     }
   ]
