@@ -1,6 +1,99 @@
 {
   "date": "2026-11-17",
-  "last_updated": "2026-11-17T05:17:29.550Z",
-  "snapshot_times": [],
-  "games": []
+  "last_updated": "2026-11-17T23:40:39.474Z",
+  "snapshot_times": [
+    "2026-11-17T23:35:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "94b372333af8685f7b0e185dace62a19",
+      "home_team": "Auburn Tigers",
+      "away_team": "Seton Hall Pirates",
+      "commence_time": "2026-11-18T00:00:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-11-17T23:35:36Z"
+    },
+    {
+      "oddsEventId": "a6e129d5813895185a5d6b308a6f33bc",
+      "home_team": "South Carolina Gamecocks",
+      "away_team": "Florida Gulf Coast Eagles",
+      "commence_time": "2026-11-18T00:00:00Z",
+      "homePoint": -40.5,
+      "awayPoint": 40.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-17T23:35:36Z"
+    },
+    {
+      "oddsEventId": "12015790722628065757f403fda48b3c",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "Mt. St. Mary's Mountaineers",
+      "commence_time": "2026-11-18T00:00:00Z",
+      "homePoint": -55.5,
+      "awayPoint": 55.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-17T23:35:36Z"
+    },
+    {
+      "oddsEventId": "eb34b20c1b88f60bf0c35503355ffe9c",
+      "home_team": "Belmont Bruins",
+      "away_team": "Tennessee Volunteers",
+      "commence_time": "2026-11-18T00:30:00Z",
+      "homePoint": 19.5,
+      "awayPoint": -19.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-11-17T23:35:36Z"
+    },
+    {
+      "oddsEventId": "752f6a29bf625f6dbaa5c29f3ac95d40",
+      "home_team": "Kansas St Wildcats",
+      "away_team": "SMU Mustangs",
+      "commence_time": "2026-11-18T00:30:00Z",
+      "homePoint": -12.5,
+      "awayPoint": 12.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-11-17T23:35:36Z"
+    },
+    {
+      "oddsEventId": "f427c20263ba4a606e1ecb56a7c0b2d0",
+      "home_team": "Wisconsin Badgers",
+      "away_team": "Marquette Golden Eagles",
+      "commence_time": "2026-11-18T00:30:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-11-17T23:35:36Z"
+    },
+    {
+      "oddsEventId": "513c510d0db144d530f5297eda9a5981",
+      "home_team": "Arizona St Sun Devils",
+      "away_team": "San Diego Toreros",
+      "commence_time": "2026-11-18T01:30:00Z",
+      "homePoint": -23.5,
+      "awayPoint": 23.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-11-17T23:35:36Z"
+    },
+    {
+      "oddsEventId": "0c26c1efacc401ab1cc20d143226dbdd",
+      "home_team": "Oklahoma Sooners",
+      "away_team": "Texas Southern Tigers",
+      "commence_time": "2026-11-18T02:00:00Z",
+      "homePoint": -61.5,
+      "awayPoint": 61.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-17T23:35:36Z"
+    },
+    {
+      "oddsEventId": "76e3c7d657dcef051ce7a896b236acdb",
+      "home_team": "Washington St Cougars",
+      "away_team": "Washington Huskies",
+      "commence_time": "2026-11-18T03:30:00Z",
+      "homePoint": 12.5,
+      "awayPoint": -12.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-17T23:35:36Z"
+    }
+  ]
 }
