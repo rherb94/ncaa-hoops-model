@@ -73,8 +73,8 @@
       "model": {
         "homeTeamId": "team-west-virginia",
         "awayTeamId": "team-northwestern",
-        "modelSpread": -11.9,
-        "edge": 12.6,
+        "modelSpread": -12.5,
+        "edge": 12,
         "signal": "CAUTION"
       }
     },
@@ -147,8 +147,8 @@
       "model": {
         "homeTeamId": "team-texas-tech",
         "awayTeamId": "team-auburn",
-        "modelSpread": -3.9,
-        "edge": 2.6,
+        "modelSpread": -4.1,
+        "edge": 2.4,
         "signal": "NONE"
       }
     },
@@ -255,8 +255,8 @@
       "model": {
         "homeTeamId": "team-boise-st",
         "awayTeamId": "team-utah",
-        "modelSpread": 6.2,
-        "edge": 1.7,
+        "modelSpread": 2.9,
+        "edge": -1.6,
         "signal": "NONE"
       }
     },

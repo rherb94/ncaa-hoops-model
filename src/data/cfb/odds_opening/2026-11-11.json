@@ -39,8 +39,8 @@
       "model": {
         "homeTeamId": "team-ball-state",
         "awayTeamId": "team-buffalo",
-        "modelSpread": 9.1,
-        "edge": 7.6,
+        "modelSpread": 7.6,
+        "edge": 6.1,
         "signal": "STRONG"
       }
     },
@@ -76,13 +76,7 @@
           "price": -120
         }
       },
-      "model": {
-        "homeTeamId": "team-central-michigan",
-        "awayTeamId": "team-sacramento-state",
-        "modelSpread": -18.4,
-        "edge": -0.9,
-        "signal": "NONE"
-      }
+      "model": null
     },
     {
       "oddsEventId": "5129a94416920cd3c476cd56af387f47",
@@ -116,13 +110,7 @@
           "price": -120
         }
       },
-      "model": {
-        "homeTeamId": "team-toledo",
-        "awayTeamId": "team-massachusetts",
-        "modelSpread": -17.3,
-        "edge": -3.3,
-        "signal": "NONE"
-      }
+      "model": null
     }
   ]
 }

@@ -31,6 +31,9 @@ import {
 
 const DRY_RUN = process.env.DRY_RUN === "1";
 const DATE    = process.env.DATE || "";
+// Recomputing games that already started leaks their results into the model
+// (hindsight). Off unless explicitly asked for, e.g. for a deliberate study.
+const ALLOW_STARTED = process.env.ALLOW_STARTED === "1";
 const LEAGUE  = process.env.LEAGUE || "ncaam"; // use || so empty string also falls back
 
 const OPEN_DIR = path.join(process.cwd(), "src", "data", LEAGUE, "odds_opening");
@@ -110,8 +113,16 @@ function recomputeGame(
 async function processFile(filePath: string, teamsMap: ReturnType<typeof loadTeams>) {
   const snap = loadJson<SnapshotFile>(filePath);
   let changes = 0;
+  let skippedStarted = 0;
 
   for (const g of snap.games) {
+    // Never rewrite a game that has started: today's ratings may already
+    // include its result, which would make the model look better than it was.
+    const started = (g as any).commence_time && Date.parse((g as any).commence_time) <= Date.now();
+    if (started && !ALLOW_STARTED) {
+      skippedStarted++;
+      continue;
+    }
     const { changed, oldModel, newModel } = recomputeGame(g, teamsMap);
     if (changed) {
       changes++;
@@ -133,6 +144,9 @@ async function processFile(filePath: string, teamsMap: ReturnType<typeof loadTea
     saveJson(filePath, snap);
   }
 
+  if (skippedStarted) {
+    console.log(`  (left ${skippedStarted} game(s) that had already started unchanged)`);
+  }
   return changes;
 }
 

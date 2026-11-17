@@ -1,25 +1,25 @@
 {
   "league": "cfb",
   "season_start": "2026-08-01",
-  "updated_at": "2026-11-16T15:42:51.917Z",
-  "days_tracked": 5,
+  "updated_at": "2026-11-17T13:39:38.670Z",
+  "days_tracked": 6,
   "first_date": "2026-11-11",
-  "last_date": "2026-11-15",
-  "total_picks": 24,
-  "decided": 22,
-  "wins": 10,
+  "last_date": "2026-11-17",
+  "total_picks": 27,
+  "decided": 23,
+  "wins": 11,
   "losses": 12,
   "pushes": 1,
-  "win_pct": 45,
-  "units": -2.71,
-  "roi_pct": -11.8,
+  "win_pct": 48,
+  "units": -1.73,
+  "roi_pct": -7.2,
   "plays": {
-    "wins": 10,
+    "wins": 11,
     "losses": 12,
     "pushes": 1,
-    "units": -2.71,
-    "roi_pct": -11.8,
-    "win_pct": 45.5
+    "units": -1.73,
+    "roi_pct": -7.2,
+    "win_pct": 47.8
   },
   "lean": {
     "wins": 7,
@@ -30,39 +30,39 @@
     "win_pct": 53.8
   },
   "strong": {
-    "wins": 3,
+    "wins": 4,
     "losses": 6,
     "pushes": 0,
-    "units": -3.2,
-    "roi_pct": -35.6,
-    "win_pct": 33.3
+    "units": -2.22,
+    "roi_pct": -22.2,
+    "win_pct": 40
   },
   "all_games": {
     "wins": 29,
-    "losses": 28,
-    "win_pct": 50.9
+    "losses": 27,
+    "win_pct": 51.8
   },
   "caution": {
     "wins": 3,
     "losses": 3,
     "win_pct": 50
   },
-  "avg_clv": -0.17,
-  "clv_games": 12,
-  "pending": 1,
+  "avg_clv": -0.13,
+  "clv_games": 15,
+  "pending": 3,
   "daily": [
     {
       "date": "2026-11-11",
-      "plays": 0,
-      "wins": 0,
+      "plays": 1,
+      "wins": 1,
       "losses": 0,
       "pushes": 0,
-      "units": 0,
+      "units": 0.98,
       "cumulative": {
-        "wins": 0,
+        "wins": 1,
         "losses": 0,
         "pushes": 0,
-        "units": 0
+        "units": 0.98
       }
     },
     {
@@ -73,10 +73,10 @@
       "pushes": 0,
       "units": 0,
       "cumulative": {
-        "wins": 0,
+        "wins": 1,
         "losses": 0,
         "pushes": 0,
-        "units": 0
+        "units": 0.98
       }
     },
     {
@@ -87,10 +87,10 @@
       "pushes": 0,
       "units": -3,
       "cumulative": {
-        "wins": 0,
+        "wins": 1,
         "losses": 3,
         "pushes": 0,
-        "units": -3
+        "units": -2.02
       }
     },
     {
@@ -101,10 +101,10 @@
       "pushes": 1,
       "units": 1.29,
       "cumulative": {
-        "wins": 10,
+        "wins": 11,
         "losses": 11,
         "pushes": 1,
-        "units": -1.71
+        "units": -0.73
       }
     },
     {
@@ -115,10 +115,24 @@
       "pushes": 0,
       "units": -1,
       "cumulative": {
-        "wins": 10,
+        "wins": 11,
         "losses": 12,
         "pushes": 1,
-        "units": -2.71
+        "units": -1.73
+      }
+    },
+    {
+      "date": "2026-11-17",
+      "plays": 2,
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "units": 0,
+      "cumulative": {
+        "wins": 11,
+        "losses": 12,
+        "pushes": 1,
+        "units": -1.73
       }
     }
   ]

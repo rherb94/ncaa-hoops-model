@@ -20,10 +20,12 @@ if (!ODDS_API_KEY) throw new Error("Missing THE_ODDS_API_KEY env var");
 
 const LEAGUE = process.env.LEAGUE || "ncaam"; // use || so empty string also falls back
 
-// Date to label the snapshot (YYYY-MM-DD). Default = today in UTC.
+// Date to label the snapshot (YYYY-MM-DD). Default = today in ET.
 // Use || so an empty string from workflow_dispatch falls back to default.
+// ET, not UTC: a run after 7pm ET used to be labelled tomorrow.
 const DATE =
-  process.env.DATE || new Date().toISOString().slice(0, 10);
+  process.env.DATE ||
+  new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date()).slice(0, 10);
 
 // If SNAPSHOT_TIME is set (ISO 8601 UTC), use the historical odds endpoint
 // so this script can backfill past dates. Requires a paid TheOddsAPI plan.

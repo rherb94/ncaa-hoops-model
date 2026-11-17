@@ -52,6 +52,10 @@ jobs:
             echo "No changes."
           else
             git commit -m "chore: update Torvik ratings $(date -u +%Y-%m-%d) [skip ci]"
-            git pull --rebase origin main
-            git push
+            # Several jobs commit around the same time; retry if the push races one.
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main && git push && break
+              [ "$i" = 5 ] && exit 1
+              echo "Push rejected, retrying in $((i*5))s"; sleep $((i*5))
+            done
           fi

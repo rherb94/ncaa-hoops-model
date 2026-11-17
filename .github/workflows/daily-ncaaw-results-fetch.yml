@@ -48,8 +48,12 @@ jobs:
           if git diff --cached --quiet; then
             echo "No new results to commit."
           else
-            DATE_STR=$(date -u +%Y-%m-%d)
+            DATE_STR=$(TZ=America/New_York date +%Y-%m-%d)
             git commit -m "chore: ncaaw game results ${DATE_STR} [skip ci]"
-            git pull --rebase origin main
-            git push
+            # Several jobs commit around the same time; retry if the push races one.
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main && git push && break
+              [ "$i" = 5 ] && exit 1
+              echo "Push rejected, retrying in $((i*5))s"; sleep $((i*5))
+            done
           fi
