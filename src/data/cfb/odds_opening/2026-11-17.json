@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-17",
+  "captured_at": "2026-11-17T01:55:00.548Z",
+  "ratings_updated_at": "2026-11-16T20:35:25.342Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "0d8cfafd3da8fead51df5ec2e33e9382",
+      "commence_time": "2026-11-17T23:00:00Z",
+      "home_team": "Western Michigan Broncos",
+      "away_team": "Eastern Michigan Eagles",
+      "home_espnTeamId": "2711",
+      "away_espnTeamId": "2199",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-17T01:54:10Z",
+        "homePoint": -14.5,
+        "awayPoint": 14.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -14.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -14.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "mybookieag",
+          "homePoint": -15,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-western-michigan",
+        "awayTeamId": "team-eastern-michigan",
+        "modelSpread": -21.9,
+        "edge": -7.4,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "5840d479fc52ad2b83d7feb802d4dd23",
+      "commence_time": "2026-11-18T00:00:00Z",
+      "home_team": "Ohio Bobcats",
+      "away_team": "Ball State Cardinals",
+      "home_espnTeamId": "195",
+      "away_espnTeamId": "2050",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-17T01:54:10Z",
+        "homePoint": -10.5,
+        "awayPoint": 10.5,
+        "homePrice": -115,
+        "awayPrice": -105
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -11,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -10.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": -12,
+          "price": -112
+        }
+      },
+      "model": {
+        "homeTeamId": "team-ohio",
+        "awayTeamId": "team-ball-state",
+        "modelSpread": -21.4,
+        "edge": -10.9,
+        "signal": "CAUTION"
+      }
+    },
+    {
+      "oddsEventId": "792875fa96ecdf75559454c19c011768",
+      "commence_time": "2026-11-18T00:00:00Z",
+      "home_team": "Kent State Golden Flashes",
+      "away_team": "Miami (OH) RedHawks",
+      "home_espnTeamId": "2309",
+      "away_espnTeamId": "193",
+      "home_resolve": "MAP",
+      "away_resolve": "ESPN_BY_NAME",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-17T01:54:10Z",
+        "homePoint": 9.5,
+        "awayPoint": -9.5,
+        "homePrice": -112,
+        "awayPrice": -108
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": 9.5,
+        "bestHome": {
+          "book": "mybookieag",
+          "homePoint": 9.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": 8.5,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-kent-state",
+        "awayTeamId": "team-miami-oh",
+        "modelSpread": 16.3,
+        "edge": 6.8,
+        "signal": "STRONG"
+      }
+    }
+  ]
+}
