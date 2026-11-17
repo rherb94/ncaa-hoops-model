@@ -1,8 +1,9 @@
 {
   "date": "2026-11-17",
-  "last_updated": "2026-11-17T05:20:49.199Z",
+  "last_updated": "2026-11-17T23:40:39.311Z",
   "snapshot_times": [
-    "2026-11-17T05:20:36Z"
+    "2026-11-17T05:20:36Z",
+    "2026-11-17T23:35:36Z"
   ],
   "games": [
     {
@@ -20,10 +21,10 @@
       "home_team": "Ohio Bobcats",
       "away_team": "Ball State Cardinals",
       "commence_time": "2026-11-18T00:00:00Z",
-      "homePoint": -11.5,
-      "awayPoint": 11.5,
+      "homePoint": -10,
+      "awayPoint": 10,
       "book": "draftkings",
-      "snapshotTime": "2026-11-17T05:20:36Z"
+      "snapshotTime": "2026-11-17T23:35:36Z"
     },
     {
       "oddsEventId": "792875fa96ecdf75559454c19c011768",
@@ -33,7 +34,7 @@
       "homePoint": 9.5,
       "awayPoint": -9.5,
       "book": "draftkings",
-      "snapshotTime": "2026-11-17T05:20:36Z"
+      "snapshotTime": "2026-11-17T23:35:36Z"
     }
   ]
 }
