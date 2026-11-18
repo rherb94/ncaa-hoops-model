@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-17",
+  "fetched_at": "2026-11-18T14:53:57.533Z",
+  "total_games": 3,
+  "completed_games": 3,
+  "games": [
+    {
+      "espnEventId": "401866465",
+      "commence_time": "2026-11-17T23:00Z",
+      "home_team": "Western Michigan Broncos",
+      "away_team": "Eastern Michigan Eagles",
+      "home_espnTeamId": "2711",
+      "away_espnTeamId": "2199",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 34,
+      "awayScore": 27,
+      "actualSpread": -7,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401866464",
+      "commence_time": "2026-11-18T00:00Z",
+      "home_team": "Ohio Bobcats",
+      "away_team": "Ball State Cardinals",
+      "home_espnTeamId": "195",
+      "away_espnTeamId": "2050",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 35,
+      "awayScore": 28,
+      "actualSpread": -7,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401866466",
+      "commence_time": "2026-11-18T00:00Z",
+      "home_team": "Kent State Golden Flashes",
+      "away_team": "Miami (OH) RedHawks",
+      "home_espnTeamId": "2309",
+      "away_espnTeamId": "193",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 3,
+      "awayScore": 20,
+      "actualSpread": 17,
+      "winner": "AWAY"
+    }
+  ]
+}
