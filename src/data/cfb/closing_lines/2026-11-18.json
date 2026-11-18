@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-18",
+  "last_updated": "2026-11-18T23:09:59.152Z",
+  "snapshot_times": [
+    "2026-11-18T23:05:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "ef5f5ac74b2228e8521c289fdbc6af93",
+      "home_team": "UMass Minutemen",
+      "away_team": "Akron Zips",
+      "commence_time": "2026-11-19T00:00:00Z",
+      "homePoint": -3,
+      "awayPoint": 3,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    },
+    {
+      "oddsEventId": "10cec4ab386b12694dd3cee93d870b47",
+      "home_team": "Buffalo Bulls",
+      "away_team": "Central Michigan Chippewas",
+      "commence_time": "2026-11-19T00:30:00Z",
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    }
+  ]
+}
