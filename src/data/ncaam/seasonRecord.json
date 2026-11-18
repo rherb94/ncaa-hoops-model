@@ -1,55 +1,55 @@
 {
   "league": "ncaam",
   "season_start": "2026-11-01",
-  "updated_at": "2026-11-17T15:54:23.915Z",
+  "updated_at": "2026-11-18T14:53:57.549Z",
   "days_tracked": 7,
   "first_date": "2026-11-11",
   "last_date": "2026-11-17",
   "total_picks": 46,
-  "decided": 36,
-  "wins": 17,
-  "losses": 19,
+  "decided": 45,
+  "wins": 23,
+  "losses": 22,
   "pushes": 0,
-  "win_pct": 47,
-  "units": -3.38,
-  "roi_pct": -9.4,
+  "win_pct": 51,
+  "units": -0.98,
+  "roi_pct": -2.2,
   "plays": {
-    "wins": 17,
-    "losses": 19,
+    "wins": 23,
+    "losses": 22,
     "pushes": 0,
-    "units": -3.38,
-    "roi_pct": -9.4,
-    "win_pct": 47.2
+    "units": -0.98,
+    "roi_pct": -2.2,
+    "win_pct": 51.1
   },
   "lean": {
-    "wins": 12,
-    "losses": 17,
+    "wins": 18,
+    "losses": 18,
     "pushes": 0,
-    "units": -5.98,
-    "roi_pct": -20.6,
-    "win_pct": 41.4
+    "units": -1.58,
+    "roi_pct": -4.4,
+    "win_pct": 50
   },
   "strong": {
     "wins": 5,
-    "losses": 2,
+    "losses": 4,
     "pushes": 0,
-    "units": 2.6,
-    "roi_pct": 37.1,
-    "win_pct": 71.4
+    "units": 0.6,
+    "roi_pct": 6.7,
+    "win_pct": 55.6
   },
   "all_games": {
-    "wins": 104,
-    "losses": 89,
-    "win_pct": 53.9
+    "wins": 126,
+    "losses": 107,
+    "win_pct": 54.1
   },
   "caution": {
-    "wins": 26,
-    "losses": 21,
-    "win_pct": 55.3
+    "wins": 32,
+    "losses": 25,
+    "win_pct": 56.1
   },
-  "avg_clv": 0.21,
+  "avg_clv": 0.16,
   "clv_games": 38,
-  "pending": 10,
+  "pending": 1,
   "daily": [
     {
       "date": "2026-11-11",
@@ -138,15 +138,15 @@
     {
       "date": "2026-11-17",
       "plays": 10,
-      "wins": 0,
-      "losses": 0,
+      "wins": 6,
+      "losses": 3,
       "pushes": 0,
-      "units": 0,
+      "units": 2.4,
       "cumulative": {
-        "wins": 17,
-        "losses": 19,
+        "wins": 23,
+        "losses": 22,
         "pushes": 0,
-        "units": -3.38
+        "units": -0.98
       }
     }
   ]
