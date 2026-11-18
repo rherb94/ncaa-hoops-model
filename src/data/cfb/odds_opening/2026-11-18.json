@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-18",
+  "captured_at": "2026-11-18T22:38:27.172Z",
+  "ratings_updated_at": "2026-11-18T18:55:35.971Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "ef5f5ac74b2228e8521c289fdbc6af93",
+      "commence_time": "2026-11-19T00:00:00Z",
+      "home_team": "UMass Minutemen",
+      "away_team": "Akron Zips",
+      "home_espnTeamId": null,
+      "away_espnTeamId": "2006",
+      "home_resolve": "MISS",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-18T22:37:32Z",
+        "homePoint": -3.5,
+        "awayPoint": 3.5,
+        "homePrice": -108,
+        "awayPrice": -112
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -3.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -3.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -3.5,
+          "price": -105
+        }
+      },
+      "model": {
+        "homeTeamId": "team-massachusetts",
+        "awayTeamId": "team-akron",
+        "modelSpread": -19.2,
+        "edge": -15.7,
+        "signal": "CAUTION"
+      }
+    },
+    {
+      "oddsEventId": "10cec4ab386b12694dd3cee93d870b47",
+      "commence_time": "2026-11-19T00:30:00Z",
+      "home_team": "Buffalo Bulls",
+      "away_team": "Central Michigan Chippewas",
+      "home_espnTeamId": "2084",
+      "away_espnTeamId": "2117",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-18T22:37:32Z",
+        "homePoint": -2.5,
+        "awayPoint": 2.5,
+        "homePrice": -115,
+        "awayPrice": -105
+      },
+      "market": {
+        "books": 12,
+        "medianHomePoint": -2.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -2.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -2.5,
+          "price": -105
+        }
+      },
+      "model": {
+        "homeTeamId": "team-buffalo",
+        "awayTeamId": "team-central-michigan",
+        "modelSpread": -5.3,
+        "edge": -2.8,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
