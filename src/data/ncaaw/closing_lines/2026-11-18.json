@@ -1,0 +1,99 @@
+{
+  "date": "2026-11-18",
+  "last_updated": "2026-11-18T23:10:47.509Z",
+  "snapshot_times": [
+    "2026-11-18T23:05:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "761f0847416ac90e33865353c5f3f041",
+      "home_team": "Ball State Cardinals",
+      "away_team": "Illinois Fighting Illini",
+      "commence_time": "2026-11-18T23:30:00Z",
+      "homePoint": 15.5,
+      "awayPoint": -15.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    },
+    {
+      "oddsEventId": "5c1d80d054743736f76ea6b125ff094e",
+      "home_team": "Michigan Wolverines",
+      "away_team": "Niagara Purple Eagles",
+      "commence_time": "2026-11-19T00:00:00Z",
+      "homePoint": -74.5,
+      "awayPoint": 74.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    },
+    {
+      "oddsEventId": "b52dface3e7935d9beb98928f3be9b76",
+      "home_team": "Notre Dame Fighting Irish",
+      "away_team": "Southern Jaguars",
+      "commence_time": "2026-11-19T00:00:00Z",
+      "homePoint": -50.5,
+      "awayPoint": 50.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    },
+    {
+      "oddsEventId": "5b598d5c342cb609a54135f6d4456f8a",
+      "home_team": "Ohio State Buckeyes",
+      "away_team": "Ole Miss Rebels",
+      "commence_time": "2026-11-19T00:00:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    },
+    {
+      "oddsEventId": "fa2a24341c9624f79d2e6a7956061934",
+      "home_team": "Green Bay Phoenix",
+      "away_team": "Texas Longhorns",
+      "commence_time": "2026-11-19T00:30:00Z",
+      "homePoint": 21.5,
+      "awayPoint": -21.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    },
+    {
+      "oddsEventId": "a393f1ae6c59c7573477609f65fb6e87",
+      "home_team": "Vanderbilt Commodores",
+      "away_team": "North Alabama Lions",
+      "commence_time": "2026-11-19T00:30:00Z",
+      "homePoint": -48.5,
+      "awayPoint": 48.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    },
+    {
+      "oddsEventId": "ba3d22ffecdf777726cb89ecc27b4148",
+      "home_team": "Oklahoma St Cowgirls",
+      "away_team": "St. John's Red Storm",
+      "commence_time": "2026-11-19T00:30:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    },
+    {
+      "oddsEventId": "e4337e0fd91fb165d6383822cc27f7c9",
+      "home_team": "TCU Horned Frogs",
+      "away_team": "UT-Arlington Mavericks",
+      "commence_time": "2026-11-19T00:30:00Z",
+      "homePoint": -39.5,
+      "awayPoint": 39.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    },
+    {
+      "oddsEventId": "afae810660cad4417a3266c5bb39300a",
+      "home_team": "Minnesota Golden Gophers",
+      "away_team": "Kansas Jayhawks",
+      "commence_time": "2026-11-19T01:00:00Z",
+      "homePoint": -9.5,
+      "awayPoint": 9.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-18T23:05:36Z"
+    }
+  ]
+}
