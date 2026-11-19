@@ -1,6 +1,6 @@
 teamId,teamName,conference,powerRating,hca,adjO,adjD,tempo,barthag,torvikRank,torvikOeRank,torvikDeRank,wins,losses
 team-air-force,Air Force,Mountain West,2.900,3,27.900,25.300,74.000,,65,62,63,8,2
-team-akron,Akron,Mid-American,-26.300,3,13.500,39.000,65.000,,135,132,135,1,9
+team-akron,Akron,Mid-American,-26.300,3,13.500,39.000,63.909,,135,132,135,2,9
 team-alabama,Alabama,SEC,22.900,3,36.400,14.000,62.800,,6,16,11,8,2
 team-app-state,App State,Sun Belt,-4.200,3,23.000,27.600,66.800,,94,95,86,6,4
 team-arizona,Arizona,Big 12,15.000,3,37.100,22.100,70.800,,20,12,38,7,3
@@ -14,10 +14,10 @@ team-baylor,Baylor,Big 12,10.700,3,29.300,18.700,75.600,,32,51,25,6,4
 team-boise-state,Boise State,Pac-12,13.400,3,39.700,26.700,71.200,,22,6,77,9,1
 team-boston-college,Boston College,ACC,-8.200,3,20.700,28.400,64.200,,103,105,91,4,6
 team-bowling-green,Bowling Green,Mid-American,-17.000,3,15.700,32.700,59.700,,127,127,116,3,7
-team-buffalo,Buffalo,Mid-American,-8.700,3,18.500,27.300,74.700,,105,118,85,7,3
+team-buffalo,Buffalo,Mid-American,-8.700,3,18.500,27.300,73.182,,105,118,85,8,3
 team-byu,BYU,Big 12,18.000,3,33.600,16.200,64.800,,15,24,18,8,2
 team-california,California,ACC,-12.900,3,19.200,31.500,70.500,,119,114,107,3,7
-team-central-michigan,Central Michigan,Mid-American,-11.000,3,17.400,27.800,63.700,,113,120,87,5,5
+team-central-michigan,Central Michigan,Mid-American,-11.000,3,17.400,27.800,64.000,,113,120,87,5,6
 team-charlotte,Charlotte,American Athletic,-24.900,3,14.600,39.400,61.300,,134,130,136,1,9
 team-cincinnati,Cincinnati,Big 12,0.500,3,32.300,31.900,67.500,,72,31,110,5,5
 team-clemson,Clemson,ACC,1.500,3,20.300,19.500,69.300,,68,110,28,6,4
@@ -57,7 +57,7 @@ team-louisville,Louisville,ACC,17.100,3,39.800,22.400,63.600,,17,4,40,7,3
 team-lsu,LSU,SEC,22.100,3,36.500,13.900,79.300,,9,15,10,6,4
 team-marshall,Marshall,Sun Belt,-11.900,3,21.800,33.600,71.100,,116,99,119,5,5
 team-maryland,Maryland,Big Ten,-0.900,3,26.600,27.200,65.200,,75,71,81,4,6
-team-massachusetts,Massachusetts,Mid-American,-10.100,3,18.500,28.500,60.300,,109,118,93,5,5
+team-massachusetts,Massachusetts,Mid-American,-10.100,3,18.500,28.500,61.364,,109,118,93,5,6
 team-memphis,Memphis,American Athletic,9.900,3,36.900,26.900,71.500,,36,14,80,8,2
 team-miami,Miami,ACC,24.400,3,42.900,18.900,70.600,,3,1,26,9,1
 team-miami-oh,Miami (OH),Mid-American,-2.800,3,24.000,26.700,61.636,,85,86,77,7,4
