@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-19",
+  "last_updated": "2026-11-19T23:16:18.746Z",
+  "snapshot_times": [
+    "2026-11-19T23:15:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "608ce68eb20e7e5201fb1b804ad26141",
+      "home_team": "Temple Owls",
+      "away_team": "Rice Owls",
+      "commence_time": "2026-11-20T00:30:00Z",
+      "homePoint": -2.5,
+      "awayPoint": 2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-19T23:15:36Z"
+    }
+  ]
+}
