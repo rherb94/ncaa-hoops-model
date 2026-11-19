@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-19",
+  "captured_at": "2026-11-19T22:42:30.024Z",
+  "ratings_updated_at": "2026-11-19T19:04:35.195Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "608ce68eb20e7e5201fb1b804ad26141",
+      "commence_time": "2026-11-20T00:30:00Z",
+      "home_team": "Temple Owls",
+      "away_team": "Rice Owls",
+      "home_espnTeamId": "218",
+      "away_espnTeamId": "242",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-19T22:42:29Z",
+        "homePoint": -2.5,
+        "awayPoint": 2.5,
+        "homePrice": -118,
+        "awayPrice": -102
+      },
+      "market": {
+        "books": 12,
+        "medianHomePoint": -2.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -2.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": -3,
+          "price": -117
+        }
+      },
+      "model": {
+        "homeTeamId": "team-temple",
+        "awayTeamId": "team-rice",
+        "modelSpread": -7.3,
+        "edge": -4.8,
+        "signal": "LEAN"
+      }
+    }
+  ]
+}
