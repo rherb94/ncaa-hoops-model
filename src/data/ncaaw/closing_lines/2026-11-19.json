@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-19",
+  "last_updated": "2026-11-19T23:17:05.744Z",
+  "snapshot_times": [
+    "2026-11-19T23:15:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "1c4e8373bbe2be0e9c28e95d8f3fe11f",
+      "home_team": "NC State Wolfpack",
+      "away_team": "Georgetown Hoyas",
+      "commence_time": "2026-11-20T00:00:00Z",
+      "homePoint": -16.5,
+      "awayPoint": 16.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-11-19T23:15:36Z"
+    },
+    {
+      "oddsEventId": "acf67a7deeb2a92281cb71373f8de227",
+      "home_team": "Oklahoma Sooners",
+      "away_team": "Northwestern St Demons",
+      "commence_time": "2026-11-20T00:00:00Z",
+      "homePoint": -52.5,
+      "awayPoint": 52.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-19T23:15:36Z"
+    },
+    {
+      "oddsEventId": "7d84ba9b0d3bee1ce60f652843dc4879",
+      "home_team": "Tennessee Volunteers",
+      "away_team": "Radford Highlanders",
+      "commence_time": "2026-11-20T00:00:00Z",
+      "homePoint": -35.5,
+      "awayPoint": 35.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-19T23:15:36Z"
+    },
+    {
+      "oddsEventId": "4000512daf985604d02425a03f12b7c1",
+      "home_team": "LSU Tigers",
+      "away_team": "Fairleigh Dickinson Knights",
+      "commence_time": "2026-11-20T01:00:00Z",
+      "homePoint": -46.5,
+      "awayPoint": 46.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-19T23:15:36Z"
+    },
+    {
+      "oddsEventId": "85b2520096c24db691334265d065b370",
+      "home_team": "Iowa Hawkeyes",
+      "away_team": "Montana St Bobcats",
+      "commence_time": "2026-11-20T01:00:00Z",
+      "homePoint": -23.5,
+      "awayPoint": 23.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-19T23:15:36Z"
+    },
+    {
+      "oddsEventId": "3ddaff83b5a0d9dabeedf74caa4c6124",
+      "home_team": "Florida A&M Rattlers",
+      "away_team": "Alabama Crimson Tide",
+      "commence_time": "2026-11-20T01:30:00Z",
+      "homePoint": 42.5,
+      "awayPoint": -42.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-19T23:15:36Z"
+    },
+    {
+      "oddsEventId": "90fe1fe8ad1b7a2a71901b3354ced2b0",
+      "home_team": "UCLA Bruins",
+      "away_team": "Cal Poly Mustangs",
+      "commence_time": "2026-11-20T03:00:00Z",
+      "homePoint": -51.5,
+      "awayPoint": 51.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-19T23:15:36Z"
+    },
+    {
+      "oddsEventId": "832956d57b16cfc319a46daebe495e5c",
+      "home_team": "Oregon Ducks",
+      "away_team": "Fairfield Stags",
+      "commence_time": "2026-11-20T03:00:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-11-19T23:15:36Z"
+    }
+  ]
+}
