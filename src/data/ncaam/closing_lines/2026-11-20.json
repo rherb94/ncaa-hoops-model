@@ -1,0 +1,389 @@
+{
+  "date": "2026-11-20",
+  "last_updated": "2026-11-20T22:51:00.886Z",
+  "snapshot_times": [
+    "2026-11-20T22:45:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "eaa7e563508f83b89da51b138fda7d0b",
+      "home_team": "CSU Northridge Matadors",
+      "away_team": "Delaware Blue Hens",
+      "commence_time": "2026-11-20T23:00:00Z",
+      "homePoint": -7.5,
+      "awayPoint": 7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "90a6a382f23f5dc02ca9a06d1a019861",
+      "home_team": "Appalachian St Mountaineers",
+      "away_team": "North Texas Mean Green",
+      "commence_time": "2026-11-20T23:30:00Z",
+      "homePoint": 2.5,
+      "awayPoint": -2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "4f71b0b4696cf2d3fa0688acb7fe896a",
+      "home_team": "Eastern Kentucky Colonels",
+      "away_team": "Bellarmine Knights",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "0744ae65a239d93ad6981bcca04ec1d1",
+      "home_team": "Pittsburgh Panthers",
+      "away_team": "Central Michigan Chippewas",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -21.5,
+      "awayPoint": 21.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "cdf9ed66e5ad6a4af973a7c08740af15",
+      "home_team": "Tennessee Volunteers",
+      "away_team": "Coastal Carolina Chanticleers",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -26.5,
+      "awayPoint": 26.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "a4ecade84e986fc8617884b7fe54581e",
+      "home_team": "Delaware St Hornets",
+      "away_team": "Niagara Purple Eagles",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "3290d93b2078b71d318a773cb4252d89",
+      "home_team": "Drexel Dragons",
+      "away_team": "Saint Joseph's Hawks",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": 4.5,
+      "awayPoint": -4.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "70ee5e0a821c9547549edc4e946098e2",
+      "home_team": "Jacksonville St Gamecocks",
+      "away_team": "Georgia St Panthers",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "60dd6652c2f1e4af18cc3ce565e8dd1d",
+      "home_team": "Holy Cross Crusaders",
+      "away_team": "Harvard Crimson",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": 11.5,
+      "awayPoint": -11.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "f23f37ea3ecae62d09994228b460a5bb",
+      "home_team": "Iona Gaels",
+      "away_team": "UMKC Kangaroos",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "75dbb2a9b9e7a17415777572d1623ad8",
+      "home_team": "Kennesaw St Owls",
+      "away_team": "SE Louisiana Lions",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "6490128d2a737c7c4b91289a0b40a5d0",
+      "home_team": "Virginia Cavaliers",
+      "away_team": "Loyola (MD) Greyhounds",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -41.5,
+      "awayPoint": 41.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "660bc79d92165bc04fe6db1c51bfa80d",
+      "home_team": "Maryland Terrapins",
+      "away_team": "Wagner Seahawks",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -33.5,
+      "awayPoint": 33.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "d6bf1938b3e709f64957d9e071899659",
+      "home_team": "Princeton Tigers",
+      "away_team": "Monmouth Hawks",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "e0a864edd8896bd3eb30a0eb1cd518fb",
+      "home_team": "Mt. St. Mary's Mountaineers",
+      "away_team": "Western Michigan Broncos",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": 7.5,
+      "awayPoint": -7.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "f74a59473918b8b98feab33b4bf8b836",
+      "home_team": "Wisconsin Badgers",
+      "away_team": "Murray St Racers",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "eba8e4a8e30f46858748483483f488ea",
+      "home_team": "Purdue Boilermakers",
+      "away_team": "Oakland Golden Grizzlies",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -21.5,
+      "awayPoint": 21.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "a873493a7ad136458cf98553f9c8a216",
+      "home_team": "Richmond Spiders",
+      "away_team": "Western Kentucky Hilltoppers",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "8451559752d29c603ed0de56691dd802",
+      "home_team": "The Citadel Bulldogs",
+      "away_team": "South Carolina St Bulldogs",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "100d3d166816eec2b3b05481324cd009",
+      "home_team": "Xavier Musketeers",
+      "away_team": "Iowa Hawkeyes",
+      "commence_time": "2026-11-21T00:30:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "8c80c405ee0dd1df68d714b6d8e13ec9",
+      "home_team": "Mississippi St Bulldogs",
+      "away_team": "Tulsa Golden Hurricane",
+      "commence_time": "2026-11-21T00:30:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "06df46ace9654cc71563660d03a73cf4",
+      "home_team": "Northwestern St Demons",
+      "away_team": "UT-Arlington Mavericks",
+      "commence_time": "2026-11-21T00:30:00Z",
+      "homePoint": 3.5,
+      "awayPoint": -3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "66a5eceb22c3b172e759e7b78d5c5b44",
+      "home_team": "Alabama A&M Bulldogs",
+      "away_team": "Lipscomb Bisons",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": 5.5,
+      "awayPoint": -5.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "1979721bb34c2e7d265ac1601275c08e",
+      "home_team": "Arkansas Razorbacks",
+      "away_team": "Miss Valley St Delta Devils",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": -37.5,
+      "awayPoint": 37.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "7dca3ce414b200c5bf9e73a01896e0a0",
+      "home_team": "Kansas St Wildcats",
+      "away_team": "Campbell Fighting Camels",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": -16.5,
+      "awayPoint": 16.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "7a7ea19f66aa175473014416c6d00417",
+      "home_team": "Utah Valley Wolverines",
+      "away_team": "East Carolina Pirates",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "9953076d1a99f171f14ffe7ea369f012",
+      "home_team": "Georgia Tech Yellow Jackets",
+      "away_team": "Georgia Bulldogs",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": 8.5,
+      "awayPoint": -8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "cd962be2d33dbd38b2b7d21dcd5fe124",
+      "home_team": "Indiana Hoosiers",
+      "away_team": "Kentucky Wildcats",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": -3.5,
+      "awayPoint": 3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "5510f024997e32ccb84f6d5ad2b58e8d",
+      "home_team": "Missouri Tigers",
+      "away_team": "Le Moyne Dolphins",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": -34.5,
+      "awayPoint": 34.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "fcabf1a2b0755f9cb7af39534aae66a2",
+      "home_team": "SMU Mustangs",
+      "away_team": "South Alabama Jaguars",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": -15.5,
+      "awayPoint": 15.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "d44e3c27019bbb61def8acdb1f51c22d",
+      "home_team": "Vanderbilt Commodores",
+      "away_team": "UCF Knights",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": -16.5,
+      "awayPoint": 16.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "0bc84da1a3e9aff13e6946b3b29cf21a",
+      "home_team": "Boise State Broncos",
+      "away_team": "Sam Houston St Bearkats",
+      "commence_time": "2026-11-21T02:00:00Z",
+      "homePoint": -12.5,
+      "awayPoint": 12.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "73becee99238228e81a7770cea1108c8",
+      "home_team": "Idaho Vandals",
+      "away_team": "CSU Bakersfield Roadrunners",
+      "commence_time": "2026-11-21T02:00:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "ccd4397771cec2458b64efaca3c2c783",
+      "home_team": "Illinois Fighting Illini",
+      "away_team": "Eastern Illinois Panthers",
+      "commence_time": "2026-11-21T02:00:00Z",
+      "homePoint": -47.5,
+      "awayPoint": 47.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "6b10d0e25f551c8d3eb324fc144777a8",
+      "home_team": "North Carolina Tar Heels",
+      "away_team": "Marshall Thundering Herd",
+      "commence_time": "2026-11-21T02:00:00Z",
+      "homePoint": -18.5,
+      "awayPoint": 18.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "e1a630421d7f278a4da6480a7d1c788f",
+      "home_team": "Seton Hall Pirates",
+      "away_team": "NC State Wolfpack",
+      "commence_time": "2026-11-21T02:30:00Z",
+      "homePoint": 3.5,
+      "awayPoint": -3.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "4cdc62eabb761684bea423f40e8aa358",
+      "home_team": "Fresno St Bulldogs",
+      "away_team": "Alabama St Hornets",
+      "commence_time": "2026-11-21T03:00:00Z",
+      "homePoint": -10.5,
+      "awayPoint": 10.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "facfbe499809f5b11e275d41d8d5b49d",
+      "home_team": "Saint Mary's Gaels",
+      "away_team": "Saint Louis Billikens",
+      "commence_time": "2026-11-21T04:00:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    }
+  ]
+}
