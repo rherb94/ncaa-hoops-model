@@ -1,0 +1,270 @@
+{
+  "date": "2026-11-20",
+  "captured_at": "2026-11-20T22:18:26.247Z",
+  "ratings_updated_at": "2026-11-20T19:16:22.479Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "b75831bf9559fd1e9546830b350a4eba",
+      "commence_time": "2026-11-20T23:00:00Z",
+      "home_team": "Kentucky Wildcats",
+      "away_team": "Marshall Thundering Herd",
+      "home_espnTeamId": "96",
+      "away_espnTeamId": "276",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-20T22:18:19Z",
+        "homePoint": -31.5,
+        "awayPoint": 31.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 4,
+        "medianHomePoint": -31,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -29.5,
+          "price": -143
+        },
+        "bestAway": {
+          "book": "williamhill_us",
+          "homePoint": -31.5,
+          "price": -115
+        }
+      },
+      "model": {
+        "homeTeamId": "team-kentucky",
+        "awayTeamId": "team-marshall",
+        "modelSpread": -22.5,
+        "edge": 9,
+        "signal": "CAUTION"
+      }
+    },
+    {
+      "oddsEventId": "16722f6b56509e2f32ea126985ab234b",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "home_team": "Auburn Tigers",
+      "away_team": "Middle Tennessee Blue Raiders",
+      "home_espnTeamId": "2",
+      "away_espnTeamId": "2393",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-11-20T22:18:19Z",
+        "homePoint": -15.5,
+        "awayPoint": 15.5,
+        "homePrice": -115,
+        "awayPrice": -114
+      },
+      "market": {
+        "books": 1,
+        "medianHomePoint": -15.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -15.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": -15.5,
+          "price": -114
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "683d0f849c08e009b8f17c60ab626813",
+      "commence_time": "2026-11-21T00:30:00Z",
+      "home_team": "Oklahoma St Cowgirls",
+      "away_team": "Arkansas-Little Rock Trojans",
+      "home_espnTeamId": "197",
+      "away_espnTeamId": "2031",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-20T22:18:19Z",
+        "homePoint": -41.5,
+        "awayPoint": 41.5,
+        "homePrice": -105,
+        "awayPrice": -115
+      },
+      "market": {
+        "books": 3,
+        "medianHomePoint": -41.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -38.5,
+          "price": -134
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": -41.5,
+          "price": -115
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "741803cdc8d5d8f45458e5443d3b6efd",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "Seton Hall Pirates",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "2550",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-20T22:18:19Z",
+        "homePoint": -37.5,
+        "awayPoint": 37.5,
+        "homePrice": -115,
+        "awayPrice": -105
+      },
+      "market": {
+        "books": 6,
+        "medianHomePoint": -38.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -37.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "lowvig",
+          "homePoint": -38.5,
+          "price": -125
+        }
+      },
+      "model": {
+        "homeTeamId": "team-connecticut",
+        "awayTeamId": "team-seton-hall",
+        "modelSpread": -29.2,
+        "edge": 8.3,
+        "signal": "CAUTION"
+      }
+    },
+    {
+      "oddsEventId": "8f6c67647ff240456e198e0e0d1bbcd5",
+      "commence_time": "2026-11-21T01:30:00Z",
+      "home_team": "Arizona St Sun Devils",
+      "away_team": "Santa Clara Broncos",
+      "home_espnTeamId": "9",
+      "away_espnTeamId": "2541",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-11-20T22:18:19Z",
+        "homePoint": -14.5,
+        "awayPoint": 14.5,
+        "homePrice": -118,
+        "awayPrice": -113
+      },
+      "market": {
+        "books": 1,
+        "medianHomePoint": -14.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -14.5,
+          "price": -118
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": -14.5,
+          "price": -113
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "c2b4baaab3b745523a1b704591028232",
+      "commence_time": "2026-11-21T03:00:00Z",
+      "home_team": "Washington Huskies",
+      "away_team": "Stanford Cardinal",
+      "home_espnTeamId": "264",
+      "away_espnTeamId": "24",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-20T22:18:19Z",
+        "homePoint": -13.5,
+        "awayPoint": 13.5,
+        "homePrice": -108,
+        "awayPrice": -112
+      },
+      "market": {
+        "books": 6,
+        "medianHomePoint": -13.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -13.5,
+          "price": -108
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": -13.5,
+          "price": -112
+        }
+      },
+      "model": {
+        "homeTeamId": "team-washington",
+        "awayTeamId": "team-stanford",
+        "modelSpread": -13.1,
+        "edge": 0.4,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "d1562293e2245498f3e929abd063826f",
+      "commence_time": "2026-11-21T04:00:00Z",
+      "home_team": "USC Trojans",
+      "away_team": "Baylor Bears",
+      "home_espnTeamId": "30",
+      "away_espnTeamId": "239",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-20T22:18:19Z",
+        "homePoint": -12.5,
+        "awayPoint": 12.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 7,
+        "medianHomePoint": -13,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -12.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "lowvig",
+          "homePoint": -13.5,
+          "price": -105
+        }
+      },
+      "model": {
+        "homeTeamId": "team-usc",
+        "awayTeamId": "team-baylor",
+        "modelSpread": -7.7,
+        "edge": 4.8,
+        "signal": "LEAN"
+      }
+    }
+  ]
+}
