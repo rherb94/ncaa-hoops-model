@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-20",
+  "last_updated": "2026-11-20T22:50:59.935Z",
+  "snapshot_times": [
+    "2026-11-20T22:45:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "b75831bf9559fd1e9546830b350a4eba",
+      "home_team": "Kentucky Wildcats",
+      "away_team": "Marshall Thundering Herd",
+      "commence_time": "2026-11-20T23:00:00Z",
+      "homePoint": -31.5,
+      "awayPoint": 31.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "16722f6b56509e2f32ea126985ab234b",
+      "home_team": "Auburn Tigers",
+      "away_team": "Middle Tennessee Blue Raiders",
+      "commence_time": "2026-11-21T00:00:00Z",
+      "homePoint": -15.5,
+      "awayPoint": 15.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "683d0f849c08e009b8f17c60ab626813",
+      "home_team": "Oklahoma St Cowgirls",
+      "away_team": "Arkansas-Little Rock Trojans",
+      "commence_time": "2026-11-21T00:30:00Z",
+      "homePoint": -41.5,
+      "awayPoint": 41.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "741803cdc8d5d8f45458e5443d3b6efd",
+      "home_team": "UConn Huskies",
+      "away_team": "Seton Hall Pirates",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": -37.5,
+      "awayPoint": 37.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "8f6c67647ff240456e198e0e0d1bbcd5",
+      "home_team": "Arizona St Sun Devils",
+      "away_team": "Santa Clara Broncos",
+      "commence_time": "2026-11-21T01:30:00Z",
+      "homePoint": -14.5,
+      "awayPoint": 14.5,
+      "book": "betrivers",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "c2b4baaab3b745523a1b704591028232",
+      "home_team": "Washington Huskies",
+      "away_team": "Stanford Cardinal",
+      "commence_time": "2026-11-21T03:00:00Z",
+      "homePoint": -13.5,
+      "awayPoint": 13.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    },
+    {
+      "oddsEventId": "d1562293e2245498f3e929abd063826f",
+      "home_team": "USC Trojans",
+      "away_team": "Baylor Bears",
+      "commence_time": "2026-11-21T04:00:00Z",
+      "homePoint": -12.5,
+      "awayPoint": 12.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:45:36Z"
+    }
+  ]
+}
