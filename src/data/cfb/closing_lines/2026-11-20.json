@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-20",
+  "last_updated": "2026-11-20T22:50:57.580Z",
+  "snapshot_times": [
+    "2026-11-20T22:50:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "c62889a44c822eaf71b9cd24f4eee875",
+      "home_team": "UCF Knights",
+      "away_team": "Iowa State Cyclones",
+      "commence_time": "2026-11-20T23:05:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:50:36Z"
+    },
+    {
+      "oddsEventId": "a365d6d7dcd55eca42de4791543e3f80",
+      "home_team": "Toledo Rockets",
+      "away_team": "Bowling Green Falcons",
+      "commence_time": "2026-11-21T00:30:00Z",
+      "homePoint": -16.5,
+      "awayPoint": 16.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:50:36Z"
+    },
+    {
+      "oddsEventId": "f247efd606eabe7d3d87504bc3af43b4",
+      "home_team": "Duke Blue Devils",
+      "away_team": "Clemson Tigers",
+      "commence_time": "2026-11-21T00:30:00Z",
+      "homePoint": -11.5,
+      "awayPoint": 11.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:50:36Z"
+    },
+    {
+      "oddsEventId": "9cf7e21a18746ad426fd1d901bdd0a88",
+      "home_team": "Air Force Falcons",
+      "away_team": "UTEP Miners",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": -22.5,
+      "awayPoint": 22.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:50:36Z"
+    },
+    {
+      "oddsEventId": "59cb6c9beeb879b864784348e3803ff8",
+      "home_team": "Michigan State Spartans",
+      "away_team": "Oregon Ducks",
+      "commence_time": "2026-11-21T01:00:00Z",
+      "homePoint": 17.5,
+      "awayPoint": -17.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:50:36Z"
+    },
+    {
+      "oddsEventId": "e497245c3311ac853201a67404dc82ea",
+      "home_team": "Wyoming Cowboys",
+      "away_team": "New Mexico Lobos",
+      "commence_time": "2026-11-21T02:00:00Z",
+      "homePoint": 9.5,
+      "awayPoint": -9.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-20T22:50:36Z"
+    }
+  ]
+}
