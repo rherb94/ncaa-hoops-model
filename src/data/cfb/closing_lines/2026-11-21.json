@@ -1,0 +1,189 @@
+{
+  "date": "2026-11-21",
+  "last_updated": "2026-11-21T21:56:26.723Z",
+  "snapshot_times": [
+    "2026-11-21T21:55:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "cbe55180a8bee495fa1520fbc1df314b",
+      "home_team": "Texas State Bobcats",
+      "away_team": "Washington State Cougars",
+      "commence_time": "2026-11-21T23:00:00Z",
+      "homePoint": -13.5,
+      "awayPoint": 13.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "37f01277971fbdbe6d2b8f77fa63dd52",
+      "home_team": "USC Trojans",
+      "away_team": "Maryland Terrapins",
+      "commence_time": "2026-11-21T23:15:00Z",
+      "homePoint": -17.5,
+      "awayPoint": 17.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "9470f469f957e9eddae9392cb23b4623",
+      "home_team": "Kansas State Wildcats",
+      "away_team": "Arizona Wildcats",
+      "commence_time": "2026-11-22T00:00:00Z",
+      "homePoint": 10,
+      "awayPoint": -10,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "a36fd3d086dffefb5fc58b14fb6255fc",
+      "home_team": "Louisiana Tech Bulldogs",
+      "away_team": "Arkansas State Red Wolves",
+      "commence_time": "2026-11-22T00:00:00Z",
+      "homePoint": -14.5,
+      "awayPoint": 14.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "8d53f308424d388c9003e02cac8b4cf6",
+      "home_team": "Miami Hurricanes",
+      "away_team": "Virginia Tech Hokies",
+      "commence_time": "2026-11-22T00:00:00Z",
+      "homePoint": -20.5,
+      "awayPoint": 20.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "89e434722afd075e5488a6b9310325e9",
+      "home_team": "San Jose State Spartans",
+      "away_team": "UNLV Rebels",
+      "commence_time": "2026-11-22T00:00:00Z",
+      "homePoint": 6.5,
+      "awayPoint": -6.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "4e40d05a5d98ac108cd15278646a545d",
+      "home_team": "California Golden Bears",
+      "away_team": "Stanford Cardinal",
+      "commence_time": "2026-11-22T00:30:00Z",
+      "homePoint": 2.5,
+      "awayPoint": -2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "f23bc59387b6db63ad3de8b6bcc541fc",
+      "home_team": "Fresno State Bulldogs",
+      "away_team": "Colorado State Rams",
+      "commence_time": "2026-11-22T00:30:00Z",
+      "homePoint": -20.5,
+      "awayPoint": 20.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "a05c0d32b35dfd5cca63a61af28b9739",
+      "home_team": "South Carolina Gamecocks",
+      "away_team": "Georgia Bulldogs",
+      "commence_time": "2026-11-22T00:30:00Z",
+      "homePoint": 14.5,
+      "awayPoint": -14.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "0bb0c3e15e4a8004f708162c14c5575d",
+      "home_team": "Missouri Tigers",
+      "away_team": "Kentucky Wildcats",
+      "commence_time": "2026-11-22T00:30:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "44e73391c2ac535ab552aac4bdcfa3b3",
+      "home_team": "Louisville Cardinals",
+      "away_team": "Pittsburgh Panthers",
+      "commence_time": "2026-11-22T00:30:00Z",
+      "homePoint": -11.5,
+      "awayPoint": 11.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "fa98066b4b400fb6af0672e170cc584a",
+      "home_team": "Notre Dame Fighting Irish",
+      "away_team": "SMU Mustangs",
+      "commence_time": "2026-11-22T00:30:00Z",
+      "homePoint": -20.5,
+      "awayPoint": 20.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "9f3f8efae55dbb803964a5107350e263",
+      "home_team": "UAB Blazers",
+      "away_team": "UTSA Roadrunners",
+      "commence_time": "2026-11-22T01:00:00Z",
+      "homePoint": 4,
+      "awayPoint": -4,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "7585fb8b12453a68ca1195319ae44c78",
+      "home_team": "TCU Horned Frogs",
+      "away_team": "Utah Utes",
+      "commence_time": "2026-11-22T02:00:00Z",
+      "homePoint": 8.5,
+      "awayPoint": -8.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "028f0fcc2f6411c4816e543bb7fa226c",
+      "home_team": "Boise State Broncos",
+      "away_team": "San Diego State Aztecs",
+      "commence_time": "2026-11-22T02:30:00Z",
+      "homePoint": -20.5,
+      "awayPoint": 20.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "ecfec2fe1db57f88e603f9947add1e26",
+      "home_team": "Arizona State Sun Devils",
+      "away_team": "Oklahoma State Cowboys",
+      "commence_time": "2026-11-22T03:15:00Z",
+      "homePoint": 2.5,
+      "awayPoint": -2.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "430ea047c8a027987881d51f810a6cf8",
+      "home_team": "Nevada Wolf Pack",
+      "away_team": "Hawaii Rainbow Warriors",
+      "commence_time": "2026-11-22T03:30:00Z",
+      "homePoint": -7,
+      "awayPoint": 7,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "6e36f5c3c55edcb31749b0de4a146d14",
+      "home_team": "Oregon State Beavers",
+      "away_team": "Utah State Aggies",
+      "commence_time": "2026-11-22T03:30:00Z",
+      "homePoint": -7,
+      "awayPoint": 7,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    }
+  ]
+}
