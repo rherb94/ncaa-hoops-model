@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-20",
+  "fetched_at": "2026-11-21T14:38:14.348Z",
+  "total_games": 6,
+  "completed_games": 6,
+  "games": [
+    {
+      "espnEventId": "401858529",
+      "commence_time": "2026-11-21T01:00Z",
+      "home_team": "Michigan State Spartans",
+      "away_team": "Oregon Ducks",
+      "home_espnTeamId": "127",
+      "away_espnTeamId": "2483",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 7,
+      "awayScore": 45,
+      "actualSpread": 38,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401856869",
+      "commence_time": "2026-11-20T23:00Z",
+      "home_team": "UCF Knights",
+      "away_team": "Iowa State Cyclones",
+      "home_espnTeamId": "2116",
+      "away_espnTeamId": "66",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 48,
+      "awayScore": 17,
+      "actualSpread": -31,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401858303",
+      "commence_time": "2026-11-21T00:30Z",
+      "home_team": "Duke Blue Devils",
+      "away_team": "Clemson Tigers",
+      "home_espnTeamId": "150",
+      "away_espnTeamId": "228",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 10,
+      "awayScore": 20,
+      "actualSpread": 10,
+      "winner": "AWAY"
+    },
+    {
+      "espnEventId": "401866468",
+      "commence_time": "2026-11-21T00:30Z",
+      "home_team": "Toledo Rockets",
+      "away_team": "Bowling Green Falcons",
+      "home_espnTeamId": "2649",
+      "away_espnTeamId": "189",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 19,
+      "awayScore": 0,
+      "actualSpread": -19,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401864545",
+      "commence_time": "2026-11-21T01:00Z",
+      "home_team": "Air Force Falcons",
+      "away_team": "UTEP Miners",
+      "home_espnTeamId": "2005",
+      "away_espnTeamId": "2638",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 52,
+      "awayScore": 3,
+      "actualSpread": -49,
+      "winner": "HOME"
+    },
+    {
+      "espnEventId": "401864542",
+      "commence_time": "2026-11-21T02:00Z",
+      "home_team": "Wyoming Cowboys",
+      "away_team": "New Mexico Lobos",
+      "home_espnTeamId": "2751",
+      "away_espnTeamId": "167",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 17,
+      "awayScore": 24,
+      "actualSpread": 7,
+      "winner": "AWAY"
+    }
+  ]
+}
