@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-21",
+  "last_updated": "2026-11-21T21:56:38.058Z",
+  "snapshot_times": [
+    "2026-11-21T21:55:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "e612bdac28340edff6ac55e27f74ad2d",
+      "home_team": "North Carolina Tar Heels",
+      "away_team": "Alabama Crimson Tide",
+      "commence_time": "2026-11-21T22:00:00Z",
+      "homePoint": -4.5,
+      "awayPoint": 4.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    },
+    {
+      "oddsEventId": "7dad279b6b82dd2bec8d50f0c7cf03b1",
+      "home_team": "Columbia Lions",
+      "away_team": "Duke Blue Devils",
+      "commence_time": "2026-11-22T00:00:00Z",
+      "homePoint": 17.5,
+      "awayPoint": -17.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-21T21:55:36Z"
+    }
+  ]
+}
