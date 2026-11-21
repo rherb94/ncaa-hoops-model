@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-21",
+  "captured_at": "2026-11-21T20:59:11.143Z",
+  "ratings_updated_at": "2026-11-21T18:16:06.845Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "e612bdac28340edff6ac55e27f74ad2d",
+      "commence_time": "2026-11-21T22:00:00Z",
+      "home_team": "North Carolina Tar Heels",
+      "away_team": "Alabama Crimson Tide",
+      "home_espnTeamId": "153",
+      "away_espnTeamId": "333",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-21T20:58:54Z",
+        "homePoint": -4.5,
+        "awayPoint": 4.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 5,
+        "medianHomePoint": -5.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -4.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "lowvig",
+          "homePoint": -7,
+          "price": -125
+        }
+      },
+      "model": {
+        "homeTeamId": "team-north-carolina",
+        "awayTeamId": "team-alabama",
+        "modelSpread": -5.3,
+        "edge": -0.8,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "7dad279b6b82dd2bec8d50f0c7cf03b1",
+      "commence_time": "2026-11-22T00:00:00Z",
+      "home_team": "Columbia Lions",
+      "away_team": "Duke Blue Devils",
+      "home_espnTeamId": "171",
+      "away_espnTeamId": "150",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-21T20:58:54Z",
+        "homePoint": 17.5,
+        "awayPoint": -17.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 4,
+        "medianHomePoint": 17.5,
+        "bestHome": {
+          "book": "williamhill_us",
+          "homePoint": 19.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": 17.5,
+          "price": -110
+        }
+      },
+      "model": null
+    }
+  ]
+}
