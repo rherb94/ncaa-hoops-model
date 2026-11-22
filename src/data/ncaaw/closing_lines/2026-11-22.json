@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-22",
+  "last_updated": "2026-11-22T22:10:31.654Z",
+  "snapshot_times": [
+    "2026-11-22T22:05:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "8bb1d8f9943f567b83b4e93ebdb139ae",
+      "home_team": "Tennessee Volunteers",
+      "away_team": "UCLA Bruins",
+      "commence_time": "2026-11-22T22:30:00Z",
+      "homePoint": 5.5,
+      "awayPoint": -5.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-22T22:05:36Z"
+    },
+    {
+      "oddsEventId": "a3744bbea25d48d49ed73efe61bde6fa",
+      "home_team": "Louisville Cardinals",
+      "away_team": "Seattle Redhawks",
+      "commence_time": "2026-11-22T23:00:00Z",
+      "homePoint": -43.5,
+      "awayPoint": 43.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-11-22T22:05:36Z"
+    },
+    {
+      "oddsEventId": "f27a19d9369dd20d4a858e617ab21bcb",
+      "home_team": "Missouri Tigers",
+      "away_team": "Kansas St Wildcats",
+      "commence_time": "2026-11-23T00:30:00Z",
+      "homePoint": 1.5,
+      "awayPoint": -1.5,
+      "book": "fanduel",
+      "snapshotTime": "2026-11-22T22:05:36Z"
+    }
+  ]
+}
