@@ -1,0 +1,196 @@
+{
+  "date": "2026-11-22",
+  "captured_at": "2026-11-22T21:09:24.799Z",
+  "ratings_updated_at": "2026-11-22T18:40:44.519Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "b9fcaac5b14dbb4e023046469f401c1d",
+      "commence_time": "2026-11-22T22:05:00Z",
+      "home_team": "Washington Huskies",
+      "away_team": "Cal Poly Mustangs",
+      "home_espnTeamId": "264",
+      "away_espnTeamId": "13",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-22T21:09:23Z",
+        "homePoint": -44.5,
+        "awayPoint": 44.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 3,
+        "medianHomePoint": -44.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -43.5,
+          "price": -114
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": -44.5,
+          "price": -110
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "b9db4d63aad4f14dab8ca0e5d3b3e1f9",
+      "commence_time": "2026-11-22T22:05:00Z",
+      "home_team": "Oklahoma St Cowgirls",
+      "away_team": "Wichita St Shockers",
+      "home_espnTeamId": "197",
+      "away_espnTeamId": "2724",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-22T21:09:23Z",
+        "homePoint": -34.5,
+        "awayPoint": 34.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 3,
+        "medianHomePoint": -34.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -32.5,
+          "price": -117
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -35.5,
+          "price": -114
+        }
+      },
+      "model": {
+        "homeTeamId": "team-oklahoma-st",
+        "awayTeamId": "team-wichita-st",
+        "modelSpread": -23.9,
+        "edge": 10.6,
+        "signal": "CAUTION"
+      }
+    },
+    {
+      "oddsEventId": "8bb1d8f9943f567b83b4e93ebdb139ae",
+      "commence_time": "2026-11-22T22:30:00Z",
+      "home_team": "Tennessee Volunteers",
+      "away_team": "UCLA Bruins",
+      "home_espnTeamId": "2633",
+      "away_espnTeamId": "26",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-22T21:09:23Z",
+        "homePoint": 5.5,
+        "awayPoint": -5.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 8,
+        "medianHomePoint": 5.25,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": 5.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "williamhill_us",
+          "homePoint": 4,
+          "price": -115
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "a3744bbea25d48d49ed73efe61bde6fa",
+      "commence_time": "2026-11-22T23:00:00Z",
+      "home_team": "Louisville Cardinals",
+      "away_team": "Seattle Redhawks",
+      "home_espnTeamId": "97",
+      "away_espnTeamId": "2547",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-11-22T21:08:53Z",
+        "homePoint": -43.5,
+        "awayPoint": 43.5,
+        "homePrice": -114,
+        "awayPrice": -114
+      },
+      "market": {
+        "books": 2,
+        "medianHomePoint": -43.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -43.5,
+          "price": -114
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -43.5,
+          "price": -114
+        }
+      },
+      "model": {
+        "homeTeamId": "team-louisville",
+        "awayTeamId": "team-seattle",
+        "modelSpread": -30.2,
+        "edge": 13.3,
+        "signal": "CAUTION"
+      }
+    },
+    {
+      "oddsEventId": "f27a19d9369dd20d4a858e617ab21bcb",
+      "commence_time": "2026-11-23T00:30:00Z",
+      "home_team": "Missouri Tigers",
+      "away_team": "Kansas St Wildcats",
+      "home_espnTeamId": "142",
+      "away_espnTeamId": "2306",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-11-22T21:08:53Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5,
+        "homePrice": -114,
+        "awayPrice": -114
+      },
+      "market": {
+        "books": 3,
+        "medianHomePoint": 1.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": 1.5,
+          "price": -114
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": 1.5,
+          "price": -114
+        }
+      },
+      "model": {
+        "homeTeamId": "team-missouri",
+        "awayTeamId": "team-kansas-st",
+        "modelSpread": -0.1,
+        "edge": -1.6,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
