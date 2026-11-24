@@ -1,10 +1,10 @@
 {
   "league": "cfb",
   "season_start": "2026-08-01",
-  "updated_at": "2026-11-23T18:04:35.007Z",
-  "days_tracked": 10,
+  "updated_at": "2026-11-24T17:41:37.161Z",
+  "days_tracked": 11,
   "first_date": "2026-11-11",
-  "last_date": "2026-11-21",
+  "last_date": "2026-11-24",
   "total_picks": 35,
   "decided": 32,
   "wins": 18,
@@ -184,6 +184,20 @@
       "losses": 0,
       "pushes": 1,
       "units": 2.61,
+      "cumulative": {
+        "wins": 18,
+        "losses": 14,
+        "pushes": 2,
+        "units": 2.52
+      }
+    },
+    {
+      "date": "2026-11-24",
+      "plays": 0,
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "units": 0,
       "cumulative": {
         "wins": 18,
         "losses": 14,
