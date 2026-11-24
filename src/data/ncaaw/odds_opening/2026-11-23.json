@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-23",
+  "captured_at": "2026-11-24T02:29:02.208Z",
+  "ratings_updated_at": "2026-11-23T22:57:04.337Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "44a504d58b9668e80ca7afd25e294171",
+      "commence_time": "2026-11-24T03:00:00Z",
+      "home_team": "USC Trojans",
+      "away_team": "Northern Arizona Lumberjacks",
+      "home_espnTeamId": "30",
+      "away_espnTeamId": "2464",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-24T02:28:32Z",
+        "homePoint": -55.5,
+        "awayPoint": 55.5,
+        "homePrice": -115,
+        "awayPrice": -105
+      },
+      "market": {
+        "books": 3,
+        "medianHomePoint": -55.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -55.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": -56.5,
+          "price": -120
+        }
+      },
+      "model": null
+    }
+  ]
+}
