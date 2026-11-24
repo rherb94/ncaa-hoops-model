@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-23",
+  "last_updated": "2026-11-24T03:05:19.894Z",
+  "snapshot_times": [
+    "2026-11-24T03:00:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "44a504d58b9668e80ca7afd25e294171",
+      "home_team": "USC Trojans",
+      "away_team": "Northern Arizona Lumberjacks",
+      "commence_time": "2026-11-24T03:05:00Z",
+      "homePoint": -55.5,
+      "awayPoint": 55.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-24T03:00:36Z"
+    }
+  ]
+}
