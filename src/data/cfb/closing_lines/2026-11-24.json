@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-24",
+  "last_updated": "2026-11-24T07:12:02.263Z",
+  "snapshot_times": [
+    "2026-11-24T07:10:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "4814277a6e26955eb1df064fed7a3bcb",
+      "home_team": "Eastern Michigan Eagles",
+      "away_team": "Kent State Golden Flashes",
+      "commence_time": "2026-11-25T00:00:00Z",
+      "homePoint": -5.5,
+      "awayPoint": 5.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-24T07:10:36Z"
+    },
+    {
+      "oddsEventId": "a82769fe54a0f8c714667b8720b67449",
+      "home_team": "Western Michigan Broncos",
+      "away_team": "Miami (OH) RedHawks",
+      "commence_time": "2026-11-25T00:00:00Z",
+      "homePoint": -6.5,
+      "awayPoint": 6.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-24T07:10:36Z"
+    }
+  ]
+}
