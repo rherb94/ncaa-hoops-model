@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-24",
+  "captured_at": "2026-11-24T05:24:04.707Z",
+  "ratings_updated_at": "2026-11-23T22:07:06.425Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "4814277a6e26955eb1df064fed7a3bcb",
+      "commence_time": "2026-11-25T00:00:00Z",
+      "home_team": "Eastern Michigan Eagles",
+      "away_team": "Kent State Golden Flashes",
+      "home_espnTeamId": "2199",
+      "away_espnTeamId": "2309",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-24T05:23:08Z",
+        "homePoint": -5.5,
+        "awayPoint": 5.5,
+        "homePrice": -112,
+        "awayPrice": -108
+      },
+      "market": {
+        "books": 12,
+        "medianHomePoint": -5.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -5.5,
+          "price": -114
+        },
+        "bestAway": {
+          "book": "mybookieag",
+          "homePoint": -6,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-eastern-michigan",
+        "awayTeamId": "team-kent-state",
+        "modelSpread": -7.7,
+        "edge": -2.2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "a82769fe54a0f8c714667b8720b67449",
+      "commence_time": "2026-11-25T00:00:00Z",
+      "home_team": "Western Michigan Broncos",
+      "away_team": "Miami (OH) RedHawks",
+      "home_espnTeamId": "2711",
+      "away_espnTeamId": "193",
+      "home_resolve": "MAP",
+      "away_resolve": "ESPN_BY_NAME",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-24T05:23:08Z",
+        "homePoint": -6.5,
+        "awayPoint": 6.5,
+        "homePrice": -115,
+        "awayPrice": -105
+      },
+      "market": {
+        "books": 12,
+        "medianHomePoint": -6.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -6.5,
+          "price": -114
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -6.5,
+          "price": -106
+        }
+      },
+      "model": {
+        "homeTeamId": "team-western-michigan",
+        "awayTeamId": "team-miami-oh",
+        "modelSpread": -7.3,
+        "edge": -0.8,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
