@@ -1,0 +1,196 @@
+{
+  "date": "2026-11-24",
+  "captured_at": "2026-11-24T23:59:52.954Z",
+  "ratings_updated_at": "2026-11-24T21:34:09.749Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "d7bbb59264be892899aafa1500b40332",
+      "commence_time": "2026-11-25T00:05:00Z",
+      "home_team": "North Carolina Tar Heels",
+      "away_team": "Gardner-Webb Bulldogs",
+      "home_espnTeamId": "153",
+      "away_espnTeamId": "2241",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-24T23:59:51Z",
+        "homePoint": -45.5,
+        "awayPoint": 45.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 3,
+        "medianHomePoint": -45.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -44.5,
+          "price": -112
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -46.5,
+          "price": -114
+        }
+      },
+      "model": {
+        "homeTeamId": "team-north-carolina",
+        "awayTeamId": "team-gardner-webb",
+        "modelSpread": -35.7,
+        "edge": 9.8,
+        "signal": "CAUTION"
+      }
+    },
+    {
+      "oddsEventId": "8934bfad41c9235d396b034272d087db",
+      "commence_time": "2026-11-25T00:05:00Z",
+      "home_team": "Maryland Terrapins",
+      "away_team": "Monmouth Hawks",
+      "home_espnTeamId": "120",
+      "away_espnTeamId": "2405",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-24T23:59:51Z",
+        "homePoint": -28.5,
+        "awayPoint": 28.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 2,
+        "medianHomePoint": -28.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -28.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": -28.5,
+          "price": -110
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "f014e45b74ca185024a03db6a3ed85b8",
+      "commence_time": "2026-11-25T01:00:00Z",
+      "home_team": "Nebraska Cornhuskers",
+      "away_team": "UMKC Kangaroos",
+      "home_espnTeamId": "158",
+      "away_espnTeamId": "140",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-24T23:59:51Z",
+        "homePoint": -40.5,
+        "awayPoint": 40.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 2,
+        "medianHomePoint": -40.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -40.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": -40.5,
+          "price": -110
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "db6979db0f7a77572399c307a6bd0b00",
+      "commence_time": "2026-11-25T01:00:00Z",
+      "home_team": "UConn Huskies",
+      "away_team": "South Carolina Gamecocks",
+      "home_espnTeamId": "41",
+      "away_espnTeamId": "2579",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-24T23:59:51Z",
+        "homePoint": 5.5,
+        "awayPoint": -5.5,
+        "homePrice": -120,
+        "awayPrice": 100
+      },
+      "market": {
+        "books": 7,
+        "medianHomePoint": 4.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": 6.5,
+          "price": -124
+        },
+        "bestAway": {
+          "book": "circasports",
+          "homePoint": 4,
+          "price": -115
+        }
+      },
+      "model": {
+        "homeTeamId": "team-connecticut",
+        "awayTeamId": "team-south-carolina",
+        "modelSpread": -0.4,
+        "edge": -5.9,
+        "signal": "STRONG"
+      }
+    },
+    {
+      "oddsEventId": "41a66ead1576035253616391cfdecefd",
+      "commence_time": "2026-11-25T02:00:00Z",
+      "home_team": "Virginia Cavaliers",
+      "away_team": "UAB Blazers",
+      "home_espnTeamId": "258",
+      "away_espnTeamId": "5",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-11-24T23:59:26Z",
+        "homePoint": -25.5,
+        "awayPoint": 25.5,
+        "homePrice": -117,
+        "awayPrice": -114
+      },
+      "market": {
+        "books": 1,
+        "medianHomePoint": -25.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -25.5,
+          "price": -117
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": -25.5,
+          "price": -114
+        }
+      },
+      "model": {
+        "homeTeamId": "team-virginia",
+        "awayTeamId": "team-uab",
+        "modelSpread": -18.7,
+        "edge": 6.8,
+        "signal": "CAUTION"
+      }
+    }
+  ]
+}
