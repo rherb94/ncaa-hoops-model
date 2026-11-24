@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-23",
+  "last_updated": "2026-11-24T03:04:53.779Z",
+  "snapshot_times": [
+    "2026-11-24T03:00:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "b45e9d96ab3298d614e74c19902f3998",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Colorado St Rams",
+      "commence_time": "2026-11-24T04:30:00Z",
+      "homePoint": -16.5,
+      "awayPoint": 16.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-24T03:00:36Z"
+    },
+    {
+      "oddsEventId": "97b6bfd4b808fd6e1c2d0d35925cd0e2",
+      "home_team": "UC San Diego Tritons",
+      "away_team": "San José St Spartans",
+      "commence_time": "2026-11-24T04:59:00Z",
+      "homePoint": -1.5,
+      "awayPoint": 1.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-24T03:00:36Z"
+    }
+  ]
+}
