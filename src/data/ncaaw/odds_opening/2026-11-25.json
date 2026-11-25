@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-25",
+  "captured_at": "2026-11-25T23:44:04.066Z",
+  "ratings_updated_at": "2026-11-25T20:41:21.461Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "892b6729e117a9a198c746a896f75fba",
+      "commence_time": "2026-11-26T00:00:00Z",
+      "home_team": "Texas Longhorns",
+      "away_team": "SE Louisiana Lions",
+      "home_espnTeamId": "251",
+      "away_espnTeamId": "2545",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-25T23:43:57Z",
+        "homePoint": -59.5,
+        "awayPoint": 59.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 4,
+        "medianHomePoint": -60,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -59.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": -61.5,
+          "price": -115
+        }
+      },
+      "model": null
+    }
+  ]
+}
