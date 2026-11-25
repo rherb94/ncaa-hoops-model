@@ -1,54 +1,54 @@
 {
   "league": "ncaam",
   "season_start": "2026-11-01",
-  "updated_at": "2026-11-24T17:34:21.569Z",
-  "days_tracked": 13,
+  "updated_at": "2026-11-25T17:06:35.505Z",
+  "days_tracked": 14,
   "first_date": "2026-11-11",
-  "last_date": "2026-11-23",
-  "total_picks": 84,
-  "decided": 79,
-  "wins": 38,
-  "losses": 41,
+  "last_date": "2026-11-24",
+  "total_picks": 94,
+  "decided": 89,
+  "wins": 40,
+  "losses": 49,
   "pushes": 0,
-  "win_pct": 48,
-  "units": -6.59,
-  "roi_pct": -8.3,
+  "win_pct": 45,
+  "units": -12.83,
+  "roi_pct": -14.4,
   "plays": {
-    "wins": 38,
-    "losses": 41,
+    "wins": 40,
+    "losses": 49,
     "pushes": 0,
-    "units": -6.59,
-    "roi_pct": -8.3,
-    "win_pct": 48.1
+    "units": -12.83,
+    "roi_pct": -14.4,
+    "win_pct": 44.9
   },
   "lean": {
-    "wins": 29,
-    "losses": 35,
+    "wins": 30,
+    "losses": 40,
     "pushes": 0,
-    "units": -8.81,
-    "roi_pct": -13.8,
-    "win_pct": 45.3
+    "units": -12.92,
+    "roi_pct": -18.5,
+    "win_pct": 42.9
   },
   "strong": {
-    "wins": 9,
-    "losses": 6,
+    "wins": 10,
+    "losses": 9,
     "pushes": 0,
-    "units": 2.22,
-    "roi_pct": 14.8,
-    "win_pct": 60
+    "units": 0.09,
+    "roi_pct": 0.5,
+    "win_pct": 52.6
   },
   "all_games": {
-    "wins": 203,
-    "losses": 189,
-    "win_pct": 51.8
+    "wins": 225,
+    "losses": 212,
+    "win_pct": 51.5
   },
   "caution": {
-    "wins": 47,
-    "losses": 40,
-    "win_pct": 54
+    "wins": 52,
+    "losses": 43,
+    "win_pct": 54.7
   },
-  "avg_clv": 0.1,
-  "clv_games": 71,
+  "avg_clv": 0.17,
+  "clv_games": 81,
   "pending": 5,
   "daily": [
     {
@@ -231,6 +231,20 @@
         "losses": 41,
         "pushes": 0,
         "units": -6.59
+      }
+    },
+    {
+      "date": "2026-11-24",
+      "plays": 10,
+      "wins": 2,
+      "losses": 8,
+      "pushes": 0,
+      "units": -6.24,
+      "cumulative": {
+        "wins": 40,
+        "losses": 49,
+        "pushes": 0,
+        "units": -12.83
       }
     }
   ]
