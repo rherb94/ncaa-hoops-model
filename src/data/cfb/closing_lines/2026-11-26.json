@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-26",
+  "last_updated": "2026-11-26T05:35:57.185Z",
+  "snapshot_times": [
+    "2026-11-26T05:35:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "b39108d2cfcd62d29954aee80bbf7b51",
+      "home_team": "Texas Tech Red Raiders",
+      "away_team": "TCU Horned Frogs",
+      "commence_time": "2026-11-27T01:00:00Z",
+      "homePoint": -15.5,
+      "awayPoint": 15.5,
+      "book": "draftkings",
+      "snapshotTime": "2026-11-26T05:35:36Z"
+    }
+  ]
+}
