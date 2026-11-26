@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-26",
+  "captured_at": "2026-11-26T23:55:31.823Z",
+  "ratings_updated_at": "2026-11-26T19:43:30.581Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "b39108d2cfcd62d29954aee80bbf7b51",
+      "commence_time": "2026-11-27T01:00:00Z",
+      "home_team": "Texas Tech Red Raiders",
+      "away_team": "TCU Horned Frogs",
+      "home_espnTeamId": "2641",
+      "away_espnTeamId": "2628",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-26T23:54:47Z",
+        "homePoint": -14,
+        "awayPoint": 14,
+        "homePrice": -105,
+        "awayPrice": -115
+      },
+      "market": {
+        "books": 12,
+        "medianHomePoint": -14,
+        "bestHome": {
+          "book": "fanatics",
+          "homePoint": -13.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -14.5,
+          "price": -120
+        }
+      },
+      "model": {
+        "homeTeamId": "team-texas-tech",
+        "awayTeamId": "team-tcu",
+        "modelSpread": -14.5,
+        "edge": -0.5,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
