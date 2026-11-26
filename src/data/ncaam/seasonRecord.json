@@ -1,10 +1,10 @@
 {
   "league": "ncaam",
   "season_start": "2026-11-01",
-  "updated_at": "2026-11-25T17:06:35.505Z",
-  "days_tracked": 14,
+  "updated_at": "2026-11-26T16:47:28.871Z",
+  "days_tracked": 15,
   "first_date": "2026-11-11",
-  "last_date": "2026-11-24",
+  "last_date": "2026-11-25",
   "total_picks": 94,
   "decided": 89,
   "wins": 40,
@@ -38,14 +38,14 @@
     "win_pct": 52.6
   },
   "all_games": {
-    "wins": 225,
-    "losses": 212,
-    "win_pct": 51.5
+    "wins": 232,
+    "losses": 222,
+    "win_pct": 51.1
   },
   "caution": {
-    "wins": 52,
-    "losses": 43,
-    "win_pct": 54.7
+    "wins": 53,
+    "losses": 44,
+    "win_pct": 54.6
   },
   "avg_clv": 0.17,
   "clv_games": 81,
@@ -240,6 +240,20 @@
       "losses": 8,
       "pushes": 0,
       "units": -6.24,
+      "cumulative": {
+        "wins": 40,
+        "losses": 49,
+        "pushes": 0,
+        "units": -12.83
+      }
+    },
+    {
+      "date": "2026-11-25",
+      "plays": 0,
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "units": 0,
       "cumulative": {
         "wins": 40,
         "losses": 49,
