@@ -1,33 +1,33 @@
 {
   "league": "ncaam",
   "season_start": "2026-11-01",
-  "updated_at": "2026-11-27T14:06:33.443Z",
+  "updated_at": "2026-11-27T14:19:19.582Z",
   "days_tracked": 16,
   "first_date": "2026-11-11",
   "last_date": "2026-11-26",
   "total_picks": 97,
-  "decided": 89,
-  "wins": 40,
-  "losses": 49,
+  "decided": 94,
+  "wins": 44,
+  "losses": 50,
   "pushes": 0,
-  "win_pct": 45,
-  "units": -12.83,
-  "roi_pct": -14.4,
+  "win_pct": 47,
+  "units": -10.13,
+  "roi_pct": -10.8,
   "plays": {
-    "wins": 40,
-    "losses": 49,
+    "wins": 44,
+    "losses": 50,
     "pushes": 0,
-    "units": -12.83,
-    "roi_pct": -14.4,
-    "win_pct": 44.9
+    "units": -10.13,
+    "roi_pct": -10.8,
+    "win_pct": 46.8
   },
   "lean": {
-    "wins": 30,
-    "losses": 40,
+    "wins": 34,
+    "losses": 41,
     "pushes": 0,
-    "units": -12.92,
-    "roi_pct": -18.5,
-    "win_pct": 42.9
+    "units": -10.22,
+    "roi_pct": -13.6,
+    "win_pct": 45.3
   },
   "strong": {
     "wins": 10,
@@ -38,25 +38,25 @@
     "win_pct": 52.6
   },
   "favorite": {
-    "wins": 5,
+    "wins": 6,
     "losses": 4,
     "pushes": 0,
-    "units": 0.45,
-    "roi_pct": 5,
-    "win_pct": 55.6
+    "units": 1.36,
+    "roi_pct": 13.6,
+    "win_pct": 60
   },
   "underdog": {
-    "wins": 35,
-    "losses": 45,
+    "wins": 38,
+    "losses": 46,
     "pushes": 0,
-    "units": -13.28,
-    "roi_pct": -16.6,
-    "win_pct": 43.8
+    "units": -11.49,
+    "roi_pct": -13.7,
+    "win_pct": 45.2
   },
   "all_games": {
-    "wins": 232,
-    "losses": 222,
-    "win_pct": 51.1
+    "wins": 247,
+    "losses": 233,
+    "win_pct": 51.5
   },
   "caution": {
     "wins": 53,
@@ -65,7 +65,7 @@
   },
   "avg_clv": 0.17,
   "clv_games": 84,
-  "pending": 8,
+  "pending": 3,
   "daily": [
     {
       "date": "2026-11-11",
@@ -154,15 +154,15 @@
     {
       "date": "2026-11-17",
       "plays": 10,
-      "wins": 6,
+      "wins": 7,
       "losses": 3,
       "pushes": 0,
-      "units": 2.4,
+      "units": 3.35,
       "cumulative": {
-        "wins": 23,
+        "wins": 24,
         "losses": 22,
         "pushes": 0,
-        "units": -0.98
+        "units": -0.03
       }
     },
     {
@@ -173,24 +173,24 @@
       "pushes": 0,
       "units": -0.7,
       "cumulative": {
-        "wins": 29,
+        "wins": 30,
         "losses": 28,
         "pushes": 0,
-        "units": -1.68
+        "units": -0.73
       }
     },
     {
       "date": "2026-11-19",
       "plays": 9,
-      "wins": 2,
+      "wins": 4,
       "losses": 5,
       "pushes": 0,
-      "units": -3.18,
+      "units": -1.38,
       "cumulative": {
-        "wins": 31,
+        "wins": 34,
         "losses": 33,
         "pushes": 0,
-        "units": -4.86
+        "units": -2.11
       }
     },
     {
@@ -201,38 +201,38 @@
       "pushes": 0,
       "units": 0.65,
       "cumulative": {
-        "wins": 34,
+        "wins": 37,
         "losses": 35,
         "pushes": 0,
-        "units": -4.21
+        "units": -1.46
       }
     },
     {
       "date": "2026-11-21",
       "plays": 8,
-      "wins": 2,
+      "wins": 3,
       "losses": 5,
       "pushes": 0,
-      "units": -3.2,
+      "units": -2.25,
       "cumulative": {
-        "wins": 36,
+        "wins": 40,
         "losses": 40,
         "pushes": 0,
-        "units": -7.41
+        "units": -3.71
       }
     },
     {
       "date": "2026-11-22",
       "plays": 2,
       "wins": 1,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "units": 0.93,
+      "units": -0.07,
       "cumulative": {
-        "wins": 37,
-        "losses": 40,
+        "wins": 41,
+        "losses": 41,
         "pushes": 0,
-        "units": -6.48
+        "units": -3.78
       }
     },
     {
@@ -243,10 +243,10 @@
       "pushes": 0,
       "units": -0.11,
       "cumulative": {
-        "wins": 38,
-        "losses": 41,
+        "wins": 42,
+        "losses": 42,
         "pushes": 0,
-        "units": -6.59
+        "units": -3.89
       }
     },
     {
@@ -257,10 +257,10 @@
       "pushes": 0,
       "units": -6.24,
       "cumulative": {
-        "wins": 40,
-        "losses": 49,
+        "wins": 44,
+        "losses": 50,
         "pushes": 0,
-        "units": -12.83
+        "units": -10.13
       }
     },
     {
@@ -271,10 +271,10 @@
       "pushes": 0,
       "units": 0,
       "cumulative": {
-        "wins": 40,
-        "losses": 49,
+        "wins": 44,
+        "losses": 50,
         "pushes": 0,
-        "units": -12.83
+        "units": -10.13
       }
     },
     {
@@ -285,10 +285,10 @@
       "pushes": 0,
       "units": 0,
       "cumulative": {
-        "wins": 40,
-        "losses": 49,
+        "wins": 44,
+        "losses": 50,
         "pushes": 0,
-        "units": -12.83
+        "units": -10.13
       }
     }
   ]

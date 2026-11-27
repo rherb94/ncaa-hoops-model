@@ -193,6 +193,42 @@ export type ClosingLineGame = {
   awayPoint: number | null;
 };
 
+/**
+ * Find a game's result by ESPN team ids, oriented to the snapshot's home team.
+ * At neutral sites ESPN and the odds feed often list the teams in opposite
+ * home/away order, so the flipped pairing is tried too and its result is
+ * mirrored (scores swapped, margin negated) to stay in the snapshot's terms.
+ */
+type ResultLike = {
+  home_espnTeamId: string | null;
+  away_espnTeamId: string | null;
+  actualSpread: number | null;
+  homeScore?: number | null;
+  awayScore?: number | null;
+  winner?: "HOME" | "AWAY" | "TIE" | null;
+};
+
+export function findResult<T extends ResultLike>(
+  byTeams: Map<string, T>,
+  homeId: string | null | undefined,
+  awayId: string | null | undefined
+): T | null {
+  if (!homeId || !awayId) return null;
+  const direct = byTeams.get(`${homeId}|${awayId}`);
+  if (direct) return direct;
+  const flipped = byTeams.get(`${awayId}|${homeId}`);
+  if (!flipped) return null;
+  return {
+    ...flipped,
+    home_espnTeamId: flipped.away_espnTeamId,
+    away_espnTeamId: flipped.home_espnTeamId,
+    homeScore: flipped.awayScore,
+    awayScore: flipped.homeScore,
+    actualSpread: flipped.actualSpread == null ? null : -flipped.actualSpread,
+    winner: flipped.winner === "HOME" ? "AWAY" : flipped.winner === "AWAY" ? "HOME" : flipped.winner,
+  } as T;
+}
+
 export function evaluatePick(
   signal: string,
   edge: number | null,
@@ -369,10 +405,7 @@ export function analyzeDate(
   }
 
   const games = snap.games.map((sg) => {
-    const result =
-      sg.home_espnTeamId && sg.away_espnTeamId
-        ? resultByTeams.get(`${sg.home_espnTeamId}|${sg.away_espnTeamId}`) ?? null
-        : null;
+    const result = findResult(resultByTeams, sg.home_espnTeamId, sg.away_espnTeamId);
 
     const closing = sg.oddsEventId ? closingByEventId.get(sg.oddsEventId) ?? null : null;
 

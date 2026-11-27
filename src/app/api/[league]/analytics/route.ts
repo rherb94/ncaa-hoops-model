@@ -15,6 +15,7 @@ import { loadTeams } from "@/data/teams";
 import type { LeagueId } from "@/lib/leagues";
 import { isPlay } from "@/lib/signal";
 import { filterToCurrentSeason, seasonStartDate } from "@/lib/season";
+import { findResult } from "@/lib/analysis";
 
 const DATA_DIR = path.join(process.cwd(), "src", "data");
 
@@ -345,10 +346,7 @@ function computeAnalytics(
       // Skip non-neutral games when neutral-only filter is active
       if (neutralOnly && !(sg.neutralSite ?? false)) continue;
 
-      const result =
-        sg.home_espnTeamId && sg.away_espnTeamId
-          ? resultByTeams.get(`${sg.home_espnTeamId}|${sg.away_espnTeamId}`) ?? null
-          : null;
+      const result = findResult(resultByTeams, sg.home_espnTeamId, sg.away_espnTeamId);
 
       const closing = sg.oddsEventId
         ? closingByEventId.get(sg.oddsEventId) ?? null
