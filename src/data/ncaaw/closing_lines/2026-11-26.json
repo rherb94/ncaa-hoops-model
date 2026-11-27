@@ -1,6 +1,19 @@
 {
   "date": "2026-11-26",
-  "last_updated": "2026-11-26T05:32:31.792Z",
-  "snapshot_times": [],
-  "games": []
+  "last_updated": "2026-11-27T00:50:54.635Z",
+  "snapshot_times": [
+    "2026-11-27T00:45:36Z"
+  ],
+  "games": [
+    {
+      "oddsEventId": "e4ebca7283733cc3aac0b6fc5fc1847c",
+      "home_team": "Miami (OH) RedHawks",
+      "away_team": "Cincinnati Bearcats",
+      "commence_time": "2026-11-27T02:00:00Z",
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
+      "book": "williamhill_us",
+      "snapshotTime": "2026-11-27T00:45:36Z"
+    }
+  ]
 }
