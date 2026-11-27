@@ -1,0 +1,688 @@
+{
+  "date": "2026-11-27",
+  "captured_at": "2026-11-27T23:35:25.744Z",
+  "ratings_updated_at": "2026-11-27T20:20:14.199Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "b45868adb6bfc90b2080067130c72a87",
+      "commence_time": "2026-11-28T00:00:00Z",
+      "home_team": "East Tennessee St Buccaneers",
+      "away_team": "Charleston Southern Buccaneers",
+      "home_espnTeamId": "2193",
+      "away_espnTeamId": "2127",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -9.5,
+        "awayPoint": 9.5,
+        "homePrice": -112,
+        "awayPrice": -108
+      },
+      "market": {
+        "books": 9,
+        "medianHomePoint": -9.5,
+        "bestHome": {
+          "book": "circasports",
+          "homePoint": -9,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -9.5,
+          "price": -102
+        }
+      },
+      "model": {
+        "homeTeamId": "team-east-tennessee-st",
+        "awayTeamId": "team-charleston-southern",
+        "modelSpread": -11.4,
+        "edge": -1.9,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "a3b0558a4bc97d4aedb25c7e618304f4",
+      "commence_time": "2026-11-28T00:00:00Z",
+      "home_team": "Georgia Bulldogs",
+      "away_team": "UCF Knights",
+      "home_espnTeamId": "61",
+      "away_espnTeamId": "2116",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -5.5,
+        "awayPoint": 5.5,
+        "homePrice": -108,
+        "awayPrice": -112
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -5.5,
+        "bestHome": {
+          "book": "betonlineag",
+          "homePoint": -5.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "betonlineag",
+          "homePoint": -5.5,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-georgia",
+        "awayTeamId": "team-ucf",
+        "modelSpread": -5.3,
+        "edge": 0.2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "e061cfa22d4b263a276740908fd719b3",
+      "commence_time": "2026-11-28T00:00:00Z",
+      "home_team": "UC Santa Barbara Gauchos",
+      "away_team": "Lehigh Mountain Hawks",
+      "home_espnTeamId": "2540",
+      "away_espnTeamId": "2329",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -13.5,
+        "awayPoint": 13.5,
+        "homePrice": -113,
+        "awayPrice": -107
+      },
+      "market": {
+        "books": 10,
+        "medianHomePoint": -13.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -13.5,
+          "price": -105
+        },
+        "bestAway": {
+          "book": "circasports",
+          "homePoint": -14,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-uc-santa-barbara",
+        "awayTeamId": "team-lehigh",
+        "modelSpread": -11.4,
+        "edge": 2.1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "cd744c919b9a21ddf2611504bf49f376",
+      "commence_time": "2026-11-28T00:00:00Z",
+      "home_team": "North Carolina Tar Heels",
+      "away_team": "West Virginia Mountaineers",
+      "home_espnTeamId": "153",
+      "away_espnTeamId": "277",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": 3.5,
+        "awayPoint": -3.5,
+        "homePrice": -114,
+        "awayPrice": -106
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": 3,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": 3.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": 2.5,
+          "price": -120
+        }
+      },
+      "model": {
+        "homeTeamId": "team-north-carolina",
+        "awayTeamId": "team-west-virginia",
+        "modelSpread": 0.7,
+        "edge": -2.8,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "9666ebe69d71e8c0cf9a8f7ed988130b",
+      "commence_time": "2026-11-28T00:30:00Z",
+      "home_team": "Houston Cougars",
+      "away_team": "Oakland Golden Grizzlies",
+      "home_espnTeamId": "248",
+      "away_espnTeamId": "2473",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -36.5,
+        "awayPoint": 36.5,
+        "homePrice": -104,
+        "awayPrice": -116
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -36,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -35.5,
+          "price": -118
+        },
+        "bestAway": {
+          "book": "betmgm",
+          "homePoint": -36.5,
+          "price": -115
+        }
+      },
+      "model": {
+        "homeTeamId": "team-houston",
+        "awayTeamId": "team-oakland",
+        "modelSpread": -31.9,
+        "edge": 4.6,
+        "signal": "CAUTION"
+      }
+    },
+    {
+      "oddsEventId": "ec62bd5e2e768c55151f12678f44714e",
+      "commence_time": "2026-11-28T00:30:00Z",
+      "home_team": "Mississippi St Bulldogs",
+      "away_team": "Penn State Nittany Lions",
+      "home_espnTeamId": "344",
+      "away_espnTeamId": "213",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -6.5,
+        "awayPoint": 6.5,
+        "homePrice": -112,
+        "awayPrice": -108
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -6.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -6.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "betonlineag",
+          "homePoint": -7,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-mississippi-st",
+        "awayTeamId": "team-penn-st",
+        "modelSpread": -5.1,
+        "edge": 1.4,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "7597feb141f43dac0aadd1c931ec3fac",
+      "commence_time": "2026-11-28T01:00:00Z",
+      "home_team": "Washington St Cougars",
+      "away_team": "Idaho Vandals",
+      "home_espnTeamId": "265",
+      "away_espnTeamId": "70",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -11.5,
+        "awayPoint": 11.5,
+        "homePrice": -117,
+        "awayPrice": -103
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -12,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -11.5,
+          "price": -120
+        },
+        "bestAway": {
+          "book": "betmgm",
+          "homePoint": -12.5,
+          "price": -115
+        }
+      },
+      "model": {
+        "homeTeamId": "team-washington-st",
+        "awayTeamId": "team-idaho",
+        "modelSpread": -9.7,
+        "edge": 1.8,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "5740fd8d57f3a4f53ee913dacffe55c0",
+      "commence_time": "2026-11-28T01:00:00Z",
+      "home_team": "Oral Roberts Golden Eagles",
+      "away_team": "Missouri St Bears",
+      "home_espnTeamId": "198",
+      "away_espnTeamId": "2623",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -4.5,
+        "awayPoint": 4.5,
+        "homePrice": -106,
+        "awayPrice": -114
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -4.5,
+        "bestHome": {
+          "book": "betonlineag",
+          "homePoint": -4,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -4.5,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-oral-roberts",
+        "awayTeamId": "team-missouri-st",
+        "modelSpread": -3.9,
+        "edge": 0.6,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "d41c0bb8557bb274bce7d03b0dd33d3a",
+      "commence_time": "2026-11-28T01:00:00Z",
+      "home_team": "North Dakota St Bison",
+      "away_team": "North Texas Mean Green",
+      "home_espnTeamId": "2449",
+      "away_espnTeamId": "249",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": 5.5,
+        "awayPoint": -5.5,
+        "homePrice": -107,
+        "awayPrice": -112
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": 5.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": 6.5,
+          "price": -120
+        },
+        "bestAway": {
+          "book": "betonlineag",
+          "homePoint": 5.5,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-north-dakota-st",
+        "awayTeamId": "team-north-texas",
+        "modelSpread": 5.1,
+        "edge": -0.4,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "6e113a934fe1e4d2d00277778483f23e",
+      "commence_time": "2026-11-28T01:00:00Z",
+      "home_team": "Northwestern Wildcats",
+      "away_team": "Northeastern Huskies",
+      "home_espnTeamId": "77",
+      "away_espnTeamId": "111",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -12.5,
+        "awayPoint": 12.5,
+        "homePrice": -114,
+        "awayPrice": -106
+      },
+      "market": {
+        "books": 10,
+        "medianHomePoint": -12.5,
+        "bestHome": {
+          "book": "betonlineag",
+          "homePoint": -12.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "betus",
+          "homePoint": -13,
+          "price": -115
+        }
+      },
+      "model": {
+        "homeTeamId": "team-northwestern",
+        "awayTeamId": "team-northeastern",
+        "modelSpread": -13.7,
+        "edge": -1.2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "ebb91d3cb7c017b0bf6de2b333909d71",
+      "commence_time": "2026-11-28T01:00:00Z",
+      "home_team": "UC Davis Aggies",
+      "away_team": "Pacific Tigers",
+      "home_espnTeamId": "302",
+      "away_espnTeamId": "279",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": 6.5,
+        "awayPoint": -6.5,
+        "homePrice": -112,
+        "awayPrice": -108
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": 6.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": 6.5,
+          "price": -106
+        },
+        "bestAway": {
+          "book": "betonlineag",
+          "homePoint": 6,
+          "price": -112
+        }
+      },
+      "model": {
+        "homeTeamId": "team-uc-davis",
+        "awayTeamId": "team-pacific",
+        "modelSpread": 4.9,
+        "edge": -1.6,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "692fbccb2725151453aade80cc1002a4",
+      "commence_time": "2026-11-28T01:30:00Z",
+      "home_team": "Alabama Crimson Tide",
+      "away_team": "Miami Hurricanes",
+      "home_espnTeamId": "333",
+      "away_espnTeamId": "2390",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": 1.5,
+        "awayPoint": -1.5,
+        "homePrice": -104,
+        "awayPrice": -116
+      },
+      "market": {
+        "books": 10,
+        "medianHomePoint": 2,
+        "bestHome": {
+          "book": "fanatics",
+          "homePoint": 2.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": 1.5,
+          "price": -116
+        }
+      },
+      "model": {
+        "homeTeamId": "team-alabama",
+        "awayTeamId": "team-miami-fl",
+        "modelSpread": 1.6,
+        "edge": 0.1,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "6be9c20350d10df66086b7ec8949ddc9",
+      "commence_time": "2026-11-28T02:00:00Z",
+      "home_team": "Kentucky Wildcats",
+      "away_team": "Wichita St Shockers",
+      "home_espnTeamId": "96",
+      "away_espnTeamId": "2724",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -4.5,
+        "awayPoint": 4.5,
+        "homePrice": -112,
+        "awayPrice": -108
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -4.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -4.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "betonlineag",
+          "homePoint": -5,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-kentucky",
+        "awayTeamId": "team-wichita-st",
+        "modelSpread": -2.2,
+        "edge": 2.3,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "8df0c9cd54ab128fd63e0f56b9ee0a2e",
+      "commence_time": "2026-11-28T02:00:00Z",
+      "home_team": "Louisville Cardinals",
+      "away_team": "Tennessee Volunteers",
+      "home_espnTeamId": "97",
+      "away_espnTeamId": "2633",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -3.5,
+        "awayPoint": 3.5,
+        "homePrice": -113,
+        "awayPrice": -107
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -3.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -3.5,
+          "price": -113
+        },
+        "bestAway": {
+          "book": "betus",
+          "homePoint": -4,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-louisville",
+        "awayTeamId": "team-tennessee",
+        "modelSpread": -0.2,
+        "edge": 3.3,
+        "signal": "LEAN"
+      }
+    },
+    {
+      "oddsEventId": "018ae040de9fffa378fba5cfbb88c8f7",
+      "commence_time": "2026-11-28T03:30:00Z",
+      "home_team": "Omaha Mavericks",
+      "away_team": "Jacksonville St Gamecocks",
+      "home_espnTeamId": "2437",
+      "away_espnTeamId": "55",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": 5.5,
+        "awayPoint": -5.5,
+        "homePrice": -113,
+        "awayPrice": -107
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": 5.5,
+        "bestHome": {
+          "book": "betonlineag",
+          "homePoint": 6,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": 4.5,
+          "price": -118
+        }
+      },
+      "model": {
+        "homeTeamId": "team-nebraska-omaha",
+        "awayTeamId": "team-jacksonville-st",
+        "modelSpread": 6.8,
+        "edge": 1.3,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "fd6efd7dbe43547477817d434e740852",
+      "commence_time": "2026-11-28T04:00:00Z",
+      "home_team": "Gonzaga Bulldogs",
+      "away_team": "Creighton Bluejays",
+      "home_espnTeamId": "2250",
+      "away_espnTeamId": "156",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -6.5,
+        "awayPoint": 6.5,
+        "homePrice": -105,
+        "awayPrice": -115
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -6,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -5.5,
+          "price": -113
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": -6.5,
+          "price": -115
+        }
+      },
+      "model": {
+        "homeTeamId": "team-gonzaga",
+        "awayTeamId": "team-creighton",
+        "modelSpread": -5.9,
+        "edge": 0.6,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "d83ca85d22c803601e6aab65bc254672",
+      "commence_time": "2026-11-28T04:30:00Z",
+      "home_team": "Texas Tech Red Raiders",
+      "away_team": "San Diego St Aztecs",
+      "home_espnTeamId": "2641",
+      "away_espnTeamId": "21",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:38Z",
+        "homePoint": -8.5,
+        "awayPoint": 8.5,
+        "homePrice": -115,
+        "awayPrice": -105
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -8.5,
+        "bestHome": {
+          "book": "betonlineag",
+          "homePoint": -8.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "betonlineag",
+          "homePoint": -8.5,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-texas-tech",
+        "awayTeamId": "team-san-diego-st",
+        "modelSpread": -6.2,
+        "edge": 2.3,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
