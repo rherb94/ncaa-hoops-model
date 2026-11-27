@@ -371,10 +371,11 @@ function FavoriteUnderdogTable({ games }: { games: GameRow[] }) {
     const losses = settled.filter((g) => g.pick_result === "LOSS").length;
     const pushes = settled.length - wins - losses;
     const units = settled.reduce((sum, g) => sum + (g.units ?? 0), 0);
-    return { role, plays: picks.length, wins, losses, pushes, units, settled: settled.length };
+    return { role, plays: settled.length, pending: picks.length - settled.length, wins, losses, pushes, units, settled: settled.length };
   });
   const shown = rows.filter((r) => r.role !== "pickem" || r.plays > 0);
-  if (!shown.some((r) => r.plays > 0)) return null;
+  if (!rows.some((r) => r.plays > 0 || r.pending > 0)) return null;
+  const pending = rows.reduce((n, r) => n + r.pending, 0);
   const label: Record<PickRole, string> = { favorite: "Favorites", underdog: "Underdogs", pickem: "Pick'em" };
   const note: Record<PickRole, string> = {
     favorite: "laying points",
@@ -386,7 +387,7 @@ function FavoriteUnderdogTable({ games }: { games: GameRow[] }) {
     <div className="overflow-hidden rounded-xl border border-white/[0.07] bg-zinc-900/30">
       <div className="px-3 sm:px-4 py-2.5 bg-zinc-900 border-b border-white/10">
         <span className="text-sm font-semibold text-zinc-200">Favorites vs underdogs</span>
-        <span className="block sm:inline text-xs text-zinc-500 sm:ml-2">plays only, by which side of the line was taken</span>
+        <span className="block sm:inline text-xs text-zinc-500 sm:ml-2">settled plays only, by which side of the line was taken{pending > 0 ? ` · ${pending} pending` : ""}</span>
       </div>
       <table className="w-full text-sm">
         <thead>
