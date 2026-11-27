@@ -535,6 +535,13 @@ function modelSideCovered(g: DayAnalysis["games"][number]): boolean | null {
   return g.edge < 0 ? homeCovered : !homeCovered;
 }
 
+/** Was the picked side favored by the line it was taken at? null on a pick'em or no pick. */
+function pickRole(g: DayAnalysis["games"][number]): "favorite" | "underdog" | null {
+  if (g.opening_spread == null || g.opening_spread === 0) return null;
+  if (g.pick_side !== "HOME" && g.pick_side !== "AWAY") return null;
+  return (g.pick_side === "HOME") === g.opening_spread < 0 ? "favorite" : "underdog";
+}
+
 /**
  * Season-to-date record from a set of analysed days.
  *  - plays:     LEAN + STRONG picks — the record that counts.
@@ -579,6 +586,8 @@ export function summarize(days: DayAnalysis[]) {
     plays: playRecord,
     lean: line(plays.filter((g) => g.signal === "LEAN")),
     strong: line(plays.filter((g) => g.signal === "STRONG")),
+    favorite: line(plays.filter((g) => pickRole(g) === "favorite")),
+    underdog: line(plays.filter((g) => pickRole(g) === "underdog")),
     all_games: tally(games),
     caution: tally(games.filter((g) => g.signal === "CAUTION")),
     avg_clv: clv.length > 0 ? round2(clv.reduce((a, b) => a + b, 0) / clv.length) : null,

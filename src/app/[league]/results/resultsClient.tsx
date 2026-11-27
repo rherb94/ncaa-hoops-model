@@ -350,6 +350,82 @@ function EdgeCalibrationTable({ buckets }: { buckets: CalibrationBucket[] }) {
   );
 }
 
+
+// ---- favorite / underdog split ----
+type PickRole = "favorite" | "underdog" | "pickem";
+
+/** Was the picked side favored by the line it was taken at? */
+function pickRole(g: GameRow): PickRole | null {
+  if (!isPlay(g.signal) || g.opening_spread === null) return null;
+  if (g.pick_side !== "HOME" && g.pick_side !== "AWAY") return null;
+  if (g.opening_spread === 0) return "pickem";
+  const homeFavored = g.opening_spread < 0;
+  return (g.pick_side === "HOME") === homeFavored ? "favorite" : "underdog";
+}
+
+function FavoriteUnderdogTable({ games }: { games: GameRow[] }) {
+  const rows = (["favorite", "underdog", "pickem"] as PickRole[]).map((role) => {
+    const picks = games.filter((g) => pickRole(g) === role);
+    const settled = picks.filter((g) => g.pick_result === "WIN" || g.pick_result === "LOSS" || g.pick_result === "PUSH");
+    const wins = settled.filter((g) => g.pick_result === "WIN").length;
+    const losses = settled.filter((g) => g.pick_result === "LOSS").length;
+    const pushes = settled.length - wins - losses;
+    const units = settled.reduce((sum, g) => sum + (g.units ?? 0), 0);
+    return { role, plays: picks.length, wins, losses, pushes, units, settled: settled.length };
+  });
+  const shown = rows.filter((r) => r.role !== "pickem" || r.plays > 0);
+  if (!shown.some((r) => r.plays > 0)) return null;
+  const label: Record<PickRole, string> = { favorite: "Favorites", underdog: "Underdogs", pickem: "Pick'em" };
+  const note: Record<PickRole, string> = {
+    favorite: "laying points",
+    underdog: "getting points",
+    pickem: "line at 0",
+  };
+
+  return (
+    <div className="overflow-hidden rounded-xl border border-white/[0.07] bg-zinc-900/30">
+      <div className="px-3 sm:px-4 py-2.5 bg-zinc-900 border-b border-white/10">
+        <span className="text-sm font-semibold text-zinc-200">Favorites vs underdogs</span>
+        <span className="block sm:inline text-xs text-zinc-500 sm:ml-2">plays only, by which side of the line was taken</span>
+      </div>
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-white/10 text-xs text-zinc-500">
+            <th className="px-3 sm:px-4 py-2 text-left  font-medium">Side</th>
+            <th className="hidden sm:table-cell px-2 sm:px-3 py-2 text-right font-medium">Plays</th>
+            <th className="px-2 sm:px-3 py-2 text-right font-medium">Record</th>
+            <th className="px-2 sm:px-3 py-2 text-right font-medium">Win %</th>
+            <th className="px-3 sm:px-4 py-2 text-right font-medium">Units</th>
+          </tr>
+        </thead>
+        <tbody>
+          {shown.map((r) => {
+            const pct = r.wins + r.losses > 0 ? Math.round((r.wins / (r.wins + r.losses)) * 1000) / 10 : null;
+            const pctColor = pct === null ? "text-zinc-600" : pct >= 52.4 ? "text-emerald-400" : "text-red-400";
+            const uColor = r.settled === 0 || Math.abs(r.units) < 0.005 ? "text-zinc-400" : r.units > 0 ? "text-emerald-400" : "text-red-400";
+            return (
+              <tr key={r.role} className="border-b border-white/5 bg-zinc-900/30">
+                <td className="px-3 sm:px-4 py-2.5">
+                  <span className="font-semibold text-zinc-200">{label[r.role]}</span>
+                  <span className="hidden sm:inline text-zinc-600 ml-1.5 text-[11px]">{note[r.role]}</span>
+                </td>
+                <td className="hidden sm:table-cell num px-2 sm:px-3 py-2.5 text-right text-zinc-400">{r.plays || <span className="text-zinc-700">—</span>}</td>
+                <td className="px-2 sm:px-3 py-2.5 text-right text-zinc-400 font-mono">
+                  {r.settled > 0 ? `${r.wins}-${r.losses}${r.pushes ? `-${r.pushes}` : ""}` : "—"}
+                </td>
+                <td className={`num px-2 sm:px-3 py-2.5 text-right font-semibold ${pctColor}`}>{pct !== null ? `${pct}%` : "—"}</td>
+                <td className={`num px-3 sm:px-4 py-2.5 text-right font-semibold ${uColor}`}>
+                  {r.settled > 0 ? `${r.units > 0 ? "+" : ""}${r.units.toFixed(1)}u` : "—"}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 // Mobile game card
 function GameCard({ g, league }: { g: GameRow; league: LeagueId }) {
   const hasPick = isPlay(g.signal);
@@ -624,6 +700,9 @@ export default function ResultsClient({ league }: { league: LeagueId }) {
 
       {/* edge calibration */}
       <EdgeCalibrationTable buckets={buckets} />
+
+      {/* favorite / underdog split */}
+      <FavoriteUnderdogTable games={visibleDates.flatMap((d) => d.games)} />
 
       {by_date.length === 0 && (
         <div className="rounded-xl border border-white/[0.07] bg-zinc-900/30 px-5 py-10 text-center text-sm text-zinc-500">

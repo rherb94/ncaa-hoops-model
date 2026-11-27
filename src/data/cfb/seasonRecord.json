@@ -1,10 +1,10 @@
 {
   "league": "cfb",
   "season_start": "2026-08-01",
-  "updated_at": "2026-11-26T16:52:39.493Z",
-  "days_tracked": 11,
+  "updated_at": "2026-11-27T14:06:34.732Z",
+  "days_tracked": 12,
   "first_date": "2026-11-11",
-  "last_date": "2026-11-24",
+  "last_date": "2026-11-26",
   "total_picks": 35,
   "decided": 32,
   "wins": 18,
@@ -36,6 +36,22 @@
     "units": 0.36,
     "roi_pct": 2.3,
     "win_pct": 53.3
+  },
+  "favorite": {
+    "wins": 14,
+    "losses": 11,
+    "pushes": 1,
+    "units": 1.86,
+    "roi_pct": 7.2,
+    "win_pct": 56
+  },
+  "underdog": {
+    "wins": 4,
+    "losses": 3,
+    "pushes": 1,
+    "units": 0.66,
+    "roi_pct": 8.3,
+    "win_pct": 57.1
   },
   "all_games": {
     "wins": 46,
@@ -193,6 +209,20 @@
     },
     {
       "date": "2026-11-24",
+      "plays": 0,
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "units": 0,
+      "cumulative": {
+        "wins": 18,
+        "losses": 14,
+        "pushes": 2,
+        "units": 2.52
+      }
+    },
+    {
+      "date": "2026-11-26",
       "plays": 0,
       "wins": 0,
       "losses": 0,
