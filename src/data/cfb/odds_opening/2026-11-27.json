@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-27",
+  "captured_at": "2026-11-27T23:36:07.675Z",
+  "ratings_updated_at": "2026-11-27T19:32:38.862Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "e6a3c909a8cfc7b2c666252e246418c7",
+      "commence_time": "2026-11-28T00:30:00Z",
+      "home_team": "Wisconsin Badgers",
+      "away_team": "Minnesota Golden Gophers",
+      "home_espnTeamId": "275",
+      "away_espnTeamId": "135",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:33Z",
+        "homePoint": -9.5,
+        "awayPoint": 9.5,
+        "homePrice": -108,
+        "awayPrice": -112
+      },
+      "market": {
+        "books": 12,
+        "medianHomePoint": -9.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": -8,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -9.5,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-wisconsin",
+        "awayTeamId": "team-minnesota",
+        "modelSpread": -12.8,
+        "edge": -3.3,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "4c69ecf41bb2d36dfeedeae23acc5b86",
+      "commence_time": "2026-11-28T00:30:00Z",
+      "home_team": "Texas A&M Aggies",
+      "away_team": "Texas Longhorns",
+      "home_espnTeamId": "245",
+      "away_espnTeamId": "251",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:33Z",
+        "homePoint": 10.5,
+        "awayPoint": -10.5,
+        "homePrice": -108,
+        "awayPrice": -112
+      },
+      "market": {
+        "books": 12,
+        "medianHomePoint": 10.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": 11,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "draftkings",
+          "homePoint": 10.5,
+          "price": -112
+        }
+      },
+      "model": {
+        "homeTeamId": "team-texas-aandm",
+        "awayTeamId": "team-texas",
+        "modelSpread": 12.5,
+        "edge": 2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "bee4ea7a231be77b1ee52ddf3755592f",
+      "commence_time": "2026-11-28T02:00:00Z",
+      "home_team": "Utah Utes",
+      "away_team": "West Virginia Mountaineers",
+      "home_espnTeamId": "254",
+      "away_espnTeamId": "277",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:34:33Z",
+        "homePoint": -25.5,
+        "awayPoint": 25.5,
+        "homePrice": -108,
+        "awayPrice": -112
+      },
+      "market": {
+        "books": 11,
+        "medianHomePoint": -25.5,
+        "bestHome": {
+          "book": "betonlineag",
+          "homePoint": -25,
+          "price": -107
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": -26,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-utah",
+        "awayTeamId": "team-west-virginia",
+        "modelSpread": -27,
+        "edge": -1.5,
+        "signal": "NONE"
+      }
+    }
+  ]
+}
