@@ -1,7 +1,7 @@
 {
   "league": "cfb",
   "season_start": "2026-08-01",
-  "updated_at": "2026-11-27T14:19:20.553Z",
+  "updated_at": "2026-11-27T16:38:36.013Z",
   "days_tracked": 12,
   "first_date": "2026-11-11",
   "last_date": "2026-11-26",
@@ -54,9 +54,9 @@
     "win_pct": 57.1
   },
   "all_games": {
-    "wins": 46,
+    "wins": 47,
     "losses": 41,
-    "win_pct": 52.9
+    "win_pct": 53.4
   },
   "caution": {
     "wins": 3,

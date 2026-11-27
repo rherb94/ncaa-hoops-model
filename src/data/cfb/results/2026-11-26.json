@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-26",
+  "fetched_at": "2026-11-27T16:38:35.035Z",
+  "total_games": 1,
+  "completed_games": 1,
+  "games": [
+    {
+      "espnEventId": "401856879",
+      "commence_time": "2026-11-27T01:00Z",
+      "home_team": "Texas Tech Red Raiders",
+      "away_team": "TCU Horned Frogs",
+      "home_espnTeamId": "2641",
+      "away_espnTeamId": "2628",
+      "completed": true,
+      "status": "Final",
+      "homeScore": 48,
+      "awayScore": 27,
+      "actualSpread": -21,
+      "winner": "HOME"
+    }
+  ]
+}
