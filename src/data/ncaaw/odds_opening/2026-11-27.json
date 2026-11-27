@@ -1,0 +1,156 @@
+{
+  "date": "2026-11-27",
+  "captured_at": "2026-11-27T23:38:22.460Z",
+  "ratings_updated_at": "2026-11-27T20:21:06.137Z",
+  "ratings_stale": false,
+  "games": [
+    {
+      "oddsEventId": "a6c26c95b940713eaf760a6efb4b0f41",
+      "commence_time": "2026-11-28T00:00:00Z",
+      "home_team": "North Carolina Tar Heels",
+      "away_team": "Army Knights",
+      "home_espnTeamId": "153",
+      "away_espnTeamId": "349",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": false,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:37:31Z",
+        "homePoint": -22.5,
+        "awayPoint": 22.5,
+        "homePrice": -115,
+        "awayPrice": -105
+      },
+      "market": {
+        "books": 3,
+        "medianHomePoint": -24.5,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -22.5,
+          "price": -115
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -28.5,
+          "price": -114
+        }
+      },
+      "model": null
+    },
+    {
+      "oddsEventId": "5ad13c23504540a6616908b3bb9b9c92",
+      "commence_time": "2026-11-28T00:00:00Z",
+      "home_team": "NC State Wolfpack",
+      "away_team": "Kansas St Wildcats",
+      "home_espnTeamId": "152",
+      "away_espnTeamId": "2306",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "fanduel",
+        "last_update": "2026-11-27T23:37:31Z",
+        "homePoint": -12.5,
+        "awayPoint": 12.5,
+        "homePrice": -114,
+        "awayPrice": -114
+      },
+      "market": {
+        "books": 3,
+        "medianHomePoint": -12.5,
+        "bestHome": {
+          "book": "fanduel",
+          "homePoint": -12.5,
+          "price": -114
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -12.5,
+          "price": -114
+        }
+      },
+      "model": {
+        "homeTeamId": "team-n-c-state",
+        "awayTeamId": "team-kansas-st",
+        "modelSpread": -8.9,
+        "edge": 3.6,
+        "signal": "LEAN"
+      }
+    },
+    {
+      "oddsEventId": "de4dbe646d58dd38dd0bd06d36428a41",
+      "commence_time": "2026-11-28T01:00:00Z",
+      "home_team": "Seton Hall Pirates",
+      "away_team": "South Florida Bulls",
+      "home_espnTeamId": "2550",
+      "away_espnTeamId": "58",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "betrivers",
+        "last_update": "2026-11-27T23:37:31Z",
+        "homePoint": 5.5,
+        "awayPoint": -5.5,
+        "homePrice": -121,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 1,
+        "medianHomePoint": 5.5,
+        "bestHome": {
+          "book": "betrivers",
+          "homePoint": 5.5,
+          "price": -121
+        },
+        "bestAway": {
+          "book": "betrivers",
+          "homePoint": 5.5,
+          "price": -110
+        }
+      },
+      "model": {
+        "homeTeamId": "team-seton-hall",
+        "awayTeamId": "team-south-florida",
+        "modelSpread": 5.3,
+        "edge": -0.2,
+        "signal": "NONE"
+      }
+    },
+    {
+      "oddsEventId": "aae43bd8699a850b4de30afff665520a",
+      "commence_time": "2026-11-28T02:00:00Z",
+      "home_team": "Minnesota Golden Gophers",
+      "away_team": "Cincinnati Bearcats",
+      "home_espnTeamId": "135",
+      "away_espnTeamId": "2132",
+      "home_resolve": "MAP",
+      "away_resolve": "MAP",
+      "neutralSite": true,
+      "opening": {
+        "book": "draftkings",
+        "last_update": "2026-11-27T23:37:31Z",
+        "homePoint": -24.5,
+        "awayPoint": 24.5,
+        "homePrice": -110,
+        "awayPrice": -110
+      },
+      "market": {
+        "books": 4,
+        "medianHomePoint": -26,
+        "bestHome": {
+          "book": "draftkings",
+          "homePoint": -24.5,
+          "price": -110
+        },
+        "bestAway": {
+          "book": "fanduel",
+          "homePoint": -28.5,
+          "price": -114
+        }
+      },
+      "model": null
+    }
+  ]
+}
