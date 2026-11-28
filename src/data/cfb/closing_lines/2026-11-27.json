@@ -1,8 +1,9 @@
 {
   "date": "2026-11-27",
-  "last_updated": "2026-11-27T05:29:59.009Z",
+  "last_updated": "2026-11-28T00:16:17.687Z",
   "snapshot_times": [
-    "2026-11-27T05:25:36Z"
+    "2026-11-27T05:25:36Z",
+    "2026-11-28T00:15:36Z"
   ],
   "games": [
     {
@@ -110,30 +111,30 @@
       "home_team": "Wisconsin Badgers",
       "away_team": "Minnesota Golden Gophers",
       "commence_time": "2026-11-28T00:30:00Z",
-      "homePoint": -9.5,
-      "awayPoint": 9.5,
+      "homePoint": -8.5,
+      "awayPoint": 8.5,
       "book": "draftkings",
-      "snapshotTime": "2026-11-27T05:25:36Z"
+      "snapshotTime": "2026-11-28T00:15:36Z"
     },
     {
       "oddsEventId": "4c69ecf41bb2d36dfeedeae23acc5b86",
       "home_team": "Texas A&M Aggies",
       "away_team": "Texas Longhorns",
-      "commence_time": "2026-11-28T00:30:00Z",
-      "homePoint": 10.5,
-      "awayPoint": -10.5,
+      "commence_time": "2026-11-28T00:40:00Z",
+      "homePoint": 10,
+      "awayPoint": -10,
       "book": "draftkings",
-      "snapshotTime": "2026-11-27T05:25:36Z"
+      "snapshotTime": "2026-11-28T00:15:36Z"
     },
     {
       "oddsEventId": "bee4ea7a231be77b1ee52ddf3755592f",
       "home_team": "Utah Utes",
       "away_team": "West Virginia Mountaineers",
       "commence_time": "2026-11-28T02:00:00Z",
-      "homePoint": -26.5,
-      "awayPoint": 26.5,
+      "homePoint": -25.5,
+      "awayPoint": 25.5,
       "book": "draftkings",
-      "snapshotTime": "2026-11-27T05:25:36Z"
+      "snapshotTime": "2026-11-28T00:15:36Z"
     }
   ]
 }
